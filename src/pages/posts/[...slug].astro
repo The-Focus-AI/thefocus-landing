@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import { getPosts } from "../../utils/posts";
+import type { CollectionEntry } from 'astro:content';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const blogEntries = await getPosts(); 
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+
+const { entry } = Astro.props;
+type Props = {
+  entry: CollectionEntry<'posts'>;
+};
+const { Content } = await entry.render();
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
+
+const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US", dateOptions);
+---
+<BaseLayout pageTitle={entry.data.title}>
+  <h1 class="text-4xl font-bold">{entry.data.title}</h1>
+  <p class="text-sm py-2">{formattedPublishDate}</p>
+  <ul class="py-2 flex flex-row gap-2">
+    {entry.data.tags?.map((tag) => <li class="bg-gray-300 rounded-md px-2 py-1">#<a href={`/tags/${tag}`}>{tag}</a></li>)}
+  </ul>
+  <div class="prose lg:prose-xl max-w-prose">
+    <Content />
+  </div>
+</BaseLayout>
+
+<style is:global>
+blockquote[data-callout] {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+blockquote[data-callout="error"] {
+  background-color: rgb(255, 95, 122)
+}
+
+blockquote[data-callout="tip"] {
+  background-color: rgb(136, 136, 220);
+}
+
+blockquote[data-callout="note"] {
+  background-color: rgb(136, 220, 136);
+}
+
+.prose p:first-child::first-line {
+    font-variant: small-caps;
+}
+</style>

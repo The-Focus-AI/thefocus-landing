@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { getPosts } from "../utils/posts";
+
+const allPosts = await getPosts();
+
+---
+<BaseLayout pageTitle="Posts">
+<h1 class="text-4xl font-bold">Posts</h1>
+<ul class="list-decimal list-inside">
+    {allPosts.map((post) => <li><a href={`/posts/${post.slug}`}>{post.data.title || post.slug}</a></li>)}
+</ul>
+</BaseLayout>

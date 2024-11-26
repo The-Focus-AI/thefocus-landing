@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { Image } from "astro:assets";
+import image1 from "../images/image1.png";
+---
+<BaseLayout pageTitle="Index">
+    <section class="relative w-full" slot="hero">
+		<Image src={image1} alt="Focus AI Hero" class="object-cover w-full h-full" />
+		<div class="flex justify-between p-4 text-gray-600">
+		  <!-- <a href="/about.html">About Us</a> -->
+		  <div>Learn more</div>
+		</div>
+	  </section>
+
+	<h2 class="sm:text-right text-4xl sm:text-7xl">
+		We&#39;re an AI digital transformation agency, dedicated to saving you
+		time and money through cutting-edge AI technology, strategic planning,
+		and seamless implementation.
+		<br />We help you focus<span class="text-orange-500">.</span>
+	  </h2>
+
+</BaseLayout>

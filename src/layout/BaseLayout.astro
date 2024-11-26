@@ -1,0 +1,101 @@
+---
+import '@fontsource-variable/dm-sans';
+
+const pageTitle = Astro.props.title || "My Astro Blog";
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="bg-gray-100">
+    <header
+      class="px-8 py-8 md:flex justify-between items-top md:container mx-auto"
+    >
+      <nav class="space-x-4 text-gray-700">
+        <ul class="">
+          <li><a href="/" class="underline hover:underline">HOME</a></li>
+          <li>
+            <a href="/blog" class="hover:underline">BLOG</a>
+          </li>
+          <li>
+            <a href="mailto:hey@thefocus.ai" class="hover:underline">CONTACT</a>
+          </li>
+          <!-- <li><a href="/about.html" class="hover:underline">ABOUT US</a></li> -->
+        </ul>
+      </nav>
+      <div>
+        <h1 class="mt-0 pt-0 text-7xl md:text-[200px] leading-[.75]">
+          FOCUS<span class="text-orange-500">.</span> <br />AI
+        </h1>
+        <p class="text-right">FOCUS.AI.AGENCY</p>
+        <p class="text-right">EST. 24</p>
+      </div>
+    </header>
+
+    <slot name="hero"/>
+
+
+    <main class="w-full">
+        
+      <section class="container mx-auto py-24 px-2">
+        <slot/>
+      </section>
+
+      <section class="bg-gray-900 text-gray-300 px-2">
+        <div class="flex justify-between p-4 text-gray-600 text-sm">
+          <p>What we offer</p>
+          <p>2024</p>
+        </div>
+        <div class="border-t border-gray-600 py-8 px-2">
+          <div class="flex container mx-auto">
+            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">01.</div>
+            <div class="text-4xl">
+              AI DIGITAL TRANSFORMATION USING BEST IN CLASS AI
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-600 py-8">
+          <div class="flex container mx-auto">
+            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">02.</div>
+            <div class="text-4xl">PRODUCT DESIGN AND ENGINEERING</div>
+          </div>
+        </div>
+        <div class="border-t border-gray-600 py-8">
+          <div class="flex container mx-auto">
+            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">03.</div>
+            <div class="text-4xl">
+              MODELING AND DATA INTERPRETATION FOR AI TUNING
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-600 py-8">
+          <div class="flex container mx-auto">
+            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">04.</div>
+            <div class="text-4xl">UPDATING OLD MOBILE AND WEB APPS FOR AI</div>
+          </div>
+        </div>
+      </section>
+      <section class="py-32">
+        <h2 class="text-4xl text-center">
+          <a class="underline" href="mailto:hey@thefocus.ai">CONTACT US</a> TO
+          GET STARTED.
+        </h2>
+      </section>
+    </main>
+
+    <footer class="container mx-auto flex justify-between py-8">
+      <p class="text-4xl mt-2">FOCUS.AI</p>
+      <nav class="mt-4 space-x-4">
+        <a href="/" class="text-gray-600 hover:underline">HOME</a>
+        <a href="/blog" class="text-gray-600 hover:underline">BLOG</a>
+        <a href="mailto:hey@thefocus.ai" class="text-gray-600 hover:underline"
+          >HEY@THEFOCUS.AI</a
+        >
+      </nav>
+    </footer>
+  </body>
+</html>
