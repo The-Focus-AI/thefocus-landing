@@ -26,7 +26,7 @@ const dateOptions: object = {
 
 const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US", dateOptions);
 ---
-<BaseLayout pageTitle={entry.data.title}>
+<BaseLayout pageTitle={entry.data.title} description={entry.data.description}>
   <h1 class="text-4xl font-bold">{entry.data.title}</h1>
   <p class="text-sm py-2">{formattedPublishDate}</p>
   <ul class="py-2 flex flex-row gap-2">

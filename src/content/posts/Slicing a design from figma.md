@@ -7,7 +7,7 @@ tags:
   - claude
   - cursor
   - v0
-description: OK lets have a shoot out!  I'm going to figma, selecting a section and exporting to a `png` file.  Lets see what using a few different coding tools will produce.  Which one do we like the look of better, and which gets us going faster?  Here we go!
+description: OK lets have a tool shoot out!   cursor vs aider vs openai
 ---
 OK lets have a shoot out!  I'm going to figma, selecting a section and
 exporting to a `png` file.  Lets see what using a few different coding

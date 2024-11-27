@@ -1,8 +1,14 @@
 ---
 import '@fontsource-variable/dm-sans';
+import { SEO } from "astro-seo";
+import { getImagePath } from "astro-opengraph-images";
 
-const pageTitle = Astro.props.title || "the focus.ai";
+const pageTitle = Astro.props.pageTitle || "the focus.ai";
 const bigHeader = Astro.props.bigHeader || false;
+
+const description = Astro.props.description || "Come a visit us";
+const { url, site } = Astro;
+const openGraphImageUrl = getImagePath({ url, site });
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +17,36 @@ const bigHeader = Astro.props.bigHeader || false;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <SEO
+      title={pageTitle}
+      description={description}
+      openGraph={{
+        basic: {
+          title: pageTitle,
+          type: "website",
+          image: openGraphImageUrl
+        },
+        optional: {
+          description: description,
+        }
+      }}
+      twitter={{
+        creator: "@wschenk"
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: openGraphImageUrl,
+          },
+          { name: "twitter:title", content: pageTitle },
+          { name: "twitter:description", content: description },
+        ],
+      }}
+    />
     <link
     rel="alternate"
     type="application/rss+xml"
