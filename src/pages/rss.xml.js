@@ -3,7 +3,7 @@ import { getPosts } from "../utils/posts";
 
 export async function GET(context) {
   const posts = await getPosts();
-
+  /*
   posts.forEach((post) => {
     console.log("title", post.data.title || post.slug);
     console.log("date", post.data.date);
@@ -14,12 +14,14 @@ export async function GET(context) {
     console.log("link", `/posts/${post.slug}`);
     console.log("---");
   });
+  */
 
   //   console.log(blog);
   return rss({
-    title: "Obsidian Blog",
-    description: "Rocks are cool",
-    site: context.site || "https://obsidian.blog",
+    title: "The Focus AI",
+    description:
+      "Keep up to date with the latest news and updates from The Focus AI",
+    site: context.site || "https://thefocus.ai",
     items: posts.map((post) => ({
       title: post.data.title || post.slug,
       pubDate: post.data.date,

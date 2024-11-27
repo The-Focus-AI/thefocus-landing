@@ -141,16 +141,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-"About.md": {
-	id: "About.md";
-  slug: "about";
+"Slicing a design from figma.md": {
+	id: "Slicing a design from figma.md";
+  slug: "slicing-a-design-from-figma";
   body: string;
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
-"Slicing a design from figma.md": {
-	id: "Slicing a design from figma.md";
-  slug: "slicing-a-design-from-figma";
+"Welcome to The Focus.md": {
+	id: "Welcome to The Focus.md";
+  slug: "welcome-to-the-focus";
   body: string;
   collection: "posts";
   data: any

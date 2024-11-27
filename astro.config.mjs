@@ -6,6 +6,7 @@ import remarkObsidianCallout from "remark-obsidian-callout";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://thefocus.ai",
   integrations: [tailwind()],
   markdown: {
     rehypePlugins: [rehypeAstroRelativeMarkdownLinks],

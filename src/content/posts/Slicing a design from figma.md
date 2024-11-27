@@ -7,10 +7,10 @@ tags:
   - claude
   - cursor
   - v0
-description: OK lets have a shoot out!  I'm going to figma, selecting a section andexporting to a =png= file.  Lets see what using a few different codingtools will produce.  Which one do we like the look of better, andwhich gets us going faster?  Here we go!
+description: OK lets have a shoot out!  I'm going to figma, selecting a section and exporting to a `png` file.  Lets see what using a few different coding tools will produce.  Which one do we like the look of better, and which gets us going faster?  Here we go!
 ---
 OK lets have a shoot out!  I'm going to figma, selecting a section and
-exporting to a =png** file.  Lets see what using a few different coding
+exporting to a `png` file.  Lets see what using a few different coding
 tools will produce.  Which one do we like the look of better, and
 which gets us going faster?  Here we go!
 
