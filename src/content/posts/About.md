@@ -1,10 +1,11 @@
 ---
 title: About
-date: 2024-11-26
+date: 2024-11-29
 tags:
   - daily
+description: Let me tell you a bit about myself
 ---
 
-Hi there. This is my photo.
+The focus 
 
 ![new_avatar](../assets/new_avatar.jpeg)
