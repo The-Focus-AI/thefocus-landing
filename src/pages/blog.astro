@@ -6,7 +6,7 @@ import { getPosts } from "../utils/posts";
 const allPosts = await getPosts();
 
 ---
-<BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work">
+<BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work" category="blog">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {allPosts.map((post) => (
         <PostCard post={post} />

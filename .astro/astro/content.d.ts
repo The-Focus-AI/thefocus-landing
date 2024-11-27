@@ -148,9 +148,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
-"Welcome to The Focus.md": {
-	id: "Welcome to The Focus.md";
-  slug: "welcome-to-the-focus";
+"about.md": {
+	id: "about.md";
+  slug: "about";
   body: string;
   collection: "posts";
   data: any

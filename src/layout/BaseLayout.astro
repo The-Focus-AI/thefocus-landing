@@ -9,6 +9,11 @@ const bigHeader = Astro.props.bigHeader || false;
 const description = Astro.props.description || "Come a visit us";
 const { url, site } = Astro;
 const openGraphImageUrl = getImagePath({ url, site });
+
+let category = Astro.props.category || "home";
+if(Astro.url.pathname.includes("/posts/about")) {
+  category = "about";
+}
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -63,14 +68,14 @@ const openGraphImageUrl = getImagePath({ url, site });
     >
       <nav class="space-x-4 text-gray-700">
         <ul class="">
-          <li><a href="/" class="underline hover:underline">HOME</a></li>
+          <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : ""]}>HOME</a></li>
           <li>
-            <a href="/blog" class="hover:underline">BLOG</a>
+            <a href="/blog" class:list={[category === "blog" ? "underline hover:underline" : ""]}>BLOG</a>
           </li>
           <li>
             <a href="mailto:hey@thefocus.ai" class="hover:underline">CONTACT</a>
           </li>
-          <!-- <li><a href="/about.html" class="hover:underline">ABOUT US</a></li> -->
+          <li><a href="/posts/about" class:list={[category === "about" ? "underline hover:underline" : ""]}>ABOUT US</a></li>
         </ul>
       </nav>
       <div>

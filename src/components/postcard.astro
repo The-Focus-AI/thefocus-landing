@@ -15,9 +15,9 @@ const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US"
 
 <Card>
     <div slot="header">
-        <h2 class="text-2xl font-bold">{post.data.title || post.slug}</h2>
+        <h2 class="text-2xl font-bold"><a href={`/posts/${post.slug}`}>{post.data.title || post.slug}</a></h2>
         <p class="text-sm py-2">{formattedPublishDate}</p>
     </div>
-    <p >{post.data.description}</p>
+    <p><a href={`/posts/${post.slug}`}>{post.data.description}</a></p>
     <a slot="footer" href={`/posts/${post.slug}`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
 </Card>
