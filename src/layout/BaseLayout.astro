@@ -1,7 +1,8 @@
 ---
 import '@fontsource-variable/dm-sans';
 
-const pageTitle = Astro.props.title || "My Astro Blog";
+const pageTitle = Astro.props.title || "the focus.ai";
+const bigHeader = Astro.props.bigHeader || false;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,10 @@ const pageTitle = Astro.props.title || "My Astro Blog";
   </head>
   <body class="bg-gray-100">
     <header
-      class="px-8 py-8 md:flex justify-between items-top md:container mx-auto"
+      class:list={[
+        "py-8 md:flex justify-between items-top md:container mx-auto",
+        bigHeader ? "px-8" : ""
+      ]}
     >
       <nav class="space-x-4 text-gray-700">
         <ul class="">
@@ -28,8 +32,12 @@ const pageTitle = Astro.props.title || "My Astro Blog";
         </ul>
       </nav>
       <div>
-        <h1 class="mt-0 pt-0 text-7xl md:text-[200px] leading-[.75]">
-          FOCUS<span class="text-orange-500">.</span> <br />AI
+        <h1 class:list={[
+          "mt-0 pt-0 text-7xl md:text-[200px] leading-[.75]",
+          bigHeader ? "md:text-[200px]" : "md:text-[100px]"
+        ]}>
+          FOCUS<span class="text-orange-500">.</span> 
+          {bigHeader ? <br /> : ""}AI
         </h1>
         <p class="text-right">FOCUS.AI.AGENCY</p>
         <p class="text-right">EST. 24</p>
@@ -41,7 +49,10 @@ const pageTitle = Astro.props.title || "My Astro Blog";
 
     <main class="w-full">
         
-      <section class="container mx-auto py-24 px-2">
+      <section class:list={[
+          "container mx-auto py-4 px-2",
+          bigHeader ? "py-48" : ""
+        ]}>
         <slot/>
       </section>
 

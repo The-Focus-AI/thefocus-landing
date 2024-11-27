@@ -1,0 +1,23 @@
+---
+import Card from "./card.astro";
+
+const {post} = Astro.props;
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
+
+const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US", dateOptions);
+
+---
+
+<Card>
+    <div slot="header">
+        <h2 class="text-2xl font-bold">{post.data.title || post.slug}</h2>
+        <p class="text-sm py-2">{formattedPublishDate}</p>
+    </div>
+    <p >{post.data.description}</p>
+    <a slot="footer" href={`/posts/${post.slug}`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
+</Card>

@@ -148,16 +148,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
-"Mini truck.md": {
-	id: "Mini truck.md";
-  slug: "mini-truck";
-  body: string;
-  collection: "posts";
-  data: any
-} & { render(): Render[".md"] };
-"Welcome.md": {
-	id: "Welcome.md";
-  slug: "welcome";
+"Slicing a design from figma.md": {
+	id: "Slicing a design from figma.md";
+  slug: "slicing-a-design-from-figma";
   body: string;
   collection: "posts";
   data: any
