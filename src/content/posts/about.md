@@ -2,7 +2,7 @@
 title: Welcome to The Focus AI
 date: 2024-11-29
 tags:
-  - daily
+  - meta
 description: Let me tell you a bit about what we do here
 ---
 ![this is an ai generated photo](../assets/focus.jpeg)
