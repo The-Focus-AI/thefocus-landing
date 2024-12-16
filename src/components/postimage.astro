@@ -1,0 +1,14 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const { post } = Astro.props;
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/*.{jpeg,jpg,png,gif}');
+
+const img_key= `/src/content/assets/${post.data.image}`;
+if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
+
+const image = images[img_key];
+---
+
+{image && <Image class="object-fill" src={`/src/content/assets/${post.data.image}`} alt={post.data.title} height="500" width="700"/>}

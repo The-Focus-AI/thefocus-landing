@@ -5,11 +5,13 @@ tags:
   - thoughts
 description: How can we use these tools, and in what way
 published: true
+image: workshop.png
 ---
 > [Computers are a bicycle for the mind.](https://www.themarginalian.org/2011/12/21/steve-jobs-bicycle-for-the-mind-1990/)
 
 There's a Steve Job quote about how we are tool builders, and with our tools we are able to accomplish way more than we would have otherwise.  And we have tools for thought, tools to make tools (I love a good [woodworking jig](https://www.popularwoodworking.com/jigs-and-fixtures-projects/)), tools we don't understand the inner workings of.
 
+![](../assets/bicyles.png)
 Lets explore what these new, generative AI based tools are actually good for.  I'm very interested in how we can apply these new AI tools in useful ways.  Playing with [ChatGPT](https://chatgpt.com) or [Midjourney](https://www.midjourney.com/home) or [Elevenlabs](https://elevenlabs.io/) are mind bending, both their current demonstrable capabilities and the sparks that they fire off about the future.
 
 What can you do with them, beyond the demo?
@@ -34,7 +36,7 @@ Paper was so hard to come by that it made sense to erase what was written on it 
 
 Finding nibs and inks to write with, cursive writing and blotting ink...  Then typewriters came along and we focused on words and paragraphs rather than how the letters were formed.
 
-Typewriters graduated to word processors, and "copy and pasting" became a metaphor rather than using scissors to move text around.  Spelling checkers red-squiggled their way into grammar checkers, and a million Hemmingway -mitators were released into the world.
+Typewriters graduated to word processors, and "copy and pasting" became a metaphor rather than using scissors to move text around.  Spelling checkers red-squiggled their way into grammar checkers, and a million Hemmingway imitators were released into the world.
 ## Tomorrow
 
 Now the tools can do even more -- [Gemini DeepResearch](https://blog.google/products/gemini/google-gemini-deep-research/) will scour the internet for you to get you a list of references. It will summarize for you, and give you a list of bullet points.  Any of the models will let you expand on whatever topic, and full it up with empty, grammatically correct prose.

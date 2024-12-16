@@ -141,6 +141,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"2025 Predictions.md": {
+	id: "2025 Predictions.md";
+  slug: "2025-predictions";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "Adding Chat to NextJS App.md": {
 	id: "Adding Chat to NextJS App.md";
   slug: "adding-chat-to-nextjs-app";

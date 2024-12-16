@@ -5,6 +5,7 @@ tags:
   - meta
 description: Let me tell you a bit about what we do here
 published: "true"
+image: focus_wide.jpeg
 ---
 ![this is an ai generated photo](../assets/focus.jpeg)
 
