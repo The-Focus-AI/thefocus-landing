@@ -11,9 +11,9 @@ image: workshop.png
 
 There's a Steve Job quote about how we are tool builders, and with our tools we are able to accomplish way more than we would have otherwise.  And we have tools for thought, tools to make tools (I love a good [woodworking jig](https://www.popularwoodworking.com/jigs-and-fixtures-projects/)), tools we don't understand the inner workings of.
 
-![](../assets/bicyles.png)
 Lets explore what these new, generative AI based tools are actually good for.  I'm very interested in how we can apply these new AI tools in useful ways.  Playing with [ChatGPT](https://chatgpt.com) or [Midjourney](https://www.midjourney.com/home) or [Elevenlabs](https://elevenlabs.io/) are mind bending, both their current demonstrable capabilities and the sparks that they fire off about the future.
 
+![](../assets/bicyles.png)
 What can you do with them, beyond the demo?
 
 ## Today
@@ -26,17 +26,18 @@ Whisper -- a [voice to text model from OpenAI](https://openai.com/index/whisper/
 
 Then I copied the text into [ChatGPT](https://chatgpt.com/) , [Claude](https://claude.ai/new), and [Gemini](https://gemini.google.com/app).  I told it to rewrite it the "style of [La Rochefoucauld](https://www.goodreads.com/author/quotes/7428903.Fran_ois_de_La_Rochefoucauld)", make it more concise, use shorter more modern language.  I copied the output of one model into another.
 
-I put them all together, and just let it sit there.  I'd organized my thoughts.  Eventually I slept on it, threw it all out, and hammered this post out in 15 minutes.
+I put them all together, and just let it sit there.  I'd organized my thoughts.  
 
+Eventually I slept on it, threw it all out, and hammered this post out in 15 minutes.
 ## Yesterday 
 
-Image this process in the past, the way past.  Forget about the terror of the blank page, about not knowing exactly what to write or if you had anything to say.  To even get to that point you'd need to work hard.
+Imagine this process in the past, the way past.  Forget about the terror of the blank page, about not knowing exactly what to write or if you had anything to say.  To even get to that point you'd need to work hard.
 
-Paper was so hard to come by that it made sense to erase what was written on it before.  Whole texts have [been recovered from a palimpsest](https://spotlight.vatlib.it/palimpsests/feature/digital-recovery-of-removed-texts).
+You'd need to get paper.  Paper was so hard to come by that it made sense to erase what was written on it before.  Whole texts have [been recovered from a palimpsest](https://spotlight.vatlib.it/palimpsests/feature/digital-recovery-of-removed-texts).
 
-Finding nibs and inks to write with, cursive writing and blotting ink...  Then typewriters came along and we focused on words and paragraphs rather than how the letters were formed.
+Finding nibs and inks to write with, cursive writing and blotting ink...  Ink was probably everywhere.  Then typewriters came along and we focused on words and paragraphs rather than how the letters were formed.
 
-Typewriters graduated to word processors, and "copy and pasting" became a metaphor rather than using scissors to move text around.  Spelling checkers red-squiggled their way into grammar checkers, and a million Hemmingway imitators were released into the world.
+Typewriters graduated to word processors, and "copy and pasting" became a metaphor rather than using scissors to move text around.  Spelling checkers red-squiggled their way into grammar checkers, and a million Hemmingway imitators were unleashed upon the unsuspecting world.
 ## Tomorrow
 
 Now the tools can do even more -- [Gemini DeepResearch](https://blog.google/products/gemini/google-gemini-deep-research/) will scour the internet for you to get you a list of references. It will summarize for you, and give you a list of bullet points.  Any of the models will let you expand on whatever topic, and full it up with empty, grammatically correct prose.
@@ -56,6 +57,14 @@ I think this will be a huge benefit to those who know what they are doing.  On t
 
 ## Now what
 
-As it gets easier to create and share there's going to be way more stuff.  Ideas from the past have been forgotten, now we are going to have so much that it will be hard to them all out.  Its going to be just as hard to come up with something worth saying or sharing, but it's so much easier to do it.
+So how is this all useful?  What do these tools do for us?
 
-We need to focus on building tools that help people organize their thoughts, to be able to iterate and play with things.  Not of these tools will give us the answer, but they will help us find it.
+The signals that we used before to see about quality are all changing -- no longer does it take a huge amount of effort to produce something.  Was that illustration that you made deeply considered or negligently produced by midjourney?  As a casual observer, how can you tell?
+
+For the beginner it's even easier to copy the form, to make what looks and sounds like the right thing.  If this is part of a larger process, then more people will have the opportunity to get good at things.  If it's the end result, we are going to be drowning in AI slop.
+
+For the expert these tools help you do more faster, to surgically jump in and have a small, concentrated effort make a big effect.
+
+For generating images, instead of focusing on drafting you focus on curation.  For generating text, its more useful to give you a variations on tons of different ideas which you then select and dig deeper on.  For coding, you can quickly generate prototypes that let you iterate quickly.  And all of these things enable a whole new way of working since you can just give it a go without a huge ceremony of starting.
+
+These tools don't give you the answers, but they help you find them.
