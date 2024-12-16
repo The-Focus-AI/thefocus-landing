@@ -1,7 +1,7 @@
 ---
 import { getPosts } from "../../utils/posts";
 import BaseLayout from "../../layout/BaseLayout.astro";
-
+import PostCard from "../../components/postcard.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const allPosts = await getPosts();
@@ -20,8 +20,11 @@ export async function getStaticPaths() {
 const { tag,posts } = Astro.props;
 ---
 <BaseLayout pageTitle={`${tag} posts`} description={`A list of all posts tagged with ${tag}`}>
-    <h1 class="text-4xl font-bold py-2">{tag}</h1>
-<ul class="list-disc list-inside">
-  {posts.map((post) => <li><a href={`/posts/${post.slug}`}>{post.data.title || post.slug}</a></li>)}
-  </ul>
+  <h1 class="text-4xl font-bold py-2">{tag}</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {posts.map((post) => (
+        <PostCard post={post} />
+    ))}
+</div>
+
 </BaseLayout>

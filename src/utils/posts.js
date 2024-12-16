@@ -12,5 +12,8 @@ export async function getPosts() {
     (post) => post.data.date && !isNaN(new Date(post.data.date).getTime())
   );
 
+  // Filter out posts that are not published
+  posts = posts.filter((post) => post.data.published);
+
   return posts;
 }

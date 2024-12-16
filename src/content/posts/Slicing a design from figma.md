@@ -8,6 +8,7 @@ tags:
   - cursor
   - v0
 description: OK lets have a tool shoot out!   cursor vs aider vs openai
+published: "true"
 ---
 OK lets have a shoot out!  I'm going to figma, selecting a section and
 exporting to a `png` file.  Lets see what using a few different coding

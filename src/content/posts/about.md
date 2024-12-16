@@ -4,6 +4,7 @@ date: 2024-11-29
 tags:
   - meta
 description: Let me tell you a bit about what we do here
+published: "true"
 ---
 ![this is an ai generated photo](../assets/focus.jpeg)
 

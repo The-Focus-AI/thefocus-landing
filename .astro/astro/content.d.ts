@@ -141,9 +141,44 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"Adding Chat to NextJS App.md": {
+	id: "Adding Chat to NextJS App.md";
+  slug: "adding-chat-to-nextjs-app";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+"Building a chrome extension.md": {
+	id: "Building a chrome extension.md";
+  slug: "building-a-chrome-extension";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+"Making hard things easier.md": {
+	id: "Making hard things easier.md";
+  slug: "making-hard-things-easier";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+"Peak LLM.md": {
+	id: "Peak LLM.md";
+  slug: "peak-llm";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "Slicing a design from figma.md": {
 	id: "Slicing a design from figma.md";
   slug: "slicing-a-design-from-figma";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+"Types of Gen AI Applications.md": {
+	id: "Types of Gen AI Applications.md";
+  slug: "types-of-gen-ai-applications";
   body: string;
   collection: "posts";
   data: any
