@@ -169,6 +169,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"NotebookLM for research.md": {
+	id: "NotebookLM for research.md";
+  slug: "notebooklm-for-research";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "Peak LLM.md": {
 	id: "Peak LLM.md";
   slug: "peak-llm";
