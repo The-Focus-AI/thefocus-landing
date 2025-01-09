@@ -72,7 +72,7 @@ Here's a transcript:
 
 OK, so you can have a "real conversation" with these podcast hosts.  You want to yell at them about something?  Maybe they got something wrong or you want to jump back into it?  No problem.
 
-> [!info] Transcribing to text
+> [!note] Transcribing to text
  As a fun little side, I used Quicktime player to do an audio recording of the conversation, then I dragged it into the NotebookLM as a source.  Once it loads, you click to expand a boom simple transcripts.
  I did need to add who was talking though
 

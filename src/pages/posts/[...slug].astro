@@ -43,6 +43,10 @@ blockquote[data-callout] {
   border-radius: 1rem;
 }
 
+blockquote .callout-title {
+display: flex;
+}
+
 blockquote[data-callout="error"] {
   background-color: rgb(255, 95, 122)
 }
@@ -57,5 +61,9 @@ blockquote[data-callout="note"] {
 
 .prose p:first-child::first-line {
     font-variant: small-caps;
+}
+
+blockquote p:first-child::first-line {
+  font-variant: normal;
 }
 </style>
