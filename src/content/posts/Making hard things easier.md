@@ -3,7 +3,7 @@ title: Making hard things easier
 date: 2024/12/15
 tags:
   - thoughts
-description: How can we use these tools, and in what way
+description: Explore how generative AI-based tools can revolutionize the way we work, making creative tasks more accessible and efficient for both novices and experts, while also highlighting the importance of critical thinking and creativity in the face of automation.
 published: true
 image: workshop.png
 ---

@@ -3,7 +3,7 @@ title: Welcome to The Focus AI
 date: 2024-11-29
 tags:
   - meta
-description: Let me tell you a bit about what we do here
+description: Let me tell you a bit about what we do here, a personal journey from cofounding a software development company to exploring the revolutionary potential of generative AI and how it's transforming the way humans interact with knowledge and information.
 published: "true"
 image: focus_wide.jpeg
 ---

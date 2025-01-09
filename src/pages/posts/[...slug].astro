@@ -59,11 +59,15 @@ blockquote[data-callout="note"] {
   background-color: rgb(136, 220, 136);
 }
 
-.prose p:first-child::first-line {
-    font-variant: small-caps;
+blockquote {
 }
 
-blockquote p:first-child::first-line {
+.prose p:first-child::first-line {
+    font-variant: small-caps;
+    font-size: 1.5rem;
+}
+
+.prose blockquote p:first-child::first-line {
   font-variant: normal;
 }
 </style>

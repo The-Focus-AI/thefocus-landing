@@ -5,7 +5,7 @@ tags:
   - thoughts
   - notebooklm
   - gemini
-description: I like throwing a bunch of urls into notebooklm to get a good overview of what's talked about while I'm in the car
+description: By utilizing NotebookLM, an AI model capable of generating audio summaries and interactive conversations, you can create customized podcasts on-the-go.  You can also join the conversation.
 published: true
 image: broadcast_wide.png
 ---

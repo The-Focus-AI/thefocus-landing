@@ -20,6 +20,6 @@ const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US"
         <p class="text-sm py-2">{formattedPublishDate}</p>
     </div>
     {post.data.image && <a href={`/posts/${post.slug}`}><PostImage slot="image" post={post} /></a>}
-    <p><a href={`/posts/${post.slug}`}>{post.data.description}</a></p>
+    <p class="text-lg leading-relaxed"><a href={`/posts/${post.slug}`}>{post.data.description}</a></p>
     <a slot="footer" href={`/posts/${post.slug}`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
 </Card>

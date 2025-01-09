@@ -7,7 +7,7 @@ tags:
   - claude
   - cursor
   - v0
-description: OK lets have a tool shoot out!   cursor vs aider vs openai
+description: In this hands-on comparison, three coding tools - Cursor, Aider, and v0 - are put to the test as they attempt to replicate a design from Figma into functional HTML and CSS code, revealing their strengths, weaknesses, and quirks.
 published: "true"
 image: figma_wide.png
 ---

@@ -11,4 +11,4 @@ if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 const image = images[img_key];
 ---
 
-{image && <Image class="object-fill" src={`/cards/${post.data.image}`} alt={post.data.title} height="500" width="700"/>}
+{image && <Image class="object-fill pb-4" src={`/cards/${post.data.image}`} alt={post.data.title} height="500" width="700"/>}
