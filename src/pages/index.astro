@@ -1,14 +1,38 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
+import PostCard from "../components/postcard.astro";
+import Card from "../components/card.astro";
 import { Image } from "astro:assets";
 import image1 from "../images/image1.png";
+import image2 from "../images/image2.png";
+import image3 from "../images/image3.png";
+import image4 from "../images/image4.png";
+
+import focus_wide from "../images/focus_wide.jpeg";
+
+import { getRecentPosts } from "../utils/posts";
+
+const recentPosts = await getRecentPosts();
 ---
 <BaseLayout pageTitle="The Focus.ai" bigHeader={true} description="We help you focus">
     <section class="relative w-full" slot="hero">
-		<Image src={image1} alt="Focus AI Hero" class="object-cover w-full h-full" />
+		<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/components/carousel/carousel.js"></script>
+		<sl-carousel class="carousel-thumbnails" autoplay mouse-dragging loop>
+			<sl-carousel-item>
+				<Image src={image1} alt="Focus AI Hero" class="object-cover w-full h-full" />
+			</sl-carousel-item>
+			<sl-carousel-item>
+				<Image src={image2} alt="Focus AI Hero" class="object-cover w-full h-full" />
+			</sl-carousel-item>
+			<sl-carousel-item>
+				<Image src={image3} alt="Focus AI Hero" class="object-cover w-full h-full" />
+			</sl-carousel-item>
+			<sl-carousel-item>
+				<Image src={image4} alt="Focus AI Hero" class="object-cover w-full h-full" />
+			</sl-carousel-item>
+		</sl-carousel>
 		<div class="flex justify-between p-4 text-gray-600">
-		  <!-- <a href="/about.html">About Us</a> -->
-		  <div>Learn more</div>
+		  <div><a href="/posts/about">Learn more</a></div>
 		</div>
 	  </section>
 
@@ -17,6 +41,21 @@ import image1 from "../images/image1.png";
 		time and money through cutting-edge AI technology, strategic planning,
 		and seamless implementation.
 		<br />We help you focus<span class="text-orange-500">.</span>
-	  </h2>
+	</h2>
 
+	<div class="pt-48 grid grid-cols-1 md:grid-cols-2 gap-4">
+		{recentPosts.map((post) => (
+			<PostCard post={post} />
+		))}
+
+<Card>
+    <div slot="header">
+        <h2 class="text-2xl font-bold"><a href="/blog">Read more...</a></h2>
+    </div>
+	<a href="/blog"><Image class="object-fill pb-4" src={focus_wide} alt="My logo?" height="500" width="700"/></a>
+    
+    <p class="text-lg leading-relaxed"><a href={`/blog`}>Checkout the full blog</a></p>
+    <a slot="footer" href={`/blog`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
+</Card>
+	</div>
 </BaseLayout>
