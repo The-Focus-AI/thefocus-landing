@@ -148,6 +148,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"AI for research, DeepResearch wins.md": {
+	id: "AI for research, DeepResearch wins.md";
+  slug: "ai-for-research-deepresearch-wins";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "Adding Chat to NextJS App.md": {
 	id: "Adding Chat to NextJS App.md";
   slug: "adding-chat-to-nextjs-app";
