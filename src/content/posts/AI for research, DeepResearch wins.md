@@ -1,5 +1,5 @@
 ---
-title: "AI for research: DeepResearch a clear winnier"
+title: "AI for research: DeepResearch a clear winner"
 date: 01/12/24
 tags:
   - thoughts
