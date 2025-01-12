@@ -63,20 +63,20 @@ if(Astro.url.pathname.includes("/posts/about")) {
   <body class="bg-gray-100">
     <header
       class:list={[
-        "py-8 md:flex justify-between items-top md:container mx-auto",
+        "py-4 md:py-8 px-2 md:flex justify-between items-top md:container mx-auto",
         bigHeader ? "px-8" : ""
       ]}
     >
       <nav class="space-x-4 text-gray-700">
-        <ul class="">
-          <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : ""]}>HOME</a></li>
+        <ul class="flex md:block gap-2 pb-4 text-lg md:text-base justify-between md:uppercase">
+          <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : "" ]}>Home</a></li>
           <li>
-            <a href="/blog" class:list={[category === "blog" ? "underline hover:underline" : ""]}>BLOG</a>
+            <a href="/blog" class:list={[category === "blog" ? "underline hover:underline" : ""]}>Blog</a>
           </li>
           <li>
-            <a href="mailto:hey@thefocus.ai" class="hover:underline">CONTACT</a>
+            <a href="mailto:hey@thefocus.ai" class="hover:underline">Contact</a>
           </li>
-          <li><a href="/posts/about" class:list={[category === "about" ? "underline hover:underline" : ""]}>ABOUT US</a></li>
+          <li><a href="/posts/about" class:list={[category === "about" ? "underline hover:underline" : ""]}>About Us</a></li>
         </ul>
       </nav>
       <div>
@@ -87,8 +87,8 @@ if(Astro.url.pathname.includes("/posts/about")) {
           FOCUS<span class="text-orange-500">.</span> 
           {bigHeader ? <br /> : ""}AI
         </h1>
-        <p class="text-right">FOCUS.AI.AGENCY</p>
-        <p class="text-right">EST. 24</p>
+        <p class="text-right hidden md:block">FOCUS.AI.AGENCY</p>
+        <p class="md:text-right">EST. 24</p>
       </div>
     </header>
 
