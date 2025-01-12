@@ -35,7 +35,7 @@ The answers that I'm looking for is going to do with
 * Edward Harrison's [Darkness at Night](https://www.amazon.com/Darkness-at-Night-Riddle-Universe/dp/0674192702?dib=eyJ2IjoiMSJ9.IR1SS0IQy6wmVPM7sDZBfg._z52xGBokwXJze4MbbPl3r3-Gj_6kkyYpWD4OJu2cE8&dib_tag=se&keywords=9780674192713&qid=1736684385&sr=8-1) book.
 * (for bonus points) a reference to Poe's Eureka poem.
 
-Let's see what the different models for doing research will tell us about it. Perplexity and deep research.
+Let's see what the different models for doing research will tell us about it. 
 
 # Small models: phi4
 
