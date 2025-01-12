@@ -19,6 +19,8 @@ When people talk about doing their research to understand something, they don't 
 But Google is so passe, we are in the realm of AI now.  And I think there's a couple new contenders out there for being able to ask the computer anything and have it give the one true answer. Lets see how Google DeepResearch gets us to **the truth**, comparing it to OpenAI, Claude, and a few other luck contenders. We all know that this is impossible and it's never going to work, but on the other hand, we all act as if it's true. So let's do it.
 
 Let's get into some hard questions.
+
+![](../assets/comet.png)
 # Why is it dark at night?
 
 I'm obsessed with this question. I think about it more than anyone really should. On the face of it, it's such a simple question, but probing a bit deeper it gives you insight into the very fabric and nature of the universe.
