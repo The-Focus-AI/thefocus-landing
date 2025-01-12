@@ -7,6 +7,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
+        serif: ["Noto Serif", ...defaultTheme.fontFamily.serif],
       },
     },
   },
