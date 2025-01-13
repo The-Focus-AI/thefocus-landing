@@ -169,6 +169,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"How I classify models.md": {
+	id: "How I classify models.md";
+  slug: "how-i-classify-models";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "Making hard things easier.md": {
 	id: "Making hard things easier.md";
   slug: "making-hard-things-easier";

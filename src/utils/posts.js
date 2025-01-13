@@ -11,6 +11,10 @@ export async function getPosts() {
     (post) => post.data.date && !isNaN(new Date(post.data.date).getTime())
   );
 
+  // Filter out posts with future dates unless in development mode
+  if (import.meta.env.PROD) {
+    posts = posts.filter((post) => new Date(post.data.date) <= new Date());
+  }
   // Sort posts by date
   posts = posts.sort(
     (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
