@@ -1,6 +1,6 @@
 ---
 title: "AI for research: DeepResearch a clear winner"
-date: 01/12/24
+date: 2025-01-12
 tags:
   - thoughts
   - gemini
@@ -125,7 +125,7 @@ On the plus side, it links to sources.  On the down side it's not a really good 
 
 Asking a follow up question about Poe's Eureka basically gives a response unrelated to the intial question.
 
-# DeepMind
+# DeepResearch
 
 > why is it dark at night?
 
