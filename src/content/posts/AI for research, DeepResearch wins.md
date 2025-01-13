@@ -12,7 +12,7 @@ published: true
 description: "Asking the tough questions: DeepResearch excels in depth and comprehensiveness, while o1, Sonnet 3.5, and DeepSeek with DeepThought provide comparable results for complex inquiries. Smaller models like phi4 and llama3.2 are deemed inadequate for intricate topics."
 image: research_wide.png
 ---
-Scientism is this idea that science knows everything and it's all be figured out. Maybe there's a few details we'll have to work out, but the big stuff has been sorted. More than a worldview it's almost a religious belief.  And part of me actually believes that the answer is actually on the internet somewhere.  The *answers are out there*.
+[Scientism](https://en.wikipedia.org/wiki/Scientism) is this idea that science knows everything and it's all been figured out. Maybe there's a few details left to work out, but the big stuff has been sorted. More than a worldview it's almost a religious belief.  And part of me actually believes that the answer is actually on the internet somewhere.  The *answers are out there*.
 
 When people talk about doing their research to understand something, they don't really mean that they're doing experiments or coming up with hypotheses or running tests. Or even doing a scholarly project to get to the heart of some subject.  What they mean is: **they do a lot of Googling.**
 
