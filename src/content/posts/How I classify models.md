@@ -1,6 +1,6 @@
 ---
 title: How I classify models
-date: 2025-01-18
+date: 2025-01-21
 tags:
   - models
   - thoughts
@@ -15,7 +15,7 @@ Stepping back a bit from [thoughts on what these models can really help us answe
 * educated (learned processes for systematic thinking, or Chain Of Thought built it)
 * complexity (how much information they can actively process at once i.e. context window)
 
-Another way to think of this is, small, big, slow, and good conversationality.
+Another way to think of this is, small, big, slow, and good conversationally.
 
 Small models (around 7B parameters) show remarkable intelligence - they can understand language and reason about complex concepts. Think of them as quick-witted but with limited knowledge. They can define terms, summarize conversations, and handle targeted tasks that require language understanding. They are *good at listening*. They're smart, but their knowledge base is constrained.
 
