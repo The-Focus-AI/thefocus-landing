@@ -204,9 +204,23 @@ declare module 'astro:content' {
   collection: "posts";
   data: any
 } & { render(): Render[".md"] };
+"Tools for Thinking.md": {
+	id: "Tools for Thinking.md";
+  slug: "tools-for-thinking";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
 "Types of Gen AI Applications.md": {
 	id: "Types of Gen AI Applications.md";
   slug: "types-of-gen-ai-applications";
+  body: string;
+  collection: "posts";
+  data: any
+} & { render(): Render[".md"] };
+"Using ai.md": {
+	id: "Using ai.md";
+  slug: "using-ai";
   body: string;
   collection: "posts";
   data: any
