@@ -133,7 +133,7 @@ Upload [Reality Hunger](https://www.google.com/books/edition/Reality_Hunger/yXfi
 
 # Tools for thought
 
-You can use it to check grammar. To fix phrasing. To brain storm different ideas and pick and choose. (I'm thinking about renaming the agentic framework we are working on here as _specialists_ which was using ChatGPT as a very fancy thesaurus.)
+You can use it to check grammar. To fix phrasing. To brain storm different ideas and pick and choose. (I'm thinking about renaming the *agentic framework* we are working on here as _specialist framework_ which was using ChatGPT as a very fancy thesaurus.)
 
 If you have questions it gives you a wider array of answers than were popular before. I've always thought that universities were ways of keeping crazy people productive members of society, where they can use their overactive and possibly not-practical minds to contribute to the world of knowledge. And that's just the sorts of thing that the AIs seem already better at.
 
