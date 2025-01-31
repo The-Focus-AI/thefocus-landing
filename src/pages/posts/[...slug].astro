@@ -28,12 +28,13 @@ const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US
 ---
 <BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog">
   <h1 class="text-4xl font-bold">{entry.data.title}</h1>
-  <p class="text-sm py-2 font-serif">{formattedPublishDate}</p>
+  <p class="py-2 font-serif"><a class="text-blue-500 hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
   <ul class="py-2 flex flex-row flex-wrap gap-2">
     {entry.data.tags?.map((tag) => <li class="bg-gray-300 rounded-md px-2 py-1">#<a href={`/tags/${tag}`}>{tag}</a></li>)}
   </ul>
   <div class="prose lg:prose-xl max-w-prose font-serif">
     <Content />
+    <p class="text-right py-2 font-serif"> <a class="text-blue-500 hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
   </div>
 </BaseLayout>
 
