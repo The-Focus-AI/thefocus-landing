@@ -15,7 +15,7 @@ How do we really use these new things? Broadly we all agree that it's a big deal
 
 My focus at The Focus recently has been to talking to custom databases, teaching a model how to interact with a system, using native language (or business speak if you prefer) do gain insights to the stuff you have around -- more on that later.
 
-![that's a llama](../assets/llama.png)
+![that's a llama](../assets/llama.png)*minimalist line art drawing of a llama, sketched in continuous black lines against a plain, soft lavender background, accentuates the motion, capturing a sense of freedom and elegance*
 
 And in coding I use AI in various ways, from using [v0](https://v0.dev/) or [cursor](https://www.cursor.com/changelog) or [midjourney](https://www.midjourney.com/) to help me do what I would have already done, but better. I can talk to you about [openrouter](http://openrouter.ai/) and [ollama](https://ollama.com/) -- and I will -- but that's all sort of esoteric. What about _normal stuff_?
 
@@ -45,7 +45,7 @@ Three questions. Got right to what I thought was interesting about a better way 
 
 If you are interested in this the go to reference is [Performance Modeling and Design of Computer Systems: Queueing Theory in Action](https://www.cs.cmu.edu/~harchol/PerformanceModeling/book.html)
 
-![](../assets/messy.png)
+![](../assets/messy.png)*super detailed photography of colorful modern apartment, filled with books and records, surrounded by sales tickets*
 
 ## Vatican
 
@@ -67,7 +67,7 @@ In this case, I was deeply surprised that they had no idea of a **non-human pers
 
 > The distinction as presented seems more theological/philosophical than empirical, and would benefit from more rigorous definition and evidence.
 
-![](../assets/market.png)
+![](../assets/market.png)*super detailed photography of colorful modern apartment, filled with books and records, surrounded by sales tickets*
 
 # Talking to everything
 
@@ -79,7 +79,7 @@ I have another project where I've copied API documentation in from [Tezlab](http
 
 The more you use this, the better it will be for getting the answers. This was the technique that the fella who made the fusion reactor used -- filled up the project with everything he could find and used that to help in problem solve.
 
-![](../assets/rabbit.png)
+![](../assets/rabbit.png)*alice in wonderland , mad hatter and the chesire cat going down the rabbit hole in a disney cell animation style*
 
 ## DeepResearch
 
@@ -95,7 +95,7 @@ This of course gets you very close to the [The California Ideology](https://en.w
 
 Actually I feel like the problem with his post was that it wrote it with AI and not enough _soul_. I guess it's computational vs creative after all.
 
-![](../assets/loving_grace.png)
+![](../assets/loving_grace.png)*machines of loving grace, psychadelic, lsd, 60s, california*
 
 ### Autofiction and Antipsychotic medication
 
@@ -119,7 +119,7 @@ Upload [Knausgard and the Autofictional Novel](https://www.google.com/books/edit
 
 > can you search the internet to see more about him
 
-![](../assets/ruins.png)
+![](../assets/ruins.png)*impressionistic oil painting of a mental institution in ruins*
 
 Upload [Reality Hunger](https://www.google.com/books/edition/Reality_Hunger/yXfi3PfMI0kC?hl=en&gbpv=1&pg=PA3&printsec=frontcover)
 
