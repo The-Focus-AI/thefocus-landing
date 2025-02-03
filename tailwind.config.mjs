@@ -8,6 +8,7 @@ export default {
       fontFamily: {
         sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
         serif: ["Noto Serif", ...defaultTheme.fontFamily.serif],
+        mono: ["Iosevka Etoile", ...defaultTheme.fontFamily.mono],
       },
     },
   },

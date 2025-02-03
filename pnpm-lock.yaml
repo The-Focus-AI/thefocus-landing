@@ -23,6 +23,12 @@ importers:
       '@fontsource/dm-sans':
         specifier: ^5.1.0
         version: 5.1.1
+      '@fontsource/iosevka-etoile':
+        specifier: ^5.1.0
+        version: 5.1.0
+      '@fontsource/noto-serif':
+        specifier: ^5.1.1
+        version: 5.1.1
       astro:
         specifier: ^4.16.13
         version: 4.16.18(rollup@4.32.0)(typescript@5.7.3)
@@ -455,6 +461,12 @@ packages:
 
   '@fontsource/dm-sans@5.1.1':
     resolution: {integrity: sha512-xApcrecLZkQMM6bl7U+Eokg8Y4LeYMiR+cQUTUNx4Adun5ZpiIlPB9+JEXg/k1gFea/72nmn30AekCBA+HhUCA==}
+
+  '@fontsource/iosevka-etoile@5.1.0':
+    resolution: {integrity: sha512-7ABlqrv9jGj8e+WCtvr5pCDj4ZXycXff1RmRWeAqz6/CAjfyNA8JYpGy73SK639FGHNvuG5jW2Wb+2ThWvFqgg==}
+
+  '@fontsource/noto-serif@5.1.1':
+    resolution: {integrity: sha512-XSKR1rMOG+80gEaKYZNzXSLGHBrWuu6+R2vCbgaHY5cGkfD3YhPCb6MVX94qd4ICW0U/KC9p6bP3ezUJ42PJcA==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -3241,6 +3253,10 @@ snapshots:
   '@fontsource-variable/noto-serif@5.1.1': {}
 
   '@fontsource/dm-sans@5.1.1': {}
+
+  '@fontsource/iosevka-etoile@5.1.0': {}
+
+  '@fontsource/noto-serif@5.1.1': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
