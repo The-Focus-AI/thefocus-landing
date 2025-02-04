@@ -43,7 +43,7 @@ const recentPosts = await getRecentPosts();
 		<br />We help you focus<span class="text-orange-500">.</span>
 	</h2>
 
-	<div class="pt-48 grid grid-cols-1 md:grid-cols-2 gap-4">
+	<div class="pt-24 sm:pt-48 grid grid-cols-1 md:grid-cols-2 gap-4">
 		{recentPosts.map((post) => (
 			<PostCard post={post} />
 		))}
