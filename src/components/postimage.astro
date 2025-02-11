@@ -1,14 +1,14 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import { Image, imageConfig } from 'astro:assets';
 
 const { post } = Astro.props;
-const images = await import.meta.glob<{ default: ImageMetadata }>('/public/cards/*.{jpeg,jpg,png,gif}');
-
-const img_key= `/public/cards/${post.data.image}`;
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif}');
+console.log("images",images)
+const img_key= `/src/content/assets/cards/${post.data.image}`;
 if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
 const image = images[img_key];
 ---
 
-{image && <Image class="object-fill pb-4" src={`/cards/${post.data.image}`} alt={post.data.title} height="500" width="700"/>}
+{image && <Image class="object-fill pb-4" src={image()} alt={post.data.title} height="500" width="700"/>}
