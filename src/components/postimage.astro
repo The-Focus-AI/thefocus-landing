@@ -4,7 +4,7 @@ import { Image, imageConfig } from 'astro:assets';
 
 const { post } = Astro.props;
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif}');
-console.log("images",images)
+// console.log("images",images)
 const img_key= `/src/content/assets/cards/${post.data.image}`;
 if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
