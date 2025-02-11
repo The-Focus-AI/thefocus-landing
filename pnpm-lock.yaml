@@ -57,6 +57,12 @@ importers:
         specifier: ^0.0.12
         version: 0.0.12
     devDependencies:
+      '@resvg/resvg-js-darwin-x64':
+        specifier: 2.6.2
+        version: 2.6.2
+      '@resvg/resvg-js-linux-x64-gnu':
+        specifier: 2.6.2
+        version: 2.6.2
       '@tailwindcss/typography':
         specifier: ^0.5.15
         version: 0.5.16(tailwindcss@3.4.17)
@@ -3133,8 +3139,7 @@ snapshots:
   '@resvg/resvg-js-darwin-arm64@2.6.2':
     optional: true
 
-  '@resvg/resvg-js-darwin-x64@2.6.2':
-    optional: true
+  '@resvg/resvg-js-darwin-x64@2.6.2': {}
 
   '@resvg/resvg-js-linux-arm-gnueabihf@2.6.2':
     optional: true
@@ -3145,8 +3150,7 @@ snapshots:
   '@resvg/resvg-js-linux-arm64-musl@2.6.2':
     optional: true
 
-  '@resvg/resvg-js-linux-x64-gnu@2.6.2':
-    optional: true
+  '@resvg/resvg-js-linux-x64-gnu@2.6.2': {}
 
   '@resvg/resvg-js-linux-x64-musl@2.6.2':
     optional: true
