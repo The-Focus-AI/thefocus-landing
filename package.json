@@ -33,11 +33,6 @@
     "remark-obsidian-callout": "^1.5.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.6.1",
-    "@resvg/resvg-js-linux-x64-gnu": "2.6.2",
-    "@resvg/resvg-js-darwin-x64": "2.6.2"
-  },
-  "overrides": {
-    "@resvg/resvg-js": "^2.6.2"
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   }
 }
