@@ -1,22 +1,27 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
-import { getPosts } from "../../utils/posts";
+import { getPosts, getSlug } from "../../utils/posts";
 import type { CollectionEntry } from 'astro:content';
-
+import { render } from "astro:content";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getPosts(); 
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const blogEntries = await getPosts();
+
+  const paths =  blogEntries.map(entry => ({
+    params: { id: getSlug(entry.id) }, props: { entry },
   }));
+
+  return paths;
 }
-// 2. For your template, you can get the entry directly from the prop
+
 
 const { entry } = Astro.props;
 type Props = {
   entry: CollectionEntry<'posts'>;
 };
-const { Content } = await entry.render();
+const { Content } = await render(entry);
+
+const slug = getSlug(entry.id);
 
 const dateOptions: object = {
 	year: "numeric",
@@ -26,7 +31,7 @@ const dateOptions: object = {
 
 const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US", dateOptions);
 ---
-<BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog">
+<BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
   <h1 class="text-4xl font-bold">{entry.data.title}</h1>
   <p class="py-2 font-serif"><a class="text-blue-500 hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
   <ul class="py-2 flex flex-row flex-wrap gap-2">

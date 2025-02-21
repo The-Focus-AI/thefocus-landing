@@ -3,20 +3,7 @@ import { getPosts } from "../utils/posts";
 
 export async function GET(context) {
   const posts = await getPosts();
-  /*
-  posts.forEach((post) => {
-    console.log("title", post.data.title || post.slug);
-    console.log("date", post.data.date);
-    console.log(
-      "description",
-      post.data.description || post.data.title || post.slug
-    );
-    console.log("link", `/posts/${post.slug}`);
-    console.log("---");
-  });
-  */
 
-  //   console.log(blog);
   return rss({
     title: "The Focus AI",
     description:

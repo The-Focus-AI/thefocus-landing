@@ -7,14 +7,15 @@ import '@fontsource/noto-serif/500.css';
 import '@fontsource/iosevka-etoile';
 
 import { SEO } from "astro-seo";
-import { getImagePath } from "astro-opengraph-images";
+// import { getImagePath } from "astro-opengraph-images";
 
 const pageTitle = Astro.props.pageTitle || "the focus.ai";
 const bigHeader = Astro.props.bigHeader || false;
 
 const description = Astro.props.description || "Come a visit us";
 const { url, site } = Astro;
-const openGraphImageUrl = getImagePath({ url, site });
+const openGraphImageUrl = `${site}${Astro.props.openGraphImage || `/og.png`}`;
+// getImagePath({ url, site });
 
 let category = Astro.props.category || "home";
 if(Astro.url.pathname.includes("/posts/about")) {

@@ -3,11 +3,7 @@ import BaseLayout from "../layout/BaseLayout.astro";
 import PostCard from "../components/postcard.astro";
 import Card from "../components/card.astro";
 import { Image } from "astro:assets";
-import image1 from "../images/image1.png";
-import image2 from "../images/image2.png";
-import image3 from "../images/image3.png";
-import image4 from "../images/image4.png";
-
+import Carousel from "../components/carousel.astro";
 import focus_wide from "../images/focus_wide.jpeg";
 
 import { getRecentPosts } from "../utils/posts";
@@ -16,21 +12,7 @@ const recentPosts = await getRecentPosts();
 ---
 <BaseLayout pageTitle="The Focus.ai" bigHeader={true} description="We help you focus">
     <section class="relative w-full" slot="hero">
-		<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/components/carousel/carousel.js"></script>
-		<sl-carousel class="carousel-thumbnails" autoplay mouse-dragging loop>
-			<sl-carousel-item>
-				<Image src={image1} alt="Focus AI Hero" class="object-cover w-full h-full" />
-			</sl-carousel-item>
-			<sl-carousel-item>
-				<Image src={image2} alt="Focus AI Hero" class="object-cover w-full h-full" />
-			</sl-carousel-item>
-			<sl-carousel-item>
-				<Image src={image3} alt="Focus AI Hero" class="object-cover w-full h-full" />
-			</sl-carousel-item>
-			<sl-carousel-item>
-				<Image src={image4} alt="Focus AI Hero" class="object-cover w-full h-full" />
-			</sl-carousel-item>
-		</sl-carousel>
+			<Carousel></Carousel>
 		<div class="flex justify-between p-4 text-gray-600">
 		  <div><a href="/posts/about">Learn more</a></div>
 		</div>

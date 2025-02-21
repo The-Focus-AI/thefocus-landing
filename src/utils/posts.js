@@ -31,3 +31,11 @@ export async function getRecentPosts() {
 
   return posts;
 }
+
+export function getSlug(path) {
+  path = path.toLowerCase();
+  path = path.replace(/^\/src\/pages\//, "");
+  path = path.replace(/\.[^.]*$/, "");
+  path = path.replace(/[^a-z0-9]+/g, "-");
+  return path;
+}
