@@ -23,7 +23,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
 }
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -90,7 +90,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
       </nav>
       <div>
         <h1 class:list={[
-          "mt-0 pt-0 text-7xl leading-[.75]",
+          "mt-0 pt-0 text-7xl leading-[.75] text-black",
           bigHeader ? "md:text-[200px]" : "md:text-[100px]"
         ]}>
           FOCUS<span class="text-orange-500">.</span>{bigHeader ? <br /> : ""}AI

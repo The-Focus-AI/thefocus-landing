@@ -1,5 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import typography from "@tailwindcss/typography";
+import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,7 +12,10 @@ export default {
         serif: ["Noto Serif", ...defaultTheme.fontFamily.serif],
         mono: ["Iosevka Etoile", ...defaultTheme.fontFamily.mono],
       },
+      daisyui: {
+        themes: ["light"],
+      },
     },
   },
-  plugins: [typography],
+  plugins: [typography, daisyui],
 };
