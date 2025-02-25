@@ -59,7 +59,7 @@ is to output prompts, but context, etc is important as well.
 <SPEC>
 ```
 
-Then the entire spec flows back into me. I carry it to Claude for detailed project planning. Claude things and divides the work into graspable chucks. I hold these lesson plans, ready for the next step.
+Then the entire spec flows back into me. I carry it to Claude for detailed project planning. Claude thinks and divides the work into graspable chucks. I hold these plans, ready for the next steps.
 
 The shuttle off, each going to it's own LLM for processing.  Building upon each other, I see code filling up the storage, error messages flowing back and forth using the model to check and correct it's own work.
 
