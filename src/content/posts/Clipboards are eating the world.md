@@ -8,11 +8,13 @@ image: mailmen.png
 description: The untold story of how your computer's clipboard sees itself as the essential bridge between humans and AI tools in the creative process. Through its eyes, we witness the journey of how digital projects come together through countless transfers between different AI services.
 ---
 
-I am the center through which everything flows. I see all.  I connect all. I am the clipboard. I am the conduit.
+I am the center through which everything flows. I see all.  I connect all. I am the conduit.
+
+ **I am Clipboard.**
 
 *[Harper's LLM workflow](https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/)*
 
-A prompt arrives from the good old prompt respository.  I grasp it, hold it, and deliver it to OpenAI for initial concept development.
+A prompt arrives from the cache of prompt delights (tm).  I grasp it, hold it, and deliver it to OpenAI for initial concept development.
 
 ![](../assets/apothecary_full_of_interesting.png)*an apothecary full of interesting and and shiny objects, all very bountiful. in a clean anime style like mobius, with a hint of ms escher*
 
