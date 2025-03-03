@@ -172,6 +172,9 @@ if [ ! -z "$multi_seeds" ]; then
     echo "seed,duration_seconds,filename,timestamp,model,quality,steps,prompt" > "$log_file"
     echo "Recording seed variations in: seeds.csv"
     
+    # Set steps to 2 for random seed generation
+    # steps=2
+    
     # Run for each seed in the multi_seeds list
     IFS=',' read -ra SEED_VALUES <<< "$multi_seeds"
     for seed_value in "${SEED_VALUES[@]}"; do
@@ -194,7 +197,7 @@ if [ ! -z "$multi_seeds" ]; then
         seed_command="$seed_command $metadata --output $seed_output"
         
         echo ""
-        echo "===== Running with seed $seed_value ====="
+        echo "===== Running with seed $seed_value (1 step) ====="
         echo "Executing: $seed_command"
         
         # Execute the command and time it

@@ -1,0 +1,17 @@
+{
+    "mflux_version": "0.5.1",
+    "model": "schnell",
+    "seed": 7852273,
+    "steps": 2,
+    "guidance": 3.5,
+    "precision": "mlx.core.bfloat16",
+    "quantize": 4,
+    "generation_time_seconds": 21.51,
+    "lora_paths": null,
+    "lora_scales": null,
+    "init_image_path": null,
+    "init_image_strength": null,
+    "controlnet_image_path": null,
+    "controlnet_strength": null,
+    "prompt": "family picnic soviet union park setting 35mm fuji film 1970s photograph distressed and faded"
+}

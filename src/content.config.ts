@@ -100,6 +100,10 @@ const prince2 = fluxStepsCollection("20250303_013153");
 
 const styleCt = fluxSeedCollection("20250303_064455");
 const styleChineseLine = fluxSeedCollection("20250303_065145");
+const styleCharcoal = fluxSeedCollection("20250303_133513");
+const styleFujifilm = fluxSeedCollection("20250303_141135");
+const styleChildrens = fluxSeedCollection("20250303_142341");
+const styleStructural = fluxSeedCollection("20250303_142900");
 
 export const collections = {
   posts: posts,
@@ -110,4 +114,8 @@ export const collections = {
   plane1: plane1,
   styleCt: styleCt,
   styleChineseLine: styleChineseLine,
+  styleCharcoal: styleCharcoal,
+  styleFujifilm: styleFujifilm,
+  styleChildrens: styleChildrens,
+  styleStructural: styleStructural,
 };

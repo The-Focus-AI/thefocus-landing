@@ -5,17 +5,58 @@ import { getFluxImages } from '../../../utils/images';
 import FluxImageInfo from '../../../components/fluximage-info.astro';
 const styleCt = await getFluxImages("styleCt");
 const styleChineseLine = await getFluxImages("styleChineseLine");
----
+const styleCharcoal = await getFluxImages("styleCharcoal");
+const styleFujifilm = await getFluxImages("styleFujifilm");
+const styleChildrens = await getFluxImages("styleChildrens");
+const styleStructural = await getFluxImages("styleStructural");
+--- 
 
-<BaseLayout pageTitle="The Little Prince" description="A collection of Flux images" category="flux_images">
+<BaseLayout pageTitle="Style Variations" description="A collection of Flux images" category="flux_images">
 
-<h1 class="text-2xl font-bold">The Little Prince</h1>
+<div class="prose dark:prose-invert">
+<h1>Style Variations</h1>
 
+<h2 >in the anime style of studio ghibli</h2>
+</div>
 <FluxImageInfo records={styleCt} />
 <FluximageDisplay records={styleCt} />
 
+<div class="prose dark:prose-invert">
+    <h2 >line drawing chinese style</h2>
+</div>
 
 <FluxImageInfo records={styleChineseLine} />
 <FluximageDisplay records={styleChineseLine} />
+
+<div class="prose dark:prose-invert">
+    <h2 >charcoal drawing</h2>
+</div>
+
+<FluxImageInfo records={styleCharcoal} />
+<FluximageDisplay records={styleCharcoal} />
+
+<div class="prose dark:prose-invert">
+    <h2 >35mm fuji film 1970s photograph distressed and faded</h2>
+</div>
+
+<FluxImageInfo records={styleFujifilm} />
+<FluximageDisplay records={styleFujifilm} />
+
+
+<div class="prose dark:prose-invert">
+    <h2 >quirky children's art style in aqua and pink</h2>
+</div>
+
+<FluxImageInfo records={styleChildrens} />
+<FluximageDisplay records={styleChildrens} />
+
+
+<div class="prose dark:prose-invert">
+    <h2 >structural drawings, line drawings, white background, minimalist, construction drawings</h2>
+</div>
+
+<FluxImageInfo records={styleStructural } />
+<FluximageDisplay records={styleStructural} />
+
 
 </BaseLayout>
