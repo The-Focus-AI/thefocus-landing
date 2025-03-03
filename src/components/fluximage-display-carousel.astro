@@ -1,0 +1,51 @@
+---
+import FluxImage from './fluximage.astro';
+const { records } = Astro.props;
+const id = records[0].filename;
+---
+
+
+<div class="w-full overflow-x-hidden cycler" id={id}>
+    {records.map((record) => (
+        <div class="mx-auto hidden carousel-item flex flex-col items-center justify-center">
+            <FluxImage record={record} />
+            <p>{record.filename}</p>
+            <p>{record.step_count} steps</p>
+            <p>{record.duration_seconds} seconds</p>
+            <p>{record.model}</p>
+            <p>{record.quality}</p>
+            <p>{record.seed}</p>
+            <p>{record.prompt}</p>
+        </div>
+    ))}
+</div>
+
+<script>
+    
+    const carousels = document.querySelectorAll(".cycler");
+    
+
+    function showNext() {
+        for(const carousel of carousels) {
+            const shown = carousel.querySelectorAll('.carousel-item:not(.hidden)');
+            if(!shown || shown.length === 0) {
+                carousel.children[0].classList.remove('hidden');
+            } else {
+                shown[0].classList.add('hidden');
+                const next = shown[0].nextElementSibling;
+                if(!next) {
+                    carousel.children[0].classList.remove('hidden');
+                } else {
+                    next.classList.remove('hidden');
+                }
+            }
+        }
+    }
+
+    showNext();
+
+    setInterval(() => {
+        showNext();
+        
+    }, 3000);
+</script>

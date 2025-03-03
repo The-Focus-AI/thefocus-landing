@@ -47,6 +47,9 @@ importers:
       canvaskit-wasm:
         specifier: ^0.39.1
         version: 0.39.1
+      csv-parse:
+        specifier: ^5.6.0
+        version: 5.6.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -62,7 +65,7 @@ importers:
         version: 0.5.16(tailwindcss@3.4.17)
       daisyui:
         specifier: ^4.12.23
-        version: 4.12.23(postcss@8.5.3)
+        version: 4.12.23(postcss@8.4.31)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -953,6 +956,9 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+
+  csv-parse@5.6.0:
+    resolution: {integrity: sha512-l3nz3euub2QMg5ouu5U09Ew9Wf6/wQ8I++ch1loQ0ljmzhmfZYrH9fflS22i/PQEvsPvxCwxgz5q7UB8K1JO4Q==}
 
   culori@3.3.0:
     resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
@@ -3217,14 +3223,16 @@ snapshots:
 
   cssesc@3.0.0: {}
 
+  csv-parse@5.6.0: {}
+
   culori@3.3.0: {}
 
-  daisyui@4.12.23(postcss@8.5.3):
+  daisyui@4.12.23(postcss@8.4.31):
     dependencies:
       css-selector-tokenizer: 0.8.0
       culori: 3.3.0
       picocolors: 1.1.1
-      postcss-js: 4.0.1(postcss@8.5.3)
+      postcss-js: 4.0.1(postcss@8.4.31)
     transitivePeerDependencies:
       - postcss
 

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layout/BaseLayout.astro';
+import FluximageDisplay from '../components/fluximage-display-grid.astro';
+import { getFluxImages } from '../utils/images';
+import FluxImageInfo from '../components/fluximage-info.astro';
+const plane1 = await getFluxImages("plane1");
+const devDreamy = await getFluxImages("devDreamy");
+const schnellDreamy = await getFluxImages("schnellDreamy");
+---
+
+<BaseLayout pageTitle="Study of steps on Flux Images" description="A study of the effect of steps on Flux Images" category="flux_images">
+
+    <div class="prose dark:prose-invert">
+    <h1>Effect of steps on the image</h1>
+
+    <h2>Airplane</h2>
+    <pre>mflux-script.sh -p "A hand drawn color sketch in the style of a 1930s \
+newspaper of an old style airplane controls" \
+-m dev -d 123 -S -M 1,3,5,10,15,20</pre>
+
+    </div>
+
+<FluxImageInfo records={plane1} />
+<FluximageDisplay records={plane1} />
+
+
+<div class="prose dark:prose-invert">
+    <h2>Dreamy Landscape</h2>
+    <pre>mflux-script.sh -p "dreamy landscape" \       
+-d 1 -S -M 1,3,5,10,15,20 </pre>
+</div>
+
+<FluxImageInfo records={devDreamy} />
+<FluximageDisplay records={devDreamy} />
+
+
+<div class="prose dark:prose-invert">
+    <h2>Schnell Dreamy Landscape</h2>
+    <pre>mflux-script.sh -p "dreamy landscape" \       
+    -m dev -d 1 -S -M 1,3,5,10,15,20 </pre>
+</div>
+
+<FluxImageInfo records={schnellDreamy} />
+<FluximageDisplay records={schnellDreamy} />
+
+</BaseLayout>

@@ -1,0 +1,8 @@
+---
+const { records } = Astro.props;
+const id = records[0].filename;
+---
+
+<div class="prose dark:prose-invert">
+<h2>{records[0].prompt}</h2>
+</div>
