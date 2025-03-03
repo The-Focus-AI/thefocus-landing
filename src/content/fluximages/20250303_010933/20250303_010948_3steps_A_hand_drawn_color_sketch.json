@@ -1,0 +1,17 @@
+{
+    "mflux_version": "0.5.1",
+    "model": "dev",
+    "seed": 123,
+    "steps": 3,
+    "guidance": 3.5,
+    "precision": "mlx.core.bfloat16",
+    "quantize": 4,
+    "generation_time_seconds": 27.12,
+    "lora_paths": null,
+    "lora_scales": null,
+    "init_image_path": null,
+    "init_image_strength": null,
+    "controlnet_image_path": null,
+    "controlnet_strength": null,
+    "prompt": "A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls"
+}

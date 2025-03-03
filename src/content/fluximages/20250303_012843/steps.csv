@@ -1,0 +1,5 @@
+step_count,duration_seconds,filename,timestamp,model,quality,seed,prompt
+1,33,20250303_012843_1steps_dreamy_landscape.png,2025-03-03 01:29:16,schnell,4,1,"dreamy landscape"
+3,74,20250303_012916_3steps_dreamy_landscape.png,2025-03-03 01:30:30,schnell,4,1,"dreamy landscape"
+5,132,20250303_013030_5steps_dreamy_landscape.png,2025-03-03 01:32:42,schnell,4,1,"dreamy landscape"
+10,321,20250303_013242_10steps_dreamy_landscape.png,2025-03-03 01:38:03,schnell,4,1,"dreamy landscape"
