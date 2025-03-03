@@ -98,6 +98,9 @@ const schnellDreamy = fluxStepsCollection("20250303_012843");
 const prince1 = fluxSeedCollection("20250303_011430");
 const prince2 = fluxStepsCollection("20250303_013153");
 
+const styleCt = fluxSeedCollection("20250303_064455");
+const styleChineseLine = fluxSeedCollection("20250303_065145");
+
 export const collections = {
   posts: posts,
   devDreamy: devDreamy,
@@ -105,4 +108,6 @@ export const collections = {
   prince1: prince1,
   prince2: prince2,
   plane1: plane1,
+  styleCt: styleCt,
+  styleChineseLine: styleChineseLine,
 };

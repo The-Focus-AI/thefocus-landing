@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../../layout/BaseLayout.astro';
+import FluximageDisplay from '../../../components/fluximage-display-grid.astro';
+import { getFluxImages } from '../../../utils/images';
+import FluxImageInfo from '../../../components/fluximage-info.astro';
+const styleCt = await getFluxImages("styleCt");
+const styleChineseLine = await getFluxImages("styleChineseLine");
+---
+
+<BaseLayout pageTitle="The Little Prince" description="A collection of Flux images" category="flux_images">
+
+<h1 class="text-2xl font-bold">The Little Prince</h1>
+
+<FluxImageInfo records={styleCt} />
+<FluximageDisplay records={styleCt} />
+
+
+<FluxImageInfo records={styleChineseLine} />
+<FluximageDisplay records={styleChineseLine} />
+
+</BaseLayout>
