@@ -3,8 +3,8 @@ title: How I classify models
 date: 2025-01-21
 tags:
   - models
-  - thoughts
   - architecture
+  - essay
 image: tree_wide.png
 published: true
 description: Small models are smart yet limited in knowledge; foundation models possess both deep understanding and extensive knowledge but lack structured problem-solving approaches. Educated models like DeepResearch excel by combining learned reasoning processes with large memory capacities, enabling them to adapt effectively to complex tasks while handling vast information instantaneously.

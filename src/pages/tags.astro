@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import { getPosts } from '../utils/posts';
+import { getPosts, getTagSlug } from '../utils/posts';
 const allPosts = await getPosts();
 
 const tags = {};
@@ -17,6 +17,6 @@ allPosts.forEach((post) => {
   <h1 class="text-4xl font-bold py-10">Tags</h1>
 
   <ul class="list-disc list-inside">
-    {Object.keys(tags).map((tag) => <li><a href={`/tags/${tag}`}>{tag}</a> ({tags[tag].length})</li>)}
+    {Object.keys(tags).map((tag) => <li><a href={getTagSlug(tag)}>{tag}</a> ({tags[tag].length})</li>)}
   </ul>
 </BaseLayout>

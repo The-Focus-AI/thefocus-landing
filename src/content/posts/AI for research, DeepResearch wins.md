@@ -2,12 +2,8 @@
 title: "AI for research: DeepResearch a clear winner"
 date: 2025-01-12
 tags:
-  - thoughts
-  - gemini
-  - perplexity
-  - deepseek
-  - openai
-  - claude
+  - models
+  - essay
 published: true
 description: "Asking the tough questions: DeepResearch excels in depth and comprehensiveness, while o1, Sonnet 3.5, and DeepSeek with DeepThought provide comparable results for complex inquiries. Smaller models like phi4 and llama3.2 are deemed inadequate for intricate topics."
 image: research_wide.png

@@ -3,7 +3,8 @@ import BaseLayout from "../layout/BaseLayout.astro";
 import PostCard from "../components/postcard.astro";
 import Card from "../components/card.astro";
 import { Image } from "astro:assets";
-import Carousel from "../components/carousel.astro";
+// import Carousel from "../components/usecase-carousel.astro";
+import Carousel from "../components/carousel.astro";	
 import focus_wide from "../images/focus_wide.jpeg";
 
 import { getRecentPosts } from "../utils/posts";
@@ -11,7 +12,7 @@ import { getRecentPosts } from "../utils/posts";
 const recentPosts = await getRecentPosts();
 ---
 <BaseLayout pageTitle="The Focus.ai" bigHeader={true} description="We help you focus">
-    <section class="relative w-full" slot="hero">
+    <section slot="hero">
 			<Carousel></Carousel>
 		<div class="flex justify-between p-4 text-gray-600">
 		  <div><a href="/posts/about">Learn more</a></div>
@@ -34,7 +35,7 @@ const recentPosts = await getRecentPosts();
     <div slot="header">
         <h2 class="text-2xl font-bold"><a href="/blog">Read more...</a></h2>
     </div>
-	<a href="/blog"><Image class="object-fill pb-4" src={focus_wide} alt="My logo?" height="500" width="700"/></a>
+	<a href="/blog" slot="image"><Image class="object-fill pb-4" src={focus_wide} alt="My logo?" height="500" width="700"/></a>
     
     <p class="text-lg leading-relaxed"><a href={`/blog`}>Checkout the full blog</a></p>
     <a slot="footer" href={`/blog`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>

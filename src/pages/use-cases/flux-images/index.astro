@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../../../layout/BaseLayout.astro";
+import { getFluxImages } from "../../../utils/images";
+import FluximageDisplay from "../../../components/fluximage-display-grid.astro";
+const fluxSteps = await getFluxImages("fluxSteps");
+const fluxStepsSlice = [fluxSteps[0], fluxSteps[3], fluxSteps[fluxSteps.length - 1]];
+---
+
+<BaseLayout title="Image Generation Case Studies" description="Case Studies">
+    <h1>Image Generation Case Studies</h1>
+
+    <FluximageDisplay records={fluxStepsSlice} />
+
+
+    <ul>
+        <li><a href="/use-cases/flux-images/steps">Steps</a></li>
+        <li><a href="/use-cases/flux-images/styles">Styles</a></li>
+        <li><a href="/use-cases/flux-images/prince">Prince</a></li>
+    </ul>
+</BaseLayout>

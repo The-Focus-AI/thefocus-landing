@@ -2,11 +2,8 @@
 title: Slicing up a design from figma
 date: 2024-11-27
 tags:
-  - aider
-  - openai
-  - claude
-  - cursor
-  - v0
+  - usecase
+  - process
 description: In this hands-on comparison, three coding tools - Cursor, Aider, and v0 - are put to the test as they attempt to replicate a design from Figma into functional HTML and CSS code, revealing their strengths, weaknesses, and quirks.
 published: "true"
 image: figma_wide.png

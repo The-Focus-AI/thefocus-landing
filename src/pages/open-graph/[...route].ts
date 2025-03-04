@@ -6,8 +6,9 @@ const collectionEntries = await getPosts(); // This will return an array of obje
 // Map the array of content collection entries to create an object.
 // Converts [{ id: 'post.md', data: { title: 'Example', description: '' } }]
 // to { 'post.md': { title: 'Example', description: '' } }
+// console.log("NODE_ENV", process.env.NODE_ENV);
 const pages = Object.fromEntries(
-  collectionEntries.map(({ id, data }) => [getSlug(id), data])
+  collectionEntries.map(({ id, data }) => [getSlug({ id }), data])
 );
 
 export const { getStaticPaths, GET } = OGImageRoute({

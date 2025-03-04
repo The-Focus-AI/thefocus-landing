@@ -1,0 +1,18 @@
+---
+import { getPosts } from "../utils/posts";  
+import PostCardFull from "./postcard_full.astro";
+
+const posts = await getPosts();
+const usecasePosts = posts.filter(post => post.data.tags?.includes('usecase'))
+
+---
+
+<!-- <div class="carousel"> -->
+ <div class="inline-flex overflow-x-scroll snap-x snap-mandatory">
+    {usecasePosts.map(post => (
+        <div class="box-content flex flex-none max-w-full snap-center ">
+            <PostCardFull post={post} />
+        </div>
+    ))}
+    </div>
+

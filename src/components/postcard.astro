@@ -1,7 +1,7 @@
 ---
 import PostImage from "./postimage.astro";
 import Card from "./card.astro";
-import { getSlug } from "../utils/posts";
+import { getSlug, getTagSlug, getPostLink } from "../utils/posts";
 const {post} = Astro.props;
 
 const dateOptions: object = {
@@ -9,21 +9,25 @@ const dateOptions: object = {
 	month: "long",
 	day: "numeric",
 };
-const slug = getSlug(post.id);  
+const postLink = getPostLink(post);
 const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US", dateOptions);
 
----     
+---
 
 <Card>
     <div slot="header">
-        <h2 class="text-2xl font-bold"><a href={`/posts/${slug}`}>{post.data.title || post.id}</a></h2>
-        <p class="text-sm py-2"> <a class="text-blue-500 hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
-        <ul class="py-2 flex flex-row flex-wrap gap-2">
-            {post.data.tags?.map((tag) => <li class="bg-gray-300 rounded-md px-2 py-1">#<a href={`/tags/${tag}`}>{tag}</a></li>)}
-          </ul>
-        
+        <h2 class="text-2xl font-bold"><a href={postLink}>{post.data.published ? "" : "[DRAFT] "}{post.data.title || post.id}</a></h2>
+        <div class="flex place-items-baseline">
+        <p class="text-sm py-2"> 
+            <a class="text-blue-500 hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
+            <span class="text-sm ">{formattedPublishDate}</span> 
+            </p>
+            <ul class="inline px-2 py-2 flex flex-row flex-wrap gap-2">
+                {post.data.tags?.map((tag) => <li class="bg-gray-100 text-gray-600 rounded-sm px-1 py-0 text-sm">#<a href={getTagSlug(tag)}>{tag}</a></li>)}
+            </ul>
+        </div>
     </div>
-    {post.data.image && <a href={`/posts/${slug}`}><PostImage slot="image" post={post} /></a>}
-    <p class="text-lg leading-relaxed"><a href={`/posts/${slug}`}>{post.data.description}</a></p>
-    <a slot="footer" href={`/posts/${slug}`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
+    {post.data.image && <a href={postLink} slot="image"><PostImage post={post} /></a>}
+    <p class="text-lg leading-relaxed"><a href={postLink}>{post.data.description}</a></p>
+    <a slot="footer" href={postLink} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
 </Card>

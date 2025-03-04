@@ -1,0 +1,16 @@
+---
+import Card from "./card.astro";
+import { Image } from "astro:assets";
+const {href, title, content, image} = Astro.props;
+
+
+---     
+
+<Card>
+    <div slot="header">
+        <h2 class="text-2xl font-bold"><a href={href}>{title}</a></h2>asdasd
+    </div>
+        <Image src={image} alt={title} slot="image" />
+    <p class="text-lg leading-relaxed"><a href={href}><slot/></a></p>
+    <a slot="footer" href={href} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
+</Card>

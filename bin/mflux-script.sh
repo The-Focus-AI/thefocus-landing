@@ -16,6 +16,10 @@ timestamp=$(date +"%Y%m%d_%H%M%S")
 
 output_dir="src/content/fluximages/${timestamp}"  # Define the output directory
 
+# Default dimensions (square)
+width=1024
+height=1024
+
 print_help() {
     echo "MFlux Generator Script"
     echo "Usage: ./mflux-script.sh [options]"
@@ -33,6 +37,9 @@ print_help() {
     echo "  -o, --output FILENAME   Output filename (optional, auto-generated if not specified)"
     echo "  # Metadata is now always included"
     echo "  -i, --imageplus         Use ollama imageplus to enhance the prompt"
+    echo "  --portrait             Use portrait mode (1024x1536, 2:3 ratio)"
+    echo "  --landscape           Use landscape mode (1024x576, 16:9 ratio)"
+    echo "  --landscape-lg        Use large landscape mode (1536x864, 16:9 ratio)"
     echo "  -h, --help              Show this help message"
     echo ""
     echo "Examples:"
@@ -41,7 +48,10 @@ print_help() {
     echo "  ./mflux-script.sh -p \"abstract art\" -S -m dev -q 5  # Run default multi-steps (1,2,4)
   ./mflux-script.sh -p \"landscape\" -M \"5,10,20,40\" -q 5  # Run custom step counts
   ./mflux-script.sh -p \"portrait\" -R 5  # Generate 5 images with random seeds
-  ./mflux-script.sh -p \"castle\" -D \"42,123,777\" -s 3  # Use specific seeds"
+  ./mflux-script.sh -p \"castle\" -D \"42,123,777\" -s 3  # Use specific seeds
+  ./mflux-script.sh -p \"tall building\" --portrait  # Generate portrait image
+  ./mflux-script.sh -p \"wide scene\" --landscape  # Generate landscape image
+  ./mflux-script.sh -p \"panorama\" --landscape-lg  # Generate large landscape image"
     exit 1
 }
 
@@ -103,6 +113,21 @@ while [[ $# -gt 0 ]]; do
             multi_seeds="$2"
             shift 2
             ;;
+        --portrait)
+            width=1024
+            height=1536
+            shift
+            ;;
+        --landscape)
+            width=1024
+            height=576
+            shift
+            ;;
+        --landscape-lg)
+            width=1536
+            height=864
+            shift
+            ;;
         # Removed metadata option as it's now always included
         -i|--imageplus)
             use_imageplus=true
@@ -148,9 +173,9 @@ fi
 # Prepare the command
 if [ "$use_imageplus" = true ]; then
     enhanced_prompt=$(ollama run imageplus "$prompt")
-    command="mflux-generate --model $model --prompt \"$enhanced_prompt\" --steps $steps -q $quality"
+    command="mflux-generate --model $model --prompt \"$enhanced_prompt\" --steps $steps -q $quality --width $width --height $height"
 else
-    command="mflux-generate --model $model --prompt \"$prompt\" --steps $steps -q $quality"
+    command="mflux-generate --model $model --prompt \"$prompt\" --steps $steps -q $quality --width $width --height $height"
 fi
 
 # Add optional parameters
@@ -172,8 +197,8 @@ if [ ! -z "$multi_seeds" ]; then
     echo "seed,duration_seconds,filename,timestamp,model,quality,steps,prompt" > "$log_file"
     echo "Recording seed variations in: seeds.csv"
     
-    # Set steps to 2 for random seed generation
-    # steps=2
+    # Set steps to 1 for random seed generation
+    steps=1
     
     # Run for each seed in the multi_seeds list
     IFS=',' read -ra SEED_VALUES <<< "$multi_seeds"
@@ -190,9 +215,9 @@ if [ ! -z "$multi_seeds" ]; then
         # Build the command with this seed
         if [ "$use_imageplus" = true ]; then
             enhanced_prompt=$(ollama run imageplus "$prompt")
-            seed_command="mflux-generate --model $model --prompt \"$enhanced_prompt\" --steps $steps -q $quality --seed $seed_value"
+            seed_command="mflux-generate --model $model --prompt \"$enhanced_prompt\" --steps $steps -q $quality --seed $seed_value --width $width --height $height"
         else
-            seed_command="mflux-generate --model $model --prompt \"$prompt\" --steps $steps -q $quality --seed $seed_value"
+            seed_command="mflux-generate --model $model --prompt \"$prompt\" --steps $steps -q $quality --seed $seed_value --width $width --height $height"
         fi
         seed_command="$seed_command $metadata --output $seed_output"
         
@@ -246,7 +271,7 @@ if [ ! -z "$multi_steps" ]; then
         filename=$(echo "$filename" | sed 's/[^a-zA-Z0-9_.-]/_/g')
         
         # Build the command with this step count
-        step_command="mflux-generate --model $model --prompt \"$prompt\" --steps $step_count -q $quality"
+        step_command="mflux-generate --model $model --prompt \"$prompt\" --steps $step_count -q $quality --width $width --height $height"
         if [ ! -z "$seed" ]; then
             step_command="$step_command --seed $seed"
         fi

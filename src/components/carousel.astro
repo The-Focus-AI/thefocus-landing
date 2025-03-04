@@ -6,27 +6,30 @@ import image2 from "../images/image2.png";
 import image3 from "../images/image3.png";
 import image4 from "../images/image4.png";
 
+
+
 ---
 
-<div class="carousel">
-    <div class="carousel-item">
+<div class="inline-flex overflow-x-scroll snap-x snap-mandatory">
+    <div class="box-content flex flex-none max-w-full snap-center ">
         <Image src={image1} alt="Focus AI Hero" />
     </div>
-    <div class="carousel-item">
+    <div class="box-content flex flex-none max-w-full snap-center ">
         <Image src={image2} alt="Focus AI Hero" />
     </div>
-    <div class="carousel-item">
+    <div class="box-content flex flex-none max-w-full snap-center ">
         <Image src={image3} alt="Focus AI Hero" />
     </div>
-    <div class="carousel-item">
+    <div class="box-content flex flex-none max-w-full snap-center ">
         <Image src={image4} alt="Focus AI Hero" />
     </div>
 </div>
 
-<style>img {
+<style>
+img {
                         
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-                    }
-                    </style>
+    }
+</style>

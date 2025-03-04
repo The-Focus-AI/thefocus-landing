@@ -2,7 +2,7 @@
 title: Tools for thinking.  Everyday AI.
 date: 2025-01-30
 tags:
-  - thoughts
+  - essay
 published: true
 description: From building nuclear fusors to probing Vatican AI doctrine, this exploration reveals how AI tools are reshaping our daily intellectual work in surprisingly practical ways. Through examples of interfacing with databases, analyzing legal documents, and diving into deep research rabbit holes, we see how AI assistants are becoming intuitive research companions that expand our ability to quickly understand and synthesize complex information.
 image: using_ai_wide.png

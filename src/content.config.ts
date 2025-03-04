@@ -105,6 +105,8 @@ const styleFujifilm = fluxSeedCollection("20250303_141135");
 const styleChildrens = fluxSeedCollection("20250303_142341");
 const styleStructural = fluxSeedCollection("20250303_142900");
 
+const fluxSteps = fluxStepsCollection("20250303_213613");
+
 export const collections = {
   posts: posts,
   devDreamy: devDreamy,
@@ -118,4 +120,5 @@ export const collections = {
   styleFujifilm: styleFujifilm,
   styleChildrens: styleChildrens,
   styleStructural: styleStructural,
+  fluxSteps: fluxSteps,
 };

@@ -2,8 +2,7 @@
 title: Building a chrome extension
 date: 2024-11-28
 tags:
-  - cursor
-  - openai
+  - barefoot
 published: false
 ---
 I have no idea how to build a chrome extension.  Lets see how to do it.  Oh GPT, can you help me?

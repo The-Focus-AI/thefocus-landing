@@ -2,8 +2,7 @@
 title: The New Touch Interface
 date: 2025-02-11
 tags:
-  - daily
-  - thoughts
+  - essay
 image: flight_controls_wide.png
 published: true
 description: The real killer apps of smartphones weren't the early games but became things like group chats and video calls that fundamentally changed how we communicate. Similarly, while we're currently amazed by AI's capabilities, we're still discovering how these tools will meaningfully integrate into our lives.

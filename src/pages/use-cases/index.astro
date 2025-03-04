@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import StudyCard from "../../components/studycard.astro";
+import fluxImage from './flux.png'
+---
+
+<BaseLayout title="Use Cases" description="Use Cases">
+    <h1 class="text-4xl font-bold pb-8">Use Cases</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <StudyCard title="Running image models locally" href="/use-cases/flux-images" image={fluxImage}>
+            Build your own midjourney on your laptop.
+        </StudyCard>
+    </div>
+</BaseLayout>

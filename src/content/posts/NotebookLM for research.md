@@ -2,9 +2,8 @@
 title: Learning on the go with NotebookLM
 date: 2025-01-09
 tags:
-  - thoughts
-  - notebooklm
-  - gemini
+  - essay
+  - models
 description: By utilizing NotebookLM, an AI model capable of generating audio summaries and interactive conversations, you can create customized podcasts on-the-go.  You can also join the conversation.
 published: true
 image: broadcast_wide.png

@@ -4,7 +4,11 @@ export async function getPosts() {
   let posts = await getCollection("posts");
 
   // Filter out posts that are not published
-  posts = posts.filter((post) => post.data.published);
+
+  if (import.meta.env.NODE_ENV !== "development") {
+    console.log("Not in development, filtering out unpublished posts");
+    posts = posts.filter((post) => post.data.published);
+  }
 
   // Filter out posts without a date or where date is not a real date
   posts = posts.filter(
@@ -32,10 +36,22 @@ export async function getRecentPosts() {
   return posts;
 }
 
-export function getSlug(path) {
+export function getSlug(post) {
+  let path = post.id;
   path = path.toLowerCase();
   path = path.replace(/^\/src\/pages\//, "");
   path = path.replace(/\.[^.]*$/, "");
   path = path.replace(/[^a-z0-9]+/g, "-");
   return path;
+}
+
+export function getTagSlug(tag) {
+  return `/${tag}`;
+}
+
+export function getPostLink(post) {
+  if (post.data.slug) {
+    return post.data.slug;
+  }
+  return `/posts/${getSlug(post)}`;
 }

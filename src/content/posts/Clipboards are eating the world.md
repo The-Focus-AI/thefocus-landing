@@ -3,6 +3,7 @@ title: Clipboards are eating the world
 date: 2025-02-25
 tags:
   - process
+  - essay
 published: true
 image: mailmen.png
 description: The untold story of how your computer's clipboard sees itself as the essential bridge between humans and AI tools in the creative process. Through its eyes, we witness the journey of how digital projects come together through countless transfers between different AI services.
