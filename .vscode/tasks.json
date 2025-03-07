@@ -4,7 +4,7 @@
     {
       "label": "dev",
       "type": "shell",
-      "command": "pnpm run dev", // or your specific dev command
+      "command": "mise dev", // or your specific dev command
       "isBackground": true,
       "problemMatcher": [],
       "presentation": {

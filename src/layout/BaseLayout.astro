@@ -72,7 +72,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
   <body class="bg-gray-100">
     <header
       class:list={[
-        "py-4 md:py-8 px-2 md:flex justify-between items-top md:container mx-auto",
+        "py-4 md:py-8 px-2 md:flex justify-between items-top md:container mx-auto sm:max-w-screen-lg ",
         bigHeader ? "px-8" : ""
       ]}
     >
@@ -106,7 +106,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
     <main class="w-full">
         
       <section class:list={[
-          "container mx-auto py-4 px-2",
+          "container mx-auto py-4 px-2 sm:max-w-screen-lg",
           bigHeader ? "sm:py-48" : ""
         ]}>
         <slot/>
