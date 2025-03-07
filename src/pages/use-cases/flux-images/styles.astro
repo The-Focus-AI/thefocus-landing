@@ -5,14 +5,14 @@ import { getFluxImages } from '../../../utils/images';
 import FluxImageInfo from '../../../components/fluximage-info.astro';
 const styleCt = await getFluxImages("styleCt");
 const styleChineseLine = await getFluxImages("styleChineseLine");
-const styleCharcoal = await getFluxImages("styleCharcoal");
+const styleCharcoal = await getFluxImages("styleCharcoal");     
 const styleFujifilm = await getFluxImages("styleFujifilm");
 const styleChildrens = await getFluxImages("styleChildrens");
 const styleStructural = await getFluxImages("styleStructural");
 --- 
 
 <BaseLayout pageTitle="Style Variations" description="A collection of Flux images" category="flux_images">
-
+<!-- 
 <div class="prose dark:prose-invert">
 <h1>Style Variations</h1>
 
@@ -56,7 +56,7 @@ const styleStructural = await getFluxImages("styleStructural");
 </div>
 
 <FluxImageInfo records={styleStructural } />
-<FluximageDisplay records={styleStructural} />
+<FluximageDisplay records={styleStructural} /> -->
 
 
 </BaseLayout>
