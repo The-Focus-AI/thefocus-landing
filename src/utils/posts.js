@@ -16,7 +16,7 @@ export async function getPosts() {
   );
 
   // Filter out posts with future dates unless in development mode
-  if (import.meta.env.PROD) {
+  if (import.meta.env.NODE_ENV !== "development") {
     posts = posts.filter((post) => new Date(post.data.date) <= new Date());
   }
   // Sort posts by date

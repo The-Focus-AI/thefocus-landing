@@ -1,6 +1,6 @@
 ---
 title: Agentic YOLO with Warp, Cursor, and Claude
-date: 2025-05-06
+date: 2025-03-07
 tags:
   - essay
 published: true
