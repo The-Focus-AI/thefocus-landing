@@ -80,6 +80,10 @@ export function getTagDisplay(tag, plural = false) {
   tag = tag.charAt(0).toUpperCase() + tag.slice(1);
   tag = tag.replace(/-/g, " ");
 
+  // Check if the word already ends in 's'
+  if (tag.endsWith("s")) {
+    plural = false;
+  }
   if (plural) {
     return tag + "s";
   }
