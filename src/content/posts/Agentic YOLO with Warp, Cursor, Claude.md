@@ -1,10 +1,10 @@
 ---
 title: Agentic YOLO with Warp, Cursor, and Claude
-date: 2025-05-07EST
+date: 2025-05-06
 tags:
   - essay
 published: true
-description: "What happens when you let AI help you think through and build your ideas, with minimal supervision and maximum trust? What does it mean to be a programmer?  Are we closer or further from thought-stuff?"
+description: What happens when you let AI help you think through and build your ideas, with minimal supervision and maximum trust? What does it mean to be a programmer?  Are we closer or further from thought-stuff?
 image: yolo_wide.png
 ---
 > “The programmer, like the poet, works only slightly removed from pure thought-stuff. He builds his castles in the air, from air, creating by exertion of the imagination.”  
