@@ -1,7 +1,0 @@
-step_count,duration_seconds,filename,timestamp,model,quality,seed,prompt
-1,16,20250303_012513_1steps_dreamy_landscape.png,2025-03-03 01:25:29,dev,4,1,"dreamy landscape"
-3,30,20250303_012529_3steps_dreamy_landscape.png,2025-03-03 01:25:59,dev,4,1,"dreamy landscape"
-5,48,20250303_012559_5steps_dreamy_landscape.png,2025-03-03 01:26:47,dev,4,1,"dreamy landscape"
-10,92,20250303_012647_10steps_dreamy_landscape.png,2025-03-03 01:28:19,dev,4,1,"dreamy landscape"
-15,342,20250303_012820_15steps_dreamy_landscape.png,2025-03-03 01:34:02,dev,4,1,"dreamy landscape"
-20,625,20250303_013402_20steps_dreamy_landscape.png,2025-03-03 01:44:27,dev,4,1,"dreamy landscape"

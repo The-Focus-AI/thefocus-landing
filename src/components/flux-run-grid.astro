@@ -1,0 +1,14 @@
+---
+import FluxImage from './fluximage.astro';
+const { run } = Astro.props;
+---
+
+<div class="py-4">
+    <div class="flex flex-wrap gap-2">
+        {run.results.map((result) => (
+            <div class="sm:w-[49%] lg:w-[32%]   ">
+                <FluxImage run={run} result={result} />
+            </div>
+        ))}
+    </div>  
+</div>

@@ -1,0 +1,71 @@
+{
+  "timestamp": "2025-03-06T07:54:08.943978",
+  "command_args": {
+    "prompt": "The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical.",
+    "model": "schnell",
+    "steps": 1,
+    "resolution": "1024x1024",
+    "iterations": 6,
+    "metadata": false,
+    "vary_seed": false,
+    "seed": null,
+    "style": null,
+    "vary_steps": null
+  },
+  "results": [
+    {
+      "index": 1,
+      "seed": 989644,
+      "steps": 1,
+      "file_path": "image_989644_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 1 --seed 989644 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_1/image_989644_1.png",
+      "generation_time": 28.243073
+    },
+    {
+      "index": 2,
+      "seed": 950751,
+      "steps": 1,
+      "file_path": "image_950751_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 1 --seed 950751 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_1/image_950751_1.png",
+      "generation_time": 14.609534
+    },
+    {
+      "index": 3,
+      "seed": 188948,
+      "steps": 1,
+      "file_path": "image_188948_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 1 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_1/image_188948_1.png",
+      "generation_time": 14.728687
+    },
+    {
+      "index": 4,
+      "seed": 515394,
+      "steps": 1,
+      "file_path": "image_515394_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 1 --seed 515394 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_1/image_515394_1.png",
+      "generation_time": 14.887229
+    },
+    {
+      "index": 5,
+      "seed": 619319,
+      "steps": 1,
+      "file_path": "image_619319_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 1 --seed 619319 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_1/image_619319_1.png",
+      "generation_time": 17.755617
+    },
+    {
+      "index": 6,
+      "seed": 357840,
+      "steps": 1,
+      "file_path": "image_357840_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 1 --seed 357840 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_1/image_357840_1.png",
+      "generation_time": 14.881986
+    }
+  ]
+}

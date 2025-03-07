@@ -3,44 +3,69 @@ import BaseLayout from '../../../layout/BaseLayout.astro';
 import FluximageDisplay from '../../../components/fluximage-display-grid.astro';
 import { getFluxImages } from '../../../utils/images';
 import FluxImageInfo from '../../../components/fluximage-info.astro';
-const plane1 = await getFluxImages("plane1");
-const devDreamy = await getFluxImages("devDreamy");
-const schnellDreamy = await getFluxImages("schnellDreamy");
+import FluxRunDisolve from '../../../components/flux-run-disolve.astro';
+const dev_plane = await getFluxImages("dev_plane");
+const dev_dream = await getFluxImages("dev_dream");
+
+const schnell_dream = await getFluxImages("schnell_dream");
+const schnell_forest = await getFluxImages("schnell_forest");
 ---
 
 <BaseLayout pageTitle="Study of steps on Flux Images" description="A study of the effect of steps on Flux Images" category="flux_images">
 
-    <div class="prose dark:prose-invert">
+    <div class="prose">
     <h1>Effect of steps on the image</h1>
 
-    <h2>Airplane</h2>
-    <pre>mflux-script.sh -p "A hand drawn color sketch in the style of a 1930s \
-newspaper of an old style airplane controls" \
--m dev -d 123 -S -M 1,3,5,10,15,20</pre>
 
-    </div>
+<pre>
+mflux-wrapper.py --model dev --seed 123 \
+    --vary-steps 1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 \
+    --square-sm \
+    --prompt "A hand drawn color sketch in the style of a 1930s \
+    newspaper of an old style airplane controls" 
+</pre>
 
-<FluxImageInfo records={plane1} />
-<FluximageDisplay records={plane1} />
+
+<FluxRunDisolve run={dev_plane} height="512" width="512"> </FluxRunDisolve>
 
 
-<div class="prose dark:prose-invert">
+<div class="prose">
     <h2>Dreamy Landscape</h2>
-    <pre>mflux-script.sh -p "dreamy landscape" \       
--m dev-d 1 -S -M 1,3,5,10,15,20 </pre>
+
+    Just change the prompt
+<pre>
+mflux-wrapper.py --model dev --seed 123 \
+    --vary-steps 1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 \
+    --square-sm \
+    --prompt "dreamy landscape"
+</pre>
 </div>
 
-<FluxImageInfo records={devDreamy} />
-<FluximageDisplay records={devDreamy} />
+<FluxRunDisolve run={dev_dream} height="512" width="512"> </FluxRunDisolve>
 
 
-<div class="prose dark:prose-invert">
+<div class="prose">
     <h2>Schnell Dreamy Landscape</h2>
-    <pre>mflux-script.sh -p "dreamy landscape" \       
-    -m dev -d 1 -S -M 1,3,5,10,15,20 </pre>
+
+    Switch to schnell model
+
+    We can run it with the same number of iterations at the dev model, but it doesn't change nearly as much.
+
+<pre>
+mflux-wrapper.py --model schnell
+</pre>
 </div>
 
-<FluxImageInfo records={schnellDreamy} />
-<FluximageDisplay records={schnellDreamy} />
+<FluxRunDisolve run={schnell_dream} height="512" width="512"> </FluxRunDisolve>
+
+
+<div class="prose dark:prose-invert">Moving down to a fewer is all that's needed.
+
+    <pre>
+mflux-wrapper.py --prompt "magical forest" --vary-steps 1,2,3,4,5,6 --seed 123
+    </pre>
+</div>
+
+<FluxRunDisolve run={schnell_forest} height="512" width="512"> </FluxRunDisolve>
 
 </BaseLayout>

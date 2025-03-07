@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-03-06T07:57:32.795473",
+  "command_args": {
+    "prompt": "The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical.",
+    "model": "schnell",
+    "steps": null,
+    "resolution": "1024x1024",
+    "iterations": 6,
+    "metadata": false,
+    "vary_seed": false,
+    "seed": 188948,
+    "style": null,
+    "vary_steps": "2,3,4,5,6,7",
+    "vary_steps_list": [2, 3, 4, 5, 6, 7]
+  },
+  "results": [
+    {
+      "index": 1,
+      "seed": 188948,
+      "steps": 2,
+      "file_path": "image_188948_None.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 2 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_2/image_188948_None.png",
+      "generation_time": 21.809268
+    },
+    {
+      "index": 2,
+      "seed": 188948,
+      "steps": 3,
+      "file_path": "image_188948_None_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 3 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_2/image_188948_None.png",
+      "generation_time": 30.986387
+    },
+    {
+      "index": 3,
+      "seed": 188948,
+      "steps": 4,
+      "file_path": "image_188948_None_2.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 4 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_2/image_188948_None.png",
+      "generation_time": 37.204812
+    },
+    {
+      "index": 4,
+      "seed": 188948,
+      "steps": 5,
+      "file_path": "image_188948_None_3.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 5 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_2/image_188948_None.png",
+      "generation_time": 43.180483
+    },
+    {
+      "index": 5,
+      "seed": 188948,
+      "steps": 6,
+      "file_path": "image_188948_None_4.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 6 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_2/image_188948_None.png",
+      "generation_time": 57.597122
+    },
+    {
+      "index": 6,
+      "seed": 188948,
+      "steps": 7,
+      "file_path": "image_188948_None_5.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical. --model schnell --steps 7 --seed 188948 --width 1024 --height 1024 --output mflux_output_20250306_075408/run_2/image_188948_None.png",
+      "generation_time": 69.056309
+    }
+  ]
+}

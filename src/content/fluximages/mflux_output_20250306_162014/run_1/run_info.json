@@ -1,0 +1,209 @@
+{
+  "timestamp": "2025-03-06T16:20:14.387192",
+  "command_args": {
+    "prompt": "A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls",
+    "model": "dev",
+    "steps": null,
+    "resolution": "512x512",
+    "iterations": 19,
+    "metadata": false,
+    "vary_seed": false,
+    "seed": 123,
+    "style": null,
+    "vary_steps": "1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+    "vary_steps_list": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ]
+  },
+  "results": [
+    {
+      "index": 1,
+      "seed": 123,
+      "steps": 1,
+      "file_path": "image_123_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 1 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_1.png",
+      "generation_time": 12.985993
+    },
+    {
+      "index": 2,
+      "seed": 123,
+      "steps": 3,
+      "file_path": "image_123_3.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 3 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_3.png",
+      "generation_time": 23.127317
+    },
+    {
+      "index": 3,
+      "seed": 123,
+      "steps": 4,
+      "file_path": "image_123_4.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 4 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_4.png",
+      "generation_time": 24.554837
+    },
+    {
+      "index": 4,
+      "seed": 123,
+      "steps": 5,
+      "file_path": "image_123_5.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 5 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_5.png",
+      "generation_time": 23.447404
+    },
+    {
+      "index": 5,
+      "seed": 123,
+      "steps": 6,
+      "file_path": "image_123_6.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 6 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_6.png",
+      "generation_time": 25.241762
+    },
+    {
+      "index": 6,
+      "seed": 123,
+      "steps": 7,
+      "file_path": "image_123_7.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 7 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_7.png",
+      "generation_time": 27.691476
+    },
+    {
+      "index": 7,
+      "seed": 123,
+      "steps": 8,
+      "file_path": "image_123_8.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 8 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_8.png",
+      "generation_time": 29.285417
+    },
+    {
+      "index": 8,
+      "seed": 123,
+      "steps": 9,
+      "file_path": "image_123_9.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 9 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_9.png",
+      "generation_time": 34.657526
+    },
+    {
+      "index": 9,
+      "seed": 123,
+      "steps": 10,
+      "file_path": "image_123_10.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 10 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_10.png",
+      "generation_time": 38.520154
+    },
+    {
+      "index": 10,
+      "seed": 123,
+      "steps": 11,
+      "file_path": "image_123_11.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 11 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_11.png",
+      "generation_time": 42.628079
+    },
+    {
+      "index": 11,
+      "seed": 123,
+      "steps": 12,
+      "file_path": "image_123_12.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 12 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_12.png",
+      "generation_time": 44.433216
+    },
+    {
+      "index": 12,
+      "seed": 123,
+      "steps": 13,
+      "file_path": "image_123_13.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 13 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_13.png",
+      "generation_time": 48.81193
+    },
+    {
+      "index": 13,
+      "seed": 123,
+      "steps": 14,
+      "file_path": "image_123_14.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 14 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_14.png",
+      "generation_time": 49.547408
+    },
+    {
+      "index": 14,
+      "seed": 123,
+      "steps": 15,
+      "file_path": "image_123_15.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 15 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_15.png",
+      "generation_time": 55.603325
+    },
+    {
+      "index": 15,
+      "seed": 123,
+      "steps": 16,
+      "file_path": "image_123_16.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 16 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_16.png",
+      "generation_time": 52.632553
+    },
+    {
+      "index": 16,
+      "seed": 123,
+      "steps": 17,
+      "file_path": "image_123_17.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 17 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_17.png",
+      "generation_time": 51.962805
+    },
+    {
+      "index": 17,
+      "seed": 123,
+      "steps": 18,
+      "file_path": "image_123_18.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 18 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_18.png",
+      "generation_time": 53.363355
+    },
+    {
+      "index": 18,
+      "seed": 123,
+      "steps": 19,
+      "file_path": "image_123_19.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 19 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_19.png",
+      "generation_time": 63.048385
+    },
+    {
+      "index": 19,
+      "seed": 123,
+      "steps": 20,
+      "file_path": "image_123_20.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt A hand drawn color sketch in the style of a 1930s newspaper of an old style airplane controls --model dev --steps 20 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_1/image_123_20.png",
+      "generation_time": 63.526157
+    }
+  ]
+}

@@ -2,17 +2,27 @@
 import type { ImageMetadata } from 'astro';
 import { Image, imageConfig } from 'astro:assets';
     
-const { record } = Astro.props;
+const { run, result, height, width, showSteps } = Astro.props;
+
+const image_name = `${run.name}/${result.file_path}`;
 
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/fluximages/**/*.{jpeg,jpg,png,gif}');
-const img_key= `/src/content/fluximages/${record.name}/${record.filename}`;
+const img_key= `/src/content/fluximages/${image_name}`;
 
 const img_key2 = Object.keys(images)[1];
 if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
 const image_file = images[img_key];
+
 ---
 
-{image_file && <Image class="object-fill pb-4" src={image_file()} alt={ record.prompt} height="500" width="700"/>}
+{image_file && (
+    <div class="relative group">
+        <Image class="object-cover" src={image_file()} alt={run.args.prompt} width={width} height={height}/>
+        <div class={`absolute bottom-10 right-0 bg-black/50 text-white text-center px-4 py-2 ${showSteps ? 'block' : 'hidden'} group-hover:block`}>
+            <p class="text-sm text-gray-200">Seed {result.seed} / {result.steps} steps</p>
+        </div>
+    </div>
+)}
 
  

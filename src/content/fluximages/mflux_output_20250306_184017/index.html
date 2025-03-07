@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MFlux Generation Runs</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .run-list { display: flex; flex-direction: column; gap: 20px; }
+        .run-item { border: 1px solid #ccc; padding: 15px; border-radius: 5px; }
+        .image-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            margin-top: 10px; 
+        }
+        .image-grid a { 
+            flex: 1 1 calc(33.333% - 10px);
+            min-width: 250px;
+            max-width: calc(33.333% - 10px);
+            text-decoration: none;
+            position: relative;
+        }
+        .image-grid img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .image-grid a:hover img {
+            transform: scale(1.02);
+        }
+        .image-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        .image-grid a:hover .image-info {
+            opacity: 1;
+        }
+        .run-header { display: flex; justify-content: space-between; align-items: center; }
+        h1 { color: #333; }
+        h2 { margin: 0; }
+        .timestamp { color: #666; }
+        .status { padding: 5px 10px; border-radius: 3px; display: inline-block; margin-left: 10px; }
+        .in-progress { background: #fff3cd; color: #856404; }
+        .complete { background: #d4edda; color: #155724; }
+        .generation-time { color: #666; font-size: 0.9em; }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+        .run-details {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .run-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>MFlux Generation Runs</h1>
+    <div class="run-list">
+        <div class="run-item">
+            <div class="run-header">
+                <h2>Run 1<span class="status complete">
+                Complete (9/9)
+            </span></h2>
+                <span class="timestamp">2025-03-06 18:44:06</span>
+            </div>
+            
+            <div class="run-details">
+                <p><strong>Prompt:</strong> "Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation."</p>
+                <p><strong>Steps:</strong> 1,2,3,4,5,6,7,8,9 (varying)</p>
+                
+                <p class='generation-time'>Total generation time: 230.95 seconds</p>
+                
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100.0%"></div>
+            </div>
+            <p>Progress: 9/9 (100.0%)</p>
+            
+            </div>
+            
+            <a href="run_1/index.html">View Details</a>
+            <div class="image-grid"><a href="run_1/index.html"><img src="run_1/image_973852_1.png" alt="image_973852_1.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 1</div></a><a href="run_1/index.html"><img src="run_1/image_973852_2.png" alt="image_973852_2.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 2</div></a><a href="run_1/index.html"><img src="run_1/image_973852_3.png" alt="image_973852_3.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 3</div></a><a href="run_1/index.html"><img src="run_1/image_973852_4.png" alt="image_973852_4.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 4</div></a><a href="run_1/index.html"><img src="run_1/image_973852_5.png" alt="image_973852_5.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 5</div></a><a href="run_1/index.html"><img src="run_1/image_973852_6.png" alt="image_973852_6.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 6</div></a><a href="run_1/index.html"><img src="run_1/image_973852_7.png" alt="image_973852_7.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 7</div></a><a href="run_1/index.html"><img src="run_1/image_973852_8.png" alt="image_973852_8.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 8</div></a><a href="run_1/index.html"><img src="run_1/image_973852_9.png" alt="image_973852_9.png" loading="lazy"><div class="image-info">Seed: 973852 | Steps: 9</div></a></div>
+        </div>
+    </div>
+</body>
+</html>

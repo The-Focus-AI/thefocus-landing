@@ -1,0 +1,79 @@
+{
+  "timestamp": "2025-03-06T18:29:19.465160",
+  "command_args": {
+    "prompt": "magical forest",
+    "model": "schnell",
+    "steps": null,
+    "resolution": "512x512",
+    "iterations": 6,
+    "metadata": false,
+    "vary_seed": false,
+    "seed": 123,
+    "style": null,
+    "vary_steps": "1,2,3,4,5,6",
+    "vary_steps_list": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "results": [
+    {
+      "index": 1,
+      "seed": 123,
+      "steps": 1,
+      "file_path": "image_123_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt magical forest --model schnell --steps 1 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_6/image_123_1.png",
+      "generation_time": 13.1872
+    },
+    {
+      "index": 2,
+      "seed": 123,
+      "steps": 2,
+      "file_path": "image_123_2.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt magical forest --model schnell --steps 2 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_6/image_123_2.png",
+      "generation_time": 16.573385
+    },
+    {
+      "index": 3,
+      "seed": 123,
+      "steps": 3,
+      "file_path": "image_123_3.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt magical forest --model schnell --steps 3 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_6/image_123_3.png",
+      "generation_time": 20.522614
+    },
+    {
+      "index": 4,
+      "seed": 123,
+      "steps": 4,
+      "file_path": "image_123_4.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt magical forest --model schnell --steps 4 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_6/image_123_4.png",
+      "generation_time": 19.285559
+    },
+    {
+      "index": 5,
+      "seed": 123,
+      "steps": 5,
+      "file_path": "image_123_5.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt magical forest --model schnell --steps 5 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_6/image_123_5.png",
+      "generation_time": 22.225637
+    },
+    {
+      "index": 6,
+      "seed": 123,
+      "steps": 6,
+      "file_path": "image_123_6.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt magical forest --model schnell --steps 6 --seed 123 --width 512 --height 512 --output mflux_output_20250306_162014/run_6/image_123_6.png",
+      "generation_time": 29.288038
+    }
+  ]
+}

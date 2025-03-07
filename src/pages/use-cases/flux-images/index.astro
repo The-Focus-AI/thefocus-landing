@@ -1,15 +1,16 @@
 ---
+import FluxRunDisolve from "../../../components/flux-run-disolve.astro";
 import BaseLayout from "../../../layout/BaseLayout.astro";
 import { getFluxImages } from "../../../utils/images";
-import FluximageDisplay from "../../../components/fluximage-display-grid.astro";
-const fluxSteps = await getFluxImages("fluxSteps");
-const fluxStepsSlice = [fluxSteps[0], fluxSteps[3], fluxSteps[fluxSteps.length - 1]];
+const lil_robots = await getFluxImages("lil_robots");
 ---
 
 <BaseLayout title="Image Generation Case Studies" description="Case Studies">
-    <h1>Image Generation Case Studies</h1>
+    <h1 class="text-4xl font-bold">Image Generation Case Studies</h1>
 
-    <FluximageDisplay records={fluxStepsSlice} />
+
+
+    <FluxRunDisolve run={lil_robots} height="512" width="512"> </FluxRunDisolve>
 
 
     <ul>

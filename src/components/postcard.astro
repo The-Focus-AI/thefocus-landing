@@ -1,7 +1,7 @@
 ---
 import PostImage from "./postimage.astro";
 import Card from "./card.astro";
-import { getSlug, getTagSlug, getPostLink } from "../utils/posts";
+import { getSlug, getTagSlug, getPostLink, getTagDisplay } from "../utils/posts";
 const {post} = Astro.props;
 
 const dateOptions: object = {
@@ -17,14 +17,14 @@ const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US"
 <Card>
     <div slot="header">
         <h2 class="text-2xl font-bold"><a href={postLink}>{post.data.published ? "" : "[DRAFT] "}{post.data.title || post.id}</a></h2>
-        <div class="flex place-items-baseline">
-        <p class="text-sm py-2"> 
-            <a class="text-blue-500 hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
-            <span class="text-sm ">{formattedPublishDate}</span> 
-            </p>
-            <ul class="inline px-2 py-2 flex flex-row flex-wrap gap-2">
-                {post.data.tags?.map((tag) => <li class="bg-gray-100 text-gray-600 rounded-sm px-1 py-0 text-sm">#<a href={getTagSlug(tag)}>{tag}</a></li>)}
+        <div class="flex place-items-baseline justify-between">
+            <ul class="flex flex-row flex-wrap gap-2">
+                {post.data.tags?.map((tag) => <li class="px-1 py-0 text-sm"><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
             </ul>
+            <p class="lg:flex flex-col md:flex-row flex-wrap gap-2"> 
+                <a class="text-sm hover:underline italic" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
+                <span class="text-sm ">{formattedPublishDate}</span> 
+            </p>
         </div>
     </div>
     {post.data.image && <a href={postLink} slot="image"><PostImage post={post} /></a>}

@@ -1,0 +1,52 @@
+---
+import FluxImage from './fluximage.astro';
+const { run } = Astro.props;
+
+const hasResults = run.results.length > 0;
+
+console.log("run", `carousel-${run.name}`);
+
+---
+
+<div class="py-4">
+
+{!hasResults && <p>No results found</p>}
+
+{run.results.map && (
+    <div class={`relative carousel-container mx-auto overflow-hidden`}>
+        <div class="carousel relative w-full h-full">
+            {run.results.map((result, index) => (
+                <div class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'} carousel-item`}>
+                    <FluxImage run={run} result={result} showSteps={true}/>
+                </div>
+            ))}
+        </div>
+    </div>
+)}
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carouselContainers = document.querySelectorAll(`.carousel-container`);
+        for(const carousel of carouselContainers) {
+            let currentIndex = 0;
+
+            const firstImage = carousel.querySelector( ".carousel img" );
+            const imageContainer = firstImage.closest('.carousel-container');
+            imageContainer.style.height = `${firstImage.height}px`;
+            imageContainer.style.width = `${firstImage.width}px`;
+
+            const images = carousel.querySelectorAll('.carousel-item');
+
+            function showNextImage() {
+                console.log('showNextImage');
+                images[currentIndex].classList.replace('opacity-100', 'opacity-0');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.replace('opacity-0', 'opacity-100');
+            }
+
+            // Set an interval to change images every 3 seconds
+            setInterval(showNextImage, 3000);
+        }   
+    }       )
+</script>    
+</div>

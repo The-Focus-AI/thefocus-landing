@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MFlux Generation Runs</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .run-list { display: flex; flex-direction: column; gap: 20px; }
+        .run-item { border: 1px solid #ccc; padding: 15px; border-radius: 5px; }
+        .image-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            margin-top: 10px; 
+        }
+        .image-grid a { 
+            flex: 1 1 calc(33.333% - 10px);
+            min-width: 250px;
+            max-width: calc(33.333% - 10px);
+            text-decoration: none;
+            position: relative;
+        }
+        .image-grid img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .image-grid a:hover img {
+            transform: scale(1.02);
+        }
+        .image-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        .image-grid a:hover .image-info {
+            opacity: 1;
+        }
+        .run-header { display: flex; justify-content: space-between; align-items: center; }
+        h1 { color: #333; }
+        h2 { margin: 0; }
+        .timestamp { color: #666; }
+        .status { padding: 5px 10px; border-radius: 3px; display: inline-block; margin-left: 10px; }
+        .in-progress { background: #fff3cd; color: #856404; }
+        .complete { background: #d4edda; color: #155724; }
+        .generation-time { color: #666; font-size: 0.9em; }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+        .run-details {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .run-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>MFlux Generation Runs</h1>
+    <div class="run-list">
+        <div class="run-item">
+            <div class="run-header">
+                <h2>Run 2<span class="status complete">
+                Complete (6/6)
+            </span></h2>
+                <span class="timestamp">2025-03-06 08:01:51</span>
+            </div>
+            
+            <div class="run-details">
+                <p><strong>Prompt:</strong> "The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical."</p>
+                <p><strong>Steps:</strong> 2,3,4,5,6,7 (varying)</p>
+                
+                <p class='generation-time'>Total generation time: 259.83 seconds</p>
+                
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100.0%"></div>
+            </div>
+            <p>Progress: 6/6 (100.0%)</p>
+            
+            </div>
+            
+            <a href="run_2/index.html">View Details</a>
+            <div class="image-grid"><a href="run_2/index.html"><img src="run_2/image_188948_None.png" alt="image_188948_None.png" loading="lazy"><div class="image-info">Seed: 188948 | Steps: 2</div></a><a href="run_2/index.html"><img src="run_2/image_188948_None_1.png" alt="image_188948_None_1.png" loading="lazy"><div class="image-info"></div></a><a href="run_2/index.html"><img src="run_2/image_188948_None_2.png" alt="image_188948_None_2.png" loading="lazy"><div class="image-info"></div></a><a href="run_2/index.html"><img src="run_2/image_188948_None_3.png" alt="image_188948_None_3.png" loading="lazy"><div class="image-info"></div></a><a href="run_2/index.html"><img src="run_2/image_188948_None_4.png" alt="image_188948_None_4.png" loading="lazy"><div class="image-info"></div></a><a href="run_2/index.html"><img src="run_2/image_188948_None_5.png" alt="image_188948_None_5.png" loading="lazy"><div class="image-info"></div></a></div>
+        </div>
+        <div class="run-item">
+            <div class="run-header">
+                <h2>Run 1<span class="status complete">
+                Complete (6/6)
+            </span></h2>
+                <span class="timestamp">2025-03-06 07:55:55</span>
+            </div>
+            
+            <div class="run-details">
+                <p><strong>Prompt:</strong> "The Little Prince with golden hair, dressed         in green and wrapped in a yellow scarf, tenderly caring for a red rose on a         small asteroid, Van Gogh Starry Night sky, swirling stars, oil painting,         soft brush strokes, dreamy and whimsical."</p>
+                <p><strong>Steps:</strong> 1</p>
+                
+                <p class='generation-time'>Total generation time: 105.11 seconds</p>
+                
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100.0%"></div>
+            </div>
+            <p>Progress: 6/6 (100.0%)</p>
+            
+            </div>
+            
+            <a href="run_1/index.html">View Details</a>
+            <div class="image-grid"><a href="run_1/index.html"><img src="run_1/image_188948_1.png" alt="image_188948_1.png" loading="lazy"><div class="image-info">Seed: 188948 | Steps: 1</div></a><a href="run_1/index.html"><img src="run_1/image_357840_1.png" alt="image_357840_1.png" loading="lazy"><div class="image-info">Seed: 357840 | Steps: 1</div></a><a href="run_1/index.html"><img src="run_1/image_515394_1.png" alt="image_515394_1.png" loading="lazy"><div class="image-info">Seed: 515394 | Steps: 1</div></a><a href="run_1/index.html"><img src="run_1/image_619319_1.png" alt="image_619319_1.png" loading="lazy"><div class="image-info">Seed: 619319 | Steps: 1</div></a><a href="run_1/index.html"><img src="run_1/image_950751_1.png" alt="image_950751_1.png" loading="lazy"><div class="image-info">Seed: 950751 | Steps: 1</div></a><a href="run_1/index.html"><img src="run_1/image_989644_1.png" alt="image_989644_1.png" loading="lazy"><div class="image-info">Seed: 989644 | Steps: 1</div></a></div>
+        </div>
+    </div>
+</body>
+</html>

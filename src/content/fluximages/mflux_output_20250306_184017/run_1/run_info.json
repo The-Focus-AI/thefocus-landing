@@ -1,0 +1,109 @@
+{
+  "timestamp": "2025-03-06T18:40:17.432955",
+  "command_args": {
+    "prompt": "Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation.",
+    "model": "schnell",
+    "steps": null,
+    "resolution": "512x512",
+    "iterations": 9,
+    "metadata": false,
+    "vary_seed": false,
+    "seed": 973852,
+    "style": null,
+    "vary_steps": "1,2,3,4,5,6,7,8,9",
+    "vary_steps_list": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "results": [
+    {
+      "index": 1,
+      "seed": 973852,
+      "steps": 1,
+      "file_path": "image_973852_1.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 1 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_1.png",
+      "generation_time": 13.43439
+    },
+    {
+      "index": 2,
+      "seed": 973852,
+      "steps": 2,
+      "file_path": "image_973852_2.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 2 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_2.png",
+      "generation_time": 19.376937
+    },
+    {
+      "index": 3,
+      "seed": 973852,
+      "steps": 3,
+      "file_path": "image_973852_3.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 3 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_3.png",
+      "generation_time": 23.172098
+    },
+    {
+      "index": 4,
+      "seed": 973852,
+      "steps": 4,
+      "file_path": "image_973852_4.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 4 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_4.png",
+      "generation_time": 24.993872
+    },
+    {
+      "index": 5,
+      "seed": 973852,
+      "steps": 5,
+      "file_path": "image_973852_5.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 5 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_5.png",
+      "generation_time": 25.678765
+    },
+    {
+      "index": 6,
+      "seed": 973852,
+      "steps": 6,
+      "file_path": "image_973852_6.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 6 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_6.png",
+      "generation_time": 30.539425
+    },
+    {
+      "index": 7,
+      "seed": 973852,
+      "steps": 7,
+      "file_path": "image_973852_7.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 7 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_7.png",
+      "generation_time": 30.512809
+    },
+    {
+      "index": 8,
+      "seed": 973852,
+      "steps": 8,
+      "file_path": "image_973852_8.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 8 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_8.png",
+      "generation_time": 29.110522
+    },
+    {
+      "index": 9,
+      "seed": 973852,
+      "steps": 9,
+      "file_path": "image_973852_9.png",
+      "metadata_path": null,
+      "command": "mflux-generate --prompt Weathered industrial micro-robots with utilitarian designs and worn metal plating, working in a close-up diorama of a factory floor, welding sparks illuminating their focused mechanical expressions as they climb across the emerging framework of their creation. --model schnell --steps 9 --seed 973852 --width 512 --height 512 --output mflux_output_20250306_184017/run_1/image_973852_9.png",
+      "generation_time": 34.13174
+    }
+  ]
+}

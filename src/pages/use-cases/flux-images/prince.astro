@@ -1,30 +1,43 @@
 ---
 import BaseLayout from '../../../layout/BaseLayout.astro';
-import FluximageDisplay from '../../../components/fluximage-display-grid.astro';
 import { getFluxImages } from '../../../utils/images';
-import FluxImageInfo from '../../../components/fluximage-info.astro';
-const prince1 = await getFluxImages("prince1");
-const prince2 = await getFluxImages("prince2");
+import FluxRunGrid from '../../../components/flux-run-grid.astro';
+import FluxRunDisolve from '../../../components/flux-run-disolve.astro';
+import FluxRunCarousel from '../../../components/flux-run-carousel.astro';
+const prince_prompt = await getFluxImages("prince_prompt");
+const prince_varyseeds = await getFluxImages("prince_varyseeds");
+
 ---
 
 <BaseLayout pageTitle="The Little Prince" description="A collection of Flux images" category="flux_images">
 
 <h1 class="text-2xl font-bold">The Little Prince</h1>
 
-<FluxImageInfo records={prince1} />
-<FluximageDisplay records={prince1} />
-
-
 <div class="prose dark:prose-invert">
     <h2>Prince</h2>
-    <pre>mflux-script.sh -p "The Little Prince with golden hair, dressed in green and \
-        wrapped in a yellow scarf, tenderly caring for a red rose on a small asteroid, \
-        Van Gogh Starry Night sky, swirling stars, oil painting, soft brush strokes, \
-        dreamy and whimsical." \
-        -d 9841997 -S -M 1,3,5,10,15,20</pre>
+    <pre> mflux-wrapper.py --new \
+        --prompt "The Little Prince with golden hair, dressed \
+        in green and wrapped in a yellow scarf, tenderly caring \
+        for a red rose on a small asteroid, \
+        Van Gogh Starry Night sky, swirling stars, oil painting, \
+        soft brush strokes, dreamy and whimsical." \
+        --iterations 6
+    </pre>
+
 </div>
 
-<FluxImageInfo records={prince2} />
-<FluximageDisplay records={prince2} />
+<FluxRunGrid run={prince_prompt}> </FluxRunGrid>
+
+        
+<div class="prose dark:prose-invert">
+    <h2>Step iteratons</h2>
+    <pre>mflux-wrapper.py --seed --vary-steps 2,3,4,5,6,7</pre>
+</div>
+
+<FluxRunDisolve run={prince_varyseeds} height="512" width="512"> </FluxRunDisolve>
+
+        
+
+
 
 </BaseLayout>

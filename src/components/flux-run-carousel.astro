@@ -1,0 +1,59 @@
+---
+import FluxImage from './fluximage.astro';
+const { run,height,width } = Astro.props;
+---
+
+<div class="py-4">
+
+
+    <div class="inline-flex overflow-x-scroll snap-x snap-mandatory carousel">
+        {run.results.map((result, index) => (
+                    <div class="box-content flex flex-none max-w-full snap-center carousel-item">
+                <FluxImage run={run} result={result} height={height} width={width}/>
+            </div>
+        ))}
+
+    </div>
+    <script load:client>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carousel = document.querySelector('.carousel');
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+    
+        function cycleItems() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            const newScrollPosition = items[currentIndex].offsetLeft;
+            carousel.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+        }
+    
+        setInterval(cycleItems, 3000); // Change every 3 seconds
+    });
+    </script>
+
+<script load:client>
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+
+    const firstImage = document.querySelector( ".carousel img" )
+    const imageContainer = firstImage.closest('.carousel-container');
+    imageContainer.style.height = `${firstImage.height}px`;
+    imageContainer.style.width = `${firstImage.width}px`;
+
+
+    
+
+    function showNextImage() {
+        console.log('showNextImage');
+        images[currentIndex].classList.replace('opacity-100', 'opacity-0');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.replace('opacity-0', 'opacity-100');
+    }
+
+    // Set an interval to change images every 3 seconds
+    setInterval(showNextImage, 3000);
+});
+</script>    
+</div>
