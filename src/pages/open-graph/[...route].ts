@@ -1,5 +1,6 @@
 import { OGImageRoute } from "astro-og-canvas";
-import { getPosts, getSlug } from "../../utils/posts";
+import { getPosts } from "../../utils/posts";
+import { getSlug } from "../../utils/ids";
 
 const collectionEntries = await getPosts(); // This will return an array of objects with the following structure:
 

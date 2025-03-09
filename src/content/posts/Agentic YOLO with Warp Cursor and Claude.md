@@ -38,7 +38,7 @@ I played around with that for a while.  Tried a bunch of different things.
 
 ![](../assets/variations.png)
 
-We occasional went down some path that we couldn't get out of, and it make more sense just to throw it all away and start again.  This is eventually what we ended up with the [mflux-wrapper](https://github.com/The-Focus-AI/mflux-wrapper) , which you can download and run on your own computer.
+We occasional went down some path that we couldn't get out of, and it make more sense just to throw it all away and start again.  This is eventually what we ended up with the [mflux-commander](https://github.com/The-Focus-AI/mflux-commander), which you can download and run on your own computer.
 
 It lets you do stuff like this
 

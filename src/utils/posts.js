@@ -35,3 +35,15 @@ export async function getRecentPosts() {
 
   return posts;
 }
+
+export async function getNextPost(post) {
+  let posts = await getPosts();
+  const index = posts.findIndex((p) => p.id === post.id);
+  return posts[index - 1];
+}
+
+export async function getPrevPost(post) {
+  let posts = await getPosts();
+  const index = posts.findIndex((p) => p.id === post.id);
+  return posts[index + 1];
+}

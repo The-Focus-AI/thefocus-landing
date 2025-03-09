@@ -1,7 +1,7 @@
 ---
 import PostImage from "./postimage.astro";
 import Card from "./card.astro";
-import { getSlug, getTagSlug, getPostLink, getTagDisplay } from "../utils/posts";
+import { getPostLink, getTagSlug, getTagDisplay } from "../utils/ids";
 const {post} = Astro.props;
 
 const dateOptions: object = {
@@ -9,7 +9,7 @@ const dateOptions: object = {
 	month: "long",
 	day: "numeric",
 };
-const postLink = getPostLink(post);
+const postLink =    getPostLink(post);
 const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US", dateOptions);
 
 ---
