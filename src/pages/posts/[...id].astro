@@ -5,8 +5,8 @@ import { getPosts, getNextPost, getPrevPost } from "../../utils/posts";
 import type { CollectionEntry } from 'astro:content';
 import { render } from "astro:content";
 import PostImage from "../../components/postimage.astro";
-import PostCard from "../../components/postcard.astro";
-
+import PostCardCopy from "../../components/post-card-copy.astro";
+import EmailSignup from "../../components/email-signup.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getPosts();
@@ -68,12 +68,11 @@ const prevPost = await getPrevPost(entry);
       <p class="text-right py-2 "> <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
   </div>
 </div>
+<EmailSignup />
 <div>
-  <h2 class="text-2xl font-bold"><a href="/blog">Read more...</a></h2>
-<div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-  {nextPost && <div ><h3 class="text-lg font-bold sm:text-right">Next</h3><PostCard post={nextPost} /></div>}
-  {prevPost && <div ><h3 class="text-lg font-bold sm:text-right">Previous</h3><PostCard post={prevPost} /></div>}
-</div>
+  <h2 class="text-2xl font-bold text-gray-900  text-center border-t-gray-200 border-t-2 mt-0 pt-16">Explore more</h2>
+    {nextPost && <PostCardCopy post={nextPost} />}
+    {prevPost && <PostCardCopy post={prevPost} />}
 </div>
 </BaseLayout>
 

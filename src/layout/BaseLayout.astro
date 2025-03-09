@@ -5,6 +5,7 @@ import '@fontsource/noto-serif/300.css';
 import '@fontsource/noto-serif/400.css';
 import '@fontsource/noto-serif/500.css';
 import '@fontsource/iosevka-etoile';
+import EmailSignup from "../components/email-signup.astro";
 
 import { SEO } from "astro-seo";
 // import { getImagePath } from "astro-opengraph-images";
@@ -112,13 +113,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
         <slot/>
       </section>
 
-      <section class="container mx-auto py-4 px-2">
-        <iframe
-scrolling="no"
-style="width:100%!important;height:220px;"
-src="https://newsletter.thefocus.ai?as_embed=true"
-></iframe><br /><br />
-      </section>
+      <EmailSignup />
 
       <section class="bg-gray-900 text-gray-300 px-2">
         <div class="flex justify-between p-4 text-gray-600 text-sm">

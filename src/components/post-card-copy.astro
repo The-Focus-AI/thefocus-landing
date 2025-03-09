@@ -1,0 +1,33 @@
+---
+import PostImage from "./postimage.astro";
+import Card from "./card.astro";
+import { getPostLink, getTagSlug, getTagDisplay } from "../utils/ids";
+const {post} = Astro.props;
+
+const dateOptions: object = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
+const postLink =    getPostLink(post);
+const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US", dateOptions);
+
+---
+
+<div class="pt-8">
+    <div class="text-sm float-right">{formattedPublishDate}</div>
+    <h2 class="text-4xl font-bold pb-2">
+        <a href={postLink}>{post.data.published ? "" : "[DRAFT] "}{post.data.title || post.id}
+        </a>
+    </h2>
+    <div class="flex place-items-baseline justify-between">
+        <ul class="flex flex-row flex-wrap gap-2">
+            {post.data.tags?.map((tag) => <li class="px-1 py-0"><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
+        </ul>
+    </div>
+    <h2 class="text-lg font-bold text-gray-500 py-4 leading-snug">{post.data.description}</h2>
+
+
+    {post.data.image && <a href={postLink}><PostImage post={post} /></a>}
+    <a href={postLink} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
+</div>
