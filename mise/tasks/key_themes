@@ -1,0 +1,4 @@
+#!/bin/bash
+#MISE description="Extract key themes of the post"
+
+bash mise/tasks/run_prompt "$1" "What are the key themes of this post"

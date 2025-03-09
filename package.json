@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "buttondown": "tsx src/utils/buttondown"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",
@@ -35,9 +36,15 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^22.13.10",
+    "cheerio": "^1.0.0",
     "daisyui": "^4.12.23",
+    "gray-matter": "^4.0.3",
     "react": "^19.0.0",
-    "remark-obsidian-callout": "^1.5.1"
+    "remark-obsidian-callout": "^1.5.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.6.1"

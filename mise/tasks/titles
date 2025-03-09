@@ -1,0 +1,4 @@
+#!/bin/bash
+#MISE description="Brainstorm titles for the post"
+
+bash mise/tasks/run_prompt "$1" "write 5 short titles for this blog post"

@@ -7,6 +7,7 @@ pnpm = "latest"
 
 [env]
 _.path = ['./node_modules/.bin']
+MODEL = 'claude-3.7-sonnet'
 
 [tasks.pnpm-install]
 description = 'Installs dependencies with pnpm'
@@ -28,11 +29,20 @@ description = 'Clears out dist'
 run = ['npm run build', 'du -sh dist']
 depends = ['pnpm-install','clean']
 
+[tasks.buttondown]
+description = 'Pushed a draft'
+run = ['npm run buttondown "$*"']
+
 [tasks.llm-dump]
 description = 'Runs repomix'
-run = ['repomix --ignore "**/*.log,tmp/,src/**/*md,src/**/fluximages/**"']
+run = ['repomix --ignore "**/*.log,tmp/,src/**/*md,src/**/fluximages/**,bin/*"']
 
 [tasks.llm-clipboard]
 description = 'Copies repomix to the clipboard'
 run = [ 'cat repomix-output.txt | pbcopy']
+depends = [ 'llm-dump' ]
+
+[tasks.llm-lint]
+description = 'What does the model think about this'
+run = [ 'cat repomix-output.txt | llm -m claude-3.7-sonnet "$(cat $HOME/prompts/lint)"' ]
 depends = [ 'llm-dump' ]
