@@ -14,4 +14,9 @@ export default defineConfig({
     rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
     remarkPlugins: [remarkObsidianCallout],
   },
+  vite: {
+    server: {
+      allowedHosts: [""],
+    },
+  },
 });

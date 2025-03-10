@@ -27,6 +27,7 @@ export type ElevenLabsProps = {
   backgroundColorRgba?: string;
   size?: "small" | "large";
   children?: React.ReactNode;
+  projectId?: string;
 };
 
 export const ElevenLabsAudioNative = ({
@@ -35,6 +36,7 @@ export const ElevenLabsAudioNative = ({
   textColorRgba,
   backgroundColorRgba,
   children,
+  projectId,
 }: ElevenLabsProps) => {
   useEffect(() => {
     const script = document.createElement("script");
@@ -48,6 +50,8 @@ export const ElevenLabsAudioNative = ({
     };
   }, []);
 
+  projectId = "0Smw0jZv15JcwG0bKHP2";
+
   return (
     <div
       id="elevenlabs-audionative-widget"
@@ -60,6 +64,7 @@ export const ElevenLabsAudioNative = ({
       data-small={size === "small" ? "True" : "False"}
       data-textcolor={textColorRgba ?? "rgba(0, 0, 0, 1.0)"}
       data-backgroundcolor={backgroundColorRgba ?? "rgba(255, 255, 255, 1.0)"}
+      data-projectid={projectId}
     >
       {children ? children : "Elevenlabs AudioNative Player"}
     </div>
