@@ -6,6 +6,7 @@ tags:
 published: true
 description: What happens when you let AI help you think through and build your ideas, with minimal supervision and maximum trust? What does it mean to be a programmer?  Are we closer or further from thought-stuff?
 image: yolo_wide.png
+audio: true
 ---
 > “The programmer, like the poet, works only slightly removed from pure thought-stuff. He builds his castles in the air, from air, creating by exertion of the imagination.”  
 ― Frederick P. Brooks Jr., [The Mythical Man-Month: Essays on Software Engineering](https://www.goodreads.com/work/quotes/1905885)
