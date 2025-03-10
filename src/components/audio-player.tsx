@@ -1,22 +1,3 @@
-/*---
----
-<div
-    id="elevenlabs-audionative-widget"
-    data-height="90"
-    data-width="100%"
-    data-frameborder="no"
-    data-scrolling="no"
-    data-publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3"
-    data-playerUrl="https://elevenlabs.io/player/index.html"
-    data-projectId="0Smw0jZv15JcwG0bKHP2"
-  >
-    Loading the AudioNative Player...
-</div>
-<script src="https://elevenlabs.io/player/audioNativeHelper.js" type="text/javascript"></script>
-
-
-// ElevenLabsAudioNative.tsx
-*/
 "use client";
 
 import { useEffect } from "react";
@@ -39,20 +20,18 @@ export const ElevenLabsAudioNative = ({
   projectId,
 }: ElevenLabsProps) => {
   useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src = "https://elevenlabs.io/player/audioNativeHelper.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
+    const loadPlayer = async () => {
+      await import("https://elevenlabs.io/player/audioNativeHelper.js");
     };
+
+    loadPlayer();
   }, []);
 
   projectId = "0Smw0jZv15JcwG0bKHP2";
 
-  return (
+  return <></>;
+};
+/*
     <div
       id="elevenlabs-audionative-widget"
       data-height={size === "small" ? "90" : "120"}
@@ -69,6 +48,6 @@ export const ElevenLabsAudioNative = ({
       {children ? children : "Elevenlabs AudioNative Player"}
     </div>
   );
-};
+};*/
 
 export default ElevenLabsAudioNative;
