@@ -28,6 +28,6 @@ const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US"
         </div>
     </div>
     {post.data.image && <a href={postLink} slot="image"><PostImage post={post} /></a>}
-    <p class="text-lg leading-relaxed"><a href={postLink}>{post.data.description}</a></p>
+    <p class="text-lg font-bold text-gray-500 py-4 leading-snug"><a href={postLink}>{post.data.description}</a></p>
     <a slot="footer" href={postLink} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
 </Card>
