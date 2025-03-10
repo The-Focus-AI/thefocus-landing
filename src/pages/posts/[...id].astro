@@ -7,7 +7,7 @@ import { render } from "astro:content";
 import PostImage from "../../components/postimage.astro";
 import PostCardCopy from "../../components/post-card-copy.astro";
 import EmailSignup from "../../components/email-signup.astro";
-import AudioPlayer from "../../components/audio-player.astro";
+import { ElevenLabsAudioNative } from "../../components/audio-player.tsx";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getPosts();
@@ -43,7 +43,7 @@ const prevPost = await getPrevPost(entry);
 ---
 <BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
 
-  { entry.data.audio && <AudioPlayer />}
+  { entry.data.audio && <ElevenLabsAudioNative publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3" />}
 
   <div class="prose lg:prose-xl max-w-prose article">
 
