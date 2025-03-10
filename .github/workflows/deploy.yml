@@ -18,6 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Send Telegram Build start
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d text="Build starting for ${{ github.repository }}!"
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site output
@@ -26,6 +31,19 @@ jobs:
           # path: . # The root location of your Astro project inside the repository. (optional)
           node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 18. (optional)
           package-manager: pnpm
+      - name: Send Telegram Success
+        if: success()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d text="✅ Build succeeded for ${{ github.repository }}!"
+
+      - name: Send Telegram Failure
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d text="❌ Build failed for ${{ github.repository }}!"
 
   deploy:
     needs: build
