@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 import { getPosts } from "../utils/posts";
-
+import { getPostLink } from "../utils/ids";
 export async function GET(context) {
   const posts = await getPosts();
 
@@ -14,7 +14,8 @@ export async function GET(context) {
       pubDate: post.data.date,
       description: post.data.description || post.data.title || post.slug,
       // Compute RSS link from post `slug`
-      link: `/posts/${post.slug}`,
+      link: getPostLink(post),
+      url: `https://thefocus.ai/${getPostLink(post)}`,
     })),
   });
 }
