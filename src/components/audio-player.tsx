@@ -20,18 +20,20 @@ export const ElevenLabsAudioNative = ({
   projectId,
 }: ElevenLabsProps) => {
   useEffect(() => {
-    const loadPlayer = async () => {
-      await import("https://elevenlabs.io/player/audioNativeHelper.js");
+    const script = document.createElement("script");
+    script.src = "https://elevenlabs.io/player/audioNativeHelper.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
     };
-
-    loadPlayer();
   }, []);
 
-  projectId = "0Smw0jZv15JcwG0bKHP2";
-
-  return <></>;
-};
-/*
+  // projectId = "0Smw0jZv15JcwG0bKHP2";
+  if (projectId === true || projectId === "true") {
+    projectId = undefined;
+  }
+  return (
     <div
       id="elevenlabs-audionative-widget"
       data-height={size === "small" ? "90" : "120"}
@@ -43,11 +45,11 @@ export const ElevenLabsAudioNative = ({
       data-small={size === "small" ? "True" : "False"}
       data-textcolor={textColorRgba ?? "rgba(0, 0, 0, 1.0)"}
       data-backgroundcolor={backgroundColorRgba ?? "rgba(255, 255, 255, 1.0)"}
-      data-projectid={projectId}
+      {...(projectId && { "data-projectid": projectId })}
     >
       {children ? children : "Elevenlabs AudioNative Player"}
     </div>
   );
-};*/
+};
 
 export default ElevenLabsAudioNative;

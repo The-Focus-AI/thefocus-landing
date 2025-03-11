@@ -43,10 +43,8 @@ const prevPost = await getPrevPost(entry);
 ---
 <BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
 
-  { entry.data.audio && <ElevenLabsAudioNative client:only="react" publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3" />}
-
   <div class="prose lg:prose-xl max-w-prose article">
-
+  
     <div class="not-prose">
     {sectionTag && <p class=" pb-4 text-gray-500 max-w-prose hover:underline">
       <a href={`/${sectionTag}`}>{getTagDisplay(sectionTag)}</a>
@@ -54,6 +52,13 @@ const prevPost = await getPrevPost(entry);
     <h1 class="text-4xl font-bold text-gray-900 pb-2">{entry.data.title}</h1>
 
     <h2 class="text-lg font-bold text-gray-500 py-4 leading-snug">{entry.data.description}</h2>
+
+    { entry.data.audio && <div class="pt-4">
+      <ElevenLabsAudioNative 
+      client:only="react" 
+      publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3" 
+      projectId={entry.data.audio}/>
+      </div>}
 
     <div class="flex flex-col sm:flex-row flex-wrap gap-2 border-t-gray-200 border-t-2 pt-4 mt-8 justify-between">
       <ul class="flex flex-row flex-wrap gap-2">
