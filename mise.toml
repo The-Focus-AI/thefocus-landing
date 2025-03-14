@@ -36,13 +36,3 @@ run = ['npm run buttondown "$*"']
 [tasks.llm-dump]
 description = 'Runs repomix'
 run = ['repomix --ignore "**/*.log,tmp/,src/**/*md,src/**/fluximages/**,bin/*"']
-
-[tasks.llm-clipboard]
-description = 'Copies repomix to the clipboard'
-run = [ 'cat repomix-output.txt | pbcopy']
-depends = [ 'llm-dump' ]
-
-[tasks.llm-lint]
-description = 'What does the model think about this'
-run = [ 'cat repomix-output.txt | llm -m claude-3.7-sonnet "$(cat $HOME/prompts/lint)"' ]
-depends = [ 'llm-dump' ]
