@@ -5,6 +5,7 @@ tags:
   - usecase
 description: Model Context Protocol bridges the gap between AI models and your applications, as demonstrated in this hands-on walkthrough with Tezlab's Tesla monitoring service. Learn how defining simple tools with descriptions and parameters lets Claude intelligently combine services like vehicle data and weather information without explicit instructions.
 published: true
+image: mcp_wide.png
 ---
 This morning I plugged in [Tezlab](https://tezlabapp.com) to my local Claude desktop.
 
