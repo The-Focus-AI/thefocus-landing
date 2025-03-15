@@ -21,6 +21,7 @@ fi
 # Get MODEL from environment, default to claude-3.7-sonnet
 MODEL=${MODEL:-claude-3.7-sonnet}
 
+echo "[$MODEL] Running prompt: $2"
 cat "$1" | \
 llm -m $MODEL \
 	"$2"

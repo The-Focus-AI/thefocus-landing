@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function cycleItems() {
         currentIndex = (currentIndex + 1) % totalItems;
+        // @ts-ignore
         const newScrollPosition = items[currentIndex].offsetLeft;
         carousel.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
     }

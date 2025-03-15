@@ -1,0 +1,14 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+const { recipe, size } = Astro.props;
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/recipies/*.{jpeg,jpg,png,gif}');
+
+const img_key= `/src/content/assets/recipies/${recipe.data.image}`;
+if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
+
+const image = images[img_key];
+
+---
+
+<Image class="object-cover flex-1 min-h-[100%]" src={image()} alt={recipe.data.title} />  

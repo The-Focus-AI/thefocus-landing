@@ -32,7 +32,9 @@ console.log("run", `carousel-${run.name}`);
 
             const firstImage = carousel.querySelector( ".carousel img" );
             const imageContainer = firstImage.closest('.carousel-container');
+            // @ts-ignore
             imageContainer.style.height = `${firstImage.height}px`;
+            // @ts-ignore
             imageContainer.style.width = `${firstImage.width}px`;
 
             const images = carousel.querySelectorAll('.carousel-item');

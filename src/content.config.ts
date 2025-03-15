@@ -3,19 +3,23 @@ import { file, glob } from "astro/loaders";
 import { parse as parseCsv } from "csv-parse/sync";
 
 const posts = defineCollection({
-  // For content layer you no longer define a `type`
-  // type: "content",
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/posts" }),
-  // schema: z.object({
-  //   title: z.string(),
-  //   description: z.string(),
-  //   date: z.coerce.date().optional(),
-  //   updatedDate: z.coerce.date().optional(),
-  //   tags: z.array(z.string()),
-  //   image: z.string(),
-  //   published: z.boolean(),
-  // }),
 });
+
+const recipies = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/recipies",
+  }),
+});
+
+const sections = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/sections",
+  }),
+});
+
 function fluxRunCollection(name: string) {
   return defineCollection({
     loader: file(`./src/content/fluximages/${name}/run_info.json`, {
@@ -40,6 +44,8 @@ const schnell_forest = fluxRunCollection("mflux_output_20250306_162014/run_6");
 const lil_robots = fluxRunCollection("mflux_output_20250306_184017/run_1");
 export const collections = {
   posts: posts,
+  recipies,
+  sections,
   prince_prompt: prince_prompt,
   prince_varyseeds: prince_varyseeds,
   dev_plane: dev_plane,

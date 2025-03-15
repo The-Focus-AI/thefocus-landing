@@ -1,0 +1,15 @@
+@font-face {
+  src: url("/fonts/bemboregular.woff2") format("woff2");
+  font-family: "Bembo";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bembo";
+  src: url("/fonts/bemboitalic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}

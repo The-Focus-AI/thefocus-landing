@@ -1,0 +1,65 @@
+---
+import { getRecipeUrl, getSection } from "../utils/recipies";
+import RecipeImage from "./recipe_image.astro";
+const {recipies} = Astro.props;
+const uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.section ?? []))];
+  
+const sectionMapPromises = uniqueSections.map(async (section) => ({
+    section,
+    recipies: recipies.filter(recipe => recipe.data.section?.includes(section)),
+    info: await getSection(section)
+}));
+
+const sectionMap = await Promise.all(sectionMapPromises);
+
+---
+<ul class="leading-tight">
+    {sectionMap.map((section) => (
+        <li class="sm:py-4">
+            { section.info ? 
+            (<><h2 class="text-2xl italic font-light pt-8 pb-4">{section.info.data.title}</h2>
+            <div class="md:ml-8 lg:ml-16 prose pt-4 pb-8" set:html={section.info.rendered.html}></div></>) :
+             <h2 class="text-2xl italic font-light py-8">{section.section}</h2> }
+
+            
+            <ul class="md:ml-8 lg:ml-16 pt-4">
+                {section.recipies.map((recipe) => (
+                    <li class="w-full flex flex-row pb-4">
+                        {/* <RecipeImage recipe={recipe} size="small"/> */}
+                        <a href={getRecipeUrl(recipe)}>
+                            <span class="no-underline hover:underline font-semibold">{recipe.data.published ? "" : "[DRAFT] "}{recipe.data.title}</span>
+                        </a>
+                        <span class="dots flex-grow underline border-b-2 border-slate-500 border-dotted"></span>
+                        <span>
+                            {recipe.data.tech.map((tech) => (
+                                <a class="pr-2 bg-gray-100 hover:underline" href={`/recipies/${tech}`}>{tech}</a>
+                            ))}
+                        </span>
+                        
+                    </li>
+                ))}
+            </ul>
+        </li>
+        
+    ))}
+</ul>
+
+<style>
+    .adots {
+        position: relative;
+  overflow: hidden;
+    }
+
+.daots::after {
+  position: absolute;
+  padding-left: .25ch;
+  content: " . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . "
+      ". . . . . . . . . . . . . . . . . . . . . . . ";
+  text-align: right;
+}
+</style>

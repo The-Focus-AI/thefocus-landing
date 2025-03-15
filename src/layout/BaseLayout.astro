@@ -5,6 +5,7 @@ import '@fontsource/noto-serif/300.css';
 import '@fontsource/noto-serif/400.css';
 import '@fontsource/noto-serif/500.css';
 import '@fontsource/iosevka-etoile';
+import '../fonts/bembo.css';
 import EmailSignup from "../components/email-signup.astro";
 
 import { SEO } from "astro-seo";
@@ -24,7 +25,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
 }
 ---
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="antialiased subpixel-antialiased">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,6 +83,9 @@ if(Astro.url.pathname.includes("/posts/about")) {
           <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : "" ]}>Home</a></li>
           <li>
             <a href="/blog" class:list={[category === "blog" ? "underline hover:underline" : ""]}>Blog</a>
+          </li>
+          <li>
+            <a href="/recipies" class:list={[category === "recipies" ? "underline hover:underline" : ""]}>Recipies</a>
           </li>
           <li>
             <a href="mailto:hey@thefocus.ai" class="hover:underline">Contact</a>
@@ -157,11 +161,12 @@ if(Astro.url.pathname.includes("/posts/about")) {
       </section>
     </main>
 
-    <footer class="container mx-auto flex justify-between py-8">
+    <footer class="container mx-auto flex flex-col md:flex-row w-full text-center md:text-left justify-between py-8">
       <p class="text-4xl mt-2">FOCUS.AI</p>
       <nav class="mt-4 space-x-4">
         <a href="/" class="text-gray-600 hover:underline">HOME</a>
         <a href="/blog" class="text-gray-600 hover:underline">BLOG</a>
+        <a href="/recipies" class="text-gray-600 hover:underline">RECIPIES</a>
         <a href="https://www.linkedin.com/in/will-schenk-420266/" class="text-gray-600 hover:underline">LINKEDIN</a>
         <a href="mailto:hey@thefocus.ai" class="text-gray-600 hover:underline"
           >HEY@THEFOCUS.AI</a

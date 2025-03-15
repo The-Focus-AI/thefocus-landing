@@ -11,6 +11,7 @@ export default {
         sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
         serif: ["Noto Serif", ...defaultTheme.fontFamily.serif],
         mono: ["Iosevka Etoile", ...defaultTheme.fontFamily.mono],
+        bembo: ["Bembo", ...defaultTheme.fontFamily.mono],
       },
       daisyui: {
         themes: ["light"],
