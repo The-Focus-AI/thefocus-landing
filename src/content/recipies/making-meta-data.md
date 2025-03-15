@@ -7,7 +7,7 @@ tech:
 related:
   - git-commit-messages
 date: 2025-03-15
-published: true
+published: false
 image: making-meta-data.png
 ---
 
