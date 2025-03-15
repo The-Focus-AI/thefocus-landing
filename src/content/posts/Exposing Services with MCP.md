@@ -24,6 +24,10 @@ Here's what it looks like:
 
 ## How it works
 
+>MCP is an open protocol that standardizes how applications provide context to LLMs. Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools.
+>
+>-- [Introduction to ModelContextProtocol](https://modelcontextprotocol.io/introduction)
+
 This is very similar to how you would call models with tools. You specify in a ZOD schema what the description of your tool is, what parameters it needs, and sort of the situation why you would call it.
 
 For example, I have a tool that lets you look up Nielsen data, and there's a concept of a nielsen week.  When building out that agent, I tell it about a tool like this:
@@ -107,4 +111,6 @@ The description tells the model when and what the tool provides. And for these p
 If you have other tools defined, then the model can combine them any way it wants to. So I have this one tool that provides the location of the car, so that helps the model figure out where you are. But I've got another tool defined -- which is one of the sample ones, I forgot I had it installed -- which goes and checks the weather. 
 
 If you ask it to plan a trip, it thinks, hey, maybe you want to know the weather in these locations. It just decided to do all this stuff on its own.
+
+[Code is available](https://github.com/The-Focus-AI/tezlab-cli)
 
