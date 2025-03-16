@@ -27,6 +27,9 @@ There's reading comprehension that gets the facts right, and there's understandi
 
 > Some readers argue that Victor’s neglect and moral failures suggest that he is the true “monster” in a figurative sense. Thus, the novel challenges readers to decide for themselves whether the label “monster” applies to the Creature, the creator, or both.
 
+### Grok 3 : Good
+
+> While the creature is the most direct answer, it's worth noting that some readers and scholars argue Victor Frankenstein, the scientist, could be considered the real monster due to his reckless ambition and abandonment of his creation, leading to tragic consequences.
 ## Decent Answers
 ### qwen2.5:14b : ok
 
