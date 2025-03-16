@@ -1,0 +1,46 @@
+---
+import { getTagDisplay, getTagSlug } from "../utils/ids";
+import { getRecipeUrl } from "../utils/recipies";
+import RecipeImage from "./recipe_image.astro";
+import { formatDate } from "../utils/date";
+const {recipe,reverse} = Astro.props;
+
+const formattedPublishDate = formatDate(recipe.data.date);
+--- 
+
+<header class={`container mx-auto flex flex-col sm:flex-row pb-16 ${reverse ? 'flex-row-reverse sm:flex-row-reverse' : ''}`}>
+
+    <div class="bg-gray-200 flex-1 p-4">
+      
+      <ul class="flex flex-row flex-wrap gap-2 pb-4">
+        {recipe.data.tech.map((tech) => (
+          <li><a class="pr-2 hover:underline font-mono uppercase text-sm" href={`/recipies/${tech}`}>{tech}</a></li>
+        ))}
+      </ul>
+      
+  
+      <div class="flex flex-col sm:flex-row gap-2">
+        <div class="max-w-prose flex flex-col">
+          <h1 class="text-4xl font-bold text-gray-900 pb-2"><a class="hover:underline" href={getRecipeUrl(recipe)}>{recipe.data.title}</a></h1>
+  
+          <h2 class="text-lg font-bold text-gray-500 py-4 leading-snug"><a class="hover:underline" href={getRecipeUrl(recipe)}>{recipe.data.description}</a></h2>
+
+          <div class="flex flex-col sm:flex-row flex-wrap gap-2 border-t-gray-200 border-t-2 pt-4 mt-8 justify-between">
+            <ul class="flex flex-row flex-wrap gap-2">
+              {recipe.data.tags?.map((tag) => <li><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
+            </ul>
+            <div class="flex flex-row flex-wrap gap-2 italic">
+              <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
+            <span >{formattedPublishDate}</span> 
+            </div>
+          </div>
+      
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1">
+      <a href={getRecipeUrl(recipe)}>{recipe.data.image && <RecipeImage recipe={recipe} />}</a>
+    </div>
+
+  </header>

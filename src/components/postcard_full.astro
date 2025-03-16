@@ -2,14 +2,8 @@
 import PostImage from "./postimage.astro";
 import { getPostLink } from "../utils/ids";  
 const {post} = Astro.props;
-
-const dateOptions: object = {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-};
 const postLink = getPostLink(post);
-const formattedPublishDate = new Date(post.data.date).toLocaleDateString("en-US", dateOptions);
+
 
 const title = (post.data.published ? "" : "[DRAFT] ") + post.data.title || post.id
 ---

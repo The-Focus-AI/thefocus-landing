@@ -1,6 +1,6 @@
 ---
 import { getRecipeUrl, getSection } from "../utils/recipies";
-import RecipeImage from "./recipe_image.astro";
+import { formatDateShort } from "../utils/date";
 const {recipies} = Astro.props;
 const uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.section ?? []))];
   
@@ -25,8 +25,8 @@ const sectionMap = await Promise.all(sectionMapPromises);
             <ul class="md:ml-8 lg:ml-16 pt-4">
                 {section.recipies.map((recipe) => (
                     <li class="w-full flex flex-row pb-4">
-                        {/* <RecipeImage recipe={recipe} size="small"/> */}
                         <a href={getRecipeUrl(recipe)}>
+                            <span class="hidden sm:inline text-sm text-gray-500">{formatDateShort(recipe.data.date)}</span>
                             <span class="no-underline hover:underline font-semibold">{recipe.data.published ? "" : "[DRAFT] "}{recipe.data.title}</span>
                         </a>
                         <span class="dots flex-grow underline border-b-2 border-slate-500 border-dotted"></span>

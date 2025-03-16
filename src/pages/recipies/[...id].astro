@@ -2,11 +2,11 @@
 import BaseLayout from "../../layout/BaseLayout.astro";
 import { getTagSlug, getTagDisplay } from "../../utils/ids";
 import { getRecipies, getRelatedRecipies } from "../../utils/recipies";   
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content'; 
 import { render } from "astro:content";
 import RecipeToc from "../../components/recipe_toc.astro"; 
 import RecipeImage from "../../components/recipe_image.astro";
-
+import RecipeCard from "../../components/recipe_card.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const recipies = await getRecipies();
@@ -18,7 +18,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-
 const { entry } = Astro.props;
 type Props = {
   entry: CollectionEntry<'recipies'>;
@@ -26,25 +25,8 @@ type Props = {
 const { Content } = await render(entry);
 
 let relatedRecipies = await getRelatedRecipies(entry);
-// const slug = getSlug(entry);
 
-const dateOptions: object = {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-};
-
-// const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US", dateOptions);
-
-// const sectionTag = getSectionTag(entry.data.tags);
-
-// const nextPost = await getNextPost(entry);
-// const prevPost = await getPrevPost(entry);
-
-const slug = entry.id;
-
-const sectionTag = "recipies";
-const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US", dateOptions);
+console.log(relatedRecipies.length)
 ---
 <BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="recipies" >
 
@@ -52,42 +34,8 @@ const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US
     <a href="/recipies">← Back to all recipies </a>
   </p>
 
-  <header class="container mx-auto flex flex-col sm:flex-row ">
+  <RecipeCard recipe={entry} />
 
-    <div class="bg-gray-200 flex-1 p-4">
-      
-      <ul class="flex flex-row flex-wrap gap-2 pb-4">
-        {entry.data.tech.map((tech) => (
-          <li><a class="pr-2 hover:underline font-mono uppercase text-sm" href={`/recipies/${tech}`}>{tech}</a></li>
-        ))}
-      </ul>
-      
-  
-      <div class="flex flex-col sm:flex-row gap-2">
-        <div class="max-w-prose flex flex-col">
-          <h1 class="text-4xl font-bold text-gray-900 pb-2">{entry.data.title}</h1>
-  
-          <h2 class="text-lg font-bold text-gray-500 py-4 leading-snug">{entry.data.description}</h2>
-
-          <div class="flex flex-col sm:flex-row flex-wrap gap-2 border-t-gray-200 border-t-2 pt-4 mt-8 justify-between">
-            <ul class="flex flex-row flex-wrap gap-2">
-              {entry.data.tags?.map((tag) => <li><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
-            </ul>
-            <div class="flex flex-row flex-wrap gap-2 italic">
-              <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
-              <span >{formattedPublishDate}</span> 
-            </div>
-          </div>
-      
-        </div>
-      </div>
-    </div>
-
-    <div class="flex-1">
-      {entry.data.image && <RecipeImage recipe={entry} />}
-    </div>
-
-  </header>
   <article class="prose lg:prose-xl max-w-prose article">
   
 
@@ -106,8 +54,12 @@ const formattedPublishDate = new Date(entry.data.date).toLocaleDateString("en-US
   </article>
   <div class="container mx-auto">
     {relatedRecipies.length > 0 && <>
-      <h2 class="text-2xl font-bold text-gray-900  text-center border-t-gray-200 border-t-2 mt-0 pt-16">Related Recipies</h2>
-      <RecipeToc recipies={relatedRecipies} />   
+      <h2 class="text-2xl font-bold text-gray-900  text-center border-t-gray-200 border-t-2 mt-0 py-16">Related Recipies</h2>
+      {relatedRecipies.map((recipe,index) => (
+
+ <h2 class="text-2xl italic font-light py-8">{recipe.data.section.join(', ')}</h2>
+        <RecipeCard recipe={recipe} reverse={index % 2 === 1} />   
+      ))}
     </>
   }
   </div>

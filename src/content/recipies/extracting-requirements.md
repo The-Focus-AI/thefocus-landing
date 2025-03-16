@@ -1,6 +1,6 @@
 ---
 title: Extracting requirements
-date: 2025-03-14
+date: 2025-03-16
 section:
   - coding
   - analysis
@@ -9,7 +9,7 @@ tech:
 related:
   - repomix
   - understanding-a-codebase
-published: false
+published: true
 description: " Need to understand all the requirements hidden in a codebase? This technique shows how to use LLMs to compile comprehensive specifications from repository analysis for immediate development use."
 image: extracting-requirements.png
 ---
