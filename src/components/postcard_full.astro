@@ -15,7 +15,7 @@ const title = (post.data.published ? "" : "[DRAFT] ") + post.data.title || post.
             <div class="flex flex-col">
                 <div class="text-lg md:text-2xl font-mono uppercase pt-2 text-stone-500">{post.data.tags.indexOf( "usecase" ) != '-1' && 'usecase'}</div>
                 <div class="text-3xl md:text-6xl">{title}</div>
-            <div class="text-lg md:text-2xl font-mono uppercase pt-2">{post.data.description}</div>
+            <div class="sm:text-lg md:text-2xl font-mono uppercase pt-2">{post.data.description}</div>
         </div>
         </div>
 

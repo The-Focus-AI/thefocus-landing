@@ -1,6 +1,6 @@
 ---
 title: Recipes big and small
-date: 2025-03-19
+date: 2025-03-18
 tags:
   - usecase
 published: true
