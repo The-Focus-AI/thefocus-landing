@@ -1,6 +1,6 @@
 ---
 import FluxImage from './fluximage.astro';
-const { run } = Astro.props;
+const { run , height, width} = Astro.props;
 
 const hasResults = run.results.length > 0;
 
@@ -17,7 +17,7 @@ console.log("run", `carousel-${run.name}`);
         <div class="carousel relative w-full h-full">
             {run.results.map((result, index) => (
                 <div class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'} carousel-item`}>
-                    <FluxImage run={run} result={result} showSteps={true}/>
+                    <FluxImage run={run} result={result} showSteps={true} height={height} width={width}/>
                 </div>
             ))}
         </div>

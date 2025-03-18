@@ -1,21 +1,140 @@
 ---
 import FluxRunDisolve from "../../../components/flux-run-disolve.astro";
+import FluxRunGrid from "../../../components/flux-run-grid.astro";
 import BaseLayout from "../../../layout/BaseLayout.astro";
 import { getFluxImages } from "../../../utils/images";
 const lil_robots = await getFluxImages("lil_robots");
+const dev_plane = await getFluxImages("dev_plane");
+const dev_dream = await getFluxImages("dev_dream");
+const schnell_dream = await getFluxImages("schnell_dream");
+const schnell_forest = await getFluxImages("schnell_forest");
+const prince_prompt = await getFluxImages("prince_prompt");
+const prince_varyseeds = await getFluxImages("prince_varyseeds");
 ---
 
 <BaseLayout title="Image Generation Case Studies" description="Case Studies">
-    <h1 class="text-4xl font-bold">Image Generation Case Studies</h1>
+<h1 class="text-4xl font-bold">Image Generation Case Studies</h1>
+
+<div class="prose lg:prose-xl">
+    <p class="pt-2">
+        I wanted to see how to run Flux locally on my MacBook and to try to understand some of the different things that would affect image quality.
+    </p>
+
+    <p>
+        I ended up building a Python script that would help automate that task and let you run a whole bunch of different variations. 
+        You can find it <a href="https://github.com/The-Focus-AI/mflux-commander">over here at mflux-commander</a>, but let's look at some of the results.
+    </p>
+    
 
 
+    <h2>Two models</h2>
 
-    <FluxRunDisolve run={lil_robots} height="512" width="512"> </FluxRunDisolve>
+    <p>
+        Influx clones with the Schnell and Dev models both available. Dev models take a lot more steps, but I think make a little bit more interesting results. And the Schnell models are much faster and pretty much good enough. So I ended up using the Schnell models the most.
+    </p>
+
+    <h3>Steps on dev model</h3>
+
+    <p>Let's run the same prompt a whole bunch of times, each with a varying number of steps. Here's an animation of what that looks like.</p>
+    <pre>
+mflux-wrapper.py --model dev --seed 123 \
+    --vary-steps 1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 \
+    --square-sm \
+    --prompt "A hand drawn color sketch in the style of a 1930s \
+    newspaper of an old style airplane controls" 
+    </pre>
+    
+</div>
+    
+<FluxRunDisolve run={dev_plane} height="1000" width="1000"> </FluxRunDisolve>
+    
+    
+<div class="prose lg:prose-xl">
+    <p>So diffusion models sort of work by removing noise at each step and 
+        what's interesting is that what that translates into visually is 
+        almost a distinct picture. If we could look at the way that the 
+        airplane is drawn, they're not exact variations. They're much more complicated.
+    </p>
+    <h2>Dreamy Landscape</h2>
+
+    <p>Let's change the prompt to Dreamy Landscape and see what it spits out.</p>
+    <pre>
+mflux-wrapper.py --model dev --seed 123 \
+    --vary-steps 1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 \
+    --square-sm \
+    --prompt "dreamy landscape"
+    </pre>
+</div>
+    
+<FluxRunDisolve run={dev_dream} height="1000" width="1000"> </FluxRunDisolve>
+
+<div class="prose">
+
+    <h3>Schnell model</h3>
+
+    
+    <p>We can run it with the same number of iterations at the dev model, but it doesn't change nearly as much.</p>
+
+    <pre>
+mflux-wrapper.py --model schnell
+    </pre>
+</div>
+
+<FluxRunDisolve run={schnell_dream} height="1000" width="1000"> </FluxRunDisolve>
 
 
-    <ul>
-        <li><a href="/use-cases/flux-images/steps">Steps</a></li>
-        <li><a href="/use-cases/flux-images/styles">Styles</a></li>
-        <li><a href="/use-cases/flux-images/prince">Prince</a></li>
-    </ul>
+<div class="prose">Moving down to a fewer is all that's needed.
+
+<pre>
+mflux-wrapper.py --prompt "magical forest" --vary-steps 1,2,3,4,5,6 --seed 123
+</pre>
+</div>
+
+<FluxRunDisolve run={schnell_forest} height="1000" width="1000"> </FluxRunDisolve>
+
+<div class="prose lg:prose-xl">
+    
+    <h2>Lil Robots</h2>
+
+    <p>Here's an example of running the command with varying the number of steps that it takes to think about it.</p>
+</div>
+
+<FluxRunDisolve run={lil_robots} > </FluxRunDisolve>
+
+<div class="prose lg:prose-xl">
+    <h2>Seeds</h2>
+
+    <p>
+        Let's run the same prompt a whole bunch of times, each with a random seed.  
+        These are effectively different variations of the same prompt and it's also 
+        cool to make like a whole bunch of them and then choose which one you kind
+            of like the look of.
+    </p>
+    <pre> mflux-wrapper.py --new \
+        --prompt "The Little Prince with golden hair, dressed \
+        in green and wrapped in a yellow scarf, tenderly caring \
+        for a red rose on a small asteroid, \
+        Van Gogh Starry Night sky, swirling stars, oil painting, \
+        soft brush strokes, dreamy and whimsical." \
+        --iterations 6
+    </pre>
+
+</div>
+
+<FluxRunGrid run={prince_prompt}> </FluxRunGrid>
+
+        
+<div class="prose">
+    <h2>Step iteratons</h2>
+
+    <p>
+        You can then run it with a bunch more iterations and see which ones you want to end up going. 
+        I often find that like you only need three or four and if you get more steps in there it looks worse
+    </p>
+    <pre>mflux-wrapper.py --seed 188948 --vary-steps 2,3,4,5,6,7</pre>
+</div>
+
+<FluxRunDisolve run={prince_varyseeds} height="1000" width="1000"> </FluxRunDisolve>
+
+
 </BaseLayout>

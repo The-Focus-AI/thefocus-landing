@@ -1,9 +1,9 @@
 ---
 title: Image Gen on Apple Silicon
-date: 2025-03-04
+date: 2025-03-21
 tags:
   - usecase
-published: false
+published: true
 image: flux_wide.png
 description: We've got the apple silicon, lets download some models and make some pictures
 slug: /use-cases/flux-images
