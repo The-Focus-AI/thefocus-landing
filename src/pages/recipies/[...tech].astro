@@ -28,9 +28,8 @@ const filteredRecipies = recipies.filter(recipe => recipe.data.tech.includes(tec
 
 ---
 <BaseLayout pageTitle={tech} description={tech} category="recipies">
-    <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic">{tech} recipies</h1>
+  <a href="/recipies" class="text-sm text-gray-500 hover:text-gray-700">← Back to all recipies </a>
 
-    <a href="/recipies" class="text-sm text-gray-500 hover:text-gray-700">← Back to all recipies </a>
-
+  <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic">{tech} recipies</h1>
     <RecipeToc recipies={filteredRecipies} />
 </BaseLayout>

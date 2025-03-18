@@ -1,14 +1,24 @@
 ---
 import { getRecipeUrl, getSection } from "../utils/recipies";
 import { formatDateShort } from "../utils/date";
-const {recipies} = Astro.props;
-const uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.section ?? []))];
-  
-const sectionMapPromises = uniqueSections.map(async (section) => ({
+const {recipies,grouping="section"} = Astro.props;
+
+let uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.section ?? []))];  
+let sectionMapPromises = uniqueSections.map(async (section) => ({
     section,
     recipies: recipies.filter(recipe => recipe.data.section?.includes(section)),
     info: await getSection(section)
 }));
+
+if (grouping === "journey") {
+    uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.journey ?? []))];
+
+    sectionMapPromises = uniqueSections.map(async (section) => ({
+        section,
+        recipies: recipies.filter(recipe => recipe.data.journey?.includes(section)),
+        info: await getSection(section)
+    }));
+}
 
 const sectionMap = await Promise.all(sectionMapPromises);
 
@@ -16,10 +26,10 @@ const sectionMap = await Promise.all(sectionMapPromises);
 <ul class="leading-tight">
     {sectionMap.map((section) => (
         <li class="sm:py-4">
-            { section.info ? 
+            { grouping !== "journey" && (section.info ? 
             (<><h2 class="text-2xl italic font-light pt-8 pb-4">{section.info.data.title}</h2>
             <div class="md:ml-8 lg:ml-16 prose pt-4 pb-8" set:html={section.info.rendered.html}></div></>) :
-             <h2 class="text-2xl italic font-light py-8">{section.section}</h2> }
+             <h2 class="text-2xl italic font-light py-8">{section.section}</h2>)}
 
             
             <ul class="md:ml-8 lg:ml-16 pt-4">
