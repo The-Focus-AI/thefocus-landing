@@ -14,7 +14,7 @@ export async function GET(context) {
   }));
 
   const recipies = (await getRecipies()).map((recipie) => ({
-    title: recipie.data.title || recipie.id,
+    title: `[Recipie] ${recipie.data.title || recipie.id}`,
     pubDate: recipie.data.date,
     description: recipie.data.description || recipie.data.title || recipie.slug,
     link: getRecipeUrl(recipie),
