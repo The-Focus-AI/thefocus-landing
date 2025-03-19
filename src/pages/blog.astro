@@ -2,14 +2,15 @@
 import BaseLayout from "../layout/BaseLayout.astro";
 import PostCard from "../components/postcard.astro";
 import { getPosts } from "../utils/posts";
-
+import PostListSchema from "../components/schemas/postlist.astro";
 const allPosts = await getPosts();
 
 ---
 <BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work" category="blog">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    {allPosts.map((post) => (
-        <PostCard post={post} />
-    ))}
-</div>
+    <PostListSchema slot="head"  posts={allPosts}/>  
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {allPosts.map((post) => (
+            <PostCard post={post} />
+        ))}
+    </div>
 </BaseLayout>

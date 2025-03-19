@@ -1,0 +1,74 @@
+---
+// Import any needed utilities
+import { formatDate } from "../../utils/date";
+// Props for the blog post schema
+const { 
+  // Required properties
+  title,
+  description,
+  publishDate,
+  author,
+  url = Astro.url.toString(),
+  
+  // Optional properties with defaults
+  organizationName = "FOCUS.AI",
+  organizationLogo = "/logo.png", // Path to your logo
+  modifiedDate, // Optional: date when post was last modified
+  image, // Optional: featured image for the post
+  wordCount, // Optional: word count for the article
+  keywords = [], // Optional: keywords/tags for the article
+  articleSection = "Use Case" // Optional: section/category
+} = Astro.props;
+
+// Construct the schema object
+const blogPostSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "datePublished": formatDate(publishDate),
+  "author": {
+    "@type": "Person",
+    "name": author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": organizationName,
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL(organizationLogo, Astro.site).toString()
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  }
+};
+
+// Add optional properties if they exist
+if (modifiedDate) {
+  blogPostSchema["dateModified"] = formatDate(modifiedDate);
+}
+
+if (image) {
+  blogPostSchema["image"] = {
+    "@type": "ImageObject",
+    "url": new URL(image, Astro.site).toString()
+  };
+}
+
+if (wordCount) {
+  blogPostSchema["wordCount"] = wordCount;
+}
+
+if (keywords.length > 0) {
+  blogPostSchema["keywords"] = keywords.join(", ");
+}
+
+if (articleSection) {
+  blogPostSchema["articleSection"] = articleSection;
+}
+---
+
+<!-- Blog Post Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(blogPostSchema)} />

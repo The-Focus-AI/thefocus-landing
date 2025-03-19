@@ -1,0 +1,39 @@
+---
+// Props for the newsletter schema
+const { 
+  // Required properties
+  name = "FOCUS.AI Newsletter",
+  description = "Subscribe to receive updates on AI transformation insights and trends",
+  
+  // Optional properties with defaults
+  url = Astro.url.toString(),
+  organizationName = "FOCUS.AI",
+  frequency = "Weekly", // How often the newsletter is sent
+  category = "Technology" // Newsletter category
+} = Astro.props;
+
+// Create NewsletterSubscription schema
+const newsletterSchema = {
+  "@context": "https://schema.org",
+  "@type": "NewsletterSubscription",
+  "name": name,
+  "description": description,
+  "url": url,
+  "provider": {
+    "@type": "Organization",
+    "name": organizationName
+  }
+};
+
+// Add optional properties
+if (frequency) {
+  newsletterSchema["frequency"] = frequency;
+}
+
+if (category) {
+  newsletterSchema["category"] = category;
+}
+---
+
+<!-- Newsletter Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(newsletterSchema)} />

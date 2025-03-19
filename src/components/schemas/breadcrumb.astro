@@ -1,0 +1,58 @@
+---
+// Props for the breadcrumb list schema
+const { 
+  // Required properties
+  items = [], // Array of breadcrumb items
+  
+  // Optional properties
+  baseUrl = Astro.site?.toString() || "https://thefocus.ai"
+} = Astro.props;
+
+
+// If no items were passed, try to generate from URL path
+let breadcrumbItems = [...items];
+if (breadcrumbItems.length === 0 && Astro.url.pathname) {
+  // Add home as first item
+  breadcrumbItems.push({
+    name: "Home",
+    item: baseUrl
+  });
+  
+  // Parse the current URL path to generate breadcrumbs
+  const pathSegments = Astro.url.pathname.split('/')
+    .filter(segment => segment !== '');
+  
+  let currentPath = '';
+  pathSegments.forEach((segment, index) => {
+    currentPath += `/${segment}`;
+    const name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+    if( currentPath[0] === "/") {
+      currentPath = currentPath.slice(1);
+    }
+    let item = `${baseUrl}${currentPath}`;
+
+    breadcrumbItems.push({
+      name: name,
+      item: item
+    });
+  });
+}
+
+// Format items for schema
+const formattedItems = breadcrumbItems.map((item, index) => ({
+  "@type": "ListItem",
+  "position": index + 1,
+  "name": item.name,
+  "item": item.item
+}));
+
+// Construct the schema object
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": formattedItems
+};
+---
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

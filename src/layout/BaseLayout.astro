@@ -5,14 +5,17 @@ import '@fontsource/noto-serif/300.css';
 import '@fontsource/noto-serif/400.css';
 import '@fontsource/noto-serif/500.css';
 import '@fontsource/iosevka-etoile';
-import '../fonts/bembo.css';
+  import '../fonts/bembo.css';
 import EmailSignup from "../components/email-signup.astro";
-
+import OrganizationSchema from "../components/schemas/organization.astro";
+import WebsiteSchema from "../components/schemas/website.astro";
+import NewsletterSchema from "../components/schemas/newsletter.astro";
 import { SEO } from "astro-seo";
 // import { getImagePath } from "astro-opengraph-images";
 
 const pageTitle = Astro.props.pageTitle || "the focus.ai";
 const bigHeader = Astro.props.bigHeader || false;
+const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
 
 const description = Astro.props.description || "Come a visit us";
 const { url, site } = Astro;
@@ -70,6 +73,20 @@ if(Astro.url.pathname.includes("/posts/about")) {
 <script defer data-domain="thefocus.ai" src="https://plausible.io/js/script.js"></script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Always include Website schema on all pages -->
+    <WebsiteSchema />
+    
+    <!-- Conditionally include Organization schema -->
+    {showOrganizationSchema && (
+      <OrganizationSchema />
+      
+    )}
+
+    <NewsletterSchema url="https://newsletter.thefocus.ai/"/>
+    
+    <!-- Other head elements -->
+    <slot name="head" />
   </head>
   <body class="bg-gray-100">
     <header

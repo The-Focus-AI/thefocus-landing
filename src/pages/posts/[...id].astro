@@ -9,6 +9,9 @@ import PostCardCopy from "../../components/post-card-copy.astro";
 import EmailSignup from "../../components/email-signup.astro";
 import { ElevenLabsAudioNative } from "../../components/audio-player.tsx";
 import { formatDate } from "../../utils/date";
+import BlogPostSchema from "../../components/schemas/post.astro";
+import BreadcrumbList from "../../components/schemas/breadcrumb.astro";
+
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const blogEntries = await getPosts();
@@ -36,8 +39,27 @@ const sectionTag = getSectionTag(entry.data.tags);
 
 const nextPost = await getNextPost(entry);
 const prevPost = await getPrevPost(entry);
+
+// Get the image for the post
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif}');
+const img_key= `/src/content/assets/cards/${entry.data.image}`;  
+if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
+
+// @ts-ignore
+const image = await images[img_key]().src;
+
 ---
 <BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
+  <BlogPostSchema 
+  slot="head"
+  title={entry.data.title}
+  description={entry.data.description}
+  publishDate={entry.data.date}
+  author={entry.data.author}
+  image={ image} 
+  keywords={entry.data.tags}
+/>
+<BreadcrumbList slot="head" />
 
   <div class="prose lg:prose-xl max-w-prose article">
   

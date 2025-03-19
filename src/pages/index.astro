@@ -11,7 +11,7 @@ import { getRecentPosts } from "../utils/posts";
 
 const recentPosts = await getRecentPosts();
 ---
-<BaseLayout pageTitle="The Focus.ai" bigHeader={true} description="We help you focus">
+<BaseLayout pageTitle="The Focus.ai" bigHeader={true} description="We help you focus" showOrganizationSchema={true}>
     <section slot="hero">
 			<Carousel></Carousel>
 		<div class="flex justify-between p-4 text-gray-600">

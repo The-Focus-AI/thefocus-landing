@@ -1,0 +1,24 @@
+---
+// You can pass props to customize or use site config
+const { 
+  name = "FOCUS.AI",
+  description = "An AI digital transformation agency.",
+  logo = "https://thefocus.ai/logo.png",
+  foundingDate = "2024",
+  socialProfiles = []
+} = Astro.props;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": name,
+  "description": description,
+  "url": Astro.site,
+  "foundingDate": foundingDate,
+  "logo": new URL(logo, Astro.site).toString(),
+  "sameAs": socialProfiles
+};
+---
+
+<!-- Organization Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

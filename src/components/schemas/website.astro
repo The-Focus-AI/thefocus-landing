@@ -1,0 +1,35 @@
+---
+// Props with defaults - can be overridden when the component is used
+const { 
+  name = "FOCUS.AI",
+  url = Astro.site?.toString() || "https://thefocus.ai",
+  searchUrl = "/search",
+  alternateNames = ["The Focus AI", "Focus.ai"],
+  potentialAction = false // Whether to include search action
+} = Astro.props;
+
+// Construct the schema object
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": name,
+  "url": url,
+  "alternateName": alternateNames,
+  "potentialAction": {}
+};
+
+// Add search functionality if available and requested
+if (potentialAction && searchUrl) {
+  websiteSchema.potentialAction = {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${url}${searchUrl}?q={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
+  };
+}
+---
+
+<!-- Website Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

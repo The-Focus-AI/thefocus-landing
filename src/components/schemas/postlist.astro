@@ -1,0 +1,53 @@
+---
+import { getPostLink } from "../../utils/ids";
+import { getRecipeUrl } from "../../utils/recipes";
+
+// Props for the blog listing schema
+const { 
+  // Required properties
+  title = "Use Cases",
+  description = "AI transformation use cases and insights from FOCUS.AI",
+  posts = [], // Array of post objects
+  
+  // Optional properties with defaults
+  url = Astro.url.toString(),
+  organizationName = "FOCUS.AI",
+  organizationLogo = "/logo.png",
+  post = true
+} = Astro.props;
+
+const linkFunction = post ? getPostLink : getRecipeUrl;
+
+// Create a CollectionPage schema
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "headline": title,
+  "description": description,
+  "url": url,
+  "publisher": {
+    "@type": "Organization",
+    "name": organizationName,
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL(organizationLogo, Astro.site).toString()
+    }
+  }
+};
+
+// If posts are provided, include them as itemListElement
+if (posts.length > 0) {
+  collectionSchema["mainEntity"] = {
+    "@type": "ItemList",
+    "itemListElement": posts.map((post, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": new URL(linkFunction(post), Astro.site).toString(),
+      "name": post.data.title
+    }))
+  };
+}
+---
+
+<!-- Post List Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
