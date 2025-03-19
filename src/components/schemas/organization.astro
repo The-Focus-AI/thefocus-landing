@@ -16,7 +16,20 @@ const organizationSchema = {
   "url": Astro.site,
   "foundingDate": foundingDate,
   "logo": new URL(logo, Astro.site).toString(),
-  "sameAs": socialProfiles
+  "sameAs": socialProfiles,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "24 Kent Rd South",
+    "addressLocality": "Cornwall Bridge",
+    "addressRegion": "CT",
+    "postalCode": "06754",
+    "addressCountry": "US"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hey@thefocus.ai",
+    "contactType": "customer service"
+  }
 };
 ---
 
