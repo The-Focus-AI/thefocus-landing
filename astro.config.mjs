@@ -6,10 +6,12 @@ import remarkObsidianCallout from "remark-obsidian-callout";
 
 import react from "@astrojs/react";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://thefocus.ai",
-  integrations: [tailwind(), react()],
+  integrations: [tailwind(), react(), sitemap()],
   markdown: {
     rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
     remarkPlugins: [remarkObsidianCallout],
