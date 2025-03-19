@@ -11,7 +11,15 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://thefocus.ai",
-  integrations: [tailwind(), react(), sitemap()],
+  integrations: [
+    tailwind(),
+    react(),
+    sitemap({
+      changefreq: "daily",
+      lastmod: new Date(),
+      priority: 0.8,
+    }),
+  ],
   markdown: {
     rehypePlugins: [rehypeAstroRelativeMarkdownLinks],
     remarkPlugins: [remarkObsidianCallout],
