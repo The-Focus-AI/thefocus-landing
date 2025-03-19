@@ -1,7 +1,4 @@
 ---
-export const prerender = false;
-
-if (Astro.request.method === 'GET') {
-  return Astro.redirect('/recipes');
-}
 --- 
+
+<meta http-equiv="refresh" content="0;url=/recipes">
