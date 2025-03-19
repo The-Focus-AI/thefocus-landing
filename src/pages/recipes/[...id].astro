@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
 import { getTagSlug, getTagDisplay } from "../../utils/ids";
-import { getRecipies, getRelatedRecipies } from "../../utils/recipies";   
+import { getrecipes, getRelatedrecipes } from "../../utils/recipes";   
 import type { CollectionEntry } from 'astro:content'; 
 import { render } from "astro:content";
 import RecipeToc from "../../components/recipe_toc.astro"; 
@@ -9,9 +9,9 @@ import RecipeImage from "../../components/recipe_image.astro";
 import RecipeCard from "../../components/recipe_card.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const recipies = await getRecipies();
+  const recipes = await getrecipes();
 
-  const paths =  recipies.map(entry => ({
+  const paths =  recipes.map(entry => ({
     params: { id: entry.id }, props: { entry },
   }));
 
@@ -20,18 +20,18 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 type Props = {
-  entry: CollectionEntry<'recipies'>;
+  entry: CollectionEntry<'recipes'>;
 };
 const { Content } = await render(entry);
 
-let relatedRecipies = await getRelatedRecipies(entry);
+let relatedrecipes = await getRelatedrecipes(entry);
 
-console.log(relatedRecipies.length)
+console.log(relatedrecipes.length)
 ---
-<BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="recipies" >
+<BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="recipes" >
 
   <p class="text-sm text-gray-500 hover:text-gray-700 pb-8">
-    <a href="/recipies">← Back to all recipies </a>
+    <a href="/recipes">← Back to all recipes </a>
   </p>
 
   <RecipeCard recipe={entry} />
@@ -53,9 +53,9 @@ console.log(relatedRecipies.length)
   </div>
   </article>
   <div class="container mx-auto">
-    {relatedRecipies.length > 0 && <>
-      <h2 class="text-2xl font-bold text-gray-900  text-center border-t-gray-200 border-t-2 mt-0 py-16">Related Recipies</h2>
-      {relatedRecipies.map((recipe,index) => (
+    {relatedrecipes.length > 0 && <>
+      <h2 class="text-2xl font-bold text-gray-900  text-center border-t-gray-200 border-t-2 mt-0 py-16">Related recipes</h2>
+      {relatedrecipes.map((recipe,index) => (
 
  <h2 class="text-2xl italic font-light py-8">{recipe.data.section.join(', ')}</h2>
         <RecipeCard recipe={recipe} reverse={index % 2 === 1} />   

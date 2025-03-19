@@ -1,6 +1,6 @@
 ---
 import { getTagDisplay, getTagSlug } from "../utils/ids";
-import { getRecipeUrl } from "../utils/recipies";
+import { getRecipeUrl } from "../utils/recipes";
 import RecipeImage from "./recipe_image.astro";
 import { formatDate } from "../utils/date";
 const {recipe,reverse} = Astro.props;
@@ -14,7 +14,7 @@ const formattedPublishDate = formatDate(recipe.data.date);
       
       <ul class="flex flex-row flex-wrap gap-2 pb-4">
         {recipe.data.tech.map((tech) => (
-          <li><a class="pr-2 hover:underline font-mono uppercase text-sm" href={`/recipies/${tech}`}>{tech}</a></li>
+          <li><a class="pr-2 hover:underline font-mono uppercase text-sm" href={`/recipes/${tech}`}>{tech}</a></li>
         ))}
       </ul>
       

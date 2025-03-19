@@ -1,8 +1,8 @@
 import rss from "@astrojs/rss";
 import { getPosts } from "../utils/posts";
 import { getPostLink } from "../utils/ids";
-import { getRecipeUrl } from "../utils/recipies";
-import { getRecipies } from "../utils/recipies";
+import { getRecipeUrl } from "../utils/recipes";
+import { getrecipes } from "../utils/recipes";
 
 export async function GET(context) {
   const posts = (await getPosts()).map((post) => ({
@@ -13,7 +13,7 @@ export async function GET(context) {
     url: `https://thefocus.ai/${getPostLink(post)}`,
   }));
 
-  const recipies = (await getRecipies()).map((recipie) => ({
+  const recipes = (await getrecipes()).map((recipie) => ({
     title: `[Recipe] ${recipie.data.title || recipie.id}`,
     pubDate: recipie.data.date,
     description: recipie.data.description || recipie.data.title || recipie.slug,
@@ -21,7 +21,7 @@ export async function GET(context) {
     url: `https://thefocus.ai/${getRecipeUrl(recipie)}`,
   }));
 
-  const items = [...posts, ...recipies].sort(
+  const items = [...posts, ...recipes].sort(
     (a, b) => new Date(b.pubDate) - new Date(a.pubDate)
   );
 

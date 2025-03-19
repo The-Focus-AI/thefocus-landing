@@ -1,21 +1,21 @@
 ---
-import { getRecipeUrl, getSection } from "../utils/recipies";
+import { getRecipeUrl, getSection } from "../utils/recipes";
 import { formatDateShort } from "../utils/date";
-const {recipies,grouping="section"} = Astro.props;
+const {recipes,grouping="section"} = Astro.props;
 
-let uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.section ?? []))];  
+let uniqueSections = [...new Set(recipes.flatMap(recipe => recipe.data.section ?? []))];  
 let sectionMapPromises = uniqueSections.map(async (section) => ({
     section,
-    recipies: recipies.filter(recipe => recipe.data.section?.includes(section)),
+    recipes: recipes.filter(recipe => recipe.data.section?.includes(section)),
     info: await getSection(section)
 }));
 
 if (grouping === "journey") {
-    uniqueSections = [...new Set(recipies.flatMap(recipe => recipe.data.journey ?? []))];
+    uniqueSections = [...new Set(recipes.flatMap(recipe => recipe.data.journey ?? []))];
 
     sectionMapPromises = uniqueSections.map(async (section) => ({
         section,
-        recipies: recipies.filter(recipe => recipe.data.journey?.includes(section)),
+        recipes: recipes.filter(recipe => recipe.data.journey?.includes(section)),
         info: await getSection(section)
     }));
 }
@@ -33,7 +33,7 @@ const sectionMap = await Promise.all(sectionMapPromises);
 
             
             <ul class="md:ml-8 lg:ml-16 pt-4">
-                {section.recipies.map((recipe) => (
+                {section.recipes.map((recipe) => (
                     <li class="w-full flex flex-row pb-4">
                         <a href={getRecipeUrl(recipe)}>
                             <span class="hidden sm:inline text-sm text-gray-500">{formatDateShort(recipe.data.date)}</span>
@@ -42,7 +42,7 @@ const sectionMap = await Promise.all(sectionMapPromises);
                         <span class="dots flex-grow underline border-b-2 border-slate-500 border-dotted"></span>
                         <span>
                             {recipe.data.tech.map((tech) => (
-                                <a class="pr-2 bg-gray-100 hover:underline" href={`/recipies/${tech}`}>{tech}</a>
+                                <a class="pr-2 bg-gray-100 hover:underline" href={`/recipes/${tech}`}>{tech}</a>
                             ))}
                         </span>
                         

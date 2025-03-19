@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import { getrecipes, getSection } from "../../utils/recipes";
+import RecipeToc from "../../components/recipe_toc.astro";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const recipes = await getrecipes();
+
+  const journeys = [...new Set(recipes.flatMap(recipe => recipe.data.journey))];
+  console.log(journeys);
+
+  const paths =  journeys.map(journey => ({
+    params: { journey }, props: { journey },
+  }));
+
+  return paths;
+}
+
+
+const { journey } = Astro.params;
+type Props = {
+  journey: string;
+};  
+
+const recipes = await getrecipes();
+const filteredrecipes = recipes.filter(recipe => recipe.data.journey?.includes(journey));
+
+const journeySection = await getSection(journey);
+
+---
+<BaseLayout pageTitle={journey} description={journey} category="recipes">
+  <a href="/recipes" class="text-sm text-gray-500 hover:text-gray-700">← Back to all recipes </a>
+
+  <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic">{journey} recipes</h1>
+
+    {journeySection && <div class="prose  text-lg pb-4 justify" set:html={journeySection.rendered.html}></div>}
+
+
+    <RecipeToc recipes={filteredrecipes} grouping="journey" />
+</BaseLayout>

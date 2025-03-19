@@ -6,10 +6,10 @@ const posts = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/posts" }),
 });
 
-const recipies = defineCollection({
+const recipes = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
-    base: "./src/content/recipies",
+    base: "./src/content/recipes",
   }),
 });
 
@@ -44,7 +44,7 @@ const schnell_forest = fluxRunCollection("mflux_output_20250306_162014/run_6");
 const lil_robots = fluxRunCollection("mflux_output_20250306_184017/run_1");
 export const collections = {
   posts: posts,
-  recipies,
+  recipes,
   sections,
   prince_prompt: prince_prompt,
   prince_varyseeds: prince_varyseeds,

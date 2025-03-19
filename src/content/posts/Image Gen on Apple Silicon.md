@@ -1,6 +1,6 @@
 ---
 title: Image Gen on Apple Silicon
-date: 2025-03-21
+date: 2025-03-19
 tags:
   - usecase
 published: true

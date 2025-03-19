@@ -1,0 +1,8 @@
+---
+export const prerender = false;
+
+const { path } = Astro.params;
+if (Astro.request.method === 'GET') {
+  return Astro.redirect(`/recipes/${path}`);
+}
+--- 
