@@ -1,6 +1,6 @@
 ---
 title: Moral Vibe Check
-date: 2025-03-21
+date: 2025-03-24
 tags:
   - essay
 published: true
