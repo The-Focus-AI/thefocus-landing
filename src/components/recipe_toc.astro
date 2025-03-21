@@ -38,6 +38,9 @@ const sectionMap = await Promise.all(sectionMapPromises);
                         <a href={getRecipeUrl(recipe)}>
                             <span class="hidden sm:inline text-sm text-gray-500">{formatDateShort(recipe.data.date)}</span>
                             <span class="no-underline hover:underline font-semibold">{recipe.data.published ? "" : "[DRAFT] "}{recipe.data.title}</span>
+                            {section.recipes.indexOf(recipe) < 3 && recipe.data.published && (
+                                <span class="ml-2 text-orange-500 font-normal">new</span>
+                            )}
                         </a>
                         <span class="dots flex-grow underline border-b-2 border-slate-500 border-dotted"></span>
                         <span>
