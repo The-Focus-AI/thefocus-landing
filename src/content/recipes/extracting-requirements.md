@@ -10,7 +10,7 @@ related:
   - repomix
   - understanding-a-codebase
 published: true
-description: " Need to understand all the requirements hidden in a codebase? This technique shows how to use LLMs to compile comprehensive specifications from repository analysis for immediate development use."
+description: Need to understand all the requirements hidden in a codebase? This technique shows how to use LLMs to compile comprehensive specifications from repository analysis for immediate development use.
 image: extracting-requirements.png
 ---
 

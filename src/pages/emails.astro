@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { formatDate } from "../utils/date";
+
+// Only show in development
+if (!import.meta.env.DEV) {
+  return Astro.redirect('/');
+}
+
+const emails = [
+  {
+    id: "7e4b20cd-b0e6-480e-a3fe-f1172df88db6",
+    subject: "Welcome to the Focus",
+    publishDate: "2024-11-27T23:16:58.212608Z",
+    analytics: { recipients: 2, opens: 2, clicks: 2 }
+  },
+  {
+    id: "9a484bbe-46b0-45e2-b370-facadf9aac18",
+    subject: "DeepResearch wins",
+    publishDate: "2025-01-31T07:21:54.653059Z",
+    analytics: { recipients: 14, opens: 13, clicks: 3 }
+  },
+  {
+    id: "709f6272-c47b-48c1-b511-e728b8bb65ef",
+    subject: "How I think about models",
+    publishDate: "2025-02-11T14:21:36.433694Z",
+    analytics: { recipients: 17, opens: 14, clicks: 1 }
+  },
+  {
+    id: "895749f0-c1ad-41f6-b167-c70fdad6b4d8",
+    subject: "Clipboards are eating the world",
+    publishDate: "2025-03-07T20:05:06.386826Z",
+    analytics: { recipients: 15, opens: 14, clicks: 1 }
+  },
+  {
+    id: "2692c6ee-c088-4fd3-b43f-8646ce30ab1b",
+    subject: "Agentic YOLO with Warp, Cursor, and Claude",
+    publishDate: "2025-03-10T22:03:57.211399Z",
+    analytics: { recipients: 17, opens: 14, clicks: 3 }
+  },
+  {
+    id: "0b705ed8-f252-4463-9e62-d3f0bf71a34f",
+    subject: "Exposing services with ModelContextProtocol",
+    publishDate: "2025-03-17T13:05:00Z",
+    analytics: { recipients: 18, opens: 14, clicks: 2 }
+  },
+  {
+    id: "d840b1e7-e9f6-4ad9-abda-2ae2fb1dc8f4",
+    subject: "The Focus AI Recipies",
+    publishDate: "2025-03-19T13:15:18Z",
+    analytics: { recipients: 18, opens: 14, clicks: 1 }
+  },
+  {
+    id: "51022b9c-b07b-44eb-9739-aef9d38aae3f",
+    subject: "Never Lose Your AI Prompts Again: Building a Personal Prompt Library",
+    publishDate: "2025-03-21T13:15:00Z",
+    analytics: { recipients: 16, opens: 12, clicks: 1 }
+  },
+  {
+    id: "76401f19-8a8b-4f4b-8878-8175c75bd29e",
+    subject: "Supercharge Your AI Coding Assistant with repomix",
+    publishDate: "2025-03-28T09:15:00Z",
+    analytics: { recipients: 19, opens: 13, clicks: 2 }
+  },
+  {
+    id: "e693d1b0-6c8e-4d6d-99e5-46a7701edc3e",
+    subject: "Extending Claude's Capabilities with Buttondown MCP",
+    publishDate: "2025-03-22T13:56:50Z",
+    analytics: { recipients: 16, opens: 11, clicks: 0 }
+  },
+  {
+    id: "859191df-684f-4cb7-89f9-1ce28cf15076",
+    subject: "Superwhisper: Talk to Your Computer (It's Better Than You Think)",
+    publishDate: "2025-03-24T09:15:00Z",
+    analytics: { recipients: 20, opens: 15, clicks: 4 }
+  },
+  {
+    id: "c883ef96-059a-40fc-96e4-bd5a93cb348d",
+    subject: "Turn Your Car Rides into Productive AI Conversations",
+    publishDate: "2025-03-26T09:15:00Z",
+    analytics: { recipients: 17, opens: 14, clicks: 3 }
+  }
+].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+
+// Calculate total stats
+const totalStats = emails.reduce((acc, email) => ({
+  recipients: acc.recipients + email.analytics.recipients,
+  opens: acc.opens + email.analytics.opens,
+  clicks: acc.clicks + email.analytics.clicks
+}), { recipients: 0, opens: 0, clicks: 0 });
+
+// Calculate averages
+const avgStats = {
+  recipients: Math.round(totalStats.recipients / emails.length),
+  opens: Math.round(totalStats.opens / emails.length),
+  clicks: Math.round(totalStats.clicks / emails.length),
+  openRate: Math.round((totalStats.opens / totalStats.recipients) * 100),
+  clickRate: Math.round((totalStats.clicks / totalStats.recipients) * 100)
+};
+---
+
+<BaseLayout pageTitle="Email Analytics (Development Only)" description="Email newsletter analytics">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-8 text-center">Email Analytics</h1>
+    <p class="text-amber-600 text-center mb-8">⚠️ This page is only available in development mode</p>
+
+    <!-- Summary Stats -->
+    <div class="bg-gray-100 p-6 rounded-lg mb-8">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Overall Performance</h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-gray-900">{emails.length}</div>
+          <div class="text-sm text-gray-600">Total Emails</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-gray-900">{avgStats.recipients}</div>
+          <div class="text-sm text-gray-600">Avg Recipients</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-gray-900">{avgStats.openRate}%</div>
+          <div class="text-sm text-gray-600">Avg Open Rate</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-gray-900">{avgStats.clickRate}%</div>
+          <div class="text-sm text-gray-600">Avg Click Rate</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-gray-900">{totalStats.clicks}</div>
+          <div class="text-sm text-gray-600">Total Clicks</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email List -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="text-left py-3 px-4">Date</th>
+            <th class="text-left py-3 px-4">Subject</th>
+            <th class="text-center py-3 px-4">Recipients</th>
+            <th class="text-center py-3 px-4">Opens</th>
+            <th class="text-center py-3 px-4">Clicks</th>
+            <th class="text-center py-3 px-4">Open Rate</th>
+            <th class="text-center py-3 px-4">Click Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {emails.map((email) => {
+            const openRate = Math.round((email.analytics.opens / email.analytics.recipients) * 100);
+            const clickRate = Math.round((email.analytics.clicks / email.analytics.recipients) * 100);
+            
+            return (
+              <tr class="border-b hover:bg-gray-50">
+                <td class="py-2 px-4">{formatDate(email.publishDate)}</td>
+                <td class="py-2 px-4">{email.subject}</td>
+                <td class="py-2 px-4 text-center">{email.analytics.recipients}</td>
+                <td class="py-2 px-4 text-center">{email.analytics.opens}</td>
+                <td class="py-2 px-4 text-center">{email.analytics.clicks}</td>
+                <td class="py-2 px-4 text-center">{openRate}%</td>
+                <td class="py-2 px-4 text-center">{clickRate}%</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</BaseLayout> 

@@ -1,6 +1,6 @@
 ---
 title: Make it run tests
-date: 2025-03-14
+date: 2025-03-29
 section:
   - analysis
   - coding
@@ -9,6 +9,7 @@ tech:
 related:
   - product-ideation
 ---
+
 Ask it to first write tests, and then run them every time after to make it work
 
 

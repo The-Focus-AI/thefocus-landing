@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { getPostLink } from "../utils/ids";
+import { getRecipeUrl } from "../utils/recipes";
+import { formatDate } from "../utils/date";
+import type { CollectionEntry } from 'astro:content';
+
+// Redirect to home if not in development
+if (!import.meta.env.DEV) {
+  return Astro.redirect('/');
+}
+
+interface FilteredItem extends CollectionEntry<"posts" | "recipes"> {
+  reason: string;
+}
+
+// Function to check if an item is filtered out
+function isFiltered(item: CollectionEntry<"posts" | "recipes">) {
+  // Check if unpublished
+  if (!item.data.published) return { reason: "unpublished" };
+  
+  // Check if date is invalid
+  if (!item.data.date || isNaN(new Date(item.data.date).getTime())) 
+    return { reason: "invalid date" };
+  
+  // Check if date is in future
+  if (new Date(item.data.date) > new Date()) 
+    return { reason: "future date" };
+  
+  return null;
+}
+
+// Get all posts and recipes
+const allPosts = await getCollection("posts");
+const allRecipes = await getCollection("recipes");
+
+// Filter posts and recipes that would be excluded
+const filteredPosts: FilteredItem[] = allPosts
+  .filter((post): post is CollectionEntry<"posts"> => isFiltered(post) !== null)
+  .map(post => ({ ...post, reason: isFiltered(post)!.reason }));
+
+const filteredRecipes: FilteredItem[] = allRecipes
+  .filter((recipe): recipe is CollectionEntry<"recipes"> => isFiltered(recipe) !== null)
+  .map(recipe => ({ ...recipe, reason: isFiltered(recipe)!.reason }));
+---
+
+<BaseLayout pageTitle="Drafts (Development Only)" description="Draft posts and recipes">
+  <div class="container mx-auto px-4">
+    <h1 class="text-4xl font-bold mb-8 text-center">Drafts</h1>
+    <p class="text-amber-600 text-center mb-8">⚠️ This page is only available in development mode</p>
+    
+    {filteredPosts.length === 0 && filteredRecipes.length === 0 ? (
+      <p class="text-gray-600 text-center py-8">No drafts found.</p>
+    ) : (
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-semibold mb-4 text-center">Draft Posts</h2>
+          {filteredPosts.length === 0 ? (
+            <p class="text-gray-600 text-center py-4">No draft posts found.</p>
+          ) : (
+            <ul class="space-y-4">
+              {filteredPosts.map((post) => (
+                <li class="border-b pb-4">
+                  <a href={getPostLink(post)} class="text-xl font-medium hover:underline">
+                    {post.data.title || post.id}
+                  </a>
+                  <div class="text-sm text-gray-600 mt-1">
+                    <span class="bg-yellow-100 px-2 py-1 rounded">{post.reason}</span>
+                    {post.data.date && 
+                      <span class="ml-2">Date: {formatDate(post.data.date)}</span>
+                    }
+                  </div>
+                  {post.data.description && 
+                    <p class="text-gray-700 mt-2">{post.data.description}</p>
+                  }
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-semibold mb-4 text-center">Draft Recipes</h2>
+          {filteredRecipes.length === 0 ? (
+            <p class="text-gray-600 text-center py-4">No draft recipes found.</p>
+          ) : (
+            <ul class="space-y-4">
+              {filteredRecipes.map((recipe) => (
+                <li class="border-b pb-4">
+                  <a href={getRecipeUrl(recipe)} class="text-xl font-medium hover:underline">
+                    {recipe.data.title || recipe.id}
+                  </a>
+                  <div class="text-sm text-gray-600 mt-1">
+                    <span class="bg-yellow-100 px-2 py-1 rounded">{recipe.reason}</span>
+                    {recipe.data.date && 
+                      <span class="ml-2">Date: {formatDate(recipe.data.date)}</span>
+                    }
+                  </div>
+                  {recipe.data.description && 
+                    <p class="text-gray-700 mt-2">{recipe.data.description}</p>
+                  }
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>

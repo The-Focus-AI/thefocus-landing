@@ -1,6 +1,7 @@
 ---
-title: Notes for {{date:MMM Do YY}}
-date: {{date}}
+title: markdownify-mcp
+date:
+  "{ date }": 
 tags:
   - daily
 ---

@@ -12,6 +12,7 @@ description: Transform your Cursor IDE into a more intelligent assistant by impl
 related:
   - load-and-save-your-prompts
   - product-ideation
+  - always-tdd
 ---
 Lets add a memory system to cursor.
 
@@ -23,4 +24,4 @@ And I use [product-ideation](/recipes/product-ideation) to come up with the init
 
 Sort of a poor-mans claude code.
 
-<iframe frameborder="0" scrolling="no" style="width:100%; height:7190px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2FThe-Focus-AI%2Fprompt-library%2Fblob%2Fmain%2Fcursor%2Fenhanced-memory-bank-tdd.md&style=an-old-hope&type=markdown&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe>
+<iframe frameborder="0" scrolling="no" style="width:100%; height:2288px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2FThe-Focus-AI%2Fprompt-library%2Fblob%2Fmain%2Fcursor%2Fproject-builder.md&style=an-old-hope&type=markdown&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe>
