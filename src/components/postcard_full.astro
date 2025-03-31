@@ -11,9 +11,9 @@ const title = (post.data.published ? "" : "[DRAFT] ") + post.data.title || post.
 <div class="w-full h-full">
     <a href={postLink} class="relative">
         <PostImage post={post} class="w-full h-full object-cover"/>
-        <div class="absolute top-0 h-64 left-0 md:w-3/4 bg-black/50 text-white m-0 px-2 md:pl-12 items-center flex ">
+        <div class="absolute top-0 md:h-1/2 left-0 md:w-3/4 bg-black/50 text-white m-0 px-2 md:pl-12 items-center flex ">
             <div class="flex flex-col">
-                <div class="text-lg md:text-2xl font-mono uppercase pt-2 text-stone-500">{post.data.tags.indexOf( "usecase" ) != '-1' && 'usecase'}</div>
+                <div class="text-lg md:text-2xl font-mono uppercase pt-2 text-stone-400">{post.data.tags.indexOf( "usecase" ) != '-1' && 'usecase'}</div>
                 <div class="text-3xl md:text-6xl">{title}</div>
             <div class="sm:text-lg md:text-2xl font-mono uppercase pt-2">{post.data.description}</div>
         </div>

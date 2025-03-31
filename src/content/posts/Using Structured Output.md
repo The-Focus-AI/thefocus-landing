@@ -1,5 +1,5 @@
 ---
-title: Using Structured Output
+title: "Schema-Driven AI: Better User Experiences with Structured Output"
 date: 2025-03-30
 tags:
   - usecase
@@ -325,9 +325,8 @@ await generateText({
     });
 ```
 
-![](../assets/doctor_visit.png)
-*a simple childish drawing of an parent, young child, and a doctor in the doctors office routine checkup, set on a white background*
-
+![](../assets/doctor_office.png)
+*charcoal sketch of a medical fileing cabinet overflowing with paperwork with a nurse walking by*
 
 # Thoughts
 
@@ -354,3 +353,5 @@ What was that book they were talking about? Why is it that they liked it? What w
 
 Manual show notes are all well and good, but imagine what this level of deeper understanding will unleash for people interacting with the information that's streaming into them.
 
+![](../assets/info-flow.png)
+*A detailed infographic-like schematic illustration that dipicts the flow of information and cross pollenation between 21st-century academic guild system, of universities, private societies, industrial research labs all sharing information and learning all being counteracted by grassroots innovations and resilient communities. Palette: muted bauhaus design, vibrant floral colors as highlights.*
