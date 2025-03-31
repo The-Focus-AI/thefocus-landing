@@ -4,6 +4,7 @@ date: 2025-03-30
 tags:
   - usecase
   - process
+  - gemini
 image: structured_output.png
 description: Transforms chatting from simple text generators into powerful data processing engines, enabling extraction of organized information from PDFs, audio files, and more. Here are some practical techniques for building, including audio analysis, pdf data extraction and conversation state management, showcasing how constraint-driven outputs can power rich user experiences.
 published: true
