@@ -11,24 +11,46 @@ if (!import.meta.env.DEV) {
   return Astro.redirect('/');
 }
 
-interface FilteredItem extends CollectionEntry<"posts" | "recipes"> {
+type BaseItem = {
+  id: string;
+  collection: "posts" | "recipes";
+  data: {
+    title?: string;
+    date?: Date;
+    published?: boolean;
+    description?: string;
+  };
+  body: string;
+  slug: string;
+};
+
+type FilteredItem = CollectionEntry<"posts" | "recipes"> & {
   reason: string;
-}
+};
 
 // Function to check if an item is filtered out
 function isFiltered(item: CollectionEntry<"posts" | "recipes">) {
+  const reasons: string[] = [];
+  
   // Check if unpublished
-  if (!item.data.published) return { reason: "unpublished" };
+  if (!item.data.published) reasons.push("unpublished");
   
-  // Check if date is invalid
-  if (!item.data.date || isNaN(new Date(item.data.date).getTime())) 
-    return { reason: "invalid date" };
+  // Check if title is missing
+  if (!item.data.title) reasons.push("missing title");
   
-  // Check if date is in future
-  if (new Date(item.data.date) > new Date()) 
-    return { reason: "future date" };
+  // Check date issues
+  if (!item.data.date) {
+    reasons.push("missing date");
+  } else if (isNaN(new Date(item.data.date).getTime())) {
+    reasons.push("invalid date format");
+  } else if (new Date(item.data.date) > new Date()) {
+    reasons.push("scheduled for future");
+  }
   
-  return null;
+  // Check if description is missing
+  if (!item.data.description) reasons.push("missing description");
+  
+  return reasons.length > 0 ? { reason: reasons.join(", ") } : null;
 }
 
 // Get all posts and recipes
@@ -66,9 +88,13 @@ const filteredRecipes: FilteredItem[] = allRecipes
                     {post.data.title || post.id}
                   </a>
                   <div class="text-sm text-gray-600 mt-1">
-                    <span class="bg-yellow-100 px-2 py-1 rounded">{post.reason}</span>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                      {post.reason.split(", ").map((r) => (
+                        <span class="bg-yellow-100 px-2 py-1 rounded text-xs">{r}</span>
+                      ))}
+                    </div>
                     {post.data.date && 
-                      <span class="ml-2">Date: {formatDate(post.data.date)}</span>
+                      <span class="text-xs">Date: {formatDate(post.data.date)}</span>
                     }
                   </div>
                   {post.data.description && 
@@ -92,9 +118,13 @@ const filteredRecipes: FilteredItem[] = allRecipes
                     {recipe.data.title || recipe.id}
                   </a>
                   <div class="text-sm text-gray-600 mt-1">
-                    <span class="bg-yellow-100 px-2 py-1 rounded">{recipe.reason}</span>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                      {recipe.reason.split(", ").map((r) => (
+                        <span class="bg-yellow-100 px-2 py-1 rounded text-xs">{r}</span>
+                      ))}
+                    </div>
                     {recipe.data.date && 
-                      <span class="ml-2">Date: {formatDate(recipe.data.date)}</span>
+                      <span class="text-xs">Date: {formatDate(recipe.data.date)}</span>
                     }
                   </div>
                   {recipe.data.description && 
