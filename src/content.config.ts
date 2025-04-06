@@ -20,6 +20,13 @@ const sections = defineCollection({
   }),
 });
 
+const case_studies = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/case_studies",
+  }),
+});
+
 function fluxRunCollection(name: string) {
   return defineCollection({
     loader: file(`./src/content/fluximages/${name}/run_info.json`, {
@@ -53,4 +60,5 @@ export const collections = {
   schnell_dream: schnell_dream,
   schnell_forest: schnell_forest,
   lil_robots: lil_robots,
+  case_studies: case_studies,
 };

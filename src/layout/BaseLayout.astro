@@ -99,10 +99,10 @@ if(Astro.url.pathname.includes("/posts/about")) {
         <ul class="flex md:block gap-2 pb-4 text-lg md:text-base justify-between md:uppercase">
           <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : "" ]}>Home</a></li>
           <li>
-            <a href="/blog" class:list={[category === "blog" ? "underline hover:underline" : ""]}>Blog</a>
+            <a href="/learnings" class:list={[(category === "blog"  || category === "recipes") ? "underline hover:underline" : ""]}>Learnings</a>
           </li>
           <li>
-            <a href="/recipes" class:list={[category === "recipes" ? "underline hover:underline" : ""]}>Recipes</a>
+            <a href="/case-studies" class:list={[category === "case-studies" ? "underline hover:underline" : ""]}>Case Studies</a>
           </li>
           <li>
             <a href="mailto:hey@thefocus.ai" class="hover:underline">Contact</a>
@@ -129,7 +129,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
         
       <section class:list={[
           "container mx-auto py-4 px-2 sm:max-w-screen-lg",
-          bigHeader ? "sm:py-48" : ""
+          bigHeader ? "sm:py-12" : ""
         ]}>
         <slot/>
       </section>
@@ -184,7 +184,10 @@ if(Astro.url.pathname.includes("/posts/about")) {
         <a href="/" class="text-gray-600 hover:underline">HOME</a>
         <a href="/blog" class="text-gray-600 hover:underline">BLOG</a>
         <a href="/recipes" class="text-gray-600 hover:underline">RECIPES</a>
+        <a href="/case-studies" class="text-gray-600 hover:underline">CASE STUDIES</a>
+        <a href="/learnings" class="text-gray-600 hover:underline">LEARNINGS</a>
         <a href="https://www.linkedin.com/in/will-schenk-420266/" class="text-gray-600 hover:underline">LINKEDIN</a>
+        <a href="https://github.com/The-Focus-AI" class="text-gray-600 hover:underline">GITHUB</a>
         <a href="mailto:hey@thefocus.ai" class="text-gray-600 hover:underline"
           >HEY@THEFOCUS.AI</a
         >
