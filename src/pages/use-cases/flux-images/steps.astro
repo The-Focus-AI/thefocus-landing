@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../../layout/BaseLayout.astro';
-import FluximageDisplay from '../../../components/fluximage-display-grid.astro';
+import FluximageDisplay from '../../../components/flux/fluximage-display-grid.astro';
 import { getFluxImages } from '../../../utils/images';
-import FluxImageInfo from '../../../components/fluximage-info.astro';
-import FluxRunDisolve from '../../../components/flux-run-disolve.astro';
+import FluxImageInfo from '../../../components/flux/fluximage-info.astro';
+import FluxRunDisolve from '../../../components/flux/flux-run-disolve.astro';
 const dev_plane = await getFluxImages("dev_plane");
 const dev_dream = await getFluxImages("dev_dream");
 

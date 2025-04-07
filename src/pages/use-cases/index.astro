@@ -1,10 +1,7 @@
 ---
 import BaseLayout from "../../layout/BaseLayout.astro";
-import StudyCard from "../../components/studycard.astro";
-import fluxImage from '../../content/assets/cards/flux_wide.png'
 import { getPosts } from "../../utils/posts";
-import { getPostLink } from "../../utils/ids";
-import PostCard from "../../components/postcard.astro";
+import PostCard from "../../components/cards/post-card.astro";
 const allPosts = await getPosts();
 const useCases = allPosts.filter(post => post.data.tags?.includes('usecase'));
 ---
