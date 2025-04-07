@@ -1,15 +1,13 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import BreadcrumbList from "../components/schemas/breadcrumb.astro";
-import { getPosts } from "../utils/posts";
-import { getrecipes } from "../utils/recipes";
 import PostCard from "../components/postcard.astro";
 import RecipeCard from "../components/recipe_card.astro";
-const posts = await getPosts();
-const recipes = await getrecipes();
+import { getLearnings } from "../utils/learnings";
 
-const learnings = [...posts, ...recipes].sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const learnings = await getLearnings();
 
+const first_learning = learnings[0];
 
 ---
 <BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work" category="learnings">
@@ -17,12 +15,19 @@ const learnings = [...posts, ...recipes].sort((a, b) => new Date(b.data.date).ge
     <BreadcrumbList slot="head" />
 
     <div class="font-bemb">
-        <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic">Learnings</h1>
 
-        {learnings.map((learning) => (
+        {first_learning && (
+            <div>
+                {first_learning.collection === "posts" ? <PostCard post={first_learning} /> : <RecipeCard recipe={first_learning} />}
+            </div>
+        )}
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {learnings.slice(1).map((learning) => (
             <div>
                     {learning.collection === "posts" ? <PostCard post={learning} /> : <RecipeCard recipe={learning} />}
             </div>
         ))}
+        </div>
     </div>
 </BaseLayout>

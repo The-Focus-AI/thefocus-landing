@@ -4,39 +4,67 @@ import PostCard from "../components/postcard.astro";
 import Card from "../components/card.astro";
 import { Image } from "astro:assets";
 import Carousel from "../components/usecase-carousel.astro";
-// import Carousel from "../components/carousel.astro";	
+// import Carousel from "../components/carousel.astro";
 import focus_wide from "../images/focus_wide.jpeg";
-
-import { getRecentPosts } from "../utils/posts";
-
-const recentPosts = await getRecentPosts();
+import { getLearnings } from "../utils/learnings";
+import { getCaseStudies } from "../utils/case-studies";
+import RelatedCaseStudy from "../components/related_case_study.astro";
+import RecipeCard from "../components/recipe_card.astro";
+import HomepageTOC from "../components/homepage_toc.astro";
+const learnings = await getLearnings();
+const case_studies = await getCaseStudies();
 ---
-<BaseLayout pageTitle="The Focus.ai" bigHeader={true} description="We help you focus" showOrganizationSchema={true}>
-    <section slot="hero">
-		<Carousel></Carousel>
-	  </section>
 
-	<h2 class="md:text-right text-4xl sm:text-7xl font-bold">
-		We&#39;re an AI digital transformation agency, dedicated to saving you
-		time and money through cutting-edge AI technology, strategic planning,
-		and seamless implementation.
-		
-		<br />We help you focus<span class="text-orange-500">.</span>
-	</h2>
+<BaseLayout
+  pageTitle="The Focus.ai"
+  bigHeader={true}
+  description="We help you focus"
+  showOrganizationSchema={true}
+>
+  <section slot="hero">
+    <Carousel />
+  </section>
 
-	<div class="pt-24 sm:pt-48 grid grid-cols-1 md:grid-cols-2 gap-4">
-		{recentPosts.map((post) => (
-			<PostCard post={post} />
-		))}
+  <h2 class="md:text-right text-4xl sm:text-7xl font-bold">
+    We&#39;re an AI digital transformation agency, dedicated to saving you time
+    and money through cutting-edge AI technology, strategic planning, and
+    seamless implementation.
 
-<Card>
-    <div slot="header">
-        <h2 class="text-2xl font-bold"><a href="/blog">Read more...</a></h2>
+    <br />We help you focus<span class="text-orange-500">.</span>
+  </h2>
+
+  <div class="pt-24 sm:pt-48 flex gap-12">
+    <div class="flex-1">
+      <div class="flex items-center mb-8">
+        <h2 class="text-3xl font-bold">Learnings</h2>
+        <span class="text-orange-500 text-3xl ml-1">.</span>
+      </div>
+
+      <div class="space-y-12">
+        {
+          learnings
+            .slice(0, 3)
+            .map((learning) => <HomepageTOC learning={learning} />)
+        }
+      </div>
+
+	  <a href="/learnings" class="inline-block mt-8 border-b border-black pb-1 hover:border-orange-500 hover:text-orange-500 transition-colors">VIEW ALL LEARNINGS</a>
     </div>
-	<a href="/blog" slot="image"><Image class="object-fill pb-4" src={focus_wide} alt="My logo?" height="500" width="700"/></a>
-    
-    <p class="text-lg leading-relaxed"><a href={`/blog`}>Checkout the full blog</a></p>
-    <a slot="footer" href={`/blog`} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
-</Card>
-	</div>
+    <div class="flex-1">
+      <div class="flex items-center mb-8">
+        <h2 class="text-3xl font-bold">Case Studies</h2>
+        <span class="text-orange-500 text-3xl ml-1">.</span>
+      </div>
+
+      <div class="space-y-12">
+        {
+          case_studies
+            .slice(0, 3)
+            .map((case_study) => <RelatedCaseStudy case_study={case_study} />)
+        }
+      </div>
+
+	  <a href="/case-studies" class="inline-block mt-8 border-b border-black pb-1 hover:border-orange-500 hover:text-orange-500 transition-colors">VIEW ALL CASE STUDIES</a>
+    </div>
+  </div>
 </BaseLayout>

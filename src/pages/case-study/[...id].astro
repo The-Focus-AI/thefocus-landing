@@ -4,6 +4,8 @@ import BaseLayout from "../../layout/BaseLayout.astro";
 import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { marked } from "marked";
+import RelatedCaseStudy from "../../components/related_case_study.astro";
+
 export async function getStaticPaths() {
   const case_studies = await getCaseStudies();
 
@@ -104,20 +106,7 @@ const filtered_case_studies = related_case_studies.filter(
           >
             {
               filtered_case_studies.map((cs) => (
-                <div class="group">
-                  <p class="text-xs uppercase tracking-wider mb-1">
-                    {cs.data.industry}
-                  </p>
-                  <h4 class="text-lg font-bold mb-1 group-hover:text-orange-500 transition-colors">
-                    {cs.data.title}
-                  </h4>
-                  <a
-                    href={`/case-study/${cs.id}`}
-                    class="uppercase text-xs font-bold tracking-wider hover:text-orange-500 transition-colors"
-                  >
-                    VIEW CASE STUDY
-                  </a>
-                </div>
+                <RelatedCaseStudy case_study={cs} />
               ))
             }
           </div><div class="mt-12">

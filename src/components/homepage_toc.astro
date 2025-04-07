@@ -1,0 +1,27 @@
+---
+import { formatDate } from "../utils/date";
+const { learning } = Astro.props;
+
+const date = learning.data.date;
+const title = learning.data.title;
+const description = learning.data.description;
+const formattedPublishDate = formatDate(learning.data.date);
+---
+
+<div class="group">
+  <p class="text-xs uppercase tracking-wider mb-1">{formattedPublishDate}</p>
+  <h3
+    class="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors"
+  >
+    {title}
+  </h3>
+  <p class="text-sm text-gray-700 mb-3">
+    {description}
+  </p>
+  <a
+    href="/blog/evolution-of-conversational-ai"
+    class="uppercase text-xs font-bold tracking-wider hover:text-orange-500 transition-colors"
+  >
+    READ MORE
+  </a>
+</div>
