@@ -3,23 +3,23 @@ title: Electric Vehicle AI Console
 industry: Transportation
 client: Tezlab
 year: "2025"
-description: An educational platform's implementation of schema-driven AI to provide structured feedback on student work, improving engagement and learning outcomes.
-challenge: The client needed to analyze thousands of financial reports quickly to identify investment opportunities, but manual review was time-consuming and prone to human error.
-solution: We implemented a schema-driven AI solution that could extract structured data from various financial document formats, including PDFs, spreadsheets, and presentations.
-results: |-
-  - 78% reduction in document analysis time
-  - 92% accuracy in data extraction
-  - 35% increase in analyst productivity
-  - Identification of 28% more investment opportunities
+description: A customer facing mobile application wants to build out their web and interactive experience allowing users to get easier access to their driving and charging data.
+challenge: The client wanted to create a new interface to their existing data set that would let consumers ask deeper questions about their driving behavior and help optimize costs.
+solution: We implemented a full frontend chat interface that allowed users to browse their existing data set as well as to be able to have conversations with their data and return visually rich results with custom user experience elements.
+results: A 27% increase of rate of user aquisition and conversion to their paid offerings
+published: "true"
+image: tezlab_wide.png
 ---
 ### Approach & Implementation
 
-Our client, a leading global investment firm, was struggling with the sheer volume of financial reports they needed to analyze to make informed investment decisions. Their analysts were spending up to 60% of their time manually reviewing documents, extracting key metrics, and organizing data for analysis.
+[Tezlab](https://tezlabapp.com) is a iOS and Android application companion application that allows Tesla and Rivian drivers to track their driving and performance data in their car.  It measures battery health, helps you optimize your charging costs, helps you find navigate the ever growing charging infrastructure, and helps you leap into the electric vehicle lifestyle.
 
-We developed a custom schema-driven AI solution that could understand the structure of various financial documents and extract relevant information into a standardized format. The system was trained to recognize different document layouts, tables, charts, and financial terminology.
+While Tezlab uses extensive machine learning under the hood, we focused on helping build a new front-end to the existing backend infrastructure.  The main development team is continuing to build out new functionality and features on the existing application, and we were able to leverage the existing infrastructure to build a new front-end on the existing data in a number of weeks.
 
 The solution included:
 
-1. Document preprocessing to handle various formats and layouts 2. Schema-based extraction of key financial metrics, risk factors, and market projections 3. Structured output generation that integrated directly with their existing analysis tools 4. A verification interface that allowed analysts to review and correct AI-extracted data
+1. Analysis of the existing database and API architecture 
+2. User Experience design to help expose the functionality in a new user interface paradigm 
+3. A new functionality set based upon planning road trips
 
-The implementation transformed their workflow, allowing analysts to focus on high-value activities like investment strategy and decision-making rather than manual data extraction. The structured nature of the AI outputs ensured consistency across analyses and enabled more sophisticated trend identification.
+This new client application on top of their existing architecture helps add more value to their existing user base with limited impact on current operations and provides them with a baseline to continue to offer new and very accessible product value to people.

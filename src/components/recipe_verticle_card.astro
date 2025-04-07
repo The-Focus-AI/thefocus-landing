@@ -28,7 +28,7 @@ const formattedPublishDate = formatDate(recipe.data.date);
           </p>
       </div>
   </div>
-  {recipe.data.image && <a href={getRecipeUrl(recipe)} slot="image"><RecipeImage recipe={recipe} /></a>}
+  {recipe.data.image && <a href={getRecipeUrl(recipe)} slot="image"><RecipeImage recipe={recipe} wide_aspect={true}/></a>}
   <p class="text-lg font-bold text-gray-500 py-4 leading-snug"><a href={getRecipeUrl(recipe)}>{recipe.data.description}</a></p>
   <a slot="footer" href={getRecipeUrl(recipe)} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
 </Card>

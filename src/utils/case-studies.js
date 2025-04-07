@@ -3,10 +3,10 @@ import { getCollection } from "astro:content";
 export async function getCaseStudies() {
   let case_studies = await getCollection("case_studies");
 
-  if (import.meta.env.NODE_ENV !== "development") {
+  // if (import.meta.env.NODE_ENV !== "development") {
   console.log("Not in development, filtering out unpublished posts");
   case_studies = case_studies.filter((case_study) => case_study.data.published);
-  }
+  // }
 
   return case_studies;
 }

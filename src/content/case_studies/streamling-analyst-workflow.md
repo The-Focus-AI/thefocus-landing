@@ -3,9 +3,9 @@ title: Streamlining data analyst workflow
 industry: Media
 client: Consumer Startup
 year: "2025"
-description: We've got the apple silicon, lets download some models and make some pictures
-challenge: The client needed to analyze thousands of financial reports quickly to identify investment opportunities, but manual review was time-consuming and prone to human error.
-solution: We implemented a schema-driven AI solution that could extract structured data from various financial document formats, including PDFs, spreadsheets, and presentations.
+description: We liberated the data from Tableau to allow to make the data in existing data lakes much more accessible to analysts and other business stakeholders.
+challenge: The existing workflow to do analysis on data that enterprises already own is incredibly cumbersome and slow. And we wanted to make it possible for ad hoc and accurate queries with proprietary information could be answered quickly.
+solution: We implemented a series of agents that deeply understand different concepts embedded inside of the data and allowed analysts to answer multiple queries.
 results: |-
   - 78% reduction in document analysis time
   - 92% accuracy in data extraction

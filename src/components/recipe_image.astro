@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
-const { recipe, size } = Astro.props;
+const { recipe, wide_aspect=false } = Astro.props;
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/recipes/*.{jpeg,jpg,png,gif}');
 
 const img_key= `/src/content/assets/recipes/${recipe.data.image}`;
@@ -10,5 +10,10 @@ if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 const image = images[img_key];
 
 ---
-
-<Image class="object-cover flex-1 min-h-[100%]" src={image()} alt={recipe.data.title} />  
+{wide_aspect ? (
+  <div class="relative w-full" style="padding-top: 56.25%;">
+    <Image class="object-cover absolute top-0 left-0 w-full h-full" src={image()} alt={recipe.data.title} />
+  </div>
+) : (
+  <Image class="object-cover flex-1 min-h-[100%]" src={image()} alt={recipe.data.title} />
+)}
