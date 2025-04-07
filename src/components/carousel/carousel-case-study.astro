@@ -1,0 +1,32 @@
+---
+import { getCaseStudies } from "../../utils/case-studies"; 
+import CaseStudyFull from "../cards/case-study-full.astro";
+
+const case_studies = await getCaseStudies();
+---
+
+<!-- <div class="carousel"> -->
+ <div class="inline-flex overflow-x-scroll snap-x snap-mandatory carousel">
+    {case_studies.map(case_study => (
+        <div class="box-content flex flex-none max-w-full snap-center carousel-item">
+            <CaseStudyFull case_study={case_study} />
+        </div>
+    ))}
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.carousel');
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    function cycleItems() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        // @ts-ignore
+        const newScrollPosition = items[currentIndex].offsetLeft;
+        carousel.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+    }
+
+    setInterval(cycleItems, 7000); // Change every 3 seconds
+});
+</script>

@@ -4,8 +4,8 @@ import { getSlug, getTagSlug, getSectionTag, getTagDisplay } from "../../utils/i
 import { getPosts, getNextPost, getPrevPost } from "../../utils/posts";
 import type { CollectionEntry } from 'astro:content';
 import { render } from "astro:content";
-import PostImage from "../../components/postimage.astro";
-import PostCardCopy from "../../components/post-card-copy.astro";
+import PostImage from "../../components/post-image.astro";
+import RelatedPost from "../../components/related/related-post.astro";
 import EmailSignup from "../../components/email-signup.astro";
 import { ElevenLabsAudioNative } from "../../components/audio-player.tsx";
 import { formatDate } from "../../utils/date";
@@ -99,8 +99,8 @@ const image = await images[img_key]().src;
   <h3 class="text-xl font-bold mb-6">Related Posts</h3>
   
   
-    {nextPost && <PostCardCopy post={nextPost} />}
-    {prevPost && <PostCardCopy post={prevPost} />}
+    {nextPost && <RelatedPost post={nextPost} />}
+    {prevPost && <RelatedPost post={prevPost} />}
 </div>
 </ArticleLayout>
 

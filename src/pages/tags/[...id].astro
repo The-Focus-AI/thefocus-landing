@@ -1,7 +1,7 @@
 ---
 import { getPosts } from "../../utils/posts";
 import BaseLayout from "../../layout/BaseLayout.astro";
-import PostCard from "../../components/postcard.astro";
+import PostCard from "../../components/cards/post-card.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const allPosts = await getPosts();

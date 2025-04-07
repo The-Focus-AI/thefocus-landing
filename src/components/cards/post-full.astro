@@ -1,6 +1,6 @@
 ---
-import PostImage from "./postimage.astro";
-import { getPostLink } from "../utils/ids";  
+import PostImage from "../post-image.astro";
+import { getPostLink } from "../../utils/ids";     
 const {post} = Astro.props;
 const postLink = getPostLink(post);
 

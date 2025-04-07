@@ -1,0 +1,50 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+const { case_study,image=false } = Astro.props;
+
+
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/case-studies/*.{jpeg,jpg,png,gif}');
+// console.log("images",images)
+const img_key= `/src/content/assets/case-studies/${case_study.data.image}`;
+// if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
+
+if (!images[img_key]) {
+  console.log("Image not found: ", img_key);
+}
+
+const image_file = images[img_key];
+
+---
+
+<div class="group">
+  
+{image && image_file && (
+  <div class="relative w-full pb-[56.25%] mb-4">
+    <Image 
+      src={image_file()} 
+      alt={case_study.data.title} 
+      width="500" 
+      class="absolute top-0 left-0 w-full h-full object-cover"
+    />
+  </div>
+)}
+
+  <p class="text-xs uppercase tracking-wider mb-1">
+    {case_study.data.industry}
+  </p>
+  <h4
+    class="text-lg font-bold mb-1 group-hover:text-orange-500 transition-colors"
+  >
+    {case_study.data.title}
+  </h4>
+  <p class="text-sm text-gray-700 mb-3">
+    {case_study.data.description}
+  </p>
+  <a
+    href={`/case-study/${case_study.id}`}
+    class="uppercase text-xs font-bold tracking-wider hover:text-orange-500 transition-colors"
+  >
+    VIEW CASE STUDY
+  </a>
+</div>

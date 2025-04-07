@@ -7,9 +7,6 @@ description: Let me tell you a bit about what we do here, a personal journey fro
 published: "true"
 image: focus_wide.jpeg
 ---
-![this is an ai generated photo](../assets/focus.jpeg)
-
-
 I'm back! Let me tell you about The Focus AI.
 
 In 2010 I cofounded a software development company that did a lot of new product development for mobile.  The smart phone revolution was in full swing, and the world was getting the internet in their pocket.  It was very exciting times, we tried out all sorts of things, some worked and some didn't, but it represented a moment when there was a shift to how we interacted with knowledge, information, and each other.

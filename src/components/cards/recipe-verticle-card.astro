@@ -1,8 +1,7 @@
 ---
-import { getTagDisplay, getTagSlug } from "../utils/ids";
-import { getRecipeUrl } from "../utils/recipes";
-import RecipeImage from "./recipe_image.astro";
-import { formatDate } from "../utils/date";
+import { getRecipeUrl } from "../../utils/recipes";
+import RecipeImage from "../recipe-image.astro";
+import { formatDate } from "../../utils/date";
 import Card from "./card.astro";
 const {recipe,reverse} = Astro.props;
 

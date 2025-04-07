@@ -1,8 +1,8 @@
 ---
-import PostImage from "./postimage.astro";
+import PostImage from "../post-image.astro"; 
 import Card from "./card.astro";
-import { getPostLink, getTagSlug, getTagDisplay } from "../utils/ids";
-import { formatDate } from "../utils/date";
+import { getPostLink, getTagSlug, getTagDisplay } from "../../utils/ids";
+import { formatDate } from "../../utils/date";
 const {post} = Astro.props;
 
 const postLink =    getPostLink(post);

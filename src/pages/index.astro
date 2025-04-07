@@ -1,10 +1,9 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import Carousel from "../components/usecase-carousel.astro";
-// import Carousel from "../components/carousel.astro";
+import CarouselUsecase from "../components/carousel/carousel-use-case.astro";
 import { getLearnings } from "../utils/learnings";
 import { getCaseStudies } from "../utils/case-studies";
-import RelatedCaseStudy from "../components/related_case_study.astro";
+import RelatedCaseStudy from "../components/related/related-case-study.astro";  
 import HomepageTOC from "../components/homepage_toc.astro";
 const learnings = await getLearnings();
 const case_studies = await getCaseStudies();
@@ -17,7 +16,7 @@ const case_studies = await getCaseStudies();
   showOrganizationSchema={true}
 >
   <section slot="hero">
-    <Carousel />
+    <CarouselUsecase />
   </section>
 
   <h2 class="md:text-right text-4xl sm:text-7xl font-bold">
@@ -55,7 +54,7 @@ const case_studies = await getCaseStudies();
         {
           case_studies
             .slice(0, 3)
-            .map((case_study) => <RelatedCaseStudy case_study={case_study} />)
+            .map((case_study) => <RelatedCaseStudy case_study={case_study} image={true}/>)
         }
       </div>
 

@@ -3,10 +3,10 @@ import ArticleLayout from "../../layout/ArticleLayout.astro";
 import { getrecipes, getRelatedrecipes } from "../../utils/recipes";
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
-import RecipeCard from "../../components/recipe_card.astro";
+import RecipeCard from "../../components/cards/recipe-card.astro";
 import BlogPostSchema from "../../components/schemas/post.astro";
 import BreadcrumbList from "../../components/schemas/breadcrumb.astro";
-import RelatedRecipeCard from "../../components/related_recipe_card.astro";
+import RelatedRecipe from "../../components/related/related-recipe.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const recipes = await getrecipes();
@@ -60,7 +60,7 @@ const image = await images[img_key]().src;
     <a href="/recipes">← Back to all recipes </a>
   </p>
 
-  <RecipeCard recipe={entry} />
+    <RecipeCard recipe={entry} />
 </div>
 
   <div class="prose lg:prose-xl max-w-prose article">
@@ -72,7 +72,7 @@ const image = await images[img_key]().src;
       <div>
         <h3 class="text-xl font-bold mb-6">Related Recipes</h3>
         {relatedrecipes.map((recipe, index) => (
-          <RelatedRecipeCard recipe={recipe} />
+          <RelatedRecipe recipe={recipe} />
         ))}
       </div>
     )}

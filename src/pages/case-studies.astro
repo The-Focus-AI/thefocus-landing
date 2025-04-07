@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import { getrecipes, getRecipeUrl, getSection } from "../utils/recipes";
-import RecipeToc from "../components/recipe_toc.astro";
-import PostListSchema from "../components/schemas/postlist.astro";
 import BreadcrumbList from "../components/schemas/breadcrumb.astro";
-import { getCaseStudies,getCaseStudyUrl } from "../utils/case-studies";
+import { getCaseStudies } from "../utils/case-studies";
+import RelatedCaseStudy from "../components/related/related-case-study.astro";
+import CarouselCaseStudy from "../components/carousel/carousel-case-study.astro";
+
 const case_studies = await getCaseStudies();
 
 
@@ -13,20 +13,18 @@ const case_studies = await getCaseStudies();
 
     <BreadcrumbList slot="head" />
 
-    <div class="font-bemb">
-        <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-bold">case studies</h1>
+    <div class="space-y-12">
+        <h2 class="text-4xl sm:text-7xl font-bold">
+           We love solving real problems.
+        </h2>
+
+        <CarouselCaseStudy />
+        
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
         {case_studies.map((case_study) => (
-            <div >
-                <p class="text-xs uppercase tracking-wider mb-1">{case_study.data.industry}</p>
-                <h2 class="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors">
-                    {case_study.data.title}
-                </h2>
-                <p class="text-sm text-gray-700 mb-3">{case_study.data.description}</p>
-                <a href={getCaseStudyUrl( case_study)} class="uppercase text-xs font-bold tracking-wider hover:text-orange-500 transition-colors">VIEW CASE STUDY</a>
-            </div>
+            <RelatedCaseStudy case_study={case_study} image={true}/>
         ))}
         </div>
     </div>
