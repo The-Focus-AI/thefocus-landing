@@ -91,12 +91,12 @@ if(Astro.url.pathname.includes("/posts/about")) {
   <body class="bg-gray-100">
     <header
       class:list={[
-        "py-4 md:py-8 px-2 md:flex justify-between items-top md:container mx-auto sm:max-w-screen-lg ",
-        bigHeader ? "px-8" : ""
+        "p-2 md:px-4 md:py-8 md:flex justify-between items-top md:container mx-auto sm:max-w-screen-lg ",
+        bigHeader ? "sm:px-8" : ""
       ]}
     >
       <nav class="space-x-4 text-gray-700">
-        <ul class="flex md:block gap-2 pb-4 text-lg md:text-base justify-between md:uppercase">
+        <ul class="flex md:block gap-2 pb-4 sm:text-lg md:text-base justify-between md:uppercase">
           <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : "" ]}>Home</a></li>
           <li>
             <a href="/learnings" class:list={[(category === "blog"  || category === "recipes") ? "underline hover:underline" : ""]}>Learnings</a>

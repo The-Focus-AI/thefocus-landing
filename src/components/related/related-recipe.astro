@@ -32,7 +32,9 @@ const formattedPublishDate = formatDate(recipe.data.date);
 
 
 <p class="text-sm text-gray-700 mb-3">
-  {recipe.data.description}
+  <a href={getRecipeUrl(recipe)}>
+    {recipe.data.description}
+  </a>
 </p>
 
 <a
