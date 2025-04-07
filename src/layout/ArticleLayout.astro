@@ -1,0 +1,30 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const pageTitle = Astro.props.pageTitle || "the focus.ai";
+const bigHeader = Astro.props.bigHeader || false;
+const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
+
+const description = Astro.props.description || "Come a visit us";
+const { url, site } = Astro;
+
+let category = Astro.props.category || "home";
+if (Astro.url.pathname.includes("/posts/about")) {
+  category = "about";
+}
+---
+
+<BaseLayout pageTitle={pageTitle} description={description} category={category}>
+  <slot name="hero" />
+  <div class="min-h-screen flex flex-col">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+      <div class="lg:col-span-2">
+        <slot />
+      </div>
+      <div>
+        <div class="sticky top-8">
+          <slot name="sidebar" />
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

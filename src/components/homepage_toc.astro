@@ -1,11 +1,14 @@
 ---
 import { formatDate } from "../utils/date";
+import { getPostLink } from "../utils/ids";
+import { getRecipeUrl } from "../utils/recipes";
 const { learning } = Astro.props;
 
 const date = learning.data.date;
 const title = learning.data.title;
 const description = learning.data.description;
 const formattedPublishDate = formatDate(learning.data.date);
+const url = learning.collection === "posts" ? getPostLink(learning) : getRecipeUrl(learning);
 ---
 
 <div class="group">
@@ -13,13 +16,13 @@ const formattedPublishDate = formatDate(learning.data.date);
   <h3
     class="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors"
   >
-    {title}
+    <a href={url}>{title}</a>
   </h3>
   <p class="text-sm text-gray-700 mb-3">
-    {description}
+    <a href={url}>{description}</a>
   </p>
   <a
-    href="/blog/evolution-of-conversational-ai"
+    href={url}
     class="uppercase text-xs font-bold tracking-wider hover:text-orange-500 transition-colors"
   >
     READ MORE

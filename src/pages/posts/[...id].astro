@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "../../layout/BaseLayout.astro";
+import ArticleLayout from "../../layout/ArticleLayout.astro";
 import { getSlug, getTagSlug, getSectionTag, getTagDisplay } from "../../utils/ids";
 import { getPosts, getNextPost, getPrevPost } from "../../utils/posts";
 import type { CollectionEntry } from 'astro:content';
@@ -49,7 +49,7 @@ if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 const image = await images[img_key]().src;
 
 ---
-<BaseLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
+<ArticleLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
   <BlogPostSchema 
   slot="head"
   title={entry.data.title}
@@ -60,47 +60,49 @@ const image = await images[img_key]().src;
   keywords={entry.data.tags}
 />
 <BreadcrumbList slot="head" />
-
-  <div class="prose lg:prose-xl max-w-prose article">
-  
-    <div class="not-prose">
+<div slot="hero">
+  <div class="not-prose">
     {sectionTag && <p class=" pb-4 text-gray-500 max-w-prose hover:underline">
       <a href={`/${sectionTag}`}>{getTagDisplay(sectionTag)}</a>
     </p>}
     <h1 class="text-4xl font-bold text-gray-900 pb-2">{entry.data.title}</h1>
 
     <h2 class="text-lg font-bold text-gray-500 py-4 leading-snug">{entry.data.description}</h2>
-
-    <div class="pt-4">
-      <ElevenLabsAudioNative 
-      client:only="react" 
-      publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3" 
-      projectId={entry.data.audio}/>
-    </div>
-
-    <div class="flex flex-col sm:flex-row flex-wrap gap-2 border-t-gray-200 border-t-2 pt-4 mt-8 justify-between">
-      <ul class="flex flex-row flex-wrap gap-2">
-        {entry.data.tags?.map((tag) => <li><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
-      </ul>
-      <div class="flex flex-row flex-wrap gap-2 italic">
-        <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
-        <span >{formattedPublishDate}</span> 
-      </div>
-    </div>
   </div>
-  {entry.data.image && <PostImage post={entry} />}
+</div>
+<div class="pt-4">
+  <ElevenLabsAudioNative 
+  client:only="react" 
+  publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3" 
+  projectId={entry.data.audio}/>
+</div>
+
+<div class="flex flex-col sm:flex-row flex-wrap gap-2 justify-between">
+  <ul class="flex flex-row flex-wrap gap-2">
+    {entry.data.tags?.map((tag) => <li><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
+  </ul>
+  <div class="flex flex-row flex-wrap gap-2 italic">
+    <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a>
+    <span >{formattedPublishDate}</span> 
+  </div>
+</div>
+{entry.data.image && <PostImage post={entry} />}
+
+  <div class="prose lg:prose-xl max-w-prose article">
   <div class="content">
       <Content />
       <p class="text-right py-2 "> <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
   </div>
 </div>
-<EmailSignup />
-<div>
-  <h2 class="text-2xl font-bold text-gray-900  text-center border-t-gray-200 border-t-2 mt-0 pt-16">Explore more</h2>
+
+<div slot="sidebar">
+  <h3 class="text-xl font-bold mb-6">Related Posts</h3>
+  
+  
     {nextPost && <PostCardCopy post={nextPost} />}
     {prevPost && <PostCardCopy post={prevPost} />}
 </div>
-</BaseLayout>
+</ArticleLayout>
 
 <style is:global>
 

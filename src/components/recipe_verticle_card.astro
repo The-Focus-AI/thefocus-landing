@@ -1,0 +1,34 @@
+---
+import { getTagDisplay, getTagSlug } from "../utils/ids";
+import { getRecipeUrl } from "../utils/recipes";
+import RecipeImage from "./recipe_image.astro";
+import { formatDate } from "../utils/date";
+import Card from "./card.astro";
+const {recipe,reverse} = Astro.props;
+
+const formattedPublishDate = formatDate(recipe.data.date);
+--- 
+
+
+<Card>
+  <div slot="header" class="group">
+      <h2 class="text-2xl font-bold pb-2 text-ellipsis truncate">
+          <div class="hidden group-hover:block absolute bg-white text-black">{recipe.data.published ? "" : "[DRAFT] "}{recipe.data.title || recipe.id}</div>
+          <a href={getRecipeUrl(recipe)}>{recipe.data.published ? "" : "[DRAFT] "}{recipe.data.title || recipe.id}</a>
+      </h2>
+      <div class="flex place-items-baseline justify-between">
+          <ul class="flex flex-row flex-wrap gap-2">
+            {recipe.data.tech.map((tech) => (
+              <li><a class="pr-2 hover:underline font-mono uppercase text-sm" href={`/recipes/${tech}`}>{tech}</a></li>
+            ))}
+              </ul>
+          <p class="lg:flex flex-col md:flex-row flex-wrap gap-2"> 
+              <a class="text-sm hover:underline italic" href="mailto:wschenk@thefocus.ai">Will Schenk</a> 
+              <span class="text-sm ">{formattedPublishDate}</span> 
+          </p>
+      </div>
+  </div>
+  {recipe.data.image && <a href={getRecipeUrl(recipe)} slot="image"><RecipeImage recipe={recipe} /></a>}
+  <p class="text-lg font-bold text-gray-500 py-4 leading-snug"><a href={getRecipeUrl(recipe)}>{recipe.data.description}</a></p>
+  <a slot="footer" href={getRecipeUrl(recipe)} class="flex items-center gap-1">Read more <span class="text-lg">→</span></a>
+</Card>

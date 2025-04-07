@@ -3,6 +3,7 @@ import BaseLayout from "../layout/BaseLayout.astro";
 import BreadcrumbList from "../components/schemas/breadcrumb.astro";
 import PostCard from "../components/postcard.astro";
 import RecipeCard from "../components/recipe_card.astro";
+import RecipeVerticalCard from "../components/recipe_verticle_card.astro";
 import { getLearnings } from "../utils/learnings";
 
 const learnings = await getLearnings();
@@ -17,15 +18,15 @@ const first_learning = learnings[0];
     <div class="font-bemb">
 
         {first_learning && (
-            <div>
+            <div class="mb-4">
                 {first_learning.collection === "posts" ? <PostCard post={first_learning} /> : <RecipeCard recipe={first_learning} />}
             </div>
         )}
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {learnings.slice(1).map((learning) => (
-            <div>
-                    {learning.collection === "posts" ? <PostCard post={learning} /> : <RecipeCard recipe={learning} />}
+            <div class="h-full">
+                    {learning.collection === "posts" ? <PostCard post={learning} /> : <RecipeVerticalCard recipe={learning} />}
             </div>
         ))}
         </div>
