@@ -29,6 +29,9 @@ importers:
       '@fontsource/dm-sans':
         specifier: ^5.2.5
         version: 5.2.5
+      '@fontsource/fraunces':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@fontsource/iosevka-etoile':
         specifier: ^5.2.5
         version: 5.2.5
@@ -98,7 +101,7 @@ importers:
         version: 1.0.0
       daisyui:
         specifier: ^4.12.24
-        version: 4.12.24(postcss@8.4.31)
+        version: 4.12.24(postcss@8.5.3)
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
@@ -463,6 +466,9 @@ packages:
 
   '@fontsource/dm-sans@5.2.5':
     resolution: {integrity: sha512-P+RiK+bvyvBqfUZjFqhntCFvKlrH1rm42ME7wpYXwFpmpr9jWD/FP6vnp0iCbP3cYeqDyML1KcwIspiHy1rHmA==}
+
+  '@fontsource/fraunces@5.2.6':
+    resolution: {integrity: sha512-jif5QR10IW7bbIN1CLh/dOj2KXf7KKzeyDNbodeKGPbONIUYARzZ4CemD0aooZqbvx8OFnL4/1Jt0M2j2CYbhw==}
 
   '@fontsource/iosevka-etoile@5.2.5':
     resolution: {integrity: sha512-DaqaNB1G6qhGh+D+WxZUrln0UJmrM7qXgJgdeXm3U1ekcIph2aWPAcmI1edDj9FLkuGl2ZU9TYywIvzVF6lz0Q==}
@@ -3300,6 +3306,8 @@ snapshots:
 
   '@fontsource/dm-sans@5.2.5': {}
 
+  '@fontsource/fraunces@5.2.6': {}
+
   '@fontsource/iosevka-etoile@5.2.5': {}
 
   '@fontsource/noto-serif@5.2.7': {}
@@ -4191,12 +4199,12 @@ snapshots:
 
   d3-timer@3.0.1: {}
 
-  daisyui@4.12.24(postcss@8.4.31):
+  daisyui@4.12.24(postcss@8.5.3):
     dependencies:
       css-selector-tokenizer: 0.8.0
       culori: 3.3.0
       picocolors: 1.1.1
-      postcss-js: 4.0.1(postcss@8.4.31)
+      postcss-js: 4.0.1(postcss@8.5.3)
     transitivePeerDependencies:
       - postcss
 

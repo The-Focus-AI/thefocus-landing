@@ -21,7 +21,7 @@ const case_studies = await getCaseStudies();
         <CarouselCaseStudy />
         
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 font-fraunces">
 
         {case_studies.map((case_study) => (
             <RelatedCaseStudy case_study={case_study} image={true}/>
