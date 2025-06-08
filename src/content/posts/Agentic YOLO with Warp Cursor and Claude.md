@@ -3,6 +3,7 @@ title: Agentic YOLO with Warp, Cursor, and Claude
 date: 2025-03-07
 tags:
   - essay
+  - agents
 published: true
 description: What happens when you let AI help you think through and build your ideas, with minimal supervision and maximum trust? What does it mean to be a programmer?  Are we closer or further from thought-stuff?
 image: yolo_wide.png
