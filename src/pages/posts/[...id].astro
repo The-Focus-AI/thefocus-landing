@@ -65,9 +65,8 @@ const image = await images[img_key]().src;
     {sectionTag && <p class=" pb-4 text-gray-500 max-w-prose hover:underline">
       <a href={`/${sectionTag}`}>{getTagDisplay(sectionTag)}</a>
     </p>}
-    <h1 class="text-4xl font-bold text-gray-900 pb-2">{entry.data.title}</h1>
-
-    <h2 class="text-lg font-bold text-gray-500 py-4 leading-snug">{entry.data.description}</h2>
+    <h1 class="text-4xl font-bold font-fraunces text-gray-900 pb-2">{entry.data.title}</h1>
+    <h2 class="text-lg font-bold font-fraunces text-gray-500 py-4 leading-snug">{entry.data.description}</h2>
   </div>
 </div>
 <div class="pt-4">
@@ -77,7 +76,7 @@ const image = await images[img_key]().src;
   projectId={entry.data.audio}/>
 </div>
 
-<div class="flex flex-col sm:flex-row flex-wrap gap-2 justify-between font-fraunces">
+<div class="flex flex-col sm:flex-row flex-wrap gap-2 justify-between">
   <ul class="flex flex-row flex-wrap gap-2">
     {entry.data.tags?.map((tag) => <li><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
   </ul>
@@ -88,15 +87,15 @@ const image = await images[img_key]().src;
 </div>
 {entry.data.image && <PostImage post={entry} />}
 
-  <div class="prose lg:prose-xl max-w-prose article font-fraunces">
+  <div class="prose lg:prose-xl max-w-prose article">
   <div class="content">
       <Content />
       <p class="text-right py-2 "> <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
   </div>
 </div>
 
-<div slot="sidebar" class="font-fraunces">
-  <h3 class="text-xl font-bold mb-6">Related Posts</h3>
+<div slot="sidebar">
+  <h3 class="text-xl font-bold font-fraunces mb-6">Related Posts</h3>
   
   
     {nextPost && <RelatedPost post={nextPost} />}

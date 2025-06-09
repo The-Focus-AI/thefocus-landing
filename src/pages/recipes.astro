@@ -12,8 +12,8 @@ const recipesSection = await getSection("recipes");
     <PostListSchema slot="head"  posts={allrecipes} post={false}/>  
     <BreadcrumbList slot="head" />
 
-    <div class="font-bemb">
-        <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic">recipes</h1>
+    <div>
+        <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic font-bemb">recipes</h1>
         {recipesSection && <div class="prose  text-lg pb-4 justify" set:html={recipesSection.rendered.html}></div>}
 
         <RecipeToc recipes={allrecipes} />

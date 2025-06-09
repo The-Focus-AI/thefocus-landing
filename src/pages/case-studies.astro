@@ -14,14 +14,14 @@ const case_studies = await getCaseStudies();
     <BreadcrumbList slot="head" />
 
     <div class="space-y-12">
-        <h2 class="text-4xl sm:text-7xl font-bold">
+        <h2 class="text-4xl sm:text-7xl font-bold font-fraunces">
            We love solving real problems.
         </h2>
 
         <CarouselCaseStudy />
         
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 font-fraunces">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
         {case_studies.map((case_study) => (
             <RelatedCaseStudy case_study={case_study} image={true}/>
