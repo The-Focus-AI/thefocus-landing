@@ -9,8 +9,14 @@ tags:
 brew install dagger/tap/dagger
 ```
 
-Lauch it with
+We can create a `.env` file that gives us access to models.
+
+
+Launch it with
 
 ```shell
 dagger
 ```
+
+
+# Tracing
