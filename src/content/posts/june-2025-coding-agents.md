@@ -6,29 +6,29 @@ tags:
   - usecase
   - essay
   - compare
-description: In this comprehensive evaluation of 14 coding agents, Cursor Background Agent, v0, and Warp emerge as the clear winners with perfect scores for empowering non-expert developers. Discover which tools best match your needs whether you're a casual user, product manager, professional developer, or hardcore tinkerer in this hands-on comparison testing code quality, testing setup, and overall developer experience.
 author: Will Schenk, TheFocusAI
 titlepage: true
 titlepage-logo: ../assets/thefocusai.png
-colorlinks: "ff0d8a"
+colorlinks: ff0d8a
 linkcolor: magenta
 urlcolor: magenta
 listings-no-page-break: true
 code-block-font-size: \scriptsize
 logo-width: 100mm
 titlepage-rule-color: "360049"
-subtitle: "An comprehensive evaluation of 14 coding agents, Cursor Background Agent, v0, and Warp emerge as the clear winners with perfect scores for empowering non-expert developers. Discover which tools best match your needs whether you're a casual user, product manager, professional developer, or hardcore tinkerer in this hands-on comparison testing code quality, testing setup, and overall developer experience."
 toc: true
 toc-own-page: true
 header-right: June 2025
 table-use-row-colors: true
+description: Curious how AI coding agents stack up in 2025? This report breaks down the strengths, weaknesses, and surprises from 15 leading tools, with clear winners for pros, tinkerers, and casual users alike.
+subtitle: Curious how AI coding agents stack up in 2025? This report breaks down the strengths, weaknesses, and surprises from 15 leading tools, with clear winners for pros, tinkerers, and casual users alike.
 ---
 
 # Introduction
 
 Making code without AI?  How very late 2024.  The time of writing code directly without assistance is behind us.  Today there are software agents everywhere to assist us in cranking out code and completely reshaping the engineering and software development workflow.  There's so much hype and so much happening, lets explore what's out there and how they work right now.
 
-We're going to do a hands on evaluation of 14 different agents that cross a variety of categories, including IDE Agents, CLI Agents, Full-Stack Agents and Hybrid, analyzing their usability, output quality, and professional viability. Using a standardized prompt and uniform testing pipeline, we measure both objective metrics (code structure, test coverage, deployability) and subjective impressions (joy, frustration, wow factor). The goal is to separate the signal from the noise and offer guidance for engineering leaders on what these agents can do today—and what’s still science fiction.
+We're going to do a hands on evaluation of 15 different agents that cross a variety of categories, including IDE Agents, CLI Agents, Full-Stack Agents and Hybrid, analyzing their usability, output quality, and professional viability. Using a standardized prompt and uniform testing pipeline, we measure both objective metrics (code structure, test coverage, deployability) and subjective impressions (joy, frustration, wow factor). The goal is to separate the signal from the noise and offer guidance for engineering leaders on what these agents can do today—and what’s still science fiction.
 
 # Methodology
 
@@ -71,7 +71,7 @@ Additionally, all of these tools are meant to be tuned to your style -- from mim
 
 # Landscape overview
 
-We evaluated 14 tools:
+We evaluated 15 tools:
 
 * **IDE Agents**: [Copilot](https://github.com/features/copilot), [Cursor](https://cursor.com), [RooCode](https://roocode.com/)
 * **CLI Agents**: [aider](https://aider.chat/), [Claude Code](https://www.anthropic.com/claude-code), [Codex CLI](https://openai.com/codex/), [Goose](https://block.github.io/goose/)
@@ -112,23 +112,24 @@ Afterwards: Cursor + Warp, and looking to explore Replit.
 Of the tools, Cursor Background Agent, v0 and Warp scored the highest with 24 points, followed by Copilot Agent, and Jules based upon the quality of output.
 ### Developer Experience
 
-| Repo          | Ease         | Spark Joy                                                      | One Shot | Two Shot | SDLC Integration |
-| ------------- | ------------ | -------------------------------------------------------------- | -------- | -------- | ---------------- |
-| aider         | Expert       | my god, seriously?!                                            | No       | No       | No               |
-| Claude Code   | CLI          | Blinkenlights!                                                 | Yes*     |          | No               |
-| Codex         | CLI          | Eh, sure                                                       | Yes      |          | No               |
-| Codex Agent   | Easy         | That's cool                                                    | Yes      |          | Yes              |
-| Copilot       | Professional | Stupid-face                                                    | No       | No       | No               |
-| Copilot Agent | Professional | If this actually works it'll be game changing                  |          |          | Yes              |
-| Cursor        | Professional | Feel the power!                                                | Yes      |          | IDE              |
-| Cursor Agent  | Professional | Huh, that's really fascinating, didn't expect that             |          |          | Yes              |
-| Goose         | CLI          | Lots of configuration                                          | Yes      |          | No               |
-| Jules         | Easy         | Slick                                                          | Yes      |          | Yes              |
-| Replit        | Easy         | Wow                                                            | Yes      |          | Self             |
-| RooCode       | Expert       | The world is a better place because this is here               | Yes      |          | No               |
-| v0            | Easy         | Obviously the way to go                                        | No       | Yes      | Self             |
-| Warp          | Professional | I'm scripting everything and never writing a bash script again | Yes      |          | No               |
-| Windsurf      | Professional | I feel physically ill                                          | Yes      |          | IDE              |
+| Repo          | Ease   | Spark Joy                                                      | One Shot | Two Shot | SDLC Integration |
+| ------------- | ------ | -------------------------------------------------------------- | -------- | -------- | ---------------- |
+| aider         | Expert | my god, seriously?!                                            | No       | No       | No               |
+| Claude Code   | CLI    | Blinkenlights!                                                 | Yes*     |          | No               |
+| Codex         | CLI    | Eh, sure                                                       | Yes      |          | No               |
+| Codex Agent   | Easy   | That's cool                                                    | Yes      |          | Yes              |
+| Copilot       | Pros   | Stupid-face                                                    | No       | No       | No               |
+| Copilot Agent | Pros   | If this actually works it'll be game changing                  |          |          | Yes              |
+| Cursor        | Pros   | Feel the power!                                                | Yes      |          | IDE              |
+| Cursor Agent  | Pros   | Huh, that's really fascinating, didn't expect that             |          |          | Yes              |
+| Goose         | CLI    | Lots of configuration                                          | Yes      |          | No               |
+| Jules         | Easy   | Slick                                                          | Yes      |          | Yes              |
+| Replit        | Easy   | Wow                                                            | Yes      |          | Self             |
+| RooCode       | Pros   | The world is a better place because this is here               | Yes      |          | No               |
+| v0            | Easy   | Obviously the way to go                                        | No       | Yes      | Self             |
+| Warp          | Pros   | I'm scripting everything and never writing a bash script again | Yes      |          | No               |
+| Windsurf      | Pros   | I feel physically ill                                          | Yes      |          | IDE              |
+: Overview of the developer experience
 
 ### Quality of output
 
@@ -152,6 +153,7 @@ Of the tools, Cursor Background Agent, v0 and Warp scored the highest with 24 po
 | v0            | 5    | 4       | 5       | 5   | 5      | strongly recommend           | 24    |
 | Warp          | 4    | 5       | 5       | 5   | 5      | strongly recommend           | 24    |
 | Windsurf      | 3    | 2       | 3       | 2   | 3      | conditionally recommend      | 13    |
+: AI assessment of the output, done with Claude-3.7-Sonnet
 
 # Recommendations
 
@@ -183,6 +185,10 @@ Basically the idea is to initially use an model to expand our your idea and help
 
 **For casual users who want to solve a real problem**: If lock-in isn't a concern, **use Replit**.  It's the easiest one to get started, has a great visual planner, and the integrated hosting and backend services can't be beat.
 
+### Recommended Workflow
+
+
+
 ## Product Designers: *v0*
 
 **For casual users who want to communicate to a engineering team:** If you want to fiddle with the UI and have a couple ways of iterating over it, **v0 is the best**.  While one-click deployment is only marginally more friction than Replit, you do have more control over what goes where.  It is strongly biased in favor of NextJS and Vercel (as it is a product of Vercel) and its ability to import an existing project is severely limited, which is major hurdle for existing teams, its the best one to start playing with.
@@ -210,6 +216,7 @@ https://github.com/The-Focus-AI/idears-aider
 Aider is OSS and the first of these code writing tools that I've used.
 
 Requirements:
+
 * python (I'm using UV)
 * your own API keys, in this case from Google
 * git
@@ -417,6 +424,7 @@ https://github.com/The-Focus-AI/idears-codex-agent
 ### DX
 
 Requirements
+
 * OpenAI Pro
 * GitHub
 
@@ -467,6 +475,7 @@ https://github.com/The-Focus-AI/idears-copilot
 ### DX
 
 Requirements
+
 * Github Pro account
 
 ```shell
@@ -530,8 +539,10 @@ Not great.  Part of me wants to make this goddamn thing goddamn work just so I d
 https://github.com/The-Focus-AI/idears-copilot-plus
 
 ### DX
+
 Requirements
-* github pro plus ?
+
+* Github Pro (access level is in flux)
 
 I'm not 100% sure how to get access to the fancy version of copilot.  I did a workshop at the [AI Engineer World's Fair](https://www.ai.engineer/) and they gave us access for 30 days, so I'm using that.
 
@@ -585,6 +596,7 @@ https://github.com/The-Focus-AI/idears-cursor
 ### DX
 
 Requirements
+
 * Mac
 * git
 * node
@@ -634,7 +646,9 @@ I would recommend hiring this developer as they've demonstrated solid fundamenta
 https://github.com/The-Focus-AI/idears-cursor-agent
 
 ### DX
+
 Requirements
+
 * Mac
 
 As of this writing, [Cursor Background Agents](https://docs.cursor.com/background-agent) are beta.
@@ -684,6 +698,7 @@ https://github.com/The-Focus-AI/idears-goose
 ### DX
 
 Requirements
+
 * api keys
 
 Install
@@ -747,6 +762,7 @@ https://github.com/The-Focus-AI/idears-jules
 ### DX
 
 Requirements
+
 * Seems to be free from google at the moment?
 * GitHub
 
@@ -805,6 +821,7 @@ Though it makes more sense to keep this in replit than pull it out.
 ### DX
 
 Requirements
+
 * Replit Account
 
 Super easy to get started.  When you enter in the prompt it gives you a plan and a preview of what it's going to build.  This is super nice.  However:
@@ -856,6 +873,7 @@ https://github.com/The-Focus-AI/idears-roocode
 ### DX
 
 Requirements
+
 * VSCode esque thing (I run it in cursor)
 * API keys (I'm using Google)
 * git
@@ -906,6 +924,7 @@ https://github.com/The-Focus-AI/idears-v0
 ### DX
 
 Requirements
+
 * vercel account
 
 Enter in the prompt and let it rip.  Then click the little github icon to make a repository.
@@ -948,7 +967,9 @@ I would strongly recommend hiring this developer as they demonstrate skills well
 https://github.com/The-Focus-AI/idears-warp
 
 ### DX
+
 Requirements
+
 * Warp
 
 Warp is a command line tool, something more than a terminal emulator and more like a graphical shell.  It's got history, notifications for long running tasks.  Its great for quick scripts, because if you start entered in sentences it puts it through an LLM.  So I just started it up and copied in the prompt and off it went building.
@@ -994,6 +1015,7 @@ https://github.com/The-Focus-AI/idears-windsurf
 ### DX
 
 Requirements
+
 * Windsurf account
 
 Important thing to note here is that I despise Windsurf.  The feeling is deep, intuitive, and based on literally nothing I can point to.  I saw a talk that they dig at the AI Engineer World Fair and whoever spoke was an excellent speaker, it was a good talk, and all I was doing when it happened was picking it apart in my mind because I think the whole thing sucks.  Again, this is based on literally nothing, but just to call it out.
@@ -1004,11 +1026,13 @@ To install Windsurf, first step is to get over yourself, and download it
 
 Create an account.  Use Cascade and copy in your prompt. It asks you for a folder to create the account.  I entered in the prompt, granted some permissions and we were off.
 
-### Vibes
+### Sparks Joy: *I feel physically ill.* 
 
-**Sparks Joy**: I feel physically ill. I expected to hate it, I didn't really as much as I expected to, but I'm perversely happy that the code assessment for its output is not good.
+I expected to hate it, I didn't really as much as I expected to, but I'm perversely happy that the code assessment for its output is not good.
 
-**Difficulty**: Like cursor.
+### Difficulty: *its an IDE*
+
+Like Cursor
 
 ### Code Quality & Structure: *3/5 Clean but lacks robustness*
 
