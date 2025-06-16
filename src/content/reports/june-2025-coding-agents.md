@@ -10,8 +10,8 @@ author: Will Schenk, TheFocusAI
 titlepage: true
 titlepage-logo: ../assets/thefocusai.png
 colorlinks: ff0d8a
-linkcolor: magenta
-urlcolor: magenta
+linkcolor: blue
+urlcolor: blue
 listings-no-page-break: true
 code-block-font-size: \scriptsize
 logo-width: 100mm
@@ -22,6 +22,9 @@ header-right: June 2025
 table-use-row-colors: true
 description: Curious how AI coding agents stack up in 2025? This report breaks down the strengths, weaknesses, and surprises from 15 leading tools, with clear winners for pros, tinkerers, and casual users alike.
 subtitle: Curious how AI coding agents stack up in 2025? This report breaks down the strengths, weaknesses, and surprises from 15 leading tools, with clear winners for pros, tinkerers, and casual users alike.
+mainfont: Iowan Old Style
+sansfont: Helvetica Neue Bold
+monofont: Menlo
 ---
 
 # Introduction
@@ -184,9 +187,6 @@ Basically the idea is to initially use an model to expand our your idea and help
 ## Business Value: *Replit*
 
 **For casual users who want to solve a real problem**: If lock-in isn't a concern, **use Replit**.  It's the easiest one to get started, has a great visual planner, and the integrated hosting and backend services can't be beat.
-
-### Recommended Workflow
-
 
 
 ## Product Designers: *v0*

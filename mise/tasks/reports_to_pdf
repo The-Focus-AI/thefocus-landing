@@ -1,0 +1,18 @@
+#!/bin/bash
+#MISE description="Convert all Markdown reports to PDFs using Pandoc and eisvogel template, only if the Markdown file is newer than the PDF."
+
+cd src/content/reports || exit 1
+
+mkdir -p ../../../public/reports
+
+for mdfile in *.md; do
+  filename=$(basename "$mdfile" .md)
+  outfile="../../../public/reports/${filename}.pdf"
+  # Only convert if the markdown is newer than the PDF or the PDF does not exist
+  if [ ! -f "$outfile" ] || [ "$mdfile" -nt "$outfile" ]; then
+    echo "Converting $mdfile to $outfile"
+    pandoc "$mdfile" --template eisvogel -o "$outfile" --pdf-engine=xelatex
+  else
+    echo "$outfile is up to date. Skipping."
+  fi
+done 
