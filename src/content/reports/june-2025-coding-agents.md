@@ -502,7 +502,7 @@ I needed to keep a watch on this and occasionally kill a hung task and prompt it
 
 ### Sparks Joy: *extreme frustration*
 
-I'm looking for professional terms for "stupid-face" or "poopy-head".  COME ON!  It would be so cool if this actually worked, just go to a repo, press "," and be off and running so WHY IS IT SO DAMN FRUSTRATION.  
+I'm looking for professional terms for "stupid-face" or "poopy-head".  COME ON!  It would be so cool if this actually worked, just go to a repo, press "," and be off and running so WHY IS IT SO FRUSTRATING.  
 
 ### Difficulty: *Fiddly but ok*
 
@@ -534,7 +534,7 @@ I would conditionally recommend hiring this developer for a junior position, as 
 
 ![](../assets/idears-copilot-agent-1.png)
 
-Not great.  Part of me wants to make this goddamn thing goddamn work just so I don't have a stupid-face empty screenshot there because its so dumb etc which gives you a glimpse into how using this tool will make you feel especially considering the potential
+Not great.  There's an impulse where I want to jam somethng through this dumb-ass thing just so I don't have a stupid-face empty screenshot there because its so dumb etc which gives you a glimpse into how using this tool will make you feel especially considering the potential.  
 
 ## Copilot Coding Agent
 
@@ -784,7 +784,7 @@ All you need to do is approve the plan.
 
 ### Sparks joy: *Slick!*
 
-This is slick, love it!  It's a google product, which means it's goddamn brilliant under the hood with a unpolished product on top of it.
+This is slick, love it!  It's Google, which means it's brilliant under the hood with a unpolished product slapped on top of it.
 
 ### Difficulty: *Pretty easy*
 
