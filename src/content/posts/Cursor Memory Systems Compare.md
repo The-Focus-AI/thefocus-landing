@@ -1,6 +1,7 @@
 ---
-title: Notes for {{date:MMM Do YY}}
-date: {{date}}
+title: Cursor Memory Systems Compare
+date:
+  "{ date }": 
 tags:
   - daily
 ---
