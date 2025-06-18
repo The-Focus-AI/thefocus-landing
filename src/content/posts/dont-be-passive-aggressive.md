@@ -1,11 +1,12 @@
 ---
 title: Don't be passive aggressive with your agents
-date: 2025-06-17
+date: 2025-06-24
 image: capture_the_flag_wide.png
 tags:
   - usecase
   - essay
-  - compare
+description: Treat your coding agents as adaptable collaborators—communicate clearly, value efficiency over endurance, match tools to your workflow, skip unnecessary formality, rethink technical debt, and document your development rules for best results.
+published: true
 ---
 
 Agents are things you assign tasks to.
@@ -44,6 +45,7 @@ There will come a time where you still start writing in capital letters to your 
 
 ![](../assets/bicycle_and_person.png)
 *a person on a bicycle going by a person walking with a large backpack, Frederic forest, fine lines, designed with one or two lines , simplified, draft, scrap book, essentialistische only*
+
 ## 3. Match the implicit Software Development Lifecycle
 
 Are you writing a one off script?  Are you running an experiment?  Are you growing a product from an MVP?  Are you battle hardening a production system in a way that would make an SRE proud?
