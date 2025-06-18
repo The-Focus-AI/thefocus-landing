@@ -330,7 +330,7 @@ Token usage by model:
 
 It works! It think!  That context compaction output is an education in itself!
 
-### Difficulty 3/5: *Professional*
+### Difficulty: *Professional*
 
 You have to install a node package, but fairly straightforward after that.
 
@@ -965,6 +965,8 @@ The developer demonstrates strong professionalism in all aspects of the project.
 ### Conclusion: *Strongly recommend*
 
 I would strongly recommend hiring this developer as they demonstrate skills well beyond junior level. Their work shows mastery of full-stack development with production-ready code, comprehensive testing, and professional deployment strategies that would bring immediate value to any development team.
+
+![](../assets/idears-v0.png)
 
 ## Warp
 
