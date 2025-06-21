@@ -6,7 +6,7 @@ tags:
   - usecase
   - essay
   - compare
-author: Will Schenk, TheFocusAI
+author: Will Schenk, TheFocusAI, Specially for Turing Post
 titlepage: true
 titlepage-logo: ../assets/thefocusai.png
 colorlinks: ff0d8a
