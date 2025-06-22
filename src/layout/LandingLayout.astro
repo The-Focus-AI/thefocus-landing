@@ -1,0 +1,108 @@
+---
+import '@fontsource-variable/dm-sans';
+// import '@fontsource-variable/noto-serif';
+import '@fontsource/noto-serif/300.css';
+import '@fontsource/noto-serif/400.css';
+import '@fontsource/noto-serif/500.css';
+import '@fontsource/iosevka-etoile';
+//import '../fonts/bembo.css';
+import '@fontsource/fraunces';
+import EmailSignup from "../components/email-signup.astro";
+import OrganizationSchema from "../components/schemas/organization.astro";
+import WebsiteSchema from "../components/schemas/website.astro";
+import NewsletterSchema from "../components/schemas/newsletter.astro";
+import { SEO } from "astro-seo";
+// import { getImagePath } from "astro-opengraph-images";
+
+const pageTitle = Astro.props.pageTitle || "the focus.ai";
+const bigHeader = Astro.props.bigHeader || false;
+const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
+const { bodyClass = "bg-gray-100" } = Astro.props;
+
+const description = Astro.props.description || "Come a visit us";
+const { url, site } = Astro;
+const rawOpenGraphImage = Astro.props.openGraphImage;
+const openGraphImageUrl = (typeof rawOpenGraphImage === 'object' && rawOpenGraphImage !== null) 
+  ? `${site}${rawOpenGraphImage.src}` 
+  : `${site}${rawOpenGraphImage || '/og.png'}`;
+// getImagePath({ url, site });
+
+let category = Astro.props.category || "home";
+if(Astro.url.pathname.includes("/posts/about")) {
+  category = "about";
+}
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="antialiased subpixel-antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <SEO
+      title={pageTitle}
+      description={description}
+      openGraph={{
+        basic: {
+          title: pageTitle,
+          type: "website",
+          image: openGraphImageUrl
+        },
+        optional: {
+          description: description,
+        }
+      }}
+      twitter={{
+        creator: "@wschenk"
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: openGraphImageUrl,
+          },
+          { name: "twitter:title", content: pageTitle },
+          { name: "twitter:description", content: description },
+        ],
+      }}
+    />
+    <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="The Focus AI"
+    href={new URL("rss.xml", Astro.site)}
+/>
+<script defer data-domain="thefocus.ai" src="https://plausible.io/js/script.file-downloads.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Always include Website schema on all pages -->
+    <WebsiteSchema />
+    
+    <!-- Conditionally include Organization schema -->
+    {showOrganizationSchema && (
+      <OrganizationSchema />
+      
+    )}
+
+    <NewsletterSchema url="https://newsletter.thefocus.ai/"/>
+    
+    <!-- Other head elements -->
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <main class="w-full">
+        
+      <section class:list={[
+          "container mx-auto py-4 px-2 sm:max-w-screen-xl",
+          bigHeader ? "sm:py-12" : ""
+        ]}>
+        <slot/>
+      </section>
+
+    </main>
+  </body>
+</html> 
