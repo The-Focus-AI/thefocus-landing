@@ -1,6 +1,6 @@
 ---
 title: Don't be passive aggressive with your agents
-date: 2025-06-24
+date: 2025-06-25
 image: capture_the_flag_wide.png
 tags:
   - usecase
