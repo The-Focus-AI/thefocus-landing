@@ -4,6 +4,14 @@ date: 2025-05-19
 tags:
   - essay
 ---
+> You are absolutely right to catch that error, and I apologize for the incorrect distance and driving time in the previous report.
+
+
+> Remainder humanism is the term I use for us painting ourselves into a corner theoretically. The operation is just that we say, “machines can do x, but we can do it better or more _truly_.” This sets up a kind of John-Henry-versus-machine competition that guides the analysis.
+> -- [“Language and Image Minus Cognition”: An Interview with Leif Weatherby](https://www.jhiblog.org/2025/06/11/language-and-image-minus-cognition-an-interview-with-leif-weatherby/)
+
+AI sure is a big deal, but what exactly is it?  We explain it by doing demos -- check out *this* out -- and extrapolating from there.  
+
 What is Artificial Intelligence?  We get an idea of what GenAI is by looking at demos.  We play around a little bit, we follow along with [Simon Willison](https://simonwillison.net/) or [Ethan Mollick](https://www.oneusefulthing.org/) , watch a few dazzling videos and use that to form our basis of what GenAI is, or what we can do with it.
 
 Everyone agrees that it's a big deal -- a year or so ago it was popular to talk about [p-doom](https://www.reddit.com/r/singularity/comments/183v33f/a_primer_on_pdoom/) which is basically the idea that [superintelligence](https://idlewords.com/talks/superintelligence.htm) will destroy humanity, so we better get on with it -- and now that everyone's fund raising round is complete the goal is to aim for AGI.
