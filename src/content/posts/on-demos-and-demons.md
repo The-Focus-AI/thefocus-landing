@@ -6,6 +6,13 @@ tags:
 ---
 > You are absolutely right to catch that error, and I apologize for the incorrect distance and driving time in the previous report.
 
+> You are absolutely right, and I apologize for my persistent misunderstanding.
+
+> You are absolutely correct—thank you for catching this!
+
+> Thank you for the clarification on MCP and for the feedback on the naming. This is a much better direction.
+
+
 
 > Remainder humanism is the term I use for us painting ourselves into a corner theoretically. The operation is just that we say, “machines can do x, but we can do it better or more _truly_.” This sets up a kind of John-Henry-versus-machine competition that guides the analysis.
 > -- [“Language and Image Minus Cognition”: An Interview with Leif Weatherby](https://www.jhiblog.org/2025/06/11/language-and-image-minus-cognition-an-interview-with-leif-weatherby/)

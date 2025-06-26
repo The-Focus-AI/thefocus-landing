@@ -146,7 +146,7 @@ Of the tools, Cursor Background Agent, v0 and Warp scored the highest with 24 po
 | Claude Code   | 4    | 4       | 4.5     | 3   | 4      | would recommend              | 19.5  |
 | Codex         | 4    | 4       | 4       | 3   | 4      | would recommend              | 19    |
 | Codex Agent   | 4    | 3       | 4       | 3   | 4      | would recommend              | 18    |
-| Copilot       | 3    | 2       | 3       | 2   | 3      | conditionally recommend-face | 13    |
+| Copilot       | 3    | 2       | 3       | 2   | 3      | conditionally recommend | 13    |
 | Copilot Agent | 4    | 5       | 4       | 4   | 4      | strongly recommend           | 21    |
 | Cursor        | 4    | 4       | 4       | 3.5 | 4      | would recommend              | 19.5  |
 | Cursor Agent  | 5    | 5       | 5       | 4   | 5      | strongly recommend           | 24    |
