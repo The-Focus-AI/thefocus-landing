@@ -14,10 +14,6 @@ related:
   - add-memory-to-cursor
 journey: beginner
 ---
-1. Add The github bot,
-
-@Github subscribe The-Focus-AI/registry
-
 First, go and [Connect Cursor with Slack](https://www.cursor.com/en/dashboard?tab=integrations)
 ![](../assets/Screenshot%202025-06-29%20at%2007.46.50.png)
 Add @cursor to a channel
