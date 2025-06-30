@@ -1,6 +1,6 @@
 ---
 title: Use Cursor in Slack
-date: 2025-06-29
+date: 2025-06-30
 section:
   - user-experience
   - coding
