@@ -2,12 +2,12 @@
 title: Dagger and Container Use
 section:
   - coding
-date: 2025-05-28
-image: content-finder.png
-published: false
+date: 2025-07-08
+image: dagger.png
+published: true
 tech:
   - context
-description: 
+description: Unlock the power of isolated development with Dagger and Container Use—no more worrying about missing dependencies or system conflicts.
 related:
 ---
 **Container Use** lets each of your coding agents have their own containerized environment. Go from babysitting one agent at a time to enabling multiple agents to work safely and independently with your preferred stack.
@@ -28,14 +28,8 @@ mkdir myrepo
 git init myrepo
 ```
 
-Then grab an API key.
-
-```shell```
-```
-
 Now lets use containers!
 
-```
 ```shell
 # Add Container Use MCP server
 cd /path/to/repository
