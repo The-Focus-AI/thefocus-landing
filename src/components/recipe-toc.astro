@@ -3,6 +3,15 @@ import { getRecipeUrl, getSection } from "../utils/recipes";
 import { formatDateShort } from "../utils/date";
 const {recipes,grouping="section"} = Astro.props;
 
+// Helper function to check if a recipe is published within the last 30 days
+function isRecentRecipe(recipe) {
+  if (!recipe.data.published || !recipe.data.date) return false;
+  const recipeDate = new Date(recipe.data.date);
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  return recipeDate >= thirtyDaysAgo;
+}
+
 let uniqueSections = [...new Set(recipes.flatMap(recipe => recipe.data.section ?? []))];  
 let sectionMapPromises = uniqueSections.map(async (section) => ({
     section,
@@ -38,7 +47,7 @@ const sectionMap = await Promise.all(sectionMapPromises);
                         <a href={getRecipeUrl(recipe)}>
                             <span class="hidden sm:inline text-sm text-gray-500">{formatDateShort(recipe.data.date)}</span>
                             <span class="no-underline hover:underline font-semibold">{recipe.data.published ? "" : "[DRAFT] "}{recipe.data.title}</span>
-                            {section.recipes.indexOf(recipe) < 3 && recipe.data.published && (
+                            {isRecentRecipe(recipe) && (
                                 <span class="ml-2 text-orange-500 font-normal">new</span>
                             )}
                         </a>
