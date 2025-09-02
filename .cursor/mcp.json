@@ -9,13 +9,6 @@
         "command": "node",
         "args": ["/Users/wschenk/The-Focus-AI/plausible-mcp/dist/server.js"],
         "cwd": "/Users/wschenk/The-Focus-AI/plausible-mcp"
-      },
-      "playwright-mcp": {
-        "command": "npx",
-        "args": [
-          "@playwright/mcp@latest"
-        ]
-      }
-    }
+      }    }
   }
   

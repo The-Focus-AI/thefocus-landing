@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "buttondown-mcp": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/Users/wschenk/The-Focus-AI/buttondown-mcp/dist/mcp/server.js"
+      ],
+      "env": {}
+    }
+  }
+}
