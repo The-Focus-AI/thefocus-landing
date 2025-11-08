@@ -3,7 +3,9 @@ title: Building a chrome extension
 date: 2024-11-28
 tags:
   - barefoot
+  - process
 published: false
+description: A barefoot guide to building your first Chrome extension using ChatGPT and Cursor - from zero to working extension in minutes.
 ---
 I have no idea how to build a chrome extension.  Lets see how to do it.  Oh GPT, can you help me?
 

@@ -1,47 +1,50 @@
 ---
+# ===== REQUIRED FIELDS (post won't build without these) =====
 title: "Your Post Title Here"
 date: 2025-01-01
+description: "A brief description that will appear in previews and search results. Keep it concise but informative."
+published: false
+
+# ===== RECOMMENDED FIELDS =====
 tags:
   - essay
   - models
-published: false
-image: your-image.png
-description: "A brief description of your post that will appear in previews and search results. Keep it concise but informative."
+
+# ===== OPTIONAL FIELDS (add when polishing for publication) =====
+# image: your-image.png  # Place image in src/content/assets/cards/
+# author: Your Name      # Defaults to "Will Schenk" if omitted
+# audio: elevenLabsId    # For audio player integration
 ---
 
 # Your Post Title
 
 Start your post content here. This is where you'll write the main body of your post.
 
+## Workflow: Daily Notes → Draft → Published
+
+1. **Capture in daily notes** - Just write, no pressure
+2. **Move to draft** - Copy here when ready to develop
+3. **Add required fields** - title, date, description
+4. **Polish gradually** - Edit in Obsidian (it's symlinked!)
+5. **Add image** - Place in src/content/assets/cards/
+6. **Publish** - Set `published: true`
+
 ## Common Post Tags
 
-Based on existing posts, here are some commonly used tags you can choose from:
+- `essay` - Longer, thoughtful pieces
+- `models` - AI model discussions
+- `usecase` - Practical applications
+- `process` - Workflow and methodology
+- `compare` - Comparison posts
+- `architecture` - Technical architecture
+- `agents` - AI agent discussions
+- `barefoot` - Minimalist approaches
+- `conference` - Conference content
+- `azure` - Microsoft Azure
+- `gemini` - Google Gemini
+- `affordance` - UI/UX affordance
+- `meta` - Site/about content
 
-- `essay` - For longer, thoughtful pieces
-- `models` - For AI model discussions
-- `usecase` - For practical applications
-- `process` - For workflow and methodology posts
-- `daily` - For quick updates or observations
-- `compare` - For comparison posts
-- `architecture` - For technical architecture discussions
-- `agents` - For AI agent discussions
-- `barefoot` - For minimalist approaches
-- `conference` - For conference-related posts
-- `azure` - For Microsoft Azure content
-- `gemini` - For Google Gemini content
-- `affordance` - For UI/UX affordance discussions
-- `meta` - For site/about content
+## Check Your Progress
 
-## Required Fields
-
-Make sure to fill in:
-- `title` - The title of your post
-- `date` - Publication date (YYYY-MM-DD format)
-- `tags` - At least one tag from the list above
-- `published` - Set to `true` when ready to publish, `false` for drafts
-- `image` - Image filename (without path)
-- `description` - Brief description for SEO and previews
-
-## Draft Status
-
-This post is currently marked as `published: false`, which means it will appear in the drafts page but not on the main site. Change this to `true` when you're ready to publish.
+Run dev server and visit `/drafts` to see what's missing!

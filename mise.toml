@@ -1,7 +1,8 @@
 [tools]
-node = "20"
+node = "24"
 pnpm = "latest"
 "npm:repomix" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
 
 [hooks]
 
