@@ -3,9 +3,10 @@ import BaseLayout from "../../../layout/BaseLayout.astro";
 import LiteracyTimeline from "../../../components/content/literacy.tsx";
 ---
 
-<BaseLayout pageTitle="Coding Literacy">
+<BaseLayout pageTitle="Coding Literacy" category="insights">
   <div class="prose lg:prose-xl max-w-prose">
-    <h2>Reading Literacy Economics</h2>
+    <h1 class="text-4xl md:text-5xl font-bold text-ink mb-8">Coding Literacy</h1>
+    <h2 class="text-2xl font-bold text-ink mb-4">Reading Literacy Economics</h2>
 
     <p>See below for the prompts I used to generate the timeline.</p>
 </div>
@@ -13,13 +14,13 @@ import LiteracyTimeline from "../../../components/content/literacy.tsx";
   <LiteracyTimeline client:load />
 
   <div class="prose lg:prose-xl max-w-prose">
-    <h2>Prompt 1</h2>
+    <h2 class="text-2xl font-bold text-ink mb-4">Prompt 1</h2>
 
     <blockquote>
         What's the timeline for when people who knew how to read and write were valuable like and it went from being a scribe to like a printer to an author to a blogger or to journalist how would you break that down.  maybe include texting and voice chat as an especially big jump in the number of people
     </blockquote>
 
-    <h2>Prompt 2</h2>
+    <h2 class="text-2xl font-bold text-ink mb-4">Prompt 2</h2>
 
     <blockquote>what other milestones are there? I'm thinking of revolutions being enabled by widely shared pamphlets, or  union broadsheet and stuff like that.  is there anything abotu coffee shops we could add?  is there a high peak in the newspaper editions per day or something?  What else can you think about?  I want to make a interact graph of all of this and it would be good to be detailed, and be able to have an explanation popup when you hover</blockquote>
 

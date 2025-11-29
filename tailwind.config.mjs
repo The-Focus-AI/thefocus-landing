@@ -14,12 +14,18 @@ export default {
         fraunces: ["Fraunces", ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        // Focus.AI Brand Colors
-        paper: "#faf9f6",
+        // Focus.AI Client Brand Colors
+        paper: "#faf9f6", // Client: cooler off-white
         ink: "#161616",
         graphite: "#4a4a4a",
         petrol: "#0e3b46",
         vermilion: "#c3471d",
+        // Focus.AI Labs Brand Colors
+        void: "#1a1a1a", // Labs: primary text
+        "rand-blue": "#0055aa", // Labs: primary accent
+        "alert-red": "#d93025", // Labs: decorative emphasis
+        surface: "#e6e4dc", // Labs: secondary background
+        "labs-paper": "#f3f2ea", // Labs: warmer paper background
         // Tinted Backgrounds
         tint: {
           cool: "#edf6f8",

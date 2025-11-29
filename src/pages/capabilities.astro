@@ -1,33 +1,103 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
+import { getCaseStudies, getCaseStudyUrl } from "../utils/case-studies.js";
+
+const allCaseStudies = await getCaseStudies();
 
 const capabilities = [
   {
     number: "01",
     title: "AGENTIC TOOLING",
-    description: "Building AI-powered tools that act autonomously on your behalf, making intelligent decisions and executing complex workflows without constant human intervention."
+    icon: "🤖",
+    description: "Building AI-powered tools that act autonomously on your behalf, making intelligent decisions and executing complex workflows without constant human intervention.",
+    caseStudies: ["tezlab-ai", "upperhand-ai"],
+    keywords: ["MCP", "Multi-agent", "Autonomous workflows"],
+    process: [
+      "Map existing APIs and data flows",
+      "Design tool schemas with clear intent descriptions",
+      "Build with streaming responses and rich visualizations"
+    ],
+    testimonialSnippet: {
+      quote: "Focus.AI delivered a complete AI-powered web experience in weeks, not months.",
+      source: "Ben Schippers, CEO, TezLab"
+    }
   },
   {
     number: "02",
     title: "(JIT) JUST IN TIME SOFTWARE",
-    description: "Creating software solutions exactly when you need them, tailored to your specific context and requirements, reducing overhead and maximizing relevance."
+    icon: "⚡",
+    description: "Creating software solutions exactly when you need them, tailored to your specific context and requirements, reducing overhead and maximizing relevance.",
+    caseStudies: ["image-browser"],
+    keywords: ["Rapid development", "Purpose-built tools", "MVP"],
+    process: [
+      "Identify the specific pain point",
+      "Build minimal viable solution in 2-4 weeks",
+      "Iterate based on actual usage"
+    ],
+    testimonialSnippet: {
+      quote: "Finding the right image went from 10 minutes of scrolling to 2 seconds of typing.",
+      source: "Internal User, Focus.AI"
+    }
   },
   {
     number: "03",
     title: "CONVERTING LEGACY SOFTWARE TO MCP / AGENTIC",
-    description: "Transforming existing systems into modern, agentic architectures that leverage Model Context Protocol (MCP) for seamless AI integration and enhanced automation."
+    icon: "🔄",
+    description: "Transforming existing systems into modern, agentic architectures that leverage Model Context Protocol (MCP) for seamless AI integration and enhanced automation.",
+    caseStudies: ["tezlab-ai"],
+    keywords: ["MCP SDK", "API integration", "Zero backend changes"],
+    process: [
+      "Audit existing API surface",
+      "Design tool wrappers with semantic descriptions",
+      "Deploy without touching existing infrastructure"
+    ],
+    testimonialSnippet: {
+      quote: "They understood our API architecture immediately and built something our users love — without disrupting our mobile team at all.",
+      source: "Ben Schippers, CEO, TezLab"
+    }
   },
   {
     number: "04",
     title: "UNDERSTANDING UI DESIGN AND PRODUCT IN THE AI WORLD",
-    description: "Designing interfaces that disappear when not needed and appear with perfect context when required, creating curated experiences that support decision-making."
+    icon: "🎯",
+    description: "Designing interfaces that disappear when not needed and appear with perfect context when required, creating curated experiences that support decision-making.",
+    caseStudies: ["tezlab-ai", "distill"],
+    keywords: ["Conversational UI", "Rich visualizations", "Natural language"],
+    process: [
+      "Design component-per-tool architecture",
+      "Build rich visual responses, not text walls",
+      "Context-aware prompting for seamless UX"
+    ],
+    testimonialSnippet: {
+      quote: "Distill changed how I stay informed. Instead of spending an hour scrolling Twitter, I get a two-paragraph summary of what actually mattered.",
+      source: "Internal User, Focus.AI"
+    }
   },
   {
     number: "05",
     title: "MODIFY LEGACY WORKFLOW AND UI",
-    description: "Reimagining traditional workflows and user interfaces to take advantage of AI capabilities, reducing noise and increasing focus on what matters."
+    icon: "🔧",
+    description: "Reimagining traditional workflows and user interfaces to take advantage of AI capabilities, reducing noise and increasing focus on what matters.",
+    caseStudies: ["distill", "upperhand-ai"],
+    keywords: ["Workflow automation", "Data synthesis", "Signal from noise"],
+    process: [
+      "Observe current workflow pain points",
+      "Identify AI leverage points for automation",
+      "Reduce noise, surface signal"
+    ],
+    testimonialSnippet: {
+      quote: "What used to take our research team half a day now takes thirty seconds.",
+      source: "Research Director, Media Analytics Client"
+    }
   }
 ];
+
+// Helper to get case study objects from IDs
+function getRelatedCaseStudies(caseStudyIds: string[]) {
+  return caseStudyIds
+    .map(id => allCaseStudies.find(cs => cs.id === id))
+    .filter(Boolean);
+}
 ---
 
 <BaseLayout
@@ -44,17 +114,61 @@ const capabilities = [
     </div>
 
     <div class="space-y-1">
-      {capabilities.map((capability) => (
-        <div class="border-t border-ink/10 py-8 hover:bg-tint-sage transition-colors px-6 -mx-6">
-          <div class="flex gap-8 md:gap-12">
-            <div class="text-sm text-graphite/50 mt-2 font-mono">{capability.number}</div>
-            <div class="flex-1">
-              <h2 class="text-2xl md:text-4xl font-bold mb-4 text-ink">{capability.title}</h2>
-              <p class="text-lg text-graphite leading-relaxed">{capability.description}</p>
+      {capabilities.map((capability) => {
+        const relatedCaseStudies = getRelatedCaseStudies(capability.caseStudies);
+        return (
+          <div class="border-t border-ink/10 py-10 hover:bg-tint-sage/50 transition-colors px-6 -mx-6">
+            <div class="flex gap-8 md:gap-12">
+              <div class="text-sm text-graphite/50 mt-2 font-mono">{capability.number}</div>
+              <div class="flex-1">
+                {/* Title with icon */}
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-3xl">{capability.icon}</span>
+                  <h2 class="text-2xl md:text-4xl font-bold text-ink">{capability.title}</h2>
+                </div>
+
+                <p class="text-lg text-graphite leading-relaxed mb-4">{capability.description}</p>
+
+                {/* Keywords */}
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {capability.keywords.map((kw) => (
+                    <span class="text-xs bg-tint-cool px-2 py-1 rounded text-graphite">{kw}</span>
+                  ))}
+                </div>
+
+                {/* Process hints */}
+                <div class="mb-6">
+                  <h3 class="text-sm uppercase tracking-wider text-graphite/60 mb-2">Our approach</h3>
+                  <ul class="text-sm text-graphite space-y-1">
+                    {capability.process.map((step) => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-petrol">→</span>
+                        <span>{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Testimonial snippet */}
+                <blockquote class="border-l-2 border-petrol pl-4 mb-6">
+                  <p class="text-graphite italic">"{capability.testimonialSnippet.quote}"</p>
+                  <cite class="text-xs text-graphite/60 not-italic">— {capability.testimonialSnippet.source}</cite>
+                </blockquote>
+
+                {/* Related case studies */}
+                {relatedCaseStudies.length > 0 && (
+                  <div class="text-sm">
+                    <span class="text-graphite">See in action:</span>
+                    {relatedCaseStudies.map((cs) => (
+                      <a href={getCaseStudyUrl(cs)} class="text-petrol hover:underline ml-2">{cs.data.title}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
 
     <div class="mt-16 pt-16 border-t border-ink/10">

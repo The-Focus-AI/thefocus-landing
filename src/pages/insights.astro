@@ -1,16 +1,313 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import PostCard from "../components/cards/post-card.astro";
 import { getPosts } from "../utils/posts";
+import { getCollection } from "astro:content";
 import PostListSchema from "../components/schemas/postlist.astro";
+import { formatDate } from "../utils/date";
+import { getPostLink, getTagDisplay } from "../utils/ids";
+
 const allPosts = await getPosts();
 
+// Major Research Reports - posts tagged with "report"
+const majorReports = allPosts.filter(post => post.data.tags?.includes("report"));
+const featuredReport = majorReports[0];
+const otherReports = majorReports.slice(1);
+
+// Lab Memos - regular posts without "report" tag
+const labMemos = allPosts.filter(post => !post.data.tags?.includes("report"));
+const featuredMemo = labMemos[0];
+const otherMemos = labMemos.slice(1);
 ---
-<BaseLayout pageTitle="Insights | Focus.AI" description="Insights on AI, agentic workflows, and the future of software" category="insights">
-    <PostListSchema slot="head"  posts={allPosts}/>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {allPosts.map((post) => (
-            <PostCard post={post} />
-        ))}
+
+<BaseLayout pageTitle="Research Reports | Focus.AI Labs" description="Research reports from Focus.AI Labs on AI, agentic workflows, and the future of software" category="insights">
+    <PostListSchema slot="head" posts={allPosts}/>
+
+    <!-- Bell Labs Report Container -->
+    <div class="max-w-7xl mx-auto bg-paper border border-void shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] flex flex-col md:flex-row mb-12">
+
+        <!-- Blue Binding Strip -->
+        <div class="w-full md:w-20 bg-rand-blue flex md:flex-col justify-between items-center py-4 md:py-8 shrink-0 border-r border-void">
+            <div class="text-white font-mono text-xs rotate-0 md:-rotate-90 whitespace-nowrap tracking-[0.3em] font-bold">
+                FOCUS.AI LABS
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 md:p-12 relative">
+
+            <!-- Background Pattern (Optional) -->
+            <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                <svg width="400" height="400" viewBox="0 0 100 100">
+                    <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.5" />
+                    <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.5" />
+                    <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="0.5" />
+                    <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="0.5" />
+                </svg>
+            </div>
+
+            <!-- Document Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start mb-12 border-b-2 border-void pb-6 gap-4 relative z-10">
+                <div class="font-mono text-xs space-y-1">
+                    <p class="font-bold">PROJECT: Focus.AI Research Division</p>
+                    <p>DOC. NO: RM-2025-INSIGHTS</p>
+                    <p class="text-gray-600">Focus.AI Labs • Est. 2024</p>
+                </div>
+                <div class="font-mono text-xs font-bold border border-void px-3 py-1 bg-white shadow-sm">
+                    UNCLASSIFIED
+                </div>
+            </div>
+
+            <!-- Title Block -->
+            <div class="mb-12 relative z-10">
+                <h1 class="text-6xl md:text-8xl font-sans font-black text-void leading-[0.85] tracking-tight mb-8">
+                    RESEARCH<br/>
+                    <span class="text-rand-blue">REPORTS</span>
+                </h1>
+
+                <p class="font-sans font-medium text-lg max-w-2xl leading-snug border-l-4 border-alert-red pl-6 py-2">
+                    Technical memos and research findings from Focus.AI Labs exploring AI-powered software development, agentic workflows, and the future of engineering.
+                </p>
+            </div>
+
+            <!-- Major Research Reports Section -->
+            {majorReports.length > 0 && (
+                <section class="mb-16 relative z-10">
+                    <div class="border-l-4 border-alert-red pl-6 py-3 bg-[#f8f8f6] mb-8">
+                        <p class="font-sans font-bold text-sm uppercase tracking-wide text-gray-500 mb-1">Major Research Reports</p>
+                        <p class="font-sans text-sm">Comprehensive technical memos and in-depth analysis</p>
+                    </div>
+
+                    {/* Featured Report */}
+                    {featuredReport && (
+                        <div class="border border-void bg-white mb-6 hover:bg-[#f8f8f6] transition-colors duration-200 group">
+                            <div class="grid md:grid-cols-12 gap-0">
+                                {featuredReport.data.image && (
+                                    <div class="md:col-span-4 border-b md:border-b-0 md:border-r border-void">
+                                        <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
+                                            <img
+                                                src={`/src/content/assets/cards/${featuredReport.data.image}`}
+                                                alt={featuredReport.data.title}
+                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                                <div class={`${featuredReport.data.image ? 'md:col-span-8' : 'md:col-span-12'} p-6 md:p-8 flex flex-col`}>
+                                    <div class="mb-4">
+                                        <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-rand-blue text-white">
+                                            FEATURED REPORT
+                                        </span>
+                                    </div>
+
+                                    <h3 class="text-3xl md:text-4xl font-sans font-black text-void mb-4 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                                        <a href={getPostLink(featuredReport)}>
+                                            {featuredReport.data.title}
+                                        </a>
+                                    </h3>
+
+                                    <p class="text-base text-void/80 leading-relaxed mb-6 flex-grow">
+                                        {featuredReport.data.description}
+                                    </p>
+
+                                    <div class="flex flex-wrap items-center gap-4 text-sm pt-4 border-t border-void/20">
+                                        <span class="font-mono text-xs font-bold">{formatDate(featuredReport.data.date)}</span>
+                                        {featuredReport.data.tags && (
+                                            <>
+                                                <span class="text-void/40">•</span>
+                                                <div class="flex gap-2">
+                                                    {featuredReport.data.tags.slice(0, 3).map(tag => (
+                                                        <span class="text-[10px] uppercase tracking-[0.2em] text-rand-blue font-mono font-bold">
+                                                            {getTagDisplay(tag)}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+                                        <a href={getPostLink(featuredReport)} class="ml-auto text-rand-blue font-mono text-xs font-bold uppercase tracking-wider hover:underline">
+                                            Read Report →
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Other Reports Grid */}
+                    {otherReports.length > 0 && (
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-void border border-void">
+                            {otherReports.map((report, index) => (
+                                <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
+                                    {report.data.image && (
+                                        <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
+                                            <img
+                                                src={`/src/content/assets/cards/${report.data.image}`}
+                                                alt={report.data.title}
+                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                            />
+                                        </div>
+                                    )}
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <div class="mb-3">
+                                            <span class="text-alert-red font-mono text-[10px] font-bold">
+                                                {String(index + 2).padStart(2, '0')}
+                                            </span>
+                                        </div>
+                                        <h4 class="text-xl font-sans font-black text-void mb-3 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                                            <a href={getPostLink(report)}>
+                                                {report.data.title}
+                                            </a>
+                                        </h4>
+                                        <p class="text-sm text-void/70 leading-relaxed mb-4 flex-grow">
+                                            {report.data.description}
+                                        </p>
+                                        <div class="mt-auto pt-4 border-t border-void/20">
+                                            <div class="flex items-center justify-between text-xs mb-3">
+                                                <span class="font-mono text-[10px] font-bold">{formatDate(report.data.date)}</span>
+                                            </div>
+                                            <a href={getPostLink(report)} class="block w-full text-center px-4 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono">
+                                                Read →
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </section>
+            )}
+
+            <!-- Lab Memos Section -->
+            {labMemos.length > 0 && (
+                <section class="relative z-10">
+                    <div class="border-l-4 border-alert-red pl-6 py-3 bg-[#f8f8f6] mb-8">
+                        <p class="font-sans font-bold text-sm uppercase tracking-wide text-gray-500 mb-1">Lab Memos</p>
+                        <p class="font-sans text-sm">Research notes and technical observations</p>
+                    </div>
+
+                    {/* Featured Memo */}
+                    {featuredMemo && (
+                        <div class="border border-void bg-white mb-6 hover:bg-[#f8f8f6] transition-colors duration-200 group">
+                            <div class="grid md:grid-cols-12 gap-0">
+                                <div class={`${featuredMemo.data.image ? 'md:col-span-7' : 'md:col-span-12'} p-6 md:p-8 flex flex-col order-2 md:order-1`}>
+                                    <div class="mb-4 flex items-center gap-2">
+                                        <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-rand-blue text-white">
+                                            LATEST MEMO
+                                        </span>
+                                        {!featuredMemo.data.published && (
+                                            <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-alert-red text-white">
+                                                DRAFT
+                                            </span>
+                                        )}
+                                    </div>
+
+                                    <h3 class="text-3xl md:text-4xl font-sans font-black text-void mb-4 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                                        <a href={getPostLink(featuredMemo)}>
+                                            {featuredMemo.data.title}
+                                        </a>
+                                    </h3>
+
+                                    <p class="text-base text-void/80 leading-relaxed mb-6 flex-grow">
+                                        {featuredMemo.data.description}
+                                    </p>
+
+                                    <div class="flex flex-wrap items-center gap-4 text-sm pt-4 border-t border-void/20">
+                                        <span class="font-mono text-xs font-bold">{formatDate(featuredMemo.data.date)}</span>
+                                        {featuredMemo.data.tags && (
+                                            <>
+                                                <span class="text-void/40">•</span>
+                                                <div class="flex gap-2 flex-wrap">
+                                                    {featuredMemo.data.tags.slice(0, 4).map(tag => (
+                                                        <span class="text-[10px] uppercase tracking-[0.2em] text-rand-blue font-mono font-bold">
+                                                            {getTagDisplay(tag)}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                {featuredMemo.data.image && (
+                                    <div class="md:col-span-5 border-b md:border-b-0 md:border-l border-void order-1 md:order-2">
+                                        <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
+                                            <img
+                                                src={`/src/content/assets/cards/${featuredMemo.data.image}`}
+                                                alt={featuredMemo.data.title}
+                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Other Memos Grid */}
+                    {otherMemos.length > 0 && (
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-void border border-void">
+                            {otherMemos.map((post, index) => (
+                                <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
+                                    {post.data.image && (
+                                        <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
+                                            <img
+                                                src={`/src/content/assets/cards/${post.data.image}`}
+                                                alt={post.data.title}
+                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                            />
+                                        </div>
+                                    )}
+                                    <div class="p-6 flex flex-col flex-grow">
+                                        <div class="mb-3 flex items-center gap-2">
+                                            <span class="text-alert-red font-mono text-[10px] font-bold">
+                                                #{String(index + 2).padStart(3, '0')}
+                                            </span>
+                                            {!post.data.published && (
+                                                <span class="px-2 py-1 bg-alert-red text-white text-[10px] uppercase font-bold font-mono">
+                                                    DRAFT
+                                                </span>
+                                            )}
+                                        </div>
+                                        <h4 class="text-xl font-sans font-black text-void mb-3 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                                            <a href={getPostLink(post)}>
+                                                {post.data.title}
+                                            </a>
+                                        </h4>
+                                        <p class="text-sm text-void/70 leading-relaxed mb-4 flex-grow">
+                                            {post.data.description}
+                                        </p>
+                                        <div class="mt-auto pt-4 border-t border-void/20">
+                                            <div class="flex items-center justify-between text-xs mb-3">
+                                                <span class="font-mono text-[10px] font-bold">{formatDate(post.data.date)}</span>
+                                                {post.data.tags && post.data.tags[0] && (
+                                                    <span class="text-[10px] uppercase tracking-wider text-rand-blue font-mono font-bold">
+                                                        {getTagDisplay(post.data.tags[0])}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <a href={getPostLink(post)} class="block w-full text-center px-4 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono">
+                                                Read →
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </section>
+            )}
+
+            <!-- Footer Notice -->
+            <div class="mt-16 pt-8 border-t border-void relative z-10">
+                <div class="font-mono text-xs text-center">
+                    <p class="font-bold uppercase tracking-[0.3em] text-rand-blue mb-2">
+                        Focus.AI Research Division
+                    </p>
+                    <p class="text-void/70 uppercase tracking-wider">
+                        Exploring the future of AI-powered software development
+                    </p>
+                </div>
+            </div>
+
+        </div>
     </div>
+
 </BaseLayout>

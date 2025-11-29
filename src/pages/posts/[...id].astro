@@ -42,7 +42,7 @@ const prevPost = await getPrevPost(entry);
 
 // Get the image for the post
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif}');
-const img_key= `/src/content/assets/cards/${entry.data.image}`;  
+const img_key= `/src/content/assets/cards/${entry.data.image}`;
 if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
 // @ts-ignore
@@ -50,39 +50,83 @@ const image = await images[img_key]().src;
 
 ---
 <ArticleLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
-  <BlogPostSchema 
+  <BlogPostSchema
   slot="head"
   title={entry.data.title}
   description={entry.data.description}
   publishDate={entry.data.date}
   author={entry.data.author}
-  image={ image} 
+  image={ image}
   keywords={entry.data.tags}
 />
 <BreadcrumbList slot="head" />
 <div slot="hero">
-  <div class="not-prose font-fraunces">
-    {sectionTag && <p class=" pb-4 text-gray-500 max-w-prose hover:underline">
-      <a href={`/${sectionTag}`}>{getTagDisplay(sectionTag)}</a>
-    </p>}
-    <h1 class="text-4xl font-bold font-fraunces text-gray-900 pb-2">{entry.data.title}</h1>
-    <h2 class="text-lg font-bold font-fraunces text-gray-500 py-4 leading-snug">{entry.data.description}</h2>
+  <div class="not-prose border-b-2 border-void pb-8 mb-8">
+    <!-- Report Header -->
+    <div class="mb-6">
+      <a href="/insights" class="text-xs uppercase tracking-[0.15em] text-rand-blue hover:underline font-mono font-bold">
+        ← Back to Research Reports
+      </a>
+    </div>
+
+    <!-- Memo Header Style - Bell Labs -->
+    <div class="bg-[#f8f8f6] border-l-4 border-rand-blue p-6 md:p-8 mb-8 font-mono text-sm border border-void">
+      <div class="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-2 mb-4">
+        <div class="text-gray-500 uppercase tracking-wider font-bold">TO:</div>
+        <div class="text-void font-medium">Research Community</div>
+
+        <div class="text-gray-500 uppercase tracking-wider font-bold">FROM:</div>
+        <div class="text-void font-medium">Focus.AI Labs Research Team</div>
+
+        <div class="text-gray-500 uppercase tracking-wider font-bold">DATE:</div>
+        <div class="text-void">{formatDate(entry.data.date)}</div>
+
+        <div class="text-gray-500 uppercase tracking-wider font-bold">RE:</div>
+        <div class="text-void font-medium">{entry.data.title}</div>
+      </div>
+      <div class="pt-4 border-t border-void/20 flex justify-between items-center">
+        <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">
+          Focus.AI Labs • Est. 2024
+        </div>
+        <div class="font-mono text-[10px] font-bold border border-void px-2 py-1 bg-white">
+          UNCLASSIFIED
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Title -->
+    <h1 class="text-4xl md:text-6xl font-sans font-black text-void mb-6 leading-tight">
+      {entry.data.title.split(' ').slice(0, -1).join(' ')} <span class="text-rand-blue">{entry.data.title.split(' ').slice(-1)}</span>
+    </h1>
+
+    <!-- Executive Summary -->
+    <div class="border-l-4 border-alert-red pl-6 py-3 bg-[#f8f8f6]">
+      <p class="font-sans font-bold text-sm uppercase tracking-wide text-gray-500 mb-2">Executive Summary</p>
+      <p class="text-base text-void/80 leading-relaxed">{entry.data.description}</p>
+    </div>
   </div>
 </div>
 <div class="pt-4">
-  <ElevenLabsAudioNative 
-  client:only="react" 
-  publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3" 
+  <ElevenLabsAudioNative
+  client:only="react"
+  publicUserId="35dce06c47f602962978963a788374c31ce9d25a7764e80220eae64f51bfc6f3"
   projectId={entry.data.audio}/>
 </div>
 
-<div class="flex flex-col sm:flex-row flex-wrap gap-2 justify-between">
+<div class="flex flex-col sm:flex-row flex-wrap gap-2 justify-between mb-6">
   <ul class="flex flex-row flex-wrap gap-2">
-    {entry.data.tags?.map((tag) => <li><a href={getTagSlug(tag)}>{getTagDisplay(tag)}</a></li>)}
+    {entry.data.tags?.map((tag) => (
+      <li>
+        <a href={getTagSlug(tag)} class="text-[10px] uppercase tracking-[0.2em] text-rand-blue font-mono font-bold hover:underline">
+          {getTagDisplay(tag)}
+        </a>
+      </li>
+    ))}
   </ul>
-  <div class="flex flex-row flex-wrap gap-2 italic">
-    <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a>
-    <span >{formattedPublishDate}</span> 
+  <div class="flex flex-row flex-wrap gap-2 font-mono text-xs text-void/70">
+    <a class="hover:underline hover:text-rand-blue" href="mailto:wschenk@thefocus.ai">Will Schenk</a>
+    <span>•</span>
+    <span>{formattedPublishDate}</span>
   </div>
 </div>
 {entry.data.image && <PostImage post={entry} />}
@@ -90,26 +134,48 @@ const image = await images[img_key]().src;
   <div class="prose lg:prose-xl max-w-prose article">
   <div class="content">
       <Content />
-      <p class="text-right py-2 "> <a class="italic hover:underline" href="mailto:wschenk@thefocus.ai">Will Schenk</a> <span class="text-sm ">{formattedPublishDate}</span> </p>
+      <p class="text-right py-2 font-mono text-sm">
+        <a class="hover:underline text-rand-blue" href="mailto:wschenk@thefocus.ai">Will Schenk</a>
+        <span class="text-void/70 ml-2">{formattedPublishDate}</span>
+      </p>
   </div>
 </div>
 
 <div slot="sidebar">
-  <h3 class="text-xl font-bold font-fraunces mb-6">Related Posts</h3>
-  
-  
-    {nextPost && <RelatedPost post={nextPost} />}
-    {prevPost && <RelatedPost post={prevPost} />}
+  <div class="sticky top-8">
+    <div class="border border-void bg-[#f8f8f6] p-6 mb-8">
+      <h3 class="text-[10px] uppercase tracking-[0.3em] text-rand-blue font-mono font-bold mb-6">Research Navigation</h3>
+
+      <div class="space-y-6">
+        {prevPost && (
+          <div class="pb-6 border-b border-void/20">
+            <div class="text-[10px] uppercase tracking-wider text-gray-500 font-mono mb-2">← Previous Report</div>
+            <RelatedPost post={prevPost} />
+          </div>
+        )}
+        {nextPost && (
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-500 font-mono mb-2">Next Report →</div>
+            <RelatedPost post={nextPost} />
+          </div>
+        )}
+      </div>
+    </div>
+
+    <a href="/insights" class="block w-full text-center px-4 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono">
+      ← All Reports
+    </a>
+  </div>
 </div>
 </ArticleLayout>
 
 <style is:global>
 
 .article li {
-  margin-bottom: 0 !important;  
+  margin-bottom: 0 !important;
   margin-top: 0 !important;
 }
-  
+
 
 @media (min-width: 768px) {
   .content p:first-of-type::first-letter {

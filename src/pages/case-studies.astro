@@ -1,31 +1,198 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import BreadcrumbList from "../components/schemas/breadcrumb.astro";
-import { getCaseStudies } from "../utils/case-studies";
-import RelatedCaseStudy from "../components/related/related-case-study.astro";
-import CarouselCaseStudy from "../components/carousel/carousel-case-study.astro";
+import { getCaseStudies, getCaseStudyUrl } from "../utils/case-studies";
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import { marked } from "marked";
 
 const case_studies = await getCaseStudies();
 
+// Helper to load images
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/case-studies/*.{jpeg,jpg,png,gif}');
 
+function getImage(case_study: any) {
+  const img_key = `/src/content/assets/case-studies/${case_study.data.image}`;
+  return images[img_key];
+}
+
+// Parse results into array if it's a string with bullet points
+function parseResults(results: string) {
+  if (!results) return [];
+  const lines = results.split('\n').filter(line => line.trim().startsWith('-'));
+  return lines.map(line => line.replace(/^-\s*/, '').trim());
+}
+
+// Categorize case studies
+const categories = {
+  'Conversational AI': case_studies.filter(cs =>
+    ['tezlab-ai', 'perplexity-samsung', 'upperhand-ai'].includes(cs.id)
+  ),
+  'Data Intelligence': case_studies.filter(cs =>
+    ['onboarding', 'distill', 'image-browser'].includes(cs.id)
+  ),
+  'Platform Development': case_studies.filter(cs =>
+    ['name-drop-network'].includes(cs.id)
+  ),
+};
+
+// Flatten for any uncategorized
+const categorizedIds = Object.values(categories).flat().map(cs => cs.id);
+const uncategorized = case_studies.filter(cs => !categorizedIds.includes(cs.id));
+if (uncategorized.length > 0) {
+  categories['Other Projects'] = uncategorized;
+}
 ---
-<BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work" category="case-studies">
 
-    <BreadcrumbList slot="head" />
+<BaseLayout pageTitle="Case Studies | Focus.AI" description="Real-world AI implementations that delivered measurable business results" category="case-studies">
+  <BreadcrumbList slot="head" />
 
-    <div class="space-y-12">
-        <h2 class="text-4xl sm:text-7xl font-bold font-fraunces">
-           We love solving real problems.
-        </h2>
+  <div class="space-y-20">
+    <!-- Header -->
+    <header class="max-w-4xl">
+      <p class="text-sm uppercase tracking-widest text-graphite mb-4">Case Studies</p>
+      <h1 class="text-5xl md:text-7xl font-bold text-ink mb-6">
+        Real problems.<br/>Measurable results.
+      </h1>
+      <p class="text-xl text-graphite max-w-2xl">
+        We partner with companies to build AI solutions that work in production.
+        Here's how we've helped our clients transform their operations.
+      </p>
+    </header>
 
-        <CarouselCaseStudy />
-        
+    <!-- Categories -->
+    {Object.entries(categories).map(([categoryName, categoryStudies]) => (
+      categoryStudies.length > 0 && (
+        <section class="space-y-8">
+          <!-- Category Header -->
+          <div class="flex items-center gap-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-ink">{categoryName}</h2>
+            <div class="flex-1 h-px bg-gray-200"></div>
+            <span class="text-sm text-graphite">{categoryStudies.length} {categoryStudies.length === 1 ? 'project' : 'projects'}</span>
+          </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <!-- Case Studies Grid -->
+          <div class={`grid gap-8 ${categoryStudies.length === 1 ? 'md:grid-cols-1' : categoryStudies.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
+            {categoryStudies.map((case_study, index) => (
+              <article class={`group ${categoryStudies.length === 1 ? 'md:grid md:grid-cols-2 md:gap-8' : ''}`}>
+                <a href={getCaseStudyUrl(case_study)} class="block">
+                  <!-- Image -->
+                  <div class={`relative overflow-hidden bg-tint-cool mb-6 rounded-lg ${categoryStudies.length === 1 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
+                    {getImage(case_study) ? (
+                      <Image
+                        src={getImage(case_study)()}
+                        alt={case_study.data.title}
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        width={categoryStudies.length === 1 ? 800 : 600}
+                      />
+                    ) : (
+                      <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-petrol/20 to-ink/10">
+                        <span class="text-6xl opacity-30">🏗️</span>
+                      </div>
+                    )}
+                    <!-- Overlay gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <!-- Industry badge -->
+                    <div class="absolute top-4 left-4">
+                      <span class="text-xs uppercase tracking-widest text-white/90 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
+                        {case_study.data.industry}
+                      </span>
+                    </div>
+                    <!-- Timeline badge -->
+                    {case_study.data.timeline && (
+                      <div class="absolute top-4 right-4">
+                        <span class="text-xs text-white/90 bg-petrol/80 px-3 py-1 rounded-full backdrop-blur-sm">
+                          {case_study.data.timeline}
+                        </span>
+                      </div>
+                    )}
+                    <!-- Title on image -->
+                    <div class="absolute bottom-4 left-4 right-4">
+                      <h3 class="text-xl md:text-2xl font-bold text-white leading-tight group-hover:text-tint-warm transition-colors">
+                        {case_study.data.title}
+                      </h3>
+                    </div>
+                  </div>
+                </a>
 
-        {case_studies.map((case_study) => (
-            <RelatedCaseStudy case_study={case_study} image={true}/>
-        ))}
+                <!-- Content below image -->
+                <div class={categoryStudies.length === 1 ? 'flex flex-col justify-center' : ''}>
+                  <a href={getCaseStudyUrl(case_study)} class="block">
+                    <p class="text-graphite mb-4 line-clamp-3">
+                      {case_study.data.description}
+                    </p>
+
+                    <!-- Key Results -->
+                    {case_study.data.results && (
+                      <div class="space-y-2 mb-4">
+                        {parseResults(case_study.data.results).slice(0, categoryStudies.length === 1 ? 4 : 2).map(result => (
+                          <div class="flex items-start gap-2">
+                            <span class="text-petrol mt-1">✓</span>
+                            <span class="text-sm text-ink">{result}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <!-- Footer -->
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                      <div class="flex items-center gap-3 text-sm">
+                        <span class="font-medium text-ink">{case_study.data.client}</span>
+                        <span class="text-graphite">•</span>
+                        <span class="text-graphite">{case_study.data.year}</span>
+                      </div>
+                      <span class="text-petrol font-medium text-sm group-hover:underline">
+                        Read more →
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    ))}
+
+    <!-- Stats Section -->
+    <section class="bg-tint-cool -mx-4 md:-mx-8 lg:-mx-16 px-4 md:px-8 lg:px-16 py-16">
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">{case_studies.length}</p>
+          <p class="text-graphite uppercase tracking-widest text-sm">Case Studies</p>
         </div>
-    </div>
+        <div>
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">100%</p>
+          <p class="text-graphite uppercase tracking-widest text-sm">Production Ready</p>
+        </div>
+        <div>
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">50M+</p>
+          <p class="text-graphite uppercase tracking-widest text-sm">Users Reached</p>
+        </div>
+        <div>
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">78%</p>
+          <p class="text-graphite uppercase tracking-widest text-sm">Avg Time Saved</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-ink text-paper p-12 md:p-16 -mx-4 md:-mx-8 lg:-mx-16 rounded-lg">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Ready to build something real?
+        </h2>
+        <p class="text-lg text-paper/80 mb-8">
+          We help companies move from AI experiments to production systems that deliver measurable results.
+          Let's talk about what you're trying to accomplish.
+        </p>
+        <a
+          href="mailto:hey@thefocus.ai"
+          class="inline-block px-8 py-4 bg-paper text-ink font-medium uppercase text-sm tracking-wider hover:bg-tint-warm transition-colors rounded"
+        >
+          Start a Conversation
+        </a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

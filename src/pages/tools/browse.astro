@@ -1,0 +1,298 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+import { getrecipes, getRecipeUrl, getSections } from "../../utils/recipes";
+import PostListSchema from "../../components/schemas/postlist.astro";
+import BreadcrumbList from "../../components/schemas/breadcrumb.astro";
+import { formatDate } from "../../utils/date";
+import { getTagDisplay } from "../../utils/ids";
+
+const allrecipes = await getrecipes();
+const sections = await getSections();
+
+// Get unique sections from recipes
+const recipeSections = new Set<string>();
+allrecipes.forEach(recipe => {
+    if (recipe.data.section) {
+        if (Array.isArray(recipe.data.section)) {
+            recipe.data.section.forEach(s => recipeSections.add(s));
+        } else {
+            recipeSections.add(recipe.data.section);
+        }
+    }
+});
+
+// Get unique tech tags from recipes
+const techTags = new Set<string>();
+allrecipes.forEach(recipe => {
+    if (recipe.data.tech) {
+        if (Array.isArray(recipe.data.tech)) {
+            recipe.data.tech.forEach(t => techTags.add(t));
+        } else {
+            techTags.add(recipe.data.tech);
+        }
+    }
+});
+
+const totalProjects = allrecipes.length;
+---
+<BaseLayout pageTitle="Browse All Projects | Focus.AI Labs" description="Browse and filter all Weekend Warrior projects" category="tools">
+    <PostListSchema slot="head" posts={allrecipes} post={false}/>
+    <BreadcrumbList slot="head" />
+
+    <!-- Bell Labs Report Container -->
+    <div class="max-w-7xl mx-auto bg-paper border border-void shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] flex flex-col md:flex-row mb-12">
+
+        <!-- Blue Binding Strip -->
+        <div class="w-full md:w-20 bg-rand-blue flex md:flex-col justify-between items-center py-4 md:py-8 shrink-0 border-r border-void">
+            <div class="text-white font-mono text-xs rotate-0 md:-rotate-90 whitespace-nowrap tracking-[0.3em] font-bold">
+                FOCUS.AI LABS
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8 md:p-12 relative">
+
+            <!-- Document Header -->
+            <div class="flex flex-col md:flex-row justify-between items-start mb-8 border-b-2 border-void pb-6 gap-4 relative z-10">
+                <div class="font-mono text-xs space-y-1">
+                    <p class="font-bold">PROJECT: Weekend Warrior Workshop</p>
+                    <p>DOC. NO: WW-2025-INDEX</p>
+                    <p class="text-gray-600">Focus.AI Labs • Est. 2024</p>
+                </div>
+                <a href="/tools" class="font-mono text-xs font-bold text-rand-blue hover:underline">
+                    ← Back to Overview
+                </a>
+            </div>
+
+            <!-- Title Block -->
+            <div class="mb-8 relative z-10">
+                <h1 class="text-4xl md:text-6xl font-sans font-black text-void leading-[0.85] tracking-tight mb-4">
+                    PROJECT <span class="text-rand-blue">INDEX</span>
+                </h1>
+                <p class="font-mono text-sm text-void/70">
+                    <span id="visible-count">{totalProjects}</span> of {totalProjects} projects
+                </p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="mb-8 relative z-10">
+                <div class="border border-void bg-[#f8f8f6] p-6">
+                    <div class="flex flex-col md:flex-row gap-6">
+                        <!-- Search -->
+                        <div class="flex-1">
+                            <label class="block font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Search</label>
+                            <input
+                                type="text"
+                                id="search-input"
+                                placeholder="Search projects..."
+                                class="w-full px-4 py-2 border border-void bg-white font-mono text-sm focus:outline-none focus:border-rand-blue"
+                            />
+                        </div>
+
+                        <!-- Section Filter -->
+                        <div class="md:w-48">
+                            <label class="block font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Category</label>
+                            <select
+                                id="section-filter"
+                                class="w-full px-4 py-2 border border-void bg-white font-mono text-sm focus:outline-none focus:border-rand-blue appearance-none cursor-pointer"
+                            >
+                                <option value="">All Categories</option>
+                                {Array.from(recipeSections).sort().map(section => (
+                                    <option value={section}>{section.charAt(0).toUpperCase() + section.slice(1).replace('-', ' ')}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <!-- Tech Filter -->
+                        <div class="md:w-48">
+                            <label class="block font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2">Technology</label>
+                            <select
+                                id="tech-filter"
+                                class="w-full px-4 py-2 border border-void bg-white font-mono text-sm focus:outline-none focus:border-rand-blue appearance-none cursor-pointer"
+                            >
+                                <option value="">All Technologies</option>
+                                {Array.from(techTags).sort().map(tech => (
+                                    <option value={tech}>{tech.toUpperCase()}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <!-- Clear -->
+                        <div class="md:w-24 flex items-end">
+                            <button
+                                id="clear-filters"
+                                class="w-full px-4 py-2 border border-void bg-white font-mono text-[10px] uppercase tracking-wider hover:bg-void hover:text-white transition-colors"
+                            >
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-3 gap-px bg-void border border-void relative z-10">
+                {allrecipes.map((recipe, index) => {
+                    const sectionData = Array.isArray(recipe.data.section) ? recipe.data.section.join(',') : (recipe.data.section || '');
+                    const techData = Array.isArray(recipe.data.tech) ? recipe.data.tech.join(',') : (recipe.data.tech || '');
+
+                    return (
+                        <div
+                            class="project-card bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group"
+                            data-title={recipe.data.title.toLowerCase()}
+                            data-description={(recipe.data.description || '').toLowerCase()}
+                            data-section={sectionData.toLowerCase()}
+                            data-tech={techData.toLowerCase()}
+                        >
+                            {recipe.data.image && (
+                                <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
+                                    <img
+                                        src={`/src/content/assets/recipes/${recipe.data.image}`}
+                                        alt={recipe.data.title}
+                                        class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                    />
+                                </div>
+                            )}
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="mb-3 flex items-center gap-2 flex-wrap">
+                                    <span class="text-alert-red font-mono text-[10px] font-bold">
+                                        {formatDate(recipe.data.date)}
+                                    </span>
+                                    {recipe.data.section && (
+                                        <span class="px-2 py-0.5 bg-rand-blue/10 text-rand-blue text-[10px] uppercase font-mono font-bold">
+                                            {Array.isArray(recipe.data.section) ? recipe.data.section[0] : recipe.data.section}
+                                        </span>
+                                    )}
+                                </div>
+                                <h4 class="text-lg font-sans font-black text-void mb-2 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                                    <a href={getRecipeUrl(recipe)}>
+                                        {recipe.data.title}
+                                    </a>
+                                </h4>
+                                <p class="text-sm text-void/70 leading-relaxed mb-4 flex-grow line-clamp-2">
+                                    {recipe.data.description}
+                                </p>
+                                <div class="mt-auto pt-4 border-t border-void/20">
+                                    {recipe.data.tech && (
+                                        <div class="flex flex-wrap gap-1 mb-3">
+                                            {(Array.isArray(recipe.data.tech) ? recipe.data.tech : [recipe.data.tech]).slice(0, 3).map(tech => (
+                                                <span class="px-2 py-0.5 bg-void/5 text-void/70 text-[10px] uppercase font-mono">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
+                                    <a href={getRecipeUrl(recipe)} class="block w-full text-center px-4 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono">
+                                        View →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="hidden border border-void bg-[#f8f8f6] p-12 text-center relative z-10">
+                <p class="font-mono text-sm text-void/70 mb-4">No projects match your filters</p>
+                <button
+                    id="clear-filters-alt"
+                    class="px-6 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono"
+                >
+                    Clear Filters
+                </button>
+            </div>
+
+            <!-- Footer Notice -->
+            <div class="mt-16 pt-8 border-t border-void relative z-10">
+                <div class="font-mono text-xs text-center">
+                    <p class="font-bold uppercase tracking-[0.3em] text-rand-blue mb-2">
+                        Focus.AI Labs Workshop Series
+                    </p>
+                    <p class="text-void/70 uppercase tracking-wider">
+                        New projects added regularly
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</BaseLayout>
+
+<script>
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const sectionFilter = document.getElementById('section-filter') as HTMLSelectElement;
+    const techFilter = document.getElementById('tech-filter') as HTMLSelectElement;
+    const clearBtn = document.getElementById('clear-filters');
+    const clearBtnAlt = document.getElementById('clear-filters-alt');
+    const projectCards = document.querySelectorAll('.project-card');
+    const visibleCount = document.getElementById('visible-count');
+    const noResults = document.getElementById('no-results');
+    const projectsGrid = document.getElementById('projects-grid');
+
+    function filterProjects() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const section = sectionFilter.value.toLowerCase();
+        const tech = techFilter.value.toLowerCase();
+
+        let visible = 0;
+
+        projectCards.forEach(card => {
+            const title = card.getAttribute('data-title') || '';
+            const description = card.getAttribute('data-description') || '';
+            const cardSection = card.getAttribute('data-section') || '';
+            const cardTech = card.getAttribute('data-tech') || '';
+
+            const matchesSearch = !searchTerm ||
+                title.includes(searchTerm) ||
+                description.includes(searchTerm);
+
+            const matchesSection = !section || cardSection.includes(section);
+            const matchesTech = !tech || cardTech.includes(tech);
+
+            if (matchesSearch && matchesSection && matchesTech) {
+                (card as HTMLElement).style.display = 'flex';
+                visible++;
+            } else {
+                (card as HTMLElement).style.display = 'none';
+            }
+        });
+
+        if (visibleCount) {
+            visibleCount.textContent = visible.toString();
+        }
+
+        if (noResults && projectsGrid) {
+            if (visible === 0) {
+                noResults.classList.remove('hidden');
+                projectsGrid.classList.add('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                projectsGrid.classList.remove('hidden');
+            }
+        }
+    }
+
+    function clearFilters() {
+        searchInput.value = '';
+        sectionFilter.value = '';
+        techFilter.value = '';
+        filterProjects();
+    }
+
+    searchInput?.addEventListener('input', filterProjects);
+    sectionFilter?.addEventListener('change', filterProjects);
+    techFilter?.addEventListener('change', filterProjects);
+    clearBtn?.addEventListener('click', clearFilters);
+    clearBtnAlt?.addEventListener('click', clearFilters);
+</script>
+
+<style>
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>

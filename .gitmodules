@@ -1,0 +1,9 @@
+[submodule "subsites/2025-11-20-ai-engineering-code-summit"]
+	path = subsites/2025-11-20-ai-engineering-code-summit
+	url = git@github.com:The-Focus-AI/2025-11-20-ai-engineering-code-summit.git
+[submodule "subsites/weekend-warrior"]
+	path = subsites/weekend-warrior
+	url = git@github.com:The-Focus-AI/weekend-warrior.git
+[submodule "subsites/weekend-coding-agent"]
+	path = subsites/weekend-coding-agent
+	url = https://github.com/The-Focus-AI/weekend-coding-agent.git

@@ -7,6 +7,9 @@ import RecipeCard from "../../components/cards/recipe-card.astro";
 import BlogPostSchema from "../../components/schemas/post.astro";
 import BreadcrumbList from "../../components/schemas/breadcrumb.astro";
 import RelatedRecipe from "../../components/related/related-recipe.astro";
+import { formatDate } from "../../utils/date";
+import { getTagDisplay } from "../../utils/ids";
+
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const recipes = await getrecipes();
@@ -56,11 +59,66 @@ const image = await images[img_key]().src;
   <BreadcrumbList slot="head" />
 
 <div slot="hero">
-  <p class="text-sm text-gray-500 hover:text-gray-700 pb-8">
-    <a href="/recipes">← Back to all recipes </a>
-  </p>
+  <div class="not-prose border-b-2 border-void pb-8 mb-8">
+    <!-- Back Link -->
+    <div class="mb-6">
+      <a href="/tools" class="text-xs uppercase tracking-[0.15em] text-rand-blue hover:underline font-mono font-bold">
+        ← Back to Weekend Warrior Projects
+      </a>
+    </div>
 
-    <RecipeCard recipe={entry} />
+    <!-- Project Worksheet Header - Bell Labs Style -->
+    <div class="bg-[#f8f8f6] border-l-4 border-rand-blue p-6 md:p-8 mb-8 font-mono text-sm border border-void">
+      <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
+        <div class="space-y-1">
+          <p class="font-bold text-void">PROJECT WORKSHEET</p>
+          <p class="text-gray-500">Focus.AI Labs Workshop Series</p>
+        </div>
+        <div class="font-mono text-[10px] font-bold border border-void px-2 py-1 bg-white">
+          UNCLASSIFIED
+        </div>
+      </div>
+
+      <!-- Project Specs Grid -->
+      <div class="grid grid-cols-3 gap-4 pt-4 border-t border-void/20">
+        <div>
+          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Difficulty</div>
+          <div class="text-sm font-bold text-alert-red">●●○○○</div>
+        </div>
+        <div>
+          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Est. Time</div>
+          <div class="text-sm font-bold text-void">2-4 Hours</div>
+        </div>
+        {entry.data.date && (
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Published</div>
+            <div class="text-sm font-bold text-void">{formatDate(entry.data.date)}</div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Project Title -->
+    <h1 class="text-4xl md:text-6xl font-sans font-black text-void mb-6 leading-tight">
+      {entry.data.title.split(' ').slice(0, -1).join(' ')} <span class="text-rand-blue">{entry.data.title.split(' ').slice(-1)}</span>
+    </h1>
+
+    <!-- What You'll Build -->
+    <div class="border-l-4 border-alert-red pl-6 py-3 bg-[#f8f8f6] mb-8">
+      <p class="font-sans font-bold text-sm uppercase tracking-wide text-gray-500 mb-2">What You'll Build</p>
+      <p class="text-base text-void/80 leading-relaxed">{entry.data.description}</p>
+    </div>
+
+    {entry.data.image && (
+      <div class="aspect-video bg-surface overflow-hidden border border-void">
+        <img
+          src={`/src/content/assets/recipes/${entry.data.image}`}
+          alt={entry.data.title}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    )}
+  </div>
 </div>
 
   <div class="prose lg:prose-xl max-w-prose article">
@@ -68,28 +126,45 @@ const image = await images[img_key]().src;
   </div>
 
   <div slot="sidebar">
-    {relatedrecipes.length > 0 && (
-      <div>
-        <h3 class="text-xl font-bold mb-6">Related Recipes</h3>
-        {relatedrecipes.map((recipe, index) => (
-          <RelatedRecipe recipe={recipe} />
-        ))}
+    <div class="sticky top-8">
+      <!-- Materials Needed Box - Bell Labs Style -->
+      <div class="border border-void bg-[#f8f8f6] p-6 mb-8">
+        <h3 class="text-[10px] uppercase tracking-[0.3em] text-rand-blue font-mono font-bold mb-4">
+          Materials Needed
+        </h3>
+        <ul class="space-y-2 text-sm text-void font-mono">
+          <li class="flex items-start gap-2">
+            <span class="text-alert-red font-bold">•</span>
+            <span>Computer with internet access</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-alert-red font-bold">•</span>
+            <span>Basic command line knowledge</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-alert-red font-bold">•</span>
+            <span>Text editor</span>
+          </li>
+        </ul>
       </div>
-    )}
 
+      {relatedrecipes.length > 0 && (
+        <div class="border border-void bg-[#f8f8f6] p-6 mb-8">
+          <h3 class="text-[10px] uppercase tracking-[0.3em] text-rand-blue font-mono font-bold mb-6">
+            More Projects to Try
+          </h3>
+          <div class="space-y-4">
+            {relatedrecipes.map((recipe) => (
+              <RelatedRecipe recipe={recipe} />
+            ))}
+          </div>
+        </div>
+      )}
 
+      <a href="/tools" class="block w-full text-center px-4 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono">
+        ← All Projects
+      </a>
+    </div>
   </div>
-  
+
 </ArticleLayout>
-<!--   
- -->
-
-<!-- /*
-<div slot="hero">
-  <p class="text-sm text-gray-500 hover:text-gray-700 pb-8">
-    <a href="/recipes">← Back to all recipes </a>
-  </p>
-
-  <RecipeCard recipe={entry} />
-</div>
-*/ -->

@@ -9,12 +9,12 @@ const prince_varyseeds = await getFluxImages("prince_varyseeds");
 
 ---
 
-<BaseLayout pageTitle="The Little Prince" description="A collection of Flux images" category="flux_images">
+<BaseLayout pageTitle="The Little Prince" description="A collection of Flux images" category="insights">
 
-<h1 class="text-2xl font-bold">The Little Prince</h1>
+<h1 class="text-4xl md:text-5xl font-bold text-ink mb-8">The Little Prince</h1>
 
 <div class="prose dark:prose-invert">
-    <h2>Prince</h2>
+    <h2 class="text-2xl font-bold text-ink mb-4">Prince</h2>
     <pre> mflux-wrapper.py --new \
         --prompt "The Little Prince with golden hair, dressed \
         in green and wrapped in a yellow scarf, tenderly caring \
@@ -28,9 +28,9 @@ const prince_varyseeds = await getFluxImages("prince_varyseeds");
 
 <FluxRunGrid run={prince_prompt}> </FluxRunGrid>
 
-        
+
 <div class="prose dark:prose-invert">
-    <h2>Step iteratons</h2>
+    <h2 class="text-2xl font-bold text-ink mb-4">Step iterations</h2>
     <pre>mflux-wrapper.py --seed --vary-steps 2,3,4,5,6,7</pre>
 </div>
 

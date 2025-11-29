@@ -1,0 +1,13 @@
+[[subsites]]
+name = "AI Engineering Code Summit 2025"
+path = "subsites/2025-11-20-ai-engineering-code-summit"
+astro_dir = "web"
+base = "/reports/aiecode-2025-11"
+output = "reports/aiecode-2025-11"
+
+[[subsites]]
+name = "Weekend Warrior"
+path = "subsites/weekend-coding-agent"
+astro_dir = "."
+base = "/reports/coding-agent"
+output = "reports/coding-agent"

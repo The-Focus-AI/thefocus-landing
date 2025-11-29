@@ -86,7 +86,7 @@ let category = Astro.props.category || "home";
     <!-- Other head elements -->
     <slot name="head" />
   </head>
-  <body class="bg-paper">
+  <body class={category === 'insights' || category === 'tools' ? 'bg-[#e8e6df]' : 'bg-paper'}>
     <header class="border-b border-ink/10">
       <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <a href="/" class="order-2 md:order-1 group">
@@ -180,8 +180,8 @@ let category = Astro.props.category || "home";
             <h3 class="text-xs uppercase tracking-[0.15em] text-ink font-medium mb-4">Products</h3>
             <ul class="space-y-3 text-sm">
               <li><a href="https://account.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Distill-X</a></li>
-              <li><a href="https://ffffound-images.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">FFFFound Browser</a></li>
-              <li><a href="https://memes-images.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Memes Browser</a></li>
+              <li><a href="https://ffffound-browser.thefocus.ai/" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">FFFFound Browser</a></li>
+              <li><a href="https://memes-browser.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Memes Browser</a></li>
               <li><a href="https://account.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Registry</a></li>
             </ul>
           </div>
