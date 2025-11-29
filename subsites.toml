@@ -1,13 +1,11 @@
 [[subsites]]
 name = "AI Engineering Code Summit 2025"
-path = "subsites/2025-11-20-ai-engineering-code-summit"
-astro_dir = "web"
-base = "/reports/aiecode-2025-11"
-output = "reports/aiecode-2025-11"
+workdir = "subsites/2025-11-20-ai-engineering-code-summit"
+output = "public/reports/aiecode-2025-11"
+build = "mise run build-site /reports/aiecode-2025-11 ../../../public/reports/aiecode-2025-11"
 
 [[subsites]]
-name = "Weekend Warrior"
-path = "subsites/weekend-coding-agent"
-astro_dir = "."
-base = "/reports/coding-agent"
-output = "reports/coding-agent"
+name = "Weekend Coding Agent"
+workdir = "subsites/weekend-warrior"
+output = "public/reports/coding-agent"
+build = "mise build-site ../weekend-coding-agent /reports/coding-agent ../../public/reports/coding-agent"

@@ -3,19 +3,17 @@
 
 set -e
 
-name="" path="" astro_dir="" base="" output=""
+ROOT="$(pwd)"
+name="" workdir="" output="" build=""
 
 build_current() {
-    [[ -z "$path" ]] && return
+    [[ -z "$workdir" ]] && return
 
-    local site_path="$path"
-    [[ "$astro_dir" != "." ]] && site_path="$site_path/$astro_dir"
-
-    echo "Building: $name ($site_path)"
-    cd "$site_path"
+    echo "Building: $name"
+    cd "$ROOT/$workdir"
     mise trust
-    mise run build-site "$base" "$(pwd)/../../public/$output"
-    cd - > /dev/null
+    eval "$build"
+    cd "$ROOT"
 }
 
 while IFS= read -r line; do
@@ -24,7 +22,7 @@ while IFS= read -r line; do
 
     if [[ "$line" == "[[subsites]]" ]]; then
         build_current
-        name="" path="" astro_dir="" base="" output=""
+        name="" workdir="" output="" build=""
     elif [[ "$line" =~ ^([a-z_]+)[[:space:]]*=[[:space:]]*\"(.*)\" ]]; then
         declare "${BASH_REMATCH[1]}=${BASH_REMATCH[2]}"
     fi

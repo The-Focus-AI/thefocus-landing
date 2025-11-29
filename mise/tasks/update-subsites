@@ -1,0 +1,17 @@
+#!/bin/bash
+#MISE description="Update all git submodules to latest commits"
+
+set -e
+
+echo "Updating submodules..."
+git submodule update --remote --recursive
+
+echo ""
+echo "Submodule status:"
+git submodule status
+
+echo ""
+echo "To commit these changes, run:"
+echo "  git add .gitmodules subsites/"
+echo "  git commit -m 'Update submodules to latest commits'"
+
