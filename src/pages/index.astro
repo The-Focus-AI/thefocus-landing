@@ -1,60 +1,213 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import CarouselUsecase from "../components/carousel/carousel-use-case.astro";
-import { getLearnings } from "../utils/learnings";
 import { getCaseStudies } from "../utils/case-studies";
-import RelatedCaseStudy from "../components/related/related-case-study.astro";  
-import HomepageTOC from "../components/homepage_toc.astro";
-const learnings = await getLearnings();
 const case_studies = await getCaseStudies();
+const featuredCaseStudies = case_studies.slice(0, 2);
 ---
 
 <BaseLayout
-  pageTitle="The Focus.ai"
+  pageTitle="Focus.AI | Distill the Signal from the Noise"
   bigHeader={true}
-  description="We help you focus"
+  description="We help you distill signal from noise with AI-powered solutions. Connecting siloed data, building curated interfaces, and enhancing focus."
   showOrganizationSchema={true}
+  category="home"
 >
-  <section slot="hero">
-    <CarouselUsecase />
+  <!-- Hero Section -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-4xl">
+      <h2 class="text-5xl md:text-7xl font-bold text-ink mb-8 leading-tight">
+        Distill the signal from the noise
+      </h2>
+      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-12">
+        The Focus.AI is a technology studio designed to use the best in class technologies to help you and your business get more results faster. We help you future proof your software by unleashing critical but hard to get information, allowing you and your customers to find signal and drive more profits.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/capabilities"
+          class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors text-center"
+        >
+          Our Capabilities
+        </a>
+        <a
+          href="/case-studies"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider hover:border-petrol hover:text-petrol transition-colors text-center"
+        >
+          View Case Studies
+        </a>
+      </div>
+    </div>
   </section>
 
-  <h2 class="md:text-right text-4xl sm:text-7xl font-bold font-sans">
-    An agency that truly understands how to leverage the best AI models for the agentic software world and future internet.
-  </h2>
+  <!-- What We Do -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool py-16 md:py-24">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="max-w-4xl">
+        <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">What We Do</h3>
+        <h2 class="text-4xl md:text-5xl font-bold text-ink mb-12">Three pillars of focus</h2>
 
-  <div class="pt-24 sm:pt-48 flex flex-col-reverse sm:flex-row gap-12">
-    <div class="flex-1">
-      <div class="flex items-center mb-8">
-        <h2 class="text-3xl font-bold font-sans">Learnings</h2>
-        <span class="text-orange-500 text-3xl ml-1">.</span>
+        <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <div class="text-6xl font-bold text-petrol/20 mb-4">01</div>
+          <h4 class="text-xl font-bold text-ink mb-3">Connecting Siloed Data</h4>
+          <p class="text-graphite leading-relaxed">
+            Enable prompt UIs to be in play by connecting your disparate data sources and making them AI-accessible.
+          </p>
+        </div>
+        <div>
+          <div class="text-6xl font-bold text-petrol/20 mb-4">02</div>
+          <h4 class="text-xl font-bold text-ink mb-3">Highly Curated UIs</h4>
+          <p class="text-graphite leading-relaxed">
+            Task-specific, context-aware interfaces that support decision-making and operator control.
+          </p>
+        </div>
+        <div>
+          <div class="text-6xl font-bold text-petrol/20 mb-4">03</div>
+          <h4 class="text-xl font-bold text-ink mb-3">Distill Noise from Systems</h4>
+          <p class="text-graphite leading-relaxed">
+            More focused, productive time with fewer distractions through intelligent filtering and prioritization.
+          </p>
+        </div>
+        </div>
       </div>
-
-      <div class="space-y-12">
-        {
-          learnings
-            .slice(0, 3)
-            .map((learning) => <HomepageTOC learning={learning} />)
-        }
-      </div>
-
-	  <a href="/learnings" class="inline-block mt-8 border-b border-black pb-1 hover:border-orange-500 hover:text-orange-500 transition-colors">VIEW ALL LEARNINGS</a>
-    </div>
-    <div class="flex-1">
-      <div class="flex items-center mb-8">
-        <h2 class="text-3xl font-bold font-sans">Case Studies</h2>
-        <span class="text-orange-500 text-3xl ml-1">.</span>
-      </div>
-
-      <div class="space-y-12">
-        {
-          case_studies
-            .slice(0, 3)
-            .map((case_study) => <RelatedCaseStudy case_study={case_study} image={true}/>)
-        }
-      </div>
-
-	  <a href="/case-studies" class="inline-block mt-8 border-b border-black pb-1 hover:border-orange-500 hover:text-orange-500 transition-colors">VIEW ALL CASE STUDIES</a>
     </div>
   </div>
+
+  <!-- Case Study Highlights -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-5xl">
+      <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">Real Results</h3>
+      <h2 class="text-4xl md:text-5xl font-bold text-ink mb-4">Case Studies</h2>
+      <p class="text-xl text-graphite mb-12">
+        See how we've helped organizations distill signal from noise and transform their workflows.
+      </p>
+
+      <div class="space-y-12">
+        {featuredCaseStudies.map((study) => (
+          <article class="border border-ink/10 rounded-lg p-8 hover:border-petrol/30 transition-colors">
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-ink mb-3">
+                  <a href={`/case-study/${study.id}`} class="hover:text-petrol transition-colors">
+                    {study.data.title}
+                  </a>
+                </h3>
+                <p class="text-sm text-petrol mb-4">{study.data.industry} • {study.data.year}</p>
+                <p class="text-graphite leading-relaxed mb-6">
+                  {study.data.challenge}
+                </p>
+                {study.data.testimonial && (
+                  <blockquote class="border-l-4 border-petrol pl-6 italic text-graphite">
+                    <p class="mb-3">"{study.data.testimonial}"</p>
+                    <footer class="text-sm not-italic">
+                      — {study.data.testimonial_person}, {study.data.testimonial_company}
+                    </footer>
+                  </blockquote>
+                )}
+              </div>
+              {study.data.image && (
+                <div class="md:w-64 flex-shrink-0">
+                  <img
+                    src={`/src/content/assets/case-studies/${study.data.image}`}
+                    alt={study.data.title}
+                    class="w-full h-auto rounded"
+                  />
+                </div>
+              )}
+            </div>
+            <div class="mt-6">
+              <a
+                href={`/case-study/${study.id}`}
+                class="text-petrol hover:underline font-medium uppercase text-sm tracking-wide"
+              >
+                Read Case Study →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a
+          href="/case-studies"
+          class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+        >
+          View All Case Studies
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Do It -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm py-16 md:py-24">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="max-w-4xl">
+        <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">Our Process</h3>
+        <h2 class="text-4xl md:text-5xl font-bold text-ink mb-8">How we do it</h2>
+
+        <div class="prose prose-lg max-w-none text-graphite">
+        <p class="text-xl leading-relaxed mb-8">
+          Our thoughtful team of strategists, designers and technologists work with you and your organization during an initial strategy phase to familiarize ourselves with your business's core values. What technologies you currently use and understand your metrics and KPIs (Key Performance Indicators).
+        </p>
+
+        <div class="bg-paper border-l-4 border-petrol p-8 rounded my-12">
+          <p class="text-lg italic text-graphite mb-4">
+            "[Testimonial placeholder - insert client quote about the strategy phase and how it helped clarify their needs and establish clear goals]"
+          </p>
+          <p class="text-sm font-medium text-ink">
+            — Client Name, Title, Company
+          </p>
+        </div>
+
+        <h3 class="text-2xl font-bold text-ink mb-6">What to expect in this phase:</h3>
+        <ul class="space-y-4 mb-8">
+          <li class="flex gap-4">
+            <span class="text-petrol font-bold flex-shrink-0">→</span>
+            <span>Discovery sessions to understand your current systems and pain points</span>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-petrol font-bold flex-shrink-0">→</span>
+            <span>Technical assessment of existing infrastructure and data sources</span>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-petrol font-bold flex-shrink-0">→</span>
+            <span>Strategic roadmap aligned with your business objectives and KPIs</span>
+          </li>
+        </ul>
+
+        <p class="text-xl leading-relaxed">
+          The studio is designed to move quickly, leveraging new tooling that can help uncover new opportunities, streamline legacy systems or simply get a new system up and running quickly. Everyone inside the studio loves to execute and drive performance.
+        </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products/Tools Preview -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-4xl">
+      <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">Our Tools</h3>
+      <h2 class="text-4xl md:text-5xl font-bold text-ink mb-8">TheFocus.AI Products</h2>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="border border-ink/10 rounded-lg p-6 hover:border-petrol/30 transition-colors">
+          <h4 class="text-xl font-bold text-ink mb-3">Distill for X</h4>
+          <p class="text-graphite">Clean up the noise from your X/Twitter feed and focus on what matters.</p>
+        </div>
+        <div class="border border-ink/10 rounded-lg p-6 hover:border-petrol/30 transition-colors">
+          <h4 class="text-xl font-bold text-ink mb-3">Distill for YouTube</h4>
+          <p class="text-graphite">Extract signal from YouTube content without the distractions.</p>
+        </div>
+        <div class="border border-ink/10 rounded-lg p-6 hover:border-petrol/30 transition-colors">
+          <h4 class="text-xl font-bold text-ink mb-3">Rackets.AI</h4>
+          <p class="text-graphite">AI-powered insights for racquet sports enthusiasts.</p>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <a href="/tools" class="text-petrol hover:underline font-medium uppercase text-sm tracking-wide">
+          Explore All Tools →
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

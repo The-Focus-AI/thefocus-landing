@@ -1,0 +1,33 @@
+/* Focus.AI Brand Fonts - CinaGEO */
+
+@font-face {
+  font-family: 'CinaGEO';
+  src: url('/fonts/CinaGEO-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CinaGEO';
+  src: url('/fonts/CinaGEO-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CinaGEO';
+  src: url('/fonts/CinaGEO-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CinaGEO';
+  src: url('/fonts/CinaGEO-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

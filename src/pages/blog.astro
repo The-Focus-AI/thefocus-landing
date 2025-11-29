@@ -1,16 +1,4 @@
 ---
-import BaseLayout from "../layout/BaseLayout.astro";
-import PostCard from "../components/cards/post-card.astro";
-import { getPosts } from "../utils/posts";
-import PostListSchema from "../components/schemas/postlist.astro";
-const allPosts = await getPosts();
-
+// Redirect /blog to /insights (new URL structure)
+return Astro.redirect('/insights', 301);
 ---
-<BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work" category="blog">
-    <PostListSchema slot="head"  posts={allPosts}/>  
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {allPosts.map((post) => (
-            <PostCard post={post} />
-        ))}
-    </div>
-</BaseLayout>

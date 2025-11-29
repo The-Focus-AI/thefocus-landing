@@ -1,21 +1,4 @@
 ---
-import BaseLayout from "../layout/BaseLayout.astro";
-import { getrecipes, getRecipeUrl, getSection } from "../utils/recipes";
-import RecipeToc from "../components/recipe-toc.astro";
-import PostListSchema from "../components/schemas/postlist.astro";
-import BreadcrumbList from "../components/schemas/breadcrumb.astro";
-const allrecipes = await getrecipes();
-const recipesSection = await getSection("recipes");
-
+// Redirect /recipes to /tools (new URL structure)
+return Astro.redirect('/tools', 301);
 ---
-<BaseLayout pageTitle="Focus.ai Blog" description="A blog about AI and the future of work" category="recipes">
-    <PostListSchema slot="head"  posts={allrecipes} post={false}/>  
-    <BreadcrumbList slot="head" />
-
-    <div>
-        <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic font-bemb">recipes</h1>
-        {recipesSection && <div class="prose  text-lg pb-4 justify" set:html={recipesSection.rendered.html}></div>}
-
-        <RecipeToc recipes={allrecipes} />
-    </div>
-</BaseLayout>

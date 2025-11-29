@@ -1,5 +1,5 @@
 ---
-import '@fontsource-variable/dm-sans';
+import '../styles/fonts.css';
 // import '@fontsource-variable/noto-serif';
 import '@fontsource/noto-serif/300.css';
 import '@fontsource/noto-serif/400.css';
@@ -24,9 +24,6 @@ const openGraphImageUrl = `${site}${Astro.props.openGraphImage || `/og.png`}`;
 // getImagePath({ url, site });
 
 let category = Astro.props.category || "home";
-if(Astro.url.pathname.includes("/posts/about")) {
-  category = "about";
-}
 ---
 <!DOCTYPE html>
 <html lang="en" data-theme="light" class="antialiased subpixel-antialiased">
@@ -89,37 +86,49 @@ if(Astro.url.pathname.includes("/posts/about")) {
     <!-- Other head elements -->
     <slot name="head" />
   </head>
-  <body class="bg-gray-100">
-    <header
-      class:list={[
-        "p-2 md:px-4 md:py-8 md:flex justify-between items-top md:container mx-auto sm:max-w-screen-lg ",
-        bigHeader ? "sm:px-8" : ""
-      ]}
-    >
-      <nav class="space-x-4 text-gray-700">
-        <ul class="flex md:block gap-2 pb-4 sm:text-lg md:text-base justify-between md:uppercase">
-          <li><a href="/" class:list={[category === "home" ? "underline hover:underline" : "" ]}>Home</a></li>
-          <li>
-            <a href="/learnings" class:list={[(category === "blog"  || category === "recipes") ? "underline hover:underline" : ""]}>Learnings</a>
-          </li>
-          <li>
-            <a href="/case-studies" class:list={[category === "case-studies" ? "underline hover:underline" : ""]}>Case Studies</a>
-          </li>
-          <li>
-            <a href="mailto:hey@thefocus.ai" class="hover:underline">Contact</a>
-          </li>
-          <li><a href="/posts/about" class:list={[category === "about" ? "underline hover:underline" : ""]}>About Us</a></li>
-        </ul>
-      </nav>
-      <div>
-        <h1 class:list={[
-          "mt-0 pt-0 text-7xl leading-[.75] text-black",
-          bigHeader ? "md:text-[200px]" : "md:text-[100px]"
-        ]}>
-          FOCUS<span class="text-orange-500">.</span>{bigHeader ? <br /> : ""}AI
-        </h1>
-        <p class="text-right hidden md:block">FOCUS.AI.AGENCY</p>
-        <p class="md:text-right">EST. 24</p>
+  <body class="bg-paper">
+    <header class="border-b border-ink/10">
+      <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <a href="/" class="order-2 md:order-1 group">
+          <h1 class="text-sm md:text-sm font-medium uppercase tracking-[0.15em]">
+            <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="text-graphite group-hover:text-ink transition-colors duration-150">FOCUS<span class="text-graphite group-hover:text-ink transition-colors duration-150">/</span>AI</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+          </h1>
+        </a>
+        <nav class="order-1 md:order-2">
+          <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm uppercase tracking-[0.15em] text-graphite">
+            <li>
+              <a href="/case-studies" class:list={["group inline-block", category === "case-studies" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Case Studies</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+              </a>
+            </li>
+            <li>
+              <a href="/capabilities" class:list={["group inline-block", category === "capabilities" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Capabilities</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+              </a>
+            </li>
+            <li>
+              <a href="/about" class:list={["group inline-block", category === "about" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">About</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hey@thefocus.ai" class="group inline-block">
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Contact</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+              </a>
+            </li>
+            <li class="text-graphite/30">/</li>
+            <li>
+              <a href="/insights" class:list={["group inline-block", category === "insights" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Insights</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+              </a>
+            </li>
+            <li>
+              <a href="/tools" class:list={["group inline-block", category === "tools" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Tools</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
 
@@ -127,78 +136,82 @@ if(Astro.url.pathname.includes("/posts/about")) {
 
 
     <main class="w-full">
-        
+
       <section class:list={[
-          "container mx-auto py-4 px-2 sm:max-w-screen-lg",
-          bigHeader ? "sm:py-12" : ""
+          "max-w-screen-xl mx-auto py-8 px-4 md:px-8",
+          bigHeader ? "md:py-16" : ""
         ]}>
         <slot/>
       </section>
 
       <EmailSignup />
 
-      <section class="bg-gray-900 text-gray-300 px-2">
-        <div class="flex justify-between p-4 text-gray-600 text-sm">
-          <p>What we offer</p>
-          <p>2024</p>
+      <section class="bg-ink text-paper py-24 px-4">
+        <div class="max-w-screen-xl mx-auto text-center">
+          <h2 class="text-3xl md:text-5xl font-bold mb-6">
+            Ready to distill signal from noise?
+          </h2>
+          <a
+            href="mailto:hey@thefocus.ai"
+            class="inline-block px-8 py-4 border-2 border-petrol bg-petrol text-paper font-medium uppercase text-sm tracking-wider hover:bg-transparent hover:text-petrol transition-colors"
+          >
+            Contact Us
+          </a>
         </div>
-        <div class="border-t border-gray-600 py-8 px-2">
-          <div class="flex container mx-auto">
-            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">01.</div>
-            <div class="text-4xl">
-              AGENTIC TOOLING
-            </div>
-          </div>
-        </div>
-        <div class="border-t border-gray-600 py-8">
-          <div class="flex container mx-auto">
-            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">02.</div>
-            <div class="text-4xl">(JIT) JUST IN TIME SOFTWARE</div>
-          </div>
-        </div>
-        <div class="border-t border-gray-600 py-8">
-          <div class="flex container mx-auto">
-            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">03.</div>
-            <div class="text-4xl">
-              CONVERTING LEGACY SOFTWARE TO MCP / AGENTIC
-            </div>
-          </div>
-        </div>
-        <div class="border-t border-gray-600 py-8">
-          <div class="flex container mx-auto">
-            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">04.</div>
-            <div class="text-4xl">UNDERSTANDING UI DESIGN AND PRODUCT IN THE AI WORLD</div>
-          </div>
-        </div>
-        <div class="border-t border-gray-600 py-8">
-          <div class="flex container mx-auto">
-            <div class="text-sm pr-12 sm:pr-24 mt-2 text-gray-400">05.</div>
-            <div class="text-4xl">MODIFY LEGACY WORKFLOW AND UI</div>
-          </div>
-        </div>
-      </section>
-      <section class="py-32">
-        <h2 class="text-4xl text-center">
-          <a class="underline" href="mailto:hey@thefocus.ai">CONTACT US</a> TO
-          GET STARTED.
-        </h2>
       </section>
     </main>
 
-    <footer class="container mx-auto flex flex-col md:flex-row w-full text-center md:text-left justify-between py-8">
-      <p class="text-4xl mt-2">FOCUS.AI</p>
-      <nav class="mt-4 space-x-4">
-        <a href="/" class="text-gray-600 hover:underline">HOME</a>
-        <a href="/blog" class="text-gray-600 hover:underline">BLOG</a>
-        <a href="/recipes" class="text-gray-600 hover:underline">RECIPES</a>
-        <a href="/case-studies" class="text-gray-600 hover:underline">CASE STUDIES</a>
-        <a href="/learnings" class="text-gray-600 hover:underline">LEARNINGS</a>
-        <a href="https://www.linkedin.com/in/will-schenk-420266/" class="text-gray-600 hover:underline">LINKEDIN</a>
-        <a href="https://github.com/The-Focus-AI" class="text-gray-600 hover:underline">GITHUB</a>
-        <a href="mailto:hey@thefocus.ai" class="text-gray-600 hover:underline"
-          >HEY@THEFOCUS.AI</a
-        >
-      </nav>
+    <footer class="border-t border-ink/10 bg-paper">
+      <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
+        <div class="grid md:grid-cols-4 gap-12">
+          <!-- Company -->
+          <div>
+            <h3 class="text-xs uppercase tracking-[0.15em] text-ink font-medium mb-4">Company</h3>
+            <ul class="space-y-3 text-sm">
+              <li><a href="/about" class="text-graphite hover:text-ink transition-colors">About</a></li>
+              <li><a href="/case-studies" class="text-graphite hover:text-ink transition-colors">Case Studies</a></li>
+              <li><a href="/capabilities" class="text-graphite hover:text-ink transition-colors">Capabilities</a></li>
+              <li><a href="mailto:hey@thefocus.ai" class="text-graphite hover:text-ink transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Products -->
+          <div>
+            <h3 class="text-xs uppercase tracking-[0.15em] text-ink font-medium mb-4">Products</h3>
+            <ul class="space-y-3 text-sm">
+              <li><a href="https://account.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Distill-X</a></li>
+              <li><a href="https://ffffound-images.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">FFFFound Browser</a></li>
+              <li><a href="https://memes-images.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Memes Browser</a></li>
+              <li><a href="https://account.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Registry</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div>
+            <h3 class="text-xs uppercase tracking-[0.15em] text-ink font-medium mb-4">Resources</h3>
+            <ul class="space-y-3 text-sm">
+              <li><a href="/insights" class="text-graphite hover:text-ink transition-colors">Insights</a></li>
+              <li><a href="/tools" class="text-graphite hover:text-ink transition-colors">Tools</a></li>
+              <li><a href="https://newsletter.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Newsletter</a></li>
+            </ul>
+          </div>
+
+          <!-- Connect -->
+          <div>
+            <h3 class="text-xs uppercase tracking-[0.15em] text-ink font-medium mb-4">Connect</h3>
+            <ul class="space-y-3 text-sm">
+              <li><a href="https://github.com/The-Focus-AI" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/will-schenk-420266/" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://x.com/wschenk" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">X / Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-ink/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-sm text-graphite">© 2024 Focus.AI. All rights reserved.</p>
+          <p class="text-sm text-graphite">Distill the signal from the noise</p>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

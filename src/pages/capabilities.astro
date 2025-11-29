@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const capabilities = [
+  {
+    number: "01",
+    title: "AGENTIC TOOLING",
+    description: "Building AI-powered tools that act autonomously on your behalf, making intelligent decisions and executing complex workflows without constant human intervention."
+  },
+  {
+    number: "02",
+    title: "(JIT) JUST IN TIME SOFTWARE",
+    description: "Creating software solutions exactly when you need them, tailored to your specific context and requirements, reducing overhead and maximizing relevance."
+  },
+  {
+    number: "03",
+    title: "CONVERTING LEGACY SOFTWARE TO MCP / AGENTIC",
+    description: "Transforming existing systems into modern, agentic architectures that leverage Model Context Protocol (MCP) for seamless AI integration and enhanced automation."
+  },
+  {
+    number: "04",
+    title: "UNDERSTANDING UI DESIGN AND PRODUCT IN THE AI WORLD",
+    description: "Designing interfaces that disappear when not needed and appear with perfect context when required, creating curated experiences that support decision-making."
+  },
+  {
+    number: "05",
+    title: "MODIFY LEGACY WORKFLOW AND UI",
+    description: "Reimagining traditional workflows and user interfaces to take advantage of AI capabilities, reducing noise and increasing focus on what matters."
+  }
+];
+---
+
+<BaseLayout
+  pageTitle="Capabilities | Focus.AI"
+  description="How we help you distill signal from noise with AI-powered solutions"
+  category="capabilities"
+>
+  <div class="max-w-4xl mx-auto">
+    <div class="mb-16">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-ink">What We Offer</h1>
+      <p class="text-xl md:text-2xl text-graphite leading-relaxed">
+        We help you <span class="text-petrol font-medium">distill the signal from the noise</span>, connecting siloed data, creating highly curated interfaces, and building systems that enhance focus and productivity.
+      </p>
+    </div>
+
+    <div class="space-y-1">
+      {capabilities.map((capability) => (
+        <div class="border-t border-ink/10 py-8 hover:bg-tint-sage transition-colors px-6 -mx-6">
+          <div class="flex gap-8 md:gap-12">
+            <div class="text-sm text-graphite/50 mt-2 font-mono">{capability.number}</div>
+            <div class="flex-1">
+              <h2 class="text-2xl md:text-4xl font-bold mb-4 text-ink">{capability.title}</h2>
+              <p class="text-lg text-graphite leading-relaxed">{capability.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 pt-16 border-t border-ink/10">
+      <h2 class="text-3xl font-bold mb-6 text-ink">Ready to get started?</h2>
+      <p class="text-xl text-graphite mb-8">
+        Let's discuss how we can help transform your workflows and interfaces for the AI era.
+      </p>
+      <a
+        href="mailto:hey@thefocus.ai"
+        class="inline-block px-6 py-3 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+      >
+        Contact Us
+      </a>
+    </div>
+  </div>
+</BaseLayout>

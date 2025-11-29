@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFFFound Browser - Semantic Image Search | thefocus.ai</title>
+    
+    <style>
+        /* Font Loading */
+        @font-face {
+            font-family: 'CinaGEO';
+            src: url('/mnt/skills/user/focus-ai-brand/assets/fonts/CinaGEO-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'CinaGEO';
+            src: url('/mnt/skills/user/focus-ai-brand/assets/fonts/CinaGEO-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        /* Design Tokens */
+        :root {
+            --paper: #faf9f6;
+            --ink: #161616;
+            --graphite: #4a4a4a;
+            --petrol: #0e3b46;
+            --vermilion: #c3471d;
+            --border: #d4d3cf;
+            
+            --tint-cool: #edf6f8;
+            --tint-sage: #eef6ee;
+            --tint-lavender: #f2eef6;
+            
+            --font-sans: "CinaGEO", system-ui, -apple-system, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--graphite);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1 {
+            font-size: clamp(32px, 8vw, 88px);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.045em;
+            color: var(--ink);
+        }
+        
+        h2 {
+            font-size: clamp(24px, 5vw, 48px);
+            font-weight: 700;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+        }
+        
+        h3 {
+            font-size: clamp(20px, 3vw, 30px);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+        
+        .label {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--petrol);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr 200px;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .label-gutter {
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .content-main {
+            max-width: 740px;
+        }
+        
+        .marginalia-gutter {
+            position: sticky;
+            top: 2rem;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        section {
+            padding: 7rem 0;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-content {
+            margin-bottom: 2rem;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 0.875rem 1.5rem;
+            border: 1px solid var(--petrol);
+            background: transparent;
+            color: var(--petrol);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cta-primary:hover {
+            background: rgba(14, 59, 70, 0.04);
+            transform: translateY(-1px);
+        }
+        
+        .cta-secondary {
+            border-color: var(--border);
+            color: var(--ink);
+        }
+        
+        /* Stats */
+        .stat-row {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        
+        .stat {
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--petrol);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--graphite);
+            margin-top: 0.5rem;
+        }
+        
+        /* Simple grid */
+        .simple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(22, 22, 22, 0.08);
+        }
+        
+        .card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+        }
+        
+        .card p {
+            font-size: 15px;
+        }
+        
+        /* Tech stack */
+        .tech-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tech-list li {
+            padding: 1rem 1.5rem;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        
+        .tech-list strong {
+            color: var(--petrol);
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Demo section */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-card {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .demo-card h4 {
+            font-size: 20px;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-card .demo-url {
+            font-size: 14px;
+            color: var(--petrol);
+            margin-top: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 3rem 0;
+        }
+        
+        footer a {
+            color: var(--paper);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 150ms ease;
+        }
+        
+        footer a:hover {
+            opacity: 1;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .label-gutter,
+            .marginalia-gutter {
+                position: static;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+            
+            .stat-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="asymmetric-grid">
+                <div class="label-gutter">
+                    <div class="label">Live Project</div>
+                </div>
+                <div class="content-main">
+                    <h1>Semantic image search with CLIP embeddings</h1>
+                    <div class="hero-content">
+                        <p style="font-size: 20px; line-height: 1.5; margin: 1.5rem 0;">
+                            Search 92,000+ images by visual meaning, not filenames. 
+                            Built with WARC archives, Replicate's CLIP model, and Supabase pgvector.
+                        </p>
+                    </div>
+                    <div class="cta-group">
+                        <a href="https://ffffound-browser.thefocus.ai/" class="cta-primary">
+                            Try FFFFound Browser →
+                        </a>
+                        <a href="https://github.com/The-Focus-AI/image-browser" class="cta-primary cta-secondary">
+                            View GitHub
+                        </a>
+                    </div>
+                    
+                    <div class="stat-row">
+                        <div class="stat">
+                            <div class="stat-value">92K</div>
+                            <div class="stat-label">Images</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">768</div>
+                            <div class="stat-label">Dimensions</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">&lt;100ms</div>
+                            <div class="stat-label">Search Time</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marginalia-gutter">
+                    <p><strong>Data sources:</strong> FFFFound archive + Singapore memes</p>
+                    <p style="margin-top: 1rem;"><strong>Live at:</strong> ffffound-browser.thefocus.ai</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section style="background: var(--tint-cool);">
+        <div class="container">
+            <div class="asymmetric-grid">
+                <div class="label-gutter">
+                    <div class="label">Process</div>
+                </div>
+                <div class="content-main">
+                    <h2>How it works</h2>
+                    
+                    <div class="simple-grid">
+                        <div class="card">
+                            <h4>1. Extract from WARC archives</h4>
+                            <p>Used our custom warc_viewer tool to parse Internet Archive WARC files and extract 79,832 images from the FFFFound collection.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>2. Generate embeddings</h4>
+                            <p>Each image becomes a 768-dimensional vector via Replicate's CLIP model. These vectors capture visual and semantic meaning.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>3. Store in pgvector</h4>
+                            <p>Supabase PostgreSQL with pgvector extension. Multi-bucket design lets each collection have its own table.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>4. Semantic search</h4>
+                            <p>Text queries get converted to embeddings in the same space. Cosine similarity finds visually relevant images.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section style="background: var(--paper);">
+        <div class="container">
+            <div class="asymmetric-grid">
+                <div class="label-gutter">
+                    <div class="label">Architecture</div>
+                </div>
+                <div class="content-main">
+                    <h2>Technical stack</h2>
+                    <p style="margin-top: 1rem;">
+                        Production-ready TypeScript implementation with clean separation between sync infrastructure and browsing interface.
+                    </p>
+                    
+                    <ul class="tech-list">
+                        <li><strong>Backend</strong>TypeScript/Node.js</li>
+                        <li><strong>Database</strong>Supabase PostgreSQL</li>
+                        <li><strong>Vectors</strong>pgvector extension</li>
+                        <li><strong>Storage</strong>Cloudflare R2</li>
+                        <li><strong>Embeddings</strong>Replicate CLIP</li>
+                        <li><strong>Web UI</strong>Express.js</li>
+                    </ul>
+                    
+                    <div class="card" style="margin-top: 2rem; background: var(--tint-lavender);">
+                        <h4>Why CLIP?</h4>
+                        <p>
+                            CLIP creates embeddings in a shared latent space for both images and text. 
+                            This means a text query like "sunset over ocean" and an actual sunset photo 
+                            exist as nearby points in 768-dimensional space. Cosine similarity reveals semantic meaning.
+                        </p>
+                    </div>
+                </div>
+                <div class="marginalia-gutter">
+                    <p><strong>Lines of code:</strong> 1,204</p>
+                    <p style="margin-top: 1rem;"><strong>Processing time:</strong> 14-16 hours total</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demos -->
+    <section style="background: var(--tint-sage);">
+        <div class="container">
+            <div class="asymmetric-grid">
+                <div class="label-gutter">
+                    <div class="label">Try It</div>
+                </div>
+                <div class="content-main">
+                    <h2>Two live collections</h2>
+                    
+                    <div class="demo-grid">
+                        <div class="demo-card">
+                            <h4>🎨 FFFFound Archive</h4>
+                            <p>79,832 curated design images from the legendary 2007-2017 community</p>
+                            <div class="demo-url">ffffound-browser.thefocus.ai</div>
+                            <div style="margin-top: 1.5rem;">
+                                <a href="https://ffffound-browser.thefocus.ai/" class="cta-primary">
+                                    Browse FFFFound →
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="demo-card">
+                            <h4>😂 Singapore Memes</h4>
+                            <p>13,002 memes from the SG_Memes Hugging Face dataset</p>
+                            <div class="demo-url">memes-browser.thefocus.ai</div>
+                            <div style="margin-top: 1.5rem;">
+                                <a href="https://memes-browser.thefocus.ai/" class="cta-primary">
+                                    Browse Memes →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--paper); border-radius: 8px; border: 1px solid var(--border);">
+                        <p><strong>Try semantic queries:</strong></p>
+                        <p style="margin-top: 0.75rem; font-size: 15px;">
+                            "minimalist design" • "cats" • "sunset" • "typography" • "brutalist architecture" • "vintage posters"
+                        </p>
+                        <p style="margin-top: 1rem; font-size: 14px; color: var(--graphite);">
+                            The semantic understanding just works—search by visual meaning, not filenames.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section style="background: var(--paper);">
+        <div class="container">
+            <div class="asymmetric-grid">
+                <div class="label-gutter">
+                    <div class="label">Features</div>
+                </div>
+                <div class="content-main">
+                    <h2>Production-ready design</h2>
+                    
+                    <div class="simple-grid">
+                        <div class="card">
+                            <h4>Multi-bucket architecture</h4>
+                            <p>Each R2 bucket gets its own PostgreSQL table. Clean multi-tenancy ready for infinite collections.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>Smart retry logic</h4>
+                            <p>Handles 429 rate limits and 5xx errors with exponential backoff. Automatic recovery for failed embeddings.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>Concurrent processing</h4>
+                            <p>8 workers for uploads, 3 for embeddings. Optimized for Replicate API limits and throughput.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>Fast vector search</h4>
+                            <p>pgvector handles 92K+ vectors with sub-100ms queries. Cosine distance operator for similarity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Source -->
+    <section style="background: var(--tint-cool);">
+        <div class="container">
+            <div class="asymmetric-grid">
+                <div class="label-gutter">
+                    <div class="label">Open Source</div>
+                </div>
+                <div class="content-main">
+                    <h2>Image Browser</h2>
+                    <p style="margin-top: 1rem;">
+                        Production-ready semantic image search built with TypeScript, Supabase pgvector, 
+                        and Replicate's CLIP model. Clean architecture with multi-bucket support.
+                    </p>
+                    
+                    <div class="card" style="margin-top: 2rem;">
+                        <h4>Features</h4>
+                        <ul style="list-style: none; margin-top: 1rem;">
+                            <li style="padding: 0.5rem 0;">→ Multi-bucket architecture for multiple collections</li>
+                            <li style="padding: 0.5rem 0;">→ Smart retry logic with exponential backoff</li>
+                            <li style="padding: 0.5rem 0;">→ Concurrent processing (8 upload / 3 embedding workers)</li>
+                            <li style="padding: 0.5rem 0;">→ Fast pgvector similarity search (&lt;100ms)</li>
+                            <li style="padding: 0.5rem 0;">→ Cloudflare R2 storage integration</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="https://github.com/The-Focus-AI/image-browser" class="cta-primary">
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+                <div class="marginalia-gutter">
+                    <p><strong>Tech:</strong> TypeScript, Express, Supabase</p>
+                    <p style="margin-top: 1rem;"><strong>Also:</strong> warc_viewer tool for WARC extraction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <strong>thefocus.ai</strong> — Agentic AI tools for the modern web
+                </div>
+                <div class="footer-links">
+                    <a href="https://distill-x.thefocus.ai">Distill-X</a>
+                    <a href="https://registry.thefocus.ai">Registry</a>
+                    <a href="https://umwelten.thefocus.ai">Umwelten</a>
+                    <a href="https://videobooth.thefocus.ai">Videobooth</a>
+                </div>
+                <div>
+                    <a href="mailto:hello@thefocus.ai">hello@thefocus.ai</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
