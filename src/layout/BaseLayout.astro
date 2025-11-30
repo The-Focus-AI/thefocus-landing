@@ -87,6 +87,13 @@ let category = Astro.props.category || "home";
     <slot name="head" />
   </head>
   <body class={category === 'insights' || category === 'tools' ? 'bg-[#e8e6df]' : 'bg-paper'}>
+    <!-- Report Banner -->
+    <div class="bg-rand-blue text-white">
+      <a href="/reports/aiecode-2025-11/" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
+        <span class="font-medium">NEW:</span> Our latest report on the current state of AI Engineering is now available
+        <span class="ml-2 inline-block">→</span>
+      </a>
+    </div>
     <header class="border-b border-ink/10">
       <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <a href="/" class="order-2 md:order-1 group">

@@ -5,6 +5,10 @@ import PostListSchema from "../components/schemas/postlist.astro";
 import BreadcrumbList from "../components/schemas/breadcrumb.astro";
 import { formatDate } from "../utils/date";
 import { getTagDisplay } from "../utils/ids";
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/recipes/*.{jpeg,jpg,png,gif,webp}');
 
 const allrecipes = await getrecipes();
 
@@ -77,11 +81,11 @@ const totalProjects = allrecipes.length;
 
                     <div class="border border-void bg-white mb-6 hover:bg-[#f8f8f6] transition-colors duration-200 group">
                         <div class="grid md:grid-cols-12 gap-0">
-                            {featuredProject.data.image && (
+                            {featuredProject.data.image && images[`/src/content/assets/recipes/${featuredProject.data.image}`] && (
                                 <div class="md:col-span-5 border-b md:border-b-0 md:border-r border-void">
                                     <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
-                                        <img
-                                            src={`/src/content/assets/recipes/${featuredProject.data.image}`}
+                                        <Image
+                                            src={images[`/src/content/assets/recipes/${featuredProject.data.image}`]()}
                                             alt={featuredProject.data.title}
                                             class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                                         />
@@ -125,10 +129,10 @@ const totalProjects = allrecipes.length;
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-void border border-void">
                         {regularProjects.map((recipe, index) => (
                             <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
-                                {recipe.data.image && (
+                                {recipe.data.image && images[`/src/content/assets/recipes/${recipe.data.image}`] && (
                                     <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
-                                        <img
-                                            src={`/src/content/assets/recipes/${recipe.data.image}`}
+                                        <Image
+                                            src={images[`/src/content/assets/recipes/${recipe.data.image}`]()}
                                             alt={recipe.data.title}
                                             class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                                         />

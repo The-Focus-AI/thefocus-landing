@@ -28,7 +28,12 @@ run = 'rm -rf dist/'
 [tasks.build]
 description = 'Clears out dist'
 run = ['npm run build', 'du -sh dist']
-depends = ['pnpm-install','clean']
+depends = ['pnpm-install','clean','update-subsites','build-subsites']
+
+
+[tasks.publish-preview]
+description = 'Builds the preview site'
+run = ['rsync -rv dist/ pgs.sh:/thefocus-landing/']
 
 [tasks.buttondown]
 description = 'Pushed a draft'
