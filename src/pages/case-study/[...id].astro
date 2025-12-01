@@ -52,7 +52,7 @@ const results = parseResults(case_study.data.results);
         )}
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-bold text-ink mb-6 leading-tight">
+      <h1 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-6 leading-tight">
         {case_study.data.title}
       </h1>
 
@@ -100,7 +100,7 @@ const results = parseResults(case_study.data.results);
     <!-- Results highlight -->
     {results.length > 0 && (
       <div class="bg-ink text-paper p-8 md:p-10 mb-12 -mx-4 md:mx-0 md:rounded-lg">
-        <h2 class="text-sm uppercase tracking-widest text-paper/60 mb-4">Key Results</h2>
+        <h2 class="font-sans text-sm uppercase tracking-widest text-paper/60 mb-4">Key Results</h2>
         <div class="grid md:grid-cols-2 gap-4">
           {results.map((result) => (
             <div class="flex items-start gap-3">
@@ -114,7 +114,7 @@ const results = parseResults(case_study.data.results);
 
     <!-- Main Content -->
     <div class="prose prose-lg max-w-none
-      prose-headings:text-ink prose-headings:font-bold
+      prose-headings:font-sans prose-headings:text-ink prose-headings:font-bold
       prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
       prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4
       prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-3
@@ -147,7 +147,7 @@ const results = parseResults(case_study.data.results);
     <!-- CTA -->
     <div class="mt-16 pt-12 border-t border-gray-200">
       <div class="bg-tint-cool p-8 md:p-12 rounded-lg">
-        <h2 class="text-2xl font-bold text-ink mb-4">
+        <h2 class="font-sans text-2xl font-bold text-ink mb-4">
           Facing a similar challenge?
         </h2>
         <p class="text-graphite mb-6">
@@ -165,12 +165,12 @@ const results = parseResults(case_study.data.results);
     <!-- Related Case Studies -->
     {related.length > 0 && (
       <nav class="mt-16 pt-12 border-t border-gray-200">
-        <h2 class="text-2xl font-bold text-ink mb-8">More Case Studies</h2>
+        <h2 class="font-sans text-2xl font-bold text-ink mb-8">More Case Studies</h2>
         <div class="grid md:grid-cols-2 gap-8">
           {related.map((cs) => (
             <a href={getCaseStudyUrl(cs)} class="group block">
               <span class="text-xs uppercase tracking-widest text-graphite">{cs.data.industry}</span>
-              <h3 class="text-xl font-bold text-ink group-hover:text-petrol transition-colors mt-1 mb-2">
+              <h3 class="font-sans text-xl font-bold text-ink group-hover:text-petrol transition-colors mt-1 mb-2">
                 {cs.data.title}
               </h3>
               <p class="text-graphite line-clamp-2">{cs.data.description}</p>

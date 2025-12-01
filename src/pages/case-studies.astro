@@ -74,7 +74,7 @@ if (uncategorized.length > 0) {
           <!-- Case Studies Grid -->
           <div class={`grid gap-8 ${categoryStudies.length === 1 ? 'md:grid-cols-1' : categoryStudies.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
             {categoryStudies.map((case_study, index) => (
-              <article class={`group ${categoryStudies.length === 1 ? 'md:grid md:grid-cols-2 md:gap-8' : ''}`}>
+              <article class={`group ${categoryStudies.length === 1 ? 'md:grid md:grid-cols-2 md:gap-8' : 'flex flex-col h-full'}`}>
                 <a href={getCaseStudyUrl(case_study)} class="block">
                   <!-- Image -->
                   <div class={`relative overflow-hidden bg-tint-cool mb-6 rounded-lg ${categoryStudies.length === 1 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
@@ -106,18 +106,15 @@ if (uncategorized.length > 0) {
                         </span>
                       </div>
                     )}
-                    <!-- Title on image -->
-                    <div class="absolute bottom-4 left-4 right-4">
-                      <h3 class="text-xl md:text-2xl font-bold text-white leading-tight group-hover:text-tint-warm transition-colors">
-                        {case_study.data.title}
-                      </h3>
-                    </div>
                   </div>
                 </a>
 
                 <!-- Content below image -->
-                <div class={categoryStudies.length === 1 ? 'flex flex-col justify-center' : ''}>
-                  <a href={getCaseStudyUrl(case_study)} class="block">
+                <div class={categoryStudies.length === 1 ? 'flex flex-col justify-center' : 'flex flex-col flex-1'}>
+                  <a href={getCaseStudyUrl(case_study)} class="flex flex-col flex-1">
+                    <h3 class="text-xl md:text-2xl font-bold text-ink leading-tight group-hover:text-petrol transition-colors mb-3">
+                      {case_study.data.title}
+                    </h3>
                     <p class="text-graphite mb-4 line-clamp-3">
                       {case_study.data.description}
                     </p>
@@ -135,7 +132,7 @@ if (uncategorized.length > 0) {
                     )}
 
                     <!-- Footer -->
-                    <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
                       <div class="flex items-center gap-3 text-sm">
                         <span class="font-medium text-ink">{case_study.data.client}</span>
                         <span class="text-graphite">•</span>

@@ -2,7 +2,7 @@
 name = "AI Engineering Code Summit 2025"
 workdir = "subsites/2025-11-20-ai-engineering-code-summit"
 output = "public/reports/aiecode-2025-11"
-build = "mise run build-site /reports/aiecode-2025-11 ../../../public/reports/aiecode-2025-11"
+build = "mise run build-site /reports/aiecode-2025-11/ ../../../public/reports/aiecode-2025-11"
 
 [[subsites]]
 name = "Weekend Coding Agent"

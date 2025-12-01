@@ -15,7 +15,7 @@ tech_stack: "React 19, TypeScript, Vite, Supabase (PostgreSQL + Edge Functions),
 testimonial: "Focus.AI understood that we weren't building a directory — we were building a trust network. The referral system they designed captures exactly how our industry actually works: reputation flows through personal connections."
 testimonial_person: "Founder"
 testimonial_company: "Name-Drop Network"
-published: true
+published: false
 image: ndn_wide.png
 ---
 

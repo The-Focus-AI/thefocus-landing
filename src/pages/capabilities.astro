@@ -4,93 +4,48 @@ import { getCaseStudies, getCaseStudyUrl } from "../utils/case-studies.js";
 
 const allCaseStudies = await getCaseStudies();
 
-const capabilities = [
+const pillars = [
   {
     number: "01",
-    title: "AGENTIC TOOLING",
-    icon: "🤖",
-    description: "Building AI-powered tools that act autonomously on your behalf, making intelligent decisions and executing complex workflows without constant human intervention.",
-    caseStudies: ["tezlab-ai", "upperhand-ai"],
-    keywords: ["MCP", "Multi-agent", "Autonomous workflows"],
-    process: [
-      "Map existing APIs and data flows",
-      "Design tool schemas with clear intent descriptions",
-      "Build with streaming responses and rich visualizations"
-    ],
-    testimonialSnippet: {
-      quote: "Focus.AI delivered a complete AI-powered web experience in weeks, not months.",
-      source: "Ben Schippers, CEO, TezLab"
-    }
+    title: "CONNECT",
+    subtitle: "Make siloed data AI-accessible",
+    pain: "Your data exists. It's valuable. But it lives in APIs your team can't query, spreadsheets with different naming conventions, and documents that require 15 minutes of manual entry. The information is there—it's just not accessible in ways that let people actually use it.",
+    solution: "We build bridges between your systems and AI. REST APIs become conversational interfaces. Spreadsheets become unified databases. PDFs become structured data. The result: people can ask questions in plain English and get answers in seconds.",
+    caseStudies: ["tezlab-ai", "upperhand-ai", "onboarding"],
+    featuredCaseStudy: "tezlab-ai"
   },
   {
     number: "02",
-    title: "(JIT) JUST IN TIME SOFTWARE",
-    icon: "⚡",
-    description: "Creating software solutions exactly when you need them, tailored to your specific context and requirements, reducing overhead and maximizing relevance.",
-    caseStudies: ["image-browser"],
-    keywords: ["Rapid development", "Purpose-built tools", "MVP"],
-    process: [
-      "Identify the specific pain point",
-      "Build minimal viable solution in 2-4 weeks",
-      "Iterate based on actual usage"
-    ],
-    testimonialSnippet: {
-      quote: "Finding the right image went from 10 minutes of scrolling to 2 seconds of typing.",
-      source: "Internal User, Focus.AI"
-    }
+    title: "CURATE",
+    subtitle: "Build interfaces for the task at hand",
+    pain: "Most interfaces try to do everything for everyone. The result is dashboards nobody reads, features nobody uses, and workflows that require five clicks when one would do. Your team deserves tools designed for exactly what they need.",
+    solution: "We build focused experiences. Voice-first TV apps for living rooms. Semantic search for image libraries. Chat interfaces that show charts, not text walls. Every interface is designed around a specific task—and disappears when it's done.",
+    caseStudies: ["perplexity-samsung", "image-browser", "name-drop-network"],
+    featuredCaseStudy: "image-browser"
   },
   {
     number: "03",
-    title: "CONVERTING LEGACY SOFTWARE TO MCP / AGENTIC",
-    icon: "🔄",
-    description: "Transforming existing systems into modern, agentic architectures that leverage Model Context Protocol (MCP) for seamless AI integration and enhanced automation.",
-    caseStudies: ["tezlab-ai"],
-    keywords: ["MCP SDK", "API integration", "Zero backend changes"],
-    process: [
-      "Audit existing API surface",
-      "Design tool wrappers with semantic descriptions",
-      "Deploy without touching existing infrastructure"
-    ],
-    testimonialSnippet: {
-      quote: "They understood our API architecture immediately and built something our users love — without disrupting our mobile team at all.",
-      source: "Ben Schippers, CEO, TezLab"
-    }
-  },
-  {
-    number: "04",
-    title: "UNDERSTANDING UI DESIGN AND PRODUCT IN THE AI WORLD",
-    icon: "🎯",
-    description: "Designing interfaces that disappear when not needed and appear with perfect context when required, creating curated experiences that support decision-making.",
-    caseStudies: ["tezlab-ai", "distill"],
-    keywords: ["Conversational UI", "Rich visualizations", "Natural language"],
-    process: [
-      "Design component-per-tool architecture",
-      "Build rich visual responses, not text walls",
-      "Context-aware prompting for seamless UX"
-    ],
-    testimonialSnippet: {
-      quote: "Distill changed how I stay informed. Instead of spending an hour scrolling Twitter, I get a two-paragraph summary of what actually mattered.",
-      source: "Internal User, Focus.AI"
-    }
-  },
-  {
-    number: "05",
-    title: "MODIFY LEGACY WORKFLOW AND UI",
-    icon: "🔧",
-    description: "Reimagining traditional workflows and user interfaces to take advantage of AI capabilities, reducing noise and increasing focus on what matters.",
-    caseStudies: ["distill", "upperhand-ai"],
-    keywords: ["Workflow automation", "Data synthesis", "Signal from noise"],
-    process: [
-      "Observe current workflow pain points",
-      "Identify AI leverage points for automation",
-      "Reduce noise, surface signal"
-    ],
-    testimonialSnippet: {
-      quote: "What used to take our research team half a day now takes thirty seconds.",
-      source: "Research Director, Media Analytics Client"
-    }
+    title: "DISTILL",
+    subtitle: "Filter noise, surface signal",
+    pain: "Twitter alone generates 500 million posts daily. Your inbox gets hundreds of emails. Meeting notes, Slack threads, research reports—they keep piling up. Staying informed means drowning, or missing things that matter.",
+    solution: "We build systems that read so you don't have to. AI summaries of Twitter feeds. Transcripts with highlights from hour-long podcasts. Topic extraction across sources. You get the signal without swimming through the noise.",
+    caseStudies: ["distill"],
+    featuredCaseStudy: "distill"
   }
 ];
+
+// Helper to get testimonial from a case study
+function getTestimonial(caseStudyId: string) {
+  const cs = allCaseStudies.find(c => c.id === caseStudyId);
+  if (cs?.data.testimonial) {
+    return {
+      quote: cs.data.testimonial,
+      person: cs.data.testimonial_person,
+      company: cs.data.testimonial_company
+    };
+  }
+  return null;
+}
 
 // Helper to get case study objects from IDs
 function getRelatedCaseStudies(caseStudyIds: string[]) {
@@ -107,53 +62,46 @@ function getRelatedCaseStudies(caseStudyIds: string[]) {
 >
   <div class="max-w-4xl mx-auto">
     <div class="mb-16">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-ink">What We Offer</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-ink">Three ways we help you focus</h1>
       <p class="text-xl md:text-2xl text-graphite leading-relaxed">
-        We help you <span class="text-petrol font-medium">distill the signal from the noise</span>, connecting siloed data, creating highly curated interfaces, and building systems that enhance focus and productivity.
+        Every project starts with the same question: what's getting in the way of your team doing great work? We've found the answers cluster around three problems—and we've built solutions for each.
       </p>
     </div>
 
     <div class="space-y-1">
-      {capabilities.map((capability) => {
-        const relatedCaseStudies = getRelatedCaseStudies(capability.caseStudies);
+      {pillars.map((pillar) => {
+        const relatedCaseStudies = getRelatedCaseStudies(pillar.caseStudies);
+        const testimonial = getTestimonial(pillar.featuredCaseStudy);
         return (
           <div class="border-t border-ink/10 py-10 hover:bg-tint-sage/50 transition-colors px-6 -mx-6">
             <div class="flex gap-8 md:gap-12">
-              <div class="text-sm text-graphite/50 mt-2 font-mono">{capability.number}</div>
+              <div class="text-sm text-graphite/50 mt-2 font-mono">{pillar.number}</div>
               <div class="flex-1">
-                {/* Title with icon */}
-                <div class="flex items-center gap-3 mb-4">
-                  <span class="text-3xl">{capability.icon}</span>
-                  <h2 class="text-2xl md:text-4xl font-bold text-ink">{capability.title}</h2>
+                {/* Title and subtitle */}
+                <div class="mb-4">
+                  <h2 class="text-2xl md:text-4xl font-bold text-ink mb-2">{pillar.title}</h2>
+                  <p class="text-lg text-petrol font-medium">{pillar.subtitle}</p>
                 </div>
 
-                <p class="text-lg text-graphite leading-relaxed mb-4">{capability.description}</p>
-
-                {/* Keywords */}
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {capability.keywords.map((kw) => (
-                    <span class="text-xs bg-tint-cool px-2 py-1 rounded text-graphite">{kw}</span>
-                  ))}
-                </div>
-
-                {/* Process hints */}
+                {/* The pain */}
                 <div class="mb-6">
-                  <h3 class="text-sm uppercase tracking-wider text-graphite/60 mb-2">Our approach</h3>
-                  <ul class="text-sm text-graphite space-y-1">
-                    {capability.process.map((step) => (
-                      <li class="flex items-start gap-2">
-                        <span class="text-petrol">→</span>
-                        <span>{step}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 class="text-sm uppercase tracking-wider text-graphite/60 mb-2">The problem</h3>
+                  <p class="text-graphite leading-relaxed">{pillar.pain}</p>
                 </div>
 
-                {/* Testimonial snippet */}
-                <blockquote class="border-l-2 border-petrol pl-4 mb-6">
-                  <p class="text-graphite italic">"{capability.testimonialSnippet.quote}"</p>
-                  <cite class="text-xs text-graphite/60 not-italic">— {capability.testimonialSnippet.source}</cite>
-                </blockquote>
+                {/* What we do */}
+                <div class="mb-6">
+                  <h3 class="text-sm uppercase tracking-wider text-graphite/60 mb-2">What we do</h3>
+                  <p class="text-graphite leading-relaxed">{pillar.solution}</p>
+                </div>
+
+                {/* Testimonial from featured case study */}
+                {testimonial && (
+                  <blockquote class="border-l-2 border-petrol pl-4 mb-6">
+                    <p class="text-graphite italic">"{testimonial.quote}"</p>
+                    <cite class="text-xs text-graphite/60 not-italic">— {testimonial.person}, {testimonial.company}</cite>
+                  </blockquote>
+                )}
 
                 {/* Related case studies */}
                 {relatedCaseStudies.length > 0 && (
@@ -172,9 +120,9 @@ function getRelatedCaseStudies(caseStudyIds: string[]) {
     </div>
 
     <div class="mt-16 pt-16 border-t border-ink/10">
-      <h2 class="text-3xl font-bold mb-6 text-ink">Ready to get started?</h2>
+      <h2 class="text-3xl font-bold mb-6 text-ink">Start with what's blocking you</h2>
       <p class="text-xl text-graphite mb-8">
-        Let's discuss how we can help transform your workflows and interfaces for the AI era.
+        Whether it's siloed data, overwhelming interfaces, or information overload—we've probably seen a version of your problem before. Let's talk about what's actually getting in the way.
       </p>
       <a
         href="mailto:hey@thefocus.ai"
