@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
+  # Using a different branch name? Replace `main` with your branch's name
   push:
     branches: [main]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
@@ -25,14 +25,26 @@ jobs:
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
           -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
           -d text="Build starting for ${{ github.repository }}!"
+
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site output
-        uses: withastro/action@v2
         with:
-          # path: . # The root location of your Astro project inside the repository. (optional)
-          node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 18. (optional)
-          package-manager: pnpm
+          submodules: true
+
+      - name: Setup mise
+        uses: jdx/mise-action@v2
+
+      - name: Install dependencies
+        run: mise install
+
+      - name: Build site
+        run: mise run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
       - name: Send Telegram Success
         if: success()
         run: |
