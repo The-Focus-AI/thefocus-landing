@@ -16,6 +16,12 @@ function getImage(case_study: any) {
   return images[img_key];
 }
 
+// Get video path if it exists (e.g., distill_wide.png -> distill_wide_loop.mp4)
+function getVideoPath(case_study: any) {
+  const videoName = case_study.data.image?.replace(/\.(png|jpg|jpeg|gif)$/, '_loop.mp4');
+  return videoName ? `/videos/case-studies/${videoName}` : null;
+}
+
 // Parse results into array if it's a string with bullet points
 function parseResults(results: string) {
   if (!results) return [];
@@ -76,9 +82,20 @@ if (uncategorized.length > 0) {
             {categoryStudies.map((case_study, index) => (
               <article class={`group ${categoryStudies.length === 1 ? 'md:grid md:grid-cols-2 md:gap-8' : 'flex flex-col h-full'}`}>
                 <a href={getCaseStudyUrl(case_study)} class="block">
-                  <!-- Image -->
+                  <!-- Image/Video -->
                   <div class={`relative overflow-hidden bg-tint-cool mb-6 rounded-lg ${categoryStudies.length === 1 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
-                    {getImage(case_study) ? (
+                    {getVideoPath(case_study) ? (
+                      <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        poster={getImage(case_study) ? getImage(case_study)().src : undefined}
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      >
+                        <source src={getVideoPath(case_study)} type="video/mp4" />
+                      </video>
+                    ) : getImage(case_study) ? (
                       <Image
                         src={getImage(case_study)()}
                         alt={case_study.data.title}

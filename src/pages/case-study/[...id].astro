@@ -27,6 +27,10 @@ const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/
 const img_key = `/src/content/assets/case-studies/${case_study.data.image}`;
 const heroImage = images[img_key];
 
+// Check for video version (e.g., distill_wide.png -> distill_wide_loop.mp4)
+const videoName = case_study.data.image?.replace(/\.(png|jpg|jpeg|gif)$/, '_loop.mp4');
+const videoPath = videoName ? `/videos/case-studies/${videoName}` : null;
+
 // Parse results into array
 function parseResults(results: string) {
   if (!results) return [];
@@ -85,15 +89,28 @@ const results = parseResults(case_study.data.results);
       </div>
     </header>
 
-    <!-- Hero Image -->
-    {heroImage && (
+    <!-- Hero Image/Video -->
+    {(heroImage || videoPath) && (
       <div class="relative aspect-[2/1] mb-12 overflow-hidden bg-tint-cool">
-        <Image
-          src={heroImage()}
-          alt={case_study.data.title}
-          class="absolute inset-0 w-full h-full object-cover"
-          width={1200}
-        />
+        {videoPath ? (
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            poster={heroImage ? heroImage().src : undefined}
+            class="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={videoPath} type="video/mp4" />
+          </video>
+        ) : heroImage && (
+          <Image
+            src={heroImage()}
+            alt={case_study.data.title}
+            class="absolute inset-0 w-full h-full object-cover"
+            width={1200}
+          />
+        )}
       </div>
     )}
 
