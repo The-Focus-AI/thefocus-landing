@@ -9,6 +9,7 @@ import BreadcrumbList from "../../components/schemas/breadcrumb.astro";
 import RelatedRecipe from "../../components/related/related-recipe.astro";
 import { formatDate } from "../../utils/date";
 import { getTagDisplay } from "../../utils/ids";
+import { imageConfig } from "astro:assets";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -37,8 +38,7 @@ const images = await import.meta.glob<{ default: ImageMetadata }>(
 const img_key = `/src/content/assets/recipes/${entry.data.image}`;
 if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
-// @ts-ignore
-const image = await images[img_key]().src;
+const image = (await images[img_key]()).default.src;
 ---
 
 <ArticleLayout
@@ -116,7 +116,7 @@ const image = await images[img_key]().src;
     {entry.data.image && (
       <div class="aspect-video bg-surface overflow-hidden border border-void">
         <img
-          src={`/src/content/assets/recipes/${entry.data.image}`}
+          src={image}
           alt={entry.data.title}
           class="w-full h-full object-cover"
         />
