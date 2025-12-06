@@ -9,6 +9,7 @@ section:
   - coding
   - analysis
 description: Learn how to integrate Playwright MCP server to enable AI coding agents to interact with web browsers, take screenshots, and validate designs with high fidelity for accurate web development and testing.
+duration: 5 min
 related:
   - context7-mcp
 ---

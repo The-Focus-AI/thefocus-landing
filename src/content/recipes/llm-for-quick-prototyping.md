@@ -9,6 +9,7 @@ published: true
 tech:
   - prompts
 description: Transform your workflow with a command-line tool that brings AI capabilities directly to your terminal, no complex setup required. See how to parse websites, analyze transcripts, and extract meaningful data using the llm CLI with popular models like Gemini and Claude.
+duration: 15 min
 ---
 Installation info on [my other site](https://willschenk.com/labnotes/2025/llm_cli_tool/)
 

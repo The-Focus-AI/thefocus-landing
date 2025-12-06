@@ -9,6 +9,7 @@ section:
   - coding
   - analysis
 description: Learn how to integrate Context7 MCP server to get up-to-date code documentation for LLMs and AI code editors, enabling real-time access to the latest library and framework documentation.
+duration: 5 min
 related:
   - playwright-mcp
 ---

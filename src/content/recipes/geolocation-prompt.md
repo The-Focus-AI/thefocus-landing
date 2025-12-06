@@ -10,6 +10,7 @@ image: geolocator.png
 related:
   - content-finder
 description: This post introduces a prompt for high-precision, image-based geolocation analysis, guiding AI to deduce where a photo was taken using expertise in visual, cultural, and environmental cues. The prompt provides a step-by-step framework for analyzing images and generating confident, reasoned location guesses—even suggesting what extra information would help if uncertain.
+duration: 5 min
 ---
 Here's a nice little prompt to help figure out where an image was taken:
 

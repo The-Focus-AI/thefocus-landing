@@ -9,6 +9,7 @@ tech:
 image: iterating-designs-with-chatgpt4o.png
 published: true
 description: Discover how to leverage Chrome's hidden command palette and ChatGPT to transform your website screenshots into sophisticated wireframes. Learn a clever workflow that combines Chrome's full-page screenshot capability with ChatGPT's AI-powered design suggestions to create professional 16:9 ratio mockups for your next project.
+duration: 10 min
 related:
   - using-claude-to-write-midjourney-prompts
 ---

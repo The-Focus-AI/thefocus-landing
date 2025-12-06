@@ -12,7 +12,7 @@ const formattedPublishDate = formatDate(post.data.date);
 
 <Card>
     <div slot="header" class="group">
-        <h2 class="text-2xl font-bold pb-2 text-ellipsis truncate">
+        <h2 class="text-2xl font-bold pb-2 text-ellipsis truncate text-ink">
             <div class="hidden group-hover:block absolute bg-white text-black">{post.data.published ? "" : "[DRAFT] "}{post.data.title || post.id}</div>
             <a href={postLink}>{post.data.published ? "" : "[DRAFT] "}{post.data.title || post.id}</a>
         </h2>

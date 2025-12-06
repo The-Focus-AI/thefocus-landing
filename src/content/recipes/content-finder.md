@@ -8,7 +8,8 @@ image: content-finder.png
 published: true
 tech:
   - prompts
-description: Ever had a movie stuck on the tip of your tongue or wanted more like your family’s favorite? Explore how AI-powered content discovery can help you make your next pick.
+description: Ever had a movie stuck on the tip of your tongue or wanted more like your family's favorite? Explore how AI-powered content discovery can help you make your next pick.
+duration: 2 min
 related:
   - geolocation-prompt
 ---

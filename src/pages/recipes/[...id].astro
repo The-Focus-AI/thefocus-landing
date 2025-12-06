@@ -80,15 +80,19 @@ const image = await images[img_key]().src;
       </div>
 
       <!-- Project Specs Grid -->
-      <div class="grid grid-cols-3 gap-4 pt-4 border-t border-void/20">
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Difficulty</div>
-          <div class="text-sm font-bold text-alert-red">●●○○○</div>
-        </div>
-        <div>
-          <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Est. Time</div>
-          <div class="text-sm font-bold text-void">2-4 Hours</div>
-        </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4 border-t border-void/20">
+        {entry.data.duration && (
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Est. Time</div>
+            <div class="text-sm font-bold text-void">{entry.data.duration}</div>
+          </div>
+        )}
+        {entry.data.journey && (
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Level</div>
+            <div class="text-sm font-bold text-rand-blue capitalize">{entry.data.journey}</div>
+          </div>
+        )}
         {entry.data.date && (
           <div>
             <div class="text-[10px] uppercase tracking-wider text-gray-500 mb-1">Published</div>

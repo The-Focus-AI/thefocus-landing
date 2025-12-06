@@ -8,6 +8,7 @@ tech:
 image: talking-in-the-car.png
 published: true
 description: Discover how voice-activated assistants like Google and ChatGPT can transform your car rides into interactive conversations. Learn tips like using search and prompts to dive deeper into news or ideas while on the go.
+duration: 5 min
 journey: beginner
 related:
   - superwhisper

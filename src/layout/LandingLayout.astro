@@ -93,7 +93,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
     <!-- Other head elements -->
     <slot name="head" />
   </head>
-  <body class={bodyClass}>
+  <body class={`text-ink ${bodyClass}`}>
     <main class="w-full">
         
       <section class:list={[

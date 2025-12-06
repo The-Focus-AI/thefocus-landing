@@ -36,9 +36,9 @@ const sectionMap = await Promise.all(sectionMapPromises);
     {sectionMap.map((section) => (
         <li class="sm:py-4">
             { grouping !== "journey" && (section.info ? 
-            (<><h2 class="text-2xl italic font-light pt-8 pb-4">{section.info.data.title}</h2>
+            (<><h2 class="text-2xl italic font-light pt-8 pb-4 text-ink">{section.info.data.title}</h2>
             <div class="md:ml-8 lg:ml-16 prose pt-4 pb-8" set:html={section.info.rendered.html}></div></>) :
-             <h2 class="text-2xl italic font-light py-8">{section.section}</h2>)}
+             <h2 class="text-2xl italic font-light py-8 text-ink">{section.section}</h2>)}
 
             
             <ul class="md:ml-8 lg:ml-16 pt-4">

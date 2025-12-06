@@ -12,6 +12,7 @@ related:
   - add-memory-to-cursor
   - extracting-requirements
 description: Transform your rough concepts into detailed project specifications with this powerful prompting technique that guides you through an in-depth development process. By asking just one thoughtful question at a time, AI helps you create comprehensive, developer-ready plans that cover every essential detail.
+duration: 30 min
 ---
 
 This is a great prompt to help hone an idea.  Use this with a strong model to make sure that it thinks through all of the details.  I've had a 45 minute conversation in the car with ChatGPT about some proejct ideas that I've had!

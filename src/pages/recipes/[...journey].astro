@@ -32,7 +32,7 @@ const journeySection = await getSection(journey);
 <BaseLayout pageTitle={journey} description={journey} category="recipes">
   <a href="/recipes" class="text-sm text-gray-500 hover:text-gray-700">← Back to all recipes </a>
 
-  <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic">{journey} recipes</h1>
+  <h1 class="text-4xl py-0 md:text-6xl tracking-wide md:py-8 font-light text-right md:text-center italic text-ink">{journey} recipes</h1>
 
     {journeySection && <div class="prose  text-lg pb-4 justify" set:html={journeySection.rendered.html}></div>}
 

@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { tag,posts } = Astro.props;
 ---
 <BaseLayout pageTitle={`${tag} posts`} description={`A list of all posts tagged with ${tag}`}>
-  <h1 class="text-4xl font-bold py-2 ">{getTagDisplay(tag,true)}</h1>
+  <h1 class="text-4xl font-bold py-2 text-ink">{getTagDisplay(tag,true)}</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {posts.map((post) => (
         <PostCard post={post} />

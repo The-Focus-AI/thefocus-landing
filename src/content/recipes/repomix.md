@@ -11,6 +11,7 @@ related:
   - understanding-a-codebase
 image: repomix.png
 description: The post focuses on how to give LLMs full visibility into a codebase to improve their understanding and responses.
+duration: 5 min
 ---
 [repomix](https://repomix.com/) is a great tool that you can use to tell an LLM about all of the context of your project.
 

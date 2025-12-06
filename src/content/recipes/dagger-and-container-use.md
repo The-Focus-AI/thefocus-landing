@@ -8,6 +8,7 @@ published: true
 tech:
   - context
 description: Unlock the power of isolated development with Dagger and Container Use—no more worrying about missing dependencies or system conflicts.
+duration: 15 min
 related:
 ---
 **Container Use** lets each of your coding agents have their own containerized environment. Go from babysitting one agent at a time to enabling multiple agents to work safely and independently with your preferred stack.

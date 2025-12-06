@@ -13,6 +13,7 @@ related:
   - repomix
 image: repomix.png
 description: How to use repomix to package your entire codebase into a single file for LLM context, with tips for managing token counts and mise integration.
+duration: 5 min
 ---
 Lets revisit what we can do with [repomix](repomix.md).
 

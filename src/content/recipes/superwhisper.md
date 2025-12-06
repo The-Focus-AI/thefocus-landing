@@ -10,6 +10,7 @@ journey: beginner
 published: true
 image: superwhisper.png
 description: Imagine talking to your computer and having it type for you—Superwhisper makes it real. Check out how this tool speeds up input and even lets you tweak the output.
+duration: 10 min
 related:
   - talking-in-the-car
 ---

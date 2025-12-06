@@ -14,6 +14,7 @@ related:
   - repomix
 image: understanding-a-codebase.png
 description: Explore three complementary approaches to rapidly comprehend any codebase using the latest AI assistants and developer tools. Follow along with practical examples showing how to extract key information about memory systems and other complex functionality with minimal effort.
+duration: 15 min
 ---
 There's a couple of different tools that I use to kind of understand what's going on in a code base. 
 

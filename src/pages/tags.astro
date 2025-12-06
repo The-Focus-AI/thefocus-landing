@@ -15,7 +15,7 @@ allPosts.forEach((post) => {
 
 ---
 <BaseLayout pageTitle="All of our tags" description="A list of all of our tags">
-  <h1 class="text-4xl font-bold py-10">Tags</h1>
+  <h1 class="text-4xl font-bold py-10 text-ink">Tags</h1>
 
   <ul class="list-disc list-inside">
     {Object.keys(tags).map((tag) => <li><a href={getTagSlug(tag)}>{tag}</a> ({tags[tag].length})</li>)}

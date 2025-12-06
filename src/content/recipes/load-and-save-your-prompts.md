@@ -9,6 +9,7 @@ section:
   - user-experience
 image: load-and-save.png
 published: true
+duration: 10 min
 related:
   - add-memory-to-cursor
   - product-ideation

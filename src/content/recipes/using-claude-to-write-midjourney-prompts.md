@@ -12,6 +12,7 @@ related:
   - load-and-save-your-prompts
   - iterating-designs-with-chatgpt4o
 description: Transform your written content into compelling visual concepts by using Claude as an intelligent intermediary for Midjourney prompt creation. See how combining prompt libraries with AI analysis can help you explore multiple creative directions before settling on the perfect visual representation.
+duration: 10 min
 ---
 > process @lift-and-shift.md through the key-themes prompt from the library
 

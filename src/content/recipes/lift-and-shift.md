@@ -11,6 +11,7 @@ related:
 image: lift-and-shift.png
 published: true
 description: Master the art of learning from existing projects by using this structured approach to extracting and documenting requirements and insights. With simple command-line tools and clear documentation practices, you'll be able to turn any existing implementation into a wealth of reusable knowledge.
+duration: 15 min
 ---
 Pull out the requirements and best practices from a repository, or even a set of screenshots, and then use that to implement your own version.
 

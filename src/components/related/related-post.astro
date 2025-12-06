@@ -24,7 +24,7 @@ const formattedPublishDate = formatDate(post.data.date);
     }
   </ul>
 
-  <h4 class="font-bold mb-1 group-hover:text-orange-500 transition-colors">
+  <h4 class="font-bold mb-1 text-ink group-hover:text-orange-500 transition-colors">
     <a href={postLink}
       >{post.data.published ? "" : "[DRAFT] "}{post.data.title || post.id}
     </a>

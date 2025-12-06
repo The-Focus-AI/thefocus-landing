@@ -9,6 +9,7 @@ section:
   - coding
   - user-experience
 description: Transform your Cursor IDE into a more intelligent assistant by implementing a sophisticated memory system adapted from cline-memory-bank. This enhanced version includes TDD principles and integrates seamlessly with your prompt library, allowing your AI assistant to maintain context and remember important details across multiple coding sessions.
+duration: 10 min
 related:
   - load-and-save-your-prompts
   - product-ideation

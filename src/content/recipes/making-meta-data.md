@@ -10,6 +10,7 @@ date: 2025-03-15
 published: true
 image: making-meta-data.png
 description: Generating metadata doesn't have to be a manual process when you can leverage AI prompts to produce multiple options quickly. Discover how to implement command-line tools that streamline metadata creation while maintaining your role as the final decision-maker.
+duration: 5 min
 ---
 Metadata is data about data. It sort of describes the thing. It kind of helps you build context or give it information about what it is that we're talking about.
 

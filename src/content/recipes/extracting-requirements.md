@@ -11,6 +11,7 @@ related:
   - understanding-a-codebase
 published: true
 description: Need to understand all the requirements hidden in a codebase? This technique shows how to use LLMs to compile comprehensive specifications from repository analysis for immediate development use.
+duration: 10 min
 image: extracting-requirements.png
 ---
 

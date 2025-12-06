@@ -10,6 +10,7 @@ tech:
 image: use-cursor.png
 published: true
 description: Learn how to integrate Cursor with Slack for seamless code review and collaboration, including setup tips and workflow enhancements.
+duration: 10 min
 related:
   - add-memory-to-cursor
 journey: beginner

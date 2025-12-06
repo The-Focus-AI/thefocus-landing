@@ -7,6 +7,7 @@ tech:
   - prompts
 published: true
 description: Learn how to automate Git commit message generation with this simple but powerful prompt for Claude. The template enforces conventional commit format with appropriate type prefixes and detailed descriptions, making your repository history more professional and useful.
+duration: 10 min
 image: git-commit-messages.png
 related:
   - making-meta-data
