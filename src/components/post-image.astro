@@ -1,23 +1,38 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image, imageConfig } from 'astro:assets';
-    
+
 const { post, image:image_name, alt, size="full" } = Astro.props;
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif,webp}');
-// console.log("images",images)
+const videos = import.meta.glob('/src/content/assets/cards/*.mp4', { as: 'url', eager: true });
 
-let img_key, image, image_alt;
+let img_key, image, image_alt, video_key, video;
 if (post) {
-    img_key= `/src/content/assets/cards/${post.data.image}`;
+    img_key = `/src/content/assets/cards/${post.data.image}`;
     image_alt = post.data.title;
+    // Check for matching mp4 (same name, different extension)
+    const baseName = post.data.image?.replace(/\.(jpeg|jpg|png|gif|webp)$/, '');
+    video_key = `/src/content/assets/cards/${baseName}.mp4`;
 } else {
-    img_key= `/src/content/assets/cards/${image_name}`;
+    img_key = `/src/content/assets/cards/${image_name}`;
     image_alt = alt;
+    const baseName = image_name?.replace(/\.(jpeg|jpg|png|gif|webp)$/, '');
+    video_key = `/src/content/assets/cards/${baseName}.mp4`;
 }
-// if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
 image = images[img_key];
+video = videos[video_key];
 ---
 
-{image && size === "full" && <Image class="object-cover" src={image()} alt={image_alt} width="2500"/>}
-{image && size !== "full" && <Image class="object-fill pb-4" src={image()} alt={image_alt} height="500" width="700"/>}
+{video && size === "full" && (
+    <video class="object-cover w-full" autoplay loop muted playsinline>
+        <source src={video} type="video/mp4" />
+    </video>
+)}
+{video && size !== "full" && (
+    <video class="object-fill pb-4" autoplay loop muted playsinline style="height: 500px; width: 700px;">
+        <source src={video} type="video/mp4" />
+    </video>
+)}
+{!video && image && size === "full" && <Image class="object-cover" src={image()} alt={image_alt} width="2500"/>}
+{!video && image && size !== "full" && <Image class="object-fill pb-4" src={image()} alt={image_alt} height="500" width="700"/>}

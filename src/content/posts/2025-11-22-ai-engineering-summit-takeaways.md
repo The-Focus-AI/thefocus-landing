@@ -2,7 +2,7 @@
 title: "AI Engineering Summit 2025: Bash-Pilled and Building for Everyone"
 date: 2025-11-22
 description: "The models got smart. The tools got simple. The circle of who builds is expanding."
-published: false
+published: true
 image: 2025-11-22-ai-engineering-summit-takeaways.png
 tags:
   - agents

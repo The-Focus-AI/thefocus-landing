@@ -9,6 +9,15 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif,webp}');
+const videos = import.meta.glob('/src/content/assets/cards/*.mp4', { as: 'url', eager: true });
+
+// Helper to get video path from image name
+const getVideoPath = (imageName: string) => {
+    if (!imageName) return null;
+    const baseName = imageName.replace(/\.(jpeg|jpg|png|gif|webp)$/, '');
+    const videoKey = `/src/content/assets/cards/${baseName}.mp4`;
+    return videos[videoKey] || null;
+};
 
 const allPosts = await getPosts();
 
@@ -88,11 +97,17 @@ const otherMemos = labMemos.slice(1);
                                 {featuredReport.data.image && images[`/src/content/assets/cards/${featuredReport.data.image}`] && (
                                     <div class="md:col-span-4 border-b md:border-b-0 md:border-r border-void">
                                         <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
-                                            <Image
-                                                src={images[`/src/content/assets/cards/${featuredReport.data.image}`]()}
-                                                alt={featuredReport.data.title}
-                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                                            />
+                                            {getVideoPath(featuredReport.data.image) ? (
+                                                <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
+                                                    <source src={getVideoPath(featuredReport.data.image)} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <Image
+                                                    src={images[`/src/content/assets/cards/${featuredReport.data.image}`]()}
+                                                    alt={featuredReport.data.title}
+                                                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 )}
@@ -143,11 +158,17 @@ const otherMemos = labMemos.slice(1);
                                 <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
                                     {report.data.image && images[`/src/content/assets/cards/${report.data.image}`] && (
                                         <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
-                                            <Image
-                                                src={images[`/src/content/assets/cards/${report.data.image}`]()}
-                                                alt={report.data.title}
-                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                                            />
+                                            {getVideoPath(report.data.image) ? (
+                                                <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
+                                                    <source src={getVideoPath(report.data.image)} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <Image
+                                                    src={images[`/src/content/assets/cards/${report.data.image}`]()}
+                                                    alt={report.data.title}
+                                                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                                />
+                                            )}
                                         </div>
                                     )}
                                     <div class="p-6 flex flex-col flex-grow">
@@ -233,11 +254,17 @@ const otherMemos = labMemos.slice(1);
                                 {featuredMemo.data.image && images[`/src/content/assets/cards/${featuredMemo.data.image}`] && (
                                     <div class="md:col-span-5 border-b md:border-b-0 md:border-l border-void order-1 md:order-2">
                                         <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
-                                            <Image
-                                                src={images[`/src/content/assets/cards/${featuredMemo.data.image}`]()}
-                                                alt={featuredMemo.data.title}
-                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                                            />
+                                            {getVideoPath(featuredMemo.data.image) ? (
+                                                <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
+                                                    <source src={getVideoPath(featuredMemo.data.image)} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <Image
+                                                    src={images[`/src/content/assets/cards/${featuredMemo.data.image}`]()}
+                                                    alt={featuredMemo.data.title}
+                                                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 )}
@@ -252,11 +279,17 @@ const otherMemos = labMemos.slice(1);
                                 <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
                                     {post.data.image && images[`/src/content/assets/cards/${post.data.image}`] && (
                                         <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
-                                            <Image
-                                                src={images[`/src/content/assets/cards/${post.data.image}`]()}
-                                                alt={post.data.title}
-                                                class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                                            />
+                                            {getVideoPath(post.data.image) ? (
+                                                <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
+                                                    <source src={getVideoPath(post.data.image)} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <Image
+                                                    src={images[`/src/content/assets/cards/${post.data.image}`]()}
+                                                    alt={post.data.title}
+                                                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                                                />
+                                            )}
                                         </div>
                                     )}
                                     <div class="p-6 flex flex-col flex-grow">
