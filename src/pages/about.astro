@@ -2,6 +2,23 @@
 import BaseLayout from "../layout/BaseLayout.astro";
 ---
 
+<style>
+  .founder-link {
+    text-decoration: none;
+  }
+  .founder-link:hover {
+    text-decoration: none;
+  }
+  .founder-link h3,
+  .founder-link p {
+    text-decoration: none;
+  }
+  .founder-avatar {
+    object-fit: cover;
+    object-position: center center;
+  }
+</style>
+
 <BaseLayout
   pageTitle="About | Focus.AI"
   description="Focus.AI studio was established to explore and create a new working framework for businesses looking to take advantage of the transforming AI ecosystem."
@@ -23,9 +40,53 @@ import BaseLayout from "../layout/BaseLayout.astro";
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
           <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold text-ink mb-6">Our Founders</h2>
-            <p class="text-lg leading-relaxed text-graphite">
+            <p class="text-lg leading-relaxed text-graphite mb-8">
               With more than 40 years of combined experience in software engineering and design, Mr. Schippers and Mr. Schenk founded TheFocus.AI to help drive this shift—pushing the boundaries of modern tooling and placing productivity firmly at center stage.
             </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <a 
+                href="https://www.linkedin.com/in/benschippers/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="founder-link flex flex-col items-center text-center md:items-start md:text-left group"
+              >
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-petrol group-hover:border-ink transition-colors">
+                  <img 
+                    src="/images/ben-schippers.jpg" 
+                    alt="Ben Schippers"
+                    class="founder-avatar w-full h-full m-0"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22sans-serif%22 font-size=%2214%22 fill=%22%23999%22%3EBS%3C/text%3E%3C/svg%3E'"
+                  />
+                </div>
+                <h3 class="text-xl font-bold text-ink mb-1 group-hover:text-petrol transition-colors">Ben Schippers</h3>
+                <p class="text-sm text-graphite flex items-center gap-1">
+                  <span>LinkedIn</span>
+                  <span class="text-petrol">→</span>
+                </p>
+              </a>
+
+              <a 
+                href="https://www.linkedin.com/in/will-schenk-420266/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="founder-link flex flex-col items-center text-center md:items-start md:text-left group"
+              >
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-petrol group-hover:border-ink transition-colors">
+                  <img 
+                    src="/images/will-schenk.jpg" 
+                    alt="Will Schenk"
+                    class="founder-avatar w-full h-full m-0"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 font-family=%22sans-serif%22 font-size=%2214%22 fill=%22%23999%22%3EWS%3C/text%3E%3C/svg%3E'"
+                  />
+                </div>
+                <h3 class="text-xl font-bold text-ink mb-1 group-hover:text-petrol transition-colors">Will Schenk</h3>
+                <p class="text-sm text-graphite flex items-center gap-1">
+                  <span>LinkedIn</span>
+                  <span class="text-petrol">→</span>
+                </p>
+              </a>
+            </div>
           </div>
         </div>
       </div>
