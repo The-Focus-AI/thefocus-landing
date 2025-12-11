@@ -12,16 +12,14 @@ import OrganizationSchema from "../components/schemas/organization.astro";
 import WebsiteSchema from "../components/schemas/website.astro";
 import NewsletterSchema from "../components/schemas/newsletter.astro";
 import { SEO } from "astro-seo";
-// import { getImagePath } from "astro-opengraph-images";
 
 const pageTitle = Astro.props.pageTitle || "the focus.ai";
 const bigHeader = Astro.props.bigHeader || false;
 const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
 
 const description = Astro.props.description || "Come a visit us";
-const { url, site } = Astro;
-const openGraphImageUrl = `${site}${Astro.props.openGraphImage || `/og.png`}`;
-// getImagePath({ url, site });
+const { site } = Astro;
+const openGraphImageUrl = `${site}${Astro.props.openGraphImage || 'og.png'}`;
 
 let category = Astro.props.category || "home";
 ---
@@ -46,6 +44,7 @@ let category = Astro.props.category || "home";
         }
       }}
       twitter={{
+        card: "summary_large_image",
         creator: "@wschenk"
       }}
       extend={{

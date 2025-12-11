@@ -5,6 +5,7 @@ const bigHeader = Astro.props.bigHeader || false;
 const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
 
 const description = Astro.props.description || "Come a visit us";
+const openGraphImage = Astro.props.openGraphImage;
 const { url, site } = Astro;
 
 let category = Astro.props.category || "home";
@@ -13,7 +14,7 @@ if (Astro.url.pathname.includes("/posts/about")) {
 }
 ---
 
-<BaseLayout pageTitle={pageTitle} description={description} category={category}>
+<BaseLayout pageTitle={pageTitle} description={description} category={category} openGraphImage={openGraphImage}>
   <slot name="hero" />
   <div class="min-h-screen flex flex-col">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">

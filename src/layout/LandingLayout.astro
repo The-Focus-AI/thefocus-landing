@@ -12,7 +12,6 @@ import OrganizationSchema from "../components/schemas/organization.astro";
 import WebsiteSchema from "../components/schemas/website.astro";
 import NewsletterSchema from "../components/schemas/newsletter.astro";
 import { SEO } from "astro-seo";
-// import { getImagePath } from "astro-opengraph-images";
 
 const pageTitle = Astro.props.pageTitle || "the focus.ai";
 const bigHeader = Astro.props.bigHeader || false;
@@ -20,12 +19,12 @@ const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
 const { bodyClass = "bg-gray-100" } = Astro.props;
 
 const description = Astro.props.description || "Come a visit us";
-const { url, site } = Astro;
+const { site } = Astro;
 const rawOpenGraphImage = Astro.props.openGraphImage;
-const openGraphImageUrl = (typeof rawOpenGraphImage === 'object' && rawOpenGraphImage !== null) 
-  ? `${site}${rawOpenGraphImage.src}` 
-  : `${site}${rawOpenGraphImage || '/og.png'}`;
-// getImagePath({ url, site });
+// Use custom OG image if provided, otherwise use default
+const openGraphImageUrl = (typeof rawOpenGraphImage === 'object' && rawOpenGraphImage !== null)
+  ? `${site}${rawOpenGraphImage.src}`
+  : `${site}${rawOpenGraphImage || 'og.png'}`;
 
 let category = Astro.props.category || "home";
 if(Astro.url.pathname.includes("/posts/about")) {
@@ -53,6 +52,7 @@ if(Astro.url.pathname.includes("/posts/about")) {
         }
       }}
       twitter={{
+        card: "summary_large_image",
         creator: "@wschenk"
       }}
       extend={{
