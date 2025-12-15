@@ -1,8 +1,24 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import { getCaseStudies } from "../utils/case-studies";
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
 const case_studies = await getCaseStudies();
 const featuredCaseStudies = case_studies.slice(0, 2);
+
+// Load case study images
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/case-studies/*.{jpeg,jpg,png,gif}', { eager: true });
+
+// Check for video versions (e.g., onboarding_wide.png -> onboarding_wide_loop.mp4)
+const videos = import.meta.glob('/public/videos/case-studies/*.mp4');
+
+function getVideoPath(imageName: string | undefined): string | null {
+  if (!imageName) return null;
+  const videoName = imageName.replace(/\.(png|jpg|jpeg|gif)$/, '_loop.mp4');
+  const videoKey = `/public/videos/case-studies/${videoName}`;
+  return videos[videoKey] ? `/videos/case-studies/${videoName}` : null;
+}
 ---
 
 <BaseLayout
@@ -104,13 +120,26 @@ const featuredCaseStudies = case_studies.slice(0, 2);
                   </blockquote>
                 )}
               </div>
-              {study.data.image && (
-                <div class="md:w-64 flex-shrink-0">
-                  <img
-                    src={`/src/content/assets/case-studies/${study.data.image}`}
-                    alt={study.data.title}
-                    class="w-full h-auto rounded"
-                  />
+              {study.data.image && images[`/src/content/assets/case-studies/${study.data.image}`] && (
+                <div class="md:w-64 flex-shrink-0 relative overflow-hidden rounded">
+                  {getVideoPath(study.data.image) ? (
+                    <video
+                      autoplay
+                      loop
+                      muted
+                      playsinline
+                      class="w-full h-auto"
+                    >
+                      <source src={getVideoPath(study.data.image)} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <Image
+                      src={images[`/src/content/assets/case-studies/${study.data.image}`].default}
+                      alt={study.data.title}
+                      class="w-full h-auto"
+                      width={256}
+                    />
+                  )}
                 </div>
               )}
             </div>
