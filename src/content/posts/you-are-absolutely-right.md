@@ -1,5 +1,5 @@
 ---
-title: "You're absolutely right" and other AI warning signs
+title: '"You''re absolutely right" and other AI warning signs'
 date: 2025-12-16
 description: When your AI assistant starts agreeing with everything, you've hit the dumb zone. Practical techniques for managing context windows and keeping AI useful.
 published: true
