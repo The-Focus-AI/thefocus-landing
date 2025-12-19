@@ -38,6 +38,9 @@ export async function getSection(section) {
 }
 
 export function getRecipeUrl(recipe) {
+  if (recipe.data.slug) {
+    return recipe.data.slug;
+  }
   return `/recipes/${recipe.id}`;
 }
 

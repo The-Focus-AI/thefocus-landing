@@ -4,16 +4,39 @@ import { Image } from 'astro:assets';
 const images = await import.meta.glob<{ default: import('astro').ImageMetadata }>(
   '/src/content/assets/cards/*.{jpeg,jpg,png,gif}'
 );
-const img_key = '/src/content/assets/cards/capture_the_flag_wide.png';
-const image = images[img_key];
+const codingAgentImg = images['/src/content/assets/cards/weekend-coding-agent.png'];
+const summitImg = images['/src/content/assets/cards/ai-code-summit-2025.png'];
+const juneReportImg = images['/src/content/assets/cards/capture_the_flag_wide.png'];
 ---
 <BaseLayout pageTitle="Reports" description="In-depth reports and analysis from Focus.ai" category="reports">
   <div class="space-y-12">
     <h2 class="text-4xl sm:text-7xl font-bold font-fraunces mb-8">
       Reports & Deep Dives
     </h2>
+
+    <!-- Weekend Coding Agent -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {image && <Image src={image()} alt="June 2025 Coding Agent Report" class="w-full max-w-md rounded border" />}
+      {codingAgentImg && <Image src={codingAgentImg()} alt="Weekend Coding Agent" class="w-full max-w-md rounded border" />}
+      <div class="flex-1">
+        <h3 class="text-2xl font-bold mb-2">Weekend Coding Agent</h3>
+        <p class="mb-4 text-lg">Build an AI coding assistant step by step. Learn how coding agents work by bootstrapping one with an existing agent, then using it to improve itself.</p>
+        <a href="/reports/coding-agent/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Tutorial</a>
+      </div>
+    </div>
+
+    <!-- AI Engineering Code Summit -->
+    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
+      {summitImg && <Image src={summitImg()} alt="AI Engineering Code Summit 2025" class="w-full max-w-md rounded border" />}
+      <div class="flex-1">
+        <h3 class="text-2xl font-bold mb-2">AI Engineering Code Summit 2025</h3>
+        <p class="mb-4 text-lg">A select summit of leading coding agent builders and superusers: top AI engineers, engineering leaders, and researchers advancing code generation and AI software engineering.</p>
+        <a href="/reports/aiecode-2025-11/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
+      </div>
+    </div>
+
+    <!-- June 2025 Coding Agent Report -->
+    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
+      {juneReportImg && <Image src={juneReportImg()} alt="June 2025 Coding Agent Report" class="w-full max-w-md rounded border" />}
       <div class="flex-1">
         <h3 class="text-2xl font-bold mb-2">June 2025 Coding Agent Report</h3>
         <p class="mb-4 text-lg">Curious how AI coding agents stack up in 2025? This report breaks down the strengths, weaknesses, and surprises from 15 leading tools, with clear winners for pros, tinkerers, and casual users alike.</p>
