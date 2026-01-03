@@ -2,7 +2,7 @@
 title: How I Use AI in Jan 2026
 date: 2026-01-03
 description: We're at the beginning of infinity. In geological time this is all happening in an instant — and 2026 might be the best year to be alive.
-published: false
+published: true
 tags:
   - essay
   - process
