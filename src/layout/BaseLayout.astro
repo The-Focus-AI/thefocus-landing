@@ -86,15 +86,15 @@ let category = Astro.props.category || "home";
     <slot name="head" />
   </head>
   <body class={`text-ink ${category === 'insights' || category === 'tools' ? 'bg-[#e8e6df]' : 'bg-paper'}`}>
-    <!-- Report Banner -->
-    <div class="bg-rand-blue text-white">
+    <!-- Report Banner - hidden on mobile for cleaner first impression -->
+    <div class="hidden sm:block bg-rand-blue text-white">
       <a href="/reports/aiecode-2025-11/" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
         <span class="font-medium">NEW:</span> Our latest report on the current state of AI Engineering is now available
         <span class="ml-2 inline-block">→</span>
       </a>
     </div>
     <header class="border-b border-ink/10">
-      <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-4 md:py-8 flex flex-row justify-between items-center gap-4">
+      <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-5 md:py-8 flex flex-row justify-between items-center gap-4">
         <a href="/" class="group">
           <h1 class="text-sm font-medium uppercase tracking-[0.15em]">
             <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="text-graphite group-hover:text-ink transition-colors duration-150">FOCUS<span class="text-graphite group-hover:text-ink transition-colors duration-150">/</span>AI</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
@@ -145,24 +145,24 @@ let category = Astro.props.category || "home";
       </div>
       <!-- Mobile nav dropdown -->
       <nav id="mobile-menu" class="hidden md:hidden border-t border-ink/10 bg-paper">
-        <ul class="max-w-screen-xl mx-auto px-4 py-4 space-y-3 text-sm uppercase tracking-[0.15em] text-graphite">
+        <ul class="px-5 py-6 space-y-1">
           <li>
-            <a href="/case-studies" class:list={["block py-1", category === "case-studies" ? "text-ink" : "hover:text-ink"]}>Case Studies</a>
+            <a href="/case-studies" class:list={["block py-3 text-lg", category === "case-studies" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Case Studies</a>
           </li>
           <li>
-            <a href="/capabilities" class:list={["block py-1", category === "capabilities" ? "text-ink" : "hover:text-ink"]}>Capabilities</a>
+            <a href="/capabilities" class:list={["block py-3 text-lg", category === "capabilities" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Capabilities</a>
           </li>
           <li>
-            <a href="/about" class:list={["block py-1", category === "about" ? "text-ink" : "hover:text-ink"]}>About</a>
+            <a href="/about" class:list={["block py-3 text-lg", category === "about" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>About</a>
           </li>
           <li>
-            <a href="mailto:hey@thefocus.ai" class="block py-1 hover:text-ink">Contact</a>
+            <a href="mailto:hey@thefocus.ai" class="block py-3 text-lg text-graphite hover:text-ink">Contact</a>
           </li>
-          <li class="border-t border-ink/10 pt-3">
-            <a href="/insights" class:list={["block py-1", category === "insights" ? "text-ink" : "hover:text-ink"]}>Insights</a>
+          <li class="border-t border-ink/10 mt-4 pt-4">
+            <a href="/insights" class:list={["block py-3 text-lg", category === "insights" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Insights</a>
           </li>
           <li>
-            <a href="/tools" class:list={["block py-1", category === "tools" ? "text-ink" : "hover:text-ink"]}>Tools</a>
+            <a href="/tools" class:list={["block py-3 text-lg", category === "tools" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Tools</a>
           </li>
         </ul>
       </nav>
@@ -181,17 +181,17 @@ let category = Astro.props.category || "home";
     <main class="w-full">
 
       <section class:list={[
-          "max-w-screen-xl mx-auto py-8 px-4 md:px-8",
-          bigHeader ? "md:py-16" : ""
+          "max-w-screen-xl mx-auto py-6 px-5 md:px-8",
+          bigHeader ? "md:py-12" : ""
         ]}>
         <slot/>
       </section>
 
       <EmailSignup />
 
-      <section class="bg-ink text-paper py-24 px-4">
+      <section class="bg-ink text-paper py-16 md:py-24 px-5 md:px-8">
         <div class="max-w-screen-xl mx-auto text-center">
-          <h2 class="text-3xl md:text-5xl font-bold mb-6">
+          <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-8">
             Ready to distill signal from noise?
           </h2>
           <a
@@ -205,7 +205,7 @@ let category = Astro.props.category || "home";
     </main>
 
     <footer class="border-t border-ink/10 bg-paper">
-      <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
+      <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-12 md:py-16">
         <div class="grid md:grid-cols-4 gap-12">
           <!-- Company -->
           <div>
