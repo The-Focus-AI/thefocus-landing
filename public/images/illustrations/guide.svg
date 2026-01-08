@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#161616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hand-drawn style compass/guidance illustration - simplified to match connect.svg style -->
+  <!-- Compass outer ring -->
+  <circle cx="100" cy="100" r="40" fill="none"/>
+  
+  <!-- Cardinal direction marks -->
+  <path d="M100 65 L100 72" stroke-width="2.5"/>
+  <path d="M100 128 L100 135" stroke-width="2.5"/>
+  <path d="M65 100 L72 100" stroke-width="2.5"/>
+  <path d="M128 100 L135 100" stroke-width="2.5"/>
+  
+  <!-- Compass needle - north pointing -->
+  <path d="M100 70 L95 100 L100 80 L105 100 Z" fill="#161616" stroke="none"/>
+  <!-- Compass needle - south -->
+  <path d="M100 130 L95 100 L105 100 Z" fill="none" stroke="#161616" stroke-width="1.5"/>
+  
+  <!-- Center pivot -->
+  <circle cx="100" cy="100" r="4" fill="#161616"/>
+  
+  <!-- Small star marker top right -->
+  <path d="M145 55 L147 60 L152 60 L148 64 L150 69 L145 66 L140 69 L142 64 L138 60 L143 60 Z" fill="#161616" stroke="none"/>
+  
+  <!-- Wavy path line at bottom -->
+  <path d="M50 160 Q70 155 90 165 Q110 175 130 165 Q150 155 160 160" fill="none" stroke-width="2"/>
+</svg>

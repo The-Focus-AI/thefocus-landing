@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#161616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hand-drawn style bridges/connections illustration -->
+  <!-- Left node -->
+  <circle cx="40" cy="100" r="20" fill="none" stroke="#161616"/>
+  <circle cx="40" cy="100" r="8" fill="#161616"/>
+  
+  <!-- Right node -->
+  <circle cx="160" cy="100" r="20" fill="none" stroke="#161616"/>
+  <circle cx="160" cy="100" r="8" fill="#161616"/>
+  
+  <!-- Top node -->
+  <circle cx="100" cy="50" r="16" fill="none" stroke="#161616"/>
+  <circle cx="100" cy="50" r="6" fill="#161616"/>
+  
+  <!-- Bottom node -->
+  <circle cx="100" cy="150" r="16" fill="none" stroke="#161616"/>
+  <circle cx="100" cy="150" r="6" fill="#161616"/>
+  
+  <!-- Connecting lines - slightly wavy for hand-drawn feel -->
+  <path d="M60 100 Q80 95 85 66" fill="none"/>
+  <path d="M60 100 Q80 105 85 134" fill="none"/>
+  <path d="M140 100 Q120 95 115 66" fill="none"/>
+  <path d="M140 100 Q120 105 115 134" fill="none"/>
+  
+  <!-- Central connection spark -->
+  <path d="M95 98 L100 90 L105 98 L100 95 Z" fill="#161616" stroke="none"/>
+  <path d="M95 102 L100 110 L105 102 L100 105 Z" fill="#161616" stroke="none"/>
+</svg>

@@ -94,13 +94,20 @@ let category = Astro.props.category || "home";
       </a>
     </div>
     <header class="border-b border-ink/10">
-      <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <a href="/" class="order-2 md:order-1 group">
-          <h1 class="text-sm md:text-sm font-medium uppercase tracking-[0.15em]">
+      <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-4 md:py-8 flex flex-row justify-between items-center gap-4">
+        <a href="/" class="group">
+          <h1 class="text-sm font-medium uppercase tracking-[0.15em]">
             <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="text-graphite group-hover:text-ink transition-colors duration-150">FOCUS<span class="text-graphite group-hover:text-ink transition-colors duration-150">/</span>AI</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
           </h1>
         </a>
-        <nav class="order-1 md:order-2">
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-graphite hover:text-ink" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <!-- Desktop nav -->
+        <nav class="hidden md:block">
           <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm uppercase tracking-[0.15em] text-graphite">
             <li>
               <a href="/case-studies" class:list={["group inline-block", category === "case-studies" ? "text-ink" : ""]}>
@@ -136,7 +143,37 @@ let category = Astro.props.category || "home";
           </ul>
         </nav>
       </div>
+      <!-- Mobile nav dropdown -->
+      <nav id="mobile-menu" class="hidden md:hidden border-t border-ink/10 bg-paper">
+        <ul class="max-w-screen-xl mx-auto px-4 py-4 space-y-3 text-sm uppercase tracking-[0.15em] text-graphite">
+          <li>
+            <a href="/case-studies" class:list={["block py-1", category === "case-studies" ? "text-ink" : "hover:text-ink"]}>Case Studies</a>
+          </li>
+          <li>
+            <a href="/capabilities" class:list={["block py-1", category === "capabilities" ? "text-ink" : "hover:text-ink"]}>Capabilities</a>
+          </li>
+          <li>
+            <a href="/about" class:list={["block py-1", category === "about" ? "text-ink" : "hover:text-ink"]}>About</a>
+          </li>
+          <li>
+            <a href="mailto:hey@thefocus.ai" class="block py-1 hover:text-ink">Contact</a>
+          </li>
+          <li class="border-t border-ink/10 pt-3">
+            <a href="/insights" class:list={["block py-1", category === "insights" ? "text-ink" : "hover:text-ink"]}>Insights</a>
+          </li>
+          <li>
+            <a href="/tools" class:list={["block py-1", category === "tools" ? "text-ink" : "hover:text-ink"]}>Tools</a>
+          </li>
+        </ul>
+      </nav>
     </header>
+    <script>
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
 
     <slot name="hero"/>
 
@@ -213,7 +250,15 @@ let category = Astro.props.category || "home";
           </div>
         </div>
 
-        <div class="mt-16 pt-8 border-t border-ink/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <!-- Hiring -->
+        <div class="mt-12 text-center">
+          <p class="text-sm text-graphite">
+            <span class="text-petrol font-medium">We're hiring.</span> Looking for AI-hungry developers, strategists, and anyone eager to push the boundaries of what's possible. We have offices in NYC and the Hudson Valley. 
+            <a href="mailto:studio@thefocus.ai" class="text-petrol hover:underline">Get in touch →</a>
+          </p>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-ink/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-sm text-graphite">© 2024 Focus.AI. All rights reserved.</p>
           <p class="text-sm text-graphite">Distill the signal from the noise</p>
         </div>

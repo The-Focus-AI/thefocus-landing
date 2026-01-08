@@ -29,39 +29,43 @@ function getVideoPath(imageName: string | undefined): string | null {
   category="home"
 >
   <!-- Hero Section -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-4xl">
-      <h2 class="font-sans text-5xl md:text-7xl font-bold text-ink mb-8 leading-tight">
-        Distill the signal from the noise
-      </h2>
-      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-12">
-        Your data is scattered. Your interfaces are overwhelming. Your team spends more time searching than thinking. We build AI systems that connect what's disconnected, simplify what's complex, and surface what matters—so you can focus on the work that moves your business forward.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a
-          href="/capabilities"
-          class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors text-center"
-        >
-          Our Capabilities
-        </a>
-        <a
-          href="/case-studies"
-          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider hover:border-petrol hover:text-petrol transition-colors text-center"
-        >
-          View Case Studies
-        </a>
+  <section class="py-8 md:py-20">
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+      <div class="flex-1 max-w-2xl">
+        <h2 class="font-sans text-3xl sm:text-5xl md:text-7xl font-bold text-ink mb-6 md:mb-8 leading-tight">
+          Distill the signal from the noise
+        </h2>
+        <p class="text-lg md:text-2xl text-graphite leading-relaxed mb-8 md:mb-12">
+          AI is moving fast—and it can feel overwhelming to know where to start. Whether you're modernizing a legacy system, building something new, or figuring out your first step, we help you cut through the noise. We're an AI-first engineering and design studio that builds what matters and teaches you along the way.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/capabilities"
+            class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors text-center"
+          >
+            Our Capabilities
+          </a>
+          <a
+            href="/case-studies"
+            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider hover:border-petrol hover:text-petrol transition-colors text-center"
+          >
+            View Case Studies
+          </a>
+        </div>
+      </div>
+      <div class="flex-shrink-0 w-64 sm:w-72 md:w-[400px] lg:w-[500px]">
+        <img 
+          src="/images/illustrations/bloom.svg" 
+          alt="Growing flower illustration representing clarity emerging from complexity" 
+          class="w-full h-auto"
+        />
       </div>
     </div>
   </section>
 
   <!-- Trophy Wall Section -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen overflow-hidden">
-    <!-- Gradient Background with decorative shapes -->
-    <div class="absolute inset-0 bg-gradient-to-br from-tint-cool via-paper to-tint-lavender"></div>
-    <div class="absolute -top-32 -right-32 w-96 h-96 bg-petrol/5 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-petrol/3 rounded-full blur-3xl"></div>
-    
-    <div class="relative max-w-screen-xl mx-auto px-4 md:px-8 py-20 md:py-24 text-center">
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16 md:py-20 text-center">
       <!-- Decorative line -->
       <div class="w-12 h-1 bg-petrol/30 mx-auto mb-6"></div>
       
@@ -71,7 +75,7 @@ function getVideoPath(imageName: string | undefined): string | null {
       <h2 class="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-5 max-w-4xl mx-auto leading-tight">
         We solve complex problems through design & technology
       </h2>
-      <p class="text-lg md:text-xl text-graphite mb-16 max-w-2xl mx-auto leading-relaxed">
+      <p class="text-lg md:text-xl text-graphite mb-12 max-w-2xl mx-auto leading-relaxed">
         We are an AI-first engineering, product and design company pushing the boundaries of what's possible
       </p>
       
@@ -91,49 +95,119 @@ function getVideoPath(imageName: string | undefined): string | null {
   </div>
 
   <!-- What We Do -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm py-16 md:py-24">
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-paper py-12 md:py-20">
     <div class="max-w-screen-xl mx-auto px-4 md:px-8">
-      <div class="max-w-4xl">
+      <div class="max-w-5xl mx-auto">
         <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">What We Do</h3>
-        <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-12">Three pillars of focus</h2>
+        <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-8">Three pillars of focus</h2>
 
-        <div class="grid md:grid-cols-3 gap-8">
-        <div>
-          <div class="text-6xl font-bold text-petrol/20 mb-4">01</div>
-          <h4 class="font-sans text-xl font-bold text-ink mb-3">Connect</h4>
-          <p class="text-graphite leading-relaxed">
-            Your data lives in silos—APIs that don't talk, spreadsheets nobody can find, documents that require manual entry. We build bridges that make your data AI-accessible, so instead of hunting for information, you can simply ask for it.
-          </p>
-        </div>
-        <div>
-          <div class="text-6xl font-bold text-petrol/20 mb-4">02</div>
-          <h4 class="font-sans text-xl font-bold text-ink mb-3">Curate</h4>
-          <p class="text-graphite leading-relaxed">
-            One-size-fits-all interfaces waste time. We build task-specific experiences—conversational UIs, visual search, voice-first interactions—designed for exactly what you need to accomplish, nothing more.
-          </p>
-        </div>
-        <div>
-          <div class="text-6xl font-bold text-petrol/20 mb-4">03</div>
-          <h4 class="font-sans text-xl font-bold text-ink mb-3">Distill</h4>
-          <p class="text-graphite leading-relaxed">
-            Information overload isn't a badge of honor. We build systems that filter the noise—summarizing content, extracting insights, prioritizing what deserves attention—so you can stop scrolling and start thinking.
-          </p>
-        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Connect Card -->
+          <div class="group">
+            <div class="bg-tint-warm rounded-2xl p-4 md:p-6 mb-4 h-32 md:h-auto md:aspect-square flex items-center justify-center transition-transform group-hover:scale-[1.02]">
+              <img src="/images/illustrations/connect.svg" alt="Connect illustration" class="w-16 h-16 md:w-40 md:h-40" />
+            </div>
+            <h4 class="font-sans text-xl font-bold text-ink mb-2">Connect</h4>
+            <p class="text-graphite text-sm leading-relaxed">
+              Your data lives in silos—APIs that don't talk, spreadsheets nobody can find. We build bridges that make your data AI-accessible.
+            </p>
+          </div>
+          
+          <!-- Curate Card -->
+          <div class="group">
+            <div class="bg-tint-cool rounded-2xl p-4 md:p-6 mb-4 h-32 md:h-auto md:aspect-square flex items-center justify-center transition-transform group-hover:scale-[1.02]">
+              <img src="/images/illustrations/curate.svg" alt="Curate illustration" class="w-16 h-16 md:w-40 md:h-40" />
+            </div>
+            <h4 class="font-sans text-xl font-bold text-ink mb-2">Curate</h4>
+            <p class="text-graphite text-sm leading-relaxed">
+              One-size-fits-all interfaces waste time. We build task-specific experiences designed for exactly what you need.
+            </p>
+          </div>
+          
+          <!-- Distill Card -->
+          <div class="group">
+            <div class="bg-tint-lavender rounded-2xl p-4 md:p-6 mb-4 h-32 md:h-auto md:aspect-square flex items-center justify-center transition-transform group-hover:scale-[1.02]">
+              <img src="/images/illustrations/distill.svg" alt="Distill illustration" class="w-16 h-16 md:w-40 md:h-40" />
+            </div>
+            <h4 class="font-sans text-xl font-bold text-ink mb-2">Distill</h4>
+            <p class="text-graphite text-sm leading-relaxed">
+              Information overload isn't a badge of honor. We build systems that filter the noise and surface what matters.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- CTA Section: How Can We Help -->
+  <section class="py-12 md:py-20">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="max-w-5xl mx-auto">
+        <h3 class="text-sm uppercase tracking-widest text-petrol mb-8 font-medium">How can we help?</h3>
+      
+      <div class="space-y-4 md:space-y-6">
+        <!-- Strategic Guidance -->
+        <div class="flex gap-4 md:gap-6 items-center">
+          <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
+            <img src="/images/illustrations/guide.svg" alt="" class="w-10 h-10 md:w-14 md:h-14" />
+          </div>
+          <div>
+            <h4 class="font-sans text-lg md:text-xl font-bold text-ink mb-1 md:mb-2">Not sure where to start? We love to educate.</h4>
+            <p class="text-graphite text-sm leading-relaxed">
+              We help leaders understand the options and build a practical AI roadmap.
+            </p>
+          </div>
+        </div>
+
+        <!-- Legacy Modernization -->
+        <div class="flex gap-4 md:gap-6 items-center">
+          <div class="bg-tint-warm rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
+            <img src="/images/illustrations/modernize.svg" alt="" class="w-10 h-10 md:w-14 md:h-14" />
+          </div>
+          <div>
+            <h4 class="font-sans text-lg md:text-xl font-bold text-ink mb-1 md:mb-2">Legacy system holding you back?</h4>
+            <p class="text-graphite text-sm leading-relaxed">
+              We integrate AI into what you have—unlocking its raw potential quickly.
+            </p>
+          </div>
+        </div>
+
+        <!-- New Product Development -->
+        <div class="flex gap-4 md:gap-6 items-center">
+          <div class="bg-tint-lavender rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-16 h-16 md:w-24 md:h-24 flex items-center justify-center">
+            <img src="/images/illustrations/build.svg" alt="" class="w-10 h-10 md:w-14 md:h-14" />
+          </div>
+          <div>
+            <h4 class="font-sans text-lg md:text-xl font-bold text-ink mb-1 md:mb-2">Building something new?</h4>
+            <p class="text-graphite text-sm leading-relaxed">
+              From concept to launch, AI-native products that solve real problems.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <a 
+          href="mailto:hey@thefocus.ai" 
+          class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+        >
+          Let's Talk
+        </a>
+      </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Case Study Highlights -->
-  <section class="py-16 md:py-24">
+  <section class="py-12 md:py-20">
     <div class="max-w-5xl">
       <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">Real Results</h3>
       <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-4">Case Studies</h2>
-      <p class="text-xl text-graphite mb-12">
+      <p class="text-xl text-graphite mb-8">
         See how we've helped organizations distill signal from noise and transform their workflows.
       </p>
 
-      <div class="space-y-12">
+      <div class="space-y-8">
         {featuredCaseStudies.map((study) => (
           <article class="border border-ink/10 rounded-lg p-8 hover:border-petrol/30 transition-colors">
             <div class="flex flex-col md:flex-row gap-8">
@@ -191,7 +265,7 @@ function getVideoPath(imageName: string | undefined): string | null {
         ))}
       </div>
 
-      <div class="mt-12 text-center">
+      <div class="mt-8 text-center">
         <a
           href="/case-studies"
           class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
@@ -203,20 +277,20 @@ function getVideoPath(imageName: string | undefined): string | null {
   </section>
 
   <!-- How We Do It -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm py-16 md:py-24">
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm py-12 md:py-20">
     <div class="max-w-screen-xl mx-auto px-4 md:px-8">
       <div class="max-w-4xl">
         <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">Our Process</h3>
-        <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-8">How we do it</h2>
+        <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-8">How we work with you</h2>
 
         <div class="prose prose-lg max-w-none text-graphite">
         <p class="text-xl leading-relaxed mb-8">
-          Our thoughtful team of strategists, designers and technologists work with you and your organization during an initial strategy phase to familiarize ourselves with your business's core values. What technologies you currently use and understand your metrics and KPIs (Key Performance Indicators).
+          We start by listening. Before we write a single line of code, we need to understand where you are—your current systems, your pain points, and what success actually looks like for your team. We love to educate as much as we love to build, so expect honest conversations about what AI can (and can't) solve.
         </p>
 
         <div class="bg-paper border-l-4 border-petrol p-8 rounded my-12">
           <p class="text-lg italic text-graphite mb-4">
-            "TheFocusAI team guided us through the initial strategy phase with unparalleled clarity and expertise. Their thoughtful questions and structured approach helped us articulate our needs and define concrete goals—making the entire project feel not only achievable, but exciting."
+            "TheFocusAI didn't just build what we asked for—they helped us understand what we actually needed. The clarity they brought to our AI strategy was as valuable as the product itself."
           </p>
           <p class="text-sm font-medium text-ink">
             — <a href="https://www.linkedin.com/in/joshclee/" 
@@ -225,19 +299,19 @@ function getVideoPath(imageName: string | undefined): string | null {
           </p>
         </div>
 
-        <h3 class="font-sans text-2xl font-bold text-ink mb-6">What to expect in this phase:</h3>
+        <h3 class="font-sans text-2xl font-bold text-ink mb-6">What to expect:</h3>
         <ul class="space-y-4 mb-8">
           <li class="flex gap-4">
             <span class="text-petrol font-bold flex-shrink-0">→</span>
-            <span>Discovery sessions to understand your current systems and pain points</span>
+            <span><strong>Understand</strong> — We dig into your current systems, workflows, and frustrations. No assumptions.</span>
           </li>
           <li class="flex gap-4">
             <span class="text-petrol font-bold flex-shrink-0">→</span>
-            <span>Technical assessment of existing infrastructure and data sources</span>
+            <span><strong>Educate</strong> — We walk you through the options and trade-offs so you can make informed decisions.</span>
           </li>
           <li class="flex gap-4">
             <span class="text-petrol font-bold flex-shrink-0">→</span>
-            <span>Strategic roadmap aligned with your business objectives and KPIs</span>
+            <span><strong>Roadmap</strong> — We define a practical path forward—whether that's connecting siloed data, building a new interface, or modernizing what you already have.</span>
           </li>
         </ul>
 
@@ -255,7 +329,7 @@ function getVideoPath(imageName: string | undefined): string | null {
   </div>
 
   <!-- Products/Tools Preview -->
-  <section class="py-16 md:py-24">
+  <section class="py-12 md:py-20">
     <div class="max-w-4xl">
       <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">Our Tools</h3>
       <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-8">TheFocus.AI Products</h2>

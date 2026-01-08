@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#161616" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hand-drawn style distillation/filtering illustration -->
+  <!-- Funnel top -->
+  <path d="M50 50 Q55 45 100 45 Q145 45 150 50 L130 90 Q120 105 100 110 Q80 105 70 90 Z" fill="none"/>
+  
+  <!-- Chaos/noise at top (multiple small shapes) -->
+  <circle cx="70" cy="60" r="4" fill="#161616"/>
+  <circle cx="85" cy="55" r="3" fill="#161616"/>
+  <circle cx="100" cy="62" r="5" fill="#161616"/>
+  <circle cx="115" cy="55" r="3" fill="#161616"/>
+  <circle cx="130" cy="60" r="4" fill="#161616"/>
+  <rect x="75" y="68" width="6" height="6" fill="#161616" transform="rotate(15 78 71)"/>
+  <rect x="95" y="72" width="5" height="5" fill="#161616" transform="rotate(-10 97 74)"/>
+  <rect x="115" y="68" width="6" height="6" fill="#161616" transform="rotate(20 118 71)"/>
+  
+  <!-- Drip/essence coming out -->
+  <path d="M100 110 L100 130" stroke-width="3"/>
+  <ellipse cx="100" cy="145" rx="8" ry="12" fill="#161616" stroke="none"/>
+  
+  <!-- Collection vessel -->
+  <path d="M75 155 Q75 150 85 150 L115 150 Q125 150 125 155 L120 180 Q115 185 100 185 Q85 185 80 180 Z" fill="none"/>
+  
+  <!-- Refined drops in vessel -->
+  <ellipse cx="95" cy="170" rx="5" ry="7" fill="#161616" stroke="none" opacity="0.6"/>
+  <ellipse cx="108" cy="172" rx="4" ry="6" fill="#161616" stroke="none" opacity="0.6"/>
+</svg>
