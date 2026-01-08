@@ -54,8 +54,44 @@ function getVideoPath(imageName: string | undefined): string | null {
     </div>
   </section>
 
+  <!-- Trophy Wall Section -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen overflow-hidden">
+    <!-- Gradient Background with decorative shapes -->
+    <div class="absolute inset-0 bg-gradient-to-br from-tint-cool via-paper to-tint-lavender"></div>
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-petrol/5 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-petrol/3 rounded-full blur-3xl"></div>
+    
+    <div class="relative max-w-screen-xl mx-auto px-4 md:px-8 py-20 md:py-24 text-center">
+      <!-- Decorative line -->
+      <div class="w-12 h-1 bg-petrol/30 mx-auto mb-6"></div>
+      
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">
+        Trusted Partners
+      </p>
+      <h2 class="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-5 max-w-4xl mx-auto leading-tight">
+        We solve complex problems through design & technology
+      </h2>
+      <p class="text-lg md:text-xl text-graphite mb-16 max-w-2xl mx-auto leading-relaxed">
+        We are an AI-first engineering, product and design company pushing the boundaries of what's possible
+      </p>
+      
+      <!-- Logo Grid with enhanced styling -->
+      <div class="bg-paper/60 backdrop-blur-sm rounded-2xl border border-ink/5 shadow-sm p-8 md:p-12 max-w-5xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-10 md:gap-12 items-center justify-items-center">
+          <img src="/images/logos/upperhand.svg" alt="Upper Hand" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+          <img src="/images/logos/perplexity.svg" alt="Perplexity" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+          <img src="/images/logos/samsung.svg" alt="Samsung" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+          <img src="/images/logos/tesla.svg" alt="Tesla" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+          <img src="/images/logos/rivian.svg" alt="Rivian" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+          <img src="/images/logos/conedison.svg" alt="Con Edison" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+          <img src="/images/logos/weavegrid.svg" alt="WeaveGrid" class="h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- What We Do -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool py-16 md:py-24">
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm py-16 md:py-24">
     <div class="max-w-screen-xl mx-auto px-4 md:px-8">
       <div class="max-w-4xl">
         <h3 class="text-sm uppercase tracking-widest text-petrol mb-6 font-medium">What We Do</h3>
@@ -205,9 +241,14 @@ function getVideoPath(imageName: string | undefined): string | null {
           </li>
         </ul>
 
-        <p class="text-xl leading-relaxed">
-          The studio is designed to move quickly, leveraging new tooling that can help uncover new opportunities, streamline legacy systems or simply get a new system up and running quickly. Everyone inside the studio loves to execute and drive performance.
-        </p>
+        <div class="mt-10">
+          <a 
+            href="mailto:hey@thefocus.ai" 
+            class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+          >
+            Connect With Us to Begin
+          </a>
+        </div>
         </div>
       </div>
     </div>
