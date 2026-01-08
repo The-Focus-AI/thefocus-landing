@@ -85,7 +85,7 @@ let category = Astro.props.category || "home";
     <!-- Other head elements -->
     <slot name="head" />
   </head>
-  <body class={`text-ink ${category === 'insights' || category === 'tools' ? 'bg-[#e8e6df]' : 'bg-paper'}`}>
+  <body class={`text-ink overflow-x-hidden ${category === 'insights' || category === 'tools' ? 'bg-[#e8e6df]' : 'bg-paper'}`}>
     <!-- Report Banner - hidden on mobile for cleaner first impression -->
     <div class="hidden sm:block bg-rand-blue text-white">
       <a href="/reports/aiecode-2025-11/" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
@@ -93,11 +93,11 @@ let category = Astro.props.category || "home";
         <span class="ml-2 inline-block">→</span>
       </a>
     </div>
-    <header class="border-b border-ink/10">
-      <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-5 md:py-8 flex flex-row justify-between items-center gap-4">
-        <a href="/" class="group">
+    <header id="site-header" class="border-b border-ink/10 transition-all duration-300">
+      <div id="header-inner" class="max-w-screen-xl mx-auto px-5 md:px-8 py-5 md:py-8 flex flex-row justify-between items-center gap-4 transition-all duration-300">
+        <a href="/" class="group" id="logo-link">
           <h1 class="text-sm font-medium uppercase tracking-[0.15em]">
-            <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="text-graphite group-hover:text-ink transition-colors duration-150">FOCUS<span class="text-graphite group-hover:text-ink transition-colors duration-150">/</span>AI</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+            <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="text-graphite group-hover:text-ink transition-colors duration-150">F<span id="logo-collapse" class="inline-block overflow-hidden transition-all duration-300 ease-out" style="max-width: 4.5em; vertical-align: bottom;">OCUS</span><span class="text-graphite group-hover:text-ink transition-colors duration-150">/</span>AI</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
           </h1>
         </a>
         <!-- Mobile menu button -->
@@ -275,5 +275,55 @@ let category = Astro.props.category || "home";
         </div>
       </div>
     </footer>
+    
+    <script>
+      // Logo collapse and header shrink on scroll
+      const logoCollapse = document.getElementById('logo-collapse');
+      const headerInner = document.getElementById('header-inner');
+      let ticking = false;
+      
+      function updateHeader() {
+        const scrollY = window.scrollY;
+        const isScrolled = scrollY > 50;
+        
+        if (logoCollapse) {
+          if (isScrolled) {
+            // Collapsed state
+            logoCollapse.style.maxWidth = '0';
+            logoCollapse.style.opacity = '0';
+          } else {
+            // Expanded state
+            logoCollapse.style.maxWidth = '4.5em';
+            logoCollapse.style.opacity = '1';
+          }
+        }
+        
+        // Shrink header padding when scrolled
+        if (headerInner) {
+          if (isScrolled) {
+            headerInner.classList.remove('py-5', 'md:py-8');
+            headerInner.classList.add('py-3', 'md:py-4');
+          } else {
+            headerInner.classList.remove('py-3', 'md:py-4');
+            headerInner.classList.add('py-5', 'md:py-8');
+          }
+        }
+        
+        ticking = false;
+      }
+      
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateHeader();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+      
+      // Initial state
+      updateHeader();
+    </script>
   </body>
 </html>
