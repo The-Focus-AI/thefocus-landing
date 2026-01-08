@@ -50,13 +50,13 @@ function getVideoPath(imageName: string | undefined): string | null {
         <div class="flex flex-col sm:flex-row gap-4">
           <a
             href="/capabilities"
-            class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors text-center"
+            class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
           >
             Our Capabilities
           </a>
           <a
             href="/case-studies"
-            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider hover:border-petrol hover:text-petrol transition-colors text-center"
+            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
           >
             View Case Studies
           </a>
@@ -82,7 +82,7 @@ function getVideoPath(imageName: string | undefined): string | null {
       </p>
       
       <!-- Logo Grid with enhanced styling -->
-      <div class="bg-paper/60 backdrop-blur-sm rounded-2xl border border-ink/5 shadow-sm p-6 md:p-12 max-w-5xl">
+      <div class="bg-paper/60 backdrop-blur-sm rounded-3xl shadow-xl shadow-ink/5 p-6 md:p-12 max-w-5xl">
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 items-center justify-items-center">
           <img src="/images/logos/upperhand.svg" alt="Upper Hand" class="h-6 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
           <img src="/images/logos/perplexity.svg" alt="Perplexity" class="h-6 md:h-10 w-auto opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105" />
@@ -106,34 +106,34 @@ function getVideoPath(imageName: string | undefined): string | null {
         <div class="grid md:grid-cols-3 gap-8 md:gap-6">
           <!-- Connect Card -->
           <div class="group">
-            <div class="bg-tint-warm rounded-2xl p-5 md:p-6 mb-5 aspect-[3/2] md:aspect-square flex items-center justify-center transition-transform group-hover:scale-[1.02]">
+            <div class="bg-tint-warm rounded-3xl p-5 md:p-6 mb-5 aspect-[3/2] md:aspect-square flex items-center justify-center shadow-lg shadow-ink/5 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl group-hover:shadow-ink/10">
               <img src="/images/illustrations/connect.svg" alt="Connect illustration" class="w-20 h-20 md:w-40 md:h-40" />
             </div>
             <h4 class="font-sans text-xl font-bold text-ink mb-3">Connect</h4>
             <p class="text-graphite text-base leading-relaxed">
-              Your data lives in silos—APIs that don't talk, spreadsheets nobody can find. We build bridges that make your data AI-accessible.
+              Your data lives in silos—APIs that don't talk, spreadsheets nobody can find. We build <strong class="text-ink">bridges</strong> that make your data AI-accessible.
             </p>
           </div>
           
           <!-- Curate Card -->
           <div class="group">
-            <div class="bg-tint-cool rounded-2xl p-5 md:p-6 mb-5 aspect-[3/2] md:aspect-square flex items-center justify-center transition-transform group-hover:scale-[1.02]">
+            <div class="bg-tint-cool rounded-3xl p-5 md:p-6 mb-5 aspect-[3/2] md:aspect-square flex items-center justify-center shadow-lg shadow-ink/5 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl group-hover:shadow-ink/10">
               <img src="/images/illustrations/curate.svg" alt="Curate illustration" class="w-20 h-20 md:w-40 md:h-40" />
             </div>
             <h4 class="font-sans text-xl font-bold text-ink mb-3">Curate</h4>
             <p class="text-graphite text-base leading-relaxed">
-              One-size-fits-all interfaces waste time. We build task-specific experiences designed for exactly what you need.
+              One-size-fits-all interfaces waste time. We build <strong class="text-ink">task-specific experiences</strong> designed for exactly what you need.
             </p>
           </div>
           
           <!-- Distill Card -->
           <div class="group">
-            <div class="bg-tint-lavender rounded-2xl p-5 md:p-6 mb-5 aspect-[3/2] md:aspect-square flex items-center justify-center transition-transform group-hover:scale-[1.02]">
+            <div class="bg-tint-lavender rounded-3xl p-5 md:p-6 mb-5 aspect-[3/2] md:aspect-square flex items-center justify-center shadow-lg shadow-ink/5 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl group-hover:shadow-ink/10">
               <img src="/images/illustrations/distill.svg" alt="Distill illustration" class="w-20 h-20 md:w-40 md:h-40" />
             </div>
             <h4 class="font-sans text-xl font-bold text-ink mb-3">Distill</h4>
             <p class="text-graphite text-base leading-relaxed">
-              Information overload isn't a badge of honor. We build systems that filter the noise and surface what matters.
+              Information overload isn't a badge of honor. We build systems that <strong class="text-ink">filter the noise</strong> and surface what matters.
             </p>
           </div>
         </div>
@@ -191,7 +191,7 @@ function getVideoPath(imageName: string | undefined): string | null {
       <div class="mt-10">
         <a 
           href="mailto:hey@thefocus.ai" 
-          class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
         >
           Let's Talk
         </a>
@@ -211,7 +211,7 @@ function getVideoPath(imageName: string | undefined): string | null {
 
       <div class="space-y-8">
         {featuredCaseStudies.map((study) => (
-          <article class="border border-ink/10 rounded-lg p-8 hover:border-petrol/30 transition-colors">
+          <article class="bg-tint-warm/30 rounded-3xl p-6 md:p-8 shadow-lg shadow-ink/5 hover:shadow-xl hover:shadow-ink/10 transition-all duration-300">
             <div class="flex flex-col md:flex-row gap-8">
               <div class="flex-1">
                 <h3 class="text-2xl font-bold text-ink mb-3">
@@ -224,9 +224,10 @@ function getVideoPath(imageName: string | undefined): string | null {
                   {study.data.description}
                 </p>
                 {study.data.testimonial && (
-                  <blockquote class="border-l-4 border-petrol pl-6 italic text-graphite">
-                    <p class="mb-3">"{study.data.testimonial}"</p>
-                    <footer class="text-sm not-italic">
+                  <blockquote class="relative pl-8 md:pl-12 text-graphite">
+                    <span class="absolute left-0 top-0 text-5xl md:text-6xl text-petrol/20 font-serif leading-none">"</span>
+                    <p class="mb-3 italic">{study.data.testimonial}</p>
+                    <footer class="text-sm not-italic font-medium text-ink">
                       — {study.data.testimonial_person}, {study.data.testimonial_company}
                     </footer>
                   </blockquote>
@@ -258,19 +259,23 @@ function getVideoPath(imageName: string | undefined): string | null {
             <div class="mt-6">
               <a
                 href={`/case-study/${study.id}`}
-                class="text-petrol hover:underline font-medium uppercase text-sm tracking-wide"
+                class="inline-flex items-center gap-2 text-petrol font-medium text-sm tracking-wide group/link"
               >
-                Read Case Study →
+                <span class="relative">
+                  Read Case Study
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-petrol transition-all duration-300 group-hover/link:w-full"></span>
+                </span>
+                <span class="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
               </a>
             </div>
           </article>
         ))}
       </div>
 
-      <div class="mt-8 text-center">
+      <div class="mt-10 text-center">
         <a
           href="/case-studies"
-          class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
         >
           View All Case Studies
         </a>
@@ -290,11 +295,12 @@ function getVideoPath(imageName: string | undefined): string | null {
           We start by listening. Before we write a single line of code, we need to understand where you are—your current systems, your pain points, and what success actually looks like for your team. We love to educate as much as we love to build, so expect honest conversations about what AI can (and can't) solve.
         </p>
 
-        <div class="bg-paper border-l-4 border-petrol p-6 md:p-8 rounded my-10 md:my-12">
-          <p class="text-base md:text-lg italic text-graphite mb-4">
-            "TheFocusAI didn't just build what we asked for—they helped us understand what we actually needed. The clarity they brought to our AI strategy was as valuable as the product itself."
+        <div class="bg-paper rounded-3xl p-8 md:p-10 my-10 md:my-12 shadow-lg shadow-ink/5 relative overflow-hidden">
+          <span class="absolute top-4 left-6 text-7xl md:text-8xl text-petrol/10 font-serif leading-none">"</span>
+          <p class="text-lg md:text-xl italic text-graphite mb-6 relative z-10 pl-4 md:pl-8">
+            TheFocusAI didn't just build what we asked for—they helped us understand what we <strong class="text-ink not-italic">actually needed</strong>. The clarity they brought to our AI strategy was as valuable as the product itself.
           </p>
-          <p class="text-sm font-medium text-ink">
+          <p class="text-sm font-medium text-ink relative z-10 pl-4 md:pl-8">
             — <a href="https://www.linkedin.com/in/joshclee/" 
             class="text-petrol hover:underline">Josh Lee</a>, CEO, 
             AI-Solutions
@@ -317,12 +323,18 @@ function getVideoPath(imageName: string | undefined): string | null {
           </li>
         </ul>
 
-        <div class="mt-10">
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
           <a 
             href="mailto:hey@thefocus.ai" 
-            class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
+            class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
           >
-            Connect With Us to Begin
+            Start a Conversation
+          </a>
+          <a 
+            href="/case-studies" 
+            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
+          >
+            See Our Work
           </a>
         </div>
         </div>
@@ -337,23 +349,27 @@ function getVideoPath(imageName: string | undefined): string | null {
       <h2 class="font-sans text-4xl md:text-5xl font-bold text-ink mb-8">TheFocus.AI Products</h2>
 
       <div class="grid sm:grid-cols-2 gap-6">
-        <div class="border border-ink/10 rounded-lg p-6 hover:border-petrol/30 transition-colors">
+        <div class="bg-tint-cool/30 rounded-3xl p-6 md:p-8 shadow-lg shadow-ink/5 hover:shadow-xl hover:shadow-ink/10 hover:-translate-y-1 transition-all duration-300">
           <h4 class="font-sans text-xl font-bold text-ink mb-3">Distill for X</h4>
           <p class="text-graphite">Clean up the noise from your X/Twitter feed and focus on what matters.</p>
         </div>
-        <div class="border border-ink/10 rounded-lg p-6 hover:border-petrol/30 transition-colors">
+        <div class="bg-tint-warm/30 rounded-3xl p-6 md:p-8 shadow-lg shadow-ink/5 hover:shadow-xl hover:shadow-ink/10 hover:-translate-y-1 transition-all duration-300">
           <h4 class="font-sans text-xl font-bold text-ink mb-3">Distill for YouTube</h4>
           <p class="text-graphite">Extract signal from YouTube content without the distractions.</p>
         </div>
-        <div class="border border-ink/10 rounded-lg p-6 hover:border-petrol/30 transition-colors">
+        <div class="bg-tint-lavender/30 rounded-3xl p-6 md:p-8 shadow-lg shadow-ink/5 hover:shadow-xl hover:shadow-ink/10 hover:-translate-y-1 transition-all duration-300">
           <h4 class="font-sans text-xl font-bold text-ink mb-3">Rackets.AI</h4>
           <p class="text-graphite">AI-powered insights for racquet sports enthusiasts.</p>
         </div>
       </div>
 
       <div class="mt-8">
-        <a href="/tools" class="text-petrol hover:underline font-medium uppercase text-sm tracking-wide">
-          Explore All Tools →
+        <a href="/tools" class="inline-flex items-center gap-2 text-petrol font-medium text-sm tracking-wide group/link">
+          <span class="relative">
+            Explore All Tools
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-petrol transition-all duration-300 group-hover/link:w-full"></span>
+          </span>
+          <span class="transition-transform duration-300 group-hover/link:translate-x-1">→</span>
         </a>
       </div>
     </div>
