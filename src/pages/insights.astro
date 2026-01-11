@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import { getPosts } from "../utils/posts";
-import { getCollection } from "astro:content";
 import PostListSchema from "../components/schemas/postlist.astro";
 import { formatDate } from "../utils/date";
 import { getPostLink, getTagDisplay } from "../utils/ids";
@@ -20,16 +19,8 @@ const getVideoPath = (imageName: string) => {
 };
 
 const allPosts = await getPosts();
-
-// Major Research Reports - posts tagged with "report"
-const majorReports = allPosts.filter(post => post.data.tags?.includes("report"));
-const featuredReport = majorReports[0];
-const otherReports = majorReports.slice(1);
-
-// Lab Memos - regular posts without "report" tag
-const labMemos = allPosts.filter(post => !post.data.tags?.includes("report"));
-const featuredMemo = labMemos[0];
-const otherMemos = labMemos.slice(1);
+const featuredPost = allPosts[0];
+const otherPosts = allPosts.slice(1);
 ---
 
 <BaseLayout pageTitle="Research Reports | Focus.AI Labs" description="Research reports from Focus.AI Labs on AI, agentic workflows, and the future of software" category="insights">
@@ -83,143 +74,19 @@ const otherMemos = labMemos.slice(1);
                 </p>
             </div>
 
-            <!-- Major Research Reports Section -->
-            {majorReports.length > 0 && (
-                <section class="mb-16 relative z-10">
-                    <div class="border-l-4 border-alert-red pl-6 py-3 bg-[#f8f8f6] mb-8">
-                        <p class="font-sans font-bold text-sm uppercase tracking-wide text-gray-500 mb-1">Major Research Reports</p>
-                        <p class="font-sans text-sm">Comprehensive technical memos and in-depth analysis</p>
-                    </div>
-
-                    {/* Featured Report */}
-                    {featuredReport && (
-                        <div class="border border-void bg-white mb-6 hover:bg-[#f8f8f6] transition-colors duration-200 group">
-                            <div class="grid md:grid-cols-12 gap-0">
-                                {featuredReport.data.image && images[`/src/content/assets/cards/${featuredReport.data.image}`] && (
-                                    <div class="md:col-span-4 border-b md:border-b-0 md:border-r border-void">
-                                        <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
-                                            {getVideoPath(featuredReport.data.image) ? (
-                                                <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
-                                                    <source src={getVideoPath(featuredReport.data.image)} type="video/mp4" />
-                                                </video>
-                                            ) : (
-                                                <Image
-                                                    src={images[`/src/content/assets/cards/${featuredReport.data.image}`]()}
-                                                    alt={featuredReport.data.title}
-                                                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                                                />
-                                            )}
-                                        </div>
-                                    </div>
-                                )}
-                                <div class={`${featuredReport.data.image ? 'md:col-span-8' : 'md:col-span-12'} p-6 md:p-8 flex flex-col`}>
-                                    <div class="mb-4">
-                                        <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-rand-blue text-white">
-                                            FEATURED REPORT
-                                        </span>
-                                    </div>
-
-                                    <h3 class="text-3xl md:text-4xl font-sans font-black text-void mb-4 leading-tight group-hover:text-rand-blue transition-colors duration-200">
-                                        <a href={getPostLink(featuredReport)}>
-                                            {featuredReport.data.title}
-                                        </a>
-                                    </h3>
-
-                                    <p class="text-base text-void/80 leading-relaxed mb-6 flex-grow">
-                                        {featuredReport.data.description}
-                                    </p>
-
-                                    <div class="flex flex-wrap items-center gap-4 text-sm pt-4 border-t border-void/20">
-                                        <span class="font-mono text-xs font-bold">{formatDate(featuredReport.data.date)}</span>
-                                        {featuredReport.data.tags && (
-                                            <>
-                                                <span class="text-void/40">•</span>
-                                                <div class="flex gap-2">
-                                                    {featuredReport.data.tags.slice(0, 3).map(tag => (
-                                                        <span class="text-[10px] uppercase tracking-[0.2em] text-rand-blue font-mono font-bold">
-                                                            {getTagDisplay(tag)}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </>
-                                        )}
-                                        <a href={getPostLink(featuredReport)} class="ml-auto text-rand-blue font-mono text-xs font-bold uppercase tracking-wider hover:underline">
-                                            Read Report →
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Other Reports Grid */}
-                    {otherReports.length > 0 && (
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-void border border-void">
-                            {otherReports.map((report, index) => (
-                                <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
-                                    {report.data.image && images[`/src/content/assets/cards/${report.data.image}`] && (
-                                        <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">
-                                            {getVideoPath(report.data.image) ? (
-                                                <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
-                                                    <source src={getVideoPath(report.data.image)} type="video/mp4" />
-                                                </video>
-                                            ) : (
-                                                <Image
-                                                    src={images[`/src/content/assets/cards/${report.data.image}`]()}
-                                                    alt={report.data.title}
-                                                    class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                                                />
-                                            )}
-                                        </div>
-                                    )}
-                                    <div class="p-6 flex flex-col flex-grow">
-                                        <div class="mb-3">
-                                            <span class="text-alert-red font-mono text-[10px] font-bold">
-                                                {String(index + 2).padStart(2, '0')}
-                                            </span>
-                                        </div>
-                                        <h4 class="text-xl font-sans font-black text-void mb-3 leading-tight group-hover:text-rand-blue transition-colors duration-200">
-                                            <a href={getPostLink(report)}>
-                                                {report.data.title}
-                                            </a>
-                                        </h4>
-                                        <p class="text-sm text-void/70 leading-relaxed mb-4 flex-grow">
-                                            {report.data.description}
-                                        </p>
-                                        <div class="mt-auto pt-4 border-t border-void/20">
-                                            <div class="flex items-center justify-between text-xs mb-3">
-                                                <span class="font-mono text-[10px] font-bold">{formatDate(report.data.date)}</span>
-                                            </div>
-                                            <a href={getPostLink(report)} class="block w-full text-center px-4 py-2 bg-rand-blue text-white font-bold uppercase text-[10px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono">
-                                                Read →
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </section>
-            )}
-
-            <!-- Lab Memos Section -->
-            {labMemos.length > 0 && (
+            <!-- Posts Section -->
+            {allPosts.length > 0 && (
                 <section class="relative z-10">
-                    <div class="border-l-4 border-alert-red pl-6 py-3 bg-[#f8f8f6] mb-8">
-                        <p class="font-sans font-bold text-sm uppercase tracking-wide text-gray-500 mb-1">Lab Memos</p>
-                        <p class="font-sans text-sm">Research notes and technical observations</p>
-                    </div>
-
-                    {/* Featured Memo */}
-                    {featuredMemo && (
+                    {/* Featured Post */}
+                    {featuredPost && (
                         <div class="border border-void bg-white mb-6 hover:bg-[#f8f8f6] transition-colors duration-200 group">
                             <div class="grid md:grid-cols-12 gap-0">
-                                <div class={`${featuredMemo.data.image ? 'md:col-span-7' : 'md:col-span-12'} p-6 md:p-8 flex flex-col order-2 md:order-1`}>
+                                <div class={`${featuredPost.data.image ? 'md:col-span-7' : 'md:col-span-12'} p-6 md:p-8 flex flex-col order-2 md:order-1`}>
                                     <div class="mb-4 flex items-center gap-2">
                                         <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-rand-blue text-white">
-                                            LATEST MEMO
+                                            LATEST
                                         </span>
-                                        {!featuredMemo.data.published && (
+                                        {!featuredPost.data.published && (
                                             <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-alert-red text-white">
                                                 DRAFT
                                             </span>
@@ -227,22 +94,22 @@ const otherMemos = labMemos.slice(1);
                                     </div>
 
                                     <h3 class="text-3xl md:text-4xl font-sans font-black text-void mb-4 leading-tight group-hover:text-rand-blue transition-colors duration-200">
-                                        <a href={getPostLink(featuredMemo)}>
-                                            {featuredMemo.data.title}
+                                        <a href={getPostLink(featuredPost)}>
+                                            {featuredPost.data.title}
                                         </a>
                                     </h3>
 
                                     <p class="text-base text-void/80 leading-relaxed mb-6 flex-grow">
-                                        {featuredMemo.data.description}
+                                        {featuredPost.data.description}
                                     </p>
 
                                     <div class="flex flex-wrap items-center gap-4 text-sm pt-4 border-t border-void/20">
-                                        <span class="font-mono text-xs font-bold">{formatDate(featuredMemo.data.date)}</span>
-                                        {featuredMemo.data.tags && (
+                                        <span class="font-mono text-xs font-bold">{formatDate(featuredPost.data.date)}</span>
+                                        {featuredPost.data.tags && (
                                             <>
                                                 <span class="text-void/40">•</span>
                                                 <div class="flex gap-2 flex-wrap">
-                                                    {featuredMemo.data.tags.slice(0, 4).map(tag => (
+                                                    {featuredPost.data.tags.slice(0, 4).map(tag => (
                                                         <span class="text-[10px] uppercase tracking-[0.2em] text-rand-blue font-mono font-bold">
                                                             {getTagDisplay(tag)}
                                                         </span>
@@ -252,17 +119,17 @@ const otherMemos = labMemos.slice(1);
                                         )}
                                     </div>
                                 </div>
-                                {featuredMemo.data.image && images[`/src/content/assets/cards/${featuredMemo.data.image}`] && (
+                                {featuredPost.data.image && images[`/src/content/assets/cards/${featuredPost.data.image}`] && (
                                     <div class="md:col-span-5 border-b md:border-b-0 md:border-l border-void order-1 md:order-2">
                                         <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
-                                            {getVideoPath(featuredMemo.data.image) ? (
+                                            {getVideoPath(featuredPost.data.image) ? (
                                                 <video class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" autoplay loop muted playsinline>
-                                                    <source src={getVideoPath(featuredMemo.data.image)} type="video/mp4" />
+                                                    <source src={getVideoPath(featuredPost.data.image)} type="video/mp4" />
                                                 </video>
                                             ) : (
                                                 <Image
-                                                    src={images[`/src/content/assets/cards/${featuredMemo.data.image}`]()}
-                                                    alt={featuredMemo.data.title}
+                                                    src={images[`/src/content/assets/cards/${featuredPost.data.image}`]()}
+                                                    alt={featuredPost.data.title}
                                                     class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                                                 />
                                             )}
@@ -273,10 +140,10 @@ const otherMemos = labMemos.slice(1);
                         </div>
                     )}
 
-                    {/* Other Memos Grid */}
-                    {otherMemos.length > 0 && (
+                    {/* Other Posts Grid */}
+                    {otherPosts.length > 0 && (
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-void border border-void">
-                            {otherMemos.map((post, index) => (
+                            {otherPosts.map((post, index) => (
                                 <div class="bg-white hover:bg-[#f8f8f6] transition-colors duration-200 flex flex-col group">
                                     {post.data.image && images[`/src/content/assets/cards/${post.data.image}`] && (
                                         <div class="aspect-[16/9] bg-surface overflow-hidden border-b border-void">

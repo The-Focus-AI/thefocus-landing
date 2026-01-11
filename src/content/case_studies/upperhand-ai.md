@@ -3,12 +3,13 @@ title: "78% Faster Talent Decisions: AI-Powered Celebrity Analytics for Media Ne
 industry: Media / Entertainment
 client: Upper Hand AI
 year: "2025"
-timeline: "12 weeks"
+timeline: "16 weeks (ongoing)"
 services: "Strategy + Development"
 description: We built a multi-agent AI platform that unifies celebrity data from disparate sources — survey research, social media metrics, and brand affinity studies — letting entertainment executives answer complex casting questions in natural language instead of navigating dozens of spreadsheets.
 results: |-
   - 78% reduction in time to generate talent reports
-  - 4 specialized AI agents across talent, ratings, and streaming data
+  - 5 specialized AI agents across talent, ratings, and streaming data
+  - 15+ query tools with typo-tolerant search and nickname recognition
   - Zero spreadsheet wrangling — natural language queries replace manual lookups
   - Cross-demographic analysis that previously required custom analyst work
 tech_stack: "Next.js 15, TypeScript, Vercel AI SDK, Supabase, PostgreSQL, Anthropic Claude, Radix UI, Recharts"
