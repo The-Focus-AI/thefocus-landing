@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { formatDate } from "../utils/date";
+
+// Get all published jobs
+let jobs = await getCollection("jobs");
+if (import.meta.env.NODE_ENV !== "development") {
+  jobs = jobs.filter((job) => job.data.published);
+}
+jobs = jobs.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<BaseLayout pageTitle="Careers | Focus.AI" description="Join Focus.AI - We're looking for AI-hungry developers and strategists" category="jobs">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="mb-12 border-b-2 border-void pb-8">
+            <div class="mb-6">
+                <span class="text-xs uppercase tracking-[0.15em] text-rand-blue font-mono font-bold">
+                    Careers
+                </span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-sans font-black text-void mb-6 leading-tight">
+                Join <span class="text-rand-blue">Focus.AI</span>
+            </h1>
+
+            <p class="text-lg text-void/80 leading-relaxed max-w-2xl">
+                We're a small, AI-first consultancy looking for people who want to be at the bleeding edge of AI-assisted development. If you're excited about working <em>with</em> AI rather than being replaced by it, we'd love to hear from you.
+            </p>
+        </div>
+
+        <!-- Job Listings -->
+        {jobs.length > 0 ? (
+            <div class="space-y-6">
+                {jobs.map((job) => (
+                    <a href={`/jobs/${job.id}`} class="block border border-void bg-white hover:bg-[#f8f8f6] transition-colors duration-200 group">
+                        <div class="p-6 md:p-8">
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-rand-blue text-white">
+                                    {job.data.type}
+                                </span>
+                                <span class="font-mono text-xs text-void/70">
+                                    {job.data.location}
+                                </span>
+                                {job.data.hours && (
+                                    <>
+                                        <span class="text-void/30">•</span>
+                                        <span class="font-mono text-xs text-void/70">
+                                            {job.data.hours}
+                                        </span>
+                                    </>
+                                )}
+                            </div>
+
+                            <h2 class="text-2xl md:text-3xl font-sans font-black text-void mb-3 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                                {job.data.title}
+                            </h2>
+
+                            <div class="flex flex-wrap items-center gap-4 text-sm pt-4 border-t border-void/20">
+                                {job.data.rate && (
+                                    <span class="font-mono text-xs font-bold text-petrol">
+                                        {job.data.rate}
+                                    </span>
+                                )}
+                                <span class="font-mono text-xs text-void/50">
+                                    Posted {formatDate(job.data.date)}
+                                </span>
+                                <span class="ml-auto font-mono text-xs font-bold text-rand-blue group-hover:underline">
+                                    View Details →
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        ) : (
+            <div class="border border-void bg-[#f8f8f6] p-8 text-center">
+                <p class="text-void/70 mb-4">No open positions at the moment.</p>
+                <p class="text-sm text-void/50">
+                    Interested anyway? <a href="mailto:hey@thefocus.ai" class="text-rand-blue hover:underline">Get in touch</a>
+                </p>
+            </div>
+        )}
+
+        <!-- General Info -->
+        <div class="mt-12 pt-8 border-t border-void/20">
+            <div class="bg-[#f8f8f6] border-l-4 border-rand-blue p-6 font-mono text-sm">
+                <p class="text-void/70 mb-4">
+                    <strong class="text-void">Don't see the right role?</strong> We're always interested in meeting talented people.
+                </p>
+                <p class="text-void/70">
+                    Send us a note at <a href="mailto:hey@thefocus.ai" class="text-rand-blue hover:underline">hey@thefocus.ai</a> and tell us what you're working on.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</BaseLayout>

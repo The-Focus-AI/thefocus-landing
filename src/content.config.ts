@@ -27,6 +27,13 @@ const case_studies = defineCollection({
   }),
 });
 
+const jobs = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/jobs",
+  }),
+});
+
 function fluxRunCollection(name: string) {
   return defineCollection({
     loader: file(`./src/content/fluximages/${name}/run_info.json`, {
@@ -61,4 +68,5 @@ export const collections = {
   schnell_forest: schnell_forest,
   lil_robots: lil_robots,
   case_studies: case_studies,
+  jobs: jobs,
 };
