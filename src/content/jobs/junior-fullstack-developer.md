@@ -6,6 +6,7 @@ hours: "15-25 hours/week"
 rate: "$35-50/hour"
 published: true
 date: "2026-01-11"
+ogImage: "og-job-junior-fullstack.png"
 ---
 
 ## About Us

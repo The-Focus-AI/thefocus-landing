@@ -25,7 +25,7 @@ type Props = {
 const { Content } = await render(entry);
 ---
 
-<BaseLayout pageTitle={`${entry.data.title} | Focus.AI Careers`} description={`${entry.data.title} - ${entry.data.type} position at Focus.AI`} category="jobs">
+<BaseLayout pageTitle={`${entry.data.title} | Focus.AI Careers`} description={`${entry.data.type} · ${entry.data.location}${entry.data.rate ? ` · ${entry.data.rate}` : ''}`} openGraphImage={entry.data.ogImage || "og-jobs.png"} category="jobs">
 
     <div class="max-w-4xl mx-auto">
         <!-- Back Link -->
