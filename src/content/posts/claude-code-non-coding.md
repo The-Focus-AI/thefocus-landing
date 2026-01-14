@@ -9,6 +9,7 @@ tags:
   - workflow
   - process
 image: claude-code-not-code.png
+ogImage: claude-code-non-coding.png
 ---
 
 Here's what I've used Claude Code for this month:

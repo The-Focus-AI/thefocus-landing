@@ -7,8 +7,11 @@ const collectionEntries = await getPosts();
 // Map the array of content collection entries to create an object.
 // Converts [{ id: 'post.md', data: { title: 'Example', description: '' } }]
 // to { 'post.md': { title: 'Example', description: '' } }
+// Skip posts with custom ogImage - those are served from public/open-graph/
 const pages = Object.fromEntries(
-  collectionEntries.map(({ id, data }) => [getSlug({ id }), data])
+  collectionEntries
+    .filter(({ data }) => !data.ogImage)
+    .map(({ id, data }) => [getSlug({ id }), data])
 );
 
 // Focus.AI Client Brand Colors (RGB)
