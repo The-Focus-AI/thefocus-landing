@@ -5,6 +5,7 @@ location: "Remote (US Timezone)"
 hours: "15-25 hours/week"
 rate: "$35-50/hour"
 published: true
+fulfilled: true
 date: "2026-01-11"
 ogImage: "og-job-junior-fullstack.png"
 ---
