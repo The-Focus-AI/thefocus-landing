@@ -4,132 +4,292 @@ import { getCaseStudies, getCaseStudyUrl } from "../utils/case-studies.js";
 
 const allCaseStudies = await getCaseStudies();
 
-const pillars = [
+const engagements = [
   {
     number: "01",
-    title: "CONNECT",
-    subtitle: "Make siloed data AI-accessible",
-    pain: "Your data exists. It's valuable. But it lives in APIs your team can't query, spreadsheets with different naming conventions, and documents that require 15 minutes of manual entry. The information is there—it's just not accessible in ways that let people actually use it.",
-    solution: "We build bridges between your systems and AI. REST APIs become conversational interfaces. Spreadsheets become unified databases. PDFs become structured data. The result: people can ask questions in plain English and get answers in seconds.",
-    caseStudies: ["tezlab-ai", "upperhand-ai", "onboarding"],
-    featuredCaseStudy: "tezlab-ai"
+    title: "Strategy & Roadmap",
+    timeline: "4-6 weeks",
+    description: "For leaders who need clarity before committing. We help you understand what's possible, what's practical, and what actually fits your business.",
+    deliverables: ["AI opportunity assessment", "Prioritized roadmap", "Tech recommendations", "Build vs. buy analysis"],
+    cta: "Not sure where to start? Let's figure it out together.",
+    ctaLink: "mailto:hey@thefocus.ai?subject=Strategy%20Engagement"
   },
   {
     number: "02",
-    title: "CURATE",
-    subtitle: "Build interfaces for the task at hand",
-    pain: "Most interfaces try to do everything for everyone. The result is dashboards nobody reads, features nobody uses, and workflows that require five clicks when one would do. Your team deserves tools designed for exactly what they need.",
-    solution: "We build focused experiences. Voice-first TV apps for living rooms. Semantic search for image libraries. Chat interfaces that show charts, not text walls. Every interface is designed around a specific task—and disappears when it's done.",
-    caseStudies: ["perplexity-samsung", "image-browser", "name-drop-network"],
-    featuredCaseStudy: "image-browser"
+    title: "Build & Ship",
+    timeline: "6-12 weeks",
+    description: "For teams with a defined problem ready to move. We ship production-ready AI systems, not prototypes that sit on a shelf.",
+    deliverables: ["Working AI systems", "Custom integrations", "User-facing interfaces", "Documentation & handoff"],
+    cta: "Ready to build? Tell us what you're trying to solve.",
+    ctaLink: "mailto:hey@thefocus.ai?subject=Build%20Engagement"
   },
   {
     number: "03",
-    title: "DISTILL",
-    subtitle: "Filter noise, surface signal",
-    pain: "Twitter alone generates 500 million posts daily. Your inbox gets hundreds of emails. Meeting notes, Slack threads, research reports—they keep piling up. Staying informed means drowning, or missing things that matter.",
-    solution: "We build systems that read so you don't have to. AI summaries of Twitter feeds. Transcripts with highlights from hour-long podcasts. Topic extraction across sources. You get the signal without swimming through the noise.",
-    caseStudies: ["distill"],
-    featuredCaseStudy: "distill"
+    title: "Ongoing Partnership",
+    timeline: "Monthly retainer",
+    description: "For companies wanting continuous AI evolution. Like having a fractional AI team without the overhead of full-time hires.",
+    deliverables: ["Dedicated team access", "Continuous optimization", "New feature development", "Team training"],
+    cta: "Need a dedicated AI team? Let's talk.",
+    ctaLink: "mailto:hey@thefocus.ai?subject=Partnership%20Inquiry"
   }
 ];
 
-// Helper to get testimonial from a case study
-function getTestimonial(caseStudyId: string) {
-  const cs = allCaseStudies.find(c => c.id === caseStudyId);
-  if (cs?.data.testimonial) {
-    return {
-      quote: cs.data.testimonial,
-      person: cs.data.testimonial_person,
-      company: cs.data.testimonial_company
-    };
+const capabilities = [
+  {
+    title: "Connect",
+    tagline: "Your data exists. We make it talkable.",
+    description: "Make your existing data AI-accessible — APIs, databases, documents. We build bridges between your systems and AI so people can ask questions in plain English and get answers in seconds.",
+    example: "We built a conversational layer on top of TezLab's existing APIs — users ask questions in plain English, get answers in seconds. Zero changes to their backend.",
+    caseStudyId: "tezlab-ai",
+    relatedCaseStudies: ["upperhand-ai", "onboarding"]
+  },
+  {
+    title: "Curate",
+    tagline: "One tool, one job, done.",
+    description: "Build focused interfaces for specific tasks — not one-size-fits-all dashboards. Every interface is designed around exactly what you need, and disappears when it's done.",
+    example: "For Perplexity, we built a voice-first AI assistant for Samsung TVs — no keyboard, no mouse, just speak and get answers from across the room.",
+    caseStudyId: "perplexity-samsung",
+    relatedCaseStudies: ["image-browser", "name-drop-network"]
+  },
+  {
+    title: "Distill",
+    tagline: "Read less, know more.",
+    description: "Filter noise and surface what matters — summaries, alerts, insights. We build systems that read so you don't have to.",
+    example: "Upper Hand's research team spent 40 hours/week compiling celebrity data from spreadsheets. Now they ask a question and get answers in 30 seconds.",
+    caseStudyId: "upperhand-ai",
+    relatedCaseStudies: ["distill"]
   }
-  return null;
-}
+];
 
-// Helper to get case study objects from IDs
-function getRelatedCaseStudies(caseStudyIds: string[]) {
-  return caseStudyIds
-    .map(id => allCaseStudies.find(cs => cs.id === id))
-    .filter(Boolean);
+function getCaseStudy(id: string) {
+  return allCaseStudies.find(cs => cs.id === id);
 }
 ---
 
 <BaseLayout
   pageTitle="Capabilities | Focus.AI"
-  description="How we help you distill signal from noise with AI-powered solutions"
+  description="AI strategy, implementation, and ongoing partnership for product-led companies. Ship working AI in weeks, not quarters."
   category="capabilities"
 >
   <div class="max-w-4xl mx-auto">
+    <!-- Hero -->
     <div class="mb-16">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-ink">Three ways we help you focus</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-ink">How we work with you</h1>
       <p class="text-xl md:text-2xl text-graphite leading-relaxed">
-        Every project starts with the same question: what's getting in the way of your team doing great work? We've found the answers cluster around three problems—and we've built solutions for each. But before we build anything, we make sure you understand exactly what's possible.
+        We work directly with founders and product leaders to ship working AI in weeks, not quarters. Every engagement starts with understanding your problem — we educate as much as we build.
       </p>
     </div>
 
-    <div class="space-y-1">
-      {pillars.map((pillar) => {
-        const relatedCaseStudies = getRelatedCaseStudies(pillar.caseStudies);
-        const testimonial = getTestimonial(pillar.featuredCaseStudy);
-        return (
-          <div class="border-t border-ink/10 py-10 hover:bg-tint-sage/50 transition-colors px-6 -mx-6">
-            <div class="flex gap-8 md:gap-12">
-              <div class="text-sm text-graphite/50 mt-2 font-mono">{pillar.number}</div>
+    <!-- How We Work: Engagement Types -->
+    <section class="mb-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Choose Your Path</h2>
+      
+      <div class="space-y-6">
+        {engagements.map((engagement) => (
+          <div class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-petrol/30 hover:bg-tint-sage/30 transition-all">
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+              <div class="flex-shrink-0">
+                <span class="text-xs font-mono text-graphite/50">{engagement.number}</span>
+              </div>
               <div class="flex-1">
-                {/* Title and subtitle */}
-                <div class="mb-4">
-                  <h2 class="text-2xl md:text-4xl font-bold text-ink mb-2">{pillar.title}</h2>
-                  <p class="text-lg text-petrol font-medium">{pillar.subtitle}</p>
+                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
+                  <h3 class="text-2xl font-bold text-ink">{engagement.title}</h3>
+                  <span class="text-sm font-medium text-petrol bg-petrol/10 px-3 py-1 rounded-full w-fit">{engagement.timeline}</span>
                 </div>
-
-                {/* The pain */}
+                <p class="text-graphite leading-relaxed mb-4">{engagement.description}</p>
                 <div class="mb-6">
-                  <h3 class="text-sm uppercase tracking-wider text-graphite/60 mb-2">The problem</h3>
-                  <p class="text-graphite leading-relaxed">{pillar.pain}</p>
+                  <p class="text-sm text-graphite/60 mb-2">What you get:</p>
+                  <div class="flex flex-wrap gap-2">
+                    {engagement.deliverables.map((d) => (
+                      <span class="text-sm text-graphite bg-ink/5 px-3 py-1 rounded-full">{d}</span>
+                    ))}
+                  </div>
                 </div>
+                <a 
+                  href={engagement.ctaLink}
+                  class="inline-block text-petrol font-medium hover:underline"
+                >
+                  {engagement.cta} →
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
-                {/* What we do */}
-                <div class="mb-6">
-                  <h3 class="text-sm uppercase tracking-wider text-graphite/60 mb-2">What we do</h3>
-                  <p class="text-graphite leading-relaxed">{pillar.solution}</p>
-                </div>
-
-                {/* Testimonial from featured case study */}
-                {testimonial && (
-                  <blockquote class="border-l-2 border-petrol pl-4 mb-6">
-                    <p class="text-graphite italic">"{testimonial.quote}"</p>
-                    <cite class="text-xs text-graphite/60 not-italic">— {testimonial.person}, {testimonial.company}</cite>
-                  </blockquote>
+    <!-- What We Build: Capabilities -->
+    <section class="mb-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">What We Build</h2>
+      <p class="text-xl text-graphite mb-10">Three types of solutions, each solving a specific problem.</p>
+      
+      <div class="space-y-12">
+        {capabilities.map((cap) => {
+          const caseStudy = getCaseStudy(cap.caseStudyId);
+          const relatedStudies = cap.relatedCaseStudies
+            ?.map(id => getCaseStudy(id))
+            .filter(Boolean);
+          return (
+            <div class="border-t border-ink/10 pt-8">
+              <div class="mb-4">
+                <h3 class="text-3xl font-bold text-ink mb-2">{cap.title}</h3>
+                <p class="text-lg text-petrol font-medium italic">"{cap.tagline}"</p>
+              </div>
+              <p class="text-graphite leading-relaxed mb-6">{cap.description}</p>
+              <div class="bg-tint-warm/50 rounded-xl p-5 mb-4">
+                <p class="text-sm text-graphite/60 mb-2">Example:</p>
+                <p class="text-graphite">{cap.example}</p>
+              </div>
+              <div class="flex flex-col gap-2">
+                {caseStudy && (
+                  <a href={getCaseStudyUrl(caseStudy)} class="text-sm text-petrol hover:underline">
+                    Read the {caseStudy.data.client || caseStudy.data.title} case study →
+                  </a>
                 )}
-
-                {/* Related case studies */}
-                {relatedCaseStudies.length > 0 && (
+                {relatedStudies && relatedStudies.length > 0 && (
                   <div class="text-sm">
-                    <span class="text-graphite">See in action:</span>
-                    {relatedCaseStudies.map((cs) => (
-                      <a href={getCaseStudyUrl(cs)} class="text-petrol hover:underline ml-2">{cs.data.title}</a>
+                    <span class="text-graphite">See in action: </span>
+                    {relatedStudies.map((cs, i) => (
+                      <>
+                        <a href={getCaseStudyUrl(cs)} class="text-petrol hover:underline">{cs.data.client || cs.data.title}</a>
+                        {i < relatedStudies.length - 1 && <span class="text-graphite"> · </span>}
+                      </>
                     ))}
                   </div>
                 )}
               </div>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </section>
 
-    <div class="mt-16 pt-16 border-t border-ink/10">
-      <h2 class="text-3xl font-bold mb-6 text-ink">Start with what's blocking you</h2>
-      <p class="text-xl text-graphite mb-8">
-        Whether it's siloed data, overwhelming interfaces, information overload, or simply not knowing where to start—we've probably seen a version of your problem before. We love to educate as much as we love to build. Let's talk about what's actually getting in the way.
-      </p>
-      <a
-        href="mailto:hey@thefocus.ai"
-        class="inline-block px-6 py-3 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
-      >
-        Contact Us
+    <!-- Who This Is For -->
+    <section class="mb-20">
+      <div class="bg-ink text-paper rounded-3xl p-8 md:p-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Is this for you?</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+          <div>
+            <h3 class="text-lg font-bold text-petrol mb-4">This is for you if:</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">✓</span>
+                <span class="text-paper/80">You're a founder, CEO, or product leader at a growth-stage company</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">✓</span>
+                <span class="text-paper/80">You have a product that works — now you want to make it smarter with AI</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">✓</span>
+                <span class="text-paper/80">You don't have an internal AI/ML team (or yours is stretched thin)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">✓</span>
+                <span class="text-paper/80">You want a partner who explains the options, not just executes specs</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">✓</span>
+                <span class="text-paper/80">You need working AI in weeks, not a 6-month "discovery phase"</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-bold text-paper/60 mb-4">This probably isn't for you if:</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You need a 50-person team for a multi-year transformation</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You want the cheapest option (we're not a dev shop)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You're looking for someone to "just build what we spec" without input</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You're not sure AI is right for you and want free advice first</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="mb-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Results</h2>
+      <p class="text-xl text-graphite mb-8">What our clients have achieved:</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">27%</p>
+          <p class="text-sm text-graphite">higher conversion</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">78%</p>
+          <p class="text-sm text-graphite">faster decisions</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">50M+</p>
+          <p class="text-sm text-graphite">devices reached</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">8 wks</p>
+          <p class="text-sm text-graphite">to production</p>
+        </div>
+      </div>
+      
+      <a href="/case-studies" class="inline-block text-petrol font-medium hover:underline">
+        See all case studies →
       </a>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-16">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Common Questions</h2>
+      
+      <div class="space-y-6">
+        <div class="border-t border-ink/10 pt-6">
+          <h3 class="text-lg font-bold text-ink mb-2">How involved do we need to be?</h3>
+          <p class="text-graphite">We work closely with your team, but we drive the project. Expect 2-4 hours/week of your time for check-ins and decisions. We handle the rest.</p>
+        </div>
+        <div class="border-t border-ink/10 pt-6">
+          <h3 class="text-lg font-bold text-ink mb-2">Do we need clean data first?</h3>
+          <p class="text-graphite">No. Part of what we do is figure out what data you have and how to make it useful. Messy data is normal — we've seen it all.</p>
+        </div>
+        <div class="border-t border-ink/10 pt-6">
+          <h3 class="text-lg font-bold text-ink mb-2">What if we don't know exactly what we need?</h3>
+          <p class="text-graphite">That's what Strategy engagements are for. We'll figure it out together — understanding your options is the first step.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="border-t border-ink/10 pt-16">
+      <h2 class="text-3xl font-bold mb-6 text-ink">Ready to start?</h2>
+      <p class="text-xl text-graphite mb-8">
+        Whether you're exploring possibilities or ready to build, we'd love to hear what you're working on.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="mailto:hey@thefocus.ai"
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Start a Conversation
+        </a>
+        <a
+          href="/case-studies"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          See Our Work
+        </a>
+      </div>
     </div>
   </div>
 </BaseLayout>

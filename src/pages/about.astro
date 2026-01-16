@@ -21,7 +21,7 @@ import BaseLayout from "../layout/BaseLayout.astro";
 
 <BaseLayout
   pageTitle="About | Focus.AI"
-  description="Focus.AI studio was established to explore and create a new working framework for businesses looking to take advantage of the transforming AI ecosystem."
+  description="We work directly with founders and product leaders to ship working AI in weeks, not quarters. Engineers, designers, and strategists who educate as much as we build."
   category="about"
 >
   <div class="max-w-4xl mx-auto">
@@ -29,11 +29,11 @@ import BaseLayout from "../layout/BaseLayout.astro";
 
     <div class="prose prose-lg max-w-none">
       <p class="text-xl leading-relaxed text-graphite mb-8">
-        We started TheFocus.AI because navigating AI is genuinely complex—and most companies don't have time to figure it all out themselves. We're engineers, designers, and strategists who believe the best way to help is to educate as much as we build.
+        We started TheFocus.AI because navigating AI is genuinely complex—and most companies don't have time to figure it all out themselves. We're engineers, designers, and strategists who believe the best way to help is to educate as much as we build. <strong class="text-ink">We work directly with founders and product leaders to ship working AI in weeks, not quarters.</strong>
       </p>
 
       <p class="text-xl leading-relaxed text-graphite mb-8">
-        AI is changing how people interact with software. Interfaces are becoming conversational. Data is becoming accessible. But making that transition takes clarity—understanding what's possible, what's practical, and what actually fits your business. That's where we come in.
+        AI is changing how people interact with software. Interfaces are becoming conversational. Data is becoming accessible. But making that transition takes clarity—understanding what's possible, what's practical, and what actually fits your business. That's where we come in. Senior engineers on every project, no junior analysts, no endless discovery phases.
       </p>
 
       <div class="bg-tint-cool p-8 my-12 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
@@ -85,6 +85,16 @@ import BaseLayout from "../layout/BaseLayout.astro";
                   <span>LinkedIn</span>
                   <span class="text-petrol">→</span>
                 </p>
+              </a>
+            </div>
+
+            <!-- Hiring callout -->
+            <div class="mt-10 pt-8 border-t border-ink/10">
+              <p class="text-lg text-graphite">
+                <strong class="text-ink">We're always looking for super smart developers of all types.</strong> If you're passionate about AI and building products that matter, we'd love to hear from you.
+              </p>
+              <a href="/jobs" class="inline-block mt-4 text-petrol font-medium hover:underline">
+                See open positions →
               </a>
             </div>
           </div>
@@ -154,14 +164,22 @@ import BaseLayout from "../layout/BaseLayout.astro";
           <div class="max-w-4xl mx-auto">
             <h3 class="text-2xl font-bold text-ink mb-4">Not sure where to start?</h3>
             <p class="text-lg leading-relaxed text-graphite mb-6">
-              That's actually the best place to begin a conversation. We love helping teams figure out what AI can (and can't) solve for them.
+              That's actually the best place to begin. We love helping founders and product leaders figure out what AI can (and can't) solve for them. A 4-6 week Strategy engagement gets you clarity before you commit to building.
             </p>
-            <a
-              href="mailto:hey@thefocus.ai"
-              class="inline-block px-8 py-4 border-2 border-petrol text-petrol font-medium uppercase text-sm tracking-wider hover:bg-petrol hover:text-paper transition-colors"
-            >
-              Contact Us
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="mailto:hey@thefocus.ai?subject=Strategy%20Engagement"
+                class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 transition-colors text-center"
+              >
+                Let's Figure It Out Together
+              </a>
+              <a
+                href="/capabilities"
+                class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol transition-colors text-center"
+              >
+                See How We Work
+              </a>
+            </div>
           </div>
         </div>
       </div>

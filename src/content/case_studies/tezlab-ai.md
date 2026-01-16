@@ -1,11 +1,11 @@
 ---
-title: "27% Higher Conversion: Building a Conversational AI Layer for EV Data"
+title: "27% Higher Conversion: Building a Conversational AI Layer for Tesla and Rivian Data"
 industry: Transportation / Consumer Apps
 client: TezLab
 year: "2025"
 timeline: "8 weeks"
 services: "Strategy + Development"
-description: We built a conversational AI interface that lets Tesla and Rivian owners ask natural language questions about their driving data, plan road trips, and get personalized insights — all without the existing mobile team changing a single line of code.
+description: After years of continued work with Tesla and Rivian data, we built a conversational AI interface that lets EV owners ask natural language questions about their driving data, plan road trips, and get personalized insights — all without the existing mobile team changing a single line of code.
 results: |-
   - 27% increase in user acquisition and paid conversion
   - Zero changes required to existing backend infrastructure

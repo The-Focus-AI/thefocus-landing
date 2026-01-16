@@ -24,7 +24,7 @@ function getVideoPath(imageName: string | undefined): string | null {
 <BaseLayout
   pageTitle="Focus.AI | Distill the Signal from the Noise"
   bigHeader={true}
-  description="We help you distill signal from noise with AI-powered solutions. Connecting siloed data, building curated interfaces, and enhancing focus."
+  description="AI strategy, implementation, and partnership for product-led companies. We work directly with founders to ship working AI in weeks, not quarters."
   showOrganizationSchema={true}
   category="home"
 >
@@ -51,10 +51,10 @@ function getVideoPath(imageName: string | undefined): string | null {
       <!-- Text content - left aligned on mobile like Anthropic -->
       <div class="flex-1 max-w-2xl relative z-10">
         <h2 class="font-sans text-[2.5rem] leading-[1.1] sm:text-5xl md:text-7xl font-bold text-ink mb-8 md:mb-10">
-          Distill the signal from the noise
+          Distill The Signal From The Noise
         </h2>
         <p class="text-xl md:text-2xl text-graphite leading-[1.6] mb-10 md:mb-12">
-          AI is moving fast—and it can feel overwhelming to know where to start. Whether you're modernizing a legacy system, building something new, or figuring out your first step, we help you cut through the noise. We're an AI-first engineering and design studio that builds what matters and teaches you along the way.
+          AI is moving fast—and it can feel overwhelming to know where to start. Whether you're modernizing a legacy system, building something new, or figuring out your first step, we help you cut through the noise. <strong class="text-ink">We work directly with founders and product leaders to ship working AI in weeks, not quarters.</strong>
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
@@ -74,6 +74,31 @@ function getVideoPath(imageName: string | undefined): string | null {
     </div>
   </section>
 
+  <!-- Results Section -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink">
+    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium text-center">Results</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto">
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">27%</p>
+          <p class="text-sm text-paper/60">higher conversion</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">78%</p>
+          <p class="text-sm text-paper/60">faster decisions</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">50M+</p>
+          <p class="text-sm text-paper/60">devices reached</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">8 wks</p>
+          <p class="text-sm text-paper/60">to production</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Trophy Wall Section -->
   <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
     <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
@@ -81,13 +106,13 @@ function getVideoPath(imageName: string | undefined): string | null {
       <div class="w-12 h-1 bg-petrol/30 mb-6 mx-auto"></div>
       
       <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">
-        Trusted Partners
+        Trusted By Product Teams
       </p>
       <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-5 max-w-4xl leading-tight mx-auto">
-        We solve complex problems through design & technology
+        From startups to scale-ups, we've shipped AI that works
       </h2>
       <p class="text-lg md:text-xl text-graphite mb-12 max-w-2xl leading-relaxed mx-auto">
-        We are an AI-first engineering, product and design company pushing the boundaries of what's possible
+        We've built AI for EV data platforms, media analytics, consumer products, and more. Senior engineers on every project — no junior analysts.
       </p>
       
       <!-- Logo Grid with enhanced styling -->
@@ -154,55 +179,59 @@ function getVideoPath(imageName: string | undefined): string | null {
   <section class="py-16 md:py-24">
     <div class="max-w-screen-xl mx-auto px-5 md:px-8">
       <div class="max-w-5xl mx-auto">
-        <h3 class="text-xs uppercase tracking-[0.2em] text-petrol mb-10 font-medium">How can we help?</h3>
+        <h3 class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">Choose Your Path</h3>
+        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-10">How can we help?</h2>
       
       <div class="space-y-6 md:space-y-8">
-        <!-- Strategic Guidance -->
-        <div class="flex gap-5 md:gap-6 items-start">
+        <!-- Strategy -->
+        <a href="mailto:hey@thefocus.ai?subject=Strategy%20Engagement" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-cool/30 transition-all group">
           <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
             <img src="/images/illustrations/guide.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
           </div>
-          <div class="pt-1">
-            <h4 class="font-sans text-lg md:text-xl font-bold text-ink mb-2">Not sure where to start? We love to educate.</h4>
-            <p class="text-graphite text-base leading-relaxed">
-              We help leaders understand the options and build a practical AI roadmap.
+          <div class="pt-1 flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Not sure where to start?</h4>
+              <span class="text-xs font-medium text-petrol bg-petrol/10 px-2 py-1 rounded-full">4-6 weeks</span>
+            </div>
+            <p class="text-graphite text-base leading-relaxed mb-2">
+              We help you understand what's possible and build a practical AI roadmap. We educate as much as we build.
             </p>
+            <span class="text-petrol font-medium text-sm group-hover:underline">Let's figure it out together →</span>
           </div>
-        </div>
+        </a>
 
-        <!-- Legacy Modernization -->
-        <div class="flex gap-5 md:gap-6 items-start">
+        <!-- Build -->
+        <a href="mailto:hey@thefocus.ai?subject=Build%20Engagement" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-warm/30 transition-all group">
           <div class="bg-tint-warm rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-            <img src="/images/illustrations/modernize.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-          </div>
-          <div class="pt-1">
-            <h4 class="font-sans text-lg md:text-xl font-bold text-ink mb-2">Legacy system holding you back?</h4>
-            <p class="text-graphite text-base leading-relaxed">
-              We integrate AI into what you have—unlocking its raw potential quickly.
-            </p>
-          </div>
-        </div>
-
-        <!-- New Product Development -->
-        <div class="flex gap-5 md:gap-6 items-start">
-          <div class="bg-tint-lavender rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
             <img src="/images/illustrations/build.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
           </div>
-          <div class="pt-1">
-            <h4 class="font-sans text-lg md:text-xl font-bold text-ink mb-2">Building something new?</h4>
-            <p class="text-graphite text-base leading-relaxed">
-              From concept to launch, AI-native products that solve real problems.
+          <div class="pt-1 flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Ready to build?</h4>
+              <span class="text-xs font-medium text-petrol bg-petrol/10 px-2 py-1 rounded-full">6-12 weeks</span>
+            </div>
+            <p class="text-graphite text-base leading-relaxed mb-2">
+              You have a defined problem and you're ready to move. We ship production-ready AI systems, not prototypes.
             </p>
+            <span class="text-petrol font-medium text-sm group-hover:underline">Tell us what you're trying to solve →</span>
           </div>
-        </div>
-      </div>
+        </a>
 
-      <div class="mt-10">
-        <a 
-          href="mailto:hey@thefocus.ai" 
-          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-        >
-          Let's Talk
+        <!-- Partnership -->
+        <a href="mailto:hey@thefocus.ai?subject=Partnership%20Inquiry" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-lavender/30 transition-all group">
+          <div class="bg-tint-lavender rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
+            <img src="/images/illustrations/modernize.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
+          </div>
+          <div class="pt-1 flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Need ongoing AI support?</h4>
+              <span class="text-xs font-medium text-petrol bg-petrol/10 px-2 py-1 rounded-full">Monthly</span>
+            </div>
+            <p class="text-graphite text-base leading-relaxed mb-2">
+              Like having a fractional AI team without the overhead. Continuous optimization, new features, and training.
+            </p>
+            <span class="text-petrol font-medium text-sm group-hover:underline">Let's talk partnership →</span>
+          </div>
         </a>
       </div>
       </div>

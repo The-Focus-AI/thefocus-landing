@@ -15,7 +15,7 @@ tech_stack: "SvelteKit, TypeScript, Tailwind CSS, OpenAI Realtime API, Tizen SDK
 testimonial: "Focus.AI understood the unique constraints of TV development immediately. They delivered a production-ready app that passed Samsung's rigorous QA process on the first major submission."
 testimonial_person: "Product Team"
 testimonial_company: "Perplexity AI"
-published: false
+published: true
 image: perplexity_wide.png
 ---
 
