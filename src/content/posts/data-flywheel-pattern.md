@@ -3,6 +3,7 @@ title: The Data Flywheel Pattern
 date: 2026-01-22
 description: Build applications by dropping in data and letting AI handle parsing, structuring, and synthesis. Three case studies.
 image: data-flywheel-pattern.png
+ogImage: data-flywheel-pattern.png
 published: true
 tags:
   - essay
