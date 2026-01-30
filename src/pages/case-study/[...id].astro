@@ -27,6 +27,9 @@ const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/
 const img_key = `/src/content/assets/case-studies/${case_study.data.image}`;
 const heroImage = images[img_key];
 
+// Get the image src for OpenGraph
+const ogImageSrc = heroImage ? (await heroImage()).default.src : undefined;
+
 // Check for video version (e.g., distill_wide.png -> distill_wide_loop.mp4)
 // Only set videoPath if the video file actually exists
 const videoName = case_study.data.image?.replace(/\.(png|jpg|jpeg|gif)$/, '_loop.mp4');
@@ -48,6 +51,7 @@ const results = parseResults(case_study.data.results);
   pageTitle={case_study.data.title}
   description={case_study.data.description}
   category="case-studies"
+  openGraphImage={ogImageSrc}
 >
   <article class="max-w-4xl mx-auto">
     <!-- Header -->
