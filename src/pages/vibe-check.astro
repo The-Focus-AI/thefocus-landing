@@ -1,0 +1,373 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const mailto = "mailto:hey@thefocus.ai?subject=Vibe%20Check%20-%20Clean%20Up%20My%20App";
+
+const painPoints = [
+  {
+    emoji: "💻",
+    title: '"It works on my laptop"',
+    description: "But you have no idea what happens when real users show up. No tests, no monitoring, no confidence."
+  },
+  {
+    emoji: "😰",
+    title: '"I\'m scared to touch it"',
+    description: "Every change feels like it might break something. You\'ve stopped adding features because the risk isn\'t worth it."
+  },
+  {
+    emoji: "🔓",
+    title: '"Is this even secure?"',
+    description: "API keys in the code, no auth checks, SQL queries built from user input. You know it\'s bad but don\'t know how bad."
+  },
+  {
+    emoji: "🫣",
+    title: '"A real developer would laugh at this"',
+    description: "You shipped something that works. That\'s more than most people ever do. But you know it needs professional eyes."
+  }
+];
+
+const inspectionAreas = [
+  {
+    icon: "🔒",
+    title: "Security",
+    items: "Auth flows, API key exposure, input validation, dependency vulnerabilities, data encryption"
+  },
+  {
+    icon: "🗄️",
+    title: "Data",
+    items: "Database design, query performance, backup strategy, migration paths, data integrity"
+  },
+  {
+    icon: "🏗️",
+    title: "Architecture",
+    items: "Code organization, separation of concerns, dependency management, API design, state management"
+  },
+  {
+    icon: "⚡",
+    title: "Reliability",
+    items: "Error handling, edge cases, logging, monitoring, graceful degradation"
+  },
+  {
+    icon: "📈",
+    title: "Scale",
+    items: "Load handling, caching strategy, database indexing, rate limiting, async processing"
+  },
+  {
+    icon: "🔧",
+    title: "DevOps",
+    items: "Deployment pipeline, environment config, secrets management, CI/CD, rollback capability"
+  }
+];
+
+const faqs = [
+  {
+    q: "How much does this cost?",
+    a: "Every codebase is different. Reach out and tell us about your app — we'll give you an honest assessment of what it needs and what it'll take. No surprises."
+  },
+  {
+    q: "What tech stacks do you work with?",
+    a: "If an AI coding tool can generate it, we can assess and fix it. React, Next.js, Python, Node, Rails, mobile apps — we've seen it all. The patterns of AI-generated code are remarkably similar regardless of framework."
+  },
+  {
+    q: "Will you need to rewrite everything?",
+    a: "Almost never. The whole point is to preserve what works and fix what doesn't. Most vibe-coded apps are 70-80% fine — it's the remaining 20-30% that creates all the risk."
+  },
+  {
+    q: "What if my app is truly unfixable?",
+    a: "We'll tell you honestly. If a rewrite makes more sense than a cleanup, we'll explain why and give you a roadmap for doing it right. We'd rather give you hard truth than take money for a lost cause."
+  },
+  {
+    q: "Do I need to give you access to my codebase?",
+    a: "Yes — we'll need repo access to do the assessment. We sign NDAs as standard practice and can work within whatever security constraints you have."
+  },
+  {
+    q: "Can I just get the assessment without the cleanup?",
+    a: "Absolutely. Many clients start with The Vibe Check and use the report to guide their own team or hire developers with a clear spec. The assessment stands on its own as a valuable deliverable."
+  }
+];
+---
+
+<BaseLayout
+  pageTitle="Vibe Check | Focus.AI"
+  description="You built your app with AI coding tools. Now make it production-ready. Security audits, architecture review, and professional cleanup for vibe-coded apps."
+  category="capabilities"
+>
+  <!-- Hero -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-8 md:py-16">
+      <p class="text-xs uppercase tracking-[0.2em] text-vermilion mb-6 font-medium">Vibe Check</p>
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-ink leading-tight">
+        You built it with vibes.<br/>Now make it real.
+      </h1>
+      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-10 max-w-3xl">
+        You used Cursor, Claude, Bolt, or Lovable to build something that actually works. Congrats — seriously. But now you need it to be secure, scalable, and maintainable. That's where we come in.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={mailto}
+          class="inline-block px-8 py-4 bg-vermilion text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-vermilion/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Get Your Vibe Check
+        </a>
+        <a
+          href="#how-it-works"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-vermilion hover:text-vermilion hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          How It Works
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Pain Points -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink">
+    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <p class="text-xs uppercase tracking-[0.2em] text-vermilion mb-4 font-medium text-center">Sound Familiar?</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-paper mb-12 text-center">The vibe coding wall</h2>
+      <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {painPoints.map((point) => (
+          <div class="bg-paper/5 border border-paper/10 rounded-2xl p-6 md:p-8">
+            <span class="text-2xl mb-4 block">{point.emoji}</span>
+            <h3 class="text-lg font-bold text-paper mb-2">{point.title}</h3>
+            <p class="text-paper/60 leading-relaxed">{point.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Reframe -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-16 md:py-20">
+      <div class="bg-paper rounded-3xl p-8 md:p-10 shadow-lg shadow-ink/5 relative overflow-hidden mb-8">
+        <span class="absolute top-4 left-6 text-7xl md:text-8xl text-vermilion/10 font-serif leading-none">"</span>
+        <p class="text-lg md:text-xl italic text-graphite relative z-10 pl-4 md:pl-8">
+          Vibe coding is the most important shift in software development in a decade. Non-technical founders can now build working products in days instead of months. That's not a bug — that's a revolution.
+        </p>
+      </div>
+      <p class="text-lg text-graphite leading-relaxed">
+        The app you built <strong class="text-ink">works</strong>. You validated your idea, got users, maybe even got revenue. That took courage and resourcefulness. Now it's time for the next step: making sure your foundation can support what you're building on top of it. Think of it like getting a home inspection — the house is standing, now let's make sure it'll last.
+      </p>
+    </section>
+  </div>
+
+  <!-- How It Works -->
+  <div class="max-w-4xl mx-auto" id="how-it-works">
+    <section class="mb-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-vermilion mb-8 font-medium">How It Works</h2>
+
+      <div class="space-y-6">
+        <!-- The Vibe Check -->
+        <div class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-vermilion/30 hover:bg-tint-warm/30 transition-all">
+          <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+            <div class="flex-shrink-0">
+              <span class="text-xs font-mono text-graphite/50">01</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
+                <h3 class="text-2xl font-bold text-ink">The Vibe Check</h3>
+                <span class="text-sm font-medium text-vermilion bg-vermilion/10 px-3 py-1 rounded-full w-fit">1-2 weeks</span>
+              </div>
+              <p class="text-graphite leading-relaxed mb-4">
+                A comprehensive assessment of your codebase. We dig into every layer and give you an honest, prioritized report of what's solid, what's risky, and what needs to change.
+              </p>
+              <div class="mb-6">
+                <p class="text-sm text-graphite/60 mb-2">What you get:</p>
+                <div class="flex flex-wrap gap-2">
+                  {["Security audit", "Architecture review", "Scalability assessment", "Code quality report", "Prioritized fix list", "Effort estimates"].map((d) => (
+                    <span class="text-sm text-graphite bg-ink/5 px-3 py-1 rounded-full">{d}</span>
+                  ))}
+                </div>
+              </div>
+              <a
+                href={mailto}
+                class="inline-block text-vermilion font-medium hover:underline"
+              >
+                Start with an assessment →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Cleanup -->
+        <div class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-vermilion/30 hover:bg-tint-warm/30 transition-all">
+          <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+            <div class="flex-shrink-0">
+              <span class="text-xs font-mono text-graphite/50">02</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
+                <h3 class="text-2xl font-bold text-ink">The Cleanup</h3>
+                <span class="text-sm font-medium text-vermilion bg-vermilion/10 px-3 py-1 rounded-full w-fit">4-8 weeks</span>
+              </div>
+              <p class="text-graphite leading-relaxed mb-4">
+                We roll up our sleeves and fix what matters. Guided by the assessment, we harden your app for production while keeping everything that works intact.
+              </p>
+              <div class="mb-6">
+                <p class="text-sm text-graphite/60 mb-2">What you get:</p>
+                <div class="flex flex-wrap gap-2">
+                  {["Security hardening", "Test coverage", "CI/CD pipeline", "Error handling", "Performance optimization", "Documentation", "Clean architecture"].map((d) => (
+                    <span class="text-sm text-graphite bg-ink/5 px-3 py-1 rounded-full">{d}</span>
+                  ))}
+                </div>
+              </div>
+              <a
+                href={mailto}
+                class="inline-block text-vermilion font-medium hover:underline"
+              >
+                Let's clean it up →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- What We Inspect -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm">
+    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <p class="text-xs uppercase tracking-[0.2em] text-vermilion mb-4 font-medium">What We Inspect</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-12">Every layer of your stack</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
+        {inspectionAreas.map((area) => (
+          <div class="bg-paper rounded-2xl p-6 shadow-sm">
+            <span class="text-2xl mb-3 block">{area.icon}</span>
+            <h3 class="text-lg font-bold text-ink mb-2">{area.title}</h3>
+            <p class="text-sm text-graphite leading-relaxed">{area.items}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Is This For You? -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-16 md:py-20">
+      <div class="bg-ink text-paper rounded-3xl p-8 md:p-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Is this for you?</h2>
+
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+          <div>
+            <h3 class="text-lg font-bold text-vermilion mb-4">This is for you if:</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-vermilion flex-shrink-0">✓</span>
+                <span class="text-paper/80">You built a working app with AI coding tools (Cursor, Claude, Bolt, Lovable, etc.)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-vermilion flex-shrink-0">✓</span>
+                <span class="text-paper/80">You have real users or paying customers</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-vermilion flex-shrink-0">✓</span>
+                <span class="text-paper/80">You're worried about security, scalability, or code quality</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-vermilion flex-shrink-0">✓</span>
+                <span class="text-paper/80">You want to hire developers but need to know what to tell them</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-vermilion flex-shrink-0">✓</span>
+                <span class="text-paper/80">You need confidence that your app won't fall over as you grow</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold text-paper/60 mb-4">This probably isn't for you if:</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You haven't built anything yet (come back when you do!)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You already have a senior engineering team doing code reviews</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">You want the cheapest option (quality assurance isn't a commodity)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-paper/40 flex-shrink-0">✗</span>
+                <span class="text-paper/60">Your app is just a prototype with no real users yet</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Why Us -->
+  <div class="max-w-4xl mx-auto">
+    <section class="mb-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-vermilion mb-4 font-medium">Why Us</h2>
+      <p class="text-xl text-graphite mb-10">We don't just read code — we understand how AI writes it.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">40+</p>
+          <p class="text-sm text-graphite">years combined experience</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">50M+</p>
+          <p class="text-sm text-graphite">devices reached</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">8 wks</p>
+          <p class="text-sm text-graphite">avg cleanup time</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">0</p>
+          <p class="text-sm text-graphite">junior analysts</p>
+        </div>
+      </div>
+
+      <p class="text-lg text-graphite leading-relaxed">
+        We use AI coding tools ourselves every day — Cursor, Claude Code, and everything in between. We know the patterns these tools produce, the shortcuts they take, and the blind spots they have. That means we can assess your codebase faster, more accurately, and with more nuance than someone who's never worked with AI-generated code.
+      </p>
+    </section>
+  </div>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto">
+    <section class="mb-16">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-vermilion mb-8 font-medium">Common Questions</h2>
+
+      <div class="space-y-6">
+        {faqs.map((faq) => (
+          <div class="border-t border-ink/10 pt-6">
+            <h3 class="text-lg font-bold text-ink mb-2">{faq.q}</h3>
+            <p class="text-graphite">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="max-w-4xl mx-auto">
+    <div class="border-t border-ink/10 pt-16 pb-8">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-ink">Your app works. Let's make it last.</h2>
+      <p class="text-xl text-graphite mb-8">
+        You did the hard part — you shipped. Now let's make sure your foundation is as strong as your ambition.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={mailto}
+          class="inline-block px-8 py-4 bg-vermilion text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-vermilion/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Get Your Vibe Check
+        </a>
+        <a
+          href="#how-it-works"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-vermilion hover:text-vermilion hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
