@@ -17,6 +17,9 @@ testimonial_person: "Product Team"
 testimonial_company: "Perplexity AI"
 published: true
 image: perplexity_wide.png
+maturity_level: "L2"
+ai_function: "Knowledge Retrieval"
+department: "Software Development"
 ---
 
 ### The Challenge

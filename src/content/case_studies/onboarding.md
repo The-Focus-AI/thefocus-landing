@@ -17,6 +17,9 @@ testimonial_person: "Chief Product Officer"
 testimonial_company: "HR Software Provider"
 published: true
 image: onboarding_wide.png
+maturity_level: "L3"
+ai_function: "Process Automation"
+department: "HR"
 ---
 
 ## The Challenge

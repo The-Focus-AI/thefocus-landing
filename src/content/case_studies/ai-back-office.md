@@ -15,6 +15,10 @@ results: |-
 tech_stack: "Claude Code, TheFocus.AI Plugin Marketplace, Markdown, GitHub CLI, Granola, Google Workspace, 1Password CLI"
 published: true
 image: operations_wide.png
+maturity_level: "L4"
+maturity_level_secondary: "L5"
+ai_function: "Process Automation"
+department: "Operations"
 ---
 
 ### The Challenge

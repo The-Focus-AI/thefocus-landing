@@ -18,6 +18,10 @@ testimonial_person: "Research Director"
 testimonial_company: "Media Analytics Client"
 published: false
 image: upperhand_wide.png
+maturity_level: "L3"
+maturity_level_secondary: "L4"
+ai_function: "Decision Support"
+department: "Data Analytics"
 ---
 
 ### The Challenge

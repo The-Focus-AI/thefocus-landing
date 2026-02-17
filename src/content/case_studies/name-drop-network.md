@@ -17,6 +17,9 @@ testimonial_person: "Founder"
 testimonial_company: "Name-Drop Network"
 published: false
 image: ndn_wide.png
+maturity_level: "L2"
+ai_function: "Knowledge Retrieval"
+department: "Sales"
 ---
 
 ### The Challenge

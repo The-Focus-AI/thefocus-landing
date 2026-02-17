@@ -17,6 +17,9 @@ testimonial_person: "Ben Schippers"
 testimonial_company: "CEO, TezLab"
 published: true
 image: tezlab_wide.png
+maturity_level: "L3"
+ai_function: "Knowledge Retrieval"
+department: "Software Development"
 ---
 
 ### The Challenge

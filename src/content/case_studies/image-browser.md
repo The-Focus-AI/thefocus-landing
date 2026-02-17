@@ -17,6 +17,9 @@ testimonial_person: "Internal User"
 testimonial_company: "Focus.AI"
 published: true
 image: image-browser_wide.png
+maturity_level: "L3"
+ai_function: "Knowledge Retrieval"
+department: "Data Analytics"
 ---
 
 ### The Challenge

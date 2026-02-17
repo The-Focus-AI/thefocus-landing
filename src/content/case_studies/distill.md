@@ -1,7 +1,7 @@
 ---
 title: "From Noise to Signal: AI-Powered Content Intelligence Across Twitter, YouTube, and Podcasts"
 industry: Media Intelligence / Content Analytics
-client: Internal Platform
+client: Brooklyn Running
 year: "2025"
 timeline: "12 weeks"
 services: "Strategy + Development"
@@ -17,6 +17,10 @@ testimonial_person: "Internal User"
 testimonial_company: "Focus.AI"
 published: true
 image: distill_wide.png
+maturity_level: "L3"
+maturity_level_secondary: "L4"
+ai_function: "Predictive Intelligence"
+department: "Data Analytics"
 ---
 
 ### The Challenge
