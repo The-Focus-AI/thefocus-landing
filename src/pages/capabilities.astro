@@ -4,228 +4,386 @@ import { getCaseStudies, getCaseStudyUrl } from "../utils/case-studies.js";
 
 const allCaseStudies = await getCaseStudies();
 
-const engagements = [
-  {
-    number: "01",
-    title: "Strategy & Roadmap",
-    timeline: "4-6 weeks",
-    description: "For leaders who need clarity before committing. We help you understand what's possible, what's practical, and what actually fits your business.",
-    deliverables: ["AI opportunity assessment", "Prioritized roadmap", "Tech recommendations", "Build vs. buy analysis"],
-    cta: "Not sure where to start? Let's figure it out together.",
-    ctaLink: "mailto:hey@thefocus.ai?subject=Strategy%20Engagement"
-  },
-  {
-    number: "02",
-    title: "Build & Ship",
-    timeline: "6-12 weeks",
-    description: "For teams with a defined problem ready to move. We ship production-ready AI systems, not prototypes that sit on a shelf.",
-    deliverables: ["Working AI systems", "Custom integrations", "User-facing interfaces", "Documentation & handoff"],
-    cta: "Ready to build? Tell us what you're trying to solve.",
-    ctaLink: "mailto:hey@thefocus.ai?subject=Build%20Engagement"
-  },
-  {
-    number: "03",
-    title: "Ongoing Partnership",
-    timeline: "Monthly retainer",
-    description: "For companies wanting continuous AI evolution. Like having a fractional AI team without the overhead of full-time hires.",
-    deliverables: ["Dedicated team access", "Continuous optimization", "New feature development", "Team training"],
-    cta: "Need a dedicated AI team? Let's talk.",
-    ctaLink: "mailto:hey@thefocus.ai?subject=Partnership%20Inquiry"
-  }
-];
+const { getCollection } = await import("astro:content");
+const allCaseStudiesIncludingDrafts = await getCollection("case_studies");
 
-const capabilities = [
-  {
-    title: "Connect",
-    tagline: "Your data exists. We make it talkable.",
-    description: "Make your existing data AI-accessible — APIs, databases, documents. We build bridges between your systems and AI so people can ask questions in plain English and get answers in seconds.",
-    example: "We built a conversational layer on top of TezLab's existing APIs — users ask questions in plain English, get answers in seconds. Zero changes to their backend.",
-    caseStudyId: "tezlab-ai",
-    relatedCaseStudies: ["upperhand-ai", "onboarding"]
-  },
-  {
-    title: "Curate",
-    tagline: "One tool, one job, done.",
-    description: "Build focused interfaces for specific tasks — not one-size-fits-all dashboards. Every interface is designed around exactly what you need, and disappears when it's done.",
-    example: "For Perplexity, we built a voice-first AI assistant for Samsung TVs — no keyboard, no mouse, just speak and get answers from across the room.",
-    caseStudyId: "perplexity-samsung",
-    relatedCaseStudies: ["image-browser", "name-drop-network"]
-  },
-  {
-    title: "Distill",
-    tagline: "Read less, know more.",
-    description: "Filter noise and surface what matters — summaries, alerts, insights. We build systems that read so you don't have to.",
-    example: "Upper Hand's research team spent 40 hours/week compiling celebrity data from spreadsheets. Now they ask a question and get answers in 30 seconds.",
-    caseStudyId: "upperhand-ai",
-    relatedCaseStudies: ["distill"]
-  }
-];
+const mailto = "mailto:hey@thefocus.ai?subject=AI%20Maturity%20Assessment";
 
-function getCaseStudy(id: string) {
-  return allCaseStudies.find(cs => cs.id === id);
+function getCaseStudiesByIds(ids: string[]) {
+  return allCaseStudiesIncludingDrafts
+    .filter(cs => ids.includes(cs.id))
+    .filter(cs => cs.data.published !== false);
 }
+
+const maturityLevels = [
+  {
+    level: 0,
+    code: "L0",
+    name: "None",
+    tagline: "Knowledge lives in people's heads",
+    description: "Everything is manual. Information is scattered across documents, spreadsheets, and tribal knowledge. Processes depend entirely on who knows what.",
+    looksLike: [
+      "Searching through email threads to find an answer someone gave six months ago",
+      "New hires take months to become productive because nothing is documented",
+      "Key person leaves and critical processes break"
+    ],
+    caseStudyIds: [] as string[]
+  },
+  {
+    level: 1,
+    code: "L1",
+    name: "Ad Hoc",
+    tagline: "Individual experimentation, copy-paste workflows",
+    description: "Employees are using ChatGPT, Copilot, or other AI tools on their own. Results vary wildly. No organizational structure, no data integration, no consistency.",
+    looksLike: [
+      "Marketing copies blog posts into ChatGPT for editing suggestions",
+      "One developer uses Copilot while others don't — no shared standards",
+      "Someone built an internal tool with AI, but nobody else can maintain it"
+    ],
+    caseStudyIds: [] as string[]
+  },
+  {
+    level: 2,
+    code: "L2",
+    name: "Integrated Tooling",
+    tagline: "AI connected to your existing workflows",
+    description: "The organization has adopted AI tools integrated into existing systems. There's structure and consistency. AI is part of the workflow, not a side activity.",
+    looksLike: [
+      "AI assistants connected to your CRM, analytics platform, or codebase",
+      "Standardized tools that the whole team uses the same way",
+      "Data flows between systems without copy-paste"
+    ],
+    caseStudyIds: ["perplexity-samsung", "qbsync"]
+  },
+  {
+    level: 3,
+    code: "L3",
+    name: "Custom Data Intelligence",
+    tagline: "Your proprietary data, instantly accessible",
+    description: "AI is connected to your proprietary datasets. Teams can ask ad hoc questions and get instant answers. What used to take 45 minutes now takes 5 seconds. This is where real capability expansion begins.",
+    looksLike: [
+      "Ask 'how does Q4 retention compare to Q3?' and get an answer in seconds",
+      "Upload a document and get structured data extracted automatically",
+      "New employees can query institutional knowledge from day one"
+    ],
+    caseStudyIds: ["tezlab-ai", "image-browser", "onboarding", "fountain-creek"]
+  },
+  {
+    level: 4,
+    code: "L4",
+    name: "Dynamic & Reactive",
+    tagline: "Production data, proactive insights",
+    description: "Systems pull from production data, customer behavior, and service logs. AI proactively surfaces insights and adapts. Power shifts to the people closest to the business problem.",
+    looksLike: [
+      "Real-time dashboards that flag anomalies before anyone asks",
+      "Content intelligence that filters noise and surfaces what matters",
+      "Product managers driving features that used to require engineering"
+    ],
+    caseStudyIds: ["distill"]
+  },
+  {
+    level: 5,
+    code: "L5",
+    name: "Autonomous & Evolving",
+    tagline: "Self-improving systems, compounding advantage",
+    description: "Agent sessions are mined for institutional knowledge. Tribal knowledge crystallizes into documented workflows. Feedback loops are continuous. The system learns and improves on its own.",
+    looksLike: [
+      "AI agent interactions are analyzed to discover undocumented processes",
+      "The system suggests workflow improvements based on usage patterns",
+      "Operations run on AI commands instead of SaaS subscriptions"
+    ],
+    caseStudyIds: ["ai-back-office"]
+  }
+];
+
+const assessmentClusters = [
+  {
+    label: "Just Getting Started",
+    levels: "L0 — L1",
+    signals: [
+      "Your team uses ChatGPT individually but there's no organizational strategy",
+      "AI feels interesting but you're not sure where to begin",
+      "You're worried about security and governance"
+    ],
+    engagement: "Strategy & Roadmap",
+    timeline: "4-6 weeks",
+    deliverables: ["AI opportunity assessment", "Prioritized roadmap", "Tech recommendations", "Build vs. buy analysis"],
+    cta: "Let's map your opportunities",
+    mailto: "mailto:hey@thefocus.ai?subject=AI%20Assessment%20-%20Getting%20Started"
+  },
+  {
+    label: "Tools in Place, Ready to Customize",
+    levels: "L2 — L3",
+    signals: [
+      "You have AI tools connected to your workflows but they feel generic",
+      "You know your proprietary data could unlock more, but aren't sure how",
+      "Some teams are ahead of others and there's no consistent strategy"
+    ],
+    engagement: "Build & Ship",
+    timeline: "6-12 weeks",
+    deliverables: ["Working AI systems", "Custom integrations", "User-facing interfaces", "Documentation & handoff"],
+    cta: "Let's unlock your data",
+    mailto: "mailto:hey@thefocus.ai?subject=AI%20Assessment%20-%20Custom%20Data"
+  },
+  {
+    label: "Scaling What Works",
+    levels: "L4 — L5",
+    signals: [
+      "AI is driving real business outcomes, but you want it to compound",
+      "You need systems that learn from themselves and adapt",
+      "Governance and oversight need to evolve with your capabilities"
+    ],
+    engagement: "Ongoing Partnership",
+    timeline: "Monthly retainer",
+    deliverables: ["Dedicated team access", "Continuous optimization", "New feature development", "Team training"],
+    cta: "Let's build the next level",
+    mailto: "mailto:hey@thefocus.ai?subject=AI%20Assessment%20-%20Scaling"
+  }
+];
+
+const dimensions = [
+  {
+    name: "Function Types",
+    description: "Different kinds of AI work that mature at different rates across your organization.",
+    items: ["Knowledge Retrieval", "Content Generation", "Decision Support", "Process Automation", "Predictive Intelligence"]
+  },
+  {
+    name: "Governance & Risk",
+    description: "How you manage AI safety, compliance, and oversight — matched to the risk profile of each function.",
+    items: ["Usage Policies", "Compliance Frameworks", "Audit Trails", "Governed Autonomy", "Adaptive Governance"]
+  },
+  {
+    name: "Department Readiness",
+    description: "Every department has a different starting point. Engineering might be at L3 while Finance is at L0.",
+    items: ["Engineering", "Analytics", "Marketing", "HR", "Finance", "Sales", "Operations"]
+  }
+];
 ---
 
 <BaseLayout
   pageTitle="Capabilities | Focus.AI"
-  description="AI strategy, implementation, and ongoing partnership for product-led companies. Ship working AI in weeks, not quarters."
+  description="Where is your organization on the AI journey? A practical framework for understanding AI adoption maturity — from ad hoc experimentation to autonomous, evolving systems."
   category="capabilities"
 >
+  <!-- Hero -->
   <div class="max-w-4xl mx-auto">
-    <!-- Hero -->
-    <div class="mb-16">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6 text-ink">How we work with you</h1>
-      <p class="text-xl md:text-2xl text-graphite leading-relaxed">
-        We work directly with founders and product leaders to ship working AI in weeks, not quarters. Every engagement starts with understanding your problem — we educate as much as we build.
+    <section class="py-8 md:py-16">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">AI Maturity Framework</p>
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-ink leading-tight">
+        Where is your organization<br/>on the AI journey?
+      </h1>
+      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-10 max-w-3xl">
+        AI adoption isn't about cost savings or headcount reduction. It's an innovation enabler that unlocks capabilities your organization literally couldn't access before. The journey is from <strong class="text-ink">tribal to coherent</strong> — and knowing where you are is the first step.
       </p>
-    </div>
-
-    <!-- How We Work: Engagement Types -->
-    <section class="mb-20">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Choose Your Path</h2>
-      
-      <div class="space-y-6">
-        {engagements.map((engagement) => (
-          <div class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-petrol/30 hover:bg-tint-sage/30 transition-all">
-            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-              <div class="flex-shrink-0">
-                <span class="text-xs font-mono text-graphite/50">{engagement.number}</span>
-              </div>
-              <div class="flex-1">
-                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
-                  <h3 class="text-2xl font-bold text-ink">{engagement.title}</h3>
-                  <span class="text-sm font-medium text-petrol bg-petrol/10 px-3 py-1 rounded-full w-fit">{engagement.timeline}</span>
-                </div>
-                <p class="text-graphite leading-relaxed mb-4">{engagement.description}</p>
-                <div class="mb-6">
-                  <p class="text-sm text-graphite/60 mb-2">What you get:</p>
-                  <div class="flex flex-wrap gap-2">
-                    {engagement.deliverables.map((d) => (
-                      <span class="text-sm text-graphite bg-ink/5 px-3 py-1 rounded-full">{d}</span>
-                    ))}
-                  </div>
-                </div>
-                <a 
-                  href={engagement.ctaLink}
-                  class="inline-block text-petrol font-medium hover:underline"
-                >
-                  {engagement.cta} →
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="#assessment"
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Find Out Where You Are
+        </a>
+        <a
+          href="#framework"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          See the Framework
+        </a>
       </div>
     </section>
+  </div>
 
-    <!-- What We Build: Capabilities -->
-    <section class="mb-20">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">What We Build</h2>
-      <p class="text-xl text-graphite mb-10">Three types of solutions, each solving a specific problem.</p>
-      
-      <div class="space-y-12">
-        {capabilities.map((cap) => {
-          const caseStudy = getCaseStudy(cap.caseStudyId);
-          const relatedStudies = cap.relatedCaseStudies
-            ?.map(id => getCaseStudy(id))
-            .filter(Boolean);
+  <!-- Visual Progression — Staircase -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink">
+    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium text-center">The Framework</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-paper mb-12 text-center">Six levels of AI maturity</h2>
+
+      <!-- Staircase: ascending cards -->
+      <div class="hidden lg:grid grid-cols-6 gap-3 items-end max-w-5xl mx-auto">
+        {maturityLevels.map((level, i) => (
+          <a
+            href={`#level-${level.level}`}
+            class="block border border-paper/10 rounded-xl p-4 hover:bg-paper/10 transition-all"
+            style={`min-height: ${100 + i * 28}px; background: rgba(255,255,255,${0.03 + i * 0.02});`}
+          >
+            <span class="text-xs font-mono text-petrol">{level.code}</span>
+            <h3 class="text-base font-bold text-paper mt-1 leading-tight">{level.name}</h3>
+            <p class="text-xs text-paper/50 mt-2 leading-snug">{level.tagline}</p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile: vertical list -->
+      <div class="lg:hidden grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
+        {maturityLevels.map((level, i) => (
+          <a
+            href={`#level-${level.level}`}
+            class="block border border-paper/10 rounded-xl p-4 hover:bg-paper/10 transition-all"
+            style={`background: rgba(255,255,255,${0.03 + i * 0.02});`}
+          >
+            <span class="text-xs font-mono text-petrol">{level.code}</span>
+            <h3 class="text-base font-bold text-paper mt-1 leading-tight">{level.name}</h3>
+            <p class="text-xs text-paper/50 mt-2 leading-snug">{level.tagline}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Level Cards -->
+  <div class="max-w-4xl mx-auto" id="framework">
+    <section class="py-16 md:py-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Level by Level</h2>
+
+      <div class="space-y-6">
+        {maturityLevels.map((level) => {
+          const linkedStudies = getCaseStudiesByIds(level.caseStudyIds);
           return (
-            <div class="border-t border-ink/10 pt-8">
-              <div class="mb-4">
-                <h3 class="text-3xl font-bold text-ink mb-2">{cap.title}</h3>
-                <p class="text-lg text-petrol font-medium italic">"{cap.tagline}"</p>
-              </div>
-              <p class="text-graphite leading-relaxed mb-6">{cap.description}</p>
-              <div class="bg-tint-warm/50 rounded-xl p-5 mb-4">
-                <p class="text-sm text-graphite/60 mb-2">Example:</p>
-                <p class="text-graphite">{cap.example}</p>
-              </div>
-              <div class="flex flex-col gap-2">
-                {caseStudy && (
-                  <a href={getCaseStudyUrl(caseStudy)} class="text-sm text-petrol hover:underline">
-                    Read the {caseStudy.data.client || caseStudy.data.title} case study →
-                  </a>
-                )}
-                {relatedStudies && relatedStudies.length > 0 && (
-                  <div class="text-sm">
-                    <span class="text-graphite">See in action: </span>
-                    {relatedStudies.map((cs, i) => (
-                      <>
-                        <a href={getCaseStudyUrl(cs)} class="text-petrol hover:underline">{cs.data.client || cs.data.title}</a>
-                        {i < relatedStudies.length - 1 && <span class="text-graphite"> · </span>}
-                      </>
-                    ))}
+            <div
+              id={`level-${level.level}`}
+              class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-petrol/30 transition-all scroll-mt-24"
+            >
+              <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+                <div class="flex-shrink-0">
+                  <span class="text-2xl md:text-3xl font-mono font-bold text-petrol/30">{level.code}</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
+                    <h3 class="text-2xl font-bold text-ink">{level.name}</h3>
+                    <span class="text-sm font-medium text-petrol bg-petrol/10 px-3 py-1 rounded-full w-fit">{level.tagline}</span>
                   </div>
-                )}
+                  <p class="text-graphite leading-relaxed mb-4">{level.description}</p>
+
+                  <div class="mb-4">
+                    <p class="text-sm text-graphite/60 mb-2">What this looks like:</p>
+                    <ul class="space-y-2">
+                      {level.looksLike.map((item) => (
+                        <li class="flex items-start gap-2">
+                          <span class="text-petrol mt-1 flex-shrink-0">-</span>
+                          <span class="text-sm text-ink">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {linkedStudies.length > 0 && (
+                    <div class="pt-4 border-t border-ink/5">
+                      <p class="text-xs uppercase tracking-widest text-graphite mb-3">See it in action</p>
+                      <div class="flex flex-col gap-2">
+                        {linkedStudies.map((cs) => (
+                          <a href={getCaseStudyUrl(cs)} class="flex items-center gap-3 text-sm group">
+                            <span class="text-petrol flex-shrink-0">&rarr;</span>
+                            <span class="text-ink group-hover:text-petrol transition-colors font-medium">
+                              {cs.data.client || cs.data.title}
+                            </span>
+                            <span class="text-graphite/60 hidden md:inline">({cs.data.industry})</span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {level.level === 1 && (
+                    <div class="pt-4 border-t border-ink/5">
+                      <p class="text-xs uppercase tracking-widest text-graphite mb-3">The bridge to L2</p>
+                      <a href="/vibe-check" class="flex items-center gap-3 text-sm group">
+                        <span class="text-petrol flex-shrink-0">&rarr;</span>
+                        <span class="text-ink group-hover:text-petrol transition-colors font-medium">
+                          Vibe Check — fix your AI-coded app
+                        </span>
+                        <span class="text-graphite/60 hidden md:inline">(Service)</span>
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           );
         })}
       </div>
     </section>
+  </div>
 
-    <!-- Who This Is For -->
-    <section class="mb-20">
-      <div class="bg-ink text-paper rounded-3xl p-8 md:p-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8">Is this for you?</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-          <div>
-            <h3 class="text-lg font-bold text-petrol mb-4">This is for you if:</h3>
-            <ul class="space-y-3">
-              <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">✓</span>
-                <span class="text-paper/80">You're a founder, CEO, or product leader at a growth-stage company</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">✓</span>
-                <span class="text-paper/80">You have a product that works — now you want to make it smarter with AI</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">✓</span>
-                <span class="text-paper/80">You don't have an internal AI/ML team (or yours is stretched thin)</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">✓</span>
-                <span class="text-paper/80">You want a partner who explains the options, not just executes specs</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">✓</span>
-                <span class="text-paper/80">You need working AI in weeks, not a 6-month "discovery phase"</span>
-              </li>
+  <!-- Self-Assessment + Engagement Types -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm" id="assessment">
+    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Where Are You?</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">Find your starting point</h2>
+      <p class="text-lg text-graphite mb-12 max-w-2xl">
+        Most organizations aren't at a single level — different departments and functions sit at different points. Pick the cluster that sounds most like you.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl">
+        {assessmentClusters.map((cluster) => (
+          <div class="bg-paper rounded-2xl p-6 md:p-8 shadow-sm flex flex-col">
+            <div class="mb-4">
+              <span class="text-xs font-mono text-petrol bg-petrol/10 px-2 py-1 rounded">{cluster.levels}</span>
+            </div>
+            <h3 class="text-xl font-bold text-ink mb-4">{cluster.label}</h3>
+            <ul class="space-y-3 mb-6">
+              {cluster.signals.map((signal) => (
+                <li class="flex items-start gap-2">
+                  <span class="text-petrol mt-0.5 flex-shrink-0">&#x2713;</span>
+                  <span class="text-sm text-graphite">{signal}</span>
+                </li>
+              ))}
             </ul>
+
+            <div class="pt-4 border-t border-ink/10 mb-6 flex-1">
+              <div class="flex items-center gap-3 mb-2">
+                <h4 class="text-base font-bold text-ink">{cluster.engagement}</h4>
+                <span class="text-xs font-medium text-petrol bg-petrol/10 px-2 py-0.5 rounded-full">{cluster.timeline}</span>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                {cluster.deliverables.map((d) => (
+                  <span class="text-xs text-graphite bg-ink/5 px-2.5 py-1 rounded-full">{d}</span>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href={cluster.mailto}
+              class="inline-block px-6 py-3 bg-petrol text-paper font-medium uppercase text-xs tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+            >
+              {cluster.cta} &rarr;
+            </a>
           </div>
-          
-          <div>
-            <h3 class="text-lg font-bold text-paper/60 mb-4">This probably isn't for you if:</h3>
-            <ul class="space-y-3">
-              <li class="flex gap-3">
-                <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">You need a 50-person team for a multi-year transformation</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">You want the cheapest option (we're not a dev shop)</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">You're looking for someone to "just build what we spec" without input</span>
-              </li>
-              <li class="flex gap-3">
-                <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">You're not sure AI is right for you and want free advice first</span>
-              </li>
-            </ul>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Beyond the Levels -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-16 md:py-20">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Beyond the Levels</h2>
+      <h3 class="text-3xl md:text-4xl font-bold text-ink mb-4">Maturity isn't one-dimensional</h3>
+      <p class="text-lg text-graphite mb-10 max-w-2xl">
+        Levels tell you how far along you are. But <em>where</em> you apply AI and <em>how</em> you govern it matter just as much.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {dimensions.map((dim) => (
+          <div class="border border-ink/10 rounded-2xl p-6">
+            <h4 class="text-lg font-bold text-ink mb-2">{dim.name}</h4>
+            <p class="text-sm text-graphite mb-4">{dim.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {dim.items.map((item) => (
+                <span class="text-xs text-graphite bg-ink/5 px-3 py-1 rounded-full">{item}</span>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
+  </div>
 
-    <!-- Results -->
+  <!-- Results -->
+  <div class="max-w-4xl mx-auto">
     <section class="mb-20">
       <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Results</h2>
       <p class="text-xl text-graphite mb-8">What our clients have achieved:</p>
-      
+
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
         <div class="text-center">
           <p class="text-4xl md:text-5xl font-bold text-ink mb-2">27%</p>
@@ -244,16 +402,99 @@ function getCaseStudy(id: string) {
           <p class="text-sm text-graphite">to production</p>
         </div>
       </div>
-      
+
       <a href="/case-studies" class="inline-block text-petrol font-medium hover:underline">
-        See all case studies →
+        See all case studies &rarr;
       </a>
     </section>
+  </div>
 
-    <!-- FAQ -->
+  <!-- How We Work + Is This For You -->
+  <div class="max-w-4xl mx-auto">
+    <section class="mb-20">
+      <div class="bg-ink text-paper rounded-3xl p-8 md:p-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">How we work with you</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+          <div>
+            <h3 class="text-lg font-bold text-petrol mb-4">What we do</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">Walk through the framework with your team</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">You self-identify where each department sits</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">We build a roadmap from where you are to where you want to be</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">Every level up is a clear, scoped engagement</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold text-petrol mb-4">What you get</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">Honest assessment — no upselling to where you don't need to be</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">Practical roadmap with concrete next steps</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">Quick wins at your current level while building toward the next</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">A partner who meets you where you are</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold text-petrol mb-4">This is for you if</h3>
+            <ul class="space-y-3">
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">You're a founder, CEO, or product leader at a growth-stage company</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">You have a product that works — now you want to make it smarter with AI</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">You don't have an internal AI/ML team (or yours is stretched thin)</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/80">You need working AI in weeks, not a 6-month "discovery phase"</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-paper/60 mt-8 text-sm">
+          The key insight: different functions need different governance levels. Marketing experimenting with content generation can move fast. AI touching financial data or customer-facing products needs more guardrails. This creates a natural roadmap — move fast where risk is low, build carefully where it's high.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto">
     <section class="mb-16">
       <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Common Questions</h2>
-      
+
       <div class="space-y-6">
         <div class="border-t border-ink/10 pt-6">
           <h3 class="text-lg font-bold text-ink mb-2">How involved do we need to be?</h3>
@@ -269,16 +510,18 @@ function getCaseStudy(id: string) {
         </div>
       </div>
     </section>
+  </div>
 
-    <!-- Final CTA -->
-    <div class="border-t border-ink/10 pt-16">
-      <h2 class="text-3xl font-bold mb-6 text-ink">Ready to start?</h2>
+  <!-- Final CTA -->
+  <div class="max-w-4xl mx-auto">
+    <div class="border-t border-ink/10 pt-16 pb-8">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-ink">Ready to find your starting point?</h2>
       <p class="text-xl text-graphite mb-8">
-        Whether you're exploring possibilities or ready to build, we'd love to hear what you're working on.
+        We work directly with founders and product leaders. The conversation starts with understanding where you are — not selling you where we think you should be.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
-          href="mailto:hey@thefocus.ai"
+          href={mailto}
           class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
         >
           Start a Conversation
