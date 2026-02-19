@@ -14,7 +14,7 @@ author: Will Schenk
 ---
 
 <script>
-  window.location.href = "/reports/aiecode-2025-11/";
+  window.location.href = "/posts/2025-11-22-ai-engineering-summit-takeaways";
 </script>
 
 Redirecting to the full report...
