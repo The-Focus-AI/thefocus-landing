@@ -43,13 +43,12 @@ const prevPost = await getPrevPost(entry);
 // Get the image for the post
 const images = await import.meta.glob<{ default: ImageMetadata }>('/src/content/assets/cards/*.{jpeg,jpg,png,gif}');
 const img_key= `/src/content/assets/cards/${entry.data.image}`;
-if (!images[img_key]) throw new Error(`Image not found: ${img_key}`);
 
 // @ts-ignore
-const image = await images[img_key]().src;
+const image = images[img_key] ? (await images[img_key]()).default.src : null;
 
 ---
-<ArticleLayout pageTitle={entry.data.title} description={entry.data.description} category="blog" openGraphImage={`open-graph/${slug}.png`}>
+<ArticleLayout pageTitle={entry.data.title} description={entry.data.description} category="studio" openGraphImage={`open-graph/${slug}.png`}>
   <BlogPostSchema
   slot="head"
   title={entry.data.title}

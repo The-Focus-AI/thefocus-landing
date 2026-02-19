@@ -85,10 +85,10 @@ let category = Astro.props.category || "home";
     <!-- Other head elements -->
     <slot name="head" />
   </head>
-  <body class={`text-ink overflow-x-hidden ${category === 'insights' || category === 'tools' ? 'bg-[#e8e6df]' : 'bg-paper'}`}>
+  <body class={`text-ink overflow-x-hidden ${category === 'studio' ? 'bg-[#e8e6df]' : 'bg-paper'}`}>
     <!-- Report Banner - hidden on mobile for cleaner first impression -->
     <div class="hidden sm:block bg-rand-blue text-white">
-      <a href="/reports/aiecode-2025-11/" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
+      <a href="/posts/ai-engineering-code-summit-2025" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
         <span class="font-medium">NEW:</span> Our latest report on the current state of AI Engineering is now available
         <span class="ml-2 inline-block">→</span>
       </a>
@@ -110,35 +110,48 @@ let category = Astro.props.category || "home";
         <nav class="hidden md:block">
           <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm uppercase tracking-[0.15em] text-graphite">
             <li>
-              <a href="/case-studies" class:list={["group inline-block", category === "case-studies" ? "text-ink" : ""]}>
-                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Case Studies</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
-              </a>
-            </li>
-            <li>
-              <a href="/capabilities" class:list={["group inline-block", category === "capabilities" ? "text-ink" : ""]}>
+              <a href="/capabilities" class:list={["group inline-block relative pb-2", category === "capabilities" ? "text-ink" : ""]}>
                 <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Capabilities</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "capabilities" ? "w-full" : "w-0 group-hover:w-3/4"]} />
               </a>
             </li>
             <li>
-              <a href="/about" class:list={["group inline-block", category === "about" ? "text-ink" : ""]}>
+              <a href="/case-studies" class:list={["group inline-block relative pb-2", category === "case-studies" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Case Studies</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "case-studies" ? "w-full" : "w-0 group-hover:w-3/4"]} />
+              </a>
+            </li>
+            <li>
+              <a href="/about" class:list={["group inline-block relative pb-2", category === "about" ? "text-ink" : ""]}>
                 <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">About</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "about" ? "w-full" : "w-0 group-hover:w-3/4"]} />
               </a>
             </li>
             <li>
-              <a href="mailto:hey@thefocus.ai" class="group inline-block">
+              <a href="mailto:hey@thefocus.ai" class="group inline-block relative pb-2">
                 <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Contact</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out w-0 group-hover:w-3/4" />
               </a>
             </li>
             <li class="text-graphite/30">/</li>
-            <li>
-              <a href="/insights" class:list={["group inline-block", category === "insights" ? "text-ink" : ""]}>
-                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Insights</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
-              </a>
-            </li>
-            <li>
-              <a href="/tools" class:list={["group inline-block", category === "tools" ? "text-ink" : ""]}>
-                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Tools</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
-              </a>
+            <li class="relative group/studio">
+              <button class:list={["inline-block cursor-pointer relative pb-2", category === "studio" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover/studio:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover/studio:text-ink transition-colors duration-150">Studio <span class="text-[0.6em] ml-0.5">▾</span></span><span class="opacity-30 group-hover/studio:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "studio" ? "w-full" : "w-0 group-hover/studio:w-3/4"]} />
+              </button>
+              <div class="absolute top-full right-0 pt-2 opacity-0 invisible group-hover/studio:opacity-100 group-hover/studio:visible transition-all duration-200 z-50">
+                <ul class="bg-paper border border-ink/10 rounded-lg shadow-lg shadow-ink/10 py-2 min-w-[10rem] text-left normal-case tracking-normal">
+                  <li>
+                    <a href="/insights" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Insights</a>
+                  </li>
+                  <li>
+                    <a href="/tools" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Tools</a>
+                  </li>
+                  <li class="border-t border-ink/5 mt-1 pt-1">
+                    <a href="https://account.thefocus.ai/" target="_blank" rel="noopener" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Products <span class="text-xs opacity-50">↗</span></a>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </nav>
@@ -147,10 +160,10 @@ let category = Astro.props.category || "home";
       <nav id="mobile-menu" class="hidden md:hidden border-t border-ink/10 bg-paper">
         <ul class="px-5 py-6 space-y-1">
           <li>
-            <a href="/case-studies" class:list={["block py-3 text-lg", category === "case-studies" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Case Studies</a>
+            <a href="/capabilities" class:list={["block py-3 text-lg", category === "capabilities" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Capabilities</a>
           </li>
           <li>
-            <a href="/capabilities" class:list={["block py-3 text-lg", category === "capabilities" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Capabilities</a>
+            <a href="/case-studies" class:list={["block py-3 text-lg", category === "case-studies" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Case Studies</a>
           </li>
           <li>
             <a href="/about" class:list={["block py-3 text-lg", category === "about" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>About</a>
@@ -159,10 +172,16 @@ let category = Astro.props.category || "home";
             <a href="mailto:hey@thefocus.ai" class="block py-3 text-lg text-graphite hover:text-ink">Contact</a>
           </li>
           <li class="border-t border-ink/10 mt-4 pt-4">
-            <a href="/insights" class:list={["block py-3 text-lg", category === "insights" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Insights</a>
+            <span class="block py-2 text-xs uppercase tracking-[0.15em] text-graphite/50 font-medium">Studio</span>
           </li>
           <li>
-            <a href="/tools" class:list={["block py-3 text-lg", category === "tools" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Tools</a>
+            <a href="/insights" class:list={["block py-3 text-lg pl-4", category === "studio" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Insights</a>
+          </li>
+          <li>
+            <a href="/tools" class:list={["block py-3 text-lg pl-4", category === "studio" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Tools</a>
+          </li>
+          <li>
+            <a href="https://account.thefocus.ai/" target="_blank" rel="noopener" class="block py-3 text-lg pl-4 text-graphite hover:text-ink">Products <span class="text-sm opacity-50">↗</span></a>
           </li>
         </ul>
       </nav>
@@ -247,6 +266,7 @@ let category = Astro.props.category || "home";
             <ul class="space-y-3 text-sm">
               <li><a href="/insights" class="text-graphite hover:text-ink transition-colors">Insights</a></li>
               <li><a href="/tools" class="text-graphite hover:text-ink transition-colors">Tools</a></li>
+              <li><a href="https://account.thefocus.ai/" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Products</a></li>
               <li><a href="https://newsletter.thefocus.ai" class="text-graphite hover:text-ink transition-colors" target="_blank" rel="noopener">Newsletter</a></li>
             </ul>
           </div>
