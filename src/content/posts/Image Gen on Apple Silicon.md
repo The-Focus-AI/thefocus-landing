@@ -6,7 +6,6 @@ tags:
 published: true
 image: flux_wide.png
 description: We've got the apple silicon, lets download some models and make some pictures
-slug: /use-cases/flux-images
 ---
 
 # aider

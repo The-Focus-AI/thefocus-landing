@@ -10,7 +10,6 @@ tags:
   - typescript
 image: weekend-coding-agent.png
 author: Will Schenk
-slug: /reports/coding-agent/
 ---
 
 <script>

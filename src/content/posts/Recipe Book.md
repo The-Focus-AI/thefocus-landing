@@ -6,5 +6,4 @@ tags:
 published: true
 image: recipes_wide.png
 description: The hardest thing about living in the future is that we're figuring it out as we go. Here's some notes of things to play with.
-slug: /recipes
 ---
