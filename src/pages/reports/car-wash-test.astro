@@ -1,0 +1,735 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import '../../styles/reports/car-wash-test.css';
+---
+<BaseLayout
+  pageTitle="The Car Wash Test — AI Common-Sense Reasoning Benchmark"
+  description="We tested 131 AI models with one simple question: Should I walk or drive to the car wash? Only 24% figured out you need to bring your car."
+  category="studio"
+  fullWidth
+  bodyClass="bg-[#f8f6f1]"
+  openGraphImage="open-graph/the-car-wash-test.png"
+>
+
+<div class="report-scope">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-label">Research Report / February 2026</div>
+    <h1>The Car Wash Test:<br>Do LLMs Have <em>Common Sense?</em></h1>
+    <p class="hero-subtitle">
+      A simple question exposes a fundamental gap in AI reasoning. We tested 131 models
+      across 8 providers &mdash; including 11 local Ollama models &mdash; to see which ones understand
+      that you need to bring your car to the car wash, not just yourself.
+    </p>
+    <div class="hero-meta">
+      <span>131 models evaluated</span>
+      <span>8 providers</span>
+      <span>Run #007 &middot; 50m distance</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTION -->
+<div class="container">
+  <div class="question-block">
+    <div class="q-label">The Prompt</div>
+    <blockquote>"I want to wash my car. The car wash is 50 meters away. Should I walk or drive?"</blockquote>
+    <div class="answer">
+      Correct answer: <strong>DRIVE</strong> &mdash; the car must be physically present at the car wash to be washed.
+      Walking there leaves your car at home, defeating the purpose entirely.
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">131</div>
+      <div class="stat-label">Models Tested</div>
+    </div>
+    <div class="stat-card correct">
+      <div class="stat-num">31</div>
+      <div class="stat-label">Truly Correct</div>
+    </div>
+    <div class="stat-card lucky">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Lucky (Wrong Reason)</div>
+    </div>
+    <div class="stat-card fail">
+      <div class="stat-num">90</div>
+      <div class="stat-label">Failed (Walk)</div>
+    </div>
+    <div class="stat-card other">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Both / Unclear / Error</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON WITH OPPER -->
+<section>
+  <div class="container">
+    <div class="section-num">Section I</div>
+    <h2>Comparison with Original Research</h2>
+    <p class="body-text">
+      The car wash test was originally devised by <a href="https://opper.ai/blog/car-wash-test" style="color:var(--accent)">Opper.ai</a>,
+      who tested 53 models at 50 meters. We replicated their study at the same distance
+      with 131 models, added an LLM judge for reasoning quality, included the latest 2026 models,
+      and added 11 local Ollama models to compare cloud vs local inference.
+    </p>
+
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <h4>Opper.ai (Original)</h4>
+        <div class="comp-stat">11 / 53</div>
+        <ul>
+          <li>Distance: <strong>50 meters</strong></li>
+          <li>Single-run pass rate: <strong>20.8%</strong></li>
+          <li>10-run consistent: <strong>5 models only</strong></li>
+          <li>GPT-5 scored 7/10 across runs</li>
+          <li>Human baseline: <strong>71.5% correct</strong></li>
+          <li>33 models never correct in any run</li>
+        </ul>
+      </div>
+      <div class="comparison-card">
+        <h4>Our Replication (Extended)</h4>
+        <div class="comp-stat">31 / 131</div>
+        <ul>
+          <li>Distance: <strong>50 meters</strong> (same)</li>
+          <li>Single-run pass rate: <strong>23.7%</strong></li>
+          <li>Lucky (drive, wrong reason): <strong>6 models</strong></li>
+          <li>Reasoning judge: claude-haiku-4.5</li>
+          <li>14 thinking/reasoning models tested</li>
+          <li>11 local Ollama models: <strong>1 passed</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="body-text">
+      At the same 50m distance, our expanded test shows a 23.7% pass rate vs Opper's 20.8%.
+      The improvement comes from newer 2026 models (Qwen 3.5, GPT-5+, Grok 4+) that
+      weren't available in the original study. The 50m distance remains brutally effective at
+      tripping up models &mdash; they latch onto "50 meters is so close, just walk!" without
+      considering that the car is the cargo.
+    </p>
+
+    <h3>Consistent Findings Across Both Studies</h3>
+    <div class="finding-grid">
+      <div class="finding-card">
+        <div class="f-icon">&#x1F9E0;</div>
+        <h4>Heuristic Dominance</h4>
+        <p>Models default to "short distance = walk" without considering what needs to travel. The environmental/health framing overrides physical necessity.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-icon">&#x1F4C8;</div>
+        <h4>Newer Models Do Better</h4>
+        <p>Models released in late 2025&ndash;2026 pass at much higher rates. The Qwen 3.5 family achieves 100% (5/5). GPT-5 family mostly succeeds.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-icon">&#x1F4BB;</div>
+        <h4>Local Models: 0% Pass Rate</h4>
+        <p>All 12 Ollama models failed. Local inference models lack the reasoning quality of cloud frontier models on this task.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTS -->
+<section>
+  <div class="container">
+    <div class="section-num">Section II</div>
+    <h2>Visual Analysis</h2>
+
+    <!-- Chart 1: Pass Rate by Family -->
+    <div class="chart-container">
+      <h3>Pass Rate by Model Family</h3>
+      <div class="chart-wrap"><canvas id="familyChart"></canvas></div>
+      <div class="chart-caption">Green = truly correct (drive + right reason). Yellow = lucky (drive + wrong reason). Red = failed. Gray = other.</div>
+    </div>
+
+    <!-- Chart Row: Cost + Response Time -->
+    <div class="chart-grid">
+      <div class="chart-container">
+        <h3>Cost vs. Reasoning Quality</h3>
+        <div class="chart-wrap"><canvas id="costChart"></canvas></div>
+        <div class="chart-caption">Cost per query (log scale). Expensive models don't guarantee correct reasoning.</div>
+      </div>
+      <div class="chart-container">
+        <h3>Response Time by Result</h3>
+        <div class="chart-wrap"><canvas id="timeChart"></canvas></div>
+        <div class="chart-caption">Correct models are not necessarily slower. Many wrong answers took longer due to elaborate (incorrect) reasoning.</div>
+      </div>
+    </div>
+
+    <!-- Chart Row: Thinking + Local vs Cloud -->
+    <div class="chart-grid">
+      <div class="chart-container">
+        <h3>Thinking Models: Does Extended Reasoning Help?</h3>
+        <div class="chart-wrap"><canvas id="thinkingChart"></canvas></div>
+        <div class="chart-caption">Only 2 of 11 dedicated thinking models pass at 50m. Thinking alone does not guarantee common sense.</div>
+      </div>
+      <div class="chart-container">
+        <h3>Local (Ollama) vs Cloud Models</h3>
+        <div class="chart-wrap"><canvas id="localChart"></canvas></div>
+        <div class="chart-caption">10 of 11 local Ollama models failed. Only minimax-m2.1:cloud passed. Cloud frontier models pass at 26% vs 9% for local models.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE -->
+<section>
+  <div class="container">
+    <div class="section-num">Section III</div>
+    <h2>Full Results</h2>
+    <p class="body-text">
+      All 131 models sorted by reasoning quality. Click column headers to sort.
+      Use filters to explore by category.
+    </p>
+
+    <div class="table-controls">
+      <input type="text" id="searchInput" placeholder="Search models...">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="correct">Correct</button>
+      <button class="filter-btn" data-filter="lucky">Lucky</button>
+      <button class="filter-btn" data-filter="fail">Failed</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+      <button class="filter-btn" data-filter="local">Local</button>
+    </div>
+
+    <div class="results-table-wrap">
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th data-col="model">Model <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="provider">Provider <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="answer">Answer <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="reason">Right Reason <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="quality">Quality <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="time">Time <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="cost">Cost <span class="sort-arrow">&#9650;</span></th>
+            <th data-col="stated">Reasoning <span class="sort-arrow">&#9650;</span></th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FINDINGS -->
+<section>
+  <div class="container">
+    <div class="section-num">Section IV</div>
+    <h2>Key Findings</h2>
+
+    <h3>1. The 50m Trap</h3>
+    <p class="body-text">
+      At 50 meters, the distance becomes a powerful distractor. Models fixate on "50 meters is
+      so close!" and immediately conclude walking is better &mdash; for health, environment,
+      convenience. Only 24% of models see through this to the core issue: the car must
+      physically be at the car wash. Even models that passed Opper's test at this distance
+      in other runs may fail on any given attempt due to LLM non-determinism.
+    </p>
+
+    <h3>2. The Qwen 3.5 Breakthrough</h3>
+    <p class="body-text">
+      The Qwen 3.5 family is the standout performer: all five models (plus, 397b, 122b, 35b, 27b)
+      pass with perfect reasoning. Their responses immediately identify that "the vehicle must be
+      physically present at the car wash." This is notable because the older Qwen 3 models
+      (qwen3-max, qwen3-coder, qwen3-max-thinking) all fail. Something changed in the 3.5 generation.
+    </p>
+
+    <h3>3. Local Models: Near-Complete Failure</h3>
+    <p class="body-text">
+      Of 11 local Ollama models, only minimax-m2.1:cloud passed with correct reasoning.
+      The other 10 &mdash; including deepseek-r1 (three sizes), qwen3 (two sizes),
+      phi4, gemma3n, mistral-small, devstral, and gpt-oss &mdash; all failed. deepseek-r1:14b
+      said "drive" but for wrong reasons (convenience, not physical necessity). This
+      suggests quantization and missing RLHF significantly impact common-sense reasoning.
+    </p>
+
+    <h3>4. Anthropic's Split</h3>
+    <p class="body-text">
+      Only Claude Opus 4.5, Opus 4.6, and Claude 3.7 Sonnet:thinking pass. Every other Claude model
+      fails &mdash; including Sonnet 4.6, Opus 4, Opus 4.1, Sonnet 4, Sonnet 4.5, and Claude 3.5 models.
+      Notably, Sonnet 4.6 passed in Run #006 but failed in this run &mdash; demonstrating the
+      non-determinism that makes single-run benchmarks unreliable. The 3.7 Sonnet thinking variant
+      succeeded this time by reasoning through the physical constraint explicitly.
+    </p>
+
+    <h3>5. Cost Is Not a Predictor</h3>
+    <p class="body-text">
+      Claude Opus 4 ($0.009/query) and Claude Opus 4.1 ($0.009) both fail, while
+      Gemini 3 Flash ($0.000044) and Grok 4.1 Fast ($0.000241) pass &mdash; at 30&ndash;300x less cost.
+      The most expensive correct model is GPT-5-pro at $0.15/query. The cheapest is Gemini 3 Flash
+      at $0.000044. Common sense is orthogonal to model cost.
+    </p>
+
+    <h3>6. Reasoning Models: Mixed Results</h3>
+    <p class="body-text">
+      Of 14 dedicated thinking/reasoning models, 7 passed (50%): o3, o3-pro, o1, o3-mini,
+      claude-3.7-sonnet:thinking, qwen3-30b-thinking, qwen3-next-80b-thinking, and qwen3-vl-235b-thinking.
+      But 7 others failed &mdash; including o3-mini-high, o4-mini, o4-mini-high, qwen3-235b-thinking,
+      and sonar-reasoning-pro. Extended reasoning helps some models work through the physical
+      constraint, but can also reinforce the "short distance = walk" heuristic.
+    </p>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section>
+  <div class="container">
+    <div class="section-num">Section V</div>
+    <h2>Methodology</h2>
+    <p class="body-text">
+      Models were evaluated using the <a href="https://github.com" style="color:var(--accent)">umwelten</a> evaluation framework.
+      Each model received an identical prompt with a system message describing a "helpful assistant"
+      role (temperature 0.3, max 500 tokens). Responses were cached per-run to ensure reproducibility.
+    </p>
+    <p class="body-text">
+      Judging was performed by <strong>anthropic/claude-haiku-4.5</strong> via OpenRouter, scoring
+      each response on: recommendation (drive/walk/both/unclear), whether the model recognizes the
+      car must be present, whether the correct reason was given, a 1&ndash;5 reasoning quality
+      score, and a free-text explanation.
+    </p>
+    <p class="body-text">
+      A model is classified as <strong>truly correct</strong> only if it recommends driving
+      <em>and</em> identifies that the car must physically be at the car wash. Models that
+      recommend driving for other reasons (convenience, speed) are classified as <strong>lucky</strong>.
+    </p>
+    <p class="body-text">
+      <strong>Local models</strong> were run via Ollama on an Apple Silicon Mac (M-series).
+      Cloud models were accessed via Google AI API (direct) and OpenRouter.
+      The distance was set to <strong>50 meters</strong> to match the original Opper.ai study exactly.
+    </p>
+    <p class="body-text">
+      <strong>Note on variance:</strong> LLM responses are non-deterministic even at low temperature.
+      The original Opper.ai study showed significant run-to-run variance (GPT-5 scored 7/10 across
+      10 runs). Our results represent a single run and should be interpreted as a snapshot, not
+      a definitive classification.
+    </p>
+  </div>
+</section>
+
+<div class="report-footer">
+  <div class="container">
+    <p>
+      Based on the <a href="https://opper.ai/blog/car-wash-test">Car Wash Test by Opper.ai</a>.
+      Extended evaluation by <a href="https://thefocus.ai">The Focus AI</a> using the umwelten framework.
+      <br>Report generated February 2026. Total evaluation cost: $0.46.
+    </p>
+  </div>
+</div>
+
+</div><!-- end .report-scope -->
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script is:inline>
+// DATA
+const DATA = [
+  { model: "claude-3.7-sonnet:thinking", provider: "Anthropic", answer: "drive", correctReason: true, quality: 5, timeS: 6.9, cost: 0.004815, stated: "The car must be physically present at the car wash facility to be washed; you cannot wash your car if you don't bring it with you.", thinking: true, family: "Claude", local: false },
+  { model: "claude-opus-4.5", provider: "Anthropic", answer: "drive", correctReason: true, quality: 5, timeS: 4.2, cost: 0.002175, stated: "You need your car at the car wash to wash it; you can't wash your car if you walk there without it", thinking: false, family: "Claude", local: false },
+  { model: "claude-opus-4.6", provider: "Anthropic", answer: "drive", correctReason: true, quality: 5, timeS: 3.4, cost: 0.0027300000000000002, stated: "You need your car at the car wash in order to wash it. If you walk there, your car is still sitting 50 meters away, unwashed.", thinking: false, family: "Claude", local: false },
+  { model: "gemini-2.5-pro", provider: "Google", answer: "drive", correctReason: true, quality: 5, timeS: 14.2, cost: 0.000635, stated: "Your car is the object that needs to be washed, so you have to get it to the car wash. Driving is the only practical way to do that.", thinking: false, family: "Gemini", local: false },
+  { model: "gemini-3-flash-preview", provider: "Google", answer: "drive", correctReason: true, quality: 5, timeS: 5.1, cost: 0.000044, stated: "The car needs to be physically present at the car wash. If you walk, the car will remain at home, and you won't be able to wash it.", thinking: false, family: "Gemini", local: false },
+  { model: "gemini-3-pro-preview", provider: "Google", answer: "drive", correctReason: true, quality: 5, timeS: 7.4, cost: 0.000040499999999999995, stated: "If you walk to the car wash, the car will remain behind, and you won't be able to wash it.", thinking: false, family: "Gemini", local: false },
+  { model: "minimax-m2.1:cloud", provider: "Ollama", answer: "drive", correctReason: true, quality: 5, timeS: 3.3, cost: 0, stated: "The car must be brought to the car wash to be washed. Walking alone would require returning to get the car and then driving anyway, adding unnecessary steps.", thinking: false, family: "MiniMax", local: true },
+  { model: "minimax-m2.1", provider: "MiniMax", answer: "drive", correctReason: true, quality: 5, timeS: 6.8, cost: 0.00037378, stated: "You need to bring your car to the car wash to wash it. Walking there would leave your car at home, and you'd then need to walk back and drive anyway.", thinking: false, family: "MiniMax", local: false },
+  { model: "kimi-k2.5", provider: "Moonshot", answer: "drive", correctReason: true, quality: 5, timeS: 48.7, cost: 0.0039801, stated: "The car must be physically present at the car wash to be washed. Walking alone won't allow you to wash your car unless you push it by hand, which is impractical and unsafe.", thinking: false, family: "Kimi", local: false },
+  { model: "gpt-5-mini", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 17.4, cost: 0.0019045000000000002, stated: "The car must be physically present at the car wash to be washed; you cannot reasonably walk the car to the wash location", thinking: false, family: "GPT", local: false },
+  { model: "gpt-5-nano", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 21.4, cost: 0.0008525, stated: "A car wash requires the car to be physically present; walking would not allow you to wash the car unless you drive it there", thinking: false, family: "GPT", local: false },
+  { model: "gpt-5", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 19.9, cost: 0.0082425, stated: "To wash the car, the car itself needs to be at the car wash", thinking: false, family: "GPT", local: false },
+  { model: "o1", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 11.9, cost: 0.12573, stated: "The car must be physically present at the car wash to be washed", thinking: true, family: "GPT", local: false },
+  { model: "o3-mini", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 16.5, cost: 0.015129400000000003, stated: "The car itself needs to get to the car wash, so it must be driven there. The car can't be walked—it's built for driving. The response also notes that physically pushing the car isn't practical or safe.", thinking: true, family: "GPT", local: false },
+  { model: "o3", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 9.8, cost: 0.005555999999999999, stated: "The car itself has to be at the wash bay to be cleaned, so it must make the trip sooner or later. Starting a modern engine for such a short hop causes only trivial wear and emissions. Avoids unsafe manual maneuvering.", thinking: true, family: "GPT", local: false },
+  { model: "o3-pro", provider: "OpenAI", answer: "drive", correctReason: true, quality: 5, timeS: 35, cost: 0.06092, stated: "The car itself has to be at the wash bay to get cleaned, so you'll end up driving it sooner or later.", thinking: true, family: "GPT", local: false },
+  { model: "qwen3-30b-a3b-thinking-2507", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 18, cost: 0.00047084899999999996, stated: "Walking would not help you wash your car, as you'd need to use the car wash equipment, which requires your vehicle to be present. Driving allows you to efficiently transport your car to the car wash facility.", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3-next-80b-a3b-thinking", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 32.7, cost: 0.0059485499999999995, stated: "Walking to the car wash would leave your car at home, making it impossible to wash it. The car must be physically present at the car wash location, and driving is the only practical way to transport it there.", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3-vl-235b-a22b-thinking", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 144.2, cost: 0, stated: "The vehicle must be at the car wash to be washed. Walking would leave the car behind, making it impossible to clean.", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3.5-122b-a10b", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 6.3, cost: 0.0030475999999999997, stated: "To wash the car, the vehicle itself needs to be at the car wash. If you walk, the car stays behind, making it impossible to wash. Driving moves the car to the necessary location.", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3.5-27b", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 9.3, cost: 0.0017625, stated: "To wash your car, the vehicle itself needs to be at the car wash. If you walk, your car will remain at your starting location.", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3.5-35b-a3b", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 64, cost: 0.02791475, stated: "The vehicle itself must be transported to the car wash facility. Walking would leave your car behind at home, making it impossible to wash it there.", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3.5-397b-a17b", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 12.1, cost: 0.0037341, stated: "the vehicle itself needs to be at the car wash location; walking would leave the car behind", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3.5-plus-02-15", provider: "Qwen", answer: "drive", correctReason: true, quality: 5, timeS: 63.2, cost: 0.01091, stated: "The vehicle must be physically present at the car wash facility. Walking leaves the car behind.", thinking: false, family: "Qwen", local: false },
+  { model: "grok-4-fast", provider: "xAI", answer: "drive", correctReason: true, quality: 5, timeS: 4, cost: 0.00025979999999999997, stated: "Walking would mean leaving the car behind, which defeats the purpose of washing it—you need to bring the car to the facility to clean it.", thinking: false, family: "Grok", local: false },
+  { model: "grok-4", provider: "xAI", answer: "drive", correctReason: true, quality: 5, timeS: 11.5, cost: 0.009594, stated: "You need to bring your car to the car wash to actually wash it—walking there would leave the car behind and defeats the purpose", thinking: false, family: "Grok", local: false },
+  { model: "grok-4.1-fast", provider: "xAI", answer: "drive", correctReason: true, quality: 5, timeS: 5.1, cost: 0.0002413, stated: "The car must be at the car wash to be washed—walking leaves it behind 50 meters away.", thinking: false, family: "Grok", local: false },
+  { model: "glm-4.7", provider: "Zhipu", answer: "drive", correctReason: true, quality: 5, timeS: 79.7, cost: 0.0038755, stated: "You need to bring the car to the car wash in order to wash it. If you walk, you will arrive at the car wash, but your car will remain at home.", thinking: false, family: "GLM", local: false },
+  { model: "glm-5", provider: "Zhipu", answer: "drive", correctReason: true, quality: 5, timeS: 7.9, cost: 0.0009574000000000001, stated: "The car needs to be at the car wash to be washed. If you walk, you'll arrive at the car wash without your car.", thinking: false, family: "GLM", local: false },
+  { model: "gpt-5-pro", provider: "OpenAI", answer: "drive", correctReason: true, quality: 4, timeS: 91.6, cost: 0.15291, stated: "You need the car at the wash to get it cleaned, so walking would just add an extra trip", thinking: true, family: "GPT", local: false },
+  { model: "grok-3-mini", provider: "xAI", answer: "drive", correctReason: true, quality: 4, timeS: 18.8, cost: 0.0005767, stated: "car must be transported to the car wash to be washed; driving is practical for this short distance", thinking: false, family: "Grok", local: false },
+  { model: "ernie-4.5-21b-a3b-thinking", provider: "Baidu", answer: "drive", correctReason: false, quality: 2, timeS: 18.7, cost: 0.00048104000000000007, stated: "Driving is faster and more efficient than walking", thinking: true, family: "ERNIE", local: false },
+  { model: "deepseek-r1:14b", provider: "Ollama", answer: "drive", correctReason: false, quality: 2, timeS: 88.4, cost: 0, stated: "walking would be impractical for such a short distance", thinking: true, family: "DeepSeek", local: true },
+  { model: "mercury", provider: "Inception", answer: "drive", correctReason: false, quality: 2, timeS: 1, cost: 0.00009825, stated: "convenience, speed, avoiding walking fatigue, and bringing car inside", thinking: false, family: "Other", local: false },
+  { model: "sonar-pro", provider: "Perplexity", answer: "drive", correctReason: false, quality: 2, timeS: 5.6, cost: 0.00534, stated: "Environmental impact (food production emissions from walking), convenience, time savings, and practicality", thinking: false, family: "Other", local: false },
+  { model: "phi-4", provider: "Microsoft", answer: "drive", correctReason: false, quality: 1, timeS: 3.4, cost: 0.00003152, stated: "Time and convenience factors; environmental and exercise considerations presented as trade-offs", thinking: false, family: "Other", local: false },
+  { model: "sonar", provider: "Perplexity", answer: "drive", correctReason: false, quality: 1, timeS: 3.5, cost: 0.00026199999999999997, stated: "Environmental impact is negligible, driving is faster, keeps shoes clean, avoids exertion, convenience", thinking: false, family: "Other", local: false },
+  { model: "olmo-3.1-32b-instruct", provider: "AllenAI", answer: "walk", correctReason: false, quality: 1, timeS: 1.7, cost: 0.000052199999999999995, stated: "Walking is faster, healthier, and more environmentally friendly for short distances; driving wastes fuel and causes wear", thinking: false, family: "Other", local: false },
+  { model: "olmo-3.1-32b-think", provider: "AllenAI", answer: "walk", correctReason: false, quality: 1, timeS: 6.8, cost: 0.0002754, stated: "Walking is faster and more efficient than driving 50 meters; driving wastes fuel and causes unnecessary wear", thinking: true, family: "Other", local: false },
+  { model: "nova-lite-v1", provider: "Amazon", answer: "walk", correctReason: false, quality: 1, timeS: 1.4, cost: 0.0000231, stated: "Walking is healthy, environmentally friendly, and 50 meters is short; driving would be inefficient", thinking: false, family: "Nova", local: false },
+  { model: "nova-micro-v1", provider: "Amazon", answer: "walk", correctReason: false, quality: 1, timeS: 1, cost: 0.000011795000000000001, stated: "Environmental friendliness, fuel savings, carbon footprint reduction, and physical exercise", thinking: false, family: "Nova", local: false },
+  { model: "nova-premier-v1", provider: "Amazon", answer: "walk", correctReason: false, quality: 1, timeS: 2.2, cost: 0.00058, stated: "50 meters is short distance; walking saves fuel and reduces car usage", thinking: false, family: "Nova", local: false },
+  { model: "nova-pro-v1", provider: "Amazon", answer: "walk", correctReason: false, quality: 1, timeS: 1.8, cost: 0.000356, stated: "Short distance, saves time, environmentally friendly, avoids parking hassle", thinking: false, family: "Nova", local: false },
+  { model: "claude-3.5-haiku", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 3.3, cost: 0.000548, stated: "Short distance, saves fuel, exercise, environmental concerns", thinking: false, family: "Claude", local: false },
+  { model: "claude-3.5-sonnet", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 2.5, cost: 0.00249, stated: "50 meters is short distance, wastes fuel to drive, walking is better for environment, need to walk back anyway", thinking: false, family: "Claude", local: false },
+  { model: "claude-3.7-sonnet", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 3.4, cost: 0.0021, stated: "Short distance, convenience, fuel savings, exercise", thinking: false, family: "Claude", local: false },
+  { model: "claude-haiku-4.5", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 1.8, cost: 0.000615, stated: "50 meters is a short distance; walking is faster, cheaper, and better for the environment than driving", thinking: false, family: "Claude", local: false },
+  { model: "claude-opus-4", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 8.8, cost: 0.009075, stated: "50 meters is a short walk; driving wastes gas and emissions; walking is more practical and economical", thinking: false, family: "Claude", local: false },
+  { model: "claude-opus-4.1", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 9.1, cost: 0.00945, stated: "50 meters is a short walk; driving is wasteful of fuel; walking reduces engine starts", thinking: false, family: "Claude", local: false },
+  { model: "claude-sonnet-4", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 4.2, cost: 0.002205, stated: "50 meters is very short; saves time by avoiding engine start/parking; better for environment; provides exercise", thinking: false, family: "Claude", local: false },
+  { model: "claude-sonnet-4.5", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 4.2, cost: 0.002265, stated: "50 meters is too short to justify driving; walking is more efficient, saves fuel, reduces emissions, and provides health benefits", thinking: false, family: "Claude", local: false },
+  { model: "claude-sonnet-4.6", provider: "Anthropic", answer: "walk", correctReason: false, quality: 1, timeS: 5, cost: 0.002523, stated: "50 meters is a short distance; driving defeats the purpose; parking hassle; good exercise", thinking: false, family: "Claude", local: false },
+  { model: "ernie-4.5-21b-a3b", provider: "Baidu", answer: "walk", correctReason: false, quality: 1, timeS: 1.4, cost: 0.00001372, stated: "Walking is healthier and more environmentally friendly; driving defeats the purpose of washing", thinking: false, family: "ERNIE", local: false },
+  { model: "ernie-4.5-300b-a47b", provider: "Baidu", answer: "walk", correctReason: false, quality: 1, timeS: 4.9, cost: 0.00008450000000000001, stated: "50 meters is short distance; walking is faster than driving, saves fuel, reduces emissions, avoids traffic", thinking: false, family: "ERNIE", local: false },
+  { model: "seed-1.6-flash", provider: "ByteDance", answer: "walk", correctReason: false, quality: 1, timeS: 3, cost: 0.000067875, stated: "50 meters is short distance; walking is quicker, requires no fuel/parking, more convenient; driving wastes time and energy", thinking: false, family: "Seed", local: false },
+  { model: "seed-1.6", provider: "ByteDance", answer: "walk", correctReason: false, quality: 1, timeS: 7.4, cost: 0.00050375, stated: "50 meters is too short to drive; walking saves gas, prevents engine wear, avoids parking hassle, and is environmentally friendly", thinking: false, family: "Seed", local: false },
+  { model: "command-a", provider: "Cohere", answer: "walk", correctReason: false, quality: 1, timeS: 6.6, cost: 0.00254, stated: "proximity, efficiency, environmental impact, and convenience", thinking: false, family: "Other", local: false },
+  { model: "deepseek-chat-v3-0324", provider: "DeepSeek", answer: "walk", correctReason: false, quality: 1, timeS: 18.8, cost: 0.00014167999999999999, stated: "50 meters is short distance; driving is inefficient; environmental impact; health benefits; parking convenience", thinking: false, family: "DeepSeek", local: false },
+  { model: "deepseek-chat-v3.1", provider: "DeepSeek", answer: "walk", correctReason: false, quality: 1, timeS: 5.3, cost: 0.00009975, stated: "50 meters is short distance, walking is more convenient, avoids parking hassle, more efficient, eco-friendly and healthy", thinking: false, family: "DeepSeek", local: false },
+  { model: "deepseek-r1-0528", provider: "DeepSeek", answer: "walk", correctReason: false, quality: 1, timeS: 6.7, cost: 0.0007665, stated: "50 meters is too short to drive; walking is faster and more efficient", thinking: true, family: "DeepSeek", local: false },
+  { model: "deepseek-r1", provider: "DeepSeek", answer: "walk", correctReason: false, quality: 1, timeS: 11.5, cost: 0.000849, stated: "Time efficiency, environmental impact, and convenience - argues walking is faster and more practical", thinking: true, family: "DeepSeek", local: false },
+  { model: "deepseek-v3.1-terminus", provider: "DeepSeek", answer: "walk", correctReason: false, quality: 1, timeS: 1.2, cost: 0.00004846, stated: "Walking is quicker and more convenient; avoids time starting car and parking", thinking: false, family: "DeepSeek", local: false },
+  { model: "deepseek-v3.2", provider: "DeepSeek", answer: "walk", correctReason: false, quality: 1, timeS: 5.1, cost: 0.00004005, stated: "Driving 50 meters is inefficient; walking is better for environment, saves fuel, and provides exercise", thinking: false, family: "DeepSeek", local: false },
+  { model: "deepseek-r1:32b", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 81.2, cost: 0, stated: "walking is quick, environmentally friendly, saves fuel, reduces emissions; driving is convenient if in a hurry", thinking: true, family: "DeepSeek", local: true },
+  { model: "deepseek-r1:latest", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 12.6, cost: 0, stated: "Walking is more energy-efficient and environmentally friendly; driving is faster but walking is viable if you have time", thinking: true, family: "DeepSeek", local: true },
+  { model: "devstral:latest", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 15.9, cost: 0, stated: "Distance is short, walking is faster than starting car, fuel efficiency, and health benefits", thinking: false, family: "Mistral", local: true },
+  { model: "gemini-2.0-flash", provider: "Google", answer: "walk", correctReason: false, quality: 1, timeS: 1, cost: 0.000021225, stated: "Walking is faster for short distances and saves gas/wear", thinking: false, family: "Gemini", local: false },
+  { model: "gemini-2.0-flash-lite", provider: "Google", answer: "walk", correctReason: false, quality: 1, timeS: 0.7, cost: 0.000012525, stated: "walking is more convenient for a short distance", thinking: false, family: "Gemini", local: false },
+  { model: "gemini-2.5-flash", provider: "Google", answer: "walk", correctReason: false, quality: 1, timeS: 4.6, cost: 0.0000396, stated: "50 meters is short distance, walking is more efficient and uses less fuel", thinking: false, family: "Gemini", local: false },
+  { model: "gemini-2.5-flash-lite", provider: "Google", answer: "walk", correctReason: false, quality: 1, timeS: 0.7, cost: 0.0000378, stated: "50 meters is a short distance; walking is environmentally friendly and cost-effective", thinking: false, family: "Gemini", local: false },
+  { model: "gemma3n:e4b", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 22.7, cost: 0, stated: "Walking is faster and more convenient than driving for a short 50-meter distance; driving would be overkill and waste time/fuel", thinking: false, family: "Gemini", local: true },
+  { model: "gemma-3-27b-it", provider: "Google", answer: "walk", correctReason: false, quality: 1, timeS: 3.7, cost: 0.00001085, stated: "50 meters is short distance; walking is quicker and easier; more environmentally friendly", thinking: false, family: "Gemini", local: false },
+  { model: "gemma-3n-e4b-it", provider: "Google", answer: "walk", correctReason: false, quality: 1, timeS: 1.6, cost: 0.00000356, stated: "Walking is faster and more convenient than driving for a short 50-meter distance", thinking: false, family: "Gemini", local: false },
+  { model: "gpt-oss:latest", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 24.8, cost: 0, stated: "Time savings, cost savings, convenience, and environmental benefits of walking vs driving", thinking: false, family: "GPT", local: true },
+  { model: "inflection-3-productivity", provider: "Inflection", answer: "walk", correctReason: false, quality: 1, timeS: 3.1, cost: 0.000845, stated: "Walking is quicker than driving for a short 50-meter distance; better for environment; saves fuel", thinking: false, family: "Other", local: false },
+  { model: "lfm-2.5-1.2b-thinking:free", provider: "Liquid", answer: "walk", correctReason: false, quality: 1, timeS: 3.9, cost: 0, stated: "50 meters is short enough that walking is efficient and less strenuous than driving", thinking: true, family: "Other", local: false },
+  { model: "llama-3.3-70b-instruct", provider: "Meta", answer: "walk", correctReason: false, quality: 1, timeS: 2.3, cost: 0.00003614, stated: "Walking is quicker and more convenient for a short 50-meter distance; driving is unnecessary and potentially unsafe", thinking: false, family: "Llama", local: false },
+  { model: "llama-4-maverick", provider: "Meta", answer: "walk", correctReason: false, quality: 1, timeS: 2.2, cost: 0.000056550000000000006, stated: "Short distance, environmentally friendly, saves parking hassle, fuel inefficiency", thinking: false, family: "Llama", local: false },
+  { model: "llama-4-scout", provider: "Meta", answer: "walk", correctReason: false, quality: 1, timeS: 2.1, cost: 0.000030460000000000003, stated: "Short distance, walking is quicker than driving and parking, good exercise", thinking: false, family: "Llama", local: false },
+  { model: "minimax-m2.5", provider: "MiniMax", answer: "walk", correctReason: false, quality: 1, timeS: 9.5, cost: 0.0004098, stated: "Walking is faster and more efficient for a short 50-meter distance; driving wastes fuel and effort", thinking: false, family: "MiniMax", local: false },
+  { model: "mistral-small:latest", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 15.2, cost: 0, stated: "Distance is short, walking is convenient, environmental impact", thinking: false, family: "Mistral", local: true },
+  { model: "devstral-medium", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 0.9, cost: 0.00006840000000000001, stated: "short distance, saves time and fuel", thinking: false, family: "Mistral", local: false },
+  { model: "devstral-small", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 0.7, cost: 0.0000176, stated: "Walking is more fuel-efficient and environmentally friendly than driving 50 meters", thinking: false, family: "Mistral", local: false },
+  { model: "mistral-large-2411", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 1.7, cost: 0.00047, stated: "50 meters is short distance; walking is quicker and more efficient than driving; provides exercise", thinking: false, family: "Mistral", local: false },
+  { model: "mistral-large-2512", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 52.5, cost: 0.000166, stated: "Short distance makes driving unnecessary; walking is quicker and better for environment", thinking: false, family: "Mistral", local: false },
+  { model: "mistral-medium-3", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 2.5, cost: 0.0003404, stated: "Short distance, environmental impact, convenience, and safety", thinking: false, family: "Mistral", local: false },
+  { model: "mistral-medium-3.1", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 3.6, cost: 0.0002944, stated: "Distance is short, efficiency of walking vs driving startup time, environmental impact, safety, and convenience of self-service", thinking: false, family: "Mistral", local: false },
+  { model: "mistral-small-3.1-24b-instruct", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 5.4, cost: 0.00009093000000000001, stated: "Distance is short, walking is convenient, saves time, environmentally friendly, avoids parking hassles", thinking: false, family: "Mistral", local: false },
+  { model: "mistral-small-3.2-24b-instruct", provider: "Mistral", answer: "walk", correctReason: false, quality: 1, timeS: 1.4, cost: 0.000011459999999999999, stated: "short distance, environmental friendliness, exercise", thinking: false, family: "Mistral", local: false },
+  { model: "kimi-k2-0905", provider: "Moonshot", answer: "walk", correctReason: false, quality: 1, timeS: 1.1, cost: 0.0001056, stated: "50m is a short distance; driving wastes time, fuel, and causes unnecessary wear and emissions", thinking: false, family: "Kimi", local: false },
+  { model: "llama-3.3-nemotron-super-49b-v1.5", provider: "NVIDIA", answer: "walk", correctReason: false, quality: 1, timeS: 6.1, cost: 0.00021439999999999995, stated: "50 meters is short distance, walking is more efficient, better for health and environment, avoids parking hassle", thinking: false, family: "Llama", local: false },
+  { model: "nemotron-3-nano-30b-a3b", provider: "NVIDIA", answer: "walk", correctReason: false, quality: 1, timeS: 2, cost: 0.00004709999999999999, stated: "Distance is short (1-2 minutes walk), no parking hassle, saves fuel, faster overall", thinking: false, family: "Llama", local: false },
+  { model: "gpt-4.1-mini", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 2.1, cost: 0.0001276, stated: "Walking is more practical, environmentally friendly, saves fuel, reduces emissions, and is good for health", thinking: false, family: "GPT", local: false },
+  { model: "gpt-4.1-nano", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 2, cost: 0.000030299999999999998, stated: "Walking is quicker, more convenient, and environmentally friendly for a short distance; driving takes longer due to engine start and parking", thinking: false, family: "GPT", local: false },
+  { model: "gpt-4.1", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 2.9, cost: 0.000542, stated: "Short distance, saves fuel, reduces emissions, avoids hassle", thinking: false, family: "GPT", local: false },
+  { model: "gpt-4o-mini", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 1.7, cost: 0.000043650000000000004, stated: "walking is more environmentally friendly, practical, avoids unnecessary driving, reduces traffic and pollution, provides exercise", thinking: false, family: "GPT", local: false },
+  { model: "gpt-4o", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 1.7, cost: 0.0006375, stated: "walking is more convenient and environmentally friendly; saves fuel and reduces emissions", thinking: false, family: "GPT", local: false },
+  { model: "gpt-5.1", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 7.1, cost: 0.0016725, stated: "50 meters is too close to drive; walking is more efficient, safer, and better for the environment", thinking: false, family: "GPT", local: false },
+  { model: "gpt-5.2", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 3.3, cost: 0.0015855, stated: "Driving is slower, uses fuel, adds wear/emissions; walking is more efficient for short distances", thinking: false, family: "GPT", local: false },
+  { model: "gpt-5.3-codex", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 2.4, cost: 0.0012355, stated: "50 meters is too short a distance; walking is faster, easier, and better for fuel/environment", thinking: false, family: "GPT", local: false },
+  { model: "gpt-oss-120b", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 11, cost: 0.000077772, stated: "Environmental and health benefits; negligible time difference; avoiding parking hassle", thinking: false, family: "GPT", local: false },
+  { model: "gpt-oss-20b", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 2, cost: 0.000034550000000000006, stated: "50m is a short walk; driving takes longer due to traffic/parking; walking is more convenient and efficient", thinking: false, family: "GPT", local: false },
+  { model: "o3-mini-high", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 6.3, cost: 0.0050842, stated: "Walking saves fuel, reduces emissions, and gives exercise; driving only if weather is bad or path is unsafe", thinking: true, family: "GPT", local: false },
+  { model: "o4-mini-high", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 8.8, cost: 0.001925, stated: "Walking is faster, cheaper, and more environmentally friendly than driving a short distance", thinking: true, family: "GPT", local: false },
+  { model: "o4-mini", provider: "OpenAI", answer: "walk", correctReason: false, quality: 1, timeS: 8.1, cost: 0.0017314000000000001, stated: "Walking is faster (36 seconds), saves fuel and wear, reduces emissions, and is more convenient for carrying supplies", thinking: true, family: "GPT", local: false },
+  { model: "sonar-reasoning-pro", provider: "Perplexity", answer: "walk", correctReason: false, quality: 1, timeS: 8.7, cost: 0.004874, stated: "Environmental impact, efficiency, and health benefits of walking for a short 50-meter distance", thinking: true, family: "Other", local: false },
+  { model: "phi4:latest", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 9.1, cost: 0, stated: "Environmental impact, exercise, and convenience considerations; suggests walking is practical for a short 50-meter distance", thinking: false, family: "Other", local: true },
+  { model: "qwen-2.5-72b-instruct", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 15.1, cost: 0.00004107, stated: "Walking is quick, environmentally friendly, gives exercise, and driving a short distance is unnecessary and time-consuming", thinking: false, family: "Qwen", local: false },
+  { model: "qwen-plus-2025-07-28:thinking", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 23.6, cost: 0.0007276, stated: "Distance is short, walking is faster and more efficient, driving wastes fuel and creates pollution", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3-235b-a22b", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 13.4, cost: 0.0014100449999999997, stated: "50 meters is a short walk, driving is unnecessary, walking avoids hassle and is more efficient and eco-friendly", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3-235b-a22b-thinking-2507", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 26.9, cost: 0, stated: "50 meters is too short to drive; walking is faster and more convenient; driving causes unnecessary emissions", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3-coder-next", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 3.2, cost: 0.00010173, stated: "50 meters is a short distance; walking is faster and more convenient than driving; avoids fuel use and parking hassle", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3-coder", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 2.3, cost: 0.00008938, stated: "Walking saves fuel, is better for environment, provides exercise, and driving short distance is wasteful", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3-max", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 3.2, cost: 0.0004548, stated: "Walking is faster, avoids hassle of starting car, saves fuel and is environmentally friendly", thinking: false, family: "Qwen", local: false },
+  { model: "qwen3-max-thinking", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 3.8, cost: 0.0005268, stated: "Short distance, saves fuel, avoids parking hassle, environmentally friendly, cost-effective", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3-vl-30b-a3b-thinking", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 7.6, cost: 0, stated: "50 meters is too short to drive; walking is faster, more efficient, and saves fuel", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3-vl-8b-thinking", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 5.2, cost: 0.000949962, stated: "Walking is more time-efficient and convenient than driving for a 50-meter distance", thinking: true, family: "Qwen", local: false },
+  { model: "qwq-32b", provider: "Qwen", answer: "walk", correctReason: false, quality: 1, timeS: 15.2, cost: 0.00017294999999999998, stated: "50 meters is a short distance; walking is faster, more convenient, fuel-efficient, and environmentally friendly", thinking: true, family: "Qwen", local: false },
+  { model: "qwen3:30b-a3b", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 22.9, cost: 0, stated: "50 meters is too short to drive; walking is faster, saves fuel, and is more efficient", thinking: false, family: "Qwen", local: true },
+  { model: "qwen3:32b", provider: "Ollama", answer: "walk", correctReason: false, quality: 1, timeS: 9.2, cost: 0, stated: "50 meters is very short; walking is faster, avoids hassle, saves fuel, more convenient and environmentally friendly", thinking: false, family: "Qwen", local: true },
+  { model: "step-3.5-flash", provider: "StepFun", answer: "walk", correctReason: false, quality: 1, timeS: 9.7, cost: 0.0001024, stated: "50 meters is short distance; driving wastes fuel and causes wear; walking is healthier and more environmentally friendly", thinking: false, family: "Other", local: false },
+  { model: "palmyra-x5", provider: "Writer", answer: "walk", correctReason: false, quality: 1, timeS: 1.7, cost: 0.000525, stated: "50 meters is too short to drive; walking is more efficient, eco-friendly, and healthier", thinking: false, family: "Other", local: false },
+  { model: "grok-3-beta", provider: "xAI", answer: "walk", correctReason: false, quality: 1, timeS: 2.3, cost: 0.0019890000000000003, stated: "Short distance, convenience, environmental friendliness, assumes car is already at wash location", thinking: false, family: "Grok", local: false },
+  { model: "grok-3", provider: "xAI", answer: "walk", correctReason: false, quality: 1, timeS: 3, cost: 0.001584, stated: "Short distance, convenience, environmental friendliness, exercise; assumes car can be driven back after wash", thinking: false, family: "Grok", local: false },
+  { model: "glm-4.5", provider: "Zhipu", answer: "walk", correctReason: false, quality: 1, timeS: 2.5, cost: 0.00018380000000000002, stated: "Driving would make the car dirty again from the short drive, so walking is more practical and environmentally friendly", thinking: false, family: "GLM", local: false },
+  { model: "glm-4.6", provider: "Zhipu", answer: "walk", correctReason: false, quality: 1, timeS: 17.8, cost: 0.00191475, stated: "50 meters is too short a distance; driving causes unnecessary wear and fuel consumption; walking is more efficient and environmentally friendly", thinking: false, family: "GLM", local: false },
+  { model: "glm-4.7-flash", provider: "Zhipu", answer: "walk", correctReason: false, quality: 1, timeS: 11.7, cost: 0.00020985999999999997, stated: "50 meters is negligible distance; driving wastes fuel and pollutes; freshly washed car risks getting dirty again", thinking: false, family: "GLM", local: false },
+  { model: "maestro-reasoning", provider: "Arcee", answer: "unclear", correctReason: false, quality: 1, timeS: 0.9, cost: 0, stated: "N/A", thinking: true, family: "Other", local: false },
+  { model: "kimi-k2-thinking", provider: "Moonshot", answer: "unclear", correctReason: false, quality: 1, timeS: 0.7, cost: 0.00003854, stated: "N/A", thinking: true, family: "Kimi", local: false },
+  { model: "gpt-5.2-pro", provider: "OpenAI", answer: "unclear", correctReason: false, quality: 1, timeS: 0.6, cost: 0, stated: "N/A", thinking: false, family: "GPT", local: false },
+  { model: "o1-pro", provider: "OpenAI", answer: "unclear", correctReason: false, quality: 1, timeS: 0.4, cost: 0, stated: "N/A", thinking: true, family: "GPT", local: false }
+];
+
+
+// Derive categories
+DATA.forEach(d => {
+  if (d.answer === 'drive' && d.correctReason) d.category = 'correct';
+  else if (d.answer === 'drive' && !d.correctReason) d.category = 'lucky';
+  else if (d.answer === 'walk') d.category = 'fail';
+  else d.category = 'other';
+});
+
+// TABLE
+const tbody = document.getElementById('tableBody');
+let currentFilter = 'all';
+let sortCol = 'quality';
+let sortAsc = false;
+
+function renderTable() {
+  let filtered = currentFilter === 'all' ? DATA :
+    currentFilter === 'local' ? DATA.filter(d => d.local) :
+    DATA.filter(d => d.category === currentFilter);
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  if (search) filtered = filtered.filter(d => d.model.toLowerCase().includes(search) || d.provider.toLowerCase().includes(search) || d.family.toLowerCase().includes(search));
+
+  filtered.sort((a, b) => {
+    let va = a[sortCol], vb = b[sortCol];
+    if (typeof va === 'string') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+    if (va < vb) return sortAsc ? -1 : 1;
+    if (va > vb) return sortAsc ? 1 : -1;
+    return 0;
+  });
+
+  tbody.innerHTML = filtered.map(d => {
+    const catClass = `cat-${d.category}`;
+    const badge = `badge-${d.answer}`;
+    const reasonStr = d.correctReason ? '&#10003;' : '&#10007;';
+    const reasonColor = d.correctReason ? 'color:var(--green)' : 'color:var(--red)';
+    const qualityHtml = Array.from({length:5}, (_,i) => {
+      const cls = i < d.quality ? (d.quality >= 4 ? 'filled' : d.quality >= 2 ? 'filled-low' : 'filled-fail') : '';
+      return `<span class="${cls}"></span>`;
+    }).join('');
+    const costStr = d.cost > 0 ? `$${d.cost.toFixed(6)}` : 'free';
+    const timeStr = d.timeS > 0 ? `${d.timeS.toFixed(1)}s` : '-';
+    const thinkBadge = d.thinking ? '<span class="thinking-badge">THINKING</span>' : '';
+    const localBadge = d.local ? '<span class="local-badge">LOCAL</span>' : '';
+
+    return `<tr class="${catClass}">
+      <td>${d.model}${thinkBadge}${localBadge}</td>
+      <td>${d.provider}</td>
+      <td><span class="badge ${badge}">${d.answer}</span></td>
+      <td style="${reasonColor};font-weight:600;text-align:center">${reasonStr}</td>
+      <td><div class="quality-bar">${qualityHtml}</div></td>
+      <td class="time-cell">${timeStr}</td>
+      <td class="cost-cell">${costStr}</td>
+      <td class="reason-cell" title="${d.stated}">${d.stated}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Sort
+document.querySelectorAll('th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    const colMap = { model:'model', provider:'provider', answer:'answer', reason:'correctReason', quality:'quality', time:'timeS', cost:'cost', stated:'stated' };
+    const mapped = colMap[col];
+    if (sortCol === mapped) sortAsc = !sortAsc;
+    else { sortCol = mapped; sortAsc = col === 'model' || col === 'provider'; }
+    document.querySelectorAll('th').forEach(t => t.classList.remove('sorted'));
+    th.classList.add('sorted');
+    th.querySelector('.sort-arrow').textContent = sortAsc ? '\u25B2' : '\u25BC';
+    renderTable();
+  });
+});
+
+// Filters
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderTable();
+  });
+});
+
+document.getElementById('searchInput').addEventListener('input', renderTable);
+renderTable();
+
+// CHARTS
+const COLORS = { correct: '#1a7a4c', lucky: '#b8860b', fail: '#c0392b', other: '#95a5a6' };
+
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#6b6358';
+
+// Family Chart
+const families = [...new Set(DATA.map(d => d.family))].sort();
+const familyCounts = families.map(f => {
+  const models = DATA.filter(d => d.family === f);
+  return {
+    family: f,
+    correct: models.filter(d => d.category === 'correct').length,
+    lucky: models.filter(d => d.category === 'lucky').length,
+    fail: models.filter(d => d.category === 'fail').length,
+    other: models.filter(d => d.category === 'other').length,
+    total: models.length
+  };
+}).sort((a,b) => (b.correct/b.total) - (a.correct/a.total));
+
+new Chart(document.getElementById('familyChart'), {
+  type: 'bar',
+  data: {
+    labels: familyCounts.map(f => `${f.family} (${f.total})`),
+    datasets: [
+      { label: 'Correct', data: familyCounts.map(f => f.correct), backgroundColor: COLORS.correct },
+      { label: 'Lucky', data: familyCounts.map(f => f.lucky), backgroundColor: COLORS.lucky },
+      { label: 'Failed', data: familyCounts.map(f => f.fail), backgroundColor: COLORS.fail },
+      { label: 'Other', data: familyCounts.map(f => f.other), backgroundColor: COLORS.other },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: 'Number of Models' } } },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+// Cost Chart
+const costData = DATA.filter(d => d.cost > 0);
+new Chart(document.getElementById('costChart'), {
+  type: 'scatter',
+  data: {
+    datasets: [
+      { label: 'Correct', data: costData.filter(d=>d.category==='correct').map(d=>({x:d.cost*1000,y:d.quality,label:d.model})), backgroundColor: COLORS.correct, pointRadius: 6 },
+      { label: 'Lucky', data: costData.filter(d=>d.category==='lucky').map(d=>({x:d.cost*1000,y:d.quality,label:d.model})), backgroundColor: COLORS.lucky, pointRadius: 6 },
+      { label: 'Failed', data: costData.filter(d=>d.category==='fail').map(d=>({x:d.cost*1000,y:d.quality,label:d.model})), backgroundColor: COLORS.fail, pointRadius: 5, pointStyle: 'cross' },
+      { label: 'Other', data: costData.filter(d=>d.category==='other').map(d=>({x:d.cost*1000,y:d.quality,label:d.model})), backgroundColor: COLORS.other, pointRadius: 5, pointStyle: 'triangle' },
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { type: 'logarithmic', title: { display: true, text: 'Cost per Query (millicents)' },
+        ticks: { callback: v => `$${(v/1000).toFixed(4)}` }
+      },
+      y: { title: { display: true, text: 'Reasoning Quality' }, min: 0, max: 6 }
+    },
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: { callbacks: { label: ctx => `${ctx.raw.label}: $${(ctx.raw.x/1000).toFixed(6)}` } }
+    }
+  }
+});
+
+// Time Chart
+const categories = ['correct','lucky','fail','other'];
+const catLabels = ['Correct','Lucky','Failed','Other'];
+const catColors = [COLORS.correct, COLORS.lucky, COLORS.fail, COLORS.other];
+
+new Chart(document.getElementById('timeChart'), {
+  type: 'bar',
+  data: {
+    labels: catLabels,
+    datasets: [{
+      label: 'Avg Response Time (s)',
+      data: categories.map(cat => {
+        const times = DATA.filter(d => d.category === cat && d.timeS > 0).map(d => d.timeS);
+        return times.length ? (times.reduce((a,b)=>a+b,0)/times.length).toFixed(1) : 0;
+      }),
+      backgroundColor: catColors.map(c => c + 'cc'),
+      borderColor: catColors,
+      borderWidth: 1
+    }, {
+      label: 'Median Response Time (s)',
+      data: categories.map(cat => {
+        const times = DATA.filter(d => d.category === cat && d.timeS > 0).map(d => d.timeS).sort((a,b)=>a-b);
+        if (!times.length) return 0;
+        const mid = Math.floor(times.length/2);
+        return times.length % 2 ? times[mid].toFixed(1) : ((times[mid-1]+times[mid])/2).toFixed(1);
+      }),
+      backgroundColor: catColors.map(c => c + '55'),
+      borderColor: catColors,
+      borderWidth: 1,
+      borderDash: [3, 3]
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: { y: { title: { display: true, text: 'Seconds' } } },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+
+// Thinking Chart
+const thinkingModels = DATA.filter(d => d.thinking);
+const nonThinkingCorrectRate = DATA.filter(d => !d.thinking && d.category === 'correct').length / DATA.filter(d => !d.thinking).length;
+const thinkingCorrectRate = thinkingModels.filter(d => d.category === 'correct').length / thinkingModels.length;
+
+new Chart(document.getElementById('thinkingChart'), {
+  type: 'bar',
+  data: {
+    labels: thinkingModels.map(d => d.model.replace(/-thinking/g,'').replace(':thinking','').replace('qwen3-','q3-').replace('qwen-plus','q-plus')),
+    datasets: [{
+      label: 'Reasoning Quality',
+      data: thinkingModels.map(d => d.quality),
+      backgroundColor: thinkingModels.map(d => d.category === 'correct' ? COLORS.correct : d.category === 'lucky' ? COLORS.lucky : COLORS.fail),
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: false,
+    scales: { x: { min: 0, max: 5, title: { display: true, text: 'Quality Score' } } },
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: `Thinking models: ${(thinkingCorrectRate*100).toFixed(0)}% correct vs ${(nonThinkingCorrectRate*100).toFixed(0)}% for standard models`, font: { size: 11, weight: 'normal' }, color: '#6b6358' }
+    }
+  }
+});
+
+// Local vs Cloud Chart
+const cloudModels = DATA.filter(d => !d.local);
+const localModels = DATA.filter(d => d.local);
+const cloudCorrect = cloudModels.filter(d => d.category === 'correct').length;
+const localCorrect = localModels.filter(d => d.category === 'correct').length;
+
+new Chart(document.getElementById('localChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Cloud Models', 'Local (Ollama)'],
+    datasets: [
+      {
+        label: 'Correct',
+        data: [cloudCorrect, localCorrect],
+        backgroundColor: COLORS.correct
+      },
+      {
+        label: 'Lucky',
+        data: [
+          cloudModels.filter(d => d.category === 'lucky').length,
+          localModels.filter(d => d.category === 'lucky').length
+        ],
+        backgroundColor: COLORS.lucky
+      },
+      {
+        label: 'Failed',
+        data: [
+          cloudModels.filter(d => d.category === 'fail').length,
+          localModels.filter(d => d.category === 'fail').length
+        ],
+        backgroundColor: COLORS.fail
+      },
+      {
+        label: 'Other',
+        data: [
+          cloudModels.filter(d => d.category === 'other').length,
+          localModels.filter(d => d.category === 'other').length
+        ],
+        backgroundColor: COLORS.other
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: { x: { stacked: true }, y: { stacked: true, title: { display: true, text: 'Number of Models' } } },
+    plugins: {
+      legend: { position: 'bottom' },
+      title: { display: true, text: `Cloud: ${(cloudCorrect/cloudModels.length*100).toFixed(0)}% pass (${cloudCorrect}/${cloudModels.length}) | Local: ${(localCorrect/localModels.length*100).toFixed(0)}% pass (${localCorrect}/${localModels.length})`, font: { size: 11, weight: 'normal' }, color: '#6b6358' }
+    }
+  }
+});
+</script>
+
+</BaseLayout>

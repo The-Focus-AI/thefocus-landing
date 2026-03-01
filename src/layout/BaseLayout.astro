@@ -16,6 +16,8 @@ import { SEO } from "astro-seo";
 const pageTitle = Astro.props.pageTitle || "the focus.ai";
 const bigHeader = Astro.props.bigHeader || false;
 const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
+const fullWidth = Astro.props.fullWidth || false;
+const bodyClass = Astro.props.bodyClass;
 
 const description = Astro.props.description || "Come a visit us";
 const { site } = Astro;
@@ -85,7 +87,7 @@ let category = Astro.props.category || "home";
     <!-- Other head elements -->
     <slot name="head" />
   </head>
-  <body class={`text-ink overflow-x-hidden ${category === 'studio' ? 'bg-[#e8e6df]' : 'bg-paper'}`}>
+  <body class={`text-ink overflow-x-hidden ${bodyClass || (category === 'studio' ? 'bg-[#e8e6df]' : 'bg-paper')}`}>
     <!-- Report Banner - hidden on mobile for cleaner first impression -->
     <div class="hidden sm:block bg-rand-blue text-white">
       <a href="/posts/2025-11-22-ai-engineering-summit-takeaways" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
@@ -199,12 +201,16 @@ let category = Astro.props.category || "home";
 
     <main class="w-full">
 
-      <section class:list={[
+      {fullWidth ? (
+        <slot/>
+      ) : (
+        <section class:list={[
           "max-w-screen-xl mx-auto py-6 px-5 md:px-8",
           bigHeader ? "md:py-12" : ""
         ]}>
-        <slot/>
-      </section>
+          <slot/>
+        </section>
+      )}
 
       <EmailSignup />
 

@@ -1,0 +1,443 @@
+/* Car Wash Test Report — Scoped Styles */
+/* All selectors scoped under .report-scope to avoid conflicts with site Tailwind */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.report-scope {
+  --bg: #f8f6f1;
+  --bg-alt: #efece5;
+  --ink: #1a1612;
+  --ink-light: #6b6358;
+  --ink-faint: #a39b8e;
+  --accent: #c0392b;
+  --green: #1a7a4c;
+  --green-bg: #e8f5ee;
+  --yellow: #b8860b;
+  --yellow-bg: #fdf6e3;
+  --red: #c0392b;
+  --red-bg: #fce8e6;
+  --gray: #7f8c8d;
+  --gray-bg: #ecf0f1;
+  --border: #d5cfc5;
+  --paper: #ffffff;
+  --local: #5b2c6f;
+  --local-bg: #f4ecf7;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+.report-scope * { margin: 0; padding: 0; box-sizing: border-box; }
+
+.report-scope {
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.report-scope .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* -- Hero -- */
+.report-scope .hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.report-scope .hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(192,57,43,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.report-scope .hero-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.report-scope .hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.report-scope .hero h1 em { font-style: italic; color: var(--accent); }
+
+.report-scope .hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--ink-light);
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+.report-scope .hero-meta {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-family: var(--mono);
+}
+
+/* -- Question Block -- */
+.report-scope .question-block {
+  margin: 3rem 0;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 2rem 2.5rem;
+}
+
+.report-scope .question-block .q-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.75rem;
+}
+
+.report-scope .question-block blockquote {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.report-scope .question-block .answer {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--ink-light);
+}
+
+.report-scope .question-block .answer strong { color: var(--green); font-weight: 600; }
+
+/* -- Stats Cards -- */
+.report-scope .stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+.report-scope .stat-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.report-scope .stat-card .stat-num {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.report-scope .stat-card .stat-label {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.report-scope .stat-card.correct .stat-num { color: var(--green); }
+.report-scope .stat-card.lucky .stat-num { color: var(--yellow); }
+.report-scope .stat-card.fail .stat-num { color: var(--red); }
+.report-scope .stat-card.other .stat-num { color: var(--gray); }
+
+/* -- Sections -- */
+.report-scope section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-scope section:last-child { border-bottom: none; }
+
+.report-scope .section-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.report-scope h2 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.report-scope h3 {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem;
+  color: var(--ink);
+}
+
+.report-scope p { margin-bottom: 1rem; color: var(--ink-light); }
+.report-scope p.body-text { max-width: 720px; }
+
+/* -- Comparison Table -- */
+.report-scope .comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.report-scope .comparison-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.report-scope .comparison-card h4 {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.report-scope .comparison-card .comp-stat {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-scope .comparison-card ul { list-style: none; padding: 0; }
+
+.report-scope .comparison-card li {
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  border-bottom: 1px solid var(--bg-alt);
+}
+
+.report-scope .comparison-card li:last-child { border: none; }
+
+/* -- Charts -- */
+.report-scope .chart-container {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.report-scope .chart-container h3 { margin-top: 0; font-size: 1rem; margin-bottom: 1.5rem; }
+.report-scope .chart-wrap { position: relative; height: 400px; }
+
+.report-scope .chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.report-scope .chart-grid .chart-container { margin: 0; }
+.report-scope .chart-grid .chart-wrap { height: 320px; }
+
+.report-scope .chart-caption {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* -- Results Table -- */
+.report-scope .table-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.report-scope .table-controls input {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+  flex: 1;
+  min-width: 200px;
+}
+
+.report-scope .table-controls input:focus { outline: none; border-color: var(--accent); }
+
+.report-scope .filter-btn {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink-light);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+
+.report-scope .filter-btn:hover, .report-scope .filter-btn.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.report-scope .results-table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+}
+
+.report-scope table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.report-scope thead { position: sticky; top: 0; z-index: 2; }
+
+.report-scope th {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.7rem 0.9rem;
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.report-scope th:hover { background: #2c2418; }
+.report-scope th .sort-arrow { margin-left: 0.3rem; opacity: 0.4; font-size: 0.65rem; }
+.report-scope th.sorted .sort-arrow { opacity: 1; }
+
+.report-scope td {
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--bg-alt);
+  white-space: nowrap;
+}
+
+.report-scope tr:hover td { background: var(--bg-alt); }
+.report-scope tr.cat-correct td:first-child { border-left: 3px solid var(--green); }
+.report-scope tr.cat-lucky td:first-child { border-left: 3px solid var(--yellow); }
+.report-scope tr.cat-fail td:first-child { border-left: 3px solid var(--red); }
+.report-scope tr.cat-other td:first-child { border-left: 3px solid var(--gray); }
+
+.report-scope .badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.report-scope .badge-drive { background: var(--green-bg); color: var(--green); }
+.report-scope .badge-walk { background: var(--red-bg); color: var(--red); }
+.report-scope .badge-both { background: var(--yellow-bg); color: var(--yellow); }
+.report-scope .badge-unclear { background: var(--gray-bg); color: var(--gray); }
+
+.report-scope .quality-bar { display: inline-flex; gap: 2px; }
+
+.report-scope .quality-bar span {
+  width: 10px; height: 10px; border-radius: 1px; background: var(--bg-alt);
+}
+
+.report-scope .quality-bar span.filled { background: var(--green); }
+.report-scope .quality-bar span.filled-low { background: var(--yellow); }
+.report-scope .quality-bar span.filled-fail { background: var(--red); }
+
+.report-scope .cost-cell { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); }
+.report-scope .time-cell { font-family: var(--mono); font-size: 0.78rem; }
+.report-scope .reason-cell { max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-light); font-size: 0.82rem; }
+
+.report-scope .thinking-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  padding: 0.1rem 0.35rem;
+  background: #ede7f6;
+  color: #6a1b9a;
+  border-radius: 2px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+.report-scope .local-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  padding: 0.1rem 0.35rem;
+  background: var(--local-bg);
+  color: var(--local);
+  border-radius: 2px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+/* -- Findings -- */
+.report-scope .finding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.report-scope .finding-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.report-scope .finding-card .f-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.report-scope .finding-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+.report-scope .finding-card p { font-size: 0.85rem; margin: 0; }
+
+/* -- Footer -- */
+.report-scope .report-footer {
+  padding: 3rem 0;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+}
+
+.report-scope .report-footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 768px) {
+  .report-scope .comparison-grid, .report-scope .chart-grid, .report-scope .finding-grid { grid-template-columns: 1fr; }
+  .report-scope .hero { padding: 4rem 0 3rem; }
+  .report-scope .hero-meta { flex-direction: column; gap: 0.5rem; }
+}

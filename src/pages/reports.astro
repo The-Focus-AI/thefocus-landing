@@ -7,12 +7,23 @@ const images = await import.meta.glob<{ default: import('astro').ImageMetadata }
 const codingAgentImg = images['/src/content/assets/cards/weekend-coding-agent.png'];
 const summitImg = images['/src/content/assets/cards/ai-code-summit-2025.png'];
 const juneReportImg = images['/src/content/assets/cards/capture_the_flag_wide.png'];
+const carWashImg = images['/src/content/assets/cards/car-wash-test.png'];
 ---
 <BaseLayout pageTitle="Reports" description="In-depth reports and analysis from Focus.ai" category="studio">
   <div class="space-y-12">
     <h2 class="text-4xl sm:text-7xl font-bold font-fraunces mb-8">
       Reports & Deep Dives
     </h2>
+
+    <!-- Car Wash Test -->
+    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
+      {carWashImg && <Image src={carWashImg()} alt="The Car Wash Test" class="w-full max-w-md rounded border" />}
+      <div class="flex-1">
+        <h3 class="text-2xl font-bold mb-2">The Car Wash Test: Do LLMs Have Common Sense?</h3>
+        <p class="mb-4 text-lg">We tested 131 AI models with one simple question: "Should I walk or drive to the car wash?" Only 24% figured out you need to bring your car. Interactive report with charts and full model comparison.</p>
+        <a href="/reports/car-wash-test/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
+      </div>
+    </div>
 
     <!-- Weekend Coding Agent -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
