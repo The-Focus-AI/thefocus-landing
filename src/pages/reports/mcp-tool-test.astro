@@ -1,0 +1,685 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import '../../styles/reports/mcp-tool-test.css';
+---
+<BaseLayout
+  pageTitle="Can LLMs Use Real-World Tools? — MCP Tool Eval"
+  description="We gave 39 models access to a Rivian owner's real driving and charging data via MCP tools and asked them to summarize 10 days of activity. Most can call tools. Far fewer call the right tools."
+  category="studio"
+  fullWidth
+  bodyClass="bg-[#f8f6f1]"
+>
+
+<div class="report-scope">
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">Umwelten MCP Evaluation &middot; Run 004</div>
+    <h1>Can LLMs use <em>real-world tools</em><br>to tell a story?</h1>
+    <p class="hero-subtitle">
+      We gave 39 models access to a Rivian owner's real driving and charging data via
+      MCP tools and asked them to summarize 10 days of activity. Most models can call
+      tools. Far fewer call the <em>right</em> tools with the <em>right</em> parameters
+      and weave the results into an engaging narrative.
+    </p>
+    <div class="hero-meta">
+      <span>39 models</span>
+      <span>8 providers</span>
+      <span>$0.96 total</span>
+      <span>Feb 27 &ndash; Mar 8, 2026</span>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card s-green"><div class="stat-num">17</div><div class="stat-label">Perfect 15/15</div></div>
+    <div class="stat-card s-accent"><div class="stat-num">8.6s</div><div class="stat-label">Fastest Perfect</div></div>
+    <div class="stat-card s-yellow"><div class="stat-num">$0.001</div><div class="stat-label">Cheapest Perfect</div></div>
+    <div class="stat-card s-red"><div class="stat-num">8</div><div class="stat-label">Failed / Errored</div></div>
+  </div>
+
+  <!-- The Test -->
+  <section>
+    <div class="section-num">01 &mdash; The Test</div>
+    <h2>What are we measuring?</h2>
+    <p class="body-text">
+      This evaluation tests something most benchmarks skip: <strong>can a model use external tools
+      to answer a question that requires real data?</strong> Not synthetic function calls. Not mock APIs.
+      Real tools, connected to a real Rivian R1S via the TezLab MCP server.
+    </p>
+    <p class="body-text">
+      Each model gets the same prompt and the same 20+ MCP tools (get_drives, get_charges,
+      get_battery_health, etc.). It must figure out which to call, pass the right date parameters,
+      and synthesize raw JSON into a narrative a human would want to read.
+    </p>
+    <div class="question-block">
+      <div class="q-label">The Prompt</div>
+      <blockquote>
+        Look through my real data and summarize the 10 days of the Rivian's activity between
+        February 27 and March 8, 2026. If there were any notable trips, create a narrative of
+        the time frame. Today is Mar 8 2026 and make sure that you include the full 10 days,
+        so if you don't have any drives and chargers in February it's obviously false.
+      </blockquote>
+    </div>
+    <p class="body-text">
+      The last sentence is a trap. Models that call <code>get_drives</code> without a
+      <code>start_date</code> get only recent data (biased toward March), then confidently
+      write a summary that misses the first days. The judge catches this.
+    </p>
+  </section>
+
+  <!-- Scoring -->
+  <section>
+    <div class="section-num">02 &mdash; Scoring</div>
+    <h2>How we score</h2>
+    <p class="body-text">
+      Two independent axes: did the model <em>call the right tools</em> (deterministic),
+      and did it <em>write a good summary</em> (judged by Claude Haiku 4.5). Total: 0&ndash;15.
+    </p>
+    <div class="scoring-grid">
+      <div class="scoring-card">
+        <h4>Tool Score (0&ndash;5, deterministic)</h4>
+        <ul>
+          <li>Called <code>get_drives</code></li>
+          <li>Called <code>get_charges</code></li>
+          <li><code>get_drives</code> included <code>start_date</code></li>
+          <li><code>get_charges</code> included <code>start_date</code></li>
+          <li>At least one start_date &le; Feb 27</li>
+        </ul>
+      </div>
+      <div class="scoring-card">
+        <h4>LLM Judge Score (0&ndash;10)</h4>
+        <ul>
+          <li>Covers full Feb 27 &ndash; Mar 8 range</li>
+          <li>Contains a trip narrative (not just bullets)</li>
+          <li>Narrative quality (1&ndash;5)</li>
+          <li>Factual grounding from real data (1&ndash;5)</li>
+          <li>Combined into overall score (1&ndash;10)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Findings -->
+  <section>
+    <div class="section-num">03 &mdash; Key Findings</div>
+    <h2>What we learned</h2>
+    <div class="finding-grid">
+      <div class="finding-card"><div class="f-icon">&#9889;</div><h4>Speed doesn't sacrifice quality</h4><p><strong>Mercury-2</strong> delivered a perfect 15/15 in 8.6s at $0.006.</p></div>
+      <div class="finding-card"><div class="f-icon">&#128176;</div><h4>Open-source punches above cost</h4><p><strong>GPT-OSS-120B</strong> scored 15/15 for $0.001 &mdash; 14,303 pts/$.</p></div>
+      <div class="finding-card"><div class="f-icon">&#127968;</div><h4>Local models hold their own</h4><p><strong>GLM-4.7-flash</strong> on Ollama scored 14/15, zero API cost.</p></div>
+      <div class="finding-card"><div class="f-icon">&#128165;</div><h4>The date trap works</h4><p>Models skipping <code>start_date</code> get truncated data and write wrong summaries.</p></div>
+      <div class="finding-card"><div class="f-icon">&#128683;</div><h4>Tool calling isn't universal</h4><p>8 models failed outright &mdash; DeepSeek R1, Phi-4, Gemma 3N lack tool support.</p></div>
+      <div class="finding-card"><div class="f-icon">&#128171;</div><h4>Qwen 3.5 dominates value</h4><p>All four Qwen 3.5 variants scored 15/15. Flash: $0.003 in 22s.</p></div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section>
+    <div class="section-num">04 &mdash; Results</div>
+    <h2>Full rankings</h2>
+    <p class="body-text">Click any row to see the full response, tool-calling thread, and judge verdict.</p>
+    <div class="table-controls">
+      <input type="text" id="search" placeholder="Search models...">
+      <button class="filter-btn active" data-f="all">All</button>
+      <button class="filter-btn" data-f="perfect">Perfect</button>
+      <button class="filter-btn" data-f="cloud">Cloud</button>
+      <button class="filter-btn" data-f="local">Local</button>
+    </div>
+    <div class="range-filters">
+      <div class="range-filter">
+        <label>Max cost</label>
+        <input type="range" id="filter-cost" min="0" max="100" value="100">
+        <span class="range-val" id="filter-cost-val">any</span>
+      </div>
+      <div class="range-filter">
+        <label>Max time</label>
+        <input type="range" id="filter-time" min="0" max="100" value="100">
+        <span class="range-val" id="filter-time-val">any</span>
+      </div>
+      <div class="range-filter">
+        <label>Min score</label>
+        <input type="range" id="filter-score" min="0" max="15" value="0">
+        <span class="range-val" id="filter-score-val">any</span>
+      </div>
+      <div class="range-filter">
+        <label>Min Elo</label>
+        <input type="range" id="filter-elo" min="1200" max="1800" value="1200" step="10">
+        <span class="range-val" id="filter-elo-val">any</span>
+      </div>
+    </div>
+    <div class="filter-summary" id="filter-summary"></div>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="rank">#</th>
+          <th data-sort="model">Model</th>
+          <th data-sort="total">Total</th>
+          <th data-sort="llm">LLM</th>
+          <th data-sort="tools">Tools</th>
+          <th data-sort="time">Time</th>
+          <th data-sort="cost">Cost</th>
+          <th data-sort="value">pts/$</th>
+          <th data-sort="elo">Elo</th>
+          <th>Story</th>
+          <th>Facts</th>
+          <th>Feb?</th>
+        </tr></thead>
+        <tbody id="results-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Detail Panel -->
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header">
+      <div>
+        <h3 id="detail-title"></h3>
+        <span id="detail-subtitle" style="font-size:0.85rem;color:var(--ink-faint);"></span>
+      </div>
+      <div class="nav-arrows">
+        <button class="nav-btn" id="prev-btn">&larr; Prev</button>
+        <button class="nav-btn" id="next-btn">Next &rarr;</button>
+        <button class="detail-close" id="close-btn">Close &times;</button>
+      </div>
+    </div>
+    <div class="detail-stats" id="detail-stats"></div>
+    <div class="detail-tabs">
+      <button class="detail-tab active" data-tab="response">Response</button>
+      <button class="detail-tab" data-tab="thread">Thread</button>
+      <button class="detail-tab" data-tab="judge">Judge</button>
+    </div>
+    <div class="tab-content active" id="tab-response">
+      <div class="rendered-md" id="rendered-response"><p class="loading">Loading...</p></div>
+    </div>
+    <div class="tab-content" id="tab-thread">
+      <div class="thread" id="thread-view"><p class="loading">Loading...</p></div>
+    </div>
+    <div class="tab-content" id="tab-judge">
+      <div id="judge-view"></div>
+    </div>
+  </div>
+
+  <!-- Elo Rankings -->
+  <section id="elo-section" style="display:none">
+    <div class="section-num">05 &mdash; Narrative Rankings</div>
+    <h2>Who tells the best story?</h2>
+    <p class="body-text">
+      The judge score rates each model in isolation. But how do models compare <em>head-to-head</em>?
+      We ran a Swiss-style pairwise tournament: Claude Haiku 4.5 reads two narratives side-by-side
+      (randomly ordered to avoid position bias) and picks the better one. Results feed into
+      Bradley-Terry/Elo ratings.
+    </p>
+    <p class="body-text" id="elo-meta" style="font-family:var(--mono);font-size:0.82rem;color:var(--ink-faint)"></p>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Model</th><th>Elo</th><th>W</th><th>L</th><th>T</th><th>Tools</th>
+        </tr></thead>
+        <tbody id="elo-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Errors -->
+  <section>
+    <div class="section-num">06 &mdash; Failures</div>
+    <h2>Models that couldn't complete the test</h2>
+    <p class="body-text">
+      These models lack tool-calling support or aren't available. Choosing a model
+      that can't use tools wastes time and money.
+    </p>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr><th>Model</th><th>Provider</th><th>Error</th></tr></thead>
+        <tbody id="errors-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section>
+    <div class="section-num">07 &mdash; Methodology</div>
+    <h2>How the test was run</h2>
+    <p class="body-text">
+      Sequential model runs against a shared TezLab MCP connection via OAuth.
+      Same system prompt, same 20+ read-only tools, up to 20 tool-calling steps.
+      Vehicle commands filtered via MCP annotations.
+    </p>
+    <p class="body-text">
+      Responses cached per-run. Judge: Claude Haiku 4.5 via OpenRouter, temperature 0.0.
+      Cost metered by OpenRouter; Ollama = "local" / $0.
+      Duration = wall-clock including all tool round trips.
+    </p>
+  </section>
+
+  <div class="report-footer">
+    Generated by <a href="https://thefocus.ai">Focus.AI</a> Umwelten &middot;
+    Run 004 &middot; Feb 27 &ndash; Mar 8, 2026
+  </div>
+</div>
+</div><!-- end .report-scope -->
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script is:inline>
+const DATA_BASE = '/reports/mcp-tool-test';
+let DATA = [];
+let ERRORS = [];
+let ELO = {};
+let currentFilter = 'all';
+let sortCol = 'rank';
+let sortAsc = true;
+let currentIdx = -1;
+let detailCache = {};
+
+// Load index data
+Promise.all([
+  fetch(DATA_BASE + '/index-data.json').then(r => r.json()),
+  fetch(DATA_BASE + '/elo-data.json').then(r => r.json()).catch(() => ({ lookup: {} })),
+]).then(([d, elo]) => {
+  DATA = d.judged;
+  ERRORS = d.errors;
+  ELO = elo.lookup || {};
+  renderTable();
+  renderErrors();
+  if (elo.ranked) renderEloSection(elo);
+}).catch(e => console.error('Failed to load data:', e));
+
+// Helpers
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function costStr(c) { return c > 0 ? '$' + c.toFixed(4) : 'local'; }
+function ptsPerDollar(d) { return d.cost > 0 ? (d.total / d.cost).toFixed(1) : '\u2014'; }
+function eloStr(d) {
+  const e = ELO[d.key];
+  if (!e) return '\u2014';
+  const v = e.elo;
+  const cls = v > 1520 ? 'color:var(--green)' : v < 1480 ? 'color:var(--red)' : 'color:var(--ink-light)';
+  return '<span style="font-family:var(--mono);font-size:0.8rem;' + cls + '">' + v + '</span>';
+}
+
+function rowClass(t) {
+  if (t >= 15) return 'row-15';
+  if (t >= 14) return 'row-14';
+  if (t >= 8) return 'row-mid';
+  return 'row-low';
+}
+
+function qualityBar(val, max) {
+  let h = '<span class="quality-bar">';
+  for (let i = 0; i < max; i++) {
+    const cls = i < val ? (val >= 4 ? 'filled' : val >= 2 ? 'filled-mid' : 'filled-low') : '';
+    h += '<span class="' + cls + '"></span>';
+  }
+  return h + '</span>';
+}
+
+function modelHtml(d) {
+  const m = d.model;
+  const i = m.indexOf('/');
+  if (i > 0) return '<span style="color:var(--ink-faint)">' + esc(m.slice(0,i+1)) + '</span>' + esc(m.slice(i+1));
+  return esc(m);
+}
+
+function badgeFor(d) {
+  return d.provider === 'ollama' ? ' <span class="badge badge-local">local</span>' : '';
+}
+
+// Range filters
+let maxCostFilter = Infinity;
+let maxTimeFilter = Infinity;
+let minScoreFilter = 0;
+let minEloFilter = 0;
+
+function updateFilters() {
+  const costSlider = document.getElementById('filter-cost');
+  const timeSlider = document.getElementById('filter-time');
+  const scoreSlider = document.getElementById('filter-score');
+  const eloSlider = document.getElementById('filter-elo');
+
+  const costPct = parseInt(costSlider.value);
+  if (costPct >= 100) {
+    maxCostFilter = Infinity;
+    document.getElementById('filter-cost-val').textContent = 'any';
+  } else {
+    maxCostFilter = costPct === 0 ? 0 : Math.pow(costPct / 100, 2) * 0.3;
+    document.getElementById('filter-cost-val').textContent = maxCostFilter === 0 ? 'local' : '$' + maxCostFilter.toFixed(4);
+  }
+
+  const timePct = parseInt(timeSlider.value);
+  if (timePct >= 100) {
+    maxTimeFilter = Infinity;
+    document.getElementById('filter-time-val').textContent = 'any';
+  } else {
+    maxTimeFilter = timePct * 4;
+    document.getElementById('filter-time-val').textContent = maxTimeFilter + 's';
+  }
+
+  minScoreFilter = parseInt(scoreSlider.value);
+  document.getElementById('filter-score-val').textContent = minScoreFilter === 0 ? 'any' : minScoreFilter + '/15';
+
+  minEloFilter = parseInt(eloSlider.value);
+  document.getElementById('filter-elo-val').textContent = minEloFilter <= 1200 ? 'any' : minEloFilter;
+
+  renderTable();
+}
+
+// Table
+function getVisible() {
+  let list = [...DATA];
+  const q = document.getElementById('search').value.toLowerCase();
+  if (q) list = list.filter(d => d.model.toLowerCase().includes(q) || d.provider.includes(q));
+  if (currentFilter === 'perfect') list = list.filter(d => d.total >= 15);
+  if (currentFilter === 'cloud') list = list.filter(d => d.provider !== 'ollama');
+  if (currentFilter === 'local') list = list.filter(d => d.provider === 'ollama');
+
+  if (maxCostFilter !== Infinity) {
+    list = list.filter(d => maxCostFilter === 0 ? (d.cost === 0 || !d.cost) : d.cost <= maxCostFilter || d.cost === 0);
+  }
+  if (maxTimeFilter !== Infinity) list = list.filter(d => d.time <= maxTimeFilter);
+  if (minScoreFilter > 0) list = list.filter(d => d.total >= minScoreFilter);
+  if (minEloFilter > 1200) list = list.filter(d => (ELO[d.key]?.elo || 1500) >= minEloFilter);
+
+  list.sort((a, b) => {
+    let av, bv;
+    switch (sortCol) {
+      case 'model': av = a.model; bv = b.model; return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      case 'total': av = a.total; bv = b.total; break;
+      case 'llm': av = a.llm; bv = b.llm; break;
+      case 'tools': av = a.tools; bv = b.tools; break;
+      case 'time': av = a.time; bv = b.time; return sortAsc ? av-bv : bv-av;
+      case 'cost': av = a.cost||9999; bv = b.cost||9999; return sortAsc ? av-bv : bv-av;
+      case 'value': av = a.cost>0?a.total/a.cost:-1; bv = b.cost>0?b.total/b.cost:-1; break;
+      case 'elo': av = ELO[a.key]?.elo||1500; bv = ELO[b.key]?.elo||1500; break;
+      default: av = a.total; bv = b.total;
+    }
+    let d = sortAsc ? av-bv : bv-av;
+    if (d === 0) d = a.time - b.time;
+    return d;
+  });
+  return list;
+}
+
+function renderTable() {
+  const list = getVisible();
+  const total = DATA.length;
+  const shown = list.length;
+  const summaryEl = document.getElementById('filter-summary');
+  if (summaryEl) {
+    summaryEl.textContent = shown < total ? shown + ' of ' + total + ' models shown' : '';
+  }
+  const tbody = document.getElementById('results-body');
+  tbody.innerHTML = list.map((d, i) => {
+    const rank = i + 1;
+    const medal = rank <= 3 ? ['\ud83e\udd47','\ud83e\udd48','\ud83e\udd49'][rank-1] : rank;
+    const sel = currentIdx >= 0 && DATA[currentIdx].key === d.key ? ' selected' : '';
+    return '<tr class="' + rowClass(d.total) + sel + '" data-key="' + d.key + '" style="cursor:pointer">' +
+      '<td style="font-weight:700">' + medal + '</td>' +
+      '<td style="font-family:var(--mono);font-size:0.82rem">' + modelHtml(d) + badgeFor(d) + '</td>' +
+      '<td><strong>' + d.total + '</strong>/15</td>' +
+      '<td>' + d.llm + '/10</td>' +
+      '<td>' + d.tools + '/5</td>' +
+      '<td class="time-cell">' + d.time + 's</td>' +
+      '<td class="cost-cell">' + costStr(d.cost) + '</td>' +
+      '<td class="cost-cell">' + ptsPerDollar(d) + '</td>' +
+      '<td class="elo-cell">' + eloStr(d) + '</td>' +
+      '<td>' + qualityBar(d.story, 5) + '</td>' +
+      '<td>' + qualityBar(d.facts, 5) + '</td>' +
+      '<td>' + (d.feb ? '\u2705' : '\u274c') + '</td>' +
+    '</tr>';
+  }).join('');
+}
+
+function renderErrors() {
+  document.getElementById('errors-body').innerHTML = ERRORS.map(e => {
+    const m = e.model; const i = m.indexOf('/');
+    const mn = i > 0 ? '<span style="color:var(--ink-faint)">' + esc(m.slice(0,i+1)) + '</span>' + esc(m.slice(i+1)) : esc(m);
+    return '<tr><td style="font-family:var(--mono);font-size:0.82rem">' + mn + '</td>' +
+      '<td><span class="badge badge-' + (e.provider==='ollama'?'local':'error') + '">' + esc(e.provider) + '</span></td>' +
+      '<td style="color:var(--ink-faint)">' + esc(e.error) + '</td></tr>';
+  }).join('');
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === f));
+  renderTable();
+}
+
+function sortBy(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = col==='model'||col==='time'||col==='cost'; }
+  renderTable();
+}
+
+// Detail
+async function loadDetail(key) {
+  if (detailCache[key]) return detailCache[key];
+  try {
+    const r = await fetch(DATA_BASE + '/details/' + key + '.json');
+    const d = await r.json();
+    detailCache[key] = d;
+    return d;
+  } catch (e) {
+    return { responseText: '', transcript: [] };
+  }
+}
+
+async function showDetail(key) {
+  currentIdx = DATA.findIndex(d => d.key === key);
+  if (currentIdx < 0) return;
+  const d = DATA[currentIdx];
+
+  document.getElementById('detail-title').textContent =
+    (d.provider === 'ollama' ? 'ollama:' : 'openrouter:') + d.model;
+  document.getElementById('detail-subtitle').textContent = d.explanation;
+
+  document.getElementById('detail-stats').innerHTML = [
+    {k:'Total', v:d.total+'/15'}, {k:'LLM Judge', v:d.llm+'/10'}, {k:'Tool Score', v:d.tools+'/5'},
+    {k:'Time', v:d.time+'s'}, {k:'Cost', v:costStr(d.cost)}, {k:'pts/$', v:ptsPerDollar(d)},
+    {k:'Elo', v: ELO[d.key] ? String(ELO[d.key].elo) : '\u2014'},
+    {k:'Narrative', v:d.story+'/5'}, {k:'Factual', v:d.facts+'/5'},
+  ].map(s => '<div class="detail-stat"><div class="k">'+s.k+'</div><div class="v">'+s.v+'</div></div>').join('');
+
+  document.getElementById('rendered-response').innerHTML = '<p class="loading">Loading response...</p>';
+  document.getElementById('thread-view').innerHTML = '<p class="loading">Loading thread...</p>';
+  renderJudge(d);
+
+  document.getElementById('prev-btn').disabled = currentIdx <= 0;
+  document.getElementById('next-btn').disabled = currentIdx >= DATA.length - 1;
+
+  document.getElementById('detail-panel').classList.add('open');
+  switchTab('response');
+  renderTable();
+  document.getElementById('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  const detail = await loadDetail(key);
+  if (DATA[currentIdx].key !== key) return;
+
+  if (detail.responseText) {
+    document.getElementById('rendered-response').innerHTML = marked.parse(detail.responseText);
+  } else {
+    document.getElementById('rendered-response').innerHTML = '<p class="loading">No response text available.</p>';
+  }
+
+  renderThread(detail.transcript);
+}
+
+function renderThread(transcript) {
+  const el = document.getElementById('thread-view');
+  if (!transcript || transcript.length === 0) {
+    el.innerHTML = '<p class="loading">No transcript data available.</p>';
+    return;
+  }
+  let html = '';
+  let step = 0;
+  for (const msg of transcript) {
+    if (msg.role === 'user' && msg.type === 'text') {
+      html += '<div class="thread-msg user"><div class="msg-role">User</div><div>' +
+        esc(msg.text).replace(/\n/g, '<br>') + '</div></div>';
+    } else if (msg.role === 'assistant' && msg.type === 'text') {
+      html += '<div class="thread-msg assistant-text"><div class="msg-role">Assistant &mdash; Final Response</div>' +
+        '<div class="rendered-md">' + marked.parse(msg.text) + '</div></div>';
+    } else if (msg.type === 'tool-call') {
+      step++;
+      const args = msg.args ? JSON.stringify(msg.args, null, 2) : '';
+      html += '<div class="thread-msg tool-call"><div class="msg-role">Step ' + step + ' &mdash; Tool Call</div>' +
+        '<div class="tool-name">' + esc(msg.toolName) + '</div>' +
+        (args ? '<pre class="tool-args">' + esc(args) + '</pre>' : '') + '</div>';
+    } else if (msg.type === 'tool-result') {
+      const full = typeof msg.result === 'string' ? msg.result : JSON.stringify(msg.result, null, 2);
+      const short = full.length > 400;
+      const id = 'tr' + Math.random().toString(36).slice(2,8);
+      html += '<div class="thread-msg tool-result"><div class="msg-role">Tool Result</div>' +
+        '<div class="tool-result-body" id="' + id + '">' + esc(short ? full.slice(0, 400) + '...' : full) + '</div>';
+      if (short) {
+        html += '<button class="tool-result-toggle" data-target="' + id + '">Show full result</button>';
+      }
+      html += '</div>';
+      if (short) {
+        setTimeout(() => {
+          const node = document.getElementById(id);
+          if (node) node.dataset.full = full;
+        }, 0);
+      }
+    }
+  }
+  el.innerHTML = html;
+}
+
+function toggleResult(btn, id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (btn.textContent.startsWith('Show')) {
+    el.textContent = el.dataset.full || el.textContent;
+    btn.textContent = 'Collapse';
+    el.style.maxHeight = '600px';
+  } else {
+    el.textContent = (el.dataset.full || '').slice(0, 400) + '...';
+    btn.textContent = 'Show full result';
+    el.style.maxHeight = '150px';
+  }
+}
+
+function renderJudge(d) {
+  const el = document.getElementById('judge-view');
+  let html = '<h3 style="margin-bottom:1rem">Judge Verdict</h3>';
+  html += [
+    ['Covers full date range (Feb 27 \u2013 Mar 8)', d.feb],
+    ['Has trip narrative', d.narrative],
+  ].map(([label, ok]) =>
+    '<div style="padding:0.5rem 0;border-bottom:1px solid var(--bg-alt);font-size:0.9rem">' +
+    (ok ? '\u2705' : '\u274c') + ' ' + label + '</div>'
+  ).join('');
+
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0">';
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Narrative Quality</div><div style="font-family:var(--serif);font-size:2rem;margin-top:0.2rem">' + d.story + '<span style="font-size:1rem;color:var(--ink-faint)">/5</span></div></div>';
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Factual Grounding</div><div style="font-family:var(--serif);font-size:2rem;margin-top:0.2rem">' + d.facts + '<span style="font-size:1rem;color:var(--ink-faint)">/5</span></div></div>';
+  html += '</div>';
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px;margin-bottom:1rem"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Overall Score</div><div style="font-family:var(--serif);font-size:2.5rem;margin-top:0.2rem">' + d.llm + '<span style="font-size:1.2rem;color:var(--ink-faint)">/10</span></div></div>';
+  html += '<p style="color:var(--ink-light);font-size:0.9rem;max-width:600px"><strong>Explanation:</strong> ' + esc(d.explanation) + '</p>';
+  el.innerHTML = html;
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.detail-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function navModel(dir) {
+  const next = currentIdx + dir;
+  if (next >= 0 && next < DATA.length) showDetail(DATA[next].key);
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  currentIdx = -1;
+  renderTable();
+}
+
+function renderEloSection(elo) {
+  document.getElementById('elo-section').style.display = '';
+  document.getElementById('elo-meta').textContent =
+    elo.mode + ' \u2022 ' + elo.comparisons + ' comparisons \u2022 judge: ' + elo.judge;
+
+  document.getElementById('elo-body').innerHTML = elo.ranked.map((r, i) => {
+    const rank = i + 1;
+    const medal = rank <= 3 ? ['\ud83e\udd47','\ud83e\udd48','\ud83e\udd49'][rank-1] : rank;
+    const label = r.provider + ':' + r.model;
+    const cls = r.elo > 1520 ? 'color:var(--green)' : r.elo < 1480 ? 'color:var(--red)' : '';
+    return '<tr data-elo-key="' + r.key + '" style="cursor:pointer">' +
+      '<td style="font-weight:700">' + medal + '</td>' +
+      '<td style="font-family:var(--mono);font-size:0.82rem">' + esc(label) + '</td>' +
+      '<td style="font-family:var(--mono);font-weight:700;' + cls + '">' + r.elo + '</td>' +
+      '<td>' + r.wins + '</td><td>' + r.losses + '</td><td>' + r.ties + '</td>' +
+      '<td>' + r.toolScore + '/5</td></tr>';
+  }).join('');
+}
+
+// Event delegation (no inline onclick handlers)
+document.addEventListener('DOMContentLoaded', () => {
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => setFilter(btn.dataset.f));
+  });
+
+  // Range filters
+  ['filter-cost', 'filter-time', 'filter-score', 'filter-elo'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', updateFilters);
+  });
+
+  // Search input
+  document.getElementById('search')?.addEventListener('input', renderTable);
+
+  // Sort headers
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => sortBy(th.dataset.sort));
+  });
+
+  // Table row clicks
+  document.getElementById('results-body')?.addEventListener('click', (e) => {
+    const tr = e.target.closest('tr[data-key]');
+    if (tr) showDetail(tr.dataset.key);
+  });
+
+  // Elo row clicks
+  document.getElementById('elo-body')?.addEventListener('click', (e) => {
+    const tr = e.target.closest('tr[data-elo-key]');
+    if (tr) showDetail(tr.dataset.eloKey);
+  });
+
+  // Detail panel buttons
+  document.getElementById('prev-btn')?.addEventListener('click', () => navModel(-1));
+  document.getElementById('next-btn')?.addEventListener('click', () => navModel(1));
+  document.getElementById('close-btn')?.addEventListener('click', closeDetail);
+
+  // Tab buttons
+  document.querySelectorAll('.detail-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  });
+
+  // Tool result toggles (delegated)
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('tool-result-toggle')) {
+      toggleResult(e.target, e.target.dataset.target);
+    }
+  });
+
+  // Keyboard nav
+  document.addEventListener('keydown', e => {
+    if (currentIdx >= 0) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); navModel(-1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); navModel(1); }
+      if (e.key === 'Escape') closeDetail();
+    }
+  });
+});
+</script>
+
+</BaseLayout>

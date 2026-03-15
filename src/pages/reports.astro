@@ -8,6 +8,7 @@ const codingAgentImg = images['/src/content/assets/cards/weekend-coding-agent.pn
 const summitImg = images['/src/content/assets/cards/ai-code-summit-2025.png'];
 const juneReportImg = images['/src/content/assets/cards/capture_the_flag_wide.png'];
 const carWashImg = images['/src/content/assets/cards/car-wash-test.png'];
+const mcpToolImg = images['/src/content/assets/cards/mcp_wide.png'];
 ---
 <BaseLayout pageTitle="Reports" description="In-depth reports and analysis from Focus.ai" category="studio">
   <div class="space-y-12">
@@ -15,44 +16,59 @@ const carWashImg = images['/src/content/assets/cards/car-wash-test.png'];
       Reports & Deep Dives
     </h2>
 
-    <!-- Car Wash Test -->
+    <!-- MCP Tool Test — March 2026 -->
+    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
+      {mcpToolImg && <Image src={mcpToolImg()} alt="MCP Tool Eval" class="w-full max-w-md rounded border" />}
+      <div class="flex-1">
+        <p class="text-sm text-gray-500 mb-1">March 2026</p>
+        <h3 class="text-2xl font-bold mb-2">Can LLMs Use Real-World Tools?</h3>
+        <p class="mb-4 text-lg">We gave 39 models access to a Rivian owner's real driving and charging data via MCP tools and asked them to summarize 10 days of activity. Most can call tools. Far fewer call the right tools.</p>
+        <a href="/reports/mcp-tool-test/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
+      </div>
+    </div>
+
+    <!-- Car Wash Test — February 2026 -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
       {carWashImg && <Image src={carWashImg()} alt="The Car Wash Test" class="w-full max-w-md rounded border" />}
       <div class="flex-1">
+        <p class="text-sm text-gray-500 mb-1">February 2026</p>
         <h3 class="text-2xl font-bold mb-2">The Car Wash Test: Do LLMs Have Common Sense?</h3>
         <p class="mb-4 text-lg">We tested 131 AI models with one simple question: "Should I walk or drive to the car wash?" Only 24% figured out you need to bring your car. Interactive report with charts and full model comparison.</p>
         <a href="/reports/car-wash-test/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
       </div>
     </div>
 
-    <!-- Weekend Coding Agent -->
+    <!-- Weekend Coding Agent — December 2025 -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
       {codingAgentImg && <Image src={codingAgentImg()} alt="Weekend Coding Agent" class="w-full max-w-md rounded border" />}
       <div class="flex-1">
+        <p class="text-sm text-gray-500 mb-1">December 2025</p>
         <h3 class="text-2xl font-bold mb-2">Weekend Coding Agent</h3>
         <p class="mb-4 text-lg">Want to understand how AI coding agents actually work? We built one from scratch—and documented every step. This is the tutorial we wish existed when we started.</p>
         <a href="/reports/coding-agent/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Tutorial</a>
       </div>
     </div>
 
-    <!-- AI Engineering Code Summit -->
+    <!-- AI Engineering Code Summit — November 2025 -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
       {summitImg && <Image src={summitImg()} alt="AI Engineering Code Summit 2025" class="w-full max-w-md rounded border" />}
       <div class="flex-1">
+        <p class="text-sm text-gray-500 mb-1">November 2025</p>
         <h3 class="text-2xl font-bold mb-2">AI Engineering Code Summit 2025</h3>
         <p class="mb-4 text-lg">We gathered leading coding agent builders, engineers, and researchers to share what's actually working. Here's what we learned.</p>
         <a href="/reports/aiecode-2025-11/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
       </div>
     </div>
 
-    <!-- June 2025 Coding Agent Report -->
+    <!-- June 2025 Coding Agent Report — June 2025 -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
       {juneReportImg && <Image src={juneReportImg()} alt="June 2025 Coding Agent Report" class="w-full max-w-md rounded border" />}
       <div class="flex-1">
+        <p class="text-sm text-gray-500 mb-1">June 2025</p>
         <h3 class="text-2xl font-bold mb-2">June 2025 Coding Agent Report</h3>
         <p class="mb-4 text-lg">We tested 15 leading AI coding tools and documented the strengths, weaknesses, and surprises. Clear recommendations for different workflows and experience levels.</p>
         <a href="/reports/june-2025-coding-agents.pdf" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold" target="_blank" rel="noopener">Read the Full Report (PDF)</a>
       </div>
     </div>
   </div>
-</BaseLayout> 
+</BaseLayout>

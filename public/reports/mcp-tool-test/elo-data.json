@@ -1,0 +1,567 @@
+{
+  "mode": "round-robin",
+  "comparisons": 321,
+  "judge": "openrouter:anthropic/claude-haiku-4.5",
+  "lookup": {
+    "anthropic-claude-opus-4.6-openrouter": {
+      "elo": 1707,
+      "wins": 21,
+      "losses": 1,
+      "ties": 0,
+      "matches": 22
+    },
+    "moonshotai-kimi-k2.5-openrouter": {
+      "elo": 1701,
+      "wins": 20,
+      "losses": 1,
+      "ties": 0,
+      "matches": 21
+    },
+    "minimax-m2.1-cloud-ollama": {
+      "elo": 1688,
+      "wins": 19,
+      "losses": 2,
+      "ties": 0,
+      "matches": 21
+    },
+    "anthropic-claude-sonnet-4.6-openrouter": {
+      "elo": 1660,
+      "wins": 15,
+      "losses": 1,
+      "ties": 0,
+      "matches": 16
+    },
+    "openai-gpt-5.4-openrouter": {
+      "elo": 1654,
+      "wins": 20,
+      "losses": 4,
+      "ties": 0,
+      "matches": 24
+    },
+    "qwen-qwen3.5-397b-a17b-openrouter": {
+      "elo": 1648,
+      "wins": 15,
+      "losses": 2,
+      "ties": 0,
+      "matches": 17
+    },
+    "google-gemini-3.1-pro-preview-openrouter": {
+      "elo": 1632,
+      "wins": 15,
+      "losses": 3,
+      "ties": 0,
+      "matches": 18
+    },
+    "qwen-qwen3.5-122b-a10b-openrouter": {
+      "elo": 1584,
+      "wins": 15,
+      "losses": 6,
+      "ties": 0,
+      "matches": 21
+    },
+    "qwen-qwen3.5-35b-a3b-openrouter": {
+      "elo": 1582,
+      "wins": 14,
+      "losses": 6,
+      "ties": 0,
+      "matches": 20
+    },
+    "google-gemini-3-flash-preview-openrouter": {
+      "elo": 1577,
+      "wins": 14,
+      "losses": 7,
+      "ties": 0,
+      "matches": 21
+    },
+    "openai-gpt-5.3-chat-openrouter": {
+      "elo": 1572,
+      "wins": 13,
+      "losses": 5,
+      "ties": 0,
+      "matches": 18
+    },
+    "anthropic-claude-haiku-4.5-openrouter": {
+      "elo": 1570,
+      "wins": 15,
+      "losses": 9,
+      "ties": 0,
+      "matches": 24
+    },
+    "glm-4.7-flash-latest-ollama": {
+      "elo": 1557,
+      "wins": 13,
+      "losses": 8,
+      "ties": 0,
+      "matches": 21
+    },
+    "z-ai-glm-5-openrouter": {
+      "elo": 1554,
+      "wins": 12,
+      "losses": 8,
+      "ties": 0,
+      "matches": 20
+    },
+    "deepseek-deepseek-v3.2-openrouter": {
+      "elo": 1526,
+      "wins": 12,
+      "losses": 10,
+      "ties": 0,
+      "matches": 22
+    },
+    "qwen-qwen3.5-flash-02-23-openrouter": {
+      "elo": 1521,
+      "wins": 11,
+      "losses": 8,
+      "ties": 0,
+      "matches": 19
+    },
+    "x-ai-grok-4.1-fast-openrouter": {
+      "elo": 1512,
+      "wins": 10,
+      "losses": 9,
+      "ties": 0,
+      "matches": 19
+    },
+    "openai-gpt-5.3-codex-openrouter": {
+      "elo": 1459,
+      "wins": 9,
+      "losses": 14,
+      "ties": 0,
+      "matches": 23
+    },
+    "openai-gpt-oss-20b-openrouter": {
+      "elo": 1456,
+      "wins": 10,
+      "losses": 14,
+      "ties": 0,
+      "matches": 24
+    },
+    "inception-mercury-2-openrouter": {
+      "elo": 1452,
+      "wins": 9,
+      "losses": 13,
+      "ties": 0,
+      "matches": 22
+    },
+    "google-gemini-3.1-flash-lite-preview-openrouter": {
+      "elo": 1440,
+      "wins": 6,
+      "losses": 12,
+      "ties": 0,
+      "matches": 18
+    },
+    "mistralai-mistral-large-2512-openrouter": {
+      "elo": 1424,
+      "wins": 5,
+      "losses": 13,
+      "ties": 0,
+      "matches": 18
+    },
+    "openai-gpt-oss-120b-openrouter": {
+      "elo": 1414,
+      "wins": 6,
+      "losses": 14,
+      "ties": 0,
+      "matches": 20
+    },
+    "minimax-minimax-m2.5-openrouter": {
+      "elo": 1390,
+      "wins": 4,
+      "losses": 13,
+      "ties": 0,
+      "matches": 17
+    },
+    "mistral-small-latest-ollama": {
+      "elo": 1361,
+      "wins": 4,
+      "losses": 17,
+      "ties": 0,
+      "matches": 21
+    },
+    "x-ai-grok-4-openrouter": {
+      "elo": 1356,
+      "wins": 5,
+      "losses": 18,
+      "ties": 0,
+      "matches": 23
+    },
+    "qwen3-32b-ollama": {
+      "elo": 1343,
+      "wins": 3,
+      "losses": 16,
+      "ties": 0,
+      "matches": 19
+    },
+    "gpt-oss-latest-ollama": {
+      "elo": 1304,
+      "wins": 3,
+      "losses": 22,
+      "ties": 0,
+      "matches": 25
+    },
+    "meta-llama-llama-4-maverick-openrouter": {
+      "elo": 1302,
+      "wins": 2,
+      "losses": 23,
+      "ties": 0,
+      "matches": 25
+    },
+    "meta-llama-llama-4-scout-openrouter": {
+      "elo": 1291,
+      "wins": 1,
+      "losses": 21,
+      "ties": 0,
+      "matches": 22
+    },
+    "qwen3-30b-a3b-ollama": {
+      "elo": 1263,
+      "wins": 0,
+      "losses": 21,
+      "ties": 0,
+      "matches": 21
+    }
+  },
+  "ranked": [
+    {
+      "model": "anthropic/claude-opus-4.6",
+      "provider": "openrouter",
+      "key": "anthropic-claude-opus-4.6-openrouter",
+      "elo": 1707,
+      "wins": 21,
+      "losses": 1,
+      "ties": 0,
+      "matches": 22,
+      "toolScore": 5
+    },
+    {
+      "model": "moonshotai/kimi-k2.5",
+      "provider": "openrouter",
+      "key": "moonshotai-kimi-k2.5-openrouter",
+      "elo": 1701,
+      "wins": 20,
+      "losses": 1,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 5
+    },
+    {
+      "model": "minimax-m2.1:cloud",
+      "provider": "ollama",
+      "key": "minimax-m2.1-cloud-ollama",
+      "elo": 1688,
+      "wins": 19,
+      "losses": 2,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 5
+    },
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "provider": "openrouter",
+      "key": "anthropic-claude-sonnet-4.6-openrouter",
+      "elo": 1660,
+      "wins": 15,
+      "losses": 1,
+      "ties": 0,
+      "matches": 16,
+      "toolScore": 5
+    },
+    {
+      "model": "openai/gpt-5.4",
+      "provider": "openrouter",
+      "key": "openai-gpt-5.4-openrouter",
+      "elo": 1654,
+      "wins": 20,
+      "losses": 4,
+      "ties": 0,
+      "matches": 24,
+      "toolScore": 5
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "provider": "openrouter",
+      "key": "qwen-qwen3.5-397b-a17b-openrouter",
+      "elo": 1648,
+      "wins": 15,
+      "losses": 2,
+      "ties": 0,
+      "matches": 17,
+      "toolScore": 5
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter",
+      "key": "google-gemini-3.1-pro-preview-openrouter",
+      "elo": 1632,
+      "wins": 15,
+      "losses": 3,
+      "ties": 0,
+      "matches": 18,
+      "toolScore": 5
+    },
+    {
+      "model": "qwen/qwen3.5-122b-a10b",
+      "provider": "openrouter",
+      "key": "qwen-qwen3.5-122b-a10b-openrouter",
+      "elo": 1584,
+      "wins": 15,
+      "losses": 6,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 5
+    },
+    {
+      "model": "qwen/qwen3.5-35b-a3b",
+      "provider": "openrouter",
+      "key": "qwen-qwen3.5-35b-a3b-openrouter",
+      "elo": 1582,
+      "wins": 14,
+      "losses": 6,
+      "ties": 0,
+      "matches": 20,
+      "toolScore": 5
+    },
+    {
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "key": "google-gemini-3-flash-preview-openrouter",
+      "elo": 1577,
+      "wins": 14,
+      "losses": 7,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 3
+    },
+    {
+      "model": "openai/gpt-5.3-chat",
+      "provider": "openrouter",
+      "key": "openai-gpt-5.3-chat-openrouter",
+      "elo": 1572,
+      "wins": 13,
+      "losses": 5,
+      "ties": 0,
+      "matches": 18,
+      "toolScore": 5
+    },
+    {
+      "model": "anthropic/claude-haiku-4.5",
+      "provider": "openrouter",
+      "key": "anthropic-claude-haiku-4.5-openrouter",
+      "elo": 1570,
+      "wins": 15,
+      "losses": 9,
+      "ties": 0,
+      "matches": 24,
+      "toolScore": 5
+    },
+    {
+      "model": "glm-4.7-flash:latest",
+      "provider": "ollama",
+      "key": "glm-4.7-flash-latest-ollama",
+      "elo": 1557,
+      "wins": 13,
+      "losses": 8,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 5
+    },
+    {
+      "model": "z-ai/glm-5",
+      "provider": "openrouter",
+      "key": "z-ai-glm-5-openrouter",
+      "elo": 1554,
+      "wins": 12,
+      "losses": 8,
+      "ties": 0,
+      "matches": 20,
+      "toolScore": 5
+    },
+    {
+      "model": "deepseek/deepseek-v3.2",
+      "provider": "openrouter",
+      "key": "deepseek-deepseek-v3.2-openrouter",
+      "elo": 1526,
+      "wins": 12,
+      "losses": 10,
+      "ties": 0,
+      "matches": 22,
+      "toolScore": 5
+    },
+    {
+      "model": "qwen/qwen3.5-flash-02-23",
+      "provider": "openrouter",
+      "key": "qwen-qwen3.5-flash-02-23-openrouter",
+      "elo": 1521,
+      "wins": 11,
+      "losses": 8,
+      "ties": 0,
+      "matches": 19,
+      "toolScore": 5
+    },
+    {
+      "model": "x-ai/grok-4.1-fast",
+      "provider": "openrouter",
+      "key": "x-ai-grok-4.1-fast-openrouter",
+      "elo": 1512,
+      "wins": 10,
+      "losses": 9,
+      "ties": 0,
+      "matches": 19,
+      "toolScore": 5
+    },
+    {
+      "model": "openai/gpt-5.3-codex",
+      "provider": "openrouter",
+      "key": "openai-gpt-5.3-codex-openrouter",
+      "elo": 1459,
+      "wins": 9,
+      "losses": 14,
+      "ties": 0,
+      "matches": 23,
+      "toolScore": 5
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "provider": "openrouter",
+      "key": "openai-gpt-oss-20b-openrouter",
+      "elo": 1456,
+      "wins": 10,
+      "losses": 14,
+      "ties": 0,
+      "matches": 24,
+      "toolScore": 5
+    },
+    {
+      "model": "inception/mercury-2",
+      "provider": "openrouter",
+      "key": "inception-mercury-2-openrouter",
+      "elo": 1452,
+      "wins": 9,
+      "losses": 13,
+      "ties": 0,
+      "matches": 22,
+      "toolScore": 5
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite-preview",
+      "provider": "openrouter",
+      "key": "google-gemini-3.1-flash-lite-preview-openrouter",
+      "elo": 1440,
+      "wins": 6,
+      "losses": 12,
+      "ties": 0,
+      "matches": 18,
+      "toolScore": 5
+    },
+    {
+      "model": "mistralai/mistral-large-2512",
+      "provider": "openrouter",
+      "key": "mistralai-mistral-large-2512-openrouter",
+      "elo": 1424,
+      "wins": 5,
+      "losses": 13,
+      "ties": 0,
+      "matches": 18,
+      "toolScore": 0
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "provider": "openrouter",
+      "key": "openai-gpt-oss-120b-openrouter",
+      "elo": 1414,
+      "wins": 6,
+      "losses": 14,
+      "ties": 0,
+      "matches": 20,
+      "toolScore": 5
+    },
+    {
+      "model": "minimax/minimax-m2.5",
+      "provider": "openrouter",
+      "key": "minimax-minimax-m2.5-openrouter",
+      "elo": 1390,
+      "wins": 4,
+      "losses": 13,
+      "ties": 0,
+      "matches": 17,
+      "toolScore": 5
+    },
+    {
+      "model": "mistral-small:latest",
+      "provider": "ollama",
+      "key": "mistral-small-latest-ollama",
+      "elo": 1361,
+      "wins": 4,
+      "losses": 17,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 0
+    },
+    {
+      "model": "x-ai/grok-4",
+      "provider": "openrouter",
+      "key": "x-ai-grok-4-openrouter",
+      "elo": 1356,
+      "wins": 5,
+      "losses": 18,
+      "ties": 0,
+      "matches": 23,
+      "toolScore": 3
+    },
+    {
+      "model": "qwen3:32b",
+      "provider": "ollama",
+      "key": "qwen3-32b-ollama",
+      "elo": 1343,
+      "wins": 3,
+      "losses": 16,
+      "ties": 0,
+      "matches": 19,
+      "toolScore": 5
+    },
+    {
+      "model": "gpt-oss:latest",
+      "provider": "ollama",
+      "key": "gpt-oss-latest-ollama",
+      "elo": 1304,
+      "wins": 3,
+      "losses": 22,
+      "ties": 0,
+      "matches": 25,
+      "toolScore": 5
+    },
+    {
+      "model": "meta-llama/llama-4-maverick",
+      "provider": "openrouter",
+      "key": "meta-llama-llama-4-maverick-openrouter",
+      "elo": 1302,
+      "wins": 2,
+      "losses": 23,
+      "ties": 0,
+      "matches": 25,
+      "toolScore": 0
+    },
+    {
+      "model": "meta-llama/llama-4-scout",
+      "provider": "openrouter",
+      "key": "meta-llama-llama-4-scout-openrouter",
+      "elo": 1291,
+      "wins": 1,
+      "losses": 21,
+      "ties": 0,
+      "matches": 22,
+      "toolScore": 0
+    },
+    {
+      "model": "qwen3:30b-a3b",
+      "provider": "ollama",
+      "key": "qwen3-30b-a3b-ollama",
+      "elo": 1263,
+      "wins": 0,
+      "losses": 21,
+      "ties": 0,
+      "matches": 21,
+      "toolScore": 3
+    }
+  ]
+}
