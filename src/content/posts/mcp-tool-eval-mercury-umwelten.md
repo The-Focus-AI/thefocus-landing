@@ -10,6 +10,7 @@ description: "We ran 39 models against real Rivian driving data via MCP tools. I
 published: true
 author: Will Schenk
 image: mcp-tool-eval-mercury-umwelten.png
+ogImage: mcp-tool-eval-mercury-umwelten.png
 ---
 
 This winter the snow has been spectacular in the Northeast, and I'm taking full advantage. Been driving a lot — but how much? I'm tracking my driving data with [Tezlab](https://tezlabapp.com) and we've recently [released an MCP server](https://www.tezlabapp.com/mcp), which works great with the big foundational models. But I wanted to see how some other models could make sense of the data.
