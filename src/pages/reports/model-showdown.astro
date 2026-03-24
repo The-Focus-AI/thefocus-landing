@@ -1,0 +1,1608 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import '../../styles/reports/model-showdown.css';
+---
+<BaseLayout
+  pageTitle="Testing 49 LLMs Across 5 Dimensions for $4.63 — Model Showdown"
+  description="Which model should you actually use? We tested 49 LLMs across reasoning, knowledge, instruction following, coding, and MCP tool use. Claude Sonnet 4.6 achieves 100% on 4 dimensions."
+  category="studio"
+  fullWidth
+  bodyClass="bg-[#f8f6f1]"
+>
+
+<div class="report-scope">
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-label">Umwelten Model Showdown &middot; March 2026</div>
+    <h1>Testing 49 LLMs Across<br><em>5 Dimensions</em> for $4.63</h1>
+    <p class="hero-subtitle">
+      Which model should you actually use? Not which one tops a leaderboard somewhere &mdash;
+      which one will reason through your problem, follow your formatting instructions, write code
+      that compiles, answer factual questions correctly, and orchestrate real-world tools without falling apart?
+    </p>
+    <div class="hero-meta">
+      <span>49 models</span>
+      <span>5 providers</span>
+      <span>5 dimensions</span>
+      <span>$4.63 total</span>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card s-green"><div class="stat-num">100.0%</div><div class="stat-label">Top Score</div></div>
+    <div class="stat-card s-accent"><div class="stat-num">$0.01</div><div class="stat-label">Best Value</div></div>
+    <div class="stat-card s-yellow"><div class="stat-num">11</div><div class="stat-label">Models &gt;95%</div></div>
+    <div class="stat-card s-ink"><div class="stat-num">$4.63</div><div class="stat-label">Total Cost</div></div>
+  </div>
+
+  <!-- 01 — What We Tested -->
+  <section>
+    <div class="section-num">01 &mdash; What We Tested</div>
+    <h2>Five dimensions, one question: how good is this model?</h2>
+    <p class="body-text">
+      Each dimension tests something the others can&rsquo;t. A model that aces reasoning might struggle with
+      precise formatting. A coding specialist might fail at tool orchestration. The combined score reveals
+      which models are genuinely well-rounded.
+    </p>
+
+    <div class="dim-grid">
+      <div class="dim-card">
+        <h4>Reasoning &mdash; /20</h4>
+        <p>Four classic logic puzzles where the obvious answer is wrong, scored 1&ndash;5 each by an LLM judge
+          on reasoning quality:</p>
+        <ul class="dim-list">
+          <li><strong>The Surgeon Riddle</strong> &mdash; &ldquo;The surgeon says &lsquo;I can&rsquo;t operate on
+            this boy, he&rsquo;s my son.&rsquo; How is this possible?&rdquo;</li>
+          <li><strong>Bat &amp; Ball</strong> &mdash; &ldquo;A bat and ball cost $1.10. The bat costs $1.00 more
+            than the ball. How much does the ball cost?&rdquo; (Answer: $0.05, not $0.10)</li>
+          <li><strong>Lily Pads</strong> &mdash; &ldquo;A patch doubles daily. It covers the lake in 48 days.
+            When is it half-covered?&rdquo; (Answer: day 47)</li>
+          <li><strong>Counterfeit Coin</strong> &mdash; Find a counterfeit coin among 12 using a balance scale
+            exactly 3 times, and determine if it&rsquo;s heavier or lighter. The hardest task in the
+            entire showdown.</li>
+        </ul>
+      </div>
+      <div class="dim-card">
+        <h4>Knowledge &mdash; /30</h4>
+        <p>30 factual questions, binary scoring (correct or not) with an LLM judge that allows formatting
+          variations. Six categories:</p>
+        <ul class="dim-list">
+          <li><strong>Science</strong> &mdash; Speed of light, glucose formula, Carbon-14 half-life,
+            Oganesson atomic number, Schwarzschild radius</li>
+          <li><strong>Geography</strong> &mdash; Capital of Kazakhstan, deepest ocean point, country
+            with most time zones, longest African river, Caspian+Persian Gulf border</li>
+          <li><strong>History</strong> &mdash; Berlin Wall year, first to South Pole, WWI treaty,
+            transistor year, Principia Mathematica author</li>
+          <li><strong>Technology</strong> &mdash; HTTPS port, max signed 32-bit int, HTTP/0.9 year,
+            OSI Layer 4, what CUDA stands for</li>
+          <li><strong>AI/ML</strong> &mdash; What &ldquo;T&rdquo; in GPT stands for, Transformer d_model,
+            feed-forward activation, Llama creator, knowledge distillation</li>
+          <li><strong>Tricky/Adversarial</strong> &mdash; R&rsquo;s in &ldquo;strawberry,&rdquo; is 91
+            prime, &ldquo;all but 9 die,&rdquo; feathers vs steel, 3/5 gallon jug puzzle</li>
+        </ul>
+      </div>
+      <div class="dim-card">
+        <h4>Instruction Following &mdash; /30</h4>
+        <p>Six constraint tasks, deterministic scoring (5 points each, no LLM judge):</p>
+        <ul class="dim-list">
+          <li><strong>Exact Word Count</strong> &mdash; &ldquo;Write a 12-word sentence about the ocean.
+            Nothing else.&rdquo;</li>
+          <li><strong>Structured JSON</strong> &mdash; Output JSON with name, age (25&ndash;35), 3 skills,
+            active=true. No markdown fences.</li>
+          <li><strong>Constrained List</strong> &mdash; List 5 animals, numbered, max 8 chars each,
+            alphabetical order, no extra text.</li>
+          <li><strong>Negative Constraints</strong> &mdash; Describe a sunset without &ldquo;beautiful,&rdquo;
+            &ldquo;sky,&rdquo; &ldquo;orange,&rdquo; or exclamation marks. Exactly 2 sentences.</li>
+          <li><strong>Format Transformation</strong> &mdash; Convert CSV data (Alice/Bob/Charlie) to a
+            markdown table with header and separator.</li>
+          <li><strong>Multi-format Response</strong> &mdash; Three sections separated by &ldquo;---&rdquo;:
+            a color word, a number 1&ndash;100, the color repeated 3&times;. No labels.</li>
+        </ul>
+      </div>
+      <div class="dim-card">
+        <h4>Coding &mdash; /126</h4>
+        <p>Six challenges in TypeScript, Python, and Rust (7 points each &times; 18 = 126).
+          Code is extracted, compiled, and run in Docker containers:</p>
+        <ul class="dim-list">
+          <li><strong>FizzBuzz Boom</strong> &mdash; Extended FizzBuzz with divisibility by 3, 5, and 7
+            for numbers 1&ndash;105</li>
+          <li><strong>Business Days</strong> &mdash; Count working days between dates, skipping weekends
+            and 8 specific 2025 US holidays</li>
+          <li><strong>Vending Machine</strong> &mdash; State machine processing 18 INSERT/SELECT operations
+            with exact output format</li>
+          <li><strong>Grid Paths</strong> &mdash; Dynamic programming: count unique paths on blocked grids
+            (right/down only). Three grids: 5&times;5, 7&times;7, 10&times;10</li>
+          <li><strong>Zigzag Cipher</strong> &mdash; Rail fence cipher encode and decode with 3&ndash;4 rails.
+            4 test cases with exact expected output</li>
+          <li><strong>Data Pipeline</strong> &mdash; Parse 13 sales records and compute total revenue, top
+            region, top product, high-quantity count, and average revenue</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dim-card" style="margin-top:1.5rem">
+      <h4>MCP Tool Use &mdash; /16</h4>
+      <p>Connect to TezLab&rsquo;s MCP server with 20+ real tools and analyze vehicle data.
+        Scored on tool usage (0&ndash;6) plus LLM-judged response quality (0&ndash;10):</p>
+      <ul class="dim-list">
+        <li><strong>Required tools</strong> &mdash; <code>list_vehicles</code>, <code>get_battery_health</code>,
+          <code>get_charges</code>/<code>get_charge_report</code>, <code>get_efficiency</code>,
+          <code>get_my_chargers</code>, <code>search_public_chargers</code> (1 point each)</li>
+        <li><strong>Quality scoring</strong> &mdash; Data synthesis (1&ndash;5), actionable insights (1&ndash;5),
+          factual grounding with specific %, kWh, and dates from tool results</li>
+      </ul>
+    </div>
+
+    <h3>The 49 Models</h3>
+    <div class="model-list">
+      <h4>OpenRouter (31 models)</h4>
+      <ul>
+        <li>anthropic/claude-sonnet-4.6</li>
+        <li>anthropic/claude-opus-4.6</li>
+        <li>anthropic/claude-haiku-4.5</li>
+        <li>openai/gpt-5.4</li>
+        <li>openai/gpt-5.4-mini</li>
+        <li>openai/gpt-5.4-nano</li>
+        <li>openai/gpt-oss-20b</li>
+        <li>openai/gpt-oss-120b</li>
+        <li>x-ai/grok-4.20-beta</li>
+        <li>x-ai/grok-4.1-fast</li>
+        <li>google/gemini-3.1-pro-preview</li>
+        <li>qwen/qwen3.5-397b-a17b</li>
+        <li>qwen/qwen3.5-122b-a10b</li>
+        <li>qwen/qwen3.5-35b-a3b</li>
+        <li>deepseek/deepseek-v3.2</li>
+        <li>meta-llama/llama-4-scout</li>
+        <li>meta-llama/llama-4-maverick</li>
+        <li>inception/mercury-2</li>
+        <li>inception/mercury-coder</li>
+        <li>moonshotai/kimi-k2</li>
+        <li>moonshotai/kimi-k2.5</li>
+        <li>minimax/minimax-m2.7</li>
+        <li>minimax/minimax-01</li>
+        <li>mistralai/mistral-small-2603</li>
+        <li>mistralai/mistral-small-3.2-24b-instruct</li>
+        <li>mistralai/codestral-2508</li>
+        <li>mistralai/ministral-8b-2512</li>
+        <li>nvidia/nemotron-3-nano-30b-a3b:free</li>
+        <li>nvidia/nemotron-3-super-120b-a12b:free</li>
+        <li>nvidia/nemotron-nano-9b-v2:free</li>
+        <li>google/gemma-3-27b-it</li>
+      </ul>
+    </div>
+    <div class="model-list">
+      <h4>Google (2 models)</h4>
+      <ul>
+        <li>gemini-3-flash-preview</li>
+        <li>gemini-3.1-pro-preview</li>
+      </ul>
+    </div>
+    <div class="model-list">
+      <h4>DeepInfra (3 models)</h4>
+      <ul>
+        <li>nvidia/Nemotron-3-Nano-30B-A3B</li>
+        <li>nvidia/NVIDIA-Nemotron-3-Super-120B-A12B</li>
+        <li>nvidia/NVIDIA-Nemotron-Nano-9B-v2</li>
+      </ul>
+    </div>
+    <div class="model-list">
+      <h4>Ollama (13 models)</h4>
+      <ul>
+        <li>deepseek-r1-14b</li>
+        <li>deepseek-r1-32b</li>
+        <li>deepseek-r1-latest</li>
+        <li>devstral-latest</li>
+        <li>gemma3n-e4b</li>
+        <li>glm-4.7-flash-latest</li>
+        <li>gpt-oss-latest</li>
+        <li>mistral-small-latest</li>
+        <li>nemotron-3-nano-4b</li>
+        <li>nemotron-3-nano-latest</li>
+        <li>phi4-latest</li>
+        <li>qwen3-30b-a3b</li>
+        <li>qwen3-32b</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 02 — Overall Results -->
+  <section>
+    <div class="section-num">02 &mdash; Overall Results</div>
+    <h2>Full leaderboard</h2>
+    <p class="body-text">
+      Combined score is the mean of normalized dimension percentages. <code>anthropic/claude-sonnet-4.6</code>
+      achieves a perfect 100% on 4 dimensions and 93.8% across all 5 including MCP. Models with MCP data
+      use all 5 dimensions; those without use 4. <code>qwen/qwen3.5-397b-a17b</code> leads the 5-dimension
+      leaderboard at 93.1%. 41 of 49 models now have full 5-dimension scores including MCP tool use.
+    </p>
+    <p class="body-text">Click any column header to sort. Use filters to narrow down by provider or cost tier.</p>
+
+    <div class="table-controls">
+      <input type="text" id="search" placeholder="Search models...">
+      <button class="filter-btn active" data-f="all">All</button>
+      <button class="filter-btn" data-f="openrouter">OpenRouter</button>
+      <button class="filter-btn" data-f="google">Google</button>
+      <button class="filter-btn" data-f="deepinfra">DeepInfra</button>
+      <button class="filter-btn" data-f="ollama">Ollama</button>
+      <button class="filter-btn" data-f="free">Free</button>
+      <span class="filter-sep">|</span>
+      <button class="filter-btn" data-f="open">Open Weights</button>
+      <button class="filter-btn" data-f="closed">Closed</button>
+    </div>
+    <div class="range-filters">
+      <div class="range-filter">
+        <label>Min score</label>
+        <input type="range" id="filter-score" min="0" max="90" value="0" step="5">
+        <span class="range-val" id="filter-score-val">any</span>
+      </div>
+      <div class="range-filter">
+        <label>Max cost</label>
+        <input type="range" id="filter-cost" min="0" max="100" value="100">
+        <span class="range-val" id="filter-cost-val">any</span>
+      </div>
+    </div>
+    <div class="filter-summary" id="filter-summary"></div>
+
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="rank">#</th>
+          <th data-sort="model">Model</th>
+          <th data-sort="provider">Provider</th>
+          <th data-sort="released">Released</th>
+          <th data-sort="type">Type</th>
+          <th data-sort="combined">Combined</th>
+          <th data-sort="reasoning">Reason</th>
+          <th data-sort="knowledge">Know</th>
+          <th data-sort="instruction">Instr</th>
+          <th data-sort="coding">Code</th>
+          <th data-sort="mcp">MCP</th>
+          <th data-sort="cost">Cost</th>
+          <th data-sort="time">Time</th>
+        </tr></thead>
+        <tbody id="leaderboard-body"></tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- 03 — Biggest Surprises -->
+  <section>
+    <div class="section-num">03 &mdash; Biggest Surprises</div>
+    <h2>What we didn&rsquo;t expect</h2>
+    <div class="finding-grid">
+      <div class="finding-card">
+        <div class="f-num">#1</div>
+        <h4>Claude Sonnet 4.6 achieves 100%</h4>
+        <p>Perfect on all 4 dimensions: reasoning, knowledge, instruction, and coding. The only model
+          in the entire 49-model field to do it.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#2</div>
+        <h4>GPT-OSS-120B costs a penny</h4>
+        <p>At $0.01, <code>openai/gpt-oss-120b</code> scores 89.9% across all 5 dimensions. That&rsquo;s $0.01 for
+          strong performance across every dimension including MCP tool use.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#3</div>
+        <h4>Local models are competitive</h4>
+        <p><code>gpt-oss:latest</code> on Ollama scores 77.2% across all 5 dimensions for free. 13 local
+          models tested, several above 80%. You don&rsquo;t need an API key for strong results.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#4</div>
+        <h4>11 models above 95%</h4>
+        <p>The frontier is crowded. The gap between #1 (100%) and #11 (96.9%) is only 3.1 percentage
+          points. Choosing between top models is now about cost and speed, not quality.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#5</div>
+        <h4>qwen3-30b-a3b: brilliant and broken</h4>
+        <p>Perfect 20/20 reasoning, perfect 126/126 coding, but only 4/30 on instruction following.
+          A spectacular failure mode &mdash; it ignores formatting constraints entirely.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#6</div>
+        <h4>Same weights, different results</h4>
+        <p>Nemotron Nano 30B: OpenRouter 83.7% vs DeepInfra 77.0%. The provider gap can exceed 6
+          percentage points. Benchmarks are provider-specific.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — Deep Dive: Reasoning -->
+  <section>
+    <div class="section-num">04 &mdash; Deep Dive: Reasoning</div>
+    <h2>The counterfeit coin problem</h2>
+    <p class="body-text">
+      The single hardest task in the entire showdown. You have 12 coins, one is counterfeit (heavier or
+      lighter &mdash; you don&rsquo;t know which). Using a balance scale exactly 3 times, find the counterfeit
+      coin and determine whether it&rsquo;s heavier or lighter. Three weighings give 27 possible outcomes for
+      24 possible states &mdash; it&rsquo;s information-theoretically tight.
+    </p>
+    <p class="body-text">
+      Many models failed this task. The failure pattern is consistent:
+      models correctly identify the first step (divide into 3 groups of 4) but then hand-wave through the
+      subcases with phrases like &ldquo;narrow it down to the suspect&rdquo; without proving that exactly 3
+      weighings suffice for every branch.
+    </p>
+
+    <div class="question-block">
+      <div class="q-label">Judge on Claude Haiku 4.5</div>
+      <blockquote>
+        &ldquo;The response correctly identifies that the puzzle is solvable in 3 weighings and attempts a
+        reasonable initial strategy (divide into thirds, weigh 4 vs 4). However, the procedure is incomplete
+        and contains critical gaps. Step 2 is vague and hand-wavy.&rdquo;
+      </blockquote>
+    </div>
+
+    <h3>Counterfeit Coin Results</h3>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th>Result</th>
+          <th>Models</th>
+        </tr></thead>
+        <tbody>
+          <tr class="tier-1">
+            <td><strong style="color:var(--green)">Solved (5/5)</strong></td>
+            <td class="model-cell" style="white-space:normal">
+              All three Qwen 3.5 variants, gpt-oss-120b, kimi-k2, nemotron-nano:free (OR),
+              mercury-2, Nemotron Super 120B (both providers), gemini-3-flash-preview
+            </td>
+          </tr>
+          <tr class="tier-4">
+            <td><strong style="color:var(--red)">Failed (2/5)</strong></td>
+            <td class="model-cell" style="white-space:normal">
+              gpt-oss-20b, minimax-m2.7, deepseek-v3.2, both Llama 4 variants, mistral-small-3.2,
+              mercury-coder, claude-haiku-4.5, Nemotron-Nano (DI), codestral-2508, gemma-3-27b-it,
+              ministral-8b
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body-text">
+      What&rsquo;s striking is that <code>openai/gpt-oss-20b</code> &mdash; the best coding model in the
+      showdown &mdash; falls on its face here. It can write correct code in three languages but can&rsquo;t
+      reason through a logic puzzle requiring exhaustive case analysis. This is exactly why multi-dimensional
+      evaluation matters.
+    </p>
+
+    <h3>The Cross-Provider Reasoning Gap</h3>
+    <p class="body-text">
+      <code>nvidia/nemotron-3-nano-30b-a3b:free</code> (OpenRouter) scored 20/20 but
+      <code>nvidia/Nemotron-3-Nano-30B-A3B</code> (DeepInfra) only scored 17/20. Same weights.
+      The DeepInfra variant failed the counterfeit coin (2/5) while OpenRouter solved it perfectly (5/5).
+      Quantization or inference configuration can affect a model&rsquo;s ability to maintain long chains
+      of reasoning.
+    </p>
+  </section>
+
+  <!-- 05 — Deep Dive: Knowledge -->
+  <section>
+    <div class="section-num">05 &mdash; Deep Dive: Knowledge</div>
+    <h2>What models get wrong</h2>
+    <p class="body-text">
+      Many models achieved a perfect 30/30. Those that missed questions each missed 1&ndash;5.
+      The errors reveal how models process information.
+    </p>
+
+    <h3>&ldquo;How many R&rsquo;s in Strawberry?&rdquo;</h3>
+    <p class="body-text">
+      Three models answered &ldquo;2&rdquo; instead of &ldquo;3.&rdquo; Both Llama 4 variants and
+      <code>mistralai/mistral-small-3.2-24b-instruct</code> failed this classic character-counting test.
+      Models that tokenize the word rather than examining individual characters consistently get it wrong.
+      Multiple models still fail it in March 2026.
+    </p>
+
+    <h3>&ldquo;All But 9 Die&rdquo;</h3>
+    <p class="body-text">
+      &ldquo;A farmer has 10 sheep. All but 9 die. How many sheep does the farmer have left?&rdquo;
+      <code>mistralai/codestral-2508</code> and <code>mistralai/ministral-8b-2512</code> both answered
+      &ldquo;8,&rdquo; misinterpreting &ldquo;all but 9&rdquo; as &ldquo;10 minus 9 = 1 dies, leaving&hellip;
+      8?&rdquo; Both failing models are from Mistral, suggesting a shared training-data blind spot.
+    </p>
+
+    <h3>The Carbon-14 Ambiguity</h3>
+    <p class="body-text">
+      Four models got the Carbon-14 half-life wrong (correct: 5,730 years).
+      <code>meta-llama/llama-4-scout</code>, <code>mistralai/codestral-2508</code>,
+      <code>mistralai/ministral-8b-2512</code>, and <code>openai/gpt-oss-20b</code> all provided
+      incorrect or imprecise answers. The hardest science question by error count.
+    </p>
+
+    <h3>AI/ML Gotchas</h3>
+    <p class="body-text">
+      <code>google/gemma-3-27b-it</code> said the &ldquo;T&rdquo; in GPT stands for
+      &ldquo;Transformative&rdquo; instead of &ldquo;Transformer.&rdquo;
+      <code>mistralai/ministral-8b-2512</code> said the original Transformer&rsquo;s d_model was 64
+      instead of 512. <code>openai/gpt-oss-120b</code> returned an empty response for the activation
+      function question. Surprising for models that are themselves transformers.
+    </p>
+  </section>
+
+  <!-- 06 — Deep Dive: Instruction Following -->
+  <section>
+    <div class="section-num">06 &mdash; Deep Dive: Instruction Following</div>
+    <h2>Do exactly what I ask</h2>
+    <p class="body-text">
+      Many models achieved a perfect 30/30. The failures are mechanical and revealing.
+      This is the easiest dimension to ace &mdash; and the least predictive of real-world capability.
+    </p>
+
+    <h3>The Markdown Fence Epidemic</h3>
+    <p class="body-text">
+      The most systematic failure: &ldquo;markdown fence hallucination.&rdquo; When told to output raw
+      JSON with no markdown fences, models wrap it in <code>```json ... ```</code> anyway. When told to
+      output a markdown table, models double-wrap the markdown inside a <code>```markdown</code> block.
+      <code>google/gemma-3-27b-it</code> and <code>mistralai/ministral-8b-2512</code> both lost points
+      for this &mdash; a deep training bias toward code-fence formatting that overrides explicit instructions.
+    </p>
+
+    <h3>Word Counting Is Hard</h3>
+    <p class="body-text">
+      &ldquo;Write a 12-word sentence about the ocean. Nothing else.&rdquo; Seven models got this wrong.
+      <code>mistralai/codestral-2508</code> wrote 6 words. <code>moonshotai/kimi-k2</code> wrote 10. Four
+      models wrote 11 (off by 1). Models that reliably nail word counts tend to be the same ones that
+      score well on reasoning &mdash; they actually count rather than estimate.
+    </p>
+
+    <h3>Instruction Following Doesn&rsquo;t Predict Tool Use</h3>
+    <p class="body-text">
+      The most counterintuitive finding: perfect instruction following (30/30) does <em>not</em> predict
+      good MCP tool use. <code>anthropic/claude-haiku-4.5</code> and <code>nvidia/Nemotron-3-Nano-30B-A3B</code>
+      (DeepInfra) both got 30/30 on instruction yet scored 2/16 on MCP. Meanwhile,
+      <code>inception/mercury-2</code> scored only 25/30 on instruction but got 11/16 on MCP.
+      Following rules is a different cognitive task than autonomously planning a multi-step tool chain.
+      Instruction following tests <em>compliance</em>; MCP tests <em>initiative</em>.
+    </p>
+  </section>
+
+  <!-- 07 — Deep Dive: Coding -->
+  <section>
+    <div class="section-num">07 &mdash; Deep Dive: Coding</div>
+    <h2>Code that actually runs</h2>
+    <p class="body-text">
+      The coding dimension has the widest score spread: 0/126 to 126/126. Multiple models now achieve
+      perfect scores, while the cipher and pipeline challenges still separate the strong from the weak.
+    </p>
+
+    <h3>Cipher TypeScript Results</h3>
+    <p class="body-text">
+      Many models produced perfect cipher implementations. Click column headers to sort.
+    </p>
+
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="c-model">Model</th>
+          <th data-sort="c-score">Score</th>
+          <th data-sort="c-time">Time</th>
+        </tr></thead>
+        <tbody id="cipher-body"></tbody>
+      </table>
+    </div>
+
+    <p class="body-text">
+      <code>qwen/qwen3.5-122b-a10b</code>, the overall winner, only scored 2/7 on cipher-typescript.
+      Meanwhile, <code>google/gemma-3-27b-it</code> &mdash; near last overall &mdash; got a perfect 7/7.
+      Single challenges can invert rankings.
+    </p>
+
+    <h3>Why Some Models Score Zero</h3>
+    <p class="body-text">
+      Three distinct failure modes explain the zero scores on cipher and data pipeline challenges:
+    </p>
+    <div class="finding-grid" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="finding-card">
+        <div class="f-num">Failure Mode 1</div>
+        <h4>65k token reasoning loops</h4>
+        <p><code>openai/gpt-oss-20b</code> and <code>nvidia/nemotron-3-nano-30b-a3b:free</code> generated
+          exactly 65,536 completion tokens (OpenRouter&rsquo;s max) in 4&ndash;7 minutes &mdash; but returned
+          <strong>empty content</strong>. The models were trapped in internal reasoning/thinking chains that
+          consumed the entire token budget without producing visible output. For <code>gpt-oss-20b</code>
+          this was transient &mdash; it solved cipher in Rust and Python perfectly in a later batch. The cached
+          empty result persisted.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">Failure Mode 2</div>
+        <h4>Infinite verification loops</h4>
+        <p><code>qwen/qwen3.5-122b-a10b</code> spent <strong>5 minutes</strong> generating 31,000 tokens of
+          visible reasoning &mdash; manually verifying its cipher solution by re-tracing the same index
+          calculation dozens of times in an infinite loop. The code extractor found only a partial function,
+          not a complete program. Score: 2/7.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">Failure Mode 3</div>
+        <h4>Token-limit truncation</h4>
+        <p><code>nvidia/NVIDIA-Nemotron-3-Super-120B-A12B</code> (DeepInfra) hit 16k tokens and its output was
+          truncated mid-generation. Hardcoded data strings got corrupted (missing newlines between records).
+          The code compiled but produced wrong output. Score: 0&ndash;5/7 depending on the challenge.</p>
+      </div>
+    </div>
+    <p class="body-text">
+      The cached responses reveal a nuanced picture. For <code>nvidia/nemotron-3-nano-30b-a3b:free</code>,
+      the empty responses were consistent across multiple challenges &mdash; its coding score of 63/126
+      reflects genuine limitations. But for <code>openai/gpt-oss-20b</code>, the cipher-typescript zero
+      was a <strong>transient failure</strong> from an overnight API call that got cached. It solved
+      cipher-rust and cipher-python perfectly in later batches (18k tokens, 45 seconds). If the overnight
+      run had succeeded, its already-highest coding score of 112/126 would be even higher.
+      <code>qwen/qwen3.5-122b-a10b</code>&rsquo;s infinite verification loop, however, is a
+      <strong>model behavior</strong> &mdash; reasoning-heavy models can get trapped in self-checking
+      loops on algorithmic problems.
+    </p>
+
+    <h3>Rust Is the Hardest Language</h3>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th>Language</th>
+          <th>Avg Score</th>
+          <th>Compile Rate</th>
+          <th>Perfect Rate</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>TypeScript</strong></td>
+            <td class="score-cell">5.3/7</td>
+            <td>92%</td>
+            <td>78%</td>
+          </tr>
+          <tr>
+            <td><strong>Python</strong></td>
+            <td class="score-cell">5.1/7</td>
+            <td>88%</td>
+            <td>76%</td>
+          </tr>
+          <tr>
+            <td><strong>Rust</strong></td>
+            <td class="score-cell">4.3/7</td>
+            <td>72%</td>
+            <td>65%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="body-text">
+      Rust&rsquo;s lower success rate comes from its strict type system and ownership model. Models
+      struggle with borrowing, lifetimes, and the borrow checker &mdash; generating code that looks
+      correct but fails to compile. The gap between Rust and TypeScript is consistent across all
+      challenge types.
+    </p>
+
+    <h3>Speed as Capability</h3>
+    <p class="body-text">
+      Speed remains a decisive factor. Multiple top models now achieve perfect 126/126, but
+      the data pipeline and cipher challenges still separate fast from slow. Models that respond
+      within seconds across all 18 tasks &mdash; spanning FizzBuzz, business days, vending machines,
+      grid paths, ciphers, and data pipelines &mdash; consistently rank higher overall.
+    </p>
+  </section>
+
+  <!-- 08 — Deep Dive: MCP Tool Use -->
+  <section>
+    <div class="section-num">08 &mdash; Deep Dive: MCP Tool Use</div>
+    <h2>Can models orchestrate real-world tools?</h2>
+    <p class="body-text">
+      The most revealing dimension. Each model connects to TezLab&rsquo;s MCP server and must analyze
+      battery health and charging patterns by calling 6 tools in the right sequence. Among models that
+      called all 6 tools, quality scores were uniformly 5/5. The variance is entirely in tool usage &mdash;
+      MCP tool use is primarily a <em>planning problem</em>, not a generation problem.
+    </p>
+    <p class="body-text">
+      <strong>Note:</strong> MCP results are available for 41 of 49 models &mdash; comprehensive coverage
+      across all providers. The 8 models without MCP data either lack tool-use support (phi4, gemma3n,
+      deepseek-r1 variants) or were not attempted (Nemotron Nano 9B variants, minimax-01).
+      Models without MCP data show &ldquo;&mdash;&rdquo; in the leaderboard and are scored on 4 dimensions only.
+    </p>
+
+    <h3>The Efficiency Spectrum</h3>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="m-model">Model</th>
+          <th data-sort="m-tool">Tool</th>
+          <th data-sort="m-judge">Judge</th>
+          <th data-sort="m-total">Total</th>
+          <th data-sort="m-time">Time</th>
+          <th data-sort="m-cost">Cost</th>
+        </tr></thead>
+        <tbody id="mcp-body"></tbody>
+      </table>
+    </div>
+    <p class="body-text" style="color:var(--ink-faint);font-size:0.85rem;margin-top:0.5rem">Click any row to see the full response, tool calls, and judge verdict.</p>
+
+    <!-- MCP Detail Panel -->
+    <div class="detail-panel" id="mcp-detail-panel">
+      <div class="detail-header">
+        <div>
+          <h3 id="mcp-detail-title"></h3>
+          <span id="mcp-detail-subtitle" style="font-size:0.85rem;color:var(--ink-faint);"></span>
+        </div>
+        <div class="nav-arrows">
+          <button class="nav-btn" id="mcp-prev-btn">&larr; Prev</button>
+          <button class="nav-btn" id="mcp-next-btn">Next &rarr;</button>
+          <button class="detail-close" id="mcp-close-btn">Close &times;</button>
+        </div>
+      </div>
+      <div class="detail-stats" id="mcp-detail-stats"></div>
+      <div class="detail-tabs">
+        <button class="detail-tab active" data-mcp-tab="response">Response</button>
+        <button class="detail-tab" data-mcp-tab="tools">Tool Calls</button>
+        <button class="detail-tab" data-mcp-tab="judge">Judge</button>
+      </div>
+      <div class="mcp-tab-content active" id="mcp-tab-response">
+        <div class="rendered-md" id="mcp-rendered-response"><p class="loading">Loading...</p></div>
+      </div>
+      <div class="mcp-tab-content" id="mcp-tab-tools">
+        <div class="thread" id="mcp-thread-view"><p class="loading">Loading...</p></div>
+      </div>
+      <div class="mcp-tab-content" id="mcp-tab-judge">
+        <div id="mcp-judge-view"></div>
+      </div>
+    </div>
+
+    <h3>The Failures Tell the Real Story</h3>
+
+    <div class="question-block">
+      <div class="q-label">Claude Haiku 4.5 via OpenRouter (2/16)</div>
+      <blockquote>
+        &ldquo;I apologize &mdash; I&rsquo;m encountering persistent server errors when trying to
+        connect to your TezLab account to retrieve vehicle information. The service appears to be
+        temporarily unavailable.&rdquo;
+      </blockquote>
+    </div>
+    <p class="body-text">
+      The service was running fine. Every other model connected without issues. Haiku received an error on
+      the first <code>list_vehicles</code> call, retried once, then generated a polite failure response
+      instead of persisting. It treated a tool error as terminal rather than retryable. At $0.013, it
+      cost more than most models that scored perfectly.
+    </p>
+
+    <div class="question-block">
+      <div class="q-label">Nemotron Nano 30B on DeepInfra (2/16)</div>
+      <blockquote>
+        &ldquo;I see you have two vehicles in your TezLab account: 1. Tesla Model X, 2. Rivian R1S.
+        Could you tell me which vehicle you&rsquo;d like me to analyze?&rdquo;
+      </blockquote>
+    </div>
+    <p class="body-text">
+      It refused to proceed autonomously. The same weights on OpenRouter scored 11/16 by just picking the
+      Tesla and running all 6 tools. Same model, different provider: one asks permission, the other gets
+      to work.
+    </p>
+
+    <p class="body-text">
+      <code>google/gemma-3-27b-it</code> couldn&rsquo;t even start &mdash; OpenRouter returned
+      &ldquo;No endpoints found that support tool use.&rdquo; A legitimate model limitation, not an error.
+    </p>
+  </section>
+
+  <!-- 09 — The Provider Effect -->
+  <section>
+    <div class="section-num">09 &mdash; The Provider Effect</div>
+    <h2>Why infrastructure matters</h2>
+    <p class="body-text">
+      The same model weights, served by different providers, produce meaningfully different results.
+      Two NVIDIA Nemotron models appear on <em>both</em> OpenRouter and DeepInfra &mdash; same weights,
+      different infrastructure. This wasn&rsquo;t planned as an experiment, but it became one of the
+      most revealing findings.
+    </p>
+
+    <h3>Cross-Provider Comparison</h3>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th>Model</th>
+          <th>Dimension</th>
+          <th>OpenRouter</th>
+          <th>DeepInfra</th>
+          <th>Gap</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td rowspan="6" style="font-weight:600">Nemotron Nano 30B</td>
+            <td>Reasoning</td>
+            <td class="score-cell score-perfect">20/20</td>
+            <td class="score-cell score-good">17/20</td>
+            <td class="gap-negative">&minus;3</td>
+          </tr>
+          <tr>
+            <td>Knowledge</td>
+            <td class="score-cell score-perfect">30/30</td>
+            <td class="score-cell score-perfect">30/30</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Instruction</td>
+            <td class="score-cell score-good">28/30</td>
+            <td class="score-cell score-perfect">30/30</td>
+            <td class="gap-positive">+2</td>
+          </tr>
+          <tr>
+            <td>Coding</td>
+            <td class="score-cell score-mid">71/126</td>
+            <td class="score-cell score-good">110/126</td>
+            <td class="gap-positive">+39</td>
+          </tr>
+          <tr>
+            <td>MCP Tool Use</td>
+            <td class="score-cell score-good">11/16</td>
+            <td class="score-cell score-low">2/16</td>
+            <td class="gap-negative">&minus;9</td>
+          </tr>
+          <tr style="background:var(--bg-alt)">
+            <td><strong>Combined</strong></td>
+            <td class="combined-cell">83.7%</td>
+            <td class="combined-cell">77.0%</td>
+            <td class="gap-negative"><strong>&minus;6.7pp</strong></td>
+          </tr>
+          <tr><td colspan="5" style="height:0.5rem;border:none;padding:0"></td></tr>
+          <tr>
+            <td rowspan="6" style="font-weight:600">Nemotron Super 120B</td>
+            <td>Reasoning</td>
+            <td class="score-cell score-perfect">20/20</td>
+            <td class="score-cell score-perfect">20/20</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Knowledge</td>
+            <td class="score-cell score-perfect">30/30</td>
+            <td class="score-cell score-good">28/30</td>
+            <td class="gap-negative">&minus;2</td>
+          </tr>
+          <tr>
+            <td>Instruction</td>
+            <td class="score-cell score-good">25/30</td>
+            <td class="score-cell score-perfect">30/30</td>
+            <td class="gap-positive">+5</td>
+          </tr>
+          <tr>
+            <td>Coding</td>
+            <td class="score-cell score-mid">74/126</td>
+            <td class="score-cell score-mid">88/126</td>
+            <td class="gap-positive">+14</td>
+          </tr>
+          <tr>
+            <td>MCP Tool Use</td>
+            <td class="score-cell score-good">11/16</td>
+            <td class="score-cell score-low">4/16</td>
+            <td class="gap-negative">&minus;7</td>
+          </tr>
+          <tr style="background:var(--bg-alt)">
+            <td><strong>Combined</strong></td>
+            <td class="combined-cell">82.2%</td>
+            <td class="combined-cell">77.6%</td>
+            <td class="gap-positive"><strong>+4.6pp</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Seven Layers of Provider Difference</h3>
+    <p class="body-text">
+      There are at least seven layers where providers can introduce behavioral differences, even when
+      serving identical model weights:
+    </p>
+    <ul class="inline-list">
+      <li><strong>Quantization</strong> &mdash; DeepInfra typically runs FP8; OpenRouter routes to NVIDIA&rsquo;s
+        own infrastructure which may use different precision. Affects long reasoning chains most.</li>
+      <li><strong>SDK layers</strong> &mdash; OpenRouter uses a native Vercel AI SDK provider; DeepInfra uses
+        a generic OpenAI-compatible adapter. Tool calling and response parsing differ.</li>
+      <li><strong>Middleware</strong> &mdash; OpenRouter applies context compression, response healing
+        (malformed JSON repair), and schema modification. DeepInfra passes requests directly.</li>
+      <li><strong>Tool-calling implementation</strong> &mdash; How tools appear in context, how results are
+        formatted, how the model signals tool calls. The most likely explanation for the MCP gap.</li>
+      <li><strong>Default parameters</strong> &mdash; Providers may inject different defaults for temperature,
+        top_p, repetition penalty.</li>
+      <li><strong>Token usage reporting</strong> &mdash; DeepInfra streaming token counts may be less accurate,
+        affecting cost reporting.</li>
+      <li><strong>Reasoning effort</strong> &mdash; Different providers expose different parameter names for
+        reasoning tokens, potentially allocating different &ldquo;thinking time.&rdquo;</li>
+    </ul>
+
+    <p class="body-text">
+      The practical implication: <strong>benchmarks are provider-specific</strong>. A score obtained on
+      OpenRouter doesn&rsquo;t transfer to DeepInfra, or vice versa. If your application relies on tool
+      calling, provider choice matters more than model choice.
+    </p>
+  </section>
+
+  <!-- 10 — Cost & Speed Analysis -->
+  <section>
+    <div class="section-num">10 &mdash; Cost &amp; Speed Analysis</div>
+    <h2>The cost efficiency curve</h2>
+    <p class="body-text">
+      The relationship between cost and quality is not linear &mdash; it has a sharp knee at around $0.01.
+      You get 89.9% across all 5 dimensions for one cent. The models with the highest 4-dimension scores
+      cost significantly more, but the value proposition of sub-$0.10 models remains remarkable.
+    </p>
+
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th>Tier</th>
+          <th>Cost Range</th>
+          <th>Best Model</th>
+          <th>Score</th>
+        </tr></thead>
+        <tbody>
+          <tr class="tier-1">
+            <td><strong>Free</strong></td>
+            <td class="cost-cell">$0.00</td>
+            <td class="model-cell">nemotron-3-nano:latest (Ollama)</td>
+            <td class="combined-cell">84.0%</td>
+          </tr>
+          <tr class="tier-1">
+            <td><strong>Sub-penny</strong></td>
+            <td class="cost-cell">$0.001&ndash;$0.01</td>
+            <td class="model-cell">deepseek/deepseek-v3.2 (OR)</td>
+            <td class="combined-cell">88.3%</td>
+          </tr>
+          <tr class="tier-1">
+            <td><strong>Penny</strong></td>
+            <td class="cost-cell">$0.01&ndash;$0.05</td>
+            <td class="model-cell">openai/gpt-oss-120b (OR)</td>
+            <td class="combined-cell">89.9%</td>
+          </tr>
+          <tr class="tier-1">
+            <td><strong>Dime</strong></td>
+            <td class="cost-cell">$0.05&ndash;$0.20</td>
+            <td class="model-cell">x-ai/grok-4.20-beta (OR)</td>
+            <td class="combined-cell">92.8%</td>
+          </tr>
+          <tr class="tier-1">
+            <td><strong>Quarter+</strong></td>
+            <td class="cost-cell">$0.20+</td>
+            <td class="model-cell">anthropic/claude-sonnet-4.6 (OR)</td>
+            <td class="combined-cell">93.8%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="body-text">
+      The cost efficiency story has changed dramatically. Free local models now compete with mid-tier
+      API models, and $0.01 buys you 89.9% across all 5 dimensions. The premium tier delivers
+      93.8% across all 5 dimensions, but the value proposition of the sub-$0.10 range is remarkable.
+    </p>
+
+    <h3>The Speed/Quality Frontier</h3>
+    <div class="results-table-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="sq-model">Model</th>
+          <th data-sort="sq-score">Score</th>
+          <th data-sort="sq-time">Time</th>
+          <th>Sweet Spot</th>
+        </tr></thead>
+        <tbody id="speed-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Methodology (no number) -->
+  <div class="methodology">
+    <h2>Methodology</h2>
+    <p class="body-text">
+      All evaluations ran with temperature 0.0 (knowledge, instruction) or 0.2&ndash;0.3 (reasoning, coding).
+      Reasoning and knowledge responses were judged by <code>anthropic/claude-haiku-4.5</code> (OpenRouter).
+      Instruction following and coding used deterministic verification &mdash; no LLM judge involved.
+    </p>
+    <p class="body-text">
+      Combined scores are the mean of normalized dimension percentages (each dimension&rsquo;s raw score
+      divided by its maximum, then averaged). Models without MCP data are scored across the 4 available
+      dimensions. MCP data is shown where available; models without MCP results display a dash.
+    </p>
+
+    <h3>The Judge</h3>
+    <p class="body-text">
+      <code>anthropic/claude-haiku-4.5</code> (via OpenRouter) serves as both contestant and judge. We mitigated the circularity by using deterministic scoring for instruction following and
+      coding, scoring MCP tool usage mechanically, and only using the LLM judge for reasoning quality and
+      factual correctness. The judge showed no measurable bias toward its own responses &mdash; Haiku scored
+      itself 17/20 on reasoning (below the median of 17.6).
+    </p>
+
+    <h3>Run Details</h3>
+    <ul class="inline-list">
+      <li><strong>Reasoning</strong> &mdash; Run #7, 4 puzzles, scored /20</li>
+      <li><strong>Knowledge</strong> &mdash; Run #2, 30 questions across 6 categories, scored /30</li>
+      <li><strong>Instruction</strong> &mdash; Run #2, 6 constraint tasks, scored /30</li>
+      <li><strong>Coding</strong> &mdash; Run #6, 6 challenges x 3 languages, scored /126</li>
+      <li><strong>MCP Tool Use</strong> &mdash; Run #1, 1 multi-tool task, scored /16</li>
+    </ul>
+
+    <h3>Limitations</h3>
+    <ul class="inline-list">
+      <li>Cipher and pipeline challenges have incomplete coverage due to 10-minute timeouts. Models that
+        couldn&rsquo;t respond score 0 &mdash; treated as a finding rather than missing data.</li>
+      <li>MCP eval used a single task with a live API. Results may vary with different MCP servers.</li>
+      <li>Free-tier models may have different availability or routing than paid versions.</li>
+      <li>Each model tested once per task. Stochastic variation means scores could shift 1&ndash;3 points
+        on a re-run.</li>
+      <li>8 of 49 models are missing MCP scores (no tool-use support or not attempted). Their combined
+        scores are based on 4 dimensions only, while the 41 models with MCP data use all 5 dimensions.</li>
+    </ul>
+  </div>
+
+  <div class="report-footer">
+    Generated by <a href="https://thefocus.ai">Focus.AI</a> Umwelten &middot; March 2026
+  </div>
+
+</div>
+</div><!-- end .report-scope -->
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script is:inline>
+// ============================================================
+// MODEL SHOWDOWN — Interactive Data
+// ============================================================
+
+const MODELS = [
+  // open = open-weights, released = YYYY-MM, params = param count string
+  { model: 'anthropic/claude-sonnet-4.6', provider: 'openrouter', combined: 93.8, reasoning: [20,20], knowledge: [30,30], instruction: [30,30], coding: [126,126], mcp: [11,16], cost: 0.20, timeMin: 3, open: false, released: '2026-02', params: 'undisclosed' },
+  { model: 'qwen/qwen3.5-397b-a17b', provider: 'openrouter', combined: 93.1, reasoning: [20,20], knowledge: [29,30], instruction: [30,30], coding: [126,126], mcp: [11,16], cost: 0.52, timeMin: 36, open: true, released: '2026-03', params: '397B MoE' },
+  { model: 'x-ai/grok-4.20-beta', provider: 'openrouter', combined: 92.8, reasoning: [20,20], knowledge: [29,30], instruction: [30,30], coding: [124,126], mcp: [11,16], cost: 0.09, timeMin: 2, open: false, released: '2026-03', params: 'undisclosed' },
+  { model: 'gemini-3-flash-preview', provider: 'google', combined: 92.8, reasoning: [19,20], knowledge: [30,30], instruction: [30,30], coding: [126,126], mcp: [11,16], cost: 0.04, timeMin: 101, open: false, released: '2025-12', params: 'undisclosed' },
+  { model: 'openai/gpt-5.4', provider: 'openrouter', combined: 92.8, reasoning: [19,20], knowledge: [30,30], instruction: [30,30], coding: [126,126], mcp: [11,16], cost: 0.17, timeMin: 2, open: false, released: '2026-03', params: 'undisclosed' },
+  { model: 'openai/gpt-oss-120b', provider: 'openrouter', combined: 89.9, reasoning: [20,20], knowledge: [28,30], instruction: [30,30], coding: [126,126], mcp: [11,16], cost: 0.01, timeMin: 10, open: true, released: '2026-03', params: '120B' },
+  { model: 'qwen/qwen3.5-122b-a10b', provider: 'openrouter', combined: 91.8, reasoning: [20,20], knowledge: [30,30], instruction: [30,30], coding: [114,126], mcp: [11,16], cost: 0.43, timeMin: 18, open: true, released: '2026-02', params: '122B MoE' },
+  { model: 'openai/gpt-5.4-mini', provider: 'openrouter', combined: 90.0, reasoning: [20,20], knowledge: [30,30], instruction: [28,30], coding: [121,126], mcp: [9.7,16], cost: 0.05, timeMin: 1, open: false, released: '2026-03', params: 'undisclosed' },
+  { model: 'gemini-3.1-pro-preview', provider: 'google', combined: 91.6, reasoning: [18,20], knowledge: [30,30], instruction: [30,30], coding: [125,126], mcp: [11,16], cost: 0.008, timeMin: 23, open: false, released: '2026-02', params: 'undisclosed' },
+  { model: 'qwen/qwen3.5-35b-a3b', provider: 'openrouter', combined: 91.5, reasoning: [20,20], knowledge: [30,30], instruction: [30,30], coding: [112,126], mcp: [11,16], cost: 0.21, timeMin: 30, open: true, released: '2026-02', params: '35B MoE' },
+  { model: 'google/gemini-3.1-pro-preview', provider: 'openrouter', combined: 90.9, reasoning: [18,20], knowledge: [30,30], instruction: [30,30], coding: [123,126], mcp: [10.7,16], cost: 1.85, timeMin: 31, open: false, released: '2026-02', params: 'undisclosed' },
+  { model: 'anthropic/claude-haiku-4.5', provider: 'openrouter', combined: 79.5, reasoning: [17,20], knowledge: [30,30], instruction: [30,30], coding: [126,126], mcp: [2,16], cost: 0.07, timeMin: 2, open: false, released: '2025-10', params: 'undisclosed' },
+  { model: 'minimax/minimax-m2.7', provider: 'openrouter', combined: 90.8, reasoning: [17,20], knowledge: [30,30], instruction: [30,30], coding: [126,126], mcp: [11,16], cost: 0.10, timeMin: 24, open: false, released: '2026-03', params: 'undisclosed' },
+  { model: 'moonshotai/kimi-k2', provider: 'openrouter', combined: 90.4, reasoning: [20,20], knowledge: [30,30], instruction: [25,30], coding: [126,126], mcp: [11,16], cost: 0.03, timeMin: 5, open: true, released: '2025-07', params: '1T MoE' },
+  { model: 'moonshotai/kimi-k2.5', provider: 'openrouter', combined: 90.4, reasoning: [20,20], knowledge: [30,30], instruction: [25,30], coding: [126,126], mcp: [11,16], cost: 0.26, timeMin: 50, open: true, released: '2026-01', params: '1T+ MoE' },
+  { model: 'x-ai/grok-4.1-fast', provider: 'openrouter', combined: 90.0, reasoning: [20,20], knowledge: [30,30], instruction: [30,30], coding: [105,126], mcp: [10.7,16], cost: 0.06, timeMin: 13, open: false, released: '2025-11', params: 'undisclosed' },
+  { model: 'anthropic/claude-opus-4.6', provider: 'openrouter', combined: 90.4, reasoning: [18,20], knowledge: [30,30], instruction: [28,30], coding: [126,126], mcp: [11,16], cost: 0.37, timeMin: 4, open: false, released: '2026-03', params: 'undisclosed' },
+  { model: 'inception/mercury-2', provider: 'openrouter', combined: 89.3, reasoning: [20,20], knowledge: [30,30], instruction: [25,30], coding: [119,126], mcp: [11,16], cost: 0.06, timeMin: 2, open: false, released: '2026-02', params: 'undisclosed' },
+  { model: 'mistralai/mistral-small-2603', provider: 'openrouter', combined: 89.0, reasoning: [17,20], knowledge: [30,30], instruction: [30,30], coding: [115,126], mcp: [11,16], cost: 0.008, timeMin: 1, open: true, released: '2026-03', params: 'undisclosed' },
+  { model: 'openai/gpt-oss-20b', provider: 'openrouter', combined: 89.0, reasoning: [17,20], knowledge: [29,30], instruction: [30,30], coding: [119,126], mcp: [11,16], cost: 0.02, timeMin: 8, open: true, released: '2026-03', params: '20B' },
+  { model: 'gpt-oss-latest', provider: 'ollama', combined: 77.2, reasoning: [20,20], knowledge: [28,30], instruction: [29,30], coding: [105,126], mcp: [2,16], cost: 0, timeMin: 71, open: true, released: '2026-03', params: '120B' },
+  { model: 'deepseek/deepseek-v3.2', provider: 'openrouter', combined: 88.3, reasoning: [17,20], knowledge: [29,30], instruction: [28,30], coding: [123,126], mcp: [11,16], cost: 0.007, timeMin: 14, open: true, released: '2026-01', params: '685B MoE' },
+  { model: 'nvidia/Nemotron-3-Nano-30B-A3B', provider: 'deepinfra', combined: 77.0, reasoning: [17,20], knowledge: [30,30], instruction: [30,30], coding: [110,126], mcp: [2,16], cost: 0, timeMin: 14, open: true, released: '2025-12', params: '30B MoE' },
+  { model: 'nvidia/NVIDIA-Nemotron-3-Super-120B-A12B', provider: 'deepinfra', combined: 77.6, reasoning: [20,20], knowledge: [28,30], instruction: [30,30], coding: [88,126], mcp: [4,16], cost: 0, timeMin: 3, open: true, released: '2026-03', params: '120B MoE' },
+  { model: 'nemotron-3-nano-latest', provider: 'ollama', combined: 84.0, reasoning: [20,20], knowledge: [30,30], instruction: [27,30], coding: [85,126], mcp: [10,16], cost: 0, timeMin: 36, open: true, released: '2025-12', params: '30B MoE' },
+  { model: 'meta-llama/llama-4-maverick', provider: 'openrouter', combined: 82.5, reasoning: [17,20], knowledge: [29,30], instruction: [25,30], coding: [115,126], mcp: [9,16], cost: 0.008, timeMin: 16, open: true, released: '2025-04', params: '400B MoE' },
+  { model: 'meta-llama/llama-4-scout', provider: 'openrouter', combined: 80.7, reasoning: [17,20], knowledge: [27,30], instruction: [30,30], coding: [101,126], mcp: [7.7,16], cost: 0.004, timeMin: 15, open: true, released: '2025-04', params: '109B MoE' },
+  { model: 'openai/gpt-5.4-nano', provider: 'openrouter', combined: 82.1, reasoning: [15,20], knowledge: [29,30], instruction: [27,30], coding: [111,126], mcp: [9.7,16], cost: 0.02, timeMin: 2, open: false, released: '2026-03', params: 'undisclosed' },
+  { model: 'nvidia/nemotron-3-nano-30b-a3b:free', provider: 'openrouter', combined: 83.7, reasoning: [20,20], knowledge: [30,30], instruction: [28,30], coding: [71,126], mcp: [11,16], cost: 0, timeMin: 2, open: true, released: '2025-12', params: '30B MoE' },
+  { model: 'mistralai/codestral-2508', provider: 'openrouter', combined: 77.4, reasoning: [17,20], knowledge: [25,30], instruction: [25,30], coding: [123,126], mcp: [6,16], cost: 0.01, timeMin: 1, open: true, released: '2025-08', params: '22B' },
+  { model: 'google/gemma-3-27b-it', provider: 'openrouter', combined: 69.7, reasoning: [17,20], knowledge: [29,30], instruction: [25,30], coding: [105,126], mcp: [0,16], cost: 0.003, timeMin: 4, open: true, released: '2025-03', params: '27B' },
+  { model: 'qwen3-32b', provider: 'ollama', combined: 80.6, reasoning: [17,20], knowledge: [29,30], instruction: [25,30], coding: [103,126], mcp: [9,16], cost: 0, timeMin: 59, open: true, released: '2025-05', params: '32B' },
+  { model: 'inception/mercury-coder', provider: 'openrouter', combined: 81.7, reasoning: [17,20], knowledge: [25,30], instruction: [25,30], coding: [119,126], mcp: [10,16], cost: 0.01, timeMin: 2, open: false, released: '2025-02', params: 'undisclosed' },
+  { model: 'nvidia/nemotron-3-super-120b-a12b:free', provider: 'openrouter', combined: 82.2, reasoning: [20,20], knowledge: [30,30], instruction: [25,30], coding: [74,126], mcp: [11,16], cost: 0, timeMin: 11, open: true, released: '2026-03', params: '120B MoE' },
+  { model: 'phi4-latest', provider: 'ollama', combined: 84.6, reasoning: [16,20], knowledge: [27,30], instruction: [27,30], coding: [99,126], mcp: [null,16], cost: 0, timeMin: 25, open: true, released: '2025-02', params: '14B' },
+  { model: 'mistral-small-latest', provider: 'ollama', combined: 80.9, reasoning: [17,20], knowledge: [29,30], instruction: [23,30], coding: [100,126], mcp: [10.7,16], cost: 0, timeMin: 49, open: true, released: '2025-06', params: '24B' },
+  { model: 'glm-4.7-flash-latest', provider: 'ollama', combined: 81.1, reasoning: [17,20], knowledge: [29,30], instruction: [26,30], coding: [86,126], mcp: [11,16], cost: 0, timeMin: 54, open: true, released: '2025-12', params: 'undisclosed' },
+  { model: 'devstral-latest', provider: 'ollama', combined: 78.5, reasoning: [16,20], knowledge: [28,30], instruction: [26,30], coding: [96,126], mcp: [9,16], cost: 0, timeMin: 44, open: true, released: '2025-06', params: '24B' },
+  { model: 'deepseek-r1-32b', provider: 'ollama', combined: 84.0, reasoning: [17,20], knowledge: [28,30], instruction: [28,30], coding: [81,126], mcp: [null,16], cost: 0, timeMin: 65, open: true, released: '2025-01', params: '32B' },
+  { model: 'mistralai/mistral-small-3.2-24b-instruct', provider: 'openrouter', combined: 76.4, reasoning: [17,20], knowledge: [29,30], instruction: [26,30], coding: [80,126], mcp: [8,16], cost: 0.002, timeMin: 2, open: true, released: '2025-06', params: '24B' },
+  { model: 'mistralai/ministral-8b-2512', provider: 'openrouter', combined: 73.9, reasoning: [16,20], knowledge: [27,30], instruction: [25,30], coding: [91,126], mcp: [7,16], cost: 0.004, timeMin: 1, open: true, released: '2025-12', params: '8B' },
+  { model: 'gemma3n-e4b', provider: 'ollama', combined: 79.7, reasoning: [17,20], knowledge: [29,30], instruction: [24,30], coding: [72,126], mcp: [null,16], cost: 0, timeMin: 54, open: true, released: '2025-06', params: '8B' },
+  { model: 'deepseek-r1-14b', provider: 'ollama', combined: 78.2, reasoning: [17,20], knowledge: [24,30], instruction: [26,30], coding: [77,126], mcp: [null,16], cost: 0, timeMin: 57, open: true, released: '2025-01', params: '14B' },
+  { model: 'deepseek-r1-latest', provider: 'ollama', combined: 78.1, reasoning: [15,20], knowledge: [26,30], instruction: [30,30], coding: [64,126], mcp: [null,16], cost: 0, timeMin: 33, open: true, released: '2025-01', params: '671B MoE' },
+  { model: 'nvidia/nemotron-nano-9b-v2:free', provider: 'openrouter', combined: 77.6, reasoning: [17,20], knowledge: [26,30], instruction: [29,30], coding: [53,126], mcp: [null,16], cost: 0, timeMin: 112, open: true, released: '2026-03', params: '9B' },
+  { model: 'qwen3-30b-a3b', provider: 'ollama', combined: 73.3, reasoning: [20,20], knowledge: [29,30], instruction: [4,30], coding: [126,126], mcp: [9,16], cost: 0, timeMin: 74, open: true, released: '2025-05', params: '30B MoE' },
+  { model: 'nvidia/NVIDIA-Nemotron-Nano-9B-v2', provider: 'deepinfra', combined: 75.7, reasoning: [17,20], knowledge: [26,30], instruction: [25,30], coding: [60,126], mcp: [null,16], cost: 0, timeMin: 9, open: true, released: '2026-03', params: '9B' },
+  { model: 'nemotron-3-nano-4b', provider: 'ollama', combined: 64.0, reasoning: [19,20], knowledge: [25,30], instruction: [25,30], coding: [42,126], mcp: [4,16], cost: 0, timeMin: 42, open: true, released: '2025-12', params: '4B' },
+  { model: 'minimax/minimax-01', provider: 'openrouter', combined: 0.0, reasoning: [0,20], knowledge: [0,30], instruction: [0,30], coding: [0,126], mcp: [null,16], cost: 0, timeMin: 2, open: false, released: '2025-01', params: 'undisclosed' },
+];
+
+const PENDING_MODELS = [];
+
+const CIPHER_DATA = [
+  { model: 'inception/mercury-2', score: 7, max: 7, timeSec: 3.4 },
+  { model: 'mistralai/codestral-2508', score: 7, max: 7, timeSec: 3.9 },
+  { model: 'anthropic/claude-haiku-4.5', score: 7, max: 7, timeSec: 4.5 },
+  { model: 'moonshotai/kimi-k2', score: 7, max: 7, timeSec: 6.1 },
+  { model: 'meta-llama/llama-4-maverick', score: 7, max: 7, timeSec: 10.2 },
+  { model: 'deepseek/deepseek-v3.2', score: 7, max: 7, timeSec: 14 },
+  { model: 'openai/gpt-oss-120b', score: 7, max: 7, timeSec: 18 },
+  { model: 'gemini-3-flash-preview', score: 7, max: 7, timeSec: 22 },
+  { model: 'qwen/qwen3.5-35b-a3b', score: 7, max: 7, timeSec: 35 },
+  { model: 'minimax/minimax-m2.7', score: 7, max: 7, timeSec: 42 },
+  { model: 'nvidia/Nemotron-3-Nano-30B-A3B', score: 7, max: 7, timeSec: 55 },
+  { model: 'qwen/qwen3.5-coder-32b-a6b', score: 7, max: 7, timeSec: 68 },
+  { model: 'google/gemma-3-27b-it', score: 7, max: 7, timeSec: 90 },
+  { model: 'inception/mercury-coder', score: 7, max: 7, timeSec: 120 },
+  { model: 'mistralai/mistral-small-3.2-24b-instruct', score: 5, max: 7, timeSec: 6 },
+  { model: 'meta-llama/llama-4-scout', score: 5, max: 7, timeSec: 18 },
+  { model: 'mistralai/ministral-8b-2512', score: 5, max: 7, timeSec: 26 },
+  { model: 'nvidia/NVIDIA-Nemotron-3-Super-120B-A12B', score: 5, max: 7, timeSec: 45 },
+  { model: 'qwen/qwen3.5-122b-a10b', score: 2, max: 7, timeSec: 300 },
+  { model: 'openai/gpt-oss-20b', score: 0, max: 7, timeSec: 600 },
+  { model: 'nvidia/nemotron-3-nano-30b-a3b:free', score: 0, max: 7, timeSec: 600 },
+  { model: 'nvidia/nemotron-3-super-120b-a12b:free', score: 0, max: 7, timeSec: 600 },
+];
+
+const MCP_DATA = [
+  { model: 'anthropic/claude-sonnet-4.6', key: 'anthropic-claude-sonnet-4.6-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 15, cost: 0.05 },
+  { model: 'anthropic/claude-opus-4.6', key: 'anthropic-claude-opus-4.6-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 20, cost: 0.10 },
+  { model: 'openai/gpt-5.4', key: 'openai-gpt-5.4-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 12, cost: 0.04 },
+  { model: 'x-ai/grok-4.20-beta', key: 'x-ai-grok-4.20-beta-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 10, cost: 0.02 },
+  { model: 'inception/mercury-2', key: 'inception-mercury-2-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 14, cost: 0.007 },
+  { model: 'qwen/qwen3.5-35b-a3b', key: 'qwen-qwen3.5-35b-a3b-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 24, cost: 0.006 },
+  { model: 'moonshotai/kimi-k2', key: 'moonshotai-kimi-k2-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 34, cost: 0.014 },
+  { model: 'moonshotai/kimi-k2.5', key: 'moonshotai-kimi-k2.5-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 55, cost: 0.06 },
+  { model: 'openai/gpt-oss-20b', key: 'openai-gpt-oss-20b-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 52, cost: 0.001 },
+  { model: 'nvidia/nemotron-3-nano-30b-a3b:free', key: 'nvidia-nemotron-3-nano-30b-a3b-free-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 112, cost: 0 },
+  { model: 'minimax/minimax-m2.7', key: 'minimax-minimax-m2.7-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 152, cost: 0.014 },
+  { model: 'qwen/qwen3.5-122b-a10b', key: 'qwen-qwen3.5-122b-a10b-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 180, cost: 0.05 },
+  { model: 'openai/gpt-oss-120b', key: 'openai-gpt-oss-120b-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 200, cost: 0.002 },
+  { model: 'deepseek/deepseek-v3.2', key: 'deepseek-deepseek-v3.2-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 220, cost: 0.01 },
+  { model: 'qwen/qwen3.5-397b-a17b', key: 'qwen-qwen3.5-397b-a17b-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 120, cost: 0.05 },
+  { model: 'gemini-3.1-pro-preview', key: 'gemini-3.1-pro-preview-google', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 30, cost: 0.002 },
+  { model: 'gemini-3-flash-preview', key: 'gemini-3-flash-preview-google', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 40, cost: 0.002 },
+  { model: 'mistralai/mistral-small-2603', key: 'mistralai-mistral-small-2603-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 8, cost: 0.001 },
+  { model: 'nvidia/nemotron-3-super-120b-a12b:free', key: 'nvidia-nemotron-3-super-120b-a12b-free-openrouter', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 300, cost: 0 },
+  { model: 'glm-4.7-flash-latest', key: 'glm-4.7-flash-latest-ollama', tool: [6,6], judge: [5,10], total: [11,16], timeSec: 60, cost: 0 },
+  { model: 'google/gemini-3.1-pro-preview', key: 'google-gemini-3.1-pro-preview-openrouter', tool: [5,6], judge: [5.7,10], total: [10.7,16], timeSec: 35, cost: 0.04 },
+  { model: 'x-ai/grok-4.1-fast', key: 'x-ai-grok-4.1-fast-openrouter', tool: [5,6], judge: [5.7,10], total: [10.7,16], timeSec: 15, cost: 0.015 },
+  { model: 'mistral-small-latest', key: 'mistral-small-latest-ollama', tool: [5,6], judge: [5.7,10], total: [10.7,16], timeSec: 55, cost: 0 },
+  { model: 'inception/mercury-coder', key: 'inception-mercury-coder-openrouter', tool: [5,6], judge: [5,10], total: [10,16], timeSec: 18, cost: 0.005 },
+  { model: 'nemotron-3-nano-latest', key: 'nemotron-3-nano-latest-ollama', tool: [5,6], judge: [5,10], total: [10,16], timeSec: 40, cost: 0 },
+  { model: 'openai/gpt-5.4-mini', key: 'openai-gpt-5.4-mini-openrouter', tool: [5,6], judge: [4.7,10], total: [9.7,16], timeSec: 8, cost: 0.01 },
+  { model: 'openai/gpt-5.4-nano', key: 'openai-gpt-5.4-nano-openrouter', tool: [5,6], judge: [4.7,10], total: [9.7,16], timeSec: 10, cost: 0.005 },
+  { model: 'qwen/qwen3.5-coder-32b-a6b', key: 'qwen-qwen3.5-coder-32b-a6b-openrouter', tool: [4,6], judge: [5,10], total: [9,16], timeSec: 30, cost: 0.004 },
+  { model: 'meta-llama/llama-4-maverick', key: 'meta-llama-llama-4-maverick-openrouter', tool: [4,6], judge: [5,10], total: [9,16], timeSec: 45, cost: 0.003 },
+  { model: 'qwen3-32b', key: 'qwen3-32b-ollama', tool: [4,6], judge: [5,10], total: [9,16], timeSec: 65, cost: 0 },
+  { model: 'devstral-latest', key: 'devstral-latest-ollama', tool: [4,6], judge: [5,10], total: [9,16], timeSec: 50, cost: 0 },
+  { model: 'qwen3-30b-a3b', key: 'qwen3-30b-a3b-ollama', tool: [4,6], judge: [5,10], total: [9,16], timeSec: 80, cost: 0 },
+  { model: 'mistralai/mistral-small-3.2-24b-instruct', key: 'mistralai-mistral-small-3.2-24b-instruct-openrouter', tool: [3,6], judge: [5,10], total: [8,16], timeSec: 22, cost: 0.001 },
+  { model: 'meta-llama/llama-4-scout', key: 'meta-llama-llama-4-scout-openrouter', tool: [3,6], judge: [4.7,10], total: [7.7,16], timeSec: 55, cost: 0.002 },
+  { model: 'mistralai/ministral-8b-2512', key: 'mistralai-ministral-8b-2512-openrouter', tool: [3,6], judge: [4,10], total: [7,16], timeSec: 18, cost: 0.001 },
+  { model: 'mistralai/codestral-2508', key: 'mistralai-codestral-2508-openrouter', tool: [3,6], judge: [3,10], total: [6,16], timeSec: 15, cost: 0.002 },
+  { model: 'nvidia/NVIDIA-Nemotron-3-Super-120B-A12B', key: 'nvidia-NVIDIA-Nemotron-3-Super-120B-A12B-deepinfra', tool: [2,6], judge: [2,10], total: [4,16], timeSec: 60, cost: 0 },
+  { model: 'nemotron-3-nano-4b', key: 'nemotron-3-nano-4b-ollama', tool: [2,6], judge: [2,10], total: [4,16], timeSec: 45, cost: 0 },
+  { model: 'nvidia/Nemotron-3-Nano-30B-A3B', key: 'nvidia-Nemotron-3-Nano-30B-A3B-deepinfra', tool: [1,6], judge: [1,10], total: [2,16], timeSec: 30, cost: 0 },
+  { model: 'anthropic/claude-haiku-4.5', key: 'anthropic-claude-haiku-4.5-openrouter', tool: [1,6], judge: [1,10], total: [2,16], timeSec: 12, cost: 0.013 },
+  { model: 'gpt-oss-latest', key: 'gpt-oss-latest-ollama', tool: [1,6], judge: [1,10], total: [2,16], timeSec: 75, cost: 0 },
+  { model: 'google/gemma-3-27b-it', key: null, tool: [0,6], judge: [0,10], total: [0,16], timeSec: 5, cost: 0 },
+];
+
+const SPEED_DATA = [
+  { model: 'mistralai/codestral-2508', score: 77.4, timeMin: 0.8, spot: 'Fastest overall' },
+  { model: 'mistralai/mistral-small-2603', score: 89.0, timeMin: 1.3, spot: 'Fastest >85%' },
+  { model: 'openai/gpt-5.4-mini', score: 90.0, timeMin: 1.3, spot: 'Best quality <2m' },
+  { model: 'x-ai/grok-4.20-beta', score: 92.8, timeMin: 2, spot: 'Best speed/quality', highlight: true },
+  { model: 'anthropic/claude-sonnet-4.6', score: 93.8, timeMin: 3, spot: 'Best quality' },
+];
+
+// ============================================================
+// Helpers
+// ============================================================
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function costStr(c) { return c > 0 ? '$' + c.toFixed(c < 0.01 ? 4 : c < 0.1 ? 3 : 2) : 'Free'; }
+
+function timeStr(m) {
+  if (m >= 60) return Math.round(m / 60) + 'h' + (m % 60 > 0 ? Math.round(m % 60) + 'm' : '');
+  if (m >= 1) return Math.round(m) + 'm';
+  return Math.round(m * 60) + 's';
+}
+
+function typeBadge(open) {
+  return open ? '<span class="badge badge-open">open</span>' : '<span class="badge badge-closed">closed</span>';
+}
+
+function releasedLabel(r) {
+  if (!r) return '';
+  const [y, m] = r.split('-');
+  const months = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return months[parseInt(m)] + ' ' + y.slice(2);
+}
+
+function providerBadge(p) {
+  if (p === 'openrouter') return '<span class="badge badge-or">OR</span>';
+  if (p === 'google') return '<span class="badge badge-google">Google</span>';
+  if (p === 'deepinfra') return '<span class="badge badge-di">DI</span>';
+  if (p === 'ollama') return '<span class="badge badge-local">Local</span>';
+  return esc(p);
+}
+
+function freeBadge(d) {
+  return d.cost === 0 ? ' <span class="badge badge-free">free</span>' : '';
+}
+
+function tierClass(pct) {
+  if (pct >= 85) return 'tier-1';
+  if (pct >= 80) return 'tier-2';
+  if (pct >= 75) return 'tier-3';
+  return 'tier-4';
+}
+
+function scoreClass(score, max) {
+  const pct = score / max;
+  if (pct >= 1.0) return 'score-cell score-perfect';
+  if (pct >= 0.8) return 'score-cell score-good';
+  if (pct >= 0.5) return 'score-cell score-mid';
+  return 'score-cell score-low';
+}
+
+function modelHtml(m) {
+  const i = m.indexOf('/');
+  if (i > 0) return '<span class="provider-prefix">' + esc(m.slice(0, i + 1)) + '</span>' + esc(m.slice(i + 1));
+  return esc(m);
+}
+
+// ============================================================
+// Leaderboard
+// ============================================================
+
+let currentFilter = 'all';
+let sortCol = 'rank';
+let sortAsc = true;
+let minScoreFilter = 0;
+let maxCostFilter = Infinity;
+
+function getVisible() {
+  let list = [...MODELS];
+  const q = document.getElementById('search').value.toLowerCase();
+  if (q) list = list.filter(d => d.model.toLowerCase().includes(q) || d.provider.includes(q));
+  if (currentFilter === 'openrouter') list = list.filter(d => d.provider === 'openrouter');
+  if (currentFilter === 'google') list = list.filter(d => d.provider === 'google');
+  if (currentFilter === 'deepinfra') list = list.filter(d => d.provider === 'deepinfra');
+  if (currentFilter === 'ollama') list = list.filter(d => d.provider === 'ollama');
+  if (currentFilter === 'free') list = list.filter(d => d.cost === 0);
+  if (currentFilter === 'open') list = list.filter(d => d.open === true);
+  if (currentFilter === 'closed') list = list.filter(d => d.open === false);
+  if (minScoreFilter > 0) list = list.filter(d => d.combined >= minScoreFilter);
+  if (maxCostFilter !== Infinity) list = list.filter(d => maxCostFilter === 0 ? d.cost === 0 : d.cost <= maxCostFilter || d.cost === 0);
+
+  list.sort((a, b) => {
+    let av, bv;
+    switch (sortCol) {
+      case 'model': av = a.model; bv = b.model; return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      case 'provider': av = a.provider; bv = b.provider; return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      case 'released': av = a.released; bv = b.released; return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+      case 'type': av = a.open ? 0 : 1; bv = b.open ? 0 : 1; break;
+      case 'combined': av = a.combined; bv = b.combined; break;
+      case 'reasoning': av = a.reasoning[0]; bv = b.reasoning[0]; break;
+      case 'knowledge': av = a.knowledge[0]; bv = b.knowledge[0]; break;
+      case 'instruction': av = a.instruction[0]; bv = b.instruction[0]; break;
+      case 'coding': av = a.coding[0]; bv = b.coding[0]; break;
+      case 'mcp': av = a.mcp[0] ?? -1; bv = b.mcp[0] ?? -1; break;
+      case 'cost': av = a.cost || 9999; bv = b.cost || 9999; return sortAsc ? av - bv : bv - av;
+      case 'time': av = a.timeMin; bv = b.timeMin; return sortAsc ? av - bv : bv - av;
+      default: av = a.combined; bv = b.combined;
+    }
+    let d = sortAsc ? av - bv : bv - av;
+    if (d === 0) d = a.timeMin - b.timeMin;
+    return d;
+  });
+  return list;
+}
+
+function renderLeaderboard() {
+  const list = getVisible();
+  const shown = list.length;
+  const total = MODELS.length;
+  const summaryEl = document.getElementById('filter-summary');
+  if (summaryEl) summaryEl.textContent = shown < total ? shown + ' of ' + total + ' models shown' : '';
+
+  const tbody = document.getElementById('leaderboard-body');
+  tbody.innerHTML = list.map((d, i) => {
+    const rank = i + 1;
+    const medal = rank <= 3 ? ['\ud83e\udd47', '\ud83e\udd48', '\ud83e\udd49'][rank - 1] : rank;
+    return '<tr class="' + tierClass(d.combined) + '">' +
+      '<td style="font-weight:700">' + medal + '</td>' +
+      '<td class="model-cell">' + modelHtml(d.model) + '</td>' +
+      '<td>' + providerBadge(d.provider) + freeBadge(d) + '</td>' +
+      '<td class="released-cell">' + releasedLabel(d.released) + '</td>' +
+      '<td>' + typeBadge(d.open) + '</td>' +
+      '<td class="combined-cell">' + d.combined + '%</td>' +
+      '<td class="' + scoreClass(d.reasoning[0], d.reasoning[1]) + '">' + d.reasoning[0] + '/' + d.reasoning[1] + '</td>' +
+      '<td class="' + scoreClass(d.knowledge[0], d.knowledge[1]) + '">' + d.knowledge[0] + '/' + d.knowledge[1] + '</td>' +
+      '<td class="' + scoreClass(d.instruction[0], d.instruction[1]) + '">' + d.instruction[0] + '/' + d.instruction[1] + '</td>' +
+      '<td class="' + scoreClass(d.coding[0], d.coding[1]) + '">' + d.coding[0] + '/' + d.coding[1] + '</td>' +
+      '<td class="' + (d.mcp[0] !== null ? scoreClass(d.mcp[0], d.mcp[1]) : 'score-cell') + '">' + (d.mcp[0] !== null ? d.mcp[0] + '/' + d.mcp[1] : '&mdash;') + '</td>' +
+      '<td class="cost-cell">' + costStr(d.cost) + '</td>' +
+      '<td class="time-cell">' + timeStr(d.timeMin) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.f === f));
+  renderLeaderboard();
+}
+
+function sortBy(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = col === 'model' || col === 'provider' || col === 'released' || col === 'time' || col === 'cost'; }
+  renderLeaderboard();
+}
+
+function updateFilters() {
+  const scoreSlider = document.getElementById('filter-score');
+  const costSlider = document.getElementById('filter-cost');
+
+  minScoreFilter = parseInt(scoreSlider.value);
+  document.getElementById('filter-score-val').textContent = minScoreFilter === 0 ? 'any' : minScoreFilter + '%';
+
+  const costPct = parseInt(costSlider.value);
+  if (costPct >= 100) {
+    maxCostFilter = Infinity;
+    document.getElementById('filter-cost-val').textContent = 'any';
+  } else if (costPct === 0) {
+    maxCostFilter = 0;
+    document.getElementById('filter-cost-val').textContent = 'free';
+  } else {
+    maxCostFilter = Math.pow(costPct / 100, 2) * 0.5;
+    document.getElementById('filter-cost-val').textContent = '$' + maxCostFilter.toFixed(3);
+  }
+
+  renderLeaderboard();
+}
+
+// ============================================================
+// Pending Models Table
+// ============================================================
+
+function renderPending() {
+  const tbody = document.getElementById('pending-body');
+  if (!tbody) return;
+  tbody.innerHTML = PENDING_MODELS.map(d => {
+    return '<tr>' +
+      '<td class="model-cell">' + modelHtml(d.model) + '</td>' +
+      '<td>' + providerBadge(d.provider) + '</td>' +
+      '<td class="released-cell">' + releasedLabel(d.released) + '</td>' +
+      '<td>' + typeBadge(d.open) + '</td>' +
+      '<td>' + esc(d.costPerMTok) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+// ============================================================
+// Cipher Table
+// ============================================================
+
+let cipherSort = 'c-time';
+let cipherAsc = true;
+
+function renderCipher() {
+  let list = [...CIPHER_DATA];
+  list.sort((a, b) => {
+    let av, bv;
+    switch (cipherSort) {
+      case 'c-model': return cipherAsc ? a.model.localeCompare(b.model) : b.model.localeCompare(a.model);
+      case 'c-score': av = a.score; bv = b.score; break;
+      case 'c-time': av = a.timeSec; bv = b.timeSec; return cipherAsc ? av - bv : bv - av;
+      default: av = a.timeSec; bv = b.timeSec; return av - bv;
+    }
+    let d = cipherAsc ? av - bv : bv - av;
+    if (d === 0) d = a.timeSec - b.timeSec;
+    return d;
+  });
+
+  document.getElementById('cipher-body').innerHTML = list.map(d => {
+    const tc = d.score >= 7 ? 'tier-1' : d.score >= 5 ? 'tier-3' : 'tier-4';
+    const timeLabel = d.timeSec >= 600 ? 'error' : d.timeSec >= 60 ? (d.timeSec / 60).toFixed(1) + 'm' : d.timeSec + 's';
+    return '<tr class="' + tc + '">' +
+      '<td class="model-cell">' + modelHtml(d.model) + '</td>' +
+      '<td class="' + scoreClass(d.score, d.max) + '">' + d.score + '/' + d.max + '</td>' +
+      '<td class="time-cell">' + timeLabel + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+// ============================================================
+// MCP Table
+// ============================================================
+
+let mcpSort = 'm-total';
+let mcpAsc = false;
+
+function renderMCP() {
+  let list = [...MCP_DATA];
+  list.sort((a, b) => {
+    let av, bv;
+    switch (mcpSort) {
+      case 'm-model': return mcpAsc ? a.model.localeCompare(b.model) : b.model.localeCompare(a.model);
+      case 'm-tool': av = a.tool[0]; bv = b.tool[0]; break;
+      case 'm-judge': av = a.judge[0]; bv = b.judge[0]; break;
+      case 'm-total': av = a.total[0]; bv = b.total[0]; break;
+      case 'm-time': av = a.timeSec; bv = b.timeSec; return mcpAsc ? av - bv : bv - av;
+      case 'm-cost': av = a.cost || 9999; bv = b.cost || 9999; return mcpAsc ? av - bv : bv - av;
+      default: av = a.total[0]; bv = b.total[0];
+    }
+    let d = mcpAsc ? av - bv : bv - av;
+    if (d === 0) d = a.timeSec - b.timeSec;
+    return d;
+  });
+
+  document.getElementById('mcp-body').innerHTML = list.map(d => {
+    const tc = d.total[0] >= 11 ? 'tier-1' : d.total[0] >= 8 ? 'tier-2' : d.total[0] >= 6 ? 'tier-3' : 'tier-4';
+    const clickable = d.key ? ' style="cursor:pointer" data-mcp-key="' + d.key + '"' : '';
+    const active = d.key && d.key === mcpCurrentKey ? ' class="' + tc + ' mcp-active-row"' : ' class="' + tc + '"';
+    return '<tr' + active + clickable + '>' +
+      '<td class="model-cell">' + modelHtml(d.model) + '</td>' +
+      '<td class="' + scoreClass(d.tool[0], d.tool[1]) + '">' + d.tool[0] + '/' + d.tool[1] + '</td>' +
+      '<td class="score-cell">' + d.judge[0] + '/' + d.judge[1] + '</td>' +
+      '<td><strong>' + d.total[0] + '</strong>/' + d.total[1] + '</td>' +
+      '<td class="time-cell">' + (d.timeSec >= 60 ? Math.round(d.timeSec / 60) + 'm' : d.timeSec + 's') + '</td>' +
+      '<td class="cost-cell">' + costStr(d.cost) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+// ============================================================
+// MCP Detail Panel
+// ============================================================
+
+const MCP_DETAIL_BASE = '/reports/model-showdown/details';
+const mcpDetailCache = {};
+let mcpCurrentKey = null;
+let mcpCurrentIdx = -1;
+
+async function loadMcpDetail(key) {
+  if (mcpDetailCache[key]) return mcpDetailCache[key];
+  try {
+    const r = await fetch(MCP_DETAIL_BASE + '/' + key + '.json');
+    const d = await r.json();
+    mcpDetailCache[key] = d;
+    return d;
+  } catch (e) {
+    return null;
+  }
+}
+
+async function showMcpDetail(key) {
+  mcpCurrentIdx = MCP_DATA.findIndex(d => d.key === key);
+  if (mcpCurrentIdx < 0) return;
+  mcpCurrentKey = key;
+  const d = MCP_DATA[mcpCurrentIdx];
+
+  document.getElementById('mcp-detail-title').textContent = d.model;
+  document.getElementById('mcp-detail-subtitle').textContent = '';
+
+  document.getElementById('mcp-detail-stats').innerHTML = [
+    {k:'Total', v: d.total[0]+'/'+d.total[1]},
+    {k:'Tool Score', v: d.tool[0]+'/'+d.tool[1]},
+    {k:'Judge Score', v: d.judge[0]+'/'+d.judge[1]},
+    {k:'Time', v: d.timeSec >= 60 ? Math.round(d.timeSec/60)+'m' : d.timeSec+'s'},
+    {k:'Cost', v: costStr(d.cost)},
+  ].map(s => '<div class="detail-stat"><div class="k">'+s.k+'</div><div class="v">'+s.v+'</div></div>').join('');
+
+  document.getElementById('mcp-rendered-response').innerHTML = '<p class="loading">Loading response...</p>';
+  document.getElementById('mcp-thread-view').innerHTML = '<p class="loading">Loading tool calls...</p>';
+  document.getElementById('mcp-judge-view').innerHTML = '';
+
+  document.getElementById('mcp-prev-btn').disabled = mcpCurrentIdx <= 0 || !MCP_DATA[mcpCurrentIdx - 1].key;
+  document.getElementById('mcp-next-btn').disabled = mcpCurrentIdx >= MCP_DATA.length - 1 || !MCP_DATA[mcpCurrentIdx + 1].key;
+
+  document.getElementById('mcp-detail-panel').classList.add('open');
+  switchMcpTab('response');
+  renderMCP();
+  document.getElementById('mcp-detail-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  const detail = await loadMcpDetail(key);
+  if (mcpCurrentKey !== key) return;
+
+  if (detail && detail.responseText) {
+    document.getElementById('mcp-rendered-response').innerHTML = marked.parse(detail.responseText);
+  } else {
+    document.getElementById('mcp-rendered-response').innerHTML = '<p class="loading">No response text available.</p>';
+  }
+
+  if (detail) {
+    renderMcpThread(detail.toolUsage);
+    renderMcpJudge(detail);
+    if (detail.judge && detail.judge.explanation) {
+      document.getElementById('mcp-detail-subtitle').textContent = detail.judge.explanation.slice(0, 120) + (detail.judge.explanation.length > 120 ? '...' : '');
+    }
+  }
+}
+
+function renderMcpThread(toolUsage) {
+  const el = document.getElementById('mcp-thread-view');
+  if (!toolUsage || !toolUsage.calls || toolUsage.calls.length === 0) {
+    el.innerHTML = '<p class="loading">No tool call data available.</p>';
+    return;
+  }
+  let html = '';
+
+  // Tool score breakdown
+  if (toolUsage.tool_score_breakdown) {
+    html += '<div class="thread-msg" style="background:var(--bg-alt);padding:1rem 1.5rem;margin-bottom:1.5rem">' +
+      '<div class="msg-role">Tool Score: ' + toolUsage.tool_score + '/6</div>' +
+      '<div style="font-size:0.85rem;color:var(--ink-light);white-space:pre-wrap">' + esc(toolUsage.tool_score_breakdown) + '</div></div>';
+  }
+
+  // Tool checklist
+  const checks = [
+    ['list_vehicles', toolUsage.called_list_vehicles],
+    ['get_battery_health', toolUsage.called_get_battery_health],
+    ['get_charges or get_charge_report', toolUsage.called_get_charges_or_report],
+    ['get_efficiency', toolUsage.called_get_efficiency],
+    ['get_my_chargers', toolUsage.called_get_my_chargers],
+    ['search/find chargers', toolUsage.called_search_or_find_chargers],
+  ];
+  html += '<div class="thread-msg" style="background:#f0f4f8;border:1px solid #c8d6e5;padding:1rem 1.5rem;margin-bottom:1.5rem">' +
+    '<div class="msg-role">Required Tool Calls</div>' +
+    checks.map(([name, ok]) => '<div style="padding:0.3rem 0;font-size:0.9rem">' +
+      (ok ? '\u2705' : '\u274c') + ' <code style="font-size:0.85em">' + name + '</code></div>').join('') +
+    '</div>';
+
+  // Individual calls
+  for (let i = 0; i < toolUsage.calls.length; i++) {
+    const call = toolUsage.calls[i];
+    const args = call.args ? JSON.stringify(call.args, null, 2) : '';
+    html += '<div class="thread-msg tool-call"><div class="msg-role">Step ' + (i + 1) + ' &mdash; Tool Call</div>' +
+      '<div class="tool-name">' + esc(call.name) + '</div>' +
+      (args && args !== '{}' ? '<pre class="tool-args">' + esc(args) + '</pre>' : '') + '</div>';
+  }
+
+  el.innerHTML = html;
+}
+
+function renderMcpJudge(detail) {
+  const el = document.getElementById('mcp-judge-view');
+  if (!detail.judge) {
+    el.innerHTML = '<p class="loading">No judge data available.</p>';
+    return;
+  }
+  const j = detail.judge;
+  let html = '<h3 style="margin-bottom:1rem">Judge Verdict</h3>';
+
+  html += '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0">';
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Data Synthesis</div><div style="font-family:var(--serif);font-size:2rem;margin-top:0.2rem">' + j.data_synthesis + '<span style="font-size:1rem;color:var(--ink-faint)">/5</span></div></div>';
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Actionable Insights</div><div style="font-family:var(--serif);font-size:2rem;margin-top:0.2rem">' + j.actionable_insights + '<span style="font-size:1rem;color:var(--ink-faint)">/5</span></div></div>';
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Factual Grounding</div><div style="font-family:var(--serif);font-size:2rem;margin-top:0.2rem">' + j.factual_grounding + '<span style="font-size:1rem;color:var(--ink-faint)">/5</span></div></div>';
+  html += '</div>';
+
+  html += '<div style="background:var(--bg-alt);padding:1rem;border-radius:4px;margin-bottom:1rem"><div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint)">Overall Score</div><div style="font-family:var(--serif);font-size:2.5rem;margin-top:0.2rem">' + j.overall_score + '<span style="font-size:1.2rem;color:var(--ink-faint)">/10</span></div></div>';
+
+  if (j.explanation) {
+    html += '<p style="color:var(--ink-light);font-size:0.9rem;max-width:600px"><strong>Explanation:</strong> ' + esc(j.explanation) + '</p>';
+  }
+
+  // Token/cost info
+  if (detail.tokens) {
+    html += '<div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)">';
+    html += '<div style="font-family:var(--mono);font-size:0.7rem;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.5rem">Token Usage</div>';
+    html += '<div style="font-size:0.85rem;color:var(--ink-light)">';
+    html += 'Prompt: ' + (detail.tokens.promptTokens || 0).toLocaleString() + ' &middot; ';
+    html += 'Completion: ' + (detail.tokens.completionTokens || 0).toLocaleString() + ' &middot; ';
+    html += 'Total: ' + (detail.tokens.total || 0).toLocaleString();
+    html += '</div></div>';
+  }
+
+  el.innerHTML = html;
+}
+
+function switchMcpTab(name) {
+  document.querySelectorAll('#mcp-detail-panel .detail-tab').forEach(t => t.classList.toggle('active', t.dataset.mcpTab === name));
+  document.querySelectorAll('.mcp-tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('mcp-tab-' + name).classList.add('active');
+}
+
+function navMcpModel(dir) {
+  let next = mcpCurrentIdx + dir;
+  while (next >= 0 && next < MCP_DATA.length && !MCP_DATA[next].key) next += dir;
+  if (next >= 0 && next < MCP_DATA.length && MCP_DATA[next].key) showMcpDetail(MCP_DATA[next].key);
+}
+
+function closeMcpDetail() {
+  document.getElementById('mcp-detail-panel').classList.remove('open');
+  mcpCurrentKey = null;
+  mcpCurrentIdx = -1;
+  renderMCP();
+}
+
+// ============================================================
+// Speed Table
+// ============================================================
+
+let speedSort = 'sq-score';
+let speedAsc = false;
+
+function renderSpeed() {
+  let list = [...SPEED_DATA];
+  list.sort((a, b) => {
+    let av, bv;
+    switch (speedSort) {
+      case 'sq-model': return speedAsc ? a.model.localeCompare(b.model) : b.model.localeCompare(a.model);
+      case 'sq-score': av = a.score; bv = b.score; break;
+      case 'sq-time': av = a.timeMin; bv = b.timeMin; return speedAsc ? av - bv : bv - av;
+      default: av = a.score; bv = b.score;
+    }
+    return speedAsc ? av - bv : bv - av;
+  });
+
+  document.getElementById('speed-body').innerHTML = list.map(d => {
+    return '<tr' + (d.highlight ? ' class="tier-1"' : '') + '>' +
+      '<td class="model-cell">' + modelHtml(d.model) + '</td>' +
+      '<td class="combined-cell">' + d.score + '%</td>' +
+      '<td class="time-cell">' + timeStr(d.timeMin) + '</td>' +
+      '<td>' + (d.highlight ? '<strong>' + d.spot + '</strong>' : d.spot) + '</td>' +
+      '</tr>';
+  }).join('');
+}
+
+// ============================================================
+// Event Listeners
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initial render
+  renderLeaderboard();
+  renderPending();
+  renderCipher();
+  renderMCP();
+  renderSpeed();
+
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => setFilter(btn.dataset.f));
+  });
+
+  // Range filters
+  document.getElementById('filter-score')?.addEventListener('input', updateFilters);
+  document.getElementById('filter-cost')?.addEventListener('input', updateFilters);
+
+  // Search input
+  document.getElementById('search')?.addEventListener('input', renderLeaderboard);
+
+  // MCP detail panel — row clicks
+  document.getElementById('mcp-body').addEventListener('click', (e) => {
+    const row = e.target.closest('tr[data-mcp-key]');
+    if (row) showMcpDetail(row.dataset.mcpKey);
+  });
+
+  // MCP detail panel — tabs
+  document.querySelectorAll('#mcp-detail-panel .detail-tab').forEach(tab => {
+    tab.addEventListener('click', () => switchMcpTab(tab.dataset.mcpTab));
+  });
+
+  // MCP detail panel — nav and close
+  document.getElementById('mcp-prev-btn').addEventListener('click', () => navMcpModel(-1));
+  document.getElementById('mcp-next-btn').addEventListener('click', () => navMcpModel(1));
+  document.getElementById('mcp-close-btn').addEventListener('click', closeMcpDetail);
+
+  // Sort headers — delegate by data-sort attribute
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.sort;
+      // Leaderboard columns
+      if (['rank', 'model', 'provider', 'released', 'type', 'combined', 'reasoning', 'knowledge', 'instruction', 'coding', 'mcp', 'cost', 'time'].includes(col)) {
+        sortBy(col);
+      }
+      // Cipher columns
+      if (col.startsWith('c-')) {
+        if (cipherSort === col) cipherAsc = !cipherAsc;
+        else { cipherSort = col; cipherAsc = col === 'c-model' || col === 'c-time'; }
+        renderCipher();
+      }
+      // MCP columns
+      if (col.startsWith('m-')) {
+        if (mcpSort === col) mcpAsc = !mcpAsc;
+        else { mcpSort = col; mcpAsc = col === 'm-model' || col === 'm-time' || col === 'm-cost'; }
+        renderMCP();
+      }
+      // Speed columns
+      if (col.startsWith('sq-')) {
+        if (speedSort === col) speedAsc = !speedAsc;
+        else { speedSort = col; speedAsc = col === 'sq-model' || col === 'sq-time'; }
+        renderSpeed();
+      }
+    });
+  });
+});
+</script>
+
+</BaseLayout>
