@@ -7,14 +7,26 @@ const images = await import.meta.glob<{ default: import('astro').ImageMetadata }
 const codingAgentImg = images['/src/content/assets/cards/weekend-coding-agent.png'];
 const summitImg = images['/src/content/assets/cards/ai-code-summit-2025.png'];
 const juneReportImg = images['/src/content/assets/cards/capture_the_flag_wide.png'];
-const carWashImg = images['/src/content/assets/cards/car-wash-test.png'];
-const mcpToolImg = images['/src/content/assets/cards/mcp_wide.png'];
+const carWashImg = images['/src/content/assets/cards/report-car-wash-test.png'];
+const mcpToolImg = images['/src/content/assets/cards/report-mcp-tool-test.png'];
+const modelShowdownImg = images['/src/content/assets/cards/report-model-showdown.png'];
 ---
 <BaseLayout pageTitle="Reports" description="In-depth reports and analysis from Focus.ai" category="studio">
   <div class="space-y-12">
     <h2 class="text-4xl sm:text-7xl font-bold font-fraunces mb-8">
       Reports & Deep Dives
     </h2>
+
+    <!-- Model Showdown — March 2026 -->
+    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
+      {modelShowdownImg && <Image src={modelShowdownImg()} alt="Model Showdown" class="w-full max-w-md rounded border" />}
+      <div class="flex-1">
+        <p class="text-sm text-gray-500 mb-1">March 2026</p>
+        <h3 class="text-2xl font-bold mb-2">Testing 48 LLMs Across 5 Dimensions for $4.63</h3>
+        <p class="mb-4 text-lg">Which model should you actually use? We tested 48 models across reasoning, knowledge, instruction following, coding, and MCP tool use. Claude Sonnet 4.6 leads at 93.8% across all 5 dimensions. Interactive leaderboard with per-model detail panels.</p>
+        <a href="/reports/model-showdown/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
+      </div>
+    </div>
 
     <!-- MCP Tool Test — March 2026 -->
     <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
