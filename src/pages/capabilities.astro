@@ -1,179 +1,164 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import { getCaseStudies, getCaseStudyUrl } from "../utils/case-studies.js";
-
-const allCaseStudies = await getCaseStudies();
-
-const { getCollection } = await import("astro:content");
-const allCaseStudiesIncludingDrafts = await getCollection("case_studies");
 
 const mailto = "mailto:hey@thefocus.ai?subject=AI%20Maturity%20Assessment";
-
-function getCaseStudiesByIds(ids: string[]) {
-  return allCaseStudiesIncludingDrafts
-    .filter(cs => ids.includes(cs.id))
-    .filter(cs => cs.data.published !== false);
-}
 
 const maturityLevels = [
   {
     level: 0,
     code: "L0",
-    name: "None",
+    name: "Tribal",
     tagline: "Knowledge lives in people's heads",
-    description: "Everything is manual. Information is scattered across documents, spreadsheets, and tribal knowledge. Processes depend entirely on who knows what.",
-    looksLike: [
-      "Searching through email threads to find an answer someone gave six months ago",
-      "New hires take months to become productive because nothing is documented",
-      "Key person leaves and critical processes break"
-    ],
-    caseStudyIds: [] as string[]
+    description: "Everything is manual. Processes depend on who knows what. A key person leaves and critical workflows break.",
+    commonMistake: "We need to pick the right AI tool.",
+    reality: "This level resolves itself — people start using ChatGPT on their own. The real question is what happens next.",
+    bridge: null as null | { service: string; description: string; proof: { text: string; href: string }[] }
   },
   {
     level: 1,
     code: "L1",
-    name: "Ad Hoc",
-    tagline: "Individual experimentation, copy-paste workflows",
-    description: "Employees are using ChatGPT, Copilot, or other AI tools on their own. Results vary wildly. No organizational structure, no data integration, no consistency.",
-    looksLike: [
-      "Marketing copies blog posts into ChatGPT for editing suggestions",
-      "One developer uses Copilot while others don't — no shared standards",
-      "Someone built an internal tool with AI, but nobody else can maintain it"
-    ],
-    caseStudyIds: [] as string[]
+    name: "Experimenting",
+    tagline: "Individual tools, nothing shared",
+    description: "Employees are using ChatGPT or Copilot on their own. Some get real value — but nothing is shared, nothing compounds. When someone leaves, their workflows leave with them.",
+    commonMistake: '"We need an AI strategy" or "We need better models."',
+    reality: "The blocker isn't technology — it's that you can't describe your own workflows. AI can't act on knowledge that only lives in people's heads.",
+    note: "This is where Pilot Purgatory lives. 93% of AI projects stall here — not because the pilots fail, but because there's no organizational foundation to build on.",
+    bridge: {
+      service: "Process Audit & Formalization",
+      description: "We document your actual workflows — the rules, exceptions, and tribal knowledge — in a form machines can follow.",
+      proof: [
+        { text: "Vibe Check — fix your AI-coded app", href: "/vibe-check" },
+        { text: "QB Sync — tribal cost codes discovered & formalized", href: "/case-study/qbsync" }
+      ]
+    }
   },
   {
     level: 2,
     code: "L2",
-    name: "Integrated Tooling",
-    tagline: "AI connected to your existing workflows",
-    description: "The organization has adopted AI tools integrated into existing systems. There's structure and consistency. AI is part of the workflow, not a side activity.",
-    looksLike: [
-      "AI assistants connected to your CRM, analytics platform, or codebase",
-      "Standardized tools that the whole team uses the same way",
-      "Data flows between systems without copy-paste"
-    ],
-    caseStudyIds: ["perplexity-samsung", "qbsync"]
+    name: "Legible",
+    tagline: "Your organization can describe its own work",
+    description: "AI tools are connected to real systems — CRM, codebase, analytics, accounting. There's structure and consistency. But your proprietary data is still locked in folders nobody can search.",
+    commonMistake: '"We\'ve integrated the tools, we\'re done."',
+    reality: "Integration is the beginning, not the end. Your invoices, surveys, research docs — the data that makes your business unique — is still invisible to AI.",
+    bridge: {
+      service: "Knowledge Layer",
+      description: "Turn your proprietary documents into a searchable, queryable knowledge base with source attribution.",
+      proof: [
+        { text: "Fountain Creek — invoice parsing, 94.5% validated accuracy", href: "/case-study/fountain-creek" },
+        { text: "TezLab — conversational AI over proprietary EV data", href: "/case-study/tezlab-ai" },
+        { text: "Onboarding — benefits documents extracted against unified schema", href: "/case-study/onboarding" }
+      ]
+    }
   },
   {
     level: 3,
     code: "L3",
-    name: "Custom Data Intelligence",
-    tagline: "Your proprietary data, instantly accessible",
-    description: "AI is connected to your proprietary datasets. Teams can ask ad hoc questions and get instant answers. What used to take 45 minutes now takes 5 seconds. This is where real capability expansion begins.",
-    looksLike: [
-      "Ask 'how does Q4 retention compare to Q3?' and get an answer in seconds",
-      "Upload a document and get structured data extracted automatically",
-      "New employees can query institutional knowledge from day one"
-    ],
-    caseStudyIds: ["tezlab-ai", "image-browser", "onboarding", "fountain-creek"]
+    name: "Knowledgeable",
+    tagline: "Your organization knows what it knows",
+    description: "Teams ask ad hoc questions and get instant answers — the 45-minutes-to-5-seconds transformation. New employees query institutional knowledge from day one. But adoption stalls without traceability.",
+    commonMistake: '"We need more data" or "We need RAG."',
+    reality: "The blocker is trust. Your team won't act on what the system says until they can verify it. Every answer needs to trace back to the specific document it came from.",
+    bridge: {
+      service: "Insight Engine",
+      description: "Move from answering questions to proactively surfacing what matters — and put decision-making power closest to the problem.",
+      proof: [
+        { text: "Distill — 500M tweets/day filtered into 5-minute briefings", href: "/case-study/distill" },
+        { text: "Upper Hand — executives self-serve insights that required analyst teams", href: "/case-study/upperhand-ai" }
+      ]
+    }
   },
   {
     level: 4,
     code: "L4",
-    name: "Dynamic & Reactive",
-    tagline: "Production data, proactive insights",
-    description: "Systems pull from production data, customer behavior, and service logs. AI proactively surfaces insights and adapts. Power shifts to the people closest to the business problem.",
-    looksLike: [
-      "Real-time dashboards that flag anomalies before anyone asks",
-      "Content intelligence that filters noise and surfaces what matters",
-      "Product managers driving features that used to require engineering"
-    ],
-    caseStudyIds: ["distill"]
+    name: "Adaptive",
+    tagline: "The system brings insights to you",
+    description: "AI proactively surfaces insights. The organization changes shape — people closest to the problem drive decisions that used to require engineering. Power moves to whoever asks the best question.",
+    commonMistake: '"We need more engineers" or "We need to scale what we built."',
+    reality: "The blocker is organizational. When the system surfaces insights, the people closest to the problem need decision-making authority. Your org chart may not match your information flow.",
+    bridge: {
+      service: "Feedback Loop Design",
+      description: "Close the loop — capture how humans correct the system so everyday use makes it smarter over time.",
+      proof: [
+        { text: "AI Back Office — every command teaches the system; meetings become project context", href: "/case-study/ai-back-office" }
+      ]
+    }
   },
   {
     level: 5,
     code: "L5",
-    name: "Autonomous & Evolving",
-    tagline: "Self-improving systems, compounding advantage",
-    description: "Agent sessions are mined for institutional knowledge. Tribal knowledge crystallizes into documented workflows. Feedback loops are continuous. The system learns and improves on its own.",
-    looksLike: [
-      "AI agent interactions are analyzed to discover undocumented processes",
-      "The system suggests workflow improvements based on usage patterns",
-      "Operations run on AI commands instead of SaaS subscriptions"
-    ],
-    caseStudyIds: ["ai-back-office"]
+    name: "Self-Improving",
+    tagline: "The system learns from every interaction",
+    description: "Tribal knowledge crystallizes into documented workflows. Feedback loops are continuous. The system learns and improves on its own. Competitive advantage compounds.",
+    commonMistake: '"We need autonomous agents."',
+    reality: "The blocker is that you haven't built the feedback loop. The work is capturing expert correction in a form the system can learn from.",
+    bridge: null
   }
 ];
 
 const assessmentClusters = [
   {
-    label: "Just Getting Started",
+    label: "Tribal → Legible",
     levels: "L0 — L1",
     signals: [
       "Your team uses ChatGPT individually but there's no organizational strategy",
-      "AI feels interesting but you're not sure where to begin",
-      "You're worried about security and governance"
+      "AI feels interesting but you don't know where to begin",
+      "The real question isn't which tool to pick — it's whether you can describe your own workflows"
     ],
-    engagement: "Strategy & Roadmap",
+    engagement: "Assessment & Roadmap",
     timeline: "4-6 weeks",
-    deliverables: ["AI opportunity assessment", "Prioritized roadmap", "Tech recommendations", "Build vs. buy analysis"],
-    cta: "Let's map your opportunities",
-    mailto: "mailto:hey@thefocus.ai?subject=AI%20Assessment%20-%20Getting%20Started"
+    deliverables: ["AI opportunity assessment", "Process documentation", "Prioritized roadmap", "Build vs. buy analysis"],
+    cta: "Let's map your starting point",
+    mailto: "mailto:hey@thefocus.ai?subject=Assessment%20%26%20Roadmap"
   },
   {
-    label: "Tools in Place, Ready to Customize",
+    label: "Legible → Knowledgeable",
     levels: "L2 — L3",
     signals: [
       "You have AI tools connected to your workflows but they feel generic",
-      "You know your proprietary data could unlock more, but aren't sure how",
-      "Some teams are ahead of others and there's no consistent strategy"
+      "Your proprietary data — the documents, surveys, records that make your business unique — is still locked in folders nobody can search",
+      "You know it could unlock more, but aren't sure how"
     ],
     engagement: "Build & Ship",
     timeline: "6-12 weeks",
-    deliverables: ["Working AI systems", "Custom integrations", "User-facing interfaces", "Documentation & handoff"],
+    deliverables: ["Document ingestion pipeline", "Semantic knowledge base", "Conversational query interface", "Source-attributed answers"],
     cta: "Let's unlock your data",
-    mailto: "mailto:hey@thefocus.ai?subject=AI%20Assessment%20-%20Custom%20Data"
+    mailto: "mailto:hey@thefocus.ai?subject=Build%20%26%20Ship"
   },
   {
-    label: "Scaling What Works",
+    label: "Knowledgeable → Self-Improving",
     levels: "L4 — L5",
     signals: [
       "AI is driving real business outcomes, but you want it to compound",
-      "You need systems that learn from themselves and adapt",
-      "Governance and oversight need to evolve with your capabilities"
+      "You need systems that learn from themselves, roles that evolve with the technology, and governance that adapts",
+      "The question is no longer 'does AI work?' — it's 'how does our organization change?'"
     ],
     engagement: "Ongoing Partnership",
     timeline: "Monthly retainer",
-    deliverables: ["Dedicated team access", "Continuous optimization", "New feature development", "Team training"],
+    deliverables: ["Dedicated team access", "Feedback loop design", "Continuous optimization", "Capability expansion", "Team training"],
     cta: "Let's build the next level",
     mailto: "mailto:hey@thefocus.ai?subject=AI%20Assessment%20-%20Scaling"
   }
 ];
 
-const dimensions = [
-  {
-    name: "Function Types",
-    description: "Different kinds of AI work that mature at different rates across your organization.",
-    items: ["Knowledge Retrieval", "Content Generation", "Decision Support", "Process Automation", "Predictive Intelligence"]
-  },
-  {
-    name: "Governance & Risk",
-    description: "How you manage AI safety, compliance, and oversight — matched to the risk profile of each function.",
-    items: ["Usage Policies", "Compliance Frameworks", "Audit Trails", "Governed Autonomy", "Adaptive Governance"]
-  },
-  {
-    name: "Department Readiness",
-    description: "Every department has a different starting point. Engineering might be at L3 while Finance is at L0.",
-    items: ["Engineering", "Analytics", "Marketing", "HR", "Finance", "Sales", "Operations"]
-  }
-];
 ---
 
 <BaseLayout
-  pageTitle="Capabilities | Focus.AI"
-  description="Where is your organization on the AI journey? A practical framework for understanding AI adoption maturity — from ad hoc experimentation to autonomous, evolving systems."
+  pageTitle="Building an Intelligent Organization | TheFocus.AI"
+  description="AI adoption isn't about picking the right model. It's about making your organization legible to machines — from tribal knowledge to structured intelligence. A practical framework for the journey."
   category="capabilities"
 >
   <!-- Hero -->
   <div class="max-w-4xl mx-auto">
     <section class="py-8 md:py-16">
-      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">AI Maturity Framework</p>
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">Building an Intelligent Organization</p>
       <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-ink leading-tight">
         Where is your organization<br/>on the AI journey?
       </h1>
-      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-10 max-w-3xl">
-        AI adoption isn't about cost savings or headcount reduction. It's an innovation enabler that unlocks capabilities your organization literally couldn't access before. The journey is from <strong class="text-ink">tribal to coherent</strong> — and knowing where you are is the first step.
+      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-4 max-w-3xl">
+        Most AI projects fail not because the technology doesn't work — but because the organization can't describe its own work in a form machines can act on.
+      </p>
+      <p class="text-lg text-graphite leading-relaxed mb-10 max-w-3xl">
+        The journey is from <strong class="text-ink">tribal to coherent</strong> — and each transition has a different blocker. Different departments sit at different points. Find yours below.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
@@ -230,87 +215,13 @@ const dimensions = [
     </div>
   </div>
 
-  <!-- Detailed Level Cards -->
-  <div class="max-w-4xl mx-auto" id="framework">
-    <section class="py-16 md:py-20">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Level by Level</h2>
-
-      <div class="space-y-6">
-        {maturityLevels.map((level) => {
-          const linkedStudies = getCaseStudiesByIds(level.caseStudyIds);
-          return (
-            <div
-              id={`level-${level.level}`}
-              class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-petrol/30 transition-all scroll-mt-24"
-            >
-              <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
-                <div class="flex-shrink-0">
-                  <span class="text-2xl md:text-3xl font-mono font-bold text-petrol/30">{level.code}</span>
-                </div>
-                <div class="flex-1">
-                  <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
-                    <h3 class="text-2xl font-bold text-ink">{level.name}</h3>
-                    <span class="text-sm font-medium text-petrol bg-petrol/10 px-3 py-1 rounded-full w-fit">{level.tagline}</span>
-                  </div>
-                  <p class="text-graphite leading-relaxed mb-4">{level.description}</p>
-
-                  <div class="mb-4">
-                    <p class="text-sm text-graphite/60 mb-2">What this looks like:</p>
-                    <ul class="space-y-2">
-                      {level.looksLike.map((item) => (
-                        <li class="flex items-start gap-2">
-                          <span class="text-petrol mt-1 flex-shrink-0">-</span>
-                          <span class="text-sm text-ink">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {linkedStudies.length > 0 && (
-                    <div class="pt-4 border-t border-ink/5">
-                      <p class="text-xs uppercase tracking-widest text-graphite mb-3">See it in action</p>
-                      <div class="flex flex-col gap-2">
-                        {linkedStudies.map((cs) => (
-                          <a href={getCaseStudyUrl(cs)} class="flex items-center gap-3 text-sm group">
-                            <span class="text-petrol flex-shrink-0">&rarr;</span>
-                            <span class="text-ink group-hover:text-petrol transition-colors font-medium">
-                              {cs.data.client || cs.data.title}
-                            </span>
-                            <span class="text-graphite/60 hidden md:inline">({cs.data.industry})</span>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {level.level === 1 && (
-                    <div class="pt-4 border-t border-ink/5">
-                      <p class="text-xs uppercase tracking-widest text-graphite mb-3">The bridge to L2</p>
-                      <a href="/vibe-check" class="flex items-center gap-3 text-sm group">
-                        <span class="text-petrol flex-shrink-0">&rarr;</span>
-                        <span class="text-ink group-hover:text-petrol transition-colors font-medium">
-                          Vibe Check — fix your AI-coded app
-                        </span>
-                        <span class="text-graphite/60 hidden md:inline">(Service)</span>
-                      </a>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  </div>
-
-  <!-- Self-Assessment + Engagement Types -->
+  <!-- Self-Assessment + Engagement Types (MOVED UP) -->
   <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm" id="assessment">
     <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
       <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Where Are You?</p>
       <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4">Find your starting point</h2>
       <p class="text-lg text-graphite mb-12 max-w-2xl">
-        Most organizations aren't at a single level — different departments and functions sit at different points. Pick the cluster that sounds most like you.
+        Pick the cluster that sounds most like you. Each one maps to a specific engagement.
       </p>
 
       <div class="grid md:grid-cols-3 gap-6 max-w-5xl">
@@ -353,59 +264,68 @@ const dimensions = [
     </div>
   </div>
 
-  <!-- Beyond the Levels -->
-  <div class="max-w-4xl mx-auto">
+  <!-- Detailed Level Cards (compressed) -->
+  <div class="max-w-4xl mx-auto" id="framework">
     <section class="py-16 md:py-20">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Beyond the Levels</h2>
-      <h3 class="text-3xl md:text-4xl font-bold text-ink mb-4">Maturity isn't one-dimensional</h3>
-      <p class="text-lg text-graphite mb-10 max-w-2xl">
-        Levels tell you how far along you are. But <em>where</em> you apply AI and <em>how</em> you govern it matter just as much.
-      </p>
+      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-8 font-medium">Level by Level</h2>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        {dimensions.map((dim) => (
-          <div class="border border-ink/10 rounded-2xl p-6">
-            <h4 class="text-lg font-bold text-ink mb-2">{dim.name}</h4>
-            <p class="text-sm text-graphite mb-4">{dim.description}</p>
-            <div class="flex flex-wrap gap-2">
-              {dim.items.map((item) => (
-                <span class="text-xs text-graphite bg-ink/5 px-3 py-1 rounded-full">{item}</span>
-              ))}
+      <div class="space-y-6">
+        {maturityLevels.map((level) => (
+          <div
+            id={`level-${level.level}`}
+            class="border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-petrol/30 transition-all scroll-mt-24"
+          >
+            <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-8">
+              <div class="flex-shrink-0">
+                <span class="text-2xl md:text-3xl font-mono font-bold text-petrol/30">{level.code}</span>
+              </div>
+              <div class="flex-1">
+                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
+                  <h3 class="text-2xl font-bold text-ink">{level.name}</h3>
+                  <span class="text-sm font-medium text-petrol bg-petrol/10 px-3 py-1 rounded-full w-fit">{level.tagline}</span>
+                </div>
+                <p class="text-graphite leading-relaxed mb-4">{level.description}</p>
+
+                {level.commonMistake && (
+                  <div class="mb-4 bg-tint-warm/40 rounded-xl p-4">
+                    <p class="text-sm text-graphite mb-1">
+                      <span class="font-medium text-ink">The common mistake:</span>{' '}
+                      <em>{level.commonMistake}</em>
+                    </p>
+                    <p class="text-sm text-graphite">
+                      <span class="font-medium text-ink">The reality:</span>{' '}
+                      <em>{level.reality}</em>
+                    </p>
+                  </div>
+                )}
+
+                {'note' in level && level.note && (
+                  <p class="text-sm text-vermilion/80 italic mb-4">{level.note}</p>
+                )}
+
+                {level.bridge && (
+                  <div class="pt-4 border-t border-ink/5">
+                    <p class="text-xs uppercase tracking-widest text-petrol mb-1 font-medium">
+                      Next level &rarr; {level.bridge.service}
+                    </p>
+                    <p class="text-sm text-graphite mb-3">{level.bridge.description}</p>
+                    <div class="flex flex-col gap-2">
+                      {level.bridge.proof.map((item) => (
+                        <a href={item.href} class="flex items-center gap-3 text-sm group">
+                          <span class="text-petrol flex-shrink-0">&rarr;</span>
+                          <span class="text-ink group-hover:text-petrol transition-colors font-medium">
+                            {item.text}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         ))}
       </div>
-    </section>
-  </div>
-
-  <!-- Results -->
-  <div class="max-w-4xl mx-auto">
-    <section class="mb-20">
-      <h2 class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Results</h2>
-      <p class="text-xl text-graphite mb-8">What our clients have achieved:</p>
-
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-        <div class="text-center">
-          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">27%</p>
-          <p class="text-sm text-graphite">higher conversion</p>
-        </div>
-        <div class="text-center">
-          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">78%</p>
-          <p class="text-sm text-graphite">faster decisions</p>
-        </div>
-        <div class="text-center">
-          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">50M+</p>
-          <p class="text-sm text-graphite">devices reached</p>
-        </div>
-        <div class="text-center">
-          <p class="text-4xl md:text-5xl font-bold text-ink mb-2">8 wks</p>
-          <p class="text-sm text-graphite">to production</p>
-        </div>
-      </div>
-
-      <a href="/case-studies" class="inline-block text-petrol font-medium hover:underline">
-        See all case studies &rarr;
-      </a>
     </section>
   </div>
 
@@ -484,7 +404,7 @@ const dimensions = [
         </div>
 
         <p class="text-paper/60 mt-8 text-sm">
-          The key insight: different functions need different governance levels. Marketing experimenting with content generation can move fast. AI touching financial data or customer-facing products needs more guardrails. This creates a natural roadmap — move fast where risk is low, build carefully where it's high.
+          The key insight from every engagement: the technology isn't usually the blocker. The organizational knowledge is. Companies discover how much of their work was never formalized — and formalizing it is the most valuable part of the project.
         </p>
       </div>
     </section>
@@ -497,16 +417,16 @@ const dimensions = [
 
       <div class="space-y-6">
         <div class="border-t border-ink/10 pt-6">
-          <h3 class="text-lg font-bold text-ink mb-2">How involved do we need to be?</h3>
-          <p class="text-graphite">We work closely with your team, but we drive the project. Expect 2-4 hours/week of your time for check-ins and decisions. We handle the rest.</p>
-        </div>
-        <div class="border-t border-ink/10 pt-6">
           <h3 class="text-lg font-bold text-ink mb-2">Do we need clean data first?</h3>
-          <p class="text-graphite">No. Part of what we do is figure out what data you have and how to make it useful. Messy data is normal — we've seen it all.</p>
+          <p class="text-graphite">No. In fact, discovering that your data <em>isn't</em> clean is part of the value. Most organizations don't realize how much tribal knowledge — naming conventions, exception rules, approval workflows — lives only in people's heads until they try to connect AI to it. We help you through that process.</p>
         </div>
         <div class="border-t border-ink/10 pt-6">
           <h3 class="text-lg font-bold text-ink mb-2">What if we don't know exactly what we need?</h3>
-          <p class="text-graphite">That's what Strategy engagements are for. We'll figure it out together — understanding your options is the first step.</p>
+          <p class="text-graphite">That's normal — and it's what Assessment engagements are for. Most companies overestimate where they are on the maturity framework. The honest starting point is usually: "Can we describe our own workflows in a form a machine can follow?" If the answer is "not yet," that's where we begin.</p>
+        </div>
+        <div class="border-t border-ink/10 pt-6">
+          <h3 class="text-lg font-bold text-ink mb-2">How is this different from other AI consultancies?</h3>
+          <p class="text-graphite">We build. Most AI consultancies deliver decks and recommendations. We deliver production systems — working in weeks, not quarters. And we're honest about organizational readiness: if your processes aren't formalized enough for AI, we'll tell you that and help you fix it, rather than building on a shaky foundation.</p>
         </div>
       </div>
     </section>

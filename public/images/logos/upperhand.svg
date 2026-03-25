@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" fill="#161616">
-  <text x="0" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5">Upper</text>
-  <text x="68" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" letter-spacing="-0.5">Hand</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 363 540"><path fill="#161616" d="m14.95,286.29L133.54,0l47.47,19.66c43.18,17.89,63.69,67.39,45.8,110.57l-86.83,209.63c-9.71,23.44,1.21,51.33,24.8,60.66,5.54,2.19,11.17,3.22,16.81,3.17,25,0,45.1-20.3,45.1-45.3v-93.36c0-46.74,37.89-84.63,84.63-84.63h51.38v177.99c0,100.15-81.19,181.34-181.34,181.34-23.41,0-47.21-4.55-70.16-14.19C18.72,486.73-23.42,378.94,14.95,286.29Z"/><path fill="#161616" d="m102.77,17.69C88.5,6.72,70.78,0,51.38,0H0s0,265.81,0,265.81L102.77,17.69Z"/></svg>

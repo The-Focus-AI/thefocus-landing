@@ -14,7 +14,7 @@ const pages = Object.fromEntries(
     .map(({ id, data }) => [getSlug({ id }), data])
 );
 
-// Focus.AI Client Brand Colors (RGB)
+// TheFocus.AI Client Brand Colors (RGB)
 const colors = {
   paper: [250, 249, 246] as [number, number, number],      // #faf9f6
   ink: [22, 22, 22] as [number, number, number],           // #161616
@@ -30,7 +30,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
     title: page.title,
     description: page.description,
 
-    // Focus.AI Client brand styling
+    // TheFocus.AI Client brand styling
     bgGradient: [colors.paper],
 
     border: {

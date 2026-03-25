@@ -16,7 +16,7 @@ tech_stack: "Next.js 15, TypeScript, Vercel AI SDK, Supabase, PostgreSQL, Anthro
 testimonial: "What used to take our research team half a day now takes thirty seconds. And the AI actually understands the nuances — when I ask about 'authentic' celebrities who appeal to Lifetime viewers, it knows exactly what I mean."
 testimonial_person: "Research Director"
 testimonial_company: "Media Analytics Client"
-published: false
+published: true
 image: upperhand_wide.png
 maturity_level: "L3"
 maturity_level_secondary: "L4"

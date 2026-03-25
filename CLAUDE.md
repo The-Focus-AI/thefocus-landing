@@ -10,27 +10,19 @@
 
 Header images for blog posts go in `src/content/assets/cards/` and are referenced in post frontmatter as `image: filename.png`.
 
-### Style Guidelines (Focus.AI Labs Brand)
+### Style Guidelines
 
-Generate images using nano-banana with these characteristics:
+Follow the **Focus.AI brand design system** for image generation. Use the `focus-ai-brand` skill/plugin for full brand documentation. The two sub-brands have distinct visual styles:
 
-- **Aesthetic**: Impasto oil painting (Van Gogh-like thick brushstrokes) OR vintage illustration/risograph style
-- **Subject**: Visual metaphors for the post concept - NOT literal depictions
-- **Colors**: Warm earth tones - ochre, deep blue, burnt sienna, cream, limited palette
+- **Client brand** → Renaissance Drafting style (Da Vinci diagrams, Dürer engravings, celestial maps, cartography, distillation machines). Sepia ink on aged parchment, cross-hatching, red chalk accents.
+- **Labs brand** → Bell Labs / Tufte / RAND style (Tufte data viz, Bell Labs technical diagrams, RAND report infographics, retro terminal).
+
+**General rules for all header images:**
+- **Subject**: Visual metaphors for the post concept — NOT literal depictions
 - **Format**: Wide 16:9 aspect ratio
-- **Mood**: Contemplative, atmospheric, moody lighting
 - **No text**: Never include text overlays in header images
+- Generate images using nano-banana
 
-### Example Prompt Structure
+### Choosing a style
 
-```
-"Wide 16:9 impasto oil painting in the style of Van Gogh with thick visible brushstrokes. [METAPHORICAL SCENE DESCRIPTION]. Warm earth tones - ochre, deep blue, burnt sienna, cream. Moody atmospheric lighting. No text."
-```
-
-### Reference Images
-
-Look at existing cards in `src/content/assets/cards/` for style reference:
-- `good-for-human-good-for-ai-header.png` - human + robot working together, heavy impasto
-- `mcp_wide.png` - craftsperson in workshop, moody lighting
-- `yolo_wide.png` - vintage risograph style, limited colors
-- `moral_vibe_check_wide.png` - graphic novel style, person looking at statue reflection
+Blog posts about research, experiments, and technical topics use the **Client Renaissance Drafting** style (default: Da Vinci Diagram). See the focus-ai-brand plugin design system docs for full style descriptions and prompt guidance.
