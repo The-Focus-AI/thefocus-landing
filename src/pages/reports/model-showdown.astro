@@ -3,8 +3,8 @@ import BaseLayout from '../../layout/BaseLayout.astro';
 import '../../styles/reports/model-showdown.css';
 ---
 <BaseLayout
-  pageTitle="Testing 49 LLMs Across 5 Dimensions for $4.63 — Model Showdown"
-  description="Which model should you actually use? We tested 49 LLMs across reasoning, knowledge, instruction following, coding, and MCP tool use. Claude Sonnet 4.6 achieves 100% on 4 dimensions."
+  pageTitle="Testing 48 LLMs Across 5 Dimensions for $4.63 — Model Showdown"
+  description="Which model should you actually use? We tested 48 LLMs across reasoning, knowledge, instruction following, coding, and MCP tool use. Claude Sonnet 4.6 leads at 93.8%."
   category="studio"
   fullWidth
   bodyClass="bg-[#f8f6f1]"
@@ -16,14 +16,14 @@ import '../../styles/reports/model-showdown.css';
   <!-- Hero -->
   <div class="hero">
     <div class="hero-label">Umwelten Model Showdown &middot; March 2026</div>
-    <h1>Testing 49 LLMs Across<br><em>5 Dimensions</em> for $4.63</h1>
+    <h1>Testing 48 LLMs Across<br><em>5 Dimensions</em> for $4.63</h1>
     <p class="hero-subtitle">
       Which model should you actually use? Not which one tops a leaderboard somewhere &mdash;
       which one will reason through your problem, follow your formatting instructions, write code
       that compiles, answer factual questions correctly, and orchestrate real-world tools without falling apart?
     </p>
     <div class="hero-meta">
-      <span>49 models</span>
+      <span>48 models</span>
       <span>5 providers</span>
       <span>5 dimensions</span>
       <span>$4.63 total</span>
@@ -31,9 +31,9 @@ import '../../styles/reports/model-showdown.css';
   </div>
 
   <div class="stats-row">
-    <div class="stat-card s-green"><div class="stat-num">100.0%</div><div class="stat-label">Top Score</div></div>
+    <div class="stat-card s-green"><div class="stat-num">93.8%</div><div class="stat-label">Top Score</div></div>
     <div class="stat-card s-accent"><div class="stat-num">$0.01</div><div class="stat-label">Best Value</div></div>
-    <div class="stat-card s-yellow"><div class="stat-num">11</div><div class="stat-label">Models &gt;95%</div></div>
+    <div class="stat-card s-yellow"><div class="stat-num">15</div><div class="stat-label">Models &gt;90%</div></div>
     <div class="stat-card s-ink"><div class="stat-num">$4.63</div><div class="stat-label">Total Cost</div></div>
   </div>
 
@@ -161,7 +161,6 @@ import '../../styles/reports/model-showdown.css';
         <li>moonshotai/kimi-k2</li>
         <li>moonshotai/kimi-k2.5</li>
         <li>minimax/minimax-m2.7</li>
-        <li>minimax/minimax-01</li>
         <li>mistralai/mistral-small-2603</li>
         <li>mistralai/mistral-small-3.2-24b-instruct</li>
         <li>mistralai/codestral-2508</li>
@@ -213,9 +212,8 @@ import '../../styles/reports/model-showdown.css';
     <h2>Full leaderboard</h2>
     <p class="body-text">
       Combined score is the mean of normalized dimension percentages. <code>anthropic/claude-sonnet-4.6</code>
-      achieves a perfect 100% on 4 dimensions and 93.8% across all 5 including MCP. Models with MCP data
-      use all 5 dimensions; those without use 4. <code>qwen/qwen3.5-397b-a17b</code> leads the 5-dimension
-      leaderboard at 93.1%. 41 of 49 models now have full 5-dimension scores including MCP tool use.
+      leads at 93.8% across all 5 dimensions. Models with MCP data
+      use all 5 dimensions; those without use 4. 41 of 48 models now have full 5-dimension scores including MCP tool use.
     </p>
     <p class="body-text">Click any column header to sort. Use filters to narrow down by provider or cost tier.</p>
 
@@ -241,6 +239,11 @@ import '../../styles/reports/model-showdown.css';
         <label>Max cost</label>
         <input type="range" id="filter-cost" min="0" max="100" value="100">
         <span class="range-val" id="filter-cost-val">any</span>
+      </div>
+      <div class="range-filter">
+        <label>Max time</label>
+        <input type="range" id="filter-time" min="0" max="100" value="100">
+        <span class="range-val" id="filter-time-val">any</span>
       </div>
     </div>
     <div class="filter-summary" id="filter-summary"></div>
@@ -275,36 +278,49 @@ import '../../styles/reports/model-showdown.css';
     <div class="finding-grid">
       <div class="finding-card">
         <div class="f-num">#1</div>
-        <h4>Claude Sonnet 4.6 achieves 100%</h4>
-        <p>Perfect on all 4 dimensions: reasoning, knowledge, instruction, and coding. The only model
-          in the entire 49-model field to do it.</p>
+        <h4>MCP has a hard ceiling at 11/16</h4>
+        <p>Every model that called all 6 required tools (20 models) got exactly judge=5/10. No model broke through.
+          MCP tool use is binary &mdash; either you call the right tools or you don&rsquo;t. Quality variance
+          comes entirely from tool selection, not generation.</p>
       </div>
       <div class="finding-card">
         <div class="f-num">#2</div>
-        <h4>GPT-OSS-120B costs a penny</h4>
-        <p>At $0.01, <code>openai/gpt-oss-120b</code> scores 89.9% across all 5 dimensions. That&rsquo;s $0.01 for
-          strong performance across every dimension including MCP tool use.</p>
+        <h4>Gemini 3.1 Pro: 91.6% for $0.008</h4>
+        <p>Under a penny for a top-10 model. At 11,450 pts/$, <code>gemini-3.1-pro-preview</code> is the
+          best value in the entire test &mdash; beating models that cost 25x more.</p>
       </div>
       <div class="finding-card">
         <div class="f-num">#3</div>
-        <h4>Local models are competitive</h4>
-        <p><code>gpt-oss:latest</code> on Ollama scores 77.2% across all 5 dimensions for free. 13 local
-          models tested, several above 80%. You don&rsquo;t need an API key for strong results.</p>
+        <h4>Only 4 models are fast AND good</h4>
+        <p>Under 3 minutes <em>and</em> above 90%: Sonnet, Grok, GPT-5.4, GPT-5.4-mini. That&rsquo;s it.
+          23 of 48 models are both slow and below 90%. Speed + quality is genuinely rare.</p>
       </div>
       <div class="finding-card">
         <div class="f-num">#4</div>
-        <h4>11 models above 95%</h4>
-        <p>The frontier is crowded. The gap between #1 (100%) and #11 (96.9%) is only 3.1 percentage
-          points. Choosing between top models is now about cost and speed, not quality.</p>
+        <h4>Open weights are 0.7% behind closed</h4>
+        <p>Best open: <code>qwen/qwen3.5-397b-a17b</code> at 93.1%. Best closed: Sonnet at 93.8%.
+          34 open-weight models tested vs 14 closed. The gap is nearly gone.</p>
       </div>
       <div class="finding-card">
         <div class="f-num">#5</div>
         <h4>qwen3-30b-a3b: brilliant and broken</h4>
-        <p>Perfect 20/20 reasoning, perfect 126/126 coding, but only 4/30 on instruction following.
-          A spectacular failure mode &mdash; it ignores formatting constraints entirely.</p>
+        <p>Perfect 20/20 reasoning, perfect 126/126 coding, but only 4/30 on instruction following &mdash;
+          an 87% gap between best and worst dimension. It ignores formatting constraints entirely.</p>
       </div>
       <div class="finding-card">
         <div class="f-num">#6</div>
+        <h4>Claude Haiku 4.5: the brand tax</h4>
+        <p>Perfect 126/126 coding but 2/16 on MCP &mdash; it gave up after one tool error instead of retrying.
+          At $0.07, it costs more than models that scored perfectly on every dimension.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#7</div>
+        <h4>phi4 is the best local model</h4>
+        <p><code>phi4-latest</code> on Ollama scores 84.6% for free, beating several paid cloud models.
+          19 free models tested, 7 above 80%. You don&rsquo;t need an API key.</p>
+      </div>
+      <div class="finding-card">
+        <div class="f-num">#8</div>
         <h4>Same weights, different results</h4>
         <p>Nemotron Nano 30B: OpenRouter 83.7% vs DeepInfra 77.0%. The provider gap can exceed 6
           percentage points. Benchmarks are provider-specific.</p>
@@ -594,9 +610,9 @@ import '../../styles/reports/model-showdown.css';
       MCP tool use is primarily a <em>planning problem</em>, not a generation problem.
     </p>
     <p class="body-text">
-      <strong>Note:</strong> MCP results are available for 41 of 49 models &mdash; comprehensive coverage
-      across all providers. The 8 models without MCP data either lack tool-use support (phi4, gemma3n,
-      deepseek-r1 variants) or were not attempted (Nemotron Nano 9B variants, minimax-01).
+      <strong>Note:</strong> MCP results are available for 41 of 48 models &mdash; comprehensive coverage
+      across all providers. The 7 models without MCP data either lack tool-use support (phi4, gemma3n,
+      deepseek-r1 variants) or were not attempted (Nemotron Nano 9B variants).
       Models without MCP data show &ldquo;&mdash;&rdquo; in the leaderboard and are scored on 4 dimensions only.
     </p>
 
@@ -924,13 +940,13 @@ import '../../styles/reports/model-showdown.css';
       <li>Free-tier models may have different availability or routing than paid versions.</li>
       <li>Each model tested once per task. Stochastic variation means scores could shift 1&ndash;3 points
         on a re-run.</li>
-      <li>8 of 49 models are missing MCP scores (no tool-use support or not attempted). Their combined
+      <li>7 of 48 models are missing MCP scores (no tool-use support or not attempted). Their combined
         scores are based on 4 dimensions only, while the 41 models with MCP data use all 5 dimensions.</li>
     </ul>
   </div>
 
   <div class="report-footer">
-    Generated by <a href="https://thefocus.ai">Focus.AI</a> Umwelten &middot; March 2026
+    Generated by <a href="https://thefocus.ai">TheFocus.AI</a> Umwelten &middot; March 2026
   </div>
 
 </div>
@@ -992,7 +1008,6 @@ const MODELS = [
   { model: 'qwen3-30b-a3b', provider: 'ollama', combined: 73.3, reasoning: [20,20], knowledge: [29,30], instruction: [4,30], coding: [126,126], mcp: [9,16], cost: 0, timeMin: 74, open: true, released: '2025-05', params: '30B MoE' },
   { model: 'nvidia/NVIDIA-Nemotron-Nano-9B-v2', provider: 'deepinfra', combined: 75.7, reasoning: [17,20], knowledge: [26,30], instruction: [25,30], coding: [60,126], mcp: [null,16], cost: 0, timeMin: 9, open: true, released: '2026-03', params: '9B' },
   { model: 'nemotron-3-nano-4b', provider: 'ollama', combined: 64.0, reasoning: [19,20], knowledge: [25,30], instruction: [25,30], coding: [42,126], mcp: [4,16], cost: 0, timeMin: 42, open: true, released: '2025-12', params: '4B' },
-  { model: 'minimax/minimax-01', provider: 'openrouter', combined: 0.0, reasoning: [0,20], knowledge: [0,30], instruction: [0,30], coding: [0,126], mcp: [null,16], cost: 0, timeMin: 2, open: false, released: '2025-01', params: 'undisclosed' },
 ];
 
 const PENDING_MODELS = [];
@@ -1143,10 +1158,11 @@ function modelHtml(m) {
 // ============================================================
 
 let currentFilter = 'all';
-let sortCol = 'rank';
-let sortAsc = true;
+let sortCol = 'combined';
+let sortAsc = false;
 let minScoreFilter = 0;
 let maxCostFilter = Infinity;
+let maxTimeFilter = Infinity;
 
 function getVisible() {
   let list = [...MODELS];
@@ -1161,6 +1177,7 @@ function getVisible() {
   if (currentFilter === 'closed') list = list.filter(d => d.open === false);
   if (minScoreFilter > 0) list = list.filter(d => d.combined >= minScoreFilter);
   if (maxCostFilter !== Infinity) list = list.filter(d => maxCostFilter === 0 ? d.cost === 0 : d.cost <= maxCostFilter || d.cost === 0);
+  if (maxTimeFilter !== Infinity) list = list.filter(d => d.timeMin <= maxTimeFilter);
 
   list.sort((a, b) => {
     let av, bv;
@@ -1244,6 +1261,16 @@ function updateFilters() {
   } else {
     maxCostFilter = Math.pow(costPct / 100, 2) * 0.5;
     document.getElementById('filter-cost-val').textContent = '$' + maxCostFilter.toFixed(3);
+  }
+
+  const timeSlider = document.getElementById('filter-time');
+  const timePct = parseInt(timeSlider.value);
+  if (timePct >= 100) {
+    maxTimeFilter = Infinity;
+    document.getElementById('filter-time-val').textContent = 'any';
+  } else {
+    maxTimeFilter = Math.pow(timePct / 100, 2) * 60;
+    document.getElementById('filter-time-val').textContent = maxTimeFilter >= 1 ? Math.round(maxTimeFilter) + 'm' : Math.round(maxTimeFilter * 60) + 's';
   }
 
   renderLeaderboard();
@@ -1554,6 +1581,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Range filters
   document.getElementById('filter-score')?.addEventListener('input', updateFilters);
   document.getElementById('filter-cost')?.addEventListener('input', updateFilters);
+  document.getElementById('filter-time')?.addEventListener('input', updateFilters);
 
   // Search input
   document.getElementById('search')?.addEventListener('input', renderLeaderboard);
