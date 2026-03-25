@@ -13,7 +13,7 @@ results: |-
   - Zero spreadsheet wrangling — natural language queries replace manual lookups
   - Cross-demographic analysis that previously required custom analyst work
 tech_stack: "Next.js 15, TypeScript, Vercel AI SDK, Supabase, PostgreSQL, Anthropic Claude, Radix UI, Recharts"
-testimonial: "What used to take our research team half a day now takes thirty seconds. And the AI actually understands the nuances — when I ask about 'authentic' celebrities who appeal to Lifetime viewers, it knows exactly what I mean."
+testimonial: "What used to take our research team half a day now takes thirty seconds. And the AI actually understands the nuances — when I ask about 'authentic' celebrities who appeal to our network's viewers, it knows exactly what I mean."
 testimonial_person: "Research Director"
 testimonial_company: "Media Analytics Client"
 published: true
@@ -30,11 +30,11 @@ Entertainment networks live and die by casting decisions. When a cable network i
 
 The data to answer these questions existed — scattered across three different research platforms:
 
-- **ePoll** — Survey-based research with awareness, appeal, and 30+ personality attributes across demographic segments
-- **ListenFirst** — Social media follower counts across Twitter, Instagram, TikTok, YouTube, and Facebook
-- **Audiense** — Twitter affinity analysis showing which audiences over-index for following specific celebrities
+- **Survey Platform** — Survey-based research with awareness, appeal, and 30+ personality attributes across demographic segments
+- **Social Analytics Platform** — Social media follower counts across Twitter, Instagram, TikTok, YouTube, and Facebook
+- **Affinity Platform** — Twitter affinity analysis showing which audiences over-index for following specific celebrities
 
-The problem: these datasets didn't talk to each other. A researcher asking "Who appeals to History Channel viewers and has strong social media presence?" would spend hours cross-referencing spreadsheets, manually matching celebrity names that were spelled differently across systems, and building one-off reports that couldn't be reused.
+The problem: these datasets didn't talk to each other. A researcher asking "Who appeals to our network's viewers and has strong social media presence?" would spend hours cross-referencing spreadsheets, manually matching celebrity names that were spelled differently across systems, and building one-off reports that couldn't be reused.
 
 **The scale of the problem:** The research team was spending 40+ hours per week on manual data compilation. High-priority talent questions — the ones that came from executives during meetings — could take half a day to answer. And the analysis was bottlenecked through a handful of analysts who knew how to navigate all three systems.
 
@@ -44,7 +44,7 @@ The problem: these datasets didn't talk to each other. A researcher asking "Who 
 
 We designed a multi-agent architecture where specialized AI systems handle different data domains, unified by a natural language interface that routes questions to the right agent.
 
-**The key insight:** Celebrity analytics isn't one problem — it's several. Nielsen TV ratings require different expertise than social media metrics or survey-based attribute analysis. Rather than building one monolithic AI that does everything poorly, we built focused agents that excel in their domains.
+**The key insight:** Celebrity analytics isn't one problem — it's several. TV ratings require different expertise than social media metrics or survey-based attribute analysis. Rather than building one monolithic AI that does everything poorly, we built focused agents that excel in their domains.
 
 This meant solving three interconnected problems:
 
@@ -56,14 +56,14 @@ This meant solving three interconnected problems:
 
 #### Multi-Source Celebrity Mapping
 
-The hardest problem wasn't AI — it was identity resolution. "Dwayne Johnson" in ePoll might be "The Rock" in ListenFirst and "Dwayne 'The Rock' Johnson" in Audiense. We built a fuzzy matching system with confidence scoring:
+The hardest problem wasn't AI — it was identity resolution. "Dwayne Johnson" in one system might be "The Rock" in another and "Dwayne 'The Rock' Johnson" in a third. We built a fuzzy matching system with confidence scoring:
 
 ```
 Mapping System:
 ├── Canonical celebrity ID (internal)
-├── ePoll identifiers (survey-specific)
-├── ListenFirst handles (social platform IDs)
-├── Audiense profiles (Twitter-centric)
+├── Survey platform identifiers (survey-specific)
+├── Social platform handles (platform IDs)
+├── Affinity platform profiles (Twitter-centric)
 └── Confidence scores (0.0-1.0) for each link
 ```
 
@@ -76,15 +76,15 @@ We built four specialized agents using Vercel AI SDK with tool-calling:
 **Talent Agent (CelebLens)** — The flagship agent for celebrity analysis. Tools include:
 
 - `talentLookup` — Fuzzy search with disambiguation across all data sources
-- `talentData` — Comprehensive profiles pulling from ePoll, ListenFirst, and Audiense simultaneously
+- `talentData` — Comprehensive profiles pulling from survey, social, and affinity platforms simultaneously
 - Above-average attribute detection using statistical analysis (identifying when a celebrity scores meaningfully above demographic norms)
 - Affinity bucket categorization — translating raw affinity scores into actionable categories (Exceptional / High / Average / Low)
 
-**Nielsen Agent** — TV ratings analysis with tools for network rankings, top telecasts, show performance, and demographic breakdowns. Handles Nielsen-specific date conventions (Nielsen weeks/months) automatically.
+**Ratings Agent** — TV ratings analysis with tools for network rankings, top telecasts, show performance, and demographic breakdowns. Handles ratings-specific date conventions (broadcast weeks/months) automatically.
 
 **AVOD Agent** — Streaming analytics across Roku, Samsung, Tubi, Plex, and Pluto. Tracks minutes viewed, historical trends, and channel performance.
 
-**SPSS Agent** — Survey data analysis for custom research projects. Handles crosstab generation and subpopulation analysis from raw SPSS files.
+**Survey Agent** — Survey data analysis for custom research projects. Handles crosstab generation and subpopulation analysis from raw survey data files.
 
 #### Statistical Quality Controls
 
@@ -105,13 +105,13 @@ Natural language queries return structured responses with:
 
 ### What Made This Work
 
-**1. Domain expertise in every tool.** Each AI tool was designed with input from researchers who actually use ePoll and ListenFirst daily. The tool descriptions include guidance on when to use each metric and how to interpret results — knowledge that took years for analysts to develop.
+**1. Domain expertise in every tool.** Each AI tool was designed with input from researchers who actually use these platforms daily. The tool descriptions include guidance on when to use each metric and how to interpret results — knowledge that took years for analysts to develop.
 
 **2. Statistical rigor built-in.** The system doesn't just return numbers — it contextualizes them. "Above average awareness" means something specific (typically 1+ standard deviations above demographic norm), and the AI explains this in its responses.
 
 **3. Disambiguation over hallucination.** When the AI isn't sure which celebrity the user means, it asks rather than guessing. This was a non-negotiable requirement from researchers who had been burned by tools that confidently returned wrong data.
 
-**4. Graceful data gaps.** Not every celebrity has data in every system. The AI clearly indicates when data is missing ("ListenFirst data unavailable — celebrity may not have verified social accounts") rather than omitting the information silently.
+**4. Graceful data gaps.** Not every celebrity has data in every system. The AI clearly indicates when data is missing ("Social data unavailable — celebrity may not have verified social accounts") rather than omitting the information silently.
 
 ### Results
 
@@ -119,7 +119,7 @@ Within 8 weeks of deployment:
 
 - **78% faster** talent report generation — queries that took half a day now complete in under a minute
 - **Democratized access** — Product managers and executives can now self-serve insights that previously required analyst time
-- **Cross-source analysis** — Questions like "Who has both strong social presence AND high Lifetime affinity?" are now answerable instantly
+- **Cross-source analysis** — Questions like "Who has both strong social presence AND high network affinity?" are now answerable instantly
 - **141+ GitHub issues** resolved during active development, with continuous feedback loops from real users
 
 The platform handles thousands of queries monthly, with the Talent Agent (CelebLens) accounting for the majority of usage. The research team shifted from data compilation to strategic interpretation — analyzing the *meaning* of results rather than fighting spreadsheets to generate them.
@@ -131,7 +131,7 @@ The platform handles thousands of queries monthly, with the Talent Agent (CelebL
 | **Frontend** | Next.js 15, TypeScript, Radix UI, Tailwind | Chat interface, data tables, visualizations |
 | **AI Framework** | Vercel AI SDK, Anthropic Claude | Multi-agent orchestration, tool calling |
 | **Database** | Supabase, PostgreSQL | Celebrity mapping, query history, user management |
-| **Data Sources** | ePoll, ListenFirst, Audiense | Survey data, social metrics, affinity analysis |
+| **Data Sources** | Survey, Social, Affinity platforms | Survey data, social metrics, affinity analysis |
 | **Charts** | Recharts | Demographic breakdowns, affinity visualizations |
 | **Auth** | Supabase Auth, Role-based access | Agent-specific permissions per user |
 | **Deployment** | Vercel | Production hosting with edge functions |
@@ -146,7 +146,7 @@ Natural Language Router
 ┌───────────────────────────────────────────────────┐
 │                 Agent Selection                    │
 ├──────────┬──────────┬──────────┬─────────────────┤
-│  Talent  │ Nielsen  │   AVOD   │      SPSS       │
+│  Talent  │ Ratings  │   AVOD   │     Survey      │
 │  Agent   │  Agent   │  Agent   │     Agent       │
 ├──────────┴──────────┴──────────┴─────────────────┤
 │              Unified Response Layer               │
@@ -155,7 +155,7 @@ Natural Language Router
     ↓
 PostgreSQL (Celebrity Mapping + Query History)
     ↓
-External APIs (ePoll, ListenFirst, Audiense)
+External APIs (Survey, Social, Affinity platforms)
 ```
 
 The architecture separates concerns cleanly: the AI handles natural language understanding and tool selection, while structured data pipelines handle the statistical analysis. This means the system can evolve — new data sources become new tools, and the AI learns to use them based on their descriptions.
