@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_070547",
+  "composite_score": 100,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 0,
+  "commit": "783404f experiment: Add founder credibility line to Approach section — score 94 vs baseline 94"
+}
