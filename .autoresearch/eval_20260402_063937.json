@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_063937",
+  "composite_score": 66,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 65,
+    "accessibility": 65,
+    "seo": 66,
+    "best_practices": 66
+  },
+  "copy_score": 72,
+  "commit": "31bf644 experiment: Reframe insight section as 'Why most AI projects fail' with stat-first structure — score 94 vs baseline 94"
+}
