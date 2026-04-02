@@ -1,0 +1,37 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> my-project@0.0.1 build
+> astro build
+
+06:52:22 [content] Syncing content
+06:52:22 [content] Synced content
+06:52:22 [types] Generated 430ms
+06:52:22 [build] output: "static"
+06:52:22 [build] mode: "static"
+06:52:22 [build] directory: /Users/benschippers/Desktop/Projects/thefocus-landing/dist/
+06:52:22 [build] Collecting build info...
+06:52:22 [build] ✓ Completed in 475ms.
+06:52:22 [build] Building static entrypoints...
+06:52:25 [WARN] [vite] The glob option "as" has been deprecated in favour of "query". Please update `as: 'url'` to `query: '?url', import: 'default'`.
+06:52:26 [WARN] [vite] The glob option "as" has been deprecated in favour of "query". Please update `as: 'url'` to `query: '?url', import: 'default'`.
+06:52:28 [vite] ✓ built in 6.05s
+06:52:28 [build] ✓ Completed in 6.08s.
+
+ building client (vite) 
+06:52:28 [vite] transforming...
+06:52:29 [vite] ✓ 654 modules transformed.
+06:52:29 [vite] rendering chunks...
+06:52:29 [vite] computing gzip size...
+06:52:29 [vite] dist/_astro/jsx-runtime.D_zvdyIk.js     0.73 kB │ gzip:   0.46 kB
+06:52:29 [vite] dist/_astro/audio-player.BgL3A_PM.js    0.90 kB │ gzip:   0.53 kB
+06:52:29 [vite] dist/_astro/index.TcFrwHGi.js           8.10 kB │ gzip:   3.15 kB
+06:52:29 [vite] dist/_astro/client.CRf_Cjf2.js        186.62 kB │ gzip:  58.45 kB
+06:52:29 [vite] dist/_astro/literacy.NYcKQCQ_.js      400.41 kB │ gzip: 110.34 kB
+06:52:29 [vite] ✓ built in 1.57s
+Cannot find module '/Users/benschippers/Desktop/Projects/thefocus-landing/dist/renderers.mjs' imported from /Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/core/build/generate.js
+  Stack trace:
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at defaultResolve (node:internal/modules/esm/resolve:988:11)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:714:38)
+    at #resolve (node:internal/modules/esm/loader:679:17)
+    at onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:628:32)

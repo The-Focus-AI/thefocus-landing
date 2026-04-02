@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_065133",
+  "composite_score": 14,
+  "build": true,
+  "build_time_seconds": 8,
+  "lighthouse": {
+    "performance": 0,
+    "accessibility": 0,
+    "seo": 0,
+    "best_practices": 0
+  },
+  "copy_score": 72,
+  "commit": "d554ed7 experiment: Sharper engagement model copy — outcome-focused, less jargon — score 94 vs baseline 94"
+}
