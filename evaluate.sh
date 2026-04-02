@@ -151,31 +151,42 @@ if [ "$WITH_LLM" = true ]; then
   if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
     echo -e "${RED}  ✗ ANTHROPIC_API_KEY not set — skipping LLM scoring${NC}"
   else
-    # Extract text content from built HTML
-    HOMEPAGE_TEXT=$(cat dist/index.html | sed 's/<[^>]*>//g' | tr -s '[:space:]' ' ' | head -c 8000)
-
-    COPY_SCORE=$(curl -s https://api.anthropic.com/v1/messages \
-      -H "content-type: application/json" \
-      -H "x-api-key: ${ANTHROPIC_API_KEY}" \
-      -H "anthropic-version: 2023-06-01" \
-      -d "{
-        \"model\": \"claude-sonnet-4-20250514\",
-        \"max_tokens\": 200,
-        \"messages\": [{
-          \"role\": \"user\",
-          \"content\": \"Score this website homepage copy on a scale of 0-100. Consider: clarity of value proposition, persuasiveness, brand voice consistency (should be direct and founder-to-founder), CTA effectiveness, and information hierarchy. Return ONLY a single integer, nothing else.\n\nCopy:\n${HOMEPAGE_TEXT}\"
+    # Extract text content from built HTML and build JSON-safe payload via Node
+    COPY_SCORE=$(node -e "
+      const fs = require('fs');
+      const https = require('https');
+      const html = fs.readFileSync('dist/index.html', 'utf8');
+      const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 8000);
+      const body = JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 200,
+        messages: [{
+          role: 'user',
+          content: 'Score this website homepage copy on a scale of 0-100. Consider: clarity of value proposition, persuasiveness, brand voice consistency (should be direct and founder-to-founder), CTA effectiveness, and information hierarchy. Return ONLY a single integer, nothing else.\n\nCopy:\n' + text
         }]
-      }" | node -e "
-        const chunks = [];
-        process.stdin.on('data', c => chunks.push(c));
-        process.stdin.on('end', () => {
+      });
+      const req = https.request('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01'
+        }
+      }, res => {
+        let data = '';
+        res.on('data', c => data += c);
+        res.on('end', () => {
           try {
-            const d = JSON.parse(Buffer.concat(chunks).toString());
+            const d = JSON.parse(data);
             const score = parseInt(d.content[0].text.trim());
             console.log(isNaN(score) ? 0 : Math.min(100, Math.max(0, score)));
           } catch(e) { console.log(0); }
         });
-      ")
+      });
+      req.on('error', () => console.log(0));
+      req.write(body);
+      req.end();
+    ")
 
     echo -e "    Copy Quality Score: ${COPY_SCORE}"
   fi
