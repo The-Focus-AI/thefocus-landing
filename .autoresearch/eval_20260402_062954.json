@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_062954",
+  "composite_score": 100,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 0,
+  "commit": "32f210f experiment: Add twitter:site brand handle to all pages — score 100 vs baseline 100"
+}
