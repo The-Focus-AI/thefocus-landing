@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_080828",
+  "composite_score": 93,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 96,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "2155b61 experiment: Add scarcity/honesty closing — 'limited engagements, conversation is free' — score 94 vs baseline 94"
+}

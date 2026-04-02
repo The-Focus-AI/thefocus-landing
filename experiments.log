@@ -64,3 +64,4 @@
 20260402_080234 | score=93 | perf=100 a11y=100 seo=97 bp=100 copy=72 | 8d5862b experiment: Restore specific '93% of AI projects stall' stat in insight section — score 94 vs baseline 94
 20260402_080328 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 8d5862b experiment: Restore specific '93% of AI projects stall' stat in insight section — score 94 vs baseline 94
 20260402_080502 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=73 | d95cba2 experiment: Remove low-contrast italic text that caused accessibility/performance regression — score 94 vs baseline 94
+20260402_081001 | score=94 | perf=100 a11y=100 seo=100 bp=98 copy=72 | 2155b61 experiment: Add scarcity/honesty closing — 'limited engagements, conversation is free' — score 94 vs baseline 94
