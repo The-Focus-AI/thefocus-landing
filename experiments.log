@@ -50,3 +50,8 @@
 20260402_073657 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 81c8524 experiment: Replace HTML entity arrows with Unicode → for cleaner LLM text evaluation — score 94 vs baseline 94
 20260402_073837 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | fae4884 experiment: Punchier clients H2 'They needed AI that ships. We delivered.' + direct subhead with founder names — score 94 vs baseline 94
 20260402_074021 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | fae4884 experiment: Punchier clients H2 'They needed AI that ships. We delivered.' + direct subhead with founder names — score 94 vs baseline 94
+20260402_074124 | score=93 | perf=99 a11y=100 seo=97 bp=98 copy=72 | fd40c70 experiment: Urgency line in hero + reframe journey as diagnostic 'Where are you on the AI maturity curve?' — score 94 vs baseline 94
+20260402_074141 | score=67 | perf=66 a11y=66 seo=66 bp=66 copy=72 | fd40c70 experiment: Urgency line in hero + reframe journey as diagnostic 'Where are you on the AI maturity curve?' — score 94 vs baseline 94
+20260402_074226 | score=93 | perf=99 a11y=100 seo=97 bp=100 copy=72 | fd40c70 experiment: Urgency line in hero + reframe journey as diagnostic 'Where are you on the AI maturity curve?' — score 94 vs baseline 94
+20260402_074232 | score=92 | perf=94 a11y=100 seo=97 bp=100 copy=72 | fd40c70 experiment: Urgency line in hero + reframe journey as diagnostic 'Where are you on the AI maturity curve?' — score 94 vs baseline 94
+20260402_074332 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | fd40c70 experiment: Urgency line in hero + reframe journey as diagnostic 'Where are you on the AI maturity curve?' — score 94 vs baseline 94

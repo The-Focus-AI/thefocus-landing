@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_074226",
+  "composite_score": 93,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 99,
+    "accessibility": 100,
+    "seo": 97,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "fd40c70 experiment: Urgency line in hero + reframe journey as diagnostic 'Where are you on the AI maturity curve?' — score 94 vs baseline 94"
+}
