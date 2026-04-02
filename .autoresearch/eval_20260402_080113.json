@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_080113",
+  "composite_score": 90,
+  "build": true,
+  "build_time_seconds": 11,
+  "lighthouse": {
+    "performance": 89,
+    "accessibility": 96,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "8d5862b experiment: Restore specific '93% of AI projects stall' stat in insight section — score 94 vs baseline 94"
+}
