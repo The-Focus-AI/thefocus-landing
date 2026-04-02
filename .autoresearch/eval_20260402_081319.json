@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_081319",
+  "composite_score": 66,
+  "build": true,
+  "build_time_seconds": 8,
+  "lighthouse": {
+    "performance": 66,
+    "accessibility": 66,
+    "seo": 66,
+    "best_practices": 66
+  },
+  "copy_score": 0,
+  "commit": "38ca81c experiment: Remove invalid NewsletterSubscription schema — invalid schema.org type, old FOCUS.AI branding — score 94 vs baseline 94"
+}
