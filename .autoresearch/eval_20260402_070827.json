@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_070827",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 8,
+  "lighthouse": {
+    "performance": 99,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "c175bc1 experiment: Add 'what you get' outcome list before engagement models — score 100 vs baseline 94"
+}
