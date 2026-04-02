@@ -11,3 +11,4 @@
 20260402_060901 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
 20260402_061443 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
 20260402_061836 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
+20260402_062004 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 221fe28 experiment: Add FAQPage JSON-LD schema to capabilities page — score 100 vs baseline 100
