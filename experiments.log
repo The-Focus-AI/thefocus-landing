@@ -18,3 +18,4 @@
 20260402_062517 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | e3ddb52 experiment: Sharpen homepage CTAs — 'Find Your Starting Point' + 'See Real Results' — score 100 vs baseline 100
 20260402_062630 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | d875b95 experiment: Keyword-rich capabilities page title + meta description — score 100 vs baseline 100
 20260402_062745 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 97c49ec experiment: Keyword-rich case-studies page title + client-name meta description — score 100 vs baseline 100
+20260402_062850 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 06c05c7 experiment: Add dynamic ItemList schema to case-studies page — score 100 vs baseline 100
