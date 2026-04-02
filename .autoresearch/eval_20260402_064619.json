@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_064619",
+  "composite_score": 40,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 33,
+    "accessibility": 33,
+    "seo": 33,
+    "best_practices": 33
+  },
+  "copy_score": 72,
+  "commit": "3f3121e experiment: Lead clients section with named clients for stronger social proof — score 94 vs baseline 94"
+}

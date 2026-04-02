@@ -9,3 +9,7 @@
 20260402_064109 | score=32 | perf=32 a11y=33 seo=33 bp=33 copy=0 | 31bf644 experiment: Reframe insight section as 'Why most AI projects fail' with stat-first structure — score 94 vs baseline 94
 20260402_064151 | score=65 | perf=65 a11y=66 seo=66 bp=66 copy=0 | 31bf644 experiment: Reframe insight section as 'Why most AI projects fail' with stat-first structure — score 94 vs baseline 94
 20260402_064234 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | 31bf644 experiment: Reframe insight section as 'Why most AI projects fail' with stat-first structure — score 94 vs baseline 94
+20260402_064439 | score=39 | perf=32 a11y=33 seo=30 bp=32 copy=72 | 3f3121e experiment: Lead clients section with named clients for stronger social proof — score 94 vs baseline 94
+20260402_064554 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | 3f3121e experiment: Lead clients section with named clients for stronger social proof — score 94 vs baseline 94
+20260402_064619 | score=40 | perf=33 a11y=33 seo=33 bp=33 copy=72 | 3f3121e experiment: Lead clients section with named clients for stronger social proof — score 94 vs baseline 94
+20260402_064657 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | 3f3121e experiment: Lead clients section with named clients for stronger social proof — score 94 vs baseline 94
