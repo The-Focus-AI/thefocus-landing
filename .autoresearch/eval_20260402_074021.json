@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_074021",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 99,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "fae4884 experiment: Punchier clients H2 'They needed AI that ships. We delivered.' + direct subhead with founder names — score 94 vs baseline 94"
+}
