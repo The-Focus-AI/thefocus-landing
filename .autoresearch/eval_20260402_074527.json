@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_074527",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "539fa1a experiment: Validate current copy stack stable at score 94 vs baseline 94"
+}
