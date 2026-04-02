@@ -1,0 +1,270 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> my-project@0.0.1 build
+> astro build
+
+06:55:05 [content] Syncing content
+06:55:05 [content] Synced content
+06:55:05 [types] Generated 373ms
+06:55:05 [build] output: "static"
+06:55:05 [build] mode: "static"
+06:55:05 [build] directory: /Users/benschippers/Desktop/Projects/thefocus-landing/dist/
+06:55:05 [build] Collecting build info...
+06:55:05 [build] ✓ Completed in 416ms.
+06:55:05 [build] Building static entrypoints...
+06:55:08 [WARN] [vite] The glob option "as" has been deprecated in favour of "query". Please update `as: 'url'` to `query: '?url', import: 'default'`.
+06:55:08 [WARN] [vite] The glob option "as" has been deprecated in favour of "query". Please update `as: 'url'` to `query: '?url', import: 'default'`.
+06:55:10 [vite] ✓ built in 4.65s
+06:55:10 [build] ✓ Completed in 4.69s.
+
+ building client (vite) 
+06:55:10 [vite] transforming...
+06:55:12 [vite] ✓ 654 modules transformed.
+06:55:12 [vite] rendering chunks...
+06:55:12 [vite] computing gzip size...
+06:55:13 [vite] dist/_astro/jsx-runtime.D_zvdyIk.js     0.73 kB │ gzip:   0.46 kB
+06:55:13 [vite] dist/_astro/audio-player.BgL3A_PM.js    0.90 kB │ gzip:   0.53 kB
+06:55:13 [vite] dist/_astro/index.TcFrwHGi.js           8.10 kB │ gzip:   3.15 kB
+06:55:13 [vite] dist/_astro/client.CRf_Cjf2.js        186.62 kB │ gzip:  58.45 kB
+06:55:13 [vite] dist/_astro/literacy.NYcKQCQ_.js      400.41 kB │ gzip: 110.34 kB
+06:55:13 [vite] ✓ built in 2.42s
+
+ generating static routes 
+06:55:13 ▶ src/pages/about.astro
+06:55:13   └─ /about/index.html (+14ms) 
+06:55:13 ▶ src/pages/ai-maturity.astro
+06:55:13   └─ /ai-maturity/index.html (+2ms) 
+06:55:13 ▶ src/pages/blog.astro
+06:55:13   └─ /blog/index.html (+1ms) 
+06:55:13 ▶ src/pages/capabilities.astro
+06:55:13   └─ /capabilities/index.html (+6ms) 
+06:55:13 ▶ src/pages/case-studies.astro
+06:55:13   └─ /case-studies/index.htmlNot in development, filtering out unpublished posts
+ (+32ms) 
+06:55:13 ▶ src/pages/case-study/[...id].astro
+Not in development, filtering out unpublished posts
+06:55:13   ├─ /case-study/fountain-creek/index.htmlNot in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /case-study/ai-back-office/index.htmlNot in development, filtering out unpublished posts
+ (+12ms) 
+06:55:13   ├─ /case-study/distill/index.htmlNot in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13   ├─ /case-study/image-browser/index.htmlNot in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /case-study/perplexity-samsung/index.htmlNot in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13   ├─ /case-study/onboarding/index.htmlNot in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13   ├─ /case-study/qbsync/index.htmlNot in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13   ├─ /case-study/upperhand-ai/index.htmlNot in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13   └─ /case-study/tezlab-ai/index.htmlNot in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13 ▶ src/pages/coding-agents.astro
+06:55:13   └─ /coding-agents/index.html (+1ms) 
+06:55:13 ▶ src/pages/draft.md
+06:55:13   └─ /draft/index.html (+0ms) 
+06:55:13 ▶ src/pages/drafts.astro
+06:55:13   └─ /drafts/index.html (+0ms) 
+06:55:13 ▶ src/pages/emails.astro
+06:55:13   └─ /emails/index.html (+0ms) 
+06:55:13 ▶ src/pages/insights.astro
+06:55:13   └─ /insights/index.htmlNot in development, filtering out unpublished posts
+ (+36ms) 
+06:55:13 λ src/pages/jobs/info.json.ts
+06:55:13   └─ /jobs/info.json (+1ms) 
+06:55:13 ▶ src/pages/jobs.astro
+06:55:13   └─ /jobs/index.html (+1ms) 
+06:55:13 ▶ src/pages/jobs/[...id].astro
+06:55:13   └─ /jobs/junior-fullstack-developer/index.html (+1ms) 
+06:55:13 ▶ src/pages/learnings.astro
+06:55:13   └─ /learnings/index.html (+1ms) 
+Not in development, filtering out unpublished posts
+06:55:13 λ src/pages/open-graph/[...route].ts
+06:55:13   ├─ /open-graph/sraffas-gesture.png[astro-og-canvas] Loading https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff2
+[astro-og-canvas] Loading https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2
+[astro-og-canvas] Loaded 1 font families:
+Inter
+ (+339ms) 
+06:55:13   ├─ /open-graph/how-i-use-ai-jan-2026.png (+3ms) 
+06:55:13   ├─ /open-graph/you-are-absolutely-right.png (+3ms) 
+06:55:13   ├─ /open-graph/good-for-human-good-for-ai.png (+2ms) 
+06:55:13   ├─ /open-graph/weekend-coding-agent.png (+4ms) 
+06:55:13   ├─ /open-graph/2025-11-22-ai-engineering-summit-takeaways.png (+2ms) 
+06:55:13   ├─ /open-graph/ai-engineering-code-summit-2025.png (+2ms) 
+06:55:13   ├─ /open-graph/gpt5.png (+2ms) 
+06:55:13   ├─ /open-graph/single-file-swift-code.png (+2ms) 
+06:55:13   ├─ /open-graph/local-models-typescript.png (+2ms) 
+06:55:13   ├─ /open-graph/gpt5-and-gpt-oss.png (+6ms) 
+06:55:13   ├─ /open-graph/technical-debt-and-the-roi-threshhold.png (+2ms) 
+06:55:13   ├─ /open-graph/dont-be-passive-aggressive.png (+2ms) 
+06:55:13   ├─ /open-graph/june-2025-coding-agents-report.png (+2ms) 
+06:55:13   ├─ /open-graph/feature-development-on-the-go.png (+2ms) 
+06:55:13   ├─ /open-graph/geo-affordance.png (+1ms) 
+06:55:13   ├─ /open-graph/microsoft-build-2025.png (+1ms) 
+06:55:13   ├─ /open-graph/thoughts-on-gemini.png (+2ms) 
+06:55:13   ├─ /open-graph/using-structured-output.png (+1ms) 
+06:55:13   ├─ /open-graph/moral-vibe-check.png (+2ms) 
+06:55:13   ├─ /open-graph/image-gen-on-apple-silicon.png (+1ms) 
+06:55:13   ├─ /open-graph/recipe-book.png (+1ms) 
+06:55:13   ├─ /open-graph/exposing-services-with-mcp.png (+2ms) 
+06:55:13   ├─ /open-graph/agentic-yolo-with-warp-cursor-and-claude.png (+1ms) 
+06:55:13   ├─ /open-graph/clipboards-are-eating-the-world.png (+1ms) 
+06:55:13   ├─ /open-graph/the-new-touch-interface.png (+1ms) 
+06:55:13   ├─ /open-graph/tools-for-thinking.png (+1ms) 
+06:55:13   ├─ /open-graph/how-i-classify-models.png (+1ms) 
+06:55:13   ├─ /open-graph/ai-for-research-deepresearch-wins.png (+1ms) 
+06:55:13   ├─ /open-graph/notebooklm-for-research.png (+2ms) 
+06:55:13   ├─ /open-graph/making-hard-things-easier.png (+1ms) 
+06:55:13   ├─ /open-graph/about.png (+1ms) 
+06:55:13   └─ /open-graph/slicing-a-design-from-figma.png (+1ms) 
+06:55:13 ▶ src/pages/posts/[...id].astro
+Not in development, filtering out unpublished posts
+06:55:13   ├─ /posts/same-weights-different-results/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+5ms) 
+06:55:13   ├─ /posts/mcp-tool-eval-mercury-umwelten/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/sraffas-gesture/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+4ms) 
+06:55:13   ├─ /posts/the-car-wash-test/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/agent-habitat/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/data-flywheel-pattern/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/claude-code-non-coding/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/how-i-use-ai-jan-2026/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/you-are-absolutely-right/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/good-for-human-good-for-ai/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/weekend-coding-agent/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/2025-11-22-ai-engineering-summit-takeaways/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/ai-engineering-code-summit-2025/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/gpt5/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/single-file-swift-code/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/local-models-typescript/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/gpt5-and-gpt-oss/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/technical-debt-and-the-roi-threshhold/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/dont-be-passive-aggressive/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+6ms) 
+06:55:13   ├─ /posts/june-2025-coding-agents-report/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/feature-development-on-the-go/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+6ms) 
+06:55:13   ├─ /posts/geo-affordance/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+8ms) 
+06:55:13   ├─ /posts/microsoft-build-2025/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+6ms) 
+06:55:13   ├─ /posts/thoughts-on-gemini/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+9ms) 
+06:55:13   ├─ /posts/using-structured-output/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+6ms) 
+06:55:13   ├─ /posts/moral-vibe-check/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/image-gen-on-apple-silicon/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/recipe-book/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/exposing-services-with-mcp/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+1ms) 
+06:55:13   ├─ /posts/agentic-yolo-with-warp-cursor-and-claude/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /posts/clipboards-are-eating-the-world/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+4ms) 
+06:55:13   ├─ /posts/the-new-touch-interface/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/tools-for-thinking/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/how-i-classify-models/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/ai-for-research-deepresearch-wins/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/notebooklm-for-research/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/making-hard-things-easier/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /posts/about/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   └─ /posts/slicing-a-design-from-figma/index.htmlNot in development, filtering out unpublished posts
+Not in development, filtering out unpublished posts
+ (+4ms) 
+06:55:13 ▶ src/pages/recipes.astro
+06:55:13   └─ /recipes/index.html (+0ms) 
+06:55:13 ▶ src/pages/recipes/[...id].astro
+Not in development, filtering out unpublished posts
+06:55:13   ├─ /recipes/reports/coding-agent/index.html (+1ms) 
+06:55:13   ├─ /recipes/smallest-coding-agent/index.html (+1ms) 
+06:55:13   ├─ /recipes/repomix-redux/index.htmlNot in development, filtering out unpublished posts
+ (+3ms) 
+06:55:13   ├─ /recipes/context7-mcp/index.htmlNot in development, filtering out unpublished posts
+ (+4ms) 
+06:55:13   ├─ /recipes/playwright-mcp/index.htmlNot in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /recipes/dagger-and-container-use/index.html (+1ms) 
+06:55:13   ├─ /recipes/use-cursor-in-slack/index.htmlNot in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /recipes/content-finder/index.htmlNot in development, filtering out unpublished posts
+ (+2ms) 
+06:55:13   ├─ /recipes/geolocation-prompt/index.htmlNot in development, filtering out unpublished posts
+ (+5ms) 
+06:55:13   ├─ /recipes/iterating-designs-with-chatgpt4o/index.htmlNot in development, filtering out unpublished posts
+ (+10ms) 
+06:55:13   ├─ /recipes/llm-for-quick-prototyping/index.html (+9ms) 
+06:55:13   ├─ /recipes/lift-and-shift/index.htmlNot in development, filtering out unpublished posts
+Cannot read properties of undefined (reading 'src')
+  Stack trace:
+    at file:///Users/benschippers/Desktop/Projects/thefocus-landing/dist/pages/recipes/_---id_.astro.mjs?time=1775127313860:55:51
+    at async renderToString (file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/runtime/server/render/astro/render.js:14:26)
+    at async lastNext (file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/core/render-context.js:215:25)
+    at async callMiddleware (file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/core/middleware/callMiddleware.js:11:10)
+    at async generatePath (file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/core/build/generate.js:381:16)

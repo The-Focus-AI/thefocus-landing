@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_065249",
+  "composite_score": 40,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 33,
+    "accessibility": 33,
+    "seo": 33,
+    "best_practices": 33
+  },
+  "copy_score": 72,
+  "commit": "cedafef experiment: Action-oriented hero CTAs — 'Get Your AI Roadmap' vs passive 'Find Your Starting Point' — score 94 vs baseline 94"
+}
