@@ -5,3 +5,4 @@
 20260402_063506 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | 420bf43 experiment: Fix weak default meta description fallback — score 100 vs baseline 100
 20260402_063534 | score=40 | perf=33 a11y=33 seo=33 bp=33 copy=72 | 420bf43 experiment: Fix weak default meta description fallback — score 100 vs baseline 100
 20260402_063622 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | 420bf43 experiment: Fix weak default meta description fallback — score 100 vs baseline 100
+20260402_063832 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | 9b92868 experiment: Direct hero headline 'Production AI, Shipped in Weeks' + clearer value prop — score 94 vs baseline 84
