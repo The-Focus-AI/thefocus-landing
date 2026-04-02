@@ -13,3 +13,4 @@
 20260402_061836 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
 20260402_062004 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 221fe28 experiment: Add FAQPage JSON-LD schema to capabilities page — score 100 vs baseline 100
 20260402_062122 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 670b2df experiment: Enrich Organization schema — social profiles, knowsAbout, better name/description — score 100 vs baseline 100
+20260402_062244 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 95ead6b experiment: Add Service ItemList JSON-LD schema for 3 engagement models — score 100 vs baseline 100

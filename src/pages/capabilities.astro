@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
+import BreadcrumbList from "../components/schemas/breadcrumb.astro";
 
 const mailto = "mailto:hey@thefocus.ai?subject=AI%20Maturity%20Assessment";
 
@@ -147,6 +148,7 @@ const assessmentClusters = [
   description="AI adoption isn't about picking the right model. It's about making your organization legible to machines — from tribal knowledge to structured intelligence. A practical framework for the journey."
   category="capabilities"
 >
+  <BreadcrumbList slot="head" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
