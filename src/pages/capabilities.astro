@@ -149,6 +149,47 @@ const assessmentClusters = [
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "TheFocus.AI Engagement Models",
+    "description": "AI consulting engagement models for growth-stage companies",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Assessment & Roadmap",
+          "description": "4-6 week engagement to assess your organization's AI maturity and build a prioritized roadmap. Deliverables: AI opportunity assessment, process documentation, build vs. buy analysis.",
+          "provider": { "@type": "Organization", "name": "TheFocus.AI", "url": "https://thefocus.ai" },
+          "serviceType": "AI Strategy Consulting"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Build & Ship",
+          "description": "6-12 week engagement to build and deploy production AI systems. Deliverables: document ingestion pipeline, semantic knowledge base, conversational query interface, source-attributed answers.",
+          "provider": { "@type": "Organization", "name": "TheFocus.AI", "url": "https://thefocus.ai" },
+          "serviceType": "AI Development"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "Ongoing Partnership",
+          "description": "Monthly retainer for organizations with production AI who want it to compound. Includes dedicated team, feedback loop design, continuous optimization, and team training.",
+          "provider": { "@type": "Organization", "name": "TheFocus.AI", "url": "https://thefocus.ai" },
+          "serviceType": "AI Partnership"
+        }
+      }
+    ]
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
