@@ -36,3 +36,4 @@
 20260402_070827 | score=94 | perf=99 a11y=100 seo=100 bp=100 copy=72 | c175bc1 experiment: Add 'what you get' outcome list before engagement models — score 100 vs baseline 94
 20260402_070939 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | ffa590e experiment: Update banner to highlight client case studies — score 94 vs baseline 94
 20260402_071117 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | a91d058 experiment: Direct meta description with client names + principal-led positioning — score 94 vs baseline 94
+20260402_071231 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 30d8ea2 experiment: Process steps with timeframes (weeks 1-2, 2-4, 4-8) and outcome-focused language — score 94 vs baseline 94

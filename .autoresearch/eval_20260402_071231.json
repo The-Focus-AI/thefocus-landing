@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_071231",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "30d8ea2 experiment: Process steps with timeframes (weeks 1-2, 2-4, 4-8) and outcome-focused language — score 94 vs baseline 94"
+}
