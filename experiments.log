@@ -38,3 +38,11 @@
 20260402_071117 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | a91d058 experiment: Direct meta description with client names + principal-led positioning — score 94 vs baseline 94
 20260402_071231 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 30d8ea2 experiment: Process steps with timeframes (weeks 1-2, 2-4, 4-8) and outcome-focused language — score 94 vs baseline 94
 20260402_071357 | score=95 | perf=100 a11y=100 seo=100 bp=100 copy=75 | a9af1a8 experiment: Add founder Person schemas (Ben Schippers + Will Schenk) to Organization JSON-LD — score 94 vs baseline 94
+20260402_071655 | score=93 | perf=100 a11y=96 seo=100 bp=100 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_071710 | score=66 | perf=66 a11y=64 seo=66 bp=66 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_071753 | score=93 | perf=100 a11y=96 seo=100 bp=100 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_071804 | score=66 | perf=66 a11y=64 seo=66 bp=66 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_072908 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_073247 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_073305 | score=67 | perf=66 a11y=66 seo=66 bp=66 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
+20260402_073355 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94

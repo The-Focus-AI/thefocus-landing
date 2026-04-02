@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_073355",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 12,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94"
+}
