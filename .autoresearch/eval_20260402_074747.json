@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_074747",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 98
+  },
+  "copy_score": 72,
+  "commit": "67e619d experiment: Pain-led hero subhead 'Tired of AI consultants who leave you a deck? We ship code.' — score 94 vs baseline 94"
+}
