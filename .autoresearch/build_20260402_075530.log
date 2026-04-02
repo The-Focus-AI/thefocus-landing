@@ -1,0 +1,21 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> my-project@0.0.1 build
+> astro build
+
+07:55:31 [content] Syncing content
+[UnknownFilesystemError] 
+  Hint:
+    It can be caused by many things, eg. missing permissions or a file not existing we attempt to read. Check the error cause for more details.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/unknown-filesystem-error/
+  Location:
+    /Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/content/mutable-data-store.js:92:13
+  Stack trace:
+    at MutableDataStore.writeAssetImports (file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/content/mutable-data-store.js:92:13)
+    at async file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/p-queue@8.1.1/node_modules/p-queue/dist/index.js:230:36
+  Caused by:
+  ENOENT: no such file or directory, rename '/Users/benschippers/Desktop/Projects/thefocus-landing/.astro/content-assets.mjs.tmp' -> '/Users/benschippers/Desktop/Projects/thefocus-landing/.astro/content-assets.mjs'
+    at async Object.rename (node:internal/fs/promises:781:10)
+    at async MutableDataStore.writeAssetImports (file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/astro@5.16.10_@types+node@22.19.7_jiti@1.21.7_rollup@4.55.1_tsx@4.21.0_typescript@5.9.3_yaml@2.8.2/node_modules/astro/dist/content/mutable-data-store.js:90:7)
+    at async file:///Users/benschippers/Desktop/Projects/thefocus-landing/node_modules/.pnpm/p-queue@8.1.1/node_modules/p-queue/dist/index.js:230:36

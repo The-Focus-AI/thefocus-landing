@@ -59,3 +59,4 @@
 20260402_074747 | score=94 | perf=100 a11y=100 seo=100 bp=98 copy=72 | 67e619d experiment: Pain-led hero subhead 'Tired of AI consultants who leave you a deck? We ship code.' — score 94 vs baseline 94
 20260402_074934 | score=95 | perf=100 a11y=100 seo=100 bp=100 copy=78 | 183f49f experiment: Sharper 'How we deliver' opening — 'Most AI consultancies start with tools. We start with understanding.' — score 94 vs baseline 94
 20260402_075031 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 183f49f experiment: Sharper 'How we deliver' opening — 'Most AI consultancies start with tools. We start with understanding.' — score 94 vs baseline 94
+20260402_075825 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 14eaed4 experiment: Add second testimonial from Perplexity AI (Samsung Smart TV) for social proof diversity — score 94-95 vs baseline 94
