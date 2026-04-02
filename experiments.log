@@ -47,3 +47,4 @@
 20260402_073305 | score=67 | perf=66 a11y=66 seo=66 bp=66 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
 20260402_073355 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 5dc94ff experiment: Fix Website schema — correct name to 'TheFocus.AI', remove invalid empty potentialAction — score 95 vs baseline 94
 20260402_073523 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 6a6495b experiment: Add client attribution to homepage stats (TezLab/Tesla/Samsung) for credibility — score 94 vs baseline 94
+20260402_073657 | score=94 | perf=100 a11y=100 seo=100 bp=100 copy=72 | 81c8524 experiment: Replace HTML entity arrows with Unicode → for cleaner LLM text evaluation — score 94 vs baseline 94
