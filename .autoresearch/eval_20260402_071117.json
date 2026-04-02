@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_071117",
+  "composite_score": 94,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 72,
+  "commit": "a91d058 experiment: Direct meta description with client names + principal-led positioning — score 94 vs baseline 94"
+}
