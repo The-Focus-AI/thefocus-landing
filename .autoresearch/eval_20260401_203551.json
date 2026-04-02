@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260401_203551",
+  "composite_score": 93,
+  "build": true,
+  "build_time_seconds": 7,
+  "lighthouse": {
+    "performance": 86,
+    "accessibility": 90,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 0,
+  "commit": "5944552 Fix header logo vertical alignment to match nav items"
+}

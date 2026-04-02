@@ -147,6 +147,36 @@ const assessmentClusters = [
   description="AI adoption isn't about picking the right model. It's about making your organization legible to machines — from tribal knowledge to structured intelligence. A practical framework for the journey."
   category="capabilities"
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do we need clean data first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. In fact, discovering that your data isn't clean is part of the value. Most organizations don't realize how much tribal knowledge — naming conventions, exception rules, approval workflows — lives only in people's heads until they try to connect AI to it. We help you through that process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if we don't know exactly what we need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That's normal — and it's what Assessment engagements are for. Most companies overestimate where they are on the maturity framework. The honest starting point is usually: 'Can we describe our own workflows in a form a machine can follow?' If the answer is 'not yet,' that's where we begin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from other AI consultancies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build. Most AI consultancies deliver decks and recommendations. We deliver production systems — working in weeks, not quarters. And we're honest about organizational readiness: if your processes aren't formalized enough for AI, we'll tell you that and help you fix it, rather than building on a shaky foundation."
+        }
+      }
+    ]
+  })} />
   <!-- Hero -->
   <div class="max-w-4xl mx-auto">
     <section class="py-8 md:py-16">

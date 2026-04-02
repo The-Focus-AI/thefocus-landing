@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260401_205826",
+  "composite_score": 100,
+  "build": true,
+  "build_time_seconds": 6,
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "seo": 100,
+    "best_practices": 100
+  },
+  "copy_score": 0,
+  "commit": "153701a experiment: Fix heading-order a11y violations — h4→h3 in Journey and Engagement cards — score 99 vs baseline 98"
+}

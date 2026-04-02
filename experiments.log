@@ -1,0 +1,13 @@
+20260401_202639 | score=95 | perf=100 a11y=90 seo=92 bp=100 copy=0 | 5944552 Fix header logo vertical alignment to match nav items
+20260401_202857 | score=90 | perf=86 a11y=90 seo=92 bp=100 copy=0 | 5944552 Fix header logo vertical alignment to match nav items
+20260401_203551 | score=93 | perf=86 a11y=90 seo=100 bp=100 copy=0 | 5944552 Fix header logo vertical alignment to match nav items
+20260401_203657 | score=93 | perf=86 a11y=90 seo=100 bp=100 copy=0 | 5944552 Fix header logo vertical alignment to match nav items
+20260401_204117 | score=97 | perf=100 a11y=90 seo=100 bp=100 copy=0 | 5944552 Fix header logo vertical alignment to match nav items
+20260401_204554 | score=98 | perf=100 a11y=94 seo=100 bp=100 copy=0 | d888dc7 experiment: Remove 1.27MB Iosevka Etoile font + add robots.txt — score 97 vs baseline 95
+20260401_204807 | score=99 | perf=100 a11y=96 seo=100 bp=100 copy=0 | 08a047b experiment: Fix link-in-text-block a11y audit by underlining footer inline link — score 98 vs baseline 97
+20260401_205550 | score=99 | perf=100 a11y=96 seo=100 bp=100 copy=0 | 153701a experiment: Fix heading-order a11y violations — h4→h3 in Journey and Engagement cards — score 99 vs baseline 98
+20260401_205826 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | 153701a experiment: Fix heading-order a11y violations — h4→h3 in Journey and Engagement cards — score 99 vs baseline 98
+20260402_060620 | score=90 | perf=86 a11y=90 seo=92 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
+20260402_060901 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
+20260402_061443 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
+20260402_061836 | score=100 | perf=100 a11y=100 seo=100 bp=100 copy=0 | afb3572 experiment: Fix color-contrast a11y audit — petrol-light on dark bg + logo opacity fix — score 100 vs baseline 99
