@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260402_070136",
+  "composite_score": 40,
+  "build": true,
+  "build_time_seconds": 12,
+  "lighthouse": {
+    "performance": 33,
+    "accessibility": 33,
+    "seo": 30,
+    "best_practices": 33
+  },
+  "copy_score": 72,
+  "commit": "afb16bb experiment: Direct engagement section intro 'Ready to start?' with conversational bridge — score 94 vs baseline 94"
+}
