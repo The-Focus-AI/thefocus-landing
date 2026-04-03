@@ -19,6 +19,7 @@ export default {
         ink: "#161616",
         graphite: "#4a4a4a",
         petrol: "#0e3b46",
+        "petrol-light": "#4aa8b8", // accessible petrol on dark backgrounds (6.9:1 on ink)
         vermilion: "#c3471d",
         // Focus.AI Labs Brand Colors
         void: "#1a1a1a", // Labs: primary text

@@ -4,13 +4,12 @@ import '../styles/fonts.css';
 import '@fontsource/noto-serif/300.css';
 import '@fontsource/noto-serif/400.css';
 import '@fontsource/noto-serif/500.css';
-import '@fontsource/iosevka-etoile';
+// import '@fontsource/iosevka-etoile'; // 1.27MB — removed to improve FCP performance
 //import '../fonts/bembo.css';
 import '@fontsource/fraunces';
 import EmailSignup from "../components/email-signup.astro";
 import OrganizationSchema from "../components/schemas/organization.astro";
 import WebsiteSchema from "../components/schemas/website.astro";
-import NewsletterSchema from "../components/schemas/newsletter.astro";
 import { SEO } from "astro-seo";
 
 const pageTitle = Astro.props.pageTitle || "the focus.ai";
@@ -19,7 +18,7 @@ const showOrganizationSchema = Astro.props.showOrganizationSchema || false;
 const fullWidth = Astro.props.fullWidth || false;
 const bodyClass = Astro.props.bodyClass;
 
-const description = Astro.props.description || "Come a visit us";
+const description = Astro.props.description || "TheFocus.AI helps growth-stage companies ship production AI in weeks, not quarters. From tribal knowledge to intelligent systems — principal-led, outcome-driven.";
 const { site } = Astro;
 const openGraphImageUrl = `${site}${Astro.props.openGraphImage || 'og.png'}`;
 
@@ -47,6 +46,7 @@ let category = Astro.props.category || "home";
       }}
       twitter={{
         card: "summary_large_image",
+        site: "@thefocusai",
         creator: "@wschenk"
       }}
       extend={{
@@ -82,16 +82,14 @@ let category = Astro.props.category || "home";
       
     )}
 
-    <NewsletterSchema url="https://newsletter.thefocus.ai/"/>
-    
     <!-- Other head elements -->
     <slot name="head" />
   </head>
   <body class={`text-ink overflow-x-hidden ${bodyClass || (category === 'studio' ? 'bg-[#e8e6df]' : 'bg-paper')}`}>
     <!-- Report Banner - hidden on mobile for cleaner first impression -->
     <div class="hidden sm:block bg-rand-blue text-white">
-      <a href="/reports/model-showdown/" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
-        <span class="font-medium">NEW:</span> Testing 48 LLMs Across 5 Dimensions for $4.63 — Model Showdown report
+      <a href="/case-studies" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
+        <span class="font-medium">Case Studies:</span> Production AI shipped for Samsung, Tesla, Perplexity, and Rivian — in weeks, not quarters
         <span class="ml-2 inline-block">→</span>
       </a>
     </div>
@@ -292,7 +290,7 @@ let category = Astro.props.category || "home";
         <div class="mt-12 text-center">
           <p class="text-sm text-graphite">
             <span class="text-petrol font-medium">We're hiring.</span> Looking for AI-hungry developers, strategists, and anyone eager to push the boundaries of what's possible. We have offices in NYC, the Hudson Valley, and Northwest Connecticut.
-            <a href="/jobs" class="text-petrol hover:underline">View open positions →</a>
+            <a href="/jobs" class="text-petrol underline underline-offset-2 hover:text-petrol/80">View open positions →</a>
           </p>
         </div>
 

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
+import BreadcrumbList from "../components/schemas/breadcrumb.astro";
 
 const mailto = "mailto:hey@thefocus.ai?subject=AI%20Maturity%20Assessment";
 
@@ -143,10 +144,82 @@ const assessmentClusters = [
 ---
 
 <BaseLayout
-  pageTitle="Building an Intelligent Organization | TheFocus.AI"
-  description="AI adoption isn't about picking the right model. It's about making your organization legible to machines — from tribal knowledge to structured intelligence. A practical framework for the journey."
+  pageTitle="AI Maturity Framework & Consulting Services | TheFocus.AI"
+  description="Where is your organization on the AI journey? TheFocus.AI's proven maturity framework (L0–L5) takes growth-stage companies from tribal knowledge to self-improving AI systems. Production AI in weeks, not quarters."
   category="capabilities"
 >
+  <BreadcrumbList slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "TheFocus.AI Engagement Models",
+    "description": "AI consulting engagement models for growth-stage companies",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Assessment & Roadmap",
+          "description": "4-6 week engagement to assess your organization's AI maturity and build a prioritized roadmap. Deliverables: AI opportunity assessment, process documentation, build vs. buy analysis.",
+          "provider": { "@type": "Organization", "name": "TheFocus.AI", "url": "https://thefocus.ai" },
+          "serviceType": "AI Strategy Consulting"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Build & Ship",
+          "description": "6-12 week engagement to build and deploy production AI systems. Deliverables: document ingestion pipeline, semantic knowledge base, conversational query interface, source-attributed answers.",
+          "provider": { "@type": "Organization", "name": "TheFocus.AI", "url": "https://thefocus.ai" },
+          "serviceType": "AI Development"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "Ongoing Partnership",
+          "description": "Monthly retainer for organizations with production AI who want it to compound. Includes dedicated team, feedback loop design, continuous optimization, and team training.",
+          "provider": { "@type": "Organization", "name": "TheFocus.AI", "url": "https://thefocus.ai" },
+          "serviceType": "AI Partnership"
+        }
+      }
+    ]
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do we need clean data first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. In fact, discovering that your data isn't clean is part of the value. Most organizations don't realize how much tribal knowledge — naming conventions, exception rules, approval workflows — lives only in people's heads until they try to connect AI to it. We help you through that process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if we don't know exactly what we need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That's normal — and it's what Assessment engagements are for. Most companies overestimate where they are on the maturity framework. The honest starting point is usually: 'Can we describe our own workflows in a form a machine can follow?' If the answer is 'not yet,' that's where we begin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from other AI consultancies?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We build. Most AI consultancies deliver decks and recommendations. We deliver production systems — working in weeks, not quarters. And we're honest about organizational readiness: if your processes aren't formalized enough for AI, we'll tell you that and help you fix it, rather than building on a shaky foundation."
+        }
+      }
+    ]
+  })} />
   <!-- Hero -->
   <div class="max-w-4xl mx-auto">
     <section class="py-8 md:py-16">

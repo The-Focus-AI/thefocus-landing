@@ -50,8 +50,22 @@ if (uncategorized.length > 0) {
 }
 ---
 
-<BaseLayout pageTitle="Case Studies | TheFocus.AI" description="See how we've helped product-led companies ship working AI in weeks. Real problems, measurable results, production-ready systems." category="case-studies">
+<BaseLayout pageTitle="AI Implementation Case Studies | TheFocus.AI" description="Production AI shipped for Samsung, Tesla, Perplexity, Rivian, Con Edison. Real problems, measurable outcomes: 78% faster decisions, 50M+ devices reached, 8 weeks to production." category="case-studies">
   <BreadcrumbList slot="head" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "TheFocus.AI Case Studies",
+    "description": "Production AI implementations for growth-stage companies",
+    "url": "https://thefocus.ai/case-studies",
+    "itemListElement": case_studies.map((cs, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `https://thefocus.ai${getCaseStudyUrl(cs)}`,
+      "name": cs.data.title,
+      "description": cs.data.description || cs.data.title
+    }))
+  })} />
 
   <div class="max-w-4xl mx-auto">
     <!-- Header -->

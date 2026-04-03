@@ -1,11 +1,15 @@
 ---
 // You can pass props to customize or use site config
-const { 
-  name = "FOCUS.AI",
-  description = "An AI digital transformation agency.",
+const {
+  name = "TheFocus.AI",
+  description = "AI consultancy that helps growth-stage companies ship production AI in weeks, not quarters. From tribal knowledge to intelligent systems — Assessment & Roadmap, Build & Ship, and Ongoing Partnership engagements.",
   logo = "https://thefocus.ai/logo.png",
   foundingDate = "2024",
-  socialProfiles = []
+  socialProfiles = [
+    "https://github.com/The-Focus-AI",
+    "https://x.com/wschenk",
+    "https://www.linkedin.com/in/will-schenk-420266/"
+  ]
 } = Astro.props;
 
 const organizationSchema = {
@@ -17,6 +21,7 @@ const organizationSchema = {
   "foundingDate": foundingDate,
   "logo": new URL(logo, Astro.site).toString(),
   "sameAs": socialProfiles,
+  "knowsAbout": ["Artificial Intelligence", "Machine Learning", "AI Strategy", "Production AI Systems", "Organizational AI Maturity", "Agentic AI"],
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "24 Kent Rd South",
@@ -29,7 +34,23 @@ const organizationSchema = {
     "@type": "ContactPoint",
     "email": "hey@thefocus.ai",
     "contactType": "customer service"
-  }
+  },
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Ben Schippers",
+      "jobTitle": "Co-Founder",
+      "url": "https://thefocus.ai/about",
+      "sameAs": "https://www.linkedin.com/in/benschippers/"
+    },
+    {
+      "@type": "Person",
+      "name": "Will Schenk",
+      "jobTitle": "Co-Founder",
+      "url": "https://thefocus.ai/about",
+      "sameAs": "https://www.linkedin.com/in/will-schenk-420266/"
+    }
+  ]
 };
 ---
 
