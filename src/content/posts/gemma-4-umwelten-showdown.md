@@ -8,7 +8,7 @@ tags:
   - local-ai
   - compare
 description: "We benchmarked Gemma 4 (e2b, default, 26B MoE, 31B dense) through Ollama against 50+ hosted and local models on reasoning, knowledge, instruction, coding, and TezLab MCP tool use—same Umwelten harness as our other showdowns. Here’s where the new line shines, where frontier models still pull ahead, and how the biggest Gemma handles real EV data tools."
-published: false
+published: true
 author: Will Schenk
 image: gemma4-showdown-infographic-v2.png
 ogImage: gemma4-showdown-infographic-v2.png
