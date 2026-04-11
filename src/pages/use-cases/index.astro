@@ -6,12 +6,36 @@ const allPosts = await getPosts();
 const useCases = allPosts.filter(post => post.data.tags?.includes('usecase'));
 ---
 
-<BaseLayout title="Use Cases" description="Use Cases">
+<BaseLayout title="Use Cases" description="Use Cases" category="studio">
+    <a href="/insights" class="inline-flex items-center gap-2 text-sm text-graphite hover:text-petrol transition-colors mb-6">
+      <span>&larr;</span> Back to Insights
+    </a>
+
     <h1 class="text-4xl font-bold pb-8">Use Cases</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {useCases.map(post => (
             <PostCard post={post} />
         ))}
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-ink/10">
+      <h2 class="text-xs uppercase tracking-[0.2em] text-graphite/60 mb-4 font-medium">Interactive Explorations</h2>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <a href="/use-cases/flux-images" class="group flex items-center gap-3 p-4 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">Flux Image Generation</p>
+            <p class="text-xs text-graphite">Running Flux locally on a MacBook — models, steps, and seeds explored</p>
+          </div>
+          <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+        </a>
+        <a href="/use-cases/coding/literacy" class="group flex items-center gap-3 p-4 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">Coding Literacy</p>
+            <p class="text-xs text-graphite">Interactive timeline of reading and writing literacy through history</p>
+          </div>
+          <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+        </a>
+      </div>
     </div>
 </BaseLayout>
