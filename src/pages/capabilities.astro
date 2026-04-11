@@ -12,7 +12,7 @@ const maturityLevels = [
     description: "Everything is manual. Processes depend on who knows what. A key person leaves and critical workflows break.",
     commonMistake: "We need to pick the right AI tool.",
     reality: "This level resolves itself — people start using ChatGPT on their own. The real question is what happens next.",
-    bridge: null as null | { service: string; description: string; proof: { text: string; href: string }[] }
+    bridge: null as null | { service: string; description: string; proof: { text: string; href: string }[]; offerings?: { title: string; subtitle: string; href: string }[] }
   },
   {
     level: 1,
@@ -29,6 +29,10 @@ const maturityLevels = [
       proof: [
         { text: "Vibe Check — fix your AI-coded app", href: "/vibe-check" },
         { text: "QB Sync — tribal cost codes discovered & formalized", href: "/case-study/qbsync" }
+      ],
+      offerings: [
+        { title: "Monthly Close", subtitle: "Stop the 10-day scramble", href: "/offerings/monthly-close" },
+        { title: "Hiring Pipeline", subtitle: "Stop losing candidates to process", href: "/offerings/hiring-pipeline" }
       ]
     }
   },
@@ -47,6 +51,10 @@ const maturityLevels = [
         { text: "Fountain Creek — invoice parsing, 94.5% validated accuracy", href: "/case-study/fountain-creek" },
         { text: "TezLab — conversational AI over proprietary EV data", href: "/case-study/tezlab-ai" },
         { text: "Onboarding — benefits documents extracted against unified schema", href: "/case-study/onboarding" }
+      ],
+      offerings: [
+        { title: "Invoice Processing", subtitle: "Handle any vendor format automatically", href: "/offerings/invoice-processing" },
+        { title: "Customer Onboarding", subtitle: "Formalize the cross-team handoff chain", href: "/offerings/customer-onboarding" }
       ]
     }
   },
@@ -64,6 +72,9 @@ const maturityLevels = [
       proof: [
         { text: "Distill — 500M tweets/day filtered into 5-minute briefings", href: "/case-study/distill" },
         { text: "Upper Hand — executives self-serve insights that required analyst teams", href: "/case-study/upperhand-ai" }
+      ],
+      offerings: [
+        { title: "Executive Reporting", subtitle: "Real-time answers, not reformatted dashboards", href: "/offerings/executive-reporting" }
       ]
     }
   },
@@ -319,6 +330,26 @@ const assessmentClusters = [
                         </a>
                       ))}
                     </div>
+
+                    {level.bridge.offerings && level.bridge.offerings.length > 0 && (
+                      <div class="mt-4 pt-4 border-t border-ink/5">
+                        <p class="text-xs uppercase tracking-widest text-graphite/60 mb-3 font-medium">See it in action</p>
+                        <div class="grid sm:grid-cols-2 gap-2">
+                          {level.bridge.offerings.map((offering) => (
+                            <a
+                              href={offering.href}
+                              class="group flex items-center gap-3 p-3 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all"
+                            >
+                              <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">{offering.title}</p>
+                                <p class="text-xs text-graphite truncate">{offering.subtitle}</p>
+                              </div>
+                              <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
