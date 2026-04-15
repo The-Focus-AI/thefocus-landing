@@ -13,6 +13,10 @@ const prince_varyseeds = await getFluxImages("prince_varyseeds");
 ---
 
 <BaseLayout title="Image Generation Case Studies" description="Case Studies" category="studio">
+<a href="/use-cases" class="inline-flex items-center gap-2 text-sm text-graphite hover:text-petrol transition-colors mb-6">
+  <span>&larr;</span> Back to Use Cases
+</a>
+
 <h1 class="text-4xl md:text-5xl font-bold text-ink mb-8">Image Generation Case Studies</h1>
 
 <div class="prose lg:prose-xl">
@@ -136,5 +140,31 @@ mflux-wrapper.py --prompt "magical forest" --vary-steps 1,2,3,4,5,6 --seed 123
 
 <FluxRunDisolve run={prince_varyseeds} height="1000" width="1000"> </FluxRunDisolve>
 
+<div class="mt-12 pt-8 border-t border-ink/10">
+  <h2 class="text-xs uppercase tracking-[0.2em] text-graphite/60 mb-4 font-medium">More Explorations</h2>
+  <div class="grid sm:grid-cols-3 gap-3">
+    <a href="/use-cases/flux-images/prince" class="group flex items-center gap-3 p-4 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">Prince</p>
+        <p class="text-xs text-graphite">Prompt variations</p>
+      </div>
+      <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+    </a>
+    <a href="/use-cases/flux-images/steps" class="group flex items-center gap-3 p-4 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">Steps</p>
+        <p class="text-xs text-graphite">Step count comparison</p>
+      </div>
+      <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+    </a>
+    <a href="/use-cases/flux-images/styles" class="group flex items-center gap-3 p-4 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all">
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">Styles</p>
+        <p class="text-xs text-graphite">Style exploration</p>
+      </div>
+      <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+    </a>
+  </div>
+</div>
 
 </BaseLayout>
