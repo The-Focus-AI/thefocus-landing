@@ -13,7 +13,7 @@ const maturityLevels = [
     description: "Everything is manual. Processes depend on who knows what. A key person leaves and critical workflows break.",
     commonMistake: "We need to pick the right AI tool.",
     reality: "This level resolves itself — people start using ChatGPT on their own. The real question is what happens next.",
-    bridge: null as null | { service: string; description: string; proof: { text: string; href: string }[] }
+    bridge: null as null | { service: string; description: string; proof: { text: string; href: string }[]; offerings?: { title: string; subtitle: string; href: string }[] }
   },
   {
     level: 1,
@@ -23,13 +23,17 @@ const maturityLevels = [
     description: "Employees are using ChatGPT or Copilot on their own. Some get real value — but nothing is shared, nothing compounds. When someone leaves, their workflows leave with them.",
     commonMistake: '"We need an AI strategy" or "We need better models."',
     reality: "The blocker isn't technology — it's that you can't describe your own workflows. AI can't act on knowledge that only lives in people's heads.",
-    note: "This is where Pilot Purgatory lives. 93% of AI projects stall here — not because the pilots fail, but because there's no organizational foundation to build on.",
+    note: "This is where Pilot Purgatory lives. Most AI initiatives stall here — not because the pilots fail, but because there's no organizational foundation to build on.",
     bridge: {
       service: "Process Audit & Formalization",
       description: "We document your actual workflows — the rules, exceptions, and tribal knowledge — in a form machines can follow.",
       proof: [
         { text: "Vibe Check — fix your AI-coded app", href: "/vibe-check" },
         { text: "QB Sync — tribal cost codes discovered & formalized", href: "/case-study/qbsync" }
+      ],
+      offerings: [
+        { title: "Monthly Close", subtitle: "Stop the 10-day scramble", href: "/offerings/monthly-close" },
+        { title: "Hiring Pipeline", subtitle: "Stop losing candidates to process", href: "/offerings/hiring-pipeline" }
       ]
     }
   },
@@ -48,6 +52,10 @@ const maturityLevels = [
         { text: "Fountain Creek — invoice parsing, 94.5% validated accuracy", href: "/case-study/fountain-creek" },
         { text: "TezLab — conversational AI over proprietary EV data", href: "/case-study/tezlab-ai" },
         { text: "Onboarding — benefits documents extracted against unified schema", href: "/case-study/onboarding" }
+      ],
+      offerings: [
+        { title: "Invoice Processing", subtitle: "Handle any vendor format automatically", href: "/offerings/invoice-processing" },
+        { title: "Customer Onboarding", subtitle: "Formalize the cross-team handoff chain", href: "/offerings/customer-onboarding" }
       ]
     }
   },
@@ -65,6 +73,9 @@ const maturityLevels = [
       proof: [
         { text: "Distill — 500M tweets/day filtered into 5-minute briefings", href: "/case-study/distill" },
         { text: "Upper Hand — executives self-serve insights that required analyst teams", href: "/case-study/upperhand-ai" }
+      ],
+      offerings: [
+        { title: "Executive Reporting", subtitle: "Real-time answers, not reformatted dashboards", href: "/offerings/executive-reporting" }
       ]
     }
   },
@@ -106,7 +117,7 @@ const assessmentClusters = [
       "The real question isn't which tool to pick — it's whether you can describe your own workflows"
     ],
     engagement: "Assessment & Roadmap",
-    timeline: "4-6 weeks",
+    timeline: "1-2 weeks",
     deliverables: ["AI opportunity assessment", "Process documentation", "Prioritized roadmap", "Build vs. buy analysis"],
     cta: "Let's map your starting point",
     mailto: "mailto:hey@thefocus.ai?subject=Assessment%20%26%20Roadmap"
@@ -120,7 +131,7 @@ const assessmentClusters = [
       "You know it could unlock more, but aren't sure how"
     ],
     engagement: "Build & Ship",
-    timeline: "6-12 weeks",
+    timeline: "2-6 weeks",
     deliverables: ["Document ingestion pipeline", "Semantic knowledge base", "Conversational query interface", "Source-attributed answers"],
     cta: "Let's unlock your data",
     mailto: "mailto:hey@thefocus.ai?subject=Build%20%26%20Ship"
@@ -253,7 +264,7 @@ const assessmentClusters = [
   <!-- Visual Progression — Staircase -->
   <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink">
     <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
-      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium text-center">The Framework</p>
+      <p class="text-xs uppercase tracking-[0.2em] text-paper/60 mb-4 font-medium text-center">The Framework</p>
       <h2 class="text-3xl md:text-4xl font-bold text-paper mb-12 text-center">Six levels of AI maturity</h2>
 
       <!-- Staircase: ascending cards -->
@@ -301,7 +312,7 @@ const assessmentClusters = [
         {assessmentClusters.map((cluster) => (
           <div class="bg-paper rounded-2xl p-6 md:p-8 shadow-sm flex flex-col">
             <div class="mb-4">
-              <span class="text-xs font-mono text-petrol bg-petrol/10 px-2 py-1 rounded">{cluster.levels}</span>
+              <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">{cluster.levels}</span>
             </div>
             <h3 class="text-xl font-bold text-ink mb-4">{cluster.label}</h3>
             <ul class="space-y-3 mb-6">
@@ -316,7 +327,7 @@ const assessmentClusters = [
             <div class="pt-4 border-t border-ink/10 mb-6 flex-1">
               <div class="flex items-center gap-3 mb-2">
                 <h4 class="text-base font-bold text-ink">{cluster.engagement}</h4>
-                <span class="text-xs font-medium text-petrol bg-petrol/10 px-2 py-0.5 rounded-full">{cluster.timeline}</span>
+                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full whitespace-nowrap">{cluster.timeline}</span>
               </div>
               <div class="flex flex-wrap gap-1.5">
                 {cluster.deliverables.map((d) => (
@@ -355,7 +366,7 @@ const assessmentClusters = [
               <div class="flex-1">
                 <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
                   <h3 class="text-2xl font-bold text-ink">{level.name}</h3>
-                  <span class="text-sm font-medium text-petrol bg-petrol/10 px-3 py-1 rounded-full w-fit">{level.tagline}</span>
+                  <span class="text-sm font-medium text-graphite border border-ink/15 px-3 py-1 rounded-full w-fit">{level.tagline}</span>
                 </div>
                 <p class="text-graphite leading-relaxed mb-4">{level.description}</p>
 
@@ -392,6 +403,26 @@ const assessmentClusters = [
                         </a>
                       ))}
                     </div>
+
+                    {level.bridge.offerings && level.bridge.offerings.length > 0 && (
+                      <div class="mt-4 pt-4 border-t border-ink/5">
+                        <p class="text-xs uppercase tracking-widest text-graphite/60 mb-3 font-medium">See it in action</p>
+                        <div class="grid sm:grid-cols-2 gap-2">
+                          {level.bridge.offerings.map((offering) => (
+                            <a
+                              href={offering.href}
+                              class="group flex items-center gap-3 p-3 rounded-xl border border-ink/8 hover:border-petrol/30 hover:bg-tint-cool/20 transition-all"
+                            >
+                              <div class="flex-1 min-w-0">
+                                <p class="text-sm font-bold text-ink group-hover:text-petrol transition-colors">{offering.title}</p>
+                                <p class="text-xs text-graphite truncate">{offering.subtitle}</p>
+                              </div>
+                              <span class="text-petrol/40 group-hover:text-petrol transition-colors flex-shrink-0">&rarr;</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -410,66 +441,66 @@ const assessmentClusters = [
 
         <div class="grid md:grid-cols-3 gap-8 md:gap-10">
           <div>
-            <h3 class="text-lg font-bold text-petrol mb-4">What we do</h3>
+            <h3 class="text-lg font-bold text-paper mb-4">What we do</h3>
             <ul class="space-y-3">
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">Walk through the framework with your team</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">You self-identify where each department sits</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">We build a roadmap from where you are to where you want to be</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">Every level up is a clear, scoped engagement</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="text-lg font-bold text-petrol mb-4">What you get</h3>
+            <h3 class="text-lg font-bold text-paper mb-4">What you get</h3>
             <ul class="space-y-3">
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">Honest assessment — no upselling to where you don't need to be</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">Practical roadmap with concrete next steps</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">Quick wins at your current level while building toward the next</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">A partner who meets you where you are</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="text-lg font-bold text-petrol mb-4">This is for you if</h3>
+            <h3 class="text-lg font-bold text-paper mb-4">This is for you if</h3>
             <ul class="space-y-3">
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">You're a founder, CEO, or product leader at a growth-stage company</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">You have a product that works — now you want to make it smarter with AI</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">You don't have an internal AI/ML team (or yours is stretched thin)</span>
               </li>
               <li class="flex gap-3">
-                <span class="text-petrol flex-shrink-0">&#x2713;</span>
+                <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
                 <span class="text-paper/80">You need working AI in weeks, not a 6-month "discovery phase"</span>
               </li>
             </ul>
