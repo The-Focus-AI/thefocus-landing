@@ -7,7 +7,9 @@ const collectionEntries = await getPosts();
 // Map the array of content collection entries to create an object.
 // Converts [{ id: 'post.md', data: { title: 'Example', description: '' } }]
 // to { 'post.md': { title: 'Example', description: '' } }
-// Skip posts with custom ogImage - those are served from public/open-graph/
+// If `ogImage` is set in frontmatter, this route does NOT render that post; you must
+// ship a static file at `public/open-graph/{slug}.png` (slug from getSlug). Omit
+// `ogImage` to use the generated canvas image here instead.
 const pages = Object.fromEntries(
   collectionEntries
     .filter(({ data }) => !data.ogImage)

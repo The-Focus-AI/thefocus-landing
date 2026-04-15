@@ -9,7 +9,6 @@ tags:
   - process
   - maturity
 image: laddering-up.png
-ogImage: laddering-up.png
 ---
 
 *Why AI maturity is cumulative, not cosmetic. In the series: The Org Age of AI*
