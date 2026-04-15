@@ -1,12 +1,12 @@
 import { getCollection } from "astro:content";
 
+const isDev = import.meta.env.DEV;
+
 export async function getPosts() {
   let posts = await getCollection("posts");
 
-  // Filter out posts that are not published
-
-  if (import.meta.env.NODE_ENV !== "development") {
-    console.log("Not in development, filtering out unpublished posts");
+  // Filter out posts that are not published (production / static builds only)
+  if (!isDev) {
     posts = posts.filter((post) => post.data.published);
   }
 
@@ -15,8 +15,8 @@ export async function getPosts() {
     (post) => post.data.date && !isNaN(new Date(post.data.date).getTime())
   );
 
-  // Filter out posts with future dates unless in development mode
-  if (import.meta.env.NODE_ENV !== "development") {
+  // Filter out posts with future dates unless in dev (astro dev)
+  if (!isDev) {
     posts = posts.filter((post) => new Date(post.data.date) <= new Date());
   }
   // Sort posts by date

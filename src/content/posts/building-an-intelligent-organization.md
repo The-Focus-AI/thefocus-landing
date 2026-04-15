@@ -1,4 +1,14 @@
-# Building an Intelligent Organization
+---
+title: "Building an Intelligent Organization"
+date: 2026-04-11
+tags:
+  - essay
+  - org-age
+published: true
+author: TheFocus.AI
+description: "From AI pilots to production systems — how we help leadership move up the maturity curve with principal-led engagements."
+image: agent-habitat-structure.png
+---
 
 TheFocus.AI partners with founders, CEOs, and product leaders to move from AI pilots to production systems. Founded by Ben Schippers and Will Schenk — 40+ years building software products — every engagement is principal-led. No junior analysts, no endless discovery phases. Production AI in weeks, not quarters.
 
