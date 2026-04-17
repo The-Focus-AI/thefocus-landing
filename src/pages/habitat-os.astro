@@ -126,17 +126,32 @@ const trustItems = [
   {
     title: "Deployment flexibility",
     status: "Available today",
-    body: "Customer VPC, dedicated cloud account, or managed single-tenant. On-prem deployments supported case-by-case. Your infrastructure team chooses the boundary.",
+    body: "Customer VPC, dedicated cloud account, or managed single-tenant on Vercel's enterprise AI Cloud. On-prem deployments supported case-by-case. Your infrastructure team chooses the boundary.",
+  },
+  {
+    title: "Platform-level certifications",
+    status: "Inherited from Vercel",
+    body: "Our managed runtime runs on Vercel's enterprise platform — SOC 2 Type 2, ISO 27001:2022, PCI DSS Level 1, HIPAA-ready (BAA available), and GDPR with DPA. You inherit those controls at the infrastructure layer on day one.",
+  },
+  {
+    title: "Network isolation",
+    status: "Vercel Secure Compute",
+    body: "Managed deployments use dedicated VPC isolation with static egress IPs, private connectivity to your backend systems, and NAT-gateway-controlled outbound traffic. Your allowlists stay short and stable.",
+  },
+  {
+    title: "Edge protection",
+    status: "Vercel Firewall",
+    body: "DDoS mitigation, managed WAF, rate limiting, Attack Challenge Mode, and IP allow/deny rules sit in front of every Habitat endpoint. Configuration changes are logged and instantly reversible.",
   },
   {
     title: "Data boundary",
-    status: "Available today",
+    status: "Always customer-controlled",
     body: "Customer data never leaves customer-controlled storage. Model provider keys can be customer-provided or brokered. Memory, audit logs, and session data persist in storage you own.",
   },
   {
     title: "Identity & access",
     status: "Enterprise SSO available",
-    body: "SAML / OIDC integration with Okta, Microsoft Entra, and Google Workspace. Role-based access control scoped to Habitat and integration level.",
+    body: "SAML / OIDC integration with Okta, Microsoft Entra, and Google Workspace. Role-based access control scoped to Habitat and integration level. Every action is audit-logged with request-level traceability.",
   },
   {
     title: "Open-source auditability",
@@ -149,10 +164,19 @@ const trustItems = [
     body: "Every engagement is led by a named principal. Your escalation path goes to the person who built your Habitat, not a support tier.",
   },
   {
-    title: "Formal compliance programs",
-    status: "Under active development",
-    body: "SOC 2 Type I audit underway for 2026. HIPAA BAAs, ISO 27001, and sector-specific programs evaluated on a customer-by-customer basis. Current deployment and data-handling documentation available on request under NDA.",
+    title: "TheFocus.AI program compliance",
+    status: "SOC 2 Type I in progress",
+    body: "Our own SOC 2 Type I audit is underway for 2026. HIPAA BAAs, ISO 27001, and sector-specific programs are evaluated case-by-case. Security posture documentation, deployment diagrams, and data-handling practices available on request under NDA.",
   },
+];
+
+const vercelGuarantees = [
+  { label: "SOC 2 Type 2", detail: "Security · Confidentiality · Availability" },
+  { label: "ISO 27001:2022", detail: "Information security management" },
+  { label: "PCI DSS Level 1", detail: "Payment-grade controls at the edge" },
+  { label: "HIPAA-ready", detail: "BAA available on Enterprise" },
+  { label: "GDPR + DPA", detail: "EU data-handling commitments" },
+  { label: "Secure Compute", detail: "Dedicated VPC + static egress IPs" },
 ];
 
 const faqs = [
@@ -178,7 +202,11 @@ const faqs = [
   },
   {
     q: "Do you have SOC 2?",
-    a: "Not yet. SOC 2 Type I audit is underway for 2026. In the meantime, we provide our security posture documentation, deployment-boundary diagrams, and data-handling practices to any serious evaluator under NDA. We'd rather be honest than check a box we haven't earned.",
+    a: "Two answers — because there are two layers. Platform: our managed runtime is deployed on Vercel, which holds SOC 2 Type 2, ISO 27001:2022, PCI DSS Level 1, and supports HIPAA with a BAA. Those controls apply to the infrastructure your Habitat runs on. Program: TheFocus.AI's own SOC 2 Type I audit is underway for 2026. In the meantime, we provide security posture documentation, deployment-boundary diagrams, and data-handling practices to any serious evaluator under NDA. We'd rather be honest than check a box we haven't earned.",
+  },
+  {
+    q: "Why Vercel?",
+    a: "Because we didn't want to rebuild enterprise platform security from scratch while also delivering agent systems. Vercel gives us a platform with SOC 2 Type 2, ISO 27001:2022, PCI DSS, HIPAA support, Secure Compute (dedicated VPCs with static egress IPs), and a managed firewall with DDoS mitigation — already audited, already battle-tested. Our job is the Habitat runtime, the integrations, and the principal relationship. Everything below that, we inherit from a platform that's already trusted by teams with CISOs who don't accept \"we're working on it.\"",
   },
   {
     q: "How is pricing structured?",
@@ -441,8 +469,11 @@ const faqs = [
     <section class="py-16 md:py-24" id="trust">
       <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Trust & transparency</p>
       <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">What you get. What we're building. What's honest.</h2>
-      <p class="text-lg text-graphite mb-12 max-w-3xl">
-        Formal compliance programs take years to earn. We're building ours. In the meantime, this is the ground truth of where Habitat OS stands — what's shipped, what's in progress, and what you can expect from us as a principal-led partner.
+      <p class="text-lg text-graphite mb-6 max-w-3xl">
+        Two things make Habitat OS defensible to a CISO: an <strong>open-core engine</strong> your security team can read, and an <strong>enterprise platform</strong> underneath that already holds the certifications most AI startups are still chasing. We didn't build that platform — Vercel did. We built on top of it on purpose.
+      </p>
+      <p class="text-base text-graphite/80 mb-12 max-w-3xl">
+        Below is the ground truth of where Habitat OS stands today — what's shipped, what's inherited from our platform partner, and what we're still earning at the TheFocus.AI program level.
       </p>
 
       <div class="grid md:grid-cols-2 gap-4 md:gap-6">
@@ -459,29 +490,76 @@ const faqs = [
         ))}
       </div>
 
-      <!-- Open-source callout -->
-      <div class="mt-10 bg-tint-cool/30 border border-petrol/20 rounded-2xl p-6 md:p-8">
-        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">Powered by Umwelten</p>
-        <p class="text-base md:text-lg text-ink leading-relaxed mb-4">
-          The Habitat engine — the primitives your agents run on — is our open-source project, <strong>Umwelten</strong>. Your security team can read every line, fork it, or run it themselves. Habitat OS is the enterprise distribution: hardened, integrated, supported, accountable.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="https://umwelten.thefocus.ai/"
-            target="_blank"
-            rel="noopener"
-            class="inline-block px-5 py-2 border border-petrol text-petrol text-sm font-medium rounded-full hover:bg-petrol hover:text-paper transition-all"
-          >
-            Read the Umwelten docs &rarr;
-          </a>
-          <a
-            href="https://github.com/The-Focus-AI/umwelten"
-            target="_blank"
-            rel="noopener"
-            class="inline-block px-5 py-2 border border-ink/20 text-ink text-sm font-medium rounded-full hover:border-ink transition-all"
-          >
-            View on GitHub &rarr;
-          </a>
+      <!-- Two-part platform story: Vercel + Umwelten -->
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <!-- Vercel partnership callout -->
+        <div class="bg-ink text-paper border border-ink rounded-2xl p-6 md:p-8 flex flex-col">
+          <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">Secured on Vercel's AI Cloud</p>
+          <h3 class="text-xl font-bold mb-3 text-paper">Enterprise controls inherited on day one.</h3>
+          <p class="text-sm text-paper/70 leading-relaxed mb-5">
+            The managed Habitat OS runtime is deployed on Vercel — our enterprise platform partner. Customers running in our managed single-tenant environment inherit Vercel's platform certifications, network isolation, and edge protection at the infrastructure layer. For customer-VPC deployments, the same runtime is delivered into your cloud boundary.
+          </p>
+          <ul class="space-y-2.5 mb-6">
+            {vercelGuarantees.map((g) => (
+              <li class="flex items-start gap-2.5 text-sm">
+                <span class="text-petrol mt-0.5 flex-shrink-0">&#x2713;</span>
+                <span>
+                  <span class="font-bold text-paper">{g.label}</span>
+                  <span class="text-paper/60"> — {g.detail}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto flex flex-wrap gap-3">
+            <a
+              href="https://vercel.com/security"
+              target="_blank"
+              rel="noopener"
+              class="inline-block px-5 py-2 border border-paper/30 text-paper text-sm font-medium rounded-full hover:border-paper hover:bg-paper/10 transition-all"
+            >
+              Vercel security posture &rarr;
+            </a>
+            <a
+              href="https://vercel.com/docs/security/compliance"
+              target="_blank"
+              rel="noopener"
+              class="inline-block px-5 py-2 border border-paper/20 text-paper/80 text-sm font-medium rounded-full hover:border-paper/40 hover:text-paper transition-all"
+            >
+              Compliance docs &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Umwelten open-source callout -->
+        <div class="bg-tint-cool/30 border border-petrol/20 rounded-2xl p-6 md:p-8 flex flex-col">
+          <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">Auditable on GitHub</p>
+          <h3 class="text-xl font-bold text-ink mb-3">The engine is open-source.</h3>
+          <p class="text-sm text-ink/80 leading-relaxed mb-5">
+            The Habitat primitives — persona, tools, memory, sub-agents, evals — live in our open-source project, <strong>Umwelten</strong>. Your security team can read every line, fork it, or run it themselves. Habitat OS is the enterprise distribution: hardened, integrated, supported, accountable.
+          </p>
+          <ul class="space-y-2.5 mb-6 text-sm text-ink/80">
+            <li class="flex items-start gap-2.5"><span class="text-petrol mt-0.5 flex-shrink-0">&#x2713;</span><span><span class="font-bold text-ink">OSI-compatible license</span> — no black boxes at the core</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-petrol mt-0.5 flex-shrink-0">&#x2713;</span><span><span class="font-bold text-ink">No vendor lock-in</span> — you can run it yourself if we part ways</span></li>
+            <li class="flex items-start gap-2.5"><span class="text-petrol mt-0.5 flex-shrink-0">&#x2713;</span><span><span class="font-bold text-ink">Public review</span> — your security team can read before signing</span></li>
+          </ul>
+          <div class="mt-auto flex flex-wrap gap-3">
+            <a
+              href="https://umwelten.thefocus.ai/"
+              target="_blank"
+              rel="noopener"
+              class="inline-block px-5 py-2 border border-petrol text-petrol text-sm font-medium rounded-full hover:bg-petrol hover:text-paper transition-all"
+            >
+              Umwelten docs &rarr;
+            </a>
+            <a
+              href="https://github.com/The-Focus-AI/umwelten"
+              target="_blank"
+              rel="noopener"
+              class="inline-block px-5 py-2 border border-ink/20 text-ink text-sm font-medium rounded-full hover:border-ink transition-all"
+            >
+              View on GitHub &rarr;
+            </a>
+          </div>
         </div>
       </div>
     </section>
