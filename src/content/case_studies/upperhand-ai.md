@@ -17,6 +17,7 @@ testimonial: "What used to take our research team half a day now takes thirty se
 testimonial_person: "Research Director"
 testimonial_company: "Media Analytics Client"
 published: true
+habitat_os: true
 image: upperhand_wide.png
 maturity_level: "L3"
 maturity_level_secondary: "L4"
@@ -159,3 +160,11 @@ External APIs (Survey, Social, Affinity platforms)
 ```
 
 The architecture separates concerns cleanly: the AI handles natural language understanding and tool selection, while structured data pipelines handle the statistical analysis. This means the system can evolve — new data sources become new tools, and the AI learns to use them based on their descriptions.
+
+### How This Maps to Habitat OS
+
+This is a **decision-support Habitat** — a multi-agent reasoning layer over fragmented enterprise data sources. The four specialized agents (Talent, Ratings, AVOD, Survey) are exactly the pattern [Habitat OS](/habitat-os) productizes: domain-focused sub-agents coordinated by a natural-language router, with shared memory for celebrity identity resolution and query history, and statistical guardrails (base-size validation, demographic delta calculations) that run on every response.
+
+What keeps it running seamlessly in the background: the identity-resolution layer grows as new celebrities and data sources are added; disambiguation logic prevents the hallucinations that have burned research teams with other AI tools; and new data sources become new tools the router automatically learns to use based on their descriptions — no redeploy required.
+
+New engagements like this ship on Habitat OS from day one — with the same multi-agent architecture, hardened identity resolution, and audit-logged tool invocations, deployed in your cloud with principal-led operations.

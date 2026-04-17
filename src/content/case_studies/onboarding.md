@@ -16,6 +16,7 @@ testimonial: "This solution completely changed the way that we were able to onbo
 testimonial_person: "Chief Product Officer"
 testimonial_company: "HR Software Provider"
 published: true
+habitat_os: true
 image: onboarding_wide.png
 maturity_level: "L3"
 ai_function: "Process Automation"
@@ -125,3 +126,11 @@ The client's onboarding team went from dreading document processing to barely th
 **3. Operational tooling from day one.** The admin interface wasn't an afterthought — it shipped alongside the extraction pipeline. This made debugging, monitoring, and edge case handling smooth from the first deployment.
 
 **4. Full AWS serverless.** No servers to manage, automatic scaling during busy periods, near-zero cost during quiet times. The architecture matches the bursty nature of customer onboarding.
+
+## How This Maps to Habitat OS
+
+This is the archetype of a **document-extraction Habitat**: schema-driven, event-triggered, and auditable end-to-end. The Zod schema with embedded extraction hints, the confidence-based routing to human review, and the serverless S3 → Lambda → Claude pipeline all map directly to [Habitat OS](/habitat-os) primitives — structured tools, memory (DynamoDB job state), and guarded reasoning with explicit escalation paths when the model isn't sure.
+
+What keeps it running seamlessly in the background: interrupted jobs resume from DynamoDB state, edge cases route to human queues instead of silently failing, and new document layouts "just work" because the AI understands the schema semantically, not visually. When UnitedHealthcare changes its PDF layout next quarter, the system adapts without a redeploy.
+
+New engagements like this ship as a **[customer-onboarding Habitat](/offerings/customer-onboarding)** on Habitat OS — with the same schema-driven extraction pattern, the same human-in-the-loop approval workflow, and inherited enterprise security from our platform partner Vercel.

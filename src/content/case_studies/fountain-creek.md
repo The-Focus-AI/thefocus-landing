@@ -13,6 +13,7 @@ results: |-
   - Notion-native workflow — zero new tools for the team to learn
 tech_stack: "Google Cloud Run, Gemini 3 Flash, Google Cloud Storage, Notion API, Eventarc, Node.js, TypeScript"
 published: true
+habitat_os: true
 image: fountain-creek_wide.png
 maturity_level: "L3"
 ai_function: "Process Automation"
@@ -112,3 +113,11 @@ As Fountain Creek scales from 25 locations toward 500+, this pipeline scales wit
 **3. Validation against real data.** Testing against 88 historical invoices before going live gave the team confidence. They could see exactly where the AI matched their manual work and where it differed.
 
 **4. Serverless event-driven architecture.** Cloud Run + Eventarc means the system scales automatically and costs nearly nothing when idle. There's no server to maintain, no cron job to monitor.
+
+## How This Maps to Habitat OS
+
+This is the archetype of an **accounts-payable Habitat** — and it's why invoice processing is now one of our productized offerings on [Habitat OS](/habitat-os), our enterprise agent runtime. The event-driven pipeline (Notion form → Cloud Run → Gemini → Notion databases), the schema-driven extraction, and the supplier memory that fuzzy-matches "Baldor" / "BALDOR SPECIALTY FOODS" / "Baldor Foods" into one canonical vendor are the same primitives Habitat OS provides out of the box: structured tools, persistent memory, and guarded reasoning with a human approval step.
+
+What keeps it running seamlessly in the background: the serverless architecture scales to volume automatically as Fountain Creek grows from 25 locations toward 500+, supplier fuzzy-matching prevents duplicate vendor records from accumulating over time, and the page-by-page extraction pattern adapts as new distributors with longer invoices come online — no rewrites required.
+
+New engagements like this ship as an **[invoice-processing Habitat](/offerings/invoice-processing)** on Habitat OS — with the same review-and-approve workflow, deployed in your cloud, operated by the principals who build it.

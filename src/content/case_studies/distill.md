@@ -16,6 +16,7 @@ testimonial: "Distill changed how I stay informed. Instead of spending an hour s
 testimonial_person: "Internal User"
 testimonial_company: "Focus.AI"
 published: true
+habitat_os: true
 image: distill_wide.png
 maturity_level: "L3"
 maturity_level_secondary: "L4"
@@ -184,3 +185,11 @@ For internal users, this transformed content consumption:
 ```
 
 This architecture enables Focus.AI to stay at the frontier of AI research, startup activity, and industry trends — by letting AI do the reading so we can focus on the thinking.
+
+### How This Maps to Habitat OS
+
+This is a **content-intelligence Habitat** — several specialized sub-agents (Twitter Collator, Interview Transcriber, Distill X, Distill YouTube) cooperating behind a shared summarization layer. The pattern of federated domain-specific services, each with its own rate-limit management, schema-driven extraction, and job state, is exactly how [Habitat OS](/habitat-os) stitches multiple agents into a single coherent system — with shared memory, explicit tool schemas, and guarded reasoning that refuses to hallucinate beyond the provided source material.
+
+What keeps it running seamlessly in the background: rate-limit quota tracking survives container restarts, transcription jobs resume after failures, user-tier prioritization ensures high-value accounts always get fresh data when quotas are tight, and every service exposes health, quota, and processing stats so problems surface before users notice them.
+
+New engagements like this ship on Habitat OS from day one — with the same federated-agent pattern, the same resilience guarantees, and principal-led support when the Twitter API changes at 3am.

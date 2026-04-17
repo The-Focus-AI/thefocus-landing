@@ -13,6 +13,7 @@ results: |-
   - Labor date filtering fixed — resolved systematic data gaps for 10+ employees
 tech_stack: "Python, Flask, Google App Engine, QuickBooks Online API, MongoDB, Google Sheets API, OAuth 2.0"
 published: true
+habitat_os: true
 image: qbsync_wide.png
 maturity_level: "L2"
 maturity_level_secondary: "L3"
@@ -94,3 +95,11 @@ After stabilizing the system:
 **3. Google Sheets as the interface.** The client's project managers live in spreadsheets. Rather than building a new dashboard nobody would use, the system pushes structured data into the tool they already check every day.
 
 **4. Preserving raw data.** Filtering labor from reconciliation sheets while keeping everything in MongoDB means nothing is lost. When questions come up about historical data, the answer is always retrievable.
+
+## How This Maps to Habitat OS
+
+This is a **financial-sync Habitat** — scheduled autonomy over an integration the business depends on every day. The hourly sync cycle, the OAuth token lifecycle, change-data-capture on QuickBooks deletes, and MongoDB-backed raw-data preservation are exactly the primitives [Habitat OS](/habitat-os) standardizes: scheduled agents, durable memory, and observable integrations with full audit trails.
+
+What keeps it running seamlessly in the background: the runtime handles the work humans shouldn't have to think about — expired OAuth tokens refresh automatically, failed API calls retry with exponential backoff, raw data persists even when downstream transforms change, and every sync cycle is traceable from QuickBooks event to Google Sheets row. When the previous developer's infrastructure disappeared, the data and the logic survived — because they lived in a well-instrumented runtime, not in one person's head.
+
+New engagements like this ship as a **[monthly-close Habitat](/offerings/monthly-close)** on Habitat OS — with the same scheduled autonomy, hardened OAuth lifecycle management, and principal-led operations so the system keeps running whether or not the person who built it is still on the phone.

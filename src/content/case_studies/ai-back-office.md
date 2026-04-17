@@ -14,6 +14,7 @@ results: |-
   - Morning briefings synthesized from 5+ data sources in seconds
 tech_stack: "Claude Code, TheFocus.AI Plugin Marketplace, Markdown, GitHub CLI, Granola, Google Workspace, 1Password CLI"
 published: true
+habitat_os: true
 image: operations_wide.png
 maturity_level: "L4"
 maturity_level_secondary: "L5"
@@ -396,6 +397,16 @@ All integrations come from the [TheFocus.AI Plugin Marketplace](https://github.c
 - **Zero context lost** — every meeting, every decision, every conversation searchable and connected
 
 The system scales without adding headcount. It handles operational volume that would otherwise require a dedicated operations person.
+
+---
+
+## How This Maps to Habitat OS
+
+This engagement is the archetype of an **operations Habitat** — the same pattern we now deploy for clients on [Habitat OS](/habitat-os), our enterprise agent runtime. The six-command surface (`/sync`, `/daily`, `/weekly`, `/client-update`, `/talent-search`, `/push`) maps directly to Habitat OS primitives: persistent memory (markdown files plus meeting transcripts), specialized sub-agents (each command is a narrow reasoner with its own toolset), integrations (GitHub, Granola, Google Workspace, 1Password), and scheduled autonomy (daily briefings and weekly rollups run without prompting).
+
+Once installed, the runtime keeps itself healthy in the background: interrupted sync jobs resume from where they failed, new integrations drop in as plugins from the [TheFocus.AI marketplace](https://github.com/The-Focus-AI/claude-marketplace), and every action the system takes is readable in version-controlled markdown — so you can audit what the AI decided and why, at any time.
+
+New engagements like this ship on Habitat OS from day one — deployed in your cloud, operated by the principals who build it, with enterprise controls inherited from our platform partner Vercel.
 
 ---
 

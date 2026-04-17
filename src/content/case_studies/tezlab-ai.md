@@ -16,6 +16,7 @@ testimonial: "Focus.AI delivered a complete AI-powered web experience in weeks, 
 testimonial_person: "Ben Schippers"
 testimonial_company: "CEO, TezLab"
 published: true
+habitat_os: true
 image: tezlab_wide.png
 maturity_level: "L3"
 ai_function: "Knowledge Retrieval"
@@ -118,3 +119,11 @@ The web application now serves as TezLab's primary channel for showcasing AI cap
 | **Mapping** | Mapbox GL, Turf.js | Road trip visualization, charger locations |
 | **Charts** | Recharts | Time-series data visualization |
 | **Deployment** | Vercel (frontend), Kubernetes (MCP server) | Production infrastructure |
+
+### How This Maps to Habitat OS
+
+This is the archetype of a **conversational-data Habitat**: a runtime that wraps an existing backend as LLM-callable tools, without asking the underlying product team to change anything. The 15+ MCP tools, context-aware prompting (vehicle state, location, preferences), and custom visualization layer per tool map directly to [Habitat OS](/habitat-os) primitives — tools, memory, and rich response surfaces, orchestrated behind a single natural-language entry point.
+
+What keeps it running seamlessly in the background: the MCP architecture self-extends, so when TezLab ships new API endpoints they become new tools the LLM learns to use from the description alone. Token refresh, session management, rate-limit handling, and graceful degradation all live inside the runtime — not in the client code and not on the mobile team's plate.
+
+New engagements like this ship on Habitat OS — same MCP-tool pattern, same zero-backend-change integration model, with principal-led operations and enterprise security inherited from our platform partner Vercel.
