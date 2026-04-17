@@ -2,6 +2,86 @@
 import BaseLayout from "../layout/BaseLayout.astro";
 
 const mailto = "mailto:hey@thefocus.ai?subject=Habitat%20OS%20%E2%80%94%20Enterprise%20Inquiry";
+const workstreamsMailto = "mailto:hey@thefocus.ai?subject=Habitat%20WorkStreams%20%E2%80%94%20Enterprise%20Inquiry";
+
+const workstreamPrinciples = [
+  {
+    eyebrow: "Private by default",
+    title: "Their stream, their control.",
+    body: "Every employee gets a WorkStream. Their prompts, their artifacts, their workflows. Nothing is shared, seen, or indexed until they choose to promote it.",
+  },
+  {
+    eyebrow: "Promotable when ready",
+    title: "One click lifts an artifact to the team.",
+    body: "When a prompt actually works or a workflow is worth keeping, promote it to the team. Promote again to the org. The employee stays in control; the organization stops losing good work to closed tabs.",
+  },
+  {
+    eyebrow: "Discoverable when promoted",
+    title: "Skeptics can watch. Builders get credit.",
+    body: "Teammates can read, fork, and build on promoted artifacts. Power users compound. Skeptics participate at their own pace. No forced migration, no champion burnout.",
+  },
+];
+
+type WorkstreamArtifact = {
+  kind: "spreadsheet" | "pdf" | "deck";
+  filename: string;
+};
+
+type WorkstreamCard = {
+  habitat: string;
+  initials: string;
+  author: string;
+  role: string;
+  prompt: string;
+  response: string;
+  artifact: WorkstreamArtifact;
+  meta: string;
+  badge: "private" | "team" | "org";
+};
+
+const workstreamFeed: WorkstreamCard[] = [
+  {
+    habitat: "Monthly Close Habitat",
+    initials: "MR",
+    author: "Maya R.",
+    role: "Controller",
+    prompt: "Draft the variance commentary for Q3 close. Flag anything over 8% vs. forecast.",
+    response: "Ran the close checklist against GL. Three variances over threshold: SaaS expense +12%, headcount +9%, vendor rebates −15%. Draft commentary attached with sources.",
+    artifact: { kind: "spreadsheet", filename: "q3-variance-commentary.xlsx" },
+    meta: "Shared to Finance · 2h ago · 4 teammates viewed",
+    badge: "team",
+  },
+  {
+    habitat: "Hiring Pipeline Habitat",
+    initials: "JP",
+    author: "James P.",
+    role: "Head of Talent",
+    prompt: "Screen this week's inbound for the Staff Eng role using our rubric.",
+    response: "6 candidates matched L4+ criteria. 2 flagged for manager review. Promoted rubric v3 from Diana's stream — kept her weighting on systems design.",
+    artifact: { kind: "pdf", filename: "staff-eng-screening-summary.pdf" },
+    meta: "Private · Promote to team?",
+    badge: "private",
+  },
+  {
+    habitat: "Executive Reporting Habitat",
+    initials: "DC",
+    author: "Diana C.",
+    role: "CFO",
+    prompt: "Build the board slide on burn vs. plan using the Nov dataset.",
+    response: "Pulled from the warehouse. Burn is $1.2M under plan, runway extended by 3.5 months. Draft slide matches your executive voice template.",
+    artifact: { kind: "deck", filename: "board-nov-burn-vs-plan.pptx" },
+    meta: "Promoted to Leadership · originated in Diana's stream",
+    badge: "org",
+  },
+];
+
+const popularPrompts = [
+  { title: "Variance commentary over 8%", habitat: "Monthly Close", runs: 12 },
+  { title: "Candidate rubric v3", habitat: "Hiring Pipeline", runs: 9 },
+  { title: "Board burn slide", habitat: "Executive Reporting", runs: 6 },
+  { title: "Invoice exception triage", habitat: "Invoice Processing", runs: 5 },
+  { title: "Onboarding runbook v2", habitat: "Customer Onboarding", runs: 3 },
+];
 
 const pillars = [
   {
@@ -350,6 +430,175 @@ const faqs = [
         ))}
       </div>
     </section>
+  </div>
+
+  <!-- Habitat WorkStreams -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool/30">
+    <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Habitat WorkStreams · The human layer</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">Your best prompts shouldn't die in one person's chat history.</h2>
+      <p class="text-lg text-graphite mb-4 max-w-3xl leading-relaxed">
+        Every Habitat on Habitat OS has a WorkStream layer — the place where your people actually work with it. Private by default. Promotable on their terms. Discoverable when the artifact is ready for the rest of the org.
+      </p>
+      <p class="text-base text-graphite/80 mb-12 max-w-3xl leading-relaxed">
+        The fast adopters stop racing away from the rest of the org. The skeptics get to watch before they participate. The work your best people do stops being lost when a tab closes, a laptop retires, or an employee moves on.
+      </p>
+
+      <!-- Three principles -->
+      <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-16">
+        {workstreamPrinciples.map((p) => (
+          <div class="bg-paper border border-ink/10 rounded-2xl p-6 md:p-7 hover:border-petrol/30 transition-all">
+            <p class="text-xs uppercase tracking-[0.15em] text-petrol mb-3 font-medium">{p.eyebrow}</p>
+            <h3 class="text-lg md:text-xl font-bold text-ink mb-3 leading-tight">{p.title}</h3>
+            <p class="text-sm text-graphite leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Mockup: Stream feed + Popular sidebar -->
+      <div
+        class="bg-paper border border-ink/10 rounded-2xl p-5 md:p-8 mb-10 shadow-sm"
+        role="region"
+        aria-label="Example Habitat WorkStream"
+      >
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-ink/10 flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-2 h-2 rounded-full bg-petrol-light"></span>
+            <p class="text-xs font-mono text-graphite uppercase tracking-wider">acme.habitats.ai / workstream · live view</p>
+          </div>
+          <span class="text-[10px] font-mono text-graphite/60 uppercase tracking-wider">Illustrative — not a live product screenshot</span>
+        </div>
+
+        <div class="grid lg:grid-cols-[1fr_320px] gap-6 lg:gap-8">
+          <!-- Feed -->
+          <div class="space-y-4 md:space-y-5">
+            <p class="text-xs font-mono text-petrol uppercase tracking-wider mb-1">Today · your org</p>
+            {workstreamFeed.map((card) => (
+              <article class="border border-ink/10 rounded-xl p-5 bg-paper">
+                <!-- Author row -->
+                <div class="flex items-start gap-3 mb-3 flex-wrap">
+                  <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-petrol-light text-paper text-sm font-bold shrink-0">
+                    {card.initials}
+                  </span>
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm font-bold text-ink leading-tight">
+                      {card.author} <span class="text-graphite/70 font-normal">· {card.role}</span>
+                    </p>
+                    <p class="text-[11px] font-mono text-petrol uppercase tracking-wider mt-0.5">{card.habitat}</p>
+                  </div>
+                </div>
+
+                <!-- Prompt -->
+                <div class="bg-tint-cool/40 border-l-2 border-petrol/40 rounded-r-md px-4 py-3 mb-3">
+                  <p class="text-[10px] font-mono text-petrol uppercase tracking-wider mb-1">Prompt</p>
+                  <p class="text-sm text-ink leading-relaxed">{card.prompt}</p>
+                </div>
+
+                <!-- Response -->
+                <div class="pl-4 border-l-2 border-ink/10 mb-4">
+                  <p class="text-[10px] font-mono text-graphite/70 uppercase tracking-wider mb-1">Habitat response</p>
+                  <p class="text-sm text-graphite leading-relaxed">{card.response}</p>
+                </div>
+
+                <!-- Artifact chip -->
+                <div class="flex items-center gap-2 mb-3 flex-wrap">
+                  <span class="inline-flex items-center gap-2 text-xs font-mono bg-paper border border-ink/15 rounded-full px-3 py-1.5 text-ink hover:border-petrol/40 transition-colors">
+                    {card.artifact.kind === "spreadsheet" && (
+                      <svg class="w-3.5 h-3.5 text-petrol" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="2" y="2" width="12" height="12" rx="1.5" />
+                        <line x1="2" y1="6" x2="14" y2="6" />
+                        <line x1="2" y1="10" x2="14" y2="10" />
+                        <line x1="8" y1="2" x2="8" y2="14" />
+                      </svg>
+                    )}
+                    {card.artifact.kind === "pdf" && (
+                      <svg class="w-3.5 h-3.5 text-petrol" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path d="M4 2h5l3 3v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" />
+                        <path d="M9 2v3h3" />
+                        <text x="5" y="12" font-size="3.5" font-family="monospace" stroke="none" fill="currentColor">PDF</text>
+                      </svg>
+                    )}
+                    {card.artifact.kind === "deck" && (
+                      <svg class="w-3.5 h-3.5 text-petrol" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="2" y="3" width="12" height="8" rx="1" />
+                        <line x1="8" y1="11" x2="8" y2="14" />
+                        <line x1="5" y1="14" x2="11" y2="14" />
+                      </svg>
+                    )}
+                    <span>{card.artifact.filename}</span>
+                  </span>
+                </div>
+
+                <!-- Meta + badge -->
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <p class="text-xs text-graphite/80">{card.meta}</p>
+                  {card.badge === "private" && (
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-ink/20 text-graphite">Private</span>
+                  )}
+                  {card.badge === "team" && (
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-petrol/30 text-petrol bg-petrol/5">Team</span>
+                  )}
+                  {card.badge === "org" && (
+                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-petrol/60 text-paper bg-petrol">Org</span>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="lg:sticky lg:top-6 self-start">
+            <div class="border border-ink/10 rounded-xl p-5 bg-tint-warm/40 mb-4">
+              <p class="text-xs font-mono text-petrol uppercase tracking-wider mb-4">Popular in your org today</p>
+              <ul class="space-y-3">
+                {popularPrompts.map((p) => (
+                  <li class="flex items-start justify-between gap-3 pb-3 border-b border-ink/5 last:border-b-0 last:pb-0">
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-medium text-ink leading-tight">{p.title}</p>
+                      <p class="text-[11px] text-graphite/70 mt-0.5">{p.habitat}</p>
+                    </div>
+                    <span class="text-[11px] font-mono text-petrol whitespace-nowrap shrink-0 mt-0.5">{p.runs} runs</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="border border-ink/10 rounded-xl p-5 bg-paper">
+              <p class="text-xs font-mono text-petrol uppercase tracking-wider mb-2">Your WorkStream</p>
+              <p class="text-2xl font-bold text-ink leading-none mb-1">14 <span class="text-sm font-normal text-graphite">artifacts</span></p>
+              <p class="text-xs text-graphite mb-4">3 promoted this week</p>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-ink/20 text-graphite">Private</span>
+                <span class="text-[10px] text-graphite/50">→</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-petrol/30 text-petrol bg-petrol/5">Team</span>
+                <span class="text-[10px] text-graphite/50">→</span>
+                <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-petrol/60 text-paper bg-petrol">Org</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- Trust + CTA -->
+      <div class="bg-petrol/5 border-l-4 border-petrol rounded-r-2xl p-6 md:p-8 mb-10">
+        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-2 font-medium">Inherited, not bolted on</p>
+        <p class="text-lg text-ink leading-relaxed">
+          WorkStreams live inside Habitat OS. Same VPC, same identity layer, same audit trail, same principal-led accountability. If your CISO approved Habitat OS, they've already approved WorkStreams.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 items-start">
+        <a
+          href={workstreamsMailto}
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Talk to a principal about WorkStreams
+        </a>
+        <p class="text-sm text-graphite/80 max-w-md leading-relaxed pt-2">
+          Bring your Head of People. We'll walk through what a department-wide rollout looks like, including the first promoted artifacts your org would actually use.
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- Habitat Library -->
