@@ -6,7 +6,7 @@ const allPosts = await getPosts();
 const useCases = allPosts.filter(post => post.data.tags?.includes('usecase'));
 ---
 
-<BaseLayout title="Use Cases" description="Use Cases" category="studio">
+<BaseLayout pageTitle="Use Cases | TheFocus.AI Labs" description="Hands-on use cases and interactive explorations from TheFocus.AI Labs — from running Flux locally to tracing the history of literacy." category="studio">
     <a href="/insights" class="inline-flex items-center gap-2 text-sm text-graphite hover:text-petrol transition-colors mb-6">
       <span>&larr;</span> Back to Insights
     </a>

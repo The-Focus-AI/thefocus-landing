@@ -6,23 +6,23 @@ const mailto = "mailto:hey@thefocus.ai?subject=Vibe%20Check%20-%20Clean%20Up%20M
 const painPoints = [
   {
     emoji: "💻",
-    title: '"It works on my laptop"',
-    description: "But you have no idea what happens when real users show up. No tests, no monitoring, no confidence."
+    title: '"It works in demo"',
+    description: "But nobody knows what happens when real traffic hits it. No tests, no monitoring, no confidence before rollout."
   },
   {
     emoji: "😰",
-    title: '"I\'m scared to touch it"',
-    description: "Every change feels like it might break something. You\'ve stopped adding features because the risk isn\'t worth it."
+    title: '"Nobody wants to touch it"',
+    description: "Every change feels like it might break something. The team has stopped adding features because the risk isn\'t worth it."
   },
   {
     emoji: "🔓",
     title: '"Is this even secure?"',
-    description: "API keys in the code, no auth checks, SQL queries built from user input. You know it\'s bad but don\'t know how bad."
+    description: "API keys in the code, no auth checks, SQL queries built from user input. Security hasn\'t reviewed it — and probably shouldn\'t yet."
   },
   {
     emoji: "🫣",
-    title: '"A real developer would laugh at this"',
-    description: "You shipped something that works. That\'s more than most people ever do. But you know it needs professional eyes."
+    title: '"IT is going to shut this down"',
+    description: "The team shipped something that works. But before it scales across departments, it needs professional eyes."
   }
 ];
 
@@ -89,22 +89,22 @@ const faqs = [
 
 <BaseLayout
   pageTitle="Vibe Check | TheFocus.AI"
-  description="You built your app with AI coding tools. Now make it production-ready. Security audits, architecture review, and professional cleanup for vibe-coded apps."
+  description="Your team built an internal tool with AI coding tools. Now make it production-ready. Security audits, architecture review, and professional cleanup for AI-generated applications."
   openGraphImage="og-vibe-check.png"
-  category="capabilities"
+  category="vibe-check"
 >
   <!-- Hero -->
   <div class="max-w-4xl mx-auto">
     <section class="py-8 md:py-16">
       <p class="text-xs uppercase tracking-[0.2em] text-vermilion mb-6 font-medium">Vibe Check</p>
       <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-ink leading-tight">
-        You built it with vibes.<br/>Now make it real.
+        Your team built it fast.<br/>Now make it last.
       </h1>
       <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-4 max-w-3xl">
-        You used Cursor, Claude, Bolt, or Lovable to build something that actually works. Congrats — seriously. But now you need it to be secure, scalable, and maintainable. That's where we come in.
+        Internal teams are using Cursor, Claude, Bolt, and Lovable to ship tools that actually work. That's the win. But before these apps scale across the organization, they need to be secure, maintainable, and IT-ready.
       </p>
       <p class="text-base text-graphite/70 mb-10 max-w-3xl">
-        The Vibe Check is how <a href="/capabilities" class="text-petrol hover:underline">TheFocus.AI</a> applies the same production rigor we bring to enterprise AI systems — just scoped to your codebase and delivered in days, not months.
+        The Vibe Check is how <a href="/capabilities" class="text-petrol hover:underline">TheFocus.AI</a> applies the same production rigor we bring to enterprise AI systems — scoped to your internal application and delivered in days, not months.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
@@ -146,11 +146,11 @@ const faqs = [
       <div class="bg-paper rounded-3xl p-8 md:p-10 shadow-lg shadow-ink/5 relative overflow-hidden mb-8">
         <span class="absolute top-4 left-6 text-7xl md:text-8xl text-vermilion/10 font-serif leading-none">"</span>
         <p class="text-lg md:text-xl italic text-graphite relative z-10 pl-4 md:pl-8">
-          Vibe coding is the most important shift in software development in a decade. Non-technical founders can now build working products in days instead of months. That's not a bug — that's a revolution.
+          AI coding tools are the most important shift in enterprise software in a decade. Internal teams can now build working tools in days instead of months. That's not shadow IT — that's competitive advantage.
         </p>
       </div>
       <p class="text-lg text-graphite leading-relaxed">
-        The app you built <strong class="text-ink">works</strong>. You validated your idea, got users, maybe even got revenue. That took courage and resourcefulness. Now it's time for the next step: making sure your foundation can support what you're building on top of it. Think of it like getting a home inspection — the house is standing, now let's make sure it'll last.
+        The internal tool <strong class="text-ink">works</strong>. Your team solved a real problem, people are using it, and it's delivering value. That's the hard part. Now it's time for the next step: making sure the foundation can support what you're building on top of it. Think of it like a building inspection — the structure is standing, now let's make sure it's ready for occupancy.
       </p>
     </section>
   </div>
@@ -249,7 +249,7 @@ const faqs = [
   <div class="max-w-4xl mx-auto">
     <section class="py-16 md:py-20">
       <div class="bg-ink text-paper rounded-3xl p-8 md:p-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8">Is this for you?</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">Is this for your team?</h2>
 
         <div class="grid md:grid-cols-2 gap-8 md:gap-12">
           <div>
@@ -257,23 +257,23 @@ const faqs = [
             <ul class="space-y-3">
               <li class="flex gap-3">
                 <span class="text-vermilion flex-shrink-0">✓</span>
-                <span class="text-paper/80">You built a working app with AI coding tools (Cursor, Claude, Bolt, Lovable, etc.)</span>
+                <span class="text-paper/80">Your team built an internal tool with AI coding tools (Cursor, Claude, Bolt, Lovable, etc.)</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-vermilion flex-shrink-0">✓</span>
-                <span class="text-paper/80">You have real users or paying customers</span>
+                <span class="text-paper/80">People across the organization are already using it</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-vermilion flex-shrink-0">✓</span>
-                <span class="text-paper/80">You're worried about security, scalability, or code quality</span>
+                <span class="text-paper/80">IT or security needs to review it before wider rollout</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-vermilion flex-shrink-0">✓</span>
-                <span class="text-paper/80">You want to hire developers but need to know what to tell them</span>
+                <span class="text-paper/80">You need to hand it off to engineering but don't know its current state</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-vermilion flex-shrink-0">✓</span>
-                <span class="text-paper/80">You need confidence that your app won't fall over as you grow</span>
+                <span class="text-paper/80">Leadership wants confidence before scaling it across departments</span>
               </li>
             </ul>
           </div>
@@ -283,11 +283,11 @@ const faqs = [
             <ul class="space-y-3">
               <li class="flex gap-3">
                 <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">You haven't built anything yet (come back when you do!)</span>
+                <span class="text-paper/60">The tool is still a prototype with no active users</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">You already have a senior engineering team doing code reviews</span>
+                <span class="text-paper/60">You already have a dedicated engineering team maintaining it</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-paper/40 flex-shrink-0">✗</span>
@@ -295,7 +295,7 @@ const faqs = [
               </li>
               <li class="flex gap-3">
                 <span class="text-paper/40 flex-shrink-0">✗</span>
-                <span class="text-paper/60">Your app is just a prototype with no real users yet</span>
+                <span class="text-paper/60">The application handles no sensitive data and has no compliance requirements</span>
               </li>
             </ul>
           </div>
@@ -354,9 +354,9 @@ const faqs = [
   <!-- Final CTA -->
   <div class="max-w-4xl mx-auto">
     <div class="border-t border-ink/10 pt-16 pb-8">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-ink">Your app works. Let's make it last.</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-ink">Your team's tool works. Let's make it enterprise-ready.</h2>
       <p class="text-xl text-graphite mb-8">
-        You did the hard part — you shipped. Now let's make sure your foundation is as strong as your ambition.
+        Your team did the hard part — they shipped. Now let's make sure the foundation is ready for the rest of the organization.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a

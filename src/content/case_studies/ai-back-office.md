@@ -429,4 +429,4 @@ You'll have a working `/daily` briefing after the first session. The system grow
 
 ### Ready to Automate Your Back Office?
 
-[Book a consultation](/contact) to discuss your operational workflows and see if this approach fits your business. We'll map your current pain points and show you exactly what an AI-powered operations system would look like for your specific situation.
+[Talk to a principal](mailto:hey@thefocus.ai?subject=AI%20Back%20Office%20%E2%80%94%20Enterprise%20Inquiry) to discuss your operational workflows and see if this approach fits your business. We'll map your current pain points and show you exactly what an AI-powered operations system would look like for your specific situation.

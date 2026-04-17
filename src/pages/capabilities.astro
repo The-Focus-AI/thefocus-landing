@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import BreadcrumbList from "../components/schemas/breadcrumb.astro";
+import HabitatOSCallout from "../components/habitat-os-callout.astro";
 
-const mailto = "mailto:hey@thefocus.ai?subject=AI%20Maturity%20Assessment";
+const mailto = "mailto:hey@thefocus.ai?subject=Talk%20to%20a%20principal";
 
 const maturityLevels = [
   {
@@ -28,7 +29,7 @@ const maturityLevels = [
       service: "Process Audit & Formalization",
       description: "We document your actual workflows — the rules, exceptions, and tribal knowledge — in a form machines can follow.",
       proof: [
-        { text: "Vibe Check — fix your AI-coded app", href: "/vibe-check" },
+        { text: "Vibe Check — audit your team's AI-built tool", href: "/vibe-check" },
         { text: "QB Sync — tribal cost codes discovered & formalized", href: "/case-study/qbsync" }
       ],
       offerings: [
@@ -156,7 +157,7 @@ const assessmentClusters = [
 
 <BaseLayout
   pageTitle="AI Maturity Framework & Consulting Services | TheFocus.AI"
-  description="Where is your organization on the AI journey? TheFocus.AI's proven maturity framework (L0–L5) takes growth-stage companies from tribal knowledge to self-improving AI systems. Production AI in weeks, not quarters."
+  description="Where is your organization on the AI journey? TheFocus.AI's proven maturity framework (L0–L5) takes mid-market and enterprise teams from tribal knowledge to self-improving AI systems. Production AI in weeks, not quarters."
   category="capabilities"
 >
   <BreadcrumbList slot="head" />
@@ -164,7 +165,7 @@ const assessmentClusters = [
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "TheFocus.AI Engagement Models",
-    "description": "AI consulting engagement models for growth-stage companies",
+    "description": "AI consulting engagement models for mid-market and enterprise organizations",
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -308,6 +309,12 @@ const assessmentClusters = [
         Pick the cluster that sounds most like you. Each one maps to a specific engagement.
       </p>
 
+      <!-- Consulting Track -->
+      <div class="mb-6 flex items-center gap-3">
+        <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Consulting Track</span>
+        <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">Organizations scaling production AI</span>
+      </div>
+
       <div class="grid md:grid-cols-3 gap-6 max-w-5xl">
         {assessmentClusters.map((cluster) => (
           <div class="bg-paper rounded-2xl p-6 md:p-8 shadow-sm flex flex-col">
@@ -344,6 +351,46 @@ const assessmentClusters = [
             </a>
           </div>
         ))}
+      </div>
+
+      <!-- Platform callout — Habitat OS binds all three consulting clusters -->
+      <div class="mt-6 max-w-5xl">
+        <HabitatOSCallout
+          variant="card"
+          lede="New production AI builds ship on Habitat OS — our enterprise agent runtime. Deployed in your cloud, auditable at the core, operated by named principals."
+        />
+      </div>
+
+      <!-- Audit Track — Vibe Check -->
+      <div class="mt-12 mb-6 flex items-center gap-3">
+        <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Audit Track</span>
+        <span class="text-xs uppercase tracking-[0.15em] text-vermilion font-medium">Internal teams who built with AI coding tools</span>
+      </div>
+
+      <div class="max-w-5xl">
+        <a href="/vibe-check" class="group block bg-paper rounded-2xl p-6 md:p-8 shadow-sm border-2 border-transparent hover:border-vermilion/30 transition-all">
+          <div class="flex flex-col md:flex-row md:items-center gap-6">
+            <div class="flex-1">
+              <div class="mb-3">
+                <span class="text-xs font-mono text-vermilion border border-vermilion/30 bg-vermilion/5 px-2 py-1 rounded">Out of the framework</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 group-hover:text-vermilion transition-colors">Vibe Check</h3>
+              <p class="text-sm text-graphite leading-relaxed mb-4">
+                Your team built an internal tool with Cursor, Claude, Bolt, or Lovable. It works — but the foundation needs review before IT rollout. We assess the codebase for security holes, architectural risks, and scaling issues, then fix what matters. Two-step: assessment (1-4 days) and cleanup (1-3 weeks).
+              </p>
+              <div class="flex flex-wrap gap-1.5">
+                {["Security audit", "Architecture review", "Scalability assessment", "Prioritized fix list"].map((d) => (
+                  <span class="text-xs text-graphite bg-ink/5 px-2.5 py-1 rounded-full">{d}</span>
+                ))}
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="inline-block px-6 py-3 bg-vermilion text-paper font-medium uppercase text-xs tracking-wider rounded-full group-hover:bg-vermilion/90 group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-200 text-center">
+                Get your Vibe Check &rarr;
+              </span>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -489,7 +536,7 @@ const assessmentClusters = [
             <ul class="space-y-3">
               <li class="flex gap-3">
                 <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
-                <span class="text-paper/80">You're a founder, CEO, or product leader at a growth-stage company</span>
+                <span class="text-paper/80">You're an executive sponsor, IT leader, or line-of-business owner at a mid-market or enterprise organization</span>
               </li>
               <li class="flex gap-3">
                 <span class="text-paper/60 flex-shrink-0">&#x2713;</span>
@@ -541,14 +588,14 @@ const assessmentClusters = [
     <div class="border-t border-ink/10 pt-16 pb-8">
       <h2 class="text-3xl md:text-4xl font-bold mb-6 text-ink">Ready to find your starting point?</h2>
       <p class="text-xl text-graphite mb-8">
-        We work directly with founders and product leaders. The conversation starts with understanding where you are — not selling you where we think you should be.
+        We work directly with executive sponsors and technical leaders. The conversation starts with understanding where you are — not selling you where we think you should be.
       </p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a
           href={mailto}
           class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
         >
-          Start a Conversation
+          Talk to a principal
         </a>
         <a
           href="/case-studies"

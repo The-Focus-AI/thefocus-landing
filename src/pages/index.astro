@@ -26,7 +26,7 @@ import BaseLayout from "../layout/BaseLayout.astro";
         <p class="text-xl md:text-2xl text-graphite leading-[1.6] mb-6">
           AI capabilities are arriving faster than organizations can absorb them. The bottleneck isn't the technology — it's whether your company can describe its own work in a form machines can act on.
         </p>
-        <p class="text-sm uppercase tracking-widest text-petrol mb-10 md:mb-12 font-medium">For founders, CEOs, and product leaders at growth-stage companies</p>
+        <p class="text-sm uppercase tracking-widest text-petrol mb-10 md:mb-12 font-medium">For mid-market and enterprise teams shipping production AI</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
             href="/capabilities"
@@ -42,6 +42,37 @@ import BaseLayout from "../layout/BaseLayout.astro";
           </a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Meet Habitat OS Callout -->
+  <section class="py-8 md:py-12">
+    <div class="max-w-4xl mx-auto">
+      <a href="/habitat-os" class="group block relative overflow-hidden rounded-3xl bg-gradient-to-br from-ink to-ink/95 p-8 md:p-12 hover:shadow-2xl hover:shadow-petrol/20 transition-all duration-300">
+        <!-- Subtle grid pattern -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><line x1=%220%22 y1=%2240%22 x2=%2240%22 y2=%220%22 stroke=%22white%22 stroke-width=%220.5%22/></svg>');"></div>
+        
+        <div class="relative flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-2.5 h-2.5 rounded-full bg-petrol animate-pulse"></span>
+              <span class="text-xs uppercase tracking-[0.2em] text-petrol font-medium">New</span>
+            </div>
+            <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-paper mb-3 leading-tight">
+              Meet Habitat OS
+            </h2>
+            <p class="text-lg text-paper/70 leading-relaxed max-w-xl">
+              The enterprise runtime behind every production AI build. Your agents run in your cloud, with full auditability and principal-led support.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <span class="inline-flex items-center gap-2 px-6 py-3 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full group-hover:bg-petrol/90 group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-200">
+              Explore the platform
+              <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </span>
+          </div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -237,57 +268,106 @@ import BaseLayout from "../layout/BaseLayout.astro";
   <section class="py-16 md:py-24">
     <div class="max-w-4xl mx-auto">
         <h3 class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">How We Engage</h3>
-        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-4">Production AI in weeks, not quarters.</h2>
+        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-4">Two tracks. Both land in production.</h2>
         <p class="text-lg text-graphite mb-10 max-w-3xl">Start small, move fast, scale what works. Every engagement is designed to deliver value quickly — no multi-month discovery phases or 80-page strategy decks.</p>
 
-      <div class="space-y-6 md:space-y-8">
-        <!-- Vibe Check -->
-        <a href="/vibe-check" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-vermilion/20 hover:bg-tint-warm/30 transition-all group">
-          <div class="bg-tint-warm rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-            <img src="/images/illustrations/guide.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-          </div>
-          <div class="pt-1 flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Vibe Check</h4>
+      <!-- Consulting Track -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Consulting</span>
+          <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">For organizations scaling production AI</span>
+        </div>
+        <div class="space-y-4 md:space-y-5">
+          <!-- Assessment & Roadmap -->
+          <a href="/capabilities#assessment" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-cool/30 transition-all group">
+            <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
+              <img src="/images/illustrations/guide.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
             </div>
-            <p class="text-graphite text-base leading-relaxed mb-2">
-              Built something with AI tools? We assess your codebase for security holes, architectural risks, and scaling issues — then give you a prioritized fix-it roadmap. Cleanup available in 1-3 weeks.
-            </p>
-            <span class="text-petrol font-medium text-sm group-hover:underline">Get your Vibe Check →</span>
-          </div>
-        </a>
+            <div class="pt-1 flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Assessment &amp; Roadmap</h4>
+                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full">1-2 weeks</span>
+              </div>
+              <p class="text-graphite text-base leading-relaxed mb-2">
+                Where is your organization on the AI journey? We walk the maturity framework with your team, identify where each department sits, and hand back a prioritized build-vs-buy roadmap. The honest starting point — no upsell.
+              </p>
+              <span class="text-petrol font-medium text-sm group-hover:underline">Map your starting point →</span>
+            </div>
+          </a>
 
-        <!-- Habitat Build -->
-        <a href="/capabilities" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-cool/30 transition-all group">
-          <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-            <img src="/images/illustrations/build.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-          </div>
-          <div class="pt-1 flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Habitat Build</h4>
+          <!-- Build & Ship -->
+          <a href="/capabilities#assessment" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-cool/30 transition-all group">
+            <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
+              <img src="/images/illustrations/build.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
             </div>
-            <p class="text-graphite text-base leading-relaxed mb-2">
-              A Habitat is a production AI system that carries your team's rules, learns from decisions, and runs autonomously. We formalize the tribal knowledge in a specific process — monthly close, hiring, invoicing, onboarding, reporting — and build the Habitat that runs it.
-            </p>
-            <span class="text-petrol font-medium text-sm group-hover:underline">See the framework →</span>
-          </div>
-        </a>
+            <div class="pt-1 flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Build &amp; Ship</h4>
+                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full">2-6 weeks</span>
+              </div>
+              <p class="text-graphite text-base leading-relaxed mb-2">
+                We formalize the tribal knowledge in a specific process — monthly close, hiring, invoicing, onboarding, reporting — and build a <strong class="text-ink">Habitat</strong>: a production AI system that carries your team's rules, flags anomalies, and runs autonomously on <strong class="text-ink">Habitat OS</strong>.
+              </p>
+              <span class="text-petrol font-medium text-sm group-hover:underline">See the framework →</span>
+            </div>
+          </a>
 
-        <!-- Embedded Partnership -->
-        <a href="mailto:hey@thefocus.ai?subject=Partnership%20Inquiry" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-lavender/30 transition-all group">
-          <div class="bg-tint-lavender rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-            <img src="/images/illustrations/modernize.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-          </div>
-          <div class="pt-1 flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Embedded Partnership</h4>
+          <!-- Ongoing Partnership -->
+          <a href="/capabilities#assessment" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-lavender/30 transition-all group">
+            <div class="bg-tint-lavender rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
+              <img src="/images/illustrations/modernize.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
             </div>
-            <p class="text-graphite text-base leading-relaxed mb-2">
-              For organizations scaling AI across multiple departments. We embed alongside your team — expanding Habitats, training internal staff, and continuously optimizing what's already running.
+            <div class="pt-1 flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Ongoing Partnership</h4>
+                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full">Monthly retainer</span>
+              </div>
+              <p class="text-graphite text-base leading-relaxed mb-2">
+                For organizations scaling AI across multiple departments. We embed alongside your team — expanding Habitats, closing feedback loops, training internal staff, and continuously optimizing what's already running on <strong class="text-ink">Habitat OS</strong>.
+              </p>
+              <span class="text-petrol font-medium text-sm group-hover:underline">Explore partnership →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Platform bridge -->
+        <a href="/habitat-os" class="group mt-6 block bg-petrol/5 border border-petrol/20 rounded-2xl p-5 md:p-6 hover:border-petrol/40 hover:bg-petrol/10 transition-all">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="shrink-0 flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-petrol"></span>
+              <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium whitespace-nowrap">The Platform</span>
+            </div>
+            <p class="flex-1 text-base text-ink leading-relaxed">
+              Every Habitat runs on <strong>Habitat OS</strong> — our enterprise runtime. Deployed in your cloud, auditable at the core, operated by named principals.
             </p>
-            <span class="text-petrol font-medium text-sm group-hover:underline">Explore partnership →</span>
+            <span class="text-petrol font-medium text-sm shrink-0 group-hover:underline">Explore Habitat OS &rarr;</span>
           </div>
         </a>
+      </div>
+
+      <!-- Audit Track -->
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Audit</span>
+          <span class="text-xs uppercase tracking-[0.15em] text-vermilion font-medium">For internal teams who built with AI coding tools</span>
+        </div>
+        <div class="space-y-4 md:space-y-5">
+          <a href="/vibe-check" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-vermilion/20 hover:bg-tint-warm/30 transition-all group">
+            <div class="bg-tint-warm rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
+              <img src="/images/illustrations/guide.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
+            </div>
+            <div class="pt-1 flex-1">
+              <div class="flex flex-wrap items-center gap-3 mb-2">
+                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Vibe Check</h4>
+                <span class="text-xs font-medium text-vermilion bg-vermilion/10 px-2.5 py-0.5 rounded-full">1-3 weeks</span>
+              </div>
+              <p class="text-graphite text-base leading-relaxed mb-2">
+                Your team built an internal tool with Cursor, Claude, Bolt, or Lovable? We assess it for security holes, architectural risks, and scaling issues — then fix what matters before IT rollout. Same production rigor we bring to enterprise AI.
+              </p>
+              <span class="text-vermilion font-medium text-sm group-hover:underline">Get your Vibe Check →</span>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </section>

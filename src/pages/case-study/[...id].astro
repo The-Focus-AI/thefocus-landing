@@ -99,6 +99,19 @@ const csMailto = `mailto:hey@thefocus.ai?subject=${encodeURIComponent(`Re: ${cas
           </div>
         )}
       </div>
+
+      {(case_study.data as { habitat_os?: boolean }).habitat_os && (
+        <div class="mt-4">
+          <a
+            href="/habitat-os"
+            class="inline-flex items-center gap-2 text-xs font-medium text-petrol bg-petrol/5 border border-petrol/20 px-3 py-1.5 rounded-full hover:bg-petrol/10 hover:border-petrol/40 transition-colors"
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span>
+            Running on Habitat OS
+            <span class="opacity-60">&rarr;</span>
+          </a>
+        </div>
+      )}
     </header>
 
     <!-- Hero Image/Video -->
@@ -180,20 +193,20 @@ const csMailto = `mailto:hey@thefocus.ai?subject=${encodeURIComponent(`Re: ${cas
           Facing a similar challenge?
         </h2>
         <p class="text-graphite mb-6">
-          Let's talk about how we can help you move from idea to production.
+          Let's talk about shipping a production AI system for your team — principal-led, deployed in your cloud on Habitat OS.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
             href={csMailto}
-            class="inline-block px-8 py-4 bg-ink text-paper font-medium uppercase text-sm tracking-wider hover:bg-petrol transition-colors"
+            class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
           >
-            Start a Conversation
+            Talk to a principal
           </a>
           <a
             href="/capabilities"
-            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider hover:border-petrol hover:text-petrol transition-all"
+            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200"
           >
-            See the Full Framework
+            See the Framework
           </a>
         </div>
       </div>

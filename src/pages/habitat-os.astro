@@ -1,0 +1,595 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const mailto = "mailto:hey@thefocus.ai?subject=Habitat%20OS%20%E2%80%94%20Enterprise%20Inquiry";
+
+const pillars = [
+  {
+    eyebrow: "Deployed where you say",
+    title: "Your cloud, your keys, your rules.",
+    body: "Habitat OS runs in your VPC, your dedicated cloud account, or our managed single-tenant environment. Customer-owned data stays customer-side. Model provider keys are yours to bring. On-prem is available case-by-case for regulated deployments.",
+  },
+  {
+    eyebrow: "Open at the core",
+    title: "Auditable engine, accountable distribution.",
+    body: "The Habitat primitives — persona, tools, memory, sub-agents, evals — live in our open-source engine, Umwelten. Your security team can read every line. The enterprise distribution adds identity, observability, integrations, and human support.",
+  },
+  {
+    eyebrow: "Principal-led accountability",
+    title: "The people who built it run it.",
+    body: "Every engagement is led by a named principal. No rotating analysts, no offshore handoffs, no layers between the people who understand your Habitat and the people fixing it when something breaks. Your CISO gets a direct line.",
+  },
+  {
+    eyebrow: "One platform, every Habitat",
+    title: "Build one, the next one is easier.",
+    body: "Your monthly close Habitat, your hiring Habitat, your executive reporting Habitat — all run on the same runtime, share the same identity layer, and benefit from the same operational tooling. Scale across departments without re-architecting each time.",
+  },
+];
+
+const tier1Habitats = [
+  {
+    title: "Monthly Close",
+    blurb: "Formalize the close checklist, reconciliation rules, and approval logic into a Habitat that runs every month.",
+    href: "/offerings/monthly-close",
+    levels: "L1 → L2",
+  },
+  {
+    title: "Invoice Processing",
+    blurb: "Any vendor format in, structured data out. The Habitat learns your exception patterns as it goes.",
+    href: "/offerings/invoice-processing",
+    levels: "L1 → L2",
+  },
+  {
+    title: "Hiring Pipeline",
+    blurb: "Candidate screening, scheduling, and pipeline hygiene. Stops losing candidates to your own process.",
+    href: "/offerings/hiring-pipeline",
+    levels: "L1 → L2",
+  },
+  {
+    title: "Customer Onboarding",
+    blurb: "New client setup that doesn't depend on who remembers what. The Habitat carries the institutional memory.",
+    href: "/offerings/customer-onboarding",
+    levels: "L1 → L2",
+  },
+  {
+    title: "Executive Reporting",
+    blurb: "Real-time answers against your data, not reformatted dashboards. Your executives stop waiting for slides.",
+    href: "/offerings/executive-reporting",
+    levels: "L2 → L3",
+  },
+];
+
+const tier2Habitats = [
+  {
+    title: "QuickBooks Sync",
+    blurb: "Project accounting from QuickBooks to your reporting tools, with tribal cost codes formalized into machine-readable rules.",
+  },
+  {
+    title: "Recruiting Ops",
+    blurb: "Pipeline operations across your ATS — sourcing, screening, scheduling — with clear escalation paths when the Habitat is uncertain.",
+  },
+  {
+    title: "HR Lifecycle",
+    blurb: "Onboarding, performance cycles, compensation changes. The workflows currently living in one person's head, formalized.",
+  },
+  {
+    title: "Deck Prep",
+    blurb: "Raw data into board-ready narratives. Your executive voice, applied consistently across every deck.",
+  },
+  {
+    title: "Executive Planning",
+    blurb: "OKR tracking, cross-department alignment, exec briefings that write themselves — grounded in the data your team actually uses.",
+  },
+];
+
+const integrations = [
+  { name: "Snowflake", blurb: "Query your warehouse. Write back reconciled data." },
+  { name: "Databricks", blurb: "Lakehouse access with governed schemas." },
+  { name: "Microsoft 365", blurb: "Teams, Outlook, SharePoint, Excel." },
+  { name: "Google Workspace", blurb: "Gmail, Drive, Sheets, Calendar." },
+  { name: "Salesforce", blurb: "CRM read/write with field-level auth." },
+  { name: "NetSuite", blurb: "Financial systems with role-scoped access." },
+  { name: "Workday", blurb: "HR and workforce data integration." },
+  { name: "QuickBooks", blurb: "Accounting for project-based businesses." },
+  { name: "HRIS + ATS", blurb: "Greenhouse, Lever, Rippling, Gusto." },
+  { name: "Slack", blurb: "Conversational surface for any Habitat." },
+];
+
+const lifecyclePhases = [
+  {
+    step: "1",
+    name: "Discovery",
+    duration: "1-2 weeks",
+    body: "We map your actual workflow — not the documented version. Every workaround, exception, and judgment call. You receive an honest roadmap with clear build-vs-buy recommendations.",
+    link: "Assessment & Roadmap engagement",
+    href: "/capabilities#assessment",
+  },
+  {
+    step: "2",
+    name: "Build & Ship",
+    duration: "2-6 weeks",
+    body: "We formalize your tribal knowledge and deliver your first Habitat running on Habitat OS. Principal-led build, deployed to your environment, with documentation your team can own.",
+    link: "Build & Ship engagement",
+    href: "/capabilities#assessment",
+  },
+  {
+    step: "3",
+    name: "Habitat OS Runtime",
+    duration: "Ongoing",
+    body: "Your Habitat runs in production. We operate the runtime, maintain integrations, monitor behavior, and close feedback loops. New Habitats extend the same platform.",
+    link: "Ongoing Partnership engagement",
+    href: "/capabilities#assessment",
+  },
+];
+
+const trustItems = [
+  {
+    title: "Deployment flexibility",
+    status: "Available today",
+    body: "Customer VPC, dedicated cloud account, or managed single-tenant. On-prem deployments supported case-by-case. Your infrastructure team chooses the boundary.",
+  },
+  {
+    title: "Data boundary",
+    status: "Available today",
+    body: "Customer data never leaves customer-controlled storage. Model provider keys can be customer-provided or brokered. Memory, audit logs, and session data persist in storage you own.",
+  },
+  {
+    title: "Identity & access",
+    status: "Enterprise SSO available",
+    body: "SAML / OIDC integration with Okta, Microsoft Entra, and Google Workspace. Role-based access control scoped to Habitat and integration level.",
+  },
+  {
+    title: "Open-source auditability",
+    status: "Public, on GitHub",
+    body: "The Habitat engine is Umwelten — published under an OSI-compatible license at github.com/The-Focus-AI/umwelten. Your security team can read every line before deployment.",
+  },
+  {
+    title: "Principal accountability",
+    status: "Always",
+    body: "Every engagement is led by a named principal. Your escalation path goes to the person who built your Habitat, not a support tier.",
+  },
+  {
+    title: "Formal compliance programs",
+    status: "Under active development",
+    body: "SOC 2 Type I audit underway for 2026. HIPAA BAAs, ISO 27001, and sector-specific programs evaluated on a customer-by-customer basis. Current deployment and data-handling documentation available on request under NDA.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Can we run Habitat OS in our own cloud account?",
+    a: "Yes. Customer VPC and dedicated cloud-account deployments are standard. We provision with your infrastructure team, your IAM, and your network topology. On-prem is available for regulated workloads.",
+  },
+  {
+    q: "Who owns the code and the data?",
+    a: "You do. Your Habitat configuration, prompts, tools, and memory are your IP. Your operational data never leaves customer-controlled storage. If you stop the engagement, you keep everything — and because the core engine is open-source, you have continuity options.",
+  },
+  {
+    q: "Can we bring our own model providers?",
+    a: "Yes. Habitat OS routes to OpenAI, Anthropic, Google, AWS Bedrock, Azure OpenAI, and on-premise open-weight models (Ollama, vLLM). Customer-provided keys are the default. We can broker if you prefer a single invoice.",
+  },
+  {
+    q: "How do you handle model provider outages?",
+    a: "Habitat OS supports per-task fallback across providers. A critical invoice-processing step can default to GPT-5, fall back to Claude, and fail gracefully to a human-in-the-loop queue if both are degraded.",
+  },
+  {
+    q: "What happens if we stop paying the Habitat OS Runtime?",
+    a: "We help you migrate. Because the engine is open-source, you can continue to run the Habitat yourself or with another partner — you're never stranded. Our retention rate comes from the work being good, not from lock-in.",
+  },
+  {
+    q: "Do you have SOC 2?",
+    a: "Not yet. SOC 2 Type I audit is underway for 2026. In the meantime, we provide our security posture documentation, deployment-boundary diagrams, and data-handling practices to any serious evaluator under NDA. We'd rather be honest than check a box we haven't earned.",
+  },
+  {
+    q: "How is pricing structured?",
+    a: "Habitat OS Runtime starts at $2,000 per Habitat per month. Your first Habitat is delivered through a fixed-fee Build & Ship engagement (separate project cost). Volume pricing applies at 10+ Habitats, and custom arrangements are available for regulated industries.",
+  },
+  {
+    q: "How is this different from LangChain, Bedrock Agents, or Copilot Studio?",
+    a: "LangChain is a framework, not a managed runtime — you're on your own for security, identity, and operations. Hyperscaler agent platforms lock you to one vendor and don't carry your cross-SaaS tribal knowledge. Copilot Studio is Microsoft-shaped and Microsoft-operated. Habitat OS is a dedicated runtime for agents that carry your team's rules across whatever tools you actually use.",
+  },
+];
+---
+
+<BaseLayout
+  pageTitle="Habitat OS — Enterprise Agent Platform | TheFocus.AI"
+  description="Habitat OS is TheFocus.AI's enterprise agent runtime for new production AI builds. Runs in your cloud, on your terms, with named principal accountability and an open-source core."
+  category="habitat-os"
+  openGraphImage="og-habitat-os.png"
+>
+  <!-- Hero -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-8 md:py-16">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">The enterprise runtime for production AI</p>
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-ink leading-tight">
+        Habitat OS.<br/>Production AI,<br/>under your control.
+      </h1>
+      <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-4 max-w-3xl">
+        Habitat OS is the enterprise runtime every Habitat we build runs on. Deployed in your cloud. Auditable at the core. Operated by the principals who built it. No black boxes, no offshore support tiers, no lock-in.
+      </p>
+      <p class="text-base text-graphite/70 mb-10 max-w-3xl">
+        Built for CISOs who have said "no" to AI rollouts and are looking for the "yes" that doesn't cost them their standards.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={mailto}
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Talk to a principal
+        </a>
+        <a
+          href="#architecture"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          See the architecture
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- What is a Habitat -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool/30" id="architecture">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">The Anatomy</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">What is a Habitat?</h2>
+      <p class="text-lg md:text-xl text-graphite mb-10 max-w-3xl leading-relaxed">
+        A Habitat is the living environment for an agent. Not a wrapper around a prompt — a place where an agent exists. Persona, memory, tools, sessions, and sub-agents, all in one governed environment.
+      </p>
+
+      <!-- Anatomy diagram -->
+      <div class="bg-paper border border-petrol/20 rounded-2xl p-6 md:p-10 mb-10">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+          <div>
+            <p class="text-xs font-mono text-petrol mb-2 font-bold uppercase tracking-wider">A Habitat contains</p>
+            <ul class="space-y-4 mt-4">
+              <li class="flex gap-3 items-start">
+                <span class="text-petrol font-mono text-sm mt-1">01</span>
+                <div>
+                  <p class="font-bold text-ink">Persona</p>
+                  <p class="text-sm text-graphite">Who the agent is, what it will and won't do, its authority boundaries.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="text-petrol font-mono text-sm mt-1">02</span>
+                <div>
+                  <p class="font-bold text-ink">Tools</p>
+                  <p class="text-sm text-graphite">Typed interfaces to your SaaS, your databases, your internal APIs.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="text-petrol font-mono text-sm mt-1">03</span>
+                <div>
+                  <p class="font-bold text-ink">Memory</p>
+                  <p class="text-sm text-graphite">Persistent institutional knowledge. Facts the agent has learned, decisions it's made, edge cases it's handled.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-mono text-petrol mb-2 font-bold uppercase tracking-wider">And plugs into</p>
+            <ul class="space-y-4 mt-4">
+              <li class="flex gap-3 items-start">
+                <span class="text-petrol font-mono text-sm mt-1">04</span>
+                <div>
+                  <p class="font-bold text-ink">Sub-agents</p>
+                  <p class="text-sm text-graphite">Specialized workers the Habitat delegates to. Composable, not monolithic.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="text-petrol font-mono text-sm mt-1">05</span>
+                <div>
+                  <p class="font-bold text-ink">Sessions</p>
+                  <p class="text-sm text-graphite">Every interaction logged, replayable, auditable. Your compliance team gets the paper trail.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 items-start">
+                <span class="text-petrol font-mono text-sm mt-1">06</span>
+                <div>
+                  <p class="font-bold text-ink">Evals</p>
+                  <p class="text-sm text-graphite">Automated quality checks against known-good behavior. Regressions surface before production does.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-petrol/5 border-l-4 border-petrol rounded-r-2xl p-6 md:p-8">
+        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-2 font-medium">The two-level model</p>
+        <p class="text-lg text-ink leading-relaxed">
+          <strong>Habitat OS</strong> is the enterprise runtime. <strong>A Habitat</strong> is the agent environment your team actually uses. Your monthly close Habitat, your hiring Habitat, your reporting Habitat — every one of them runs on Habitat OS.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why Habitat OS -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Why Habitat OS</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">Four commitments your security team can verify.</h2>
+      <p class="text-lg text-graphite mb-12 max-w-3xl">
+        Banks, private equity firms, healthcare systems, and real estate operators have told us the same thing: they want modern AI, but not if it means giving up sovereignty over their data, their infrastructure, or their accountability chain. Habitat OS is the answer.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+        {pillars.map((pillar) => (
+          <div class="bg-paper border border-ink/10 rounded-2xl p-6 md:p-8 hover:border-petrol/30 transition-all">
+            <p class="text-xs uppercase tracking-[0.15em] text-petrol mb-3 font-medium">{pillar.eyebrow}</p>
+            <h3 class="text-xl md:text-2xl font-bold text-ink mb-3 leading-tight">{pillar.title}</h3>
+            <p class="text-graphite leading-relaxed">{pillar.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <!-- Habitat Library -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm/20">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">The Habitat Library</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">Productized Habitats, ready to deploy.</h2>
+      <p class="text-lg text-graphite mb-12 max-w-3xl">
+        These are the Habitats we've built and shipped. Each one is a starting point — tailored to your processes, running on your infrastructure, extended to your integrations. You don't start from scratch.
+      </p>
+
+      <!-- Tier 1 — Productized -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Productized</span>
+          <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">Full offering pages available</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4">
+          {tier1Habitats.map((h) => (
+            <a href={h.href} class="group bg-paper border border-ink/10 rounded-2xl p-5 md:p-6 hover:border-petrol/40 hover:shadow-sm transition-all">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-0.5 rounded">{h.levels}</span>
+                <span class="text-petrol text-sm opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+              </div>
+              <h3 class="text-lg font-bold text-ink mb-2 group-hover:text-petrol transition-colors">{h.title}</h3>
+              <p class="text-sm text-graphite leading-relaxed">{h.blurb}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tier 2 — Templates -->
+      <div class="mb-12">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Template</span>
+          <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">Built before, ready to tailor</span>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {tier2Habitats.map((h) => (
+            <div class="bg-paper border border-ink/10 rounded-2xl p-5">
+              <h3 class="text-base font-bold text-ink mb-2">{h.title}</h3>
+              <p class="text-sm text-graphite leading-relaxed">{h.blurb}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tier 3 — Custom -->
+      <div class="bg-paper border-2 border-dashed border-petrol/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-[0.15em] text-petrol mb-2 font-medium">Custom</p>
+          <h3 class="text-xl font-bold text-ink mb-2">Your workflow, your Habitat.</h3>
+          <p class="text-graphite leading-relaxed">
+            If the thing your team does every week doesn't fit a template, we build it. The Habitat anatomy is the same; the rules are yours.
+          </p>
+        </div>
+        <a
+          href={mailto}
+          class="inline-block shrink-0 px-6 py-3 bg-petrol text-paper font-medium uppercase text-xs tracking-wider rounded-full hover:bg-petrol/90 hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Discuss your workflow &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrations -->
+  <div class="max-w-5xl mx-auto">
+    <section class="py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Enterprise integrations</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">The systems you already run.</h2>
+      <p class="text-lg text-graphite mb-12 max-w-3xl">
+        Habitats plug into the enterprise SaaS your team already uses. Read and write with field-level auth. Respect the access controls you've already configured. Integrations expand per engagement.
+      </p>
+
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {integrations.map((i) => (
+          <div class="bg-paper border border-ink/10 rounded-xl p-5 hover:border-petrol/30 transition-all">
+            <p class="font-bold text-ink mb-1">{i.name}</p>
+            <p class="text-xs text-graphite leading-relaxed">{i.blurb}</p>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-sm text-graphite/70 mt-6 italic">
+        Don't see yours? The integration layer is extensible — any typed tool your team can describe, a Habitat can use. We've built integrations against dozens of systems; new ones are scoped into Build & Ship.
+      </p>
+    </section>
+  </div>
+
+  <!-- How it works -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink text-paper">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-paper/60 mb-4 font-medium">How it works</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-paper mb-4">From discovery to runtime.</h2>
+      <p class="text-lg text-paper/70 mb-12 max-w-3xl">
+        Habitat OS is delivered through a consulting engagement, not a self-serve sign-up. You pay us to understand your workflow, build your first Habitat, and operate the platform it runs on. Each phase maps to a clear contract.
+      </p>
+
+      <div class="space-y-6">
+        {lifecyclePhases.map((phase) => (
+          <div class="grid md:grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-start p-6 md:p-8 bg-paper/5 border border-paper/10 rounded-2xl">
+            <div class="flex items-center gap-4 md:flex-col md:items-start md:gap-2">
+              <span class="text-4xl md:text-5xl font-bold text-petrol font-mono">{phase.step}</span>
+              <span class="text-xs font-mono text-paper/60 border border-paper/20 px-2 py-1 rounded whitespace-nowrap">{phase.duration}</span>
+            </div>
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-paper mb-2">{phase.name}</h3>
+              <p class="text-paper/70 leading-relaxed">{phase.body}</p>
+            </div>
+            <a
+              href={phase.href}
+              class="inline-block shrink-0 px-4 py-2 border border-paper/30 text-paper/90 text-xs uppercase tracking-wider rounded-full hover:border-paper hover:text-paper transition-colors whitespace-nowrap"
+            >
+              {phase.link} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust -->
+  <div class="max-w-5xl mx-auto">
+    <section class="py-16 md:py-24" id="trust">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Trust & transparency</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">What you get. What we're building. What's honest.</h2>
+      <p class="text-lg text-graphite mb-12 max-w-3xl">
+        Formal compliance programs take years to earn. We're building ours. In the meantime, this is the ground truth of where Habitat OS stands — what's shipped, what's in progress, and what you can expect from us as a principal-led partner.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+        {trustItems.map((item) => (
+          <div class="bg-paper border border-ink/10 rounded-2xl p-6 hover:border-petrol/30 transition-all">
+            <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+              <h3 class="text-lg font-bold text-ink">{item.title}</h3>
+              <span class="text-xs font-mono text-petrol border border-petrol/30 bg-petrol/5 px-2.5 py-1 rounded">
+                {item.status}
+              </span>
+            </div>
+            <p class="text-sm text-graphite leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Open-source callout -->
+      <div class="mt-10 bg-tint-cool/30 border border-petrol/20 rounded-2xl p-6 md:p-8">
+        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">Powered by Umwelten</p>
+        <p class="text-base md:text-lg text-ink leading-relaxed mb-4">
+          The Habitat engine — the primitives your agents run on — is our open-source project, <strong>Umwelten</strong>. Your security team can read every line, fork it, or run it themselves. Habitat OS is the enterprise distribution: hardened, integrated, supported, accountable.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="https://umwelten.thefocus.ai/"
+            target="_blank"
+            rel="noopener"
+            class="inline-block px-5 py-2 border border-petrol text-petrol text-sm font-medium rounded-full hover:bg-petrol hover:text-paper transition-all"
+          >
+            Read the Umwelten docs &rarr;
+          </a>
+          <a
+            href="https://github.com/The-Focus-AI/umwelten"
+            target="_blank"
+            rel="noopener"
+            class="inline-block px-5 py-2 border border-ink/20 text-ink text-sm font-medium rounded-full hover:border-ink transition-all"
+          >
+            View on GitHub &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Pricing -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool/30">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Pricing</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">Two line items. Predictable from day one.</h2>
+      <p class="text-lg text-graphite mb-12 max-w-3xl">
+        Enterprise AI shouldn't come with surprise bills. Every engagement has a fixed-fee build and a predictable monthly runtime.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Build & Ship -->
+        <div class="bg-paper border border-ink/10 rounded-2xl p-6 md:p-8">
+          <p class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded inline-block mb-4">Project fee</p>
+          <h3 class="text-2xl font-bold text-ink mb-2">Build & Ship</h3>
+          <p class="text-sm text-graphite mb-4">2-6 weeks. Fixed scope, fixed fee. Delivers your first production Habitat.</p>
+          <p class="text-3xl font-bold text-petrol mb-2">Custom</p>
+          <p class="text-xs text-graphite italic mb-6">Scoped during Assessment & Roadmap.</p>
+          <ul class="space-y-2 text-sm text-graphite">
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Workflow discovery and formalization</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Habitat design, build, and deployment</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Integration scaffolding</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Evals and runbooks</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Team handoff documentation</li>
+          </ul>
+        </div>
+
+        <!-- Habitat OS Runtime -->
+        <div class="bg-ink text-paper rounded-2xl p-6 md:p-8">
+          <p class="text-xs font-mono text-paper/70 border border-paper/20 px-2 py-1 rounded inline-block mb-4">Monthly subscription</p>
+          <h3 class="text-2xl font-bold text-paper mb-2">Habitat OS Runtime</h3>
+          <p class="text-sm text-paper/70 mb-4">Per-Habitat monthly fee. Includes the platform and the people operating it.</p>
+          <p class="text-3xl font-bold text-paper mb-1">
+            Starting at <span class="text-petrol">$2,000</span>
+          </p>
+          <p class="text-xs text-paper/60 italic mb-6">per Habitat, per month. Volume pricing at 10+.</p>
+          <ul class="space-y-2 text-sm text-paper/80">
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Runtime hosting and observability</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Identity and access layer</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Model routing and fallback</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Memory and audit log storage</li>
+            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Principal-led on-call support</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-sm text-graphite mt-8 max-w-3xl">
+        <strong class="text-ink">What's separate:</strong> LLM inference tokens pass through at provider cost. New Habitats are scoped into subsequent Build & Ship engagements. Regulated industries and 10+ Habitat deployments use custom pricing — talk to us.
+      </p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto">
+    <section class="py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Frequently Asked</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-12">Questions your team is already asking.</h2>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-paper border border-ink/10 rounded-2xl p-6 hover:border-petrol/30 transition-all">
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <h3 class="text-base md:text-lg font-bold text-ink pr-4">{faq.q}</h3>
+              <span class="text-petrol text-xl group-open:rotate-45 transition-transform flex-shrink-0">+</span>
+            </summary>
+            <p class="mt-4 text-graphite leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <!-- Closing CTA -->
+  <div class="max-w-4xl mx-auto">
+    <section class="border-t border-ink/10 pt-16 pb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Enterprise engagement</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-ink">Ready for production AI your security team can actually approve?</h2>
+      <p class="text-xl text-graphite mb-8 max-w-2xl">
+        The first conversation is about your workflow, your infrastructure, and your constraints — not ours. We'll tell you honestly whether Habitat OS fits.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={mailto}
+          class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Talk to a principal
+        </a>
+        <a
+          href="/case-studies"
+          class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
+        >
+          Read a case study
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
 import { Image } from 'astro:assets';
+import fs from 'node:fs';
+import path from 'node:path';
+
 const images = await import.meta.glob<{ default: import('astro').ImageMetadata }>(
   '/src/content/assets/cards/*.{jpeg,jpg,png,gif}'
 );
@@ -10,76 +13,235 @@ const juneReportImg = images['/src/content/assets/cards/capture_the_flag_wide.pn
 const carWashImg = images['/src/content/assets/cards/report-car-wash-test.png'];
 const mcpToolImg = images['/src/content/assets/cards/report-mcp-tool-test.png'];
 const modelShowdownImg = images['/src/content/assets/cards/report-model-showdown.png'];
+
+// Subsite-based reports live under public/reports/<slug>/ after submodules are built.
+// At build time we filter out any whose directory isn't present so the list never 404s.
+const publicReportsDir = path.resolve(process.cwd(), 'public', 'reports');
+const subsiteReportExists = (href: string): boolean => {
+  const match = href.match(/^\/reports\/([^/]+)\/?$/);
+  if (!match) return true;
+  const slug = match[1];
+  try {
+    return fs.existsSync(path.join(publicReportsDir, slug));
+  } catch {
+    return false;
+  }
+};
+
+type Report = {
+  img?: { default: import('astro').ImageMetadata } | undefined;
+  imgFn: (() => Promise<{ default: import('astro').ImageMetadata }>) | undefined;
+  label: string;
+  title: string;
+  summary: string;
+  cta: string;
+  href: string;
+  external?: boolean;
+  docNo: string;
+  requiresSubsite?: boolean;
+};
+
+const reports: Report[] = [
+  {
+    imgFn: modelShowdownImg,
+    img: undefined,
+    label: "March 2026",
+    title: "Testing 48 LLMs Across 5 Dimensions for $4.63",
+    summary: "Which model should you actually use? We tested 48 models across reasoning, knowledge, instruction following, coding, and MCP tool use. Claude Sonnet 4.6 leads at 93.8% across all 5 dimensions. Interactive leaderboard with per-model detail panels.",
+    cta: "Read the Report →",
+    href: "/reports/model-showdown/",
+    docNo: "RM-2026-03-MS",
+  },
+  {
+    imgFn: mcpToolImg,
+    img: undefined,
+    label: "March 2026",
+    title: "Can LLMs Use Real-World Tools?",
+    summary: "We gave 39 models access to a Rivian owner's real driving and charging data via MCP tools and asked them to summarize 10 days of activity. Most can call tools. Far fewer call the right tools.",
+    cta: "Read the Report →",
+    href: "/reports/mcp-tool-test/",
+    docNo: "RM-2026-03-MCP",
+  },
+  {
+    imgFn: carWashImg,
+    img: undefined,
+    label: "February 2026",
+    title: "The Car Wash Test: Do LLMs Have Common Sense?",
+    summary: "We tested 131 AI models with one simple question: \"Should I walk or drive to the car wash?\" Only 24% figured out you need to bring your car. Interactive report with charts and full model comparison.",
+    cta: "Read the Report →",
+    href: "/reports/car-wash-test/",
+    docNo: "RM-2026-02-CW",
+  },
+  {
+    imgFn: codingAgentImg,
+    img: undefined,
+    label: "December 2025",
+    title: "Weekend Coding Agent",
+    summary: "Want to understand how AI coding agents actually work? We built one from scratch — and documented every step. This is the tutorial we wish existed when we started.",
+    cta: "Read the Tutorial →",
+    href: "/reports/coding-agent/",
+    docNo: "RM-2025-12-WCA",
+    requiresSubsite: true,
+  },
+  {
+    imgFn: summitImg,
+    img: undefined,
+    label: "November 2025",
+    title: "AI Engineering Code Summit 2025",
+    summary: "We gathered leading coding agent builders, engineers, and researchers to share what's actually working. Here's what we learned.",
+    cta: "Read the Report →",
+    href: "/reports/aiecode-2025-11/",
+    docNo: "RM-2025-11-AIECODE",
+    requiresSubsite: true,
+  },
+  {
+    imgFn: juneReportImg,
+    img: undefined,
+    label: "June 2025",
+    title: "June 2025 Coding Agent Report",
+    summary: "We tested 15 leading AI coding tools and documented the strengths, weaknesses, and surprises. Clear recommendations for different workflows and experience levels.",
+    cta: "Read the Full Report (PDF) →",
+    href: "/reports/june-2025-coding-agents.pdf",
+    external: true,
+    docNo: "RM-2025-06-CAR",
+  },
+];
+
+const visibleReports = reports.filter(
+  (r) => !r.requiresSubsite || subsiteReportExists(r.href),
+);
 ---
-<BaseLayout pageTitle="Reports" description="In-depth reports and analysis from Focus.ai" category="studio">
-  <div class="space-y-12">
-    <h2 class="text-4xl sm:text-7xl font-bold font-fraunces mb-8">
-      Reports & Deep Dives
-    </h2>
+<BaseLayout
+  pageTitle="Research Reports | TheFocus.AI Labs"
+  description="In-depth reports and analysis from TheFocus.AI Labs — model evaluations, tool-use benchmarks, and research on where AI-assisted software is actually headed."
+  category="studio"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="bg-paper border border-void shadow-none lg:shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] flex flex-col lg:flex-row mb-12 overflow-hidden">
 
-    <!-- Model Showdown — March 2026 -->
-    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {modelShowdownImg && <Image src={modelShowdownImg()} alt="Model Showdown" class="w-full max-w-md rounded border" />}
-      <div class="flex-1">
-        <p class="text-sm text-gray-500 mb-1">March 2026</p>
-        <h3 class="text-2xl font-bold mb-2">Testing 48 LLMs Across 5 Dimensions for $4.63</h3>
-        <p class="mb-4 text-lg">Which model should you actually use? We tested 48 models across reasoning, knowledge, instruction following, coding, and MCP tool use. Claude Sonnet 4.6 leads at 93.8% across all 5 dimensions. Interactive leaderboard with per-model detail panels.</p>
-        <a href="/reports/model-showdown/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
+      <!-- Blue Binding Strip -->
+      <div class="w-full lg:w-20 bg-rand-blue flex lg:flex-col justify-between items-center py-4 lg:py-8 shrink-0 lg:border-r border-void">
+        <div class="text-white font-mono text-xs rotate-0 lg:-rotate-90 whitespace-nowrap tracking-[0.3em] font-bold">
+          THEFOCUS.AI LABS
+        </div>
       </div>
-    </div>
 
-    <!-- MCP Tool Test — March 2026 -->
-    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {mcpToolImg && <Image src={mcpToolImg()} alt="MCP Tool Eval" class="w-full max-w-md rounded border" />}
-      <div class="flex-1">
-        <p class="text-sm text-gray-500 mb-1">March 2026</p>
-        <h3 class="text-2xl font-bold mb-2">Can LLMs Use Real-World Tools?</h3>
-        <p class="mb-4 text-lg">We gave 39 models access to a Rivian owner's real driving and charging data via MCP tools and asked them to summarize 10 days of activity. Most can call tools. Far fewer call the right tools.</p>
-        <a href="/reports/mcp-tool-test/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
-      </div>
-    </div>
+      <!-- Main Content -->
+      <div class="flex-1 p-6 md:p-8 lg:p-12 relative">
 
-    <!-- Car Wash Test — February 2026 -->
-    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {carWashImg && <Image src={carWashImg()} alt="The Car Wash Test" class="w-full max-w-md rounded border" />}
-      <div class="flex-1">
-        <p class="text-sm text-gray-500 mb-1">February 2026</p>
-        <h3 class="text-2xl font-bold mb-2">The Car Wash Test: Do LLMs Have Common Sense?</h3>
-        <p class="mb-4 text-lg">We tested 131 AI models with one simple question: "Should I walk or drive to the car wash?" Only 24% figured out you need to bring your car. Interactive report with charts and full model comparison.</p>
-        <a href="/reports/car-wash-test/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
-      </div>
-    </div>
+        <!-- Background Pattern -->
+        <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+          <svg width="400" height="400" viewBox="0 0 100 100">
+            <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.5" />
+            <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.5" />
+            <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="0.5" />
+            <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="0.5" />
+          </svg>
+        </div>
 
-    <!-- Weekend Coding Agent — December 2025 -->
-    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {codingAgentImg && <Image src={codingAgentImg()} alt="Weekend Coding Agent" class="w-full max-w-md rounded border" />}
-      <div class="flex-1">
-        <p class="text-sm text-gray-500 mb-1">December 2025</p>
-        <h3 class="text-2xl font-bold mb-2">Weekend Coding Agent</h3>
-        <p class="mb-4 text-lg">Want to understand how AI coding agents actually work? We built one from scratch—and documented every step. This is the tutorial we wish existed when we started.</p>
-        <a href="/reports/coding-agent/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Tutorial</a>
-      </div>
-    </div>
+        <!-- Document Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start mb-12 border-b-2 border-void pb-6 gap-4 relative z-10">
+          <div class="font-mono text-xs space-y-1">
+            <p class="font-bold">PROJECT: TheFocus.AI Research Division</p>
+            <p>DOC. NO: RM-REPORTS-INDEX</p>
+            <p class="text-gray-600">TheFocus.AI Labs • Est. 2024</p>
+          </div>
+          <div class="font-mono text-xs font-bold border border-void px-3 py-1 bg-white shadow-sm">
+            {visibleReports.length} REPORTS
+          </div>
+        </div>
 
-    <!-- AI Engineering Code Summit — November 2025 -->
-    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {summitImg && <Image src={summitImg()} alt="AI Engineering Code Summit 2025" class="w-full max-w-md rounded border" />}
-      <div class="flex-1">
-        <p class="text-sm text-gray-500 mb-1">November 2025</p>
-        <h3 class="text-2xl font-bold mb-2">AI Engineering Code Summit 2025</h3>
-        <p class="mb-4 text-lg">We gathered leading coding agent builders, engineers, and researchers to share what's actually working. Here's what we learned.</p>
-        <a href="/reports/aiecode-2025-11/" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Read the Report</a>
-      </div>
-    </div>
+        <!-- Title Block -->
+        <div class="mb-12 relative z-10">
+          <h1 class="text-6xl md:text-8xl font-sans font-black text-void leading-[0.85] tracking-tight mb-8">
+            REPORTS &<br/>
+            <span class="text-rand-blue">DEEP DIVES</span>
+          </h1>
+          <p class="font-sans font-medium text-lg max-w-2xl leading-snug border-l-4 border-alert-red pl-6 py-2">
+            Model evaluations, tool-use benchmarks, and honest field reports on where AI-assisted software is actually headed. Written by the team that ships production AI for Samsung, Tesla, Perplexity, and Rivian.
+          </p>
+        </div>
 
-    <!-- June 2025 Coding Agent Report — June 2025 -->
-    <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row gap-6 items-center">
-      {juneReportImg && <Image src={juneReportImg()} alt="June 2025 Coding Agent Report" class="w-full max-w-md rounded border" />}
-      <div class="flex-1">
-        <p class="text-sm text-gray-500 mb-1">June 2025</p>
-        <h3 class="text-2xl font-bold mb-2">June 2025 Coding Agent Report</h3>
-        <p class="mb-4 text-lg">We tested 15 leading AI coding tools and documented the strengths, weaknesses, and surprises. Clear recommendations for different workflows and experience levels.</p>
-        <a href="/reports/june-2025-coding-agents.pdf" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold" target="_blank" rel="noopener">Read the Full Report (PDF)</a>
+        <!-- Reports List -->
+        <section class="relative z-10 space-y-6">
+          {visibleReports.map((report) => (
+            <article class="border border-void bg-white hover:bg-[#f8f8f6] transition-colors duration-200 group">
+              <div class="grid md:grid-cols-12 gap-0">
+                {report.imgFn && (
+                  <div class="md:col-span-5 border-b md:border-b-0 md:border-r border-void">
+                    <div class="aspect-[4/3] md:aspect-auto md:h-full bg-surface overflow-hidden">
+                      <Image
+                        src={report.imgFn()}
+                        alt={report.title}
+                        class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
+                <div class={`${report.imgFn ? 'md:col-span-7' : 'md:col-span-12'} p-6 md:p-8 flex flex-col`}>
+                  <div class="mb-4 flex items-center gap-2 flex-wrap">
+                    <span class="font-mono text-xs font-bold border border-void px-3 py-1 bg-rand-blue text-white">
+                      {report.label}
+                    </span>
+                    <span class="font-mono text-[10px] text-void/50">{report.docNo}</span>
+                  </div>
+
+                  <h3 class="text-2xl md:text-3xl font-sans font-black text-void mb-4 leading-tight group-hover:text-rand-blue transition-colors duration-200">
+                    <a
+                      href={report.href}
+                      target={report.external ? "_blank" : undefined}
+                      rel={report.external ? "noopener" : undefined}
+                    >
+                      {report.title}
+                    </a>
+                  </h3>
+
+                  <p class="text-base text-void/80 leading-relaxed mb-6 flex-grow">
+                    {report.summary}
+                  </p>
+
+                  <a
+                    href={report.href}
+                    target={report.external ? "_blank" : undefined}
+                    rel={report.external ? "noopener" : undefined}
+                    class="inline-block self-start px-6 py-3 bg-rand-blue text-white font-bold uppercase text-[11px] tracking-[0.3em] hover:bg-opacity-90 transition-opacity duration-200 font-mono"
+                  >
+                    {report.cta}
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <!-- Consulting Bridge -->
+        <div class="mt-16 pt-8 border-t-2 border-void relative z-10">
+          <div class="bg-[#f8f8f6] border border-void p-8 flex flex-col md:flex-row md:items-center gap-6">
+            <div class="flex-1">
+              <p class="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-rand-blue mb-2">For Practitioners Ready to Build</p>
+              <p class="font-sans text-lg font-bold text-void mb-1">The team behind this research also ships production AI.</p>
+              <p class="font-sans text-sm text-void/70">Principal-led engagements. From tribal knowledge to production AI — in weeks, not quarters.</p>
+            </div>
+            <a
+              href="/capabilities"
+              class="inline-block shrink-0 px-6 py-3 bg-void text-white font-bold uppercase text-[11px] tracking-[0.3em] hover:bg-rand-blue transition-colors duration-200 font-mono"
+            >
+              See the Framework →
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer Notice -->
+        <div class="mt-12 pt-8 border-t border-void relative z-10">
+          <div class="font-mono text-xs text-center">
+            <p class="font-bold uppercase tracking-[0.3em] text-rand-blue mb-2">
+              TheFocus.AI Research Division
+            </p>
+            <p class="text-void/70 uppercase tracking-wider">
+              Exploring the future of AI-powered software development
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

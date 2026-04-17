@@ -10,7 +10,7 @@ description: "From AI pilots to production systems — how we help leadership mo
 image: agent-habitat-structure.png
 ---
 
-TheFocus.AI partners with founders, CEOs, and product leaders to move from AI pilots to production systems. Founded by Ben Schippers and Will Schenk — 40+ years building software products — every engagement is principal-led. No junior analysts, no endless discovery phases. Production AI in weeks, not quarters.
+TheFocus.AI partners with executive sponsors, IT, and line-of-business leaders to move from AI pilots to production systems. Founded by Ben Schippers and Will Schenk — 40+ years building software products — every engagement is principal-led. No junior analysts, no endless discovery phases. Production AI in weeks, not quarters.
 
 **Clients include** Upper Hand, Perplexity, Samsung, Tesla, Rivian, Con Edison, and WeaveGrid.
 
