@@ -1,30 +1,33 @@
 ---
-// Shared "Built on Habitat OS" snippet. Used on offerings and related pages.
+// Shared "Built on Habitat OS" snippet. Used on offerings, case studies, and related pages.
 // Reinforces the two-level noun model: Habitat OS = platform, a Habitat = the deployed instance.
+//
+// Variants:
+//   - "chip":   Compact pill. Use inside dense sections (offering "How we fix this", case study headers).
+//   - "card":   Prominent block with a lede. Use on capabilities/marketing surfaces where the
+//               platform deserves explanation, not just attribution.
+//
+// "inline" is kept as an alias for "chip" for backwards compatibility with existing callers.
 interface Props {
-  variant?: "inline" | "card";
+  variant?: "chip" | "card" | "inline";
   lede?: string;
 }
-const { variant = "inline", lede } = Astro.props;
+const { variant = "chip", lede } = Astro.props;
+const useChip = variant === "chip" || variant === "inline";
 const defaultLede =
   "A Habitat is a production AI system that carries your team's rules, learns from decisions, and runs autonomously on Habitat OS — our enterprise runtime.";
 const copy = lede ?? defaultLede;
 ---
 
-{variant === "inline" ? (
-  <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-sm">
-    <span class="inline-flex items-center gap-2 text-petrol font-medium shrink-0">
-      <span class="w-2 h-2 rounded-full bg-petrol"></span>
-      Built on Habitat OS
-    </span>
-    <span class="text-graphite leading-relaxed">{copy}</span>
-    <a
-      href="/habitat-os"
-      class="text-petrol font-medium whitespace-nowrap hover:underline shrink-0"
-    >
-      Learn about the platform &rarr;
-    </a>
-  </div>
+{useChip ? (
+  <a
+    href="/habitat-os"
+    class="inline-flex items-center gap-2 text-xs font-medium text-petrol bg-petrol/5 border border-petrol/20 px-3 py-1.5 rounded-full hover:bg-petrol/10 hover:border-petrol/40 transition-colors"
+  >
+    <span class="w-1.5 h-1.5 rounded-full bg-petrol"></span>
+    Built on Habitat OS
+    <span class="opacity-60">&rarr;</span>
+  </a>
 ) : (
   <a
     href="/habitat-os"
