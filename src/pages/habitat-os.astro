@@ -26,7 +26,14 @@ const pillars = [
   },
 ];
 
-const tier1Habitats = [
+type HabitatEntry = {
+  title: string;
+  blurb: string;
+  href?: string;
+  levels?: string;
+};
+
+const habitatLibrary: HabitatEntry[] = [
   {
     title: "Monthly Close",
     blurb: "Formalize the close checklist, reconciliation rules, and approval logic into a Habitat that runs every month.",
@@ -57,16 +64,9 @@ const tier1Habitats = [
     href: "/offerings/executive-reporting",
     levels: "L2 → L3",
   },
-];
-
-const tier2Habitats = [
   {
     title: "QuickBooks Sync",
     blurb: "Project accounting from QuickBooks to your reporting tools, with tribal cost codes formalized into machine-readable rules.",
-  },
-  {
-    title: "Recruiting Ops",
-    blurb: "Pipeline operations across your ATS — sourcing, screening, scheduling — with clear escalation paths when the Habitat is uncertain.",
   },
   {
     title: "HR Lifecycle",
@@ -205,7 +205,7 @@ const faqs = [
         Habitat OS.<br/>Production AI,<br/>under your control.
       </h1>
       <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-4 max-w-3xl">
-        Habitat OS is the enterprise runtime every Habitat we build runs on. Deployed in your cloud. Auditable at the core. Operated by the principals who built it. No black boxes, no offshore support tiers, no lock-in.
+        The enterprise runtime for every Habitat we build. Your cloud. Auditable core. Run by the principals who built it.
       </p>
       <p class="text-base text-graphite/70 mb-10 max-w-3xl">
         Built for CISOs who have said "no" to AI rollouts and are looking for the "yes" that doesn't cost them their standards.
@@ -333,41 +333,33 @@ const faqs = [
         These are the Habitats we've built and shipped. Each one is a starting point — tailored to your processes, running on your infrastructure, extended to your integrations. You don't start from scratch.
       </p>
 
-      <!-- Tier 1 — Productized -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Productized</span>
-          <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">Full offering pages available</span>
-        </div>
-        <div class="grid md:grid-cols-2 gap-4">
-          {tier1Habitats.map((h) => (
-            <a href={h.href} class="group bg-paper border border-ink/10 rounded-2xl p-5 md:p-6 hover:border-petrol/40 hover:shadow-sm transition-all">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-0.5 rounded">{h.levels}</span>
-                <span class="text-petrol text-sm opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+      <!-- Unified Habitat Library -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        {habitatLibrary.map((h) => {
+          const Tag = h.href ? 'a' : 'div';
+          const props = h.href
+            ? { href: h.href, class: "group bg-paper border border-ink/10 rounded-2xl p-5 md:p-6 hover:border-petrol/40 hover:shadow-sm transition-all flex flex-col" }
+            : { class: "bg-paper border border-ink/10 rounded-2xl p-5 md:p-6 flex flex-col" };
+          return (
+            <Tag {...props}>
+              <div class="flex items-center justify-between mb-2 min-h-[1.5rem]">
+                {h.levels ? (
+                  <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-0.5 rounded">{h.levels}</span>
+                ) : (
+                  <span class="text-xs font-mono text-graphite/60 uppercase tracking-wider">Template</span>
+                )}
+                {h.href && <span class="text-petrol text-sm opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>}
               </div>
-              <h3 class="text-lg font-bold text-ink mb-2 group-hover:text-petrol transition-colors">{h.title}</h3>
+              <h3 class={`text-lg font-bold text-ink mb-2 ${h.href ? 'group-hover:text-petrol transition-colors' : ''}`}>{h.title}</h3>
               <p class="text-sm text-graphite leading-relaxed">{h.blurb}</p>
-            </a>
-          ))}
-        </div>
+            </Tag>
+          );
+        })}
       </div>
 
-      <!-- Tier 2 — Templates -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Template</span>
-          <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">Built before, ready to tailor</span>
-        </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {tier2Habitats.map((h) => (
-            <div class="bg-paper border border-ink/10 rounded-2xl p-5">
-              <h3 class="text-base font-bold text-ink mb-2">{h.title}</h3>
-              <p class="text-sm text-graphite leading-relaxed">{h.blurb}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <p class="text-base text-graphite/80 max-w-2xl mb-12">
+        And a lot more behind the scenes. If it's a repeating workflow your team cares about, it can be a Habitat.
+      </p>
 
       <!-- Tier 3 — Custom -->
       <div class="bg-paper border-2 border-dashed border-petrol/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6">
