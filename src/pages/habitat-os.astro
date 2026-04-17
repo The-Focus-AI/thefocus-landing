@@ -289,10 +289,6 @@ const faqs = [
     a: "Because we didn't want to rebuild enterprise platform security from scratch while also delivering agent systems. Vercel gives us a platform with SOC 2 Type 2, ISO 27001:2022, PCI DSS, HIPAA support, Secure Compute (dedicated VPCs with static egress IPs), and a managed firewall with DDoS mitigation — already audited, already battle-tested. Our job is the Habitat runtime, the integrations, and the principal relationship. Everything below that, we inherit from a platform that's already trusted by teams with CISOs who don't accept \"we're working on it.\"",
   },
   {
-    q: "How is pricing structured?",
-    a: "Habitat OS Runtime starts at $2,000 per Habitat per month. Your first Habitat is delivered through a fixed-fee Build & Ship engagement (separate project cost). Volume pricing applies at 10+ Habitats, and custom arrangements are available for regulated industries.",
-  },
-  {
     q: "How is this different from LangChain, Bedrock Agents, or Copilot Studio?",
     a: "LangChain is a framework, not a managed runtime — you're on your own for security, identity, and operations. Hyperscaler agent platforms lock you to one vendor and don't carry your cross-SaaS tribal knowledge. Copilot Studio is Microsoft-shaped and Microsoft-operated. Habitat OS is a dedicated runtime for agents that carry your team's rules across whatever tools you actually use.",
   },
@@ -812,57 +808,6 @@ const faqs = [
         </div>
       </div>
     </section>
-  </div>
-
-  <!-- Pricing -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool/30">
-    <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
-      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Pricing</p>
-      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">Two line items. Predictable from day one.</h2>
-      <p class="text-lg text-graphite mb-12 max-w-3xl">
-        Enterprise AI shouldn't come with surprise bills. Every engagement has a fixed-fee build and a predictable monthly runtime.
-      </p>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- Build & Ship -->
-        <div class="bg-paper border border-ink/10 rounded-2xl p-6 md:p-8">
-          <p class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded inline-block mb-4">Project fee</p>
-          <h3 class="text-2xl font-bold text-ink mb-2">Build & Ship</h3>
-          <p class="text-sm text-graphite mb-4">2-6 weeks. Fixed scope, fixed fee. Delivers your first production Habitat.</p>
-          <p class="text-3xl font-bold text-petrol mb-2">Custom</p>
-          <p class="text-xs text-graphite italic mb-6">Scoped during Assessment & Roadmap.</p>
-          <ul class="space-y-2 text-sm text-graphite">
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Workflow discovery and formalization</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Habitat design, build, and deployment</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Integration scaffolding</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Evals and runbooks</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Team handoff documentation</li>
-          </ul>
-        </div>
-
-        <!-- Habitat OS Runtime -->
-        <div class="bg-ink text-paper rounded-2xl p-6 md:p-8">
-          <p class="text-xs font-mono text-paper/70 border border-paper/20 px-2 py-1 rounded inline-block mb-4">Monthly subscription</p>
-          <h3 class="text-2xl font-bold text-paper mb-2">Habitat OS Runtime</h3>
-          <p class="text-sm text-paper/70 mb-4">Per-Habitat monthly fee. Includes the platform and the people operating it.</p>
-          <p class="text-3xl font-bold text-paper mb-1">
-            Starting at <span class="text-petrol">$2,000</span>
-          </p>
-          <p class="text-xs text-paper/60 italic mb-6">per Habitat, per month. Volume pricing at 10+.</p>
-          <ul class="space-y-2 text-sm text-paper/80">
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Runtime hosting and observability</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Identity and access layer</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Model routing and fallback</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Memory and audit log storage</li>
-            <li class="flex gap-2"><span class="text-petrol">&bull;</span> Principal-led on-call support</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="text-sm text-graphite mt-8 max-w-3xl">
-        <strong class="text-ink">What's separate:</strong> LLM inference tokens pass through at provider cost. New Habitats are scoped into subsequent Build & Ship engagements. Regulated industries and 10+ Habitat deployments use custom pricing — talk to us.
-      </p>
-    </div>
   </div>
 
   <!-- FAQ -->
