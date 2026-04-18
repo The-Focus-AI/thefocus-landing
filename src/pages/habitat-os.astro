@@ -289,6 +289,10 @@ const faqs = [
     a: "Because we didn't want to rebuild enterprise platform security from scratch while also delivering agent systems. Vercel gives us a platform with SOC 2 Type 2, ISO 27001:2022, PCI DSS, HIPAA support, Secure Compute (dedicated VPCs with static egress IPs), and a managed firewall with DDoS mitigation — already audited, already battle-tested. Our job is the Habitat runtime, the integrations, and the principal relationship. Everything below that, we inherit from a platform that's already trusted by teams with CISOs who don't accept \"we're working on it.\"",
   },
   {
+    q: "How do we pay for the AI models themselves?",
+    a: "We do — on your behalf. Habitat OS engagements bill on a single monthly invoice that includes runtime, principal-led operations, and metered model usage. For each tool in your Habitat we recommend the best model for the job (Claude for reasoning, Gemini for long context, GPT for structured tools, open-source when it fits), and we carry the provider relationship ourselves — the MSAs, the rate limits, the deprecations, the BAAs. One contract, one invoice, one accountable team. Regulated customers who must hold their own provider contracts can plug their own keys in; we still carry the operational relationship so your procurement team doesn't have to manage five vendors to ship one Habitat.",
+  },
+  {
     q: "How is this different from LangChain, Bedrock Agents, or Copilot Studio?",
     a: "LangChain is a framework, not a managed runtime — you're on your own for security, identity, and operations. Hyperscaler agent platforms lock you to one vendor and don't carry your cross-SaaS tribal knowledge. Copilot Studio is Microsoft-shaped and Microsoft-operated. Habitat OS is a dedicated runtime for agents that carry your team's rules across whatever tools you actually use.",
   },
@@ -808,6 +812,53 @@ const faqs = [
         </div>
       </div>
     </section>
+  </div>
+
+  <!-- Commercials -->
+  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-cool/30">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-4 font-medium">Commercials</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-ink mb-4">One partner. One invoice. The right model for each job.</h2>
+      <p class="text-lg text-graphite mb-4 max-w-3xl">
+        Enterprise AI deals usually force three procurement tracks in parallel: the consultancy, the cloud, and every LLM provider. Habitat OS collapses that into a single commercial relationship.
+      </p>
+      <p class="text-base text-graphite/80 mb-12 max-w-3xl">
+        We recommend and fund the right model for each part of your Habitat. You pay for what the Habitat actually uses — billed through us, on one monthly invoice, itemized down to the tool and the model.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-10">
+        <div class="bg-paper border border-ink/10 rounded-2xl p-6 flex flex-col">
+          <span class="text-xs font-mono text-petrol border border-petrol/30 bg-petrol/5 px-2.5 py-1 rounded self-start mb-4">Model-agnostic by design</span>
+          <h3 class="text-lg font-bold text-ink mb-3">You choose. We recommend.</h3>
+          <p class="text-sm text-graphite leading-relaxed">
+            Claude for reasoning. Gemini for long context. GPT for structured tools. Open-source when it fits. We document the model choice for every tool in your Habitat — and we change it when something better ships, without a procurement cycle.
+          </p>
+        </div>
+
+        <div class="bg-paper border border-ink/10 rounded-2xl p-6 flex flex-col">
+          <span class="text-xs font-mono text-petrol border border-petrol/30 bg-petrol/5 px-2.5 py-1 rounded self-start mb-4">Funded by us</span>
+          <h3 class="text-lg font-bold text-ink mb-3">We carry the contracts.</h3>
+          <p class="text-sm text-graphite leading-relaxed">
+            Anthropic, OpenAI, Google, Replicate, Vercel AI Gateway — whatever the Habitat needs. Provider MSAs, rate limits, model deprecations, BAAs, and invoice reconciliation are our problem, not your procurement team's.
+          </p>
+        </div>
+
+        <div class="bg-paper border border-ink/10 rounded-2xl p-6 flex flex-col">
+          <span class="text-xs font-mono text-petrol border border-petrol/30 bg-petrol/5 px-2.5 py-1 rounded self-start mb-4">One invoice</span>
+          <h3 class="text-lg font-bold text-ink mb-3">You pay for usage. Itemized.</h3>
+          <p class="text-sm text-graphite leading-relaxed">
+            Metered monthly and itemized by Habitat, by tool, and by model. No juggling provider invoices, no reconciling tokens against vendor bills. What you pay is what the Habitat actually consumed.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-ink text-paper rounded-2xl p-6 md:p-8">
+        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">The math, stated plainly</p>
+        <p class="text-base text-paper/80 leading-relaxed max-w-3xl">
+          Annual commitments, volume tiers, and spend caps are available on request. Regulated industries that require customer-provided model keys can plug their own contracts in — we still carry the operational relationship with the providers. Everything is documented monthly, in plain English. We'd rather be predictable than clever about billing.
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- FAQ -->
