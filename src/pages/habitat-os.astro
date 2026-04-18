@@ -694,7 +694,7 @@ const faqs = [
         {lifecyclePhases.map((phase) => (
           <div class="grid md:grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-start p-6 md:p-8 bg-paper/5 border border-paper/10 rounded-2xl">
             <div class="flex items-center gap-4 md:flex-col md:items-start md:gap-2">
-              <span class="text-4xl md:text-5xl font-bold text-petrol font-mono">{phase.step}</span>
+              <span class="text-4xl md:text-5xl font-bold text-petrol-light font-mono">{phase.step}</span>
               <span class="text-xs font-mono text-paper/60 border border-paper/20 px-2 py-1 rounded whitespace-nowrap">{phase.duration}</span>
             </div>
             <div>
@@ -743,7 +743,7 @@ const faqs = [
       <div class="mt-10 grid md:grid-cols-2 gap-6">
         <!-- Vercel partnership callout -->
         <div class="bg-ink text-paper border border-ink rounded-2xl p-6 md:p-8 flex flex-col">
-          <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">Secured on Vercel's AI Cloud</p>
+          <p class="text-xs uppercase tracking-[0.2em] text-petrol-light mb-3 font-medium">Secured on Vercel's AI Cloud</p>
           <h3 class="text-xl font-bold mb-3 text-paper">Enterprise controls inherited on day one.</h3>
           <p class="text-sm text-paper/70 leading-relaxed mb-5">
             The managed Habitat OS runtime is deployed on Vercel — our enterprise platform partner. Customers running in our managed single-tenant environment inherit Vercel's platform certifications, network isolation, and edge protection at the infrastructure layer. For customer-VPC deployments, the same runtime is delivered into your cloud boundary.
@@ -751,7 +751,7 @@ const faqs = [
           <ul class="space-y-2.5 mb-6">
             {vercelGuarantees.map((g) => (
               <li class="flex items-start gap-2.5 text-sm">
-                <span class="text-petrol mt-0.5 flex-shrink-0">&#x2713;</span>
+                <span class="text-petrol-light mt-0.5 flex-shrink-0">&#x2713;</span>
                 <span>
                   <span class="font-bold text-paper">{g.label}</span>
                   <span class="text-paper/60"> — {g.detail}</span>
@@ -853,7 +853,7 @@ const faqs = [
       </div>
 
       <div class="bg-ink text-paper rounded-2xl p-6 md:p-8">
-        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">The math, stated plainly</p>
+        <p class="text-xs uppercase tracking-[0.2em] text-petrol-light mb-3 font-medium">The math, stated plainly</p>
         <p class="text-base text-paper/80 leading-relaxed max-w-3xl">
           Annual commitments, volume tiers, and spend caps are available on request. Regulated industries that require customer-provided model keys can plug their own contracts in — we still carry the operational relationship with the providers. Everything is documented monthly, in plain English. We'd rather be predictable than clever about billing.
         </p>
