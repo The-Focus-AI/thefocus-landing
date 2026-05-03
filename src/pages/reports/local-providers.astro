@@ -1,0 +1,782 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import '../../styles/reports/local-providers.css';
+import heroImg from '../../content/assets/cards/local-providers-tufte-frontier.png';
+---
+<BaseLayout
+  pageTitle="Local Providers — Full Assessment | TheFocus.AI Labs"
+  description="A comprehensive evaluation of running open-weights models locally: which model, which runtime, with thinking on or off. 7 model families × 3 runtimes × 5 dimensions on a 64GB Mac."
+  category="studio"
+  fullWidth
+  bodyClass="bg-[#e8e6df]"
+>
+
+<div class="report-scope">
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <div class="brand-mark">THEFOCUS.AI LABS</div>
+  <div class="meta">
+    <strong>PROJECT:</strong> Umwelten Local Providers Matrix<br>
+    <strong>DOC. NO:</strong> LP-2026-05<br>
+    <strong>DATE:</strong> May 2026
+  </div>
+  <h1>Local Providers<br><span>Full Assessment</span></h1>
+  <p class="subtitle">A comprehensive evaluation of running open-weights models locally: which model, which runtime, with thinking on or off. Plus an experiment in giving small models compile-error feedback to see whether they can self-correct.</p>
+  <div class="cover-image">
+    <Image src={heroImg} alt="Score vs. Wall-Clock Time efficiency frontier — gemma-4-26b-a4b leads at 95% in 4 minutes" class="cover-img" />
+  </div>
+</section>
+
+<!-- ============ REPORT BODY ============ -->
+<article class="report">
+
+  <!-- ======== SECTION: What We Tested ======== -->
+  <h2><span class="num"></span> What We Tested</h2>
+
+  <p>7 model families across 3 runtimes, producing 20 (model, runtime, thinking-mode) cells. All models run on a single 64&nbsp;GB Apple Silicon machine.</p>
+
+  <h3>The Models</h3>
+
+  <div class="model-cards">
+    <div class="model-card">
+      <div class="mc-name">Gemma 4 27B-A4B</div>
+      <div class="mc-row"><strong>Params:</strong> 27B (4B active)</div>
+      <div class="mc-row"><strong>Released:</strong> Apr 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 16 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> Google</div>
+      <span class="mc-badge moe">MoE</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">Gemma 4 31B</div>
+      <div class="mc-row"><strong>Params:</strong> 31B</div>
+      <div class="mc-row"><strong>Released:</strong> Apr 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 19 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> Google</div>
+      <span class="mc-badge dense">Dense</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">Gemma 4 E4B</div>
+      <div class="mc-row"><strong>Params:</strong> ~4B</div>
+      <div class="mc-row"><strong>Released:</strong> Apr 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 3 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> Google</div>
+      <span class="mc-badge small">Small</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">Gemma 4 E2B</div>
+      <div class="mc-row"><strong>Params:</strong> ~2B</div>
+      <div class="mc-row"><strong>Released:</strong> Apr 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 1.5 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> Google</div>
+      <span class="mc-badge small">Small</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">GPT-OSS 20B</div>
+      <div class="mc-row"><strong>Params:</strong> 20B</div>
+      <div class="mc-row"><strong>Released:</strong> Mar 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> MXFP4 (native)</div>
+      <div class="mc-row"><strong>On disk:</strong> 12 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> OpenAI</div>
+      <span class="mc-badge dense">Dense</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">GLM 4.7 Flash</div>
+      <div class="mc-row"><strong>Params:</strong> ~7B</div>
+      <div class="mc-row"><strong>Released:</strong> Feb 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 17 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> Zhipu AI</div>
+      <span class="mc-badge dense">Dense</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">Qwen 3.6 27B</div>
+      <div class="mc-row"><strong>Params:</strong> 27B</div>
+      <div class="mc-row"><strong>Released:</strong> Apr 2026</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 16 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> Alibaba</div>
+      <span class="mc-badge dense">Dense</span>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">Nemotron 3 Nano 4B</div>
+      <div class="mc-row"><strong>Params:</strong> 4B</div>
+      <div class="mc-row"><strong>Released:</strong> Mar 2025</div>
+      <div class="mc-row"><strong>Quant:</strong> Q4_K_M</div>
+      <div class="mc-row"><strong>On disk:</strong> 2.9 GB</div>
+      <div class="mc-row"><strong>Developer:</strong> NVIDIA</div>
+      <span class="mc-badge small">Small</span>
+    </div>
+  </div>
+
+  <h3>The Runtimes</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Runtime</th>
+          <th>Engine</th>
+          <th>Thinking</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model">Ollama</td>
+          <td>ollama daemon</td>
+          <td>Default (model decides)</td>
+          <td>Q4_K_M for all; Go-template chat approximations</td>
+        </tr>
+        <tr>
+          <td class="model">llamaswap</td>
+          <td>llama-server + llama-swap</td>
+          <td>On (default)</td>
+          <td><code>--ctx-size 0 --jinja</code> &mdash; native chat template</td>
+        </tr>
+        <tr>
+          <td class="model">llamaswap-nothink</td>
+          <td>llama-server + llama-swap</td>
+          <td>Off (<code>enable_thinking=false</code>)</td>
+          <td>Same binary, thinking suppressed per-request</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The 5 Evaluation Dimensions</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Scoring</th>
+          <th class="num">Max</th>
+          <th>Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="model">Instruction Following</td><td>Deterministic constraint checking</td><td class="num">/30</td><td>6 tasks, 5 pts each</td></tr>
+        <tr><td class="model">Reasoning</td><td>LLM judge (Claude Haiku 4.5)</td><td class="num">/20</td><td>4 puzzles, 5 pts each</td></tr>
+        <tr><td class="model">Coding (Write)</td><td>Compile + run + verify output</td><td class="num">/126</td><td>6 problems &times; 3 languages &times; 7 pts</td></tr>
+        <tr><td class="model">Coding (Fix)</td><td>Hidden test harness</td><td class="num">/25</td><td>5 buggy JS functions, 5 pts each</td></tr>
+        <tr><td class="model">Tool Math</td><td>Correctness + tool-call counting</td><td class="num">/25</td><td>5 multi-step arithmetic tasks</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <!-- ======== SECTION: TL;DR ======== -->
+  <h2><span class="num"></span> The Surprising Conclusions</h2>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-number">95.0%</div>
+      <div class="stat-label">Best Combined</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">4m13s</div>
+      <div class="stat-label">Wall Clock</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">20</div>
+      <div class="stat-label">Cells Tested</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Dimensions</div>
+    </div>
+  </div>
+
+  <ol>
+    <li><strong>The runtime barely matters.</strong> Ollama and llamaswap score within a few points of each other on every model when you control for quantization and thinking mode.</li>
+    <li><strong>Thinking mode usually hurts on short-horizon tasks</strong> &mdash; except for tool-calling, where it&rsquo;s required.</li>
+    <li><strong>gpt-oss-20b on llamaswap (thinking on) is the best small open model for tool-calling.</strong> 23/25.</li>
+    <li><strong>gemma-4-26b-a4b is the best value model overall.</strong> 95.0% combined in 4 minutes.</li>
+    <li><strong>Tool-calling is where the matrix falls apart.</strong> Three cells scored 0/25, eight scored &le;5/25.</li>
+    <li><strong>A 4B model cannot fix its own broken code from the compile error.</strong> 0 improvements across 8 retries.</li>
+    <li><strong>Thinking mode can turn 4-minute runs into 1.5-hour runs.</strong> Pure cost, negative benefit on short tasks.</li>
+    <li><strong>gemma-4-31b is paradoxically worse than gemma-4-26b-a4b.</strong> The MoE model with 4B active params outperforms the larger dense variant on tool-calling.</li>
+    <li><strong>The ollama vs llamaswap question is decided by configurability, not performance.</strong></li>
+  </ol>
+
+  <div class="pull-quote">
+    Runtime choice is mostly a wash. What actually moves the needle is which model you load and whether you turn thinking on.
+  </div>
+
+  <hr>
+
+  <!-- ======== SECTION: Overall Results ======== -->
+  <h2><span class="num"></span> Overall Results</h2>
+
+  <!-- Chart 1: Combined Score Leaderboard (horizontal bars) -->
+  <div class="chart-container">
+    <div class="chart-title">Combined Score &mdash; All 20 Cells</div>
+    <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, sans-serif;">
+      <defs>
+        <linearGradient id="bar-top" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0055aa"/>
+          <stop offset="100%" stop-color="#0077dd"/>
+        </linearGradient>
+        <linearGradient id="bar-mid" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0055aa" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#0077dd" stop-opacity="0.6"/>
+        </linearGradient>
+        <linearGradient id="bar-low" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0055aa" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#0077dd" stop-opacity="0.3"/>
+        </linearGradient>
+      </defs>
+      <!-- Grid lines -->
+      <line x1="320" y1="10" x2="320" y2="510" stroke="rgba(26,26,26,0.08)" stroke-width="1"/>
+      <line x1="440" y1="10" x2="440" y2="510" stroke="rgba(26,26,26,0.08)" stroke-width="1"/>
+      <line x1="560" y1="10" x2="560" y2="510" stroke="rgba(26,26,26,0.08)" stroke-width="1"/>
+      <line x1="680" y1="10" x2="680" y2="510" stroke="rgba(26,26,26,0.08)" stroke-width="1"/>
+      <!-- Axis labels -->
+      <text x="320" y="518" text-anchor="middle" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">60%</text>
+      <text x="440" y="518" text-anchor="middle" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">70%</text>
+      <text x="560" y="518" text-anchor="middle" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">80%</text>
+      <text x="680" y="518" text-anchor="middle" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">90%</text>
+      <text x="790" y="518" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">100%</text>
+
+      <!-- Bars: sorted by combined %. barWidth = (score - 50) / 50 * 480. x starts at 200 (label area) -->
+      <!-- 1. gemma-4-26b-a4b llamaswap-nothink 95.0% -->
+      <text x="195" y="30" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma-4-26b-a4b</text>
+      <text x="195" y="42" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">LLAMASWAP-NOTHINK</text>
+      <rect x="200" y="22" width="432" height="18" rx="2" fill="url(#bar-top)"/>
+      <text x="637" y="36" font-size="10" font-weight="700" fill="white" font-family="Courier Prime, monospace">95.0%</text>
+
+      <!-- 2. gpt-oss-20b llamaswap 94.6% -->
+      <text x="195" y="72" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gpt-oss-20b</text>
+      <text x="195" y="84" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">LLAMASWAP</text>
+      <rect x="200" y="64" width="428" height="18" rx="2" fill="url(#bar-top)"/>
+      <text x="633" y="78" font-size="10" font-weight="700" fill="white" font-family="Courier Prime, monospace">94.6%</text>
+
+      <!-- 3. gpt-oss-latest ollama 89.5% -->
+      <text x="195" y="114" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gpt-oss-latest</text>
+      <text x="195" y="126" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">OLLAMA</text>
+      <rect x="200" y="106" width="379" height="18" rx="2" fill="url(#bar-mid)"/>
+      <text x="584" y="120" font-size="10" font-weight="700" fill="white" font-family="Courier Prime, monospace">89.5%</text>
+
+      <!-- 4. gemma-4-26b-a4b llamaswap 86.1% -->
+      <text x="195" y="156" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma-4-26b-a4b</text>
+      <text x="195" y="168" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">LLAMASWAP (THINK)</text>
+      <rect x="200" y="148" width="347" height="18" rx="2" fill="url(#bar-mid)"/>
+      <text x="552" y="162" font-size="10" font-weight="700" fill="white" font-family="Courier Prime, monospace">86.1%</text>
+
+      <!-- 5-6. gemma-4-31b x2 84.0% -->
+      <text x="195" y="198" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma-4-31b</text>
+      <text x="195" y="210" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">BOTH RUNTIMES</text>
+      <rect x="200" y="190" width="326" height="18" rx="2" fill="url(#bar-mid)"/>
+      <text x="531" y="204" font-size="10" font-weight="700" fill="white" font-family="Courier Prime, monospace">84.0%</text>
+
+      <!-- 7. gemma-4-e2b llamaswap-nothink 82.6% -->
+      <text x="195" y="240" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma-4-e2b</text>
+      <text x="195" y="252" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">LLAMASWAP-NOTHINK</text>
+      <rect x="200" y="232" width="313" height="18" rx="2" fill="url(#bar-mid)"/>
+      <text x="518" y="246" font-size="10" font-weight="700" fill="white" font-family="Courier Prime, monospace">82.6%</text>
+
+      <!-- 8. gemma4-26b ollama 79.0% -->
+      <text x="195" y="282" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma4-26b</text>
+      <text x="195" y="294" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">OLLAMA</text>
+      <rect x="200" y="274" width="278" height="18" rx="2" fill="url(#bar-low)"/>
+      <text x="483" y="288" font-size="10" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">79.0%</text>
+
+      <!-- 9-10: glm + qwen ~78% -->
+      <text x="195" y="322" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">glm-4.7-flash</text>
+      <text x="195" y="334" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">OLLAMA</text>
+      <rect x="200" y="314" width="276" height="18" rx="2" fill="url(#bar-low)"/>
+      <text x="481" y="328" font-size="10" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">78.7%</text>
+
+      <text x="195" y="362" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">qwen3.6-27b</text>
+      <text x="195" y="374" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">LLAMASWAP-NOTHINK</text>
+      <rect x="200" y="354" width="273" height="18" rx="2" fill="url(#bar-low)"/>
+      <text x="478" y="368" font-size="10" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">78.4%</text>
+
+      <!-- Remaining cluster 74-77% -->
+      <text x="195" y="402" text-anchor="end" font-size="11" fill="rgba(26,26,26,0.5)">6 more cells</text>
+      <text x="195" y="414" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.35)" font-family="Courier Prime, monospace">73&ndash;78%</text>
+      <rect x="200" y="394" width="259" height="18" rx="2" fill="rgba(26,26,26,0.08)"/>
+      <text x="464" y="408" font-size="10" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">73&ndash;78%</text>
+
+      <!-- Bottom cluster 61-69% -->
+      <text x="195" y="442" text-anchor="end" font-size="11" fill="rgba(26,26,26,0.5)">4 more cells</text>
+      <text x="195" y="454" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.35)" font-family="Courier Prime, monospace">61&ndash;69%</text>
+      <rect x="200" y="434" width="182" height="18" rx="2" fill="rgba(26,26,26,0.06)"/>
+      <text x="387" y="448" font-size="10" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">61&ndash;69%</text>
+    </svg>
+  </div>
+
+  <!-- Chart 2: Score vs Time scatter -->
+  <div class="chart-container">
+    <div class="chart-title">Score vs. Wall-Clock Time &mdash; The Efficiency Frontier</div>
+    <svg viewBox="0 0 800 440" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, sans-serif;">
+      <!-- Axes -->
+      <line x1="80" y1="380" x2="770" y2="380" stroke="#1a1a1a" stroke-width="1.5"/>
+      <line x1="80" y1="20" x2="80" y2="380" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Y axis labels (score %) -->
+      <text x="72" y="380" text-anchor="end" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">60%</text>
+      <text x="72" y="290" text-anchor="end" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">70%</text>
+      <text x="72" y="200" text-anchor="end" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">80%</text>
+      <text x="72" y="110" text-anchor="end" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">90%</text>
+      <text x="72" y="20" text-anchor="end" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">100%</text>
+      <!-- Y grid -->
+      <line x1="80" y1="290" x2="770" y2="290" stroke="rgba(26,26,26,0.06)" stroke-width="1"/>
+      <line x1="80" y1="200" x2="770" y2="200" stroke="rgba(26,26,26,0.06)" stroke-width="1"/>
+      <line x1="80" y1="110" x2="770" y2="110" stroke="rgba(26,26,26,0.06)" stroke-width="1"/>
+      <!-- X axis labels (time in seconds, log-ish scale: 180s=3m, 420=7m, 960=16m, 1440=24m, 4800=80m) -->
+      <!-- Linear scale 0-5000s, x = 80 + (time/5000)*690 -->
+      <text x="108" y="400" text-anchor="middle" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">3m</text>
+      <text x="218" y="400" text-anchor="middle" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">8m</text>
+      <text x="356" y="400" text-anchor="middle" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">16m</text>
+      <text x="494" y="400" text-anchor="middle" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">24m</text>
+      <text x="746" y="400" text-anchor="middle" font-size="10" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">80m</text>
+      <text x="425" y="430" text-anchor="middle" font-size="11" fill="rgba(26,26,26,0.5)">WALL-CLOCK TIME &rarr;</text>
+      <text x="30" y="200" text-anchor="middle" font-size="11" fill="rgba(26,26,26,0.5)" transform="rotate(-90 30 200)">COMBINED SCORE &rarr;</text>
+
+      <!-- "Ideal" zone -->
+      <rect x="80" y="20" width="200" height="120" fill="rgba(0,85,170,0.04)" rx="4"/>
+      <text x="180" y="40" text-anchor="middle" font-size="9" fill="rgba(0,85,170,0.5)" font-family="Courier Prime, monospace" font-weight="700">IDEAL ZONE</text>
+
+      <!-- Points: x = 80 + (time/5000)*690, y = 380 - ((score-60)/40)*360 -->
+      <!-- gemma-4-26b-a4b nothink: 253s, 95.0% → x=115, y=65 -->
+      <circle cx="115" cy="65" r="8" fill="#0055aa" stroke="white" stroke-width="2"/>
+      <text x="127" y="60" font-size="9" font-weight="700" fill="#0055aa">gemma-4-26b-a4b</text>
+      <text x="127" y="72" font-size="8" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">NOTHINK &middot; 4m &middot; 95%</text>
+
+      <!-- gpt-oss-20b llamaswap: 966s, 94.6% → x=213, y=69 -->
+      <circle cx="213" cy="69" r="8" fill="#d93025" stroke="white" stroke-width="2"/>
+      <text x="225" y="64" font-size="9" font-weight="700" fill="#d93025">gpt-oss-20b</text>
+      <text x="225" y="76" font-size="8" fill="rgba(26,26,26,0.5)" font-family="Courier Prime, monospace">THINK &middot; 16m &middot; 94.6%</text>
+
+      <!-- gpt-oss-latest ollama: 1424s, 89.5% → x=276, y=115 -->
+      <circle cx="276" cy="115" r="7" fill="#d93025" stroke="white" stroke-width="1.5" opacity="0.7"/>
+      <text x="288" y="112" font-size="8" fill="rgba(26,26,26,0.6)">gpt-oss ollama</text>
+      <text x="288" y="123" font-size="8" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">24m &middot; 89.5%</text>
+
+      <!-- gemma-4-26b-a4b llamaswap (think): 4813s, 86.1% → x=744, y=146 -->
+      <circle cx="744" cy="146" r="7" fill="#0055aa" stroke="white" stroke-width="1.5" opacity="0.5"/>
+      <text x="680" y="140" font-size="8" fill="rgba(26,26,26,0.6)" text-anchor="end">gemma-26b think</text>
+      <text x="680" y="151" font-size="8" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace" text-anchor="end">80m &middot; 86.1%</text>
+      <!-- Arrow from nothink to think variant -->
+      <line x1="123" y1="73" x2="736" y2="142" stroke="#0055aa" stroke-width="1" stroke-dasharray="4,3" opacity="0.3"/>
+
+      <!-- gemma-4-31b ollama: 821s, 84.0% → x=193, y=164 -->
+      <circle cx="193" cy="164" r="6" fill="rgba(26,26,26,0.4)" stroke="white" stroke-width="1.5"/>
+      <text x="205" y="160" font-size="8" fill="rgba(26,26,26,0.5)">gemma-31b</text>
+
+      <!-- gemma-4-e2b nothink: 180s, 82.6% → x=105, y=177 -->
+      <circle cx="105" cy="177" r="6" fill="#0055aa" stroke="white" stroke-width="1.5" opacity="0.5"/>
+      <text x="117" y="174" font-size="8" fill="rgba(26,26,26,0.5)">gemma-e2b</text>
+      <text x="117" y="185" font-size="8" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">3m &middot; 82.6%</text>
+
+      <!-- Cluster: 78-79% range -->
+      <circle cx="117" cy="200" r="5" fill="rgba(26,26,26,0.25)" stroke="white" stroke-width="1"/>
+      <circle cx="130" cy="209" r="5" fill="rgba(26,26,26,0.25)" stroke="white" stroke-width="1"/>
+      <circle cx="228" cy="206" r="5" fill="rgba(26,26,26,0.25)" stroke="white" stroke-width="1"/>
+
+      <!-- nemotron think: 3731s, 73.4% → x=595, y=270 -->
+      <circle cx="595" cy="270" r="5" fill="rgba(26,26,26,0.2)" stroke="white" stroke-width="1"/>
+      <text x="545" y="268" font-size="8" fill="rgba(26,26,26,0.4)" text-anchor="end">nemotron think</text>
+      <text x="545" y="279" font-size="8" fill="rgba(26,26,26,0.35)" font-family="Courier Prime, monospace" text-anchor="end">62m &middot; 73%</text>
+
+      <!-- nemotron nothink: 198s, 61.0% → x=107, y=371 -->
+      <circle cx="107" cy="371" r="5" fill="rgba(26,26,26,0.15)" stroke="white" stroke-width="1"/>
+      <text x="119" y="375" font-size="8" fill="rgba(26,26,26,0.35)">nemotron nothink 61%</text>
+    </svg>
+    <div class="chart-caption">Each dot is one (model, runtime, thinking-mode) cell. Blue = Gemma family. Red = GPT-OSS family. The ideal zone is top-left: high score, fast.</div>
+  </div>
+
+  <!-- Chart 3: Per-dimension breakdown for top 5 -->
+  <div class="chart-container">
+    <div class="chart-title">Per-Dimension Breakdown &mdash; Top 5 Cells</div>
+    <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, sans-serif;">
+      <!-- Legend -->
+      <rect x="30" y="8" width="10" height="10" fill="#0055aa"/>
+      <text x="44" y="17" font-size="9" fill="#1a1a1a">Instruction</text>
+      <rect x="120" y="8" width="10" height="10" fill="#0077cc"/>
+      <text x="134" y="17" font-size="9" fill="#1a1a1a">Reasoning</text>
+      <rect x="210" y="8" width="10" height="10" fill="#33aaee"/>
+      <text x="224" y="17" font-size="9" fill="#1a1a1a">Coding (Write)</text>
+      <rect x="330" y="8" width="10" height="10" fill="#88ccff"/>
+      <text x="344" y="17" font-size="9" fill="#1a1a1a">Coding (Fix)</text>
+      <rect x="440" y="8" width="10" height="10" fill="#d93025"/>
+      <text x="454" y="17" font-size="9" fill="#1a1a1a">Tool Math</text>
+
+      <!-- Y axis (percentage 0-100) -->
+      <line x1="200" y1="40" x2="200" y2="300" stroke="#1a1a1a" stroke-width="1"/>
+      <text x="192" y="48" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">100%</text>
+      <text x="192" y="113" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">75%</text>
+      <text x="192" y="178" text-anchor="end" font-size="9" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">50%</text>
+      <line x1="200" y1="110" x2="780" y2="110" stroke="rgba(26,26,26,0.05)" stroke-width="1"/>
+      <line x1="200" y1="175" x2="780" y2="175" stroke="rgba(26,26,26,0.05)" stroke-width="1"/>
+
+      <!-- Each model gets a group of 5 bars. bar width=16, gap=4, group gap=24 -->
+      <!-- Group 1: gemma-4-26b-a4b nothink -->
+      <text x="210" y="310" font-size="9" font-weight="600" fill="#1a1a1a">gemma-26b-a4b</text>
+      <text x="210" y="296" font-size="7" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">NOTHINK</text>
+      <!-- Instruction: 30/30 = 100% → h=260, y=40 -->
+      <rect x="210" y="40" width="16" height="260" fill="#0055aa"/>
+      <!-- Reasoning: 20/20 = 100% -->
+      <rect x="230" y="40" width="16" height="260" fill="#0077cc"/>
+      <!-- Coding write: 120/126 = 95.2% → h=248, y=52 -->
+      <rect x="250" y="52" width="16" height="248" fill="#33aaee"/>
+      <!-- Coding fix: 25/25 = 100% -->
+      <rect x="270" y="40" width="16" height="260" fill="#88ccff"/>
+      <!-- Tool math: 20/25 = 80% → h=208, y=92 -->
+      <rect x="290" y="92" width="16" height="208" fill="#d93025"/>
+
+      <!-- Group 2: gpt-oss-20b llamaswap -->
+      <text x="330" y="310" font-size="9" font-weight="600" fill="#1a1a1a">gpt-oss-20b</text>
+      <text x="330" y="296" font-size="7" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">LLAMASWAP</text>
+      <rect x="330" y="40" width="16" height="260" fill="#0055aa"/>
+      <!-- Reasoning: 17/20 = 85% → h=221, y=79 -->
+      <rect x="350" y="79" width="16" height="221" fill="#0077cc"/>
+      <!-- Coding: 121/126 = 96% → h=250, y=50 -->
+      <rect x="370" y="50" width="16" height="250" fill="#33aaee"/>
+      <rect x="390" y="40" width="16" height="260" fill="#88ccff"/>
+      <!-- Tool: 23/25 = 92% → h=239, y=61 -->
+      <rect x="410" y="61" width="16" height="239" fill="#d93025"/>
+
+      <!-- Group 3: gpt-oss-latest ollama -->
+      <text x="450" y="310" font-size="9" font-weight="600" fill="#1a1a1a">gpt-oss</text>
+      <text x="450" y="296" font-size="7" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">OLLAMA</text>
+      <!-- Instruction: 25/30 = 83.3% → h=217, y=83 -->
+      <rect x="450" y="83" width="16" height="217" fill="#0055aa"/>
+      <rect x="470" y="40" width="16" height="260" fill="#0077cc"/>
+      <!-- Coding: 106/126 = 84.1% → h=219, y=81 -->
+      <rect x="490" y="81" width="16" height="219" fill="#33aaee"/>
+      <rect x="510" y="40" width="16" height="260" fill="#88ccff"/>
+      <!-- Tool: 20/25 = 80% -->
+      <rect x="530" y="92" width="16" height="208" fill="#d93025"/>
+
+      <!-- Group 4: gemma-4-31b ollama -->
+      <text x="570" y="310" font-size="9" font-weight="600" fill="#1a1a1a">gemma-31b</text>
+      <text x="570" y="296" font-size="7" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">OLLAMA</text>
+      <rect x="570" y="40" width="16" height="260" fill="#0055aa"/>
+      <rect x="590" y="40" width="16" height="260" fill="#0077cc"/>
+      <rect x="610" y="40" width="16" height="260" fill="#33aaee"/>
+      <rect x="630" y="40" width="16" height="260" fill="#88ccff"/>
+      <!-- Tool: 5/25 = 20% → h=52, y=248 -->
+      <rect x="650" y="248" width="16" height="52" fill="#d93025"/>
+
+      <!-- Group 5: gemma-4-e2b nothink -->
+      <text x="690" y="310" font-size="9" font-weight="600" fill="#1a1a1a">gemma-e2b</text>
+      <text x="690" y="296" font-size="7" fill="rgba(26,26,26,0.4)" font-family="Courier Prime, monospace">NOTHINK</text>
+      <!-- Instruction: 28/30 = 93.3% → h=243, y=57 -->
+      <rect x="690" y="57" width="16" height="243" fill="#0055aa"/>
+      <rect x="710" y="40" width="16" height="260" fill="#0077cc"/>
+      <!-- Coding: 90/126 = 71.4% → h=186, y=114 -->
+      <rect x="730" y="114" width="16" height="186" fill="#33aaee"/>
+      <rect x="750" y="40" width="16" height="260" fill="#88ccff"/>
+      <!-- Tool: 12/25 = 48% → h=125, y=175 -->
+      <rect x="770" y="175" width="16" height="125" fill="#d93025"/>
+    </svg>
+    <div class="chart-caption">The red bar (Tool Math) tells the story: gemma-31b aces everything except tools; gpt-oss is the only model where tool-calling nearly matches the other dimensions.</div>
+  </div>
+
+  <!-- Chart 4: Thinking On vs Off -->
+  <div class="chart-container">
+    <div class="chart-title">Thinking On vs. Thinking Off &mdash; Same Model, Same Weights</div>
+    <svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="font-family: Inter, sans-serif;">
+      <!-- Legend -->
+      <rect x="30" y="8" width="10" height="10" fill="#0055aa"/>
+      <text x="44" y="17" font-size="9" fill="#1a1a1a">Thinking Off</text>
+      <rect x="130" y="8" width="10" height="10" fill="#d93025" opacity="0.6"/>
+      <text x="144" y="17" font-size="9" fill="#1a1a1a">Thinking On</text>
+      <rect x="230" y="8" width="40" height="10" fill="none" stroke="rgba(26,26,26,0.3)" stroke-width="1"/>
+      <text x="274" y="17" font-size="9" fill="#1a1a1a">Wall-clock time</text>
+
+      <!-- Model labels and paired bars -->
+      <!-- gemma-4-26b-a4b: off=95.0% 4m, on=86.1% 80m -->
+      <text x="195" y="55" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma-4-26b-a4b</text>
+      <rect x="200" y="38" width="456" height="14" rx="2" fill="#0055aa"/>
+      <text x="660" y="50" font-size="9" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">95.0% &middot; 4m</text>
+      <rect x="200" y="56" width="413" height="14" rx="2" fill="#d93025" opacity="0.6"/>
+      <text x="617" y="68" font-size="9" fill="#d93025" font-family="Courier Prime, monospace">86.1% &middot; 80m</text>
+
+      <!-- gpt-oss-20b: off=74.6% 20m, on=94.6% 16m -->
+      <text x="195" y="115" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gpt-oss-20b</text>
+      <rect x="200" y="98" width="358" height="14" rx="2" fill="#0055aa"/>
+      <text x="562" y="110" font-size="9" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">74.6% &middot; 20m</text>
+      <rect x="200" y="116" width="454" height="14" rx="2" fill="#d93025" opacity="0.6"/>
+      <text x="658" y="128" font-size="9" fill="#d93025" font-family="Courier Prime, monospace">94.6% &middot; 16m</text>
+      <text x="670" y="140" font-size="8" fill="rgba(26,26,26,0.4)" font-style="italic">&larr; thinking ON wins here (tool-calling)</text>
+
+      <!-- gemma-4-e4b: off=73.9% 7m, on=68.2% 12m -->
+      <text x="195" y="175" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">gemma-4-e4b</text>
+      <rect x="200" y="158" width="355" height="14" rx="2" fill="#0055aa"/>
+      <text x="559" y="170" font-size="9" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">73.9% &middot; 7m</text>
+      <rect x="200" y="176" width="327" height="14" rx="2" fill="#d93025" opacity="0.6"/>
+      <text x="531" y="188" font-size="9" fill="#d93025" font-family="Courier Prime, monospace">68.2% &middot; 12m</text>
+
+      <!-- nemotron: off=61.0% 3m, on=73.4% 62m -->
+      <text x="195" y="235" text-anchor="end" font-size="11" font-weight="600" fill="#1a1a1a">nemotron-nano-4b</text>
+      <rect x="200" y="218" width="293" height="14" rx="2" fill="#0055aa"/>
+      <text x="497" y="230" font-size="9" font-weight="700" fill="#0055aa" font-family="Courier Prime, monospace">61.0% &middot; 3m</text>
+      <rect x="200" y="236" width="352" height="14" rx="2" fill="#d93025" opacity="0.6"/>
+      <text x="556" y="248" font-size="9" fill="#d93025" font-family="Courier Prime, monospace">73.4% &middot; 62m</text>
+    </svg>
+    <div class="chart-caption">Blue (thinking off) is faster and usually scores higher &mdash; except gpt-oss-20b, where thinking-on unlocks tool-calling and is actually faster than nothink (which gets stuck in empty retries).</div>
+  </div>
+
+  <hr>
+
+  <!-- ======== How "best" was decided ======== -->
+  <h2><span class="num"></span> How &ldquo;Best&rdquo; Was Decided</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th class="num">Instruction</th>
+          <th class="num">Reasoning</th>
+          <th class="num">Code (Write)</th>
+          <th class="num">Code (Fix)</th>
+          <th class="num">Tool Math</th>
+          <th class="num">Combined&nbsp;%</th>
+          <th class="num">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model">gemma-4-26b-a4b (llamaswap-nothink)</td>
+          <td class="num">30/30</td>
+          <td class="num">20/20</td>
+          <td class="num">120/126</td>
+          <td class="num">25/25</td>
+          <td class="num">20/25</td>
+          <td class="num highlight">95.0%</td>
+          <td class="num">4m13s</td>
+        </tr>
+        <tr>
+          <td class="model">gpt-oss-20b (llamaswap)</td>
+          <td class="num">30/30</td>
+          <td class="num">17/20</td>
+          <td class="num">121/126</td>
+          <td class="num">25/25</td>
+          <td class="num">23/25</td>
+          <td class="num">94.6%</td>
+          <td class="num">16m6s</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The &ldquo;Combined %&rdquo; is the <strong>mean of the per-dimension percentages</strong>, not a weighted score. Both models tie on Instruction (100%) and Coding-fix (100%). Gemma wins reasoning by 3 points; gpt-oss wins tool-math by 3 points and coding-write by 1. They cancel out within 0.4%.</p>
+
+  <div class="callout-light">
+    <p><strong>&ldquo;Best raw scores on tool-calling&rdquo;</strong> &rarr; gpt-oss-20b llamaswap (23/25)<br>
+    <strong>&ldquo;Best general-purpose at reasonable cost&rdquo;</strong> &rarr; gemma-4-26b-a4b llamaswap-nothink<br>
+    <strong>&ldquo;Best out-of-the-box&rdquo;</strong> &rarr; gemma4:31b ollama (84.0%, no thinking-mode tuning required)</p>
+  </div>
+
+  <hr>
+
+  <!-- ======== Methodology ======== -->
+  <h2><span class="num"></span> Methodology</h2>
+
+  <h3>Run Mechanics</h3>
+  <p>The matrix runner iterates <strong>model-major</strong>: load one model, run all five evaluation suites, evict before loading the next. Required on a 64&nbsp;GB machine because most models are 17&ndash;19&nbsp;GB resident. 20-min per-cell watchdog, 5-min per-task watchdog. Partial responses are scored as-is.</p>
+
+  <p>All quantizations are Q4_K_M across runtimes (apples-to-apples), except gpt-oss which ships natively as MXFP4. Total matrix wall-clock time: 316 minutes (~5.3 hours).</p>
+
+  <hr>
+
+  <!-- ======== Test 1 ======== -->
+  <h2><span class="num"></span> Instruction Following <span style="font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:0.1em;color:rgba(26,26,26,0.4);margin-left:8px">DETERMINISTIC &middot; /30</span></h2>
+
+  <p>Can the model follow precise format instructions without overshooting? No reasoning needed; just literal compliance.</p>
+
+  <h3>The Exact Prompts</h3>
+
+  <p><strong>1.1 Exact Word Count (5 pts)</strong></p>
+  <blockquote><p>Write a sentence about the ocean that contains EXACTLY 12 words. Do not include any other text, explanation, or commentary.</p></blockquote>
+  <p>Scoring: 5 if exactly 12 words; 3 if off by 1; 1 if off by 2&ndash;3; 0 otherwise.</p>
+
+  <p><strong>1.2 Structured JSON Output (5 pts)</strong> &mdash; 4 typed fields, no markdown fences.</p>
+  <p><strong>1.3 Constrained List (5 pts)</strong> &mdash; 5 animals, numbered, alphabetical, &le;8 chars.</p>
+  <p><strong>1.4 Negative Constraints (5 pts)</strong> &mdash; sunset description avoiding 3 words.</p>
+  <p><strong>1.5 Format Transformation (5 pts)</strong> &mdash; CSV to markdown table.</p>
+  <p><strong>1.6 Multi-format Response (5 pts)</strong> &mdash; 3 sections separated by <code>---</code>.</p>
+
+  <h3>What We Saw</h3>
+  <p>Eleven of 20 cells scored a perfect 30/30. The most discriminating task was <strong>exact-word-count</strong>:</p>
+  <ul>
+    <li><strong>Thinking mode hurt word counting.</strong> gemma-4-26b-a4b llamaswap (thinking on) scored 0/5. Same weights, thinking off: 5/5.</li>
+    <li><strong>glm-4.7-flash</strong> scored 1/5 &mdash; writes nicely but cannot constrain length.</li>
+  </ul>
+
+  <hr>
+
+  <!-- ======== Test 2 ======== -->
+  <h2><span class="num"></span> Reasoning <span style="font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:0.1em;color:rgba(26,26,26,0.4);margin-left:8px">LLM JUDGE &middot; /20</span></h2>
+
+  <p>Classic reasoning puzzles where the obvious answer is wrong. Claude Haiku 4.5 as judge.</p>
+
+  <p><strong>2.1 The Surgeon Riddle</strong> &middot; <strong>2.2 Bat and Ball</strong> &middot; <strong>2.3 Lily Pad</strong> &middot; <strong>2.4 Counterfeit Coin</strong></p>
+
+  <p>Twelve cells scored 17&ndash;20/20. gemma-4-31b scored 20/20 on both runtimes. The hardest puzzle was counterfeit-coin.</p>
+
+  <div class="callout-key">
+    <p><strong>Signal:</strong> On short reasoning puzzles, model size matters more than thinking-mode budget.</p>
+  </div>
+
+  <hr>
+
+  <!-- ======== Test 3 ======== -->
+  <h2><span class="num"></span> Coding &mdash; Write <span style="font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:0.1em;color:rgba(26,26,26,0.4);margin-left:8px">COMPILE + RUN + CHECK &middot; /126</span></h2>
+
+  <p>6 problems &times; 3 languages (TypeScript, Python, Go), each scored 0&ndash;7. Top scorers: gemma-4-31b (126/126 on both runtimes).</p>
+
+  <div class="callout-light">
+    <p><strong>The dominant failure mode in Go:</strong> Of 35 non-perfect Go scores, 67% were <em>compile errors</em> &mdash; &ldquo;imported and not used&rdquo; or &ldquo;declared and not used.&rdquo;</p>
+  </div>
+
+  <hr>
+
+  <!-- ======== Test 4 ======== -->
+  <h2><span class="num"></span> Coding &mdash; Fix <span style="font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:0.1em;color:rgba(26,26,26,0.4);margin-left:8px">HIDDEN TEST HARNESS &middot; /25</span></h2>
+
+  <p>5 buggy JavaScript functions. Sixteen of 20 cells scored a perfect 25/25. The four that lost points: all three nemotron variants and gemma4-e2b ollama. This dimension has the least signal &mdash; too easy for most models.</p>
+
+  <hr>
+
+  <!-- ======== Test 5 ======== -->
+  <h2><span class="num"></span> Tool Math <span style="font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:0.1em;color:rgba(26,26,26,0.4);margin-left:8px">CORRECTNESS + TOOL-CALL COUNTING &middot; /25</span></h2>
+
+  <p>Can the model use provided tools (calculator, statistics) to chain multi-step arithmetic?</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th class="num">Tool Math</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="model">gpt-oss-20b llamaswap (thinking-on)</td><td class="num highlight">23/25</td></tr>
+        <tr><td class="model">gemma-4-26b-a4b llamaswap (thinking-on)</td><td class="num">20/25</td></tr>
+        <tr><td class="model">gemma-4-26b-a4b llamaswap-nothink</td><td class="num">20/25</td></tr>
+        <tr><td class="model">gpt-oss-latest ollama</td><td class="num">20/25</td></tr>
+        <tr><td class="model">gemma-4-31b llamaswap (thinking-on)</td><td class="num">20/25</td></tr>
+        <tr><td class="model">glm-4.7-flash-latest ollama</td><td class="num">14/25</td></tr>
+        <tr><td class="model">gemma-4-e2b llamaswap-nothink</td><td class="num">12/25</td></tr>
+        <tr style="color:rgba(26,26,26,0.5)"><td>&#8230;</td><td class="num">&#8230;</td></tr>
+        <tr><td class="model">gemma4-26b ollama</td><td class="num" style="color:var(--color-alert-red)">0/25</td></tr>
+        <tr><td class="model">gpt-oss-20b llamaswap-nothink</td><td class="num" style="color:var(--color-alert-red)">0/25</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Why Tool-Calling Is So Weak</h3>
+  <ol>
+    <li><strong>Models try to one-shot the answer</strong> instead of chaining tools.</li>
+    <li><strong>Thinking-off models get stuck.</strong> gpt-oss-20b nothink: 0/25. Same model thinking-on: 23/25.</li>
+    <li><strong>Tool-calling format errors.</strong> Wrong argument shapes exhaust the retry budget.</li>
+    <li><strong>Long chains exceed the watchdog.</strong></li>
+    <li><strong>Reasoning loops on Stats+arithmetic.</strong> Models re-derive instead of trusting tool output.</li>
+  </ol>
+
+  <div class="callout-key">
+    <p><strong>Root cause:</strong> Tool-calling requires the model to maintain state across multiple turns and trust intermediate results. Smaller and thinking-off models fail this.</p>
+  </div>
+
+  <hr>
+
+  <!-- ======== Test 6 ======== -->
+  <h2><span class="num"></span> Coding 2-Pass &mdash; The Experiment <span style="font-family:var(--font-mono);font-size:12px;font-weight:400;letter-spacing:0.1em;color:rgba(26,26,26,0.4);margin-left:8px">/126</span></h2>
+
+  <p>If a model fails in round 1, does showing it the actual compile/runtime error help?</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th class="num">Round 1</th>
+          <th class="num">Round 2</th>
+          <th class="num">&Delta;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Variant A (scaffolded)</strong></td>
+          <td class="num">93/126 (73.8%)</td>
+          <td class="num">79/126 (62.7%)</td>
+          <td class="num" style="color:var(--color-alert-red)">&minus;14 pts</td>
+        </tr>
+        <tr>
+          <td><strong>Variant B (raw error)</strong></td>
+          <td class="num">93/126 (73.8%)</td>
+          <td class="num">80/126 (63.5%)</td>
+          <td class="num" style="color:var(--color-alert-red)">&minus;13 pts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>Same outcome.</strong> Zero improvements. The 4B model correctly identified the fix for one error and then introduced a new error elsewhere.</p>
+
+  <div class="callout-key">
+    <p>The 4B-parameter model genuinely lacks the capacity to make a localized fix without disturbing surrounding code. It&rsquo;s not context length, not prompt format &mdash; it&rsquo;s model capability.</p>
+  </div>
+
+  <hr>
+
+  <!-- ======== Recommendations ======== -->
+  <h2><span class="num"></span> What This Means in Practice</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Use Case</th>
+          <th>Pick</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Best general overall, low cost</td>
+          <td><strong>gemma-4-26b-a4b on llamaswap-nothink</strong> (95.0%, 4 minutes)</td>
+        </tr>
+        <tr>
+          <td>Best for tool-use / agent loops</td>
+          <td><strong>gpt-oss-20b on llamaswap (thinking on)</strong> (94.6%, 23/25 on tool math)</td>
+        </tr>
+        <tr>
+          <td>Best out-of-the-box</td>
+          <td><strong>gemma4:31b on ollama</strong> (84.0%, no config needed)</td>
+        </tr>
+        <tr>
+          <td>Smallest still usable</td>
+          <td><strong>gemma-4-e2b on llamaswap-nothink</strong> (82.6%, 3 minutes)</td>
+        </tr>
+        <tr>
+          <td>What to avoid</td>
+          <td>Thinking-on by default for non-agent tasks. The wall-clock cost is huge.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull-quote">
+    If you&rsquo;re building agentic workflows that need tools: use thinking-on. The penalty is wall-clock time but you can&rsquo;t get tool-calling right without it.
+  </div>
+
+  <p>If you&rsquo;re iterating on agent loops that need the model to use compile/test feedback to fix its own code: <strong>don&rsquo;t trust models below ~20B parameters to do this reliably</strong>.</p>
+
+</article>
+
+<div class="doc-footer">THEFOCUS.AI LABS &middot; LP-2026-05 &middot; MAY 2026</div>
+
+</div>
+
+</BaseLayout>

@@ -13,6 +13,7 @@ const juneReportImg = images['/src/content/assets/cards/capture_the_flag_wide.pn
 const carWashImg = images['/src/content/assets/cards/report-car-wash-test.png'];
 const mcpToolImg = images['/src/content/assets/cards/report-mcp-tool-test.png'];
 const modelShowdownImg = images['/src/content/assets/cards/report-model-showdown.png'];
+const localProvidersImg = images['/src/content/assets/cards/local-providers-tufte-frontier.png'];
 
 // Subsite-based reports live under public/reports/<slug>/ after submodules are built.
 // At build time we filter out any whose directory isn't present so the list never 404s.
@@ -42,6 +43,16 @@ type Report = {
 };
 
 const reports: Report[] = [
+  {
+    imgFn: localProvidersImg,
+    img: undefined,
+    label: "May 2026",
+    title: "Local Providers: Which Open Model Should You Actually Run?",
+    summary: "We tested 7 model families across 3 local runtimes on a 64 GB Mac — 20 cells, 5 dimensions. gemma-4-26b-a4b hits 95% in 4 minutes. Thinking mode usually hurts except for tool-calling. Interactive charts and full methodology.",
+    cta: "Read the Report →",
+    href: "/reports/local-providers/",
+    docNo: "RM-2026-05-LP",
+  },
   {
     imgFn: modelShowdownImg,
     img: undefined,
