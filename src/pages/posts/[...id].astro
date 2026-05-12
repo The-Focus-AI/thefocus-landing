@@ -47,8 +47,12 @@ const img_key= `/src/content/assets/cards/${entry.data.image}`;
 // @ts-ignore
 const image = images[img_key] ? (await images[img_key]()).default.src : null;
 
+// When cardAsOg is set in frontmatter, serve the card image from public/ as the OG image
+// The file must exist at public/cards/<image filename>
+const ogImage = entry.data.cardAsOg && entry.data.image ? `cards/${entry.data.image}` : `open-graph/${slug}.png`;
+
 ---
-<ArticleLayout pageTitle={entry.data.title} description={entry.data.description} category="studio" openGraphImage={`open-graph/${slug}.png`}>
+<ArticleLayout pageTitle={entry.data.title} description={entry.data.description} category="studio" openGraphImage={ogImage}>
   <BlogPostSchema
   slot="head"
   title={entry.data.title}
