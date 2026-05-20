@@ -1,6 +1,6 @@
-# Focus.AI Landing Site
+# TheFocus.AI Landing Site
 
-A dual-brand website showcasing **Focus.AI Studio** (client services) and **Focus.AI Labs** (research & experiments).
+A dual-brand website showcasing **TheFocus.AI Studio** (client services) and **TheFocus.AI Labs** (research & experiments).
 
 ## Quick Start
 
@@ -22,7 +22,7 @@ npm run preview
 
 ## Site Structure
 
-### Client Pages (Focus.AI Studio)
+### Client Pages (TheFocus.AI Studio)
 Professional services and client-facing content:
 
 - **/** - Homepage with value proposition and case studies
@@ -33,7 +33,7 @@ Professional services and client-facing content:
 
 **Brand Colors:** Petrol (#0e3b46), Ink, Graphite, Paper
 
-### Labs Pages (Focus.AI Labs)
+### Labs Pages (TheFocus.AI Labs)
 Research, experiments, and public content:
 
 - **/insights** - Research reports (magazine-style)
@@ -448,4 +448,4 @@ Don't let perfect be the enemy of published.
 
 **Built with:** Astro 5.8.0 • Tailwind CSS 3.4.17 • TypeScript
 
-**License:** Proprietary - © 2024 Focus.AI
+**License:** Proprietary - © 2024 TheFocus.AI

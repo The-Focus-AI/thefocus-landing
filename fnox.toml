@@ -1,0 +1,16 @@
+# Source of truth: 1Password vault "thefocus-landing"
+# Each [secrets.X] block maps env var X to a 1Password item in that vault.
+
+[providers.op]
+type = "1password"
+vault = "thefocus-landing"
+
+[secrets.GEMINI_API_KEY]
+provider = "op"
+value = "GEMINI_API_KEY"
+description = "Google Gemini API key for content/image generation workflows."
+
+[secrets.GOOGLE_GENERATIVE_AI_API_KEY]
+provider = "op"
+value = "GOOGLE_GENERATIVE_AI_API_KEY"
+description = "Google Generative AI API key for compatibility with Google SDK tooling."

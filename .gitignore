@@ -11,3 +11,11 @@ public/reports/coding-agent/
 
 # Twitter skill tokens (per-project auth)
 .claude/*.local.*
+.fnox/
+.env.*
+!.env.example
+.pi/sessions/
+.pi/npm/
+.pi/git/
+.pi/skills/
+.agents/skills/

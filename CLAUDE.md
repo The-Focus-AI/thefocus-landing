@@ -12,7 +12,7 @@ Header images for blog posts go in `src/content/assets/cards/` and are reference
 
 ### Style Guidelines
 
-Follow the **Focus.AI brand design system** for image generation. Use the `focus-ai-brand` skill/plugin for full brand documentation. The two sub-brands have distinct visual styles:
+Follow the **TheFocus.AI brand design system** for image generation. Use the `focus-ai-brand` skill/plugin for full brand documentation. The two sub-brands have distinct visual styles:
 
 - **Client brand** → Renaissance Drafting style (Da Vinci diagrams, Dürer engravings, celestial maps, cartography, distillation machines). Sepia ink on aged parchment, cross-hatching, red chalk accents.
 - **Labs brand** → Bell Labs / Tufte / RAND style (Tufte data viz, Bell Labs technical diagrams, RAND report infographics, retro terminal).

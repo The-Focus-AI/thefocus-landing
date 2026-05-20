@@ -2,12 +2,50 @@
 node = "24"
 pnpm = "10"
 "npm:repomix" = "latest"
+fnox = "latest"
+gh = "latest"
+ripgrep = "latest"
+fd = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+"npm:markdownlint-cli2" = "latest"
 
 [hooks]
 
 [env]
 _.path = ['./node_modules/.bin']
+_.file = ".fnox/env"
 MODEL = 'claude-3.7-sonnet'
+
+[tasks.setup]
+description = "First-time setup for fnox bootstrap environment"
+run = '''
+set -euo pipefail
+mkdir -p .fnox
+chmod 700 .fnox
+if [ ! -f .fnox/env ]; then
+  touch .fnox/env
+  chmod 600 .fnox/env
+  echo "Created .fnox/env. Add OP_SERVICE_ACCOUNT_TOKEN after creating the thefocus-landing service account."
+else
+  echo ".fnox/env already exists"
+fi
+'''
+
+[tasks.install]
+description = "Install dependencies and locked agent skills"
+run = '''
+set -euo pipefail
+pnpm install --frozen-lockfile
+npx skills experimental_install
+'''
+
+[tasks."secrets:check"]
+description = "Verify declared fnox secrets resolve"
+run = "fnox check"
+
+[tasks."secrets:list"]
+description = "List declared fnox secrets"
+run = "fnox list"
 
 [tasks.pnpm-install]
 description = 'Installs dependencies with pnpm'
@@ -17,7 +55,7 @@ outputs = ['node_modules/.pnpm/lock.yaml']
 
 [tasks.dev]
 description = 'Calls your dev script in `package.json`'
-run = 'npm run dev'
+run = 'pnpm dev'
 depends = ['pnpm-install']
 
 [tasks.clean]
@@ -26,7 +64,7 @@ run = 'rm -rf dist/'
 
 [tasks.build]
 description = 'Clears out dist'
-run = ['npm run build', 'du -sh dist']
+run = ['pnpm build', 'du -sh dist']
 depends = ['pnpm-install','clean','update-subsites','build-subsites']
 
 
@@ -34,9 +72,21 @@ depends = ['pnpm-install','clean','update-subsites','build-subsites']
 description = 'Builds the preview site'
 run = ['rsync -rv dist/ pgs.sh:/thefocus-landing/']
 
+[tasks.deploy]
+description = 'Deploy the preview site'
+run = 'mise run publish-preview'
+
+[tasks.lint]
+description = 'Validate Astro content/types'
+run = 'pnpm exec astro sync'
+
+[tasks.test]
+description = 'Build the site as a smoke test'
+run = 'mise run build'
+
 [tasks.buttondown]
 description = 'Pushed a draft'
-run = ['npm run buttondown "$*"']
+run = ['pnpm buttondown "$*"']
 
 [tasks.llm-dump]
 description = 'Runs repomix'
