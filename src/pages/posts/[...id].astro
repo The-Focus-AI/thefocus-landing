@@ -264,4 +264,70 @@ img + em {
   line-height: 1rem;
   display: block;
 }
+
+/* ---------------------------------------------------------------
+   Post tables — Bell Labs memo aesthetic
+   Override Tailwind Typography defaults so tables match the
+   report-style header used at the top of every post.
+   --------------------------------------------------------------- */
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  border: 1px solid #1a1a1a;
+  background: #ffffff;
+  font-family: 'Courier Prime', ui-monospace, monospace;
+}
+.article thead {
+  background: #1a1a1a;
+}
+.article thead th {
+  color: #ffffff;
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  font-family: 'Courier Prime', ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #1a1a1a;
+}
+.article tbody td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+  vertical-align: top;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+.article tbody tr:nth-child(even) td {
+  background: #f8f8f6;
+}
+.article tbody tr:last-child td {
+  border-bottom: none;
+}
+.article tbody tr:hover td {
+  background: #e6eef7;
+}
+/* First column gets a subtle rand-blue accent */
+.article tbody td:first-child {
+  border-left: 3px solid #0055aa;
+  font-weight: 600;
+}
+/* Inline code inside tables — keep monospace, lighten background */
+.article table code {
+  background: rgba(26, 26, 26, 0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+  font-size: 0.85em;
+}
+/* Horizontal scroll on narrow screens */
+@media (max-width: 640px) {
+  .article .content > table,
+  .article table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
 </style>
