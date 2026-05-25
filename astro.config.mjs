@@ -22,6 +22,53 @@ export default defineConfig({
       changefreq: "daily",
       lastmod: new Date(),
       priority: 0.8,
+      filter: (page) => {
+        // Strip pathname from absolute URL for matching
+        let path;
+        try {
+          path = new URL(page).pathname;
+        } catch {
+          path = page;
+        }
+        // Exclude dev-only / scratch / index pages from the public sitemap.
+        // Keep these in sync with the placeholder pages they correspond to:
+        //   - /drafts, /draft     dev-only draft listings (drafts.astro, draft.md)
+        //   - /emails             dev-only newsletter analytics (emails.astro)
+        //   - /tags               tag index (kept private; individual tag pages stay)
+        const excluded = [
+          "/drafts",
+          "/drafts/",
+          "/draft",
+          "/draft/",
+          "/emails",
+          "/emails/",
+          "/tags",
+          "/tags/",
+        ];
+        if (excluded.includes(path)) return false;
+        // Drop any redirect stubs (Astro emits these for static redirects).
+        // The redirect targets are themselves indexed; we don't want both.
+        const redirectStubs = [
+          "/blog",
+          "/blog/",
+          "/careers",
+          "/careers/",
+          "/products",
+          "/products/",
+          "/studio",
+          "/studio/",
+          "/ai-maturity",
+          "/ai-maturity/",
+          "/learnings",
+          "/learnings/",
+          "/coding-agents",
+          "/coding-agents/",
+          "/recipes",
+          "/recipes/",
+        ];
+        if (redirectStubs.includes(path)) return false;
+        return true;
+      },
     }),
   ],
   markdown: {

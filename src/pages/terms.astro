@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const lastUpdated = "May 25, 2026";
+---
+
+<BaseLayout
+  pageTitle="Terms of Service | TheFocus.AI"
+  description="Terms governing use of the TheFocus.AI website, newsletter, and content."
+  category="legal"
+>
+  <div class="max-w-3xl mx-auto py-8 md:py-16">
+    <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">Legal</p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-ink leading-tight mb-4">
+      Terms of Service
+    </h1>
+    <p class="text-sm text-graphite/70 mb-12">Last updated: {lastUpdated}</p>
+
+    <div class="prose prose-lg max-w-none text-graphite leading-relaxed">
+      <p>
+        These terms govern your use of <a href="https://thefocus.ai" class="text-petrol hover:underline">thefocus.ai</a>, the TheFocus.AI newsletter, and related content and product surfaces operated by TheFocus.AI. By using the site or subscribing to the newsletter, you agree to these terms.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Content</h2>
+      <p>
+        Essays, reports, case studies, and tutorials published on this site are provided for general information. They reflect the views of the authors at the time of publication and are not professional, legal, or financial advice. We update content from time to time and do not guarantee it remains current.
+      </p>
+      <p>
+        You may link to and quote our content with attribution. Republishing in full requires prior written permission.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Engagements</h2>
+      <p>
+        Our consulting engagements, including Habitat OS deployments and Vibe Check assessments, are governed by separate engagement letters and statements of work. Nothing on this site constitutes a binding offer of services or a contractual commitment.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Newsletter</h2>
+      <p>
+        The TheFocus.AI newsletter is delivered by <a href="https://buttondown.com" class="text-petrol hover:underline">Buttondown</a>. You can unsubscribe at any time using the link in any email. By subscribing you agree to receive periodic emails from us; we won't share your email address with third parties for marketing. See our <a href="/privacy" class="text-petrol hover:underline">Privacy Policy</a> for details.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Acceptable use</h2>
+      <p>
+        Don't use the site to abuse our infrastructure, scrape at volumes that affect availability, or attempt to bypass security measures. Don't impersonate TheFocus.AI or imply endorsement we haven't given.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">No warranty</h2>
+      <p>
+        The site and newsletter are provided "as is" without warranties of any kind. We do our best to keep things accurate and available, but we don't guarantee uptime, freedom from errors, or fitness for a particular purpose.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Limitation of liability</h2>
+      <p>
+        To the extent permitted by law, TheFocus.AI and its principals are not liable for indirect or consequential damages arising from your use of the site or reliance on its content.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Contact</h2>
+      <p>
+        Questions about these terms? Email <a href="mailto:hey@thefocus.ai?subject=Terms%20question" class="text-petrol hover:underline">hey@thefocus.ai</a>.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Changes</h2>
+      <p>
+        We may update these terms from time to time. Material changes will be reflected in the date at the top of this page.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
