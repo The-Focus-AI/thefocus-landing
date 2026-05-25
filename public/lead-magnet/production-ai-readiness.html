@@ -1,91 +1,840 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>The Production AI Readiness One-Pager — TheFocus.AI</title>
-<style>
-  @page { size: Letter; margin: 0.6in 0.7in; }
-  html, body { background: #faf9f6; color: #161616; }
-  body {
-    font-family: 'Noto Serif', Georgia, 'Times New Roman', serif;
-    line-height: 1.45;
-    font-size: 10.5pt;
-    margin: 0;
-    padding: 0;
-  }
-  h1, h2, h3 { font-family: 'DM Sans', -apple-system, system-ui, sans-serif; color: #0e3b46; }
-  h1 { font-size: 22pt; margin: 0 0 0.15em; line-height: 1.15; }
-  h2 { font-size: 13pt; margin: 1.1em 0 0.35em; border-bottom: 1px solid #e6e4dc; padding-bottom: 0.15em; }
-  h3 { font-size: 11pt; margin: 0.9em 0 0.2em; color: #4a4a4a; text-transform: uppercase; letter-spacing: 0.04em; }
-  p { margin: 0.35em 0; }
-  ol { padding-left: 1.25em; margin: 0.35em 0; }
-  ol li { margin-bottom: 0.5em; }
-  strong { color: #0e3b46; }
-  em { color: #4a4a4a; }
-  hr { border: none; border-top: 1px solid #e6e4dc; margin: 0.9em 0; }
-  .subhead { color: #4a4a4a; font-size: 11pt; margin: 0 0 0.4em; }
-  .lead { font-size: 10.5pt; color: #4a4a4a; }
-  .footer {
-    margin-top: 1.4em;
-    padding-top: 0.6em;
-    border-top: 1px solid #e6e4dc;
-    font-size: 9pt;
-    color: #4a4a4a;
-  }
-  .footer strong { color: #0e3b46; }
-  a { color: #0e3b46; text-decoration: none; border-bottom: 1px dotted #0e3b46; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Production AI Readiness — The 12 questions · TheFocus.AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@400;500;600;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,900;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       Focus.AI Client Brand - Paged Report
+       Paged.js-powered PDF with running headers,
+       page numbers, and component library
+       ======================================== */
+
+    :root {
+      --color-paper: #faf9f6;
+      --color-ink: #161616;
+      --color-graphite: #4a4a4a;
+      --color-petrol: #0e3b46;
+      --color-vermilion: #c3471d;
+      --color-border: #d4d3cf;
+
+      --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-mono: 'Courier Prime', monospace;
+    }
+
+    /* ---- Paged.js @page rules ---- */
+
+    @page {
+      size: letter;
+      margin: 0.75in 0.75in 1in 0.75in;
+      background: var(--color-paper);
+
+      @top-left {
+        content: "THEFOCUS.AI";
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #c3471d;
+        vertical-align: bottom;
+        padding-bottom: 8px;
+      }
+
+      @top-right {
+        content: counter(page, decimal-leading-zero);
+        font-family: 'Courier Prime', monospace;
+        font-size: 10px;
+        color: #4a4a4a;
+        vertical-align: bottom;
+        padding-bottom: 8px;
+      }
+    }
+
+    @page cover {
+      @top-left { content: none; }
+      @top-right { content: none; }
+    }
+
+    @page :first {
+      @top-left { content: none; }
+      @top-right { content: none; }
+    }
+
+    /* ---- Reset ---- */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ---- Base ---- */
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--color-ink);
+      background: var(--color-paper);
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* ---- Cover Page ---- */
+
+    .cover {
+      page: cover;
+      break-after: page;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 0;
+    }
+
+    .cover .brand-mark {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--color-vermilion);
+      margin-bottom: 3rem;
+    }
+
+    .cover h1 {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-ink);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cover .subtitle {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--color-graphite);
+      margin-bottom: 3rem;
+      max-width: 480px;
+    }
+
+    .cover .cover-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-graphite);
+      line-height: 1.8;
+    }
+
+    .cover .cover-meta strong {
+      font-weight: 700;
+      color: var(--color-petrol);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 10px;
+    }
+
+    .cover .cover-rule {
+      width: 60px;
+      height: 3px;
+      background: var(--color-petrol);
+      margin-bottom: 2rem;
+    }
+
+    /* ---- Typography ---- */
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--color-ink);
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--color-petrol);
+    }
+
+    h2 {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--color-ink);
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--color-border);
+      break-before: page;
+      break-after: avoid;
+    }
+
+    /* First h2 after cover or at start of body should not force a break */
+    .cover + h2,
+    .cover + .stat-grid + h2,
+    body > h2:first-child,
+    .no-break-before { break-before: auto; }
+
+    h3 {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      color: var(--color-ink);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      break-after: avoid;
+    }
+
+    h4 {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--color-ink);
+      margin-top: 1.25rem;
+      margin-bottom: 0.4rem;
+      break-after: avoid;
+    }
+
+    /* ---- Section wrapper ---- */
+    /* Wrap h3 + its content in <div class="section"> to keep them together */
+    .section {
+      break-inside: avoid;
+    }
+
+    p {
+      margin-bottom: 0.75rem;
+    }
+
+    .lead {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--color-graphite);
+    }
+
+    /* ---- Links ---- */
+
+    a {
+      color: var(--color-petrol);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    /* ---- Lists ---- */
+
+    ul, ol {
+      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    li::marker {
+      color: var(--color-petrol);
+    }
+
+    /* ---- Blockquotes ---- */
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1.25rem;
+      border-left: 3px solid var(--color-petrol);
+      background: rgba(14, 59, 70, 0.03);
+      font-style: italic;
+      color: var(--color-graphite);
+      break-inside: avoid;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---- Code ---- */
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      background: rgba(14, 59, 70, 0.06);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      color: var(--color-petrol);
+    }
+
+    pre {
+      margin: 1.25rem 0;
+      padding: 1.25rem;
+      background: var(--color-ink);
+      color: var(--color-paper);
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.5;
+      break-inside: avoid;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+
+    /* ---- Tables ---- */
+
+    table {
+      width: 100%;
+      margin: 1.25rem 0;
+      border-collapse: collapse;
+      font-size: 14px;
+      break-inside: avoid;
+    }
+
+    th, td {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-petrol);
+      background: rgba(14, 59, 70, 0.03);
+    }
+
+    /* ---- Horizontal rule ---- */
+
+    hr {
+      margin: 2rem 0;
+      border: none;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    /* ---- Images ---- */
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    /* ---- Labels ---- */
+
+    .label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-petrol);
+    }
+
+    /* ---- Emphasis ---- */
+
+    strong { font-weight: 700; }
+    em { font-style: italic; }
+
+    mark {
+      background: rgba(195, 71, 29, 0.12);
+      padding: 0.1em 0.2em;
+    }
+
+    /* ---- Page break helpers ---- */
+
+    .page-break { break-before: page; }
+    .keep-together { break-inside: avoid; }
+
+    /* ========================================
+       Component Library
+       ======================================== */
+
+    /* ---- Two-column layouts ---- */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.25rem 0;
+      break-inside: avoid;
+    }
+
+    .two-col-wide-left {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 1.5rem;
+      margin: 1.25rem 0;
+      break-inside: avoid;
+    }
+
+    .two-col-wide-right {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 1.5rem;
+      margin: 1.25rem 0;
+      break-inside: avoid;
+    }
+
+    /* ---- Cards ---- */
+
+    .card-dark {
+      background: var(--color-petrol);
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 6px;
+      break-inside: avoid;
+    }
+
+    .card-dark h3, .card-dark h4 {
+      color: #fff;
+    }
+
+    .card-dark .stat-number {
+      color: #fff;
+    }
+
+    .card-dark .stat-label {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .card-light {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-petrol);
+      padding: 1.5rem;
+      border-radius: 0 6px 6px 0;
+      break-inside: avoid;
+    }
+
+    .card-accent {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-vermilion);
+      padding: 1.5rem;
+      border-radius: 0 6px 6px 0;
+      break-inside: avoid;
+    }
+
+    /* ---- Stat blocks ---- */
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--color-petrol);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-vermilion);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      break-inside: avoid;
+    }
+
+    .stat-grid > div {
+      text-align: center;
+      padding: 1.25rem;
+    }
+
+    /* ---- Callouts ---- */
+
+    .callout {
+      background: rgba(14, 59, 70, 0.04);
+      border: 1px solid rgba(14, 59, 70, 0.12);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      break-inside: avoid;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout-key {
+      background: var(--color-petrol);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      break-inside: avoid;
+    }
+
+    .callout-key p:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout-key strong {
+      color: #fff;
+    }
+
+    /* ---- Process flow ---- */
+
+    .process-flow {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin: 1.5rem 0;
+      break-inside: avoid;
+    }
+
+    .process-flow .step {
+      flex: 1;
+      text-align: center;
+      padding: 1rem 0.75rem;
+      position: relative;
+    }
+
+    .process-flow .step::after {
+      content: "\2192";
+      position: absolute;
+      right: -0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: var(--color-vermilion);
+    }
+
+    .process-flow .step:last-child::after {
+      content: none;
+    }
+
+    .process-flow .step-number {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--color-vermilion);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .process-flow .step-title {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-petrol);
+      margin-bottom: 0.35rem;
+    }
+
+    .process-flow .step-desc {
+      font-size: 12px;
+      color: var(--color-graphite);
+      line-height: 1.4;
+    }
+
+    /* ---- Pull quote ---- */
+
+    .pull-quote {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--color-petrol);
+      border-left: 3px solid var(--color-vermilion);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      break-inside: avoid;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-vermilion);
+      margin-top: 0.75rem;
+    }
+
+    /* ---- Document metadata ---- */
+
+    .meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--color-graphite);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* ---- Footer ---- */
+
+    .doc-footer {
+      margin-top: 3rem;
+      padding-top: 0.75rem;
+      border-top: 2px solid var(--color-petrol);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-graphite);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* ---- Orphan/widow control ---- */
+
+    p {
+      orphans: 3;
+      widows: 3;
+    }
+
+    img {
+      break-inside: avoid;
+    }
+
+    ul, ol {
+      break-inside: avoid;
+    }
+  </style>
+
+  <!-- Paged.js: defer pagination until fonts are ready -->
+  <script>
+    window.PagedConfig = { auto: false };
+  </script>
+  <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+  <script>
+    document.fonts.ready.then(function() {
+      window.PagedPolyfill.preview();
+    });
+  </script>
 </head>
 <body>
+  <style>
+  /* Local overrides — make this actually a "one-pager":
+     one full-bleed cover page + one content spread.
+     We keep brand tokens (paper, ink, petrol, vermilion, fonts) and just
+     tighten spacing + suppress the page-break-before on h2. */
+  body { font-size: 11.5px; line-height: 1.35; }
+  /* Override the template @page margin so the dense spread has more usable area. */
+  @page { margin: 0.5in 0.55in 0.6in 0.55in; }
+  h2 {
+    break-before: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.25rem;
+    font-size: 17px;
+  }
+  h2.no-break-before, h2.section-head { break-before: auto !important; }
+  h3 { font-size: 13px; margin-top: 0.5rem; margin-bottom: 0.25rem; }
+  h4 { font-size: 12px; margin-top: 0.4rem; margin-bottom: 0.1rem; }
+  p  { margin-bottom: 0.35rem; }
+  .lead { font-size: 12px; line-height: 1.4; margin-bottom: 0.5rem; }
+  .qgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4rem;
+    margin: 0.25rem 0 0.5rem;
+  }
+  .qcard {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-petrol);
+    border-radius: 0 4px 4px 0;
+    padding: 0.4rem 0.55rem;
+    break-inside: avoid;
+  }
+  .qcard.accent { border-left-color: var(--color-vermilion); }
+  .qcard .num {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-vermilion);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+  .qcard .q  { font-family: var(--font-sans); font-weight: 700; font-size: 11.5px; margin-bottom: 0.15rem; color: var(--color-ink); line-height: 1.25; }
+  .qcard .a  { font-size: 10.5px; color: var(--color-graphite); margin: 0; line-height: 1.35; }
+  .domain-head {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-petrol);
+    margin: 0.4rem 0 0.15rem;
+    padding-bottom: 0.1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .footer-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0.6rem;
+    padding-top: 0.4rem;
+    border-top: 2px solid var(--color-petrol);
+    gap: 1rem;
+    break-inside: avoid;
+  }
+  .footer-cta .left { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--color-ink); }
+  .footer-cta .right { font-family: var(--font-mono); font-size: 9.5px; color: var(--color-graphite); text-align: right; line-height: 1.4; }
+  .footer-cta .right strong { color: var(--color-petrol); }
+  /* Custom header strip used in place of the .cover full page. */
+  .one-pager-header {
+    border-bottom: 2px solid var(--color-petrol);
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.55rem;
+  }
+  .one-pager-header .hdr-brand {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--color-vermilion);
+    margin-bottom: 0.4rem;
+  }
+  .one-pager-header .hdr-doc {
+    color: var(--color-graphite);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+  }
+  .one-pager-header .hdr-title {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-ink);
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 0;
+  }
+</style>
 
-<h1>The Production AI Readiness One-Pager</h1>
-<p class="subhead"><strong>The 12 questions we ask before any engagement.</strong></p>
-<p class="lead">A diagnostic from TheFocus.AI for engineering leaders shipping LLM systems that have to work on Monday morning.</p>
+<!-- Header strip — brand mark + title in a compact band so the whole thing fits on one page. -->
+<header class="one-pager-header">
+  <div class="hdr-brand">THEFOCUS.AI <span class="hdr-doc">&middot; PRODUCTION AI READINESS DIAGNOSTIC &middot; v1 / May 2026</span></div>
+  <h1 class="hdr-title">The 12 questions we ask before any engagement.</h1>
+</header>
 
-<hr/>
+<p class="lead">Most teams shipping "AI features" today are running a demo with extra steps. The 12 questions below are what we ask before we agree to help move a system from <em>"it works in the demo"</em> to <em>"it works in production."</em> If you can answer each in a sentence, you do not need us. If three or more come back fuzzy, you have a project &mdash; not a feature.</p>
 
-<h2>Why this one-pager exists</h2>
-<p>Most teams shipping "AI features" today are running a demo with extra steps. The model works in a notebook, works for the founder, works for the customer in the sales call. Then it ships, the contract closes, and the on-call engineer learns what the model does at 2 a.m. on a Tuesday when the API provider has a 30-second latency spike.</p>
-<p>The 12 questions below are what we ask before we agree to help a team move from <em>"it works in the demo"</em> to <em>"it works in production, under load, with real users, and the bill is predictable."</em> If you can answer all 12 with a clear sentence, you do not need us. If three or more are fuzzy, you have a project — not a feature.</p>
+<div class="domain-head">Product surface</div>
+<div class="qgrid">
+  <div class="qcard">
+    <span class="num">Question 01</span>
+    <div class="q">What user job does the AI do?</div>
+    <p class="a">Name the single job-to-be-done in one sentence. If you need three, the surface is not ready.</p>
+  </div>
+  <div class="qcard">
+    <span class="num">Question 02</span>
+    <div class="q">What is the failure mode the user sees?</div>
+    <p class="a">When the model is wrong, slow, refuses, or unavailable &mdash; what does the screen look like and what does the user do next?</p>
+  </div>
+  <div class="qcard">
+    <span class="num">Question 03</span>
+    <div class="q">What is the ground truth?</div>
+    <p class="a">How do you know the answer was right? Who labels, who arbitrates, how fast does the loop close?</p>
+  </div>
+</div>
 
-<h2>The 12 questions</h2>
+<div class="domain-head">System architecture</div>
+<div class="qgrid">
+  <div class="qcard">
+    <span class="num">Question 04</span>
+    <div class="q">Where does the model live, and who pays?</div>
+    <p class="a">API, fine-tune, self-hosted, on-device. Per-call cost, per-user cost, and who absorbs a 3&times; usage spike.</p>
+  </div>
+  <div class="qcard">
+    <span class="num">Question 05</span>
+    <div class="q">What is the prompt boundary?</div>
+    <p class="a">Where do user inputs end and your instructions begin? Have you red-teamed injection from the inputs you actually accept?</p>
+  </div>
+  <div class="qcard">
+    <span class="num">Question 06</span>
+    <div class="q">What is in the context window, and who put it there?</div>
+    <p class="a">RAG sources, retrieval policy, freshness, and what happens when retrieval returns nothing.</p>
+  </div>
+</div>
 
-<h3>Product surface</h3>
-<ol>
-  <li><strong>What user job does the AI do?</strong> Name the single job-to-be-done in one sentence. If you need three, the surface is not ready.</li>
-  <li><strong>What is the failure mode the user sees?</strong> When the model is wrong, slow, refuses, or unavailable — what does the screen look like and what does the user do next?</li>
-  <li><strong>What is the ground truth?</strong> How do you know the answer was right? Who labels, who arbitrates, and how fast does that loop close?</li>
-</ol>
+<div class="domain-head">Operations</div>
+<div class="qgrid">
+  <div class="qcard">
+    <span class="num">Question 07</span>
+    <div class="q">What is the p95 latency budget?</div>
+    <p class="a">Not the average. The 95th percentile a user will feel. Have you measured it under load with a real provider, not a local mock?</p>
+  </div>
+  <div class="qcard">
+    <span class="num">Question 08</span>
+    <div class="q">What is the rate-limit and quota story?</div>
+    <p class="a">Provider limits, account limits, and what happens when a single tenant burns the quota for the rest.</p>
+  </div>
+  <div class="qcard">
+    <span class="num">Question 09</span>
+    <div class="q">How do you roll back a prompt?</div>
+    <p class="a">Prompts are code. What is the revert path, the audit trail, the time-to-recover when a new prompt regresses?</p>
+  </div>
+</div>
 
-<h3>System architecture</h3>
-<ol start="4">
-  <li><strong>Where does the model live, and who pays for it?</strong> API, fine-tune, self-hosted, on-device. Per-call cost, per-user cost, and who absorbs a 3× usage spike.</li>
-  <li><strong>What is the prompt boundary?</strong> Where do user inputs end and your instructions begin? Have you red-teamed injection from the inputs you actually accept?</li>
-  <li><strong>What is in the context window, and who put it there?</strong> RAG sources, retrieval policy, freshness, and what happens when retrieval returns nothing.</li>
-</ol>
+<div class="domain-head">Trust, safety, and the boring stuff</div>
+<div class="qgrid">
+  <div class="qcard accent">
+    <span class="num">Question 10</span>
+    <div class="q">What data leaves your perimeter, and where does it land?</div>
+    <p class="a">Provider retention, sub-processors, training opt-outs, and the legal review you actually completed &mdash; not the one in the slide deck.</p>
+  </div>
+  <div class="qcard accent">
+    <span class="num">Question 11</span>
+    <div class="q">Who is accountable for a bad answer?</div>
+    <p class="a">A named human, a Slack channel, an on-call rotation, a real SLA. <em>The model</em> is not an accountable party.</p>
+  </div>
+  <div class="qcard accent">
+    <span class="num">Question 12</span>
+    <div class="q">What does success look like in 90 days?</div>
+    <p class="a">A metric, a baseline, a target, a review cadence, and a kill criterion if it does not work.</p>
+  </div>
+</div>
 
-<h3>Operations</h3>
-<ol start="7">
-  <li><strong>What is the p95 latency budget?</strong> Not the average. The 95th percentile a user will actually feel. Have you measured it under load with a real provider, not a local mock?</li>
-  <li><strong>What is the rate-limit and quota story?</strong> Your provider's limits, your account's limits, and what happens when a single tenant burns the quota for the rest.</li>
-  <li><strong>How do you roll back a prompt?</strong> Prompts are code. If a new prompt regresses a use case, what is the revert path, the audit trail, and the time-to-recover?</li>
-</ol>
-
-<h3>Trust, safety, and the boring stuff</h3>
-<ol start="10">
-  <li><strong>What data leaves your perimeter, and where does it land?</strong> Provider retention, vendor sub-processors, contractual training opt-outs, and the legal review you actually completed (not the one in the slide deck).</li>
-  <li><strong>Who is accountable for a bad answer?</strong> A named human, a Slack channel, an on-call rotation, a SLA. "The model" is not an accountable party.</li>
-  <li><strong>What does success look like in 90 days?</strong> A metric, a baseline, a target, a review cadence, and a kill criterion if it does not work.</li>
-</ol>
-
-<h2>How to use this</h2>
-<p>Print it. Walk it through your team meeting. If three or more answers are fuzzy, you have homework before you ship — not a launch.</p>
-<p>If you want a second pair of eyes on the homework, <a href="https://thefocus.ai/capabilities">we do that for a living</a>.</p>
-
-<div class="footer">
-<strong>TheFocus.AI</strong> — Building intelligent organizations. Production AI, not demoware.<br/>
-<a href="https://thefocus.ai">thefocus.ai</a> · <a href="https://thefocus.ai/production-ai-readiness/">Subscribe to the weekly note</a><br/>
-<em>v1 · 2026-05-25 · CTO draft — pending CEO review.</em>
+<div class="footer-cta">
+  <div class="left">Production AI, not demoware.</div>
+  <div class="right">
+    <strong>thefocus.ai/production-ai-readiness</strong><br/>
+    One short essay a week for engineers shipping LLM systems.
+  </div>
 </div>
 
 </body>
