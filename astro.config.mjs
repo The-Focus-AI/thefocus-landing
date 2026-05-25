@@ -15,6 +15,10 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://thefocus.ai",
   trailingSlash: "ignore",
+  redirects: {
+    "/case-studies": "/work",
+    "/case-study/[...id]": "/work/[...id]",
+  },
   integrations: [
     tailwind(),
     react(),

@@ -51,12 +51,12 @@ const csMailto = `mailto:hey@thefocus.ai?subject=${encodeURIComponent(`Re: ${cas
 <BaseLayout
   pageTitle={case_study.data.title}
   description={case_study.data.description}
-  category="case-studies"
+  category="work"
   openGraphImage={ogImageSrc}
 >
   <article class="max-w-4xl mx-auto">
-    <a href="/case-studies" class="inline-flex items-center gap-2 text-sm text-graphite hover:text-petrol transition-colors mb-8">
-      <span>&larr;</span> Back to Case Studies
+    <a href="/work" class="inline-flex items-center gap-2 text-sm text-graphite hover:text-petrol transition-colors mb-8">
+      <span>&larr;</span> Back to Our Work
     </a>
 
     <!-- Header -->
@@ -186,8 +186,45 @@ const csMailto = `mailto:hey@thefocus.ai?subject=${encodeURIComponent(`Re: ${cas
       </aside>
     )}
 
+    <!-- Inline newsletter signup -->
+    <aside class="mt-16 pt-12 border-t border-gray-200">
+      <div class="bg-paper border border-ink/10 rounded-lg p-8 md:p-10 shadow-sm">
+        <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">More like this</p>
+        <h2 class="font-sans text-2xl md:text-3xl font-bold text-ink mb-3">
+          Get the next case study in your inbox
+        </h2>
+        <p class="text-graphite mb-6 max-w-2xl">
+          One short note every couple of weeks: production AI patterns, what we shipped, and what didn't work. No fluff.
+        </p>
+        <form
+          action="https://buttondown.com/api/emails/embed-subscribe/thefocusai"
+          method="post"
+          class="embeddable-buttondown-form flex flex-col sm:flex-row gap-3 max-w-xl"
+          target="popupwindow"
+          onsubmit="window.open('https://buttondown.com/thefocusai', 'popupwindow')"
+        >
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            aria-label="Email address"
+            class="flex-1 px-4 py-3 rounded-md border border-ink/15 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-petrol/40"
+          />
+          <input type="hidden" name="tag" value={`work:${case_study.id}`} />
+          <button
+            type="submit"
+            class="px-6 py-3 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-md hover:bg-petrol/90 transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p class="text-xs text-graphite/70 mt-3">Powered by Buttondown. Unsubscribe anytime.</p>
+      </div>
+    </aside>
+
     <!-- CTA -->
-    <div class="mt-16 pt-12 border-t border-gray-200">
+    <div class="mt-12 pt-12 border-t border-gray-200">
       <div class="bg-tint-cool p-8 md:p-12 rounded-lg">
         <h2 class="font-sans text-2xl font-bold text-ink mb-4">
           Facing a similar challenge?
@@ -215,7 +252,7 @@ const csMailto = `mailto:hey@thefocus.ai?subject=${encodeURIComponent(`Re: ${cas
     <!-- Related Case Studies -->
     {related.length > 0 && (
       <nav class="mt-16 pt-12 border-t border-gray-200">
-        <h2 class="font-sans text-2xl font-bold text-ink mb-8">More Case Studies</h2>
+        <h2 class="font-sans text-2xl font-bold text-ink mb-8">More work from the studio</h2>
         <div class="grid md:grid-cols-2 gap-8">
           {related.map((cs) => (
             <a href={getCaseStudyUrl(cs)} class="group block">
