@@ -1,16 +1,41 @@
 ---
-const { h2_prompt, p_prompt, pdfLink } = Astro.props;
+// email-signup — the newsletter signup block used across BaseLayout, LandingLayout,
+// and individual post pages. Supports an optional `magnet` prop so signups for a
+// specific lead magnet (e.g. `production-ai-readiness`) are tagged in Buttondown
+// and redirected to the magnet thank-you page that serves the PDF.
+const { h2_prompt, p_prompt, pdfLink, magnet, source } = Astro.props;
+
+// When a magnet is requested, route post-subscribe to the on-site thank-you page
+// that delivers the PDF immediately (the Buttondown automation also emails it).
+const redirectUrl = magnet
+  ? new URL(`/lead-magnet/${magnet}/`, Astro.site).href
+  : pdfLink
+    ? new URL(pdfLink, Astro.site).href
+    : null;
+
+const placement = source || "footer";
+const magnetCopy = {
+  "production-ai-readiness": {
+    h2: "Get the Production AI Readiness one-pager",
+    p:
+      "Plus a free copy of the 12 questions we ask before any engagement. One short essay each week on shipping production AI.",
+    cta: "Get the one-pager",
+  },
+};
+const copy = magnet ? magnetCopy[magnet] : null;
 ---
 <section class="container mx-auto py-4 px-2">
-    <h2 class="text-2xl font-bold text-center border-t-2 pt-16 mt-16 pb-8" style="color: #161616; border-top-color: #e6e4dc;">{h2_prompt || 'Subscribe to our newsletter'}</h2>
+    <h2 class="text-2xl font-bold text-center border-t-2 pt-16 mt-16 pb-8" style="color: #161616; border-top-color: #e6e4dc;">{h2_prompt || copy?.h2 || 'Subscribe to our newsletter'}</h2>
 
-    {p_prompt && <p class="text-center text-lg mb-4" style="color: #4a4a4a;">{p_prompt}</p>}
+    {(p_prompt || copy?.p) && <p class="text-center text-lg mb-4" style="color: #4a4a4a;">{p_prompt || copy?.p}</p>}
 
     <div class="max-w-md w-full mx-auto rounded-md shadow-sm p-6" style="background-color: #faf9f6; border: 1px solid #e6e4dc;">
       <form
         action="https://buttondown.com/api/emails/embed-subscribe/thefocusai"
         method="post"
         class="embeddable-buttondown-form space-y-4"
+        data-magnet={magnet || null}
+        data-placement={placement}
       >
         <div class="space-y-2">
           <label for="bd-email" class="block text-sm font-medium" style="color: #4a4a4a;">
@@ -26,14 +51,21 @@ const { h2_prompt, p_prompt, pdfLink } = Astro.props;
           />
         </div>
 
-        {pdfLink && <input type="hidden" name="redirect_url" value={new URL(pdfLink, Astro.site).href} />}
+        {/* Source attribution — Buttondown stores arbitrary subscriber metadata via metadata__<key>. */}
+        <input type="hidden" name="metadata__source" value={placement} />
+
+        {/* Magnet code → drives the Buttondown automation tag + the thank-you redirect. */}
+        {magnet && <input type="hidden" name="metadata__magnet" value={magnet} />}
+        {magnet && <input type="hidden" name="tag" value={`magnet:${magnet}`} />}
+
+        {redirectUrl && <input type="hidden" name="redirect_url" value={redirectUrl} />}
 
         <button
           type="submit"
           class="w-full text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors"
           style="background-color: #0e3b46;"
         >
-          Subscribe
+          {copy?.cta || 'Subscribe'}
         </button>
 
         <p class="text-xs text-center" style="color: #4a4a4a;">
@@ -51,5 +83,23 @@ const { h2_prompt, p_prompt, pdfLink } = Astro.props;
 
 </section>
 
+<script>
+  // Fire Plausible custom events for the signup funnel. The native cross-origin POST
+  // proceeds via the browser; no need to preventDefault — events queue before the
+  // page unloads, and Plausible's `script.tagged-events.outbound-links.file-downloads.js`
+  // is loaded with `defer` from BaseLayout.
+  type Plausible = (event: string, opts?: { props?: Record<string, string> }) => void;
+  const w = window as unknown as { plausible?: Plausible };
 
-  
+  document.querySelectorAll<HTMLFormElement>("form.embeddable-buttondown-form").forEach((form) => {
+    const placement = form.dataset.placement || "unknown";
+    const magnet = form.dataset.magnet || "";
+    form.addEventListener("submit", () => {
+      try {
+        const props: Record<string, string> = { placement, path: location.pathname };
+        if (magnet) props.magnet = magnet;
+        w.plausible?.("signup_form_submit", { props });
+      } catch {}
+    });
+  });
+</script>

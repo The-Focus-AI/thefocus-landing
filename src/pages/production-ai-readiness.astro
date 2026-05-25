@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import EmailSignup from "../components/email-signup.astro";
+
+const pageTitle = "Production AI Readiness — the 12 questions · TheFocus.AI";
+const description =
+  "A free one-pager from TheFocus.AI: the 12 questions we ask engineering leaders before any production-AI engagement. Subscribe for the PDF plus a weekly note on shipping LLM systems that have to work on Monday morning.";
+---
+
+<BaseLayout pageTitle={pageTitle} description={description} category="studio">
+  <section class="max-w-3xl mx-auto py-12 md:py-20 px-5 md:px-8">
+    <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-3 font-medium">
+      Free one-pager
+    </p>
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4" style="color: #161616;">
+      Production AI, not demoware.
+    </h1>
+    <p class="text-base md:text-xl leading-relaxed mb-8 max-w-2xl" style="color: #4a4a4a;">
+      The 12 questions we ask before any engagement — the same diagnostic we use with
+      mid-market and enterprise teams shipping LLM systems that have to work on Monday morning.
+    </p>
+
+    <EmailSignup magnet="production-ai-readiness" source="production-ai-readiness-landing" />
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-10 mt-12">
+      <div>
+        <h3 class="text-lg md:text-xl font-bold mb-2" style="color: #161616;">What you get</h3>
+        <ul class="text-base leading-relaxed space-y-2 list-disc pl-5" style="color: #4a4a4a;">
+          <li>1-page PDF — Letter format, fits on the wall above the standup board.</li>
+          <li>12 questions across product, architecture, ops, and trust.</li>
+          <li>A weekly note in your inbox: short, opinionated, from someone shipping the same thing.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg md:text-xl font-bold mb-2" style="color: #161616;">Who it's for</h3>
+        <ul class="text-base leading-relaxed space-y-2 list-disc pl-5" style="color: #4a4a4a;">
+          <li>Engineering leaders moving an AI feature from prototype to production.</li>
+          <li>Founders deciding whether to fine-tune, RAG, or just ship the API call.</li>
+          <li>Teams who have shipped a demo and are not sure what's missing for launch.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rounded-2xl p-6 mt-12" style="background-color: #faf9f6; border: 1px solid #e6e4dc;">
+      <p class="text-base leading-relaxed" style="color: #4a4a4a;">
+        Already subscribed?
+        <a href="/lead-magnet/production-ai-readiness/" class="underline" style="color: #0e3b46;">
+          Grab the PDF directly →
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
