@@ -88,7 +88,7 @@ let category = Astro.props.category || "home";
   <body class={`text-ink overflow-x-hidden ${bodyClass || (category === 'studio' ? 'bg-[#e8e6df]' : 'bg-paper')}`}>
     <!-- Report Banner - hidden on mobile for cleaner first impression -->
     <div class="hidden sm:block bg-rand-blue text-white">
-      <a href="/case-studies" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
+      <a href="/work" class="block max-w-screen-xl mx-auto px-4 md:px-8 py-3 text-center text-sm hover:opacity-90 transition-opacity">
         <span class="font-medium">From tribal knowledge to production AI — in weeks, not quarters.</span>
         <span class="ml-2 opacity-80">Samsung · Tesla · Perplexity · Rivian</span>
         <span class="ml-2 inline-block">→</span>
@@ -123,9 +123,9 @@ let category = Astro.props.category || "home";
               </a>
             </li>
             <li>
-              <a href="/case-studies" class:list={["group inline-block relative pb-2", category === "case-studies" ? "text-ink" : ""]}>
-                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Case Studies</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
-                <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "case-studies" ? "w-full" : "w-0 group-hover:w-3/4"]} />
+              <a href="/work" class:list={["group inline-block relative pb-2", category === "work" ? "text-ink" : ""]}>
+                <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Work</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "work" ? "w-full" : "w-0 group-hover:w-3/4"]} />
               </a>
             </li>
             <li>
@@ -179,7 +179,7 @@ let category = Astro.props.category || "home";
             </a>
           </li>
           <li>
-            <a href="/case-studies" class:list={["block py-3 text-lg", category === "case-studies" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Case Studies</a>
+            <a href="/work" class:list={["block py-3 text-lg", category === "work" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Work</a>
           </li>
           <li>
             <a href="/about" class:list={["block py-3 text-lg", category === "about" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>About</a>
@@ -247,7 +247,7 @@ let category = Astro.props.category || "home";
               Talk to a principal
             </a>
             <a
-              href="/case-studies"
+              href="/work"
               class="inline-block px-8 py-4 border-2 border-paper/30 text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:border-paper hover:bg-paper/10 hover:-translate-y-0.5 transition-all duration-200"
             >
               See Our Work
@@ -265,7 +265,7 @@ let category = Astro.props.category || "home";
             <h3 class="text-xs uppercase tracking-[0.15em] text-ink font-medium mb-4">Company</h3>
             <ul class="space-y-3 text-sm">
               <li><a href="/about" class="text-graphite hover:text-ink transition-colors">About</a></li>
-              <li><a href="/case-studies" class="text-graphite hover:text-ink transition-colors">Case Studies</a></li>
+              <li><a href="/work" class="text-graphite hover:text-ink transition-colors">Work</a></li>
               <li><a href="/capabilities" class="text-graphite hover:text-ink transition-colors">Capabilities</a></li>
               <li>
                 <a href="/habitat-os" class="text-graphite hover:text-ink transition-colors block">

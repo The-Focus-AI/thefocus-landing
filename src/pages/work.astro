@@ -50,14 +50,14 @@ if (uncategorized.length > 0) {
 }
 ---
 
-<BaseLayout pageTitle="AI Implementation Case Studies | TheFocus.AI" description="Production AI shipped for Samsung, Tesla, Perplexity, Rivian, Con Edison. Real problems, measurable outcomes: 78% faster decisions, 50M+ devices reached, 8 weeks to production." category="case-studies">
+<BaseLayout pageTitle="Our Work — AI Implementation Case Studies | TheFocus.AI" description="Production AI shipped for Samsung, Tesla, Perplexity, Rivian, Con Edison. Real problems, measurable outcomes: 78% faster decisions, 50M+ devices reached, 8 weeks to production." category="work">
   <BreadcrumbList slot="head" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "TheFocus.AI Case Studies",
+    "name": "TheFocus.AI Work",
     "description": "Production AI implementations for mid-market and enterprise organizations",
-    "url": "https://thefocus.ai/case-studies",
+    "url": "https://thefocus.ai/work",
     "itemListElement": case_studies.map((cs, i) => ({
       "@type": "ListItem",
       "position": i + 1,

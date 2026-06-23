@@ -13,7 +13,7 @@ export async function getCaseStudies() {
 
 
 export function getCaseStudyUrl(case_study) {
-  return `/case-study/${case_study.id}`;
+  return `/work/${case_study.id}`;
 }
 
 export async function getRecentCaseStudies() {
