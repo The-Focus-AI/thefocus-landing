@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const lastUpdated = "May 25, 2026";
+---
+
+<BaseLayout
+  pageTitle="Privacy Policy | TheFocus.AI"
+  description="How TheFocus.AI handles your data on thefocus.ai and across our newsletter and product surfaces."
+  category="legal"
+>
+  <div class="max-w-3xl mx-auto py-8 md:py-16">
+    <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">Legal</p>
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-ink leading-tight mb-4">
+      Privacy Policy
+    </h1>
+    <p class="text-sm text-graphite/70 mb-12">Last updated: {lastUpdated}</p>
+
+    <div class="prose prose-lg max-w-none text-graphite leading-relaxed">
+      <p>
+        TheFocus.AI ("we", "us") operates the website at <a href="https://thefocus.ai" class="text-petrol hover:underline">thefocus.ai</a>, the newsletter at <a href="https://newsletter.thefocus.ai" class="text-petrol hover:underline">newsletter.thefocus.ai</a>, and related subdomains. This policy explains what we collect, why we collect it, and how to contact us about your data.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">What we collect</h2>
+      <ul>
+        <li>
+          <strong>Newsletter signups.</strong> When you subscribe, we collect your email address and the source page of your signup. Subscriptions are stored and delivered by <a href="https://buttondown.com" class="text-petrol hover:underline">Buttondown</a>, our newsletter provider. See <a href="https://buttondown.com/privacy" class="text-petrol hover:underline">Buttondown's privacy policy</a> for how they handle subscriber data.
+        </li>
+        <li>
+          <strong>Site analytics.</strong> We use <a href="https://plausible.io" class="text-petrol hover:underline">Plausible Analytics</a>, a privacy-friendly analytics service that does not use cookies and does not collect personal data or device fingerprints. Plausible aggregates pageviews, referrers, and country-level location. See <a href="https://plausible.io/data-policy" class="text-petrol hover:underline">Plausible's data policy</a> for details.
+        </li>
+        <li>
+          <strong>Contact emails.</strong> If you email us directly (for example, at hey@thefocus.ai), we keep that thread in our mail provider so we can reply and continue the conversation.
+        </li>
+        <li>
+          <strong>Server logs.</strong> Our hosting and CDN providers (Cloudflare and our static host) keep short-lived request logs containing IP address, user agent, and requested URL for operational and security purposes.
+        </li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">What we don't do</h2>
+      <ul>
+        <li>We don't sell your data.</li>
+        <li>We don't share your email address with third parties for marketing.</li>
+        <li>We don't set advertising cookies or run third-party ad networks.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Retention</h2>
+      <p>
+        We keep newsletter subscriptions until you unsubscribe. Every newsletter email contains a one-click unsubscribe link. Site analytics in Plausible are retained according to their default policy. Contact emails are kept for as long as the conversation is operationally useful.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Your rights</h2>
+      <p>
+        You can unsubscribe from the newsletter at any time using the link in any email, or by emailing us. You can also request that we delete personal data we hold about you by writing to the contact address below. We'll respond within a reasonable time.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Contact</h2>
+      <p>
+        For privacy questions or data deletion requests, email <a href="mailto:hey@thefocus.ai?subject=Privacy%20request" class="text-petrol hover:underline">hey@thefocus.ai</a>.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-ink mt-10 mb-4">Changes</h2>
+      <p>
+        If we change this policy materially, we'll update the date at the top and announce the change in the newsletter.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
