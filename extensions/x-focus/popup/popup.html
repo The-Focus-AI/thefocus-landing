@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>X Focus settings</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="brand">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <h1>X Focus</h1>
+            <p>Work news without the feed noise.</p>
+          </div>
+        </div>
+
+        <label class="switch">
+          <span class="sr-only">Enable focus mode</span>
+          <input id="enabled" type="checkbox" />
+          <span class="track" aria-hidden="true"></span>
+        </label>
+      </header>
+
+      <form id="settings-form">
+        <label for="topics">
+          Topics
+          <span>One per line or separated by commas</span>
+        </label>
+        <textarea
+          id="topics"
+          rows="5"
+          placeholder="Tesla&#10;SpaceX&#10;Starship"
+          spellcheck="false"
+        ></textarea>
+
+        <label for="accounts">
+          Always keep accounts
+          <span>Handles with or without @</span>
+        </label>
+        <textarea
+          id="accounts"
+          rows="3"
+          placeholder="@Tesla&#10;@SpaceX"
+          spellcheck="false"
+        ></textarea>
+
+        <fieldset>
+          <legend>Unrelated posts</legend>
+          <label class="choice">
+            <input type="radio" name="filterStyle" value="hide" />
+            <span><strong>Hide</strong> for a clean timeline</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="filterStyle" value="dim" />
+            <span><strong>Dim</strong> so posts remain available</span>
+          </label>
+        </fieldset>
+
+        <label class="check">
+          <input id="hide-promoted" type="checkbox" />
+          <span>Filter promoted posts</span>
+        </label>
+
+        <button class="save" type="submit">Save focus</button>
+        <p id="save-status" class="save-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <footer>Processed locally. No posts leave your browser.</footer>
+    </main>
+
+    <script src="../filter-engine.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

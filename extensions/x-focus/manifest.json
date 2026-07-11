@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "X Focus",
+  "version": "0.1.0",
+  "description": "Keep the useful part of X by filtering timelines to your work topics.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "X Focus settings",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["filter-engine.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
