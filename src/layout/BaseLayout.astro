@@ -135,6 +135,7 @@ let category = Astro.props.category || "home";
               </a>
             </li>
             <li>
+              {/* TODO(THE-19): swap mailto: for /contact when the real contact form lands. */}
               <a href="mailto:hey@thefocus.ai" class="group inline-block relative pb-2">
                 <span class="opacity-30 group-hover:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover:text-ink transition-colors duration-150">Contact</span><span class="opacity-30 group-hover:opacity-100 transition-opacity duration-300 text-ink">]</span>
                 <span class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out w-0 group-hover:w-3/4" />
@@ -142,23 +143,24 @@ let category = Astro.props.category || "home";
             </li>
             <li class="text-graphite/30">/</li>
             <li class="relative group/studio">
+              {/* Internal `category="studio"` preserved; user-facing label is "Work" per THE-18. */}
               <button class:list={["inline-block cursor-pointer relative pb-2", category === "studio" ? "text-ink" : ""]}>
-                <span class="opacity-30 group-hover/studio:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover/studio:text-ink transition-colors duration-150">Studio <span class="text-[0.6em] ml-0.5">▾</span></span><span class="opacity-30 group-hover/studio:opacity-100 transition-opacity duration-300 text-ink">]</span>
+                <span class="opacity-30 group-hover/studio:opacity-100 transition-opacity duration-150 text-ink">[</span><span class="group-hover/studio:text-ink transition-colors duration-150">Work <span class="text-[0.6em] ml-0.5">▾</span></span><span class="opacity-30 group-hover/studio:opacity-100 transition-opacity duration-300 text-ink">]</span>
                 <span class:list={["absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-petrol rounded-full transition-all duration-300 ease-out", category === "studio" ? "w-full" : "w-0 group-hover/studio:w-3/4"]} />
               </button>
               <div class="absolute top-full right-0 pt-2 opacity-0 invisible group-hover/studio:opacity-100 group-hover/studio:visible transition-all duration-200 z-50">
                 <ul class="bg-paper border border-ink/10 rounded-lg shadow-lg shadow-ink/10 py-2 min-w-[10rem] text-left normal-case tracking-normal">
                   <li>
+                    <a href="/case-studies" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Case Studies</a>
+                  </li>
+                  <li>
+                    <a href="/offerings" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Offerings</a>
+                  </li>
+                  <li>
                     <a href="/insights" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Insights</a>
                   </li>
                   <li>
-                    <a href="/tools" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Tools</a>
-                  </li>
-                  <li>
                     <a href="/reports" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Reports</a>
-                  </li>
-                  <li class="border-t border-ink/5 mt-1 pt-1">
-                    <a href="https://account.thefocus.ai/" target="_blank" rel="noopener" class="block px-5 py-2.5 text-sm text-graphite hover:text-petrol hover:bg-tint-cool/30 transition-colors">Products <span class="text-xs opacity-50">↗</span></a>
                   </li>
                 </ul>
               </div>
@@ -185,22 +187,23 @@ let category = Astro.props.category || "home";
             <a href="/about" class:list={["block py-3 text-lg", category === "about" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>About</a>
           </li>
           <li>
+            {/* TODO(THE-19): swap mailto: for /contact when the real contact form lands. */}
             <a href="mailto:hey@thefocus.ai" class="block py-3 text-lg text-graphite hover:text-ink">Contact</a>
           </li>
           <li class="border-t border-ink/10 mt-4 pt-4">
-            <span class="block py-2 text-xs uppercase tracking-[0.15em] text-graphite/50 font-medium">Studio</span>
+            <span class="block py-2 text-xs uppercase tracking-[0.15em] text-graphite/50 font-medium">Work</span>
+          </li>
+          <li>
+            <a href="/case-studies" class:list={["block py-3 text-lg pl-4", category === "case-studies" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Case Studies</a>
+          </li>
+          <li>
+            <a href="/offerings" class:list={["block py-3 text-lg pl-4", category === "offerings" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Offerings</a>
           </li>
           <li>
             <a href="/insights" class:list={["block py-3 text-lg pl-4", category === "studio" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Insights</a>
           </li>
           <li>
-            <a href="/tools" class:list={["block py-3 text-lg pl-4", category === "studio" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Tools</a>
-          </li>
-          <li>
             <a href="/reports" class:list={["block py-3 text-lg pl-4", category === "studio" ? "text-ink font-medium" : "text-graphite hover:text-ink"]}>Reports</a>
-          </li>
-          <li>
-            <a href="https://account.thefocus.ai/" target="_blank" rel="noopener" class="block py-3 text-lg pl-4 text-graphite hover:text-ink">Products <span class="text-sm opacity-50">↗</span></a>
           </li>
         </ul>
       </nav>
