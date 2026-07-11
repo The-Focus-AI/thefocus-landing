@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 
 const {
   classifyPost,
+  isFilterablePath,
   matchesTerm,
   normalizeSettings,
   parseList
@@ -71,4 +72,12 @@ test("normalizeSettings sanitizes handles and invalid filter styles", () => {
 
   assert.deepEqual(settings.accounts, ["tesla", "spacex"]);
   assert.equal(settings.filterStyle, "hide");
+});
+
+test("filtering is limited to feed routes and excludes conversations", () => {
+  assert.equal(isFilterablePath("/home"), true);
+  assert.equal(isFilterablePath("/search"), true);
+  assert.equal(isFilterablePath("/i/lists/12345"), true);
+  assert.equal(isFilterablePath("/SpaceX/status/12345"), false);
+  assert.equal(isFilterablePath("/SpaceX"), false);
 });

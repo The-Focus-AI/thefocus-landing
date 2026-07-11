@@ -25,6 +25,8 @@ filtered. Use **Pause** to restore the unfiltered timeline immediately.
 - Filters promoted posts when configured.
 - Stores all preferences in `chrome.storage.local`.
 - Reacts to X's dynamically loaded timeline and settings changes.
+- Filters Home, Search, Explore, and List feeds while leaving profiles,
+  conversations, and individual post pages unchanged.
 
 Default topics are Tesla, SpaceX, Starship, Falcon, Cybertruck, Optimus, xAI,
 and Neuralink. Defaults are only applied on first use and can be replaced from

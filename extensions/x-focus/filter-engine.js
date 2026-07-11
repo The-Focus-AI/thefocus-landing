@@ -87,6 +87,14 @@
     return normalizedText.includes(normalizedTerm);
   }
 
+  function isFilterablePath(pathname) {
+    const path = String(pathname || "");
+    return (
+      /^\/(home|search|explore)(\/|$)/.test(path) ||
+      path.startsWith("/i/lists/")
+    );
+  }
+
   function classifyPost(post, rawSettings) {
     const settings = normalizeSettings(rawSettings);
     const text = String(post?.text || "");
@@ -123,6 +131,7 @@
   return {
     DEFAULT_SETTINGS,
     classifyPost,
+    isFilterablePath,
     matchesTerm,
     normalizeHandle,
     normalizeSettings,

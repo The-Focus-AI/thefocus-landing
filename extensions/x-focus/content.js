@@ -14,69 +14,147 @@
   const TOOLBAR_ID = "x-focus-toolbar";
 
   let settings = engine.normalizeSettings();
-  let scheduled = false;
+  let settingsVersion = 0;
+  let scheduleTimer;
   let toolbar;
+  let currentUrl = location.href;
+  const dirtyArticles = new Set();
+  const signatures = new WeakMap();
 
   function extractPost(article) {
-    const tweetText = article.querySelector('[data-testid="tweetText"]');
+    const tweetText = Array.from(
+      article.querySelectorAll('[data-testid="tweetText"]')
+    )
+      .map((element) => element.textContent || "")
+      .join("\n");
     const userName = article.querySelector('[data-testid="User-Name"]');
     const handleMatch = userName?.textContent?.match(/@[A-Za-z0-9_]{1,15}/);
-    const articleText = article.innerText || "";
+    const promoted = Array.from(article.querySelectorAll("span")).some(
+      (element) =>
+        element.children.length === 0 && element.textContent?.trim() === "Promoted"
+    );
 
     return {
-      text: tweetText?.textContent || articleText,
+      text: tweetText,
       author: handleMatch?.[0] || "",
-      promoted:
-        Boolean(article.querySelector('[data-testid="placementTracking"]')) ||
-        /(^|\n)Promoted(\n|$)/i.test(articleText)
+      promoted
     };
   }
 
-  function resetArticle(article) {
-    article.classList.remove(HIDDEN_CLASS, DIMMED_CLASS, KEPT_CLASS);
-    delete article.dataset.xFocusReason;
+  function getFilterTarget(article) {
+    return article.closest('[data-testid="cellInnerDiv"]') || article;
+  }
+
+  function resetTarget(target) {
+    target.classList.remove(HIDDEN_CLASS, DIMMED_CLASS, KEPT_CLASS);
+    delete target.dataset.xFocusReason;
   }
 
   function applyDecision(article, decision) {
-    resetArticle(article);
+    const target = getFilterTarget(article);
+    resetTarget(target);
 
     if (!settings.enabled) {
       return;
     }
 
     if (decision.keep) {
-      article.classList.add(KEPT_CLASS);
-      article.dataset.xFocusReason = decision.reason;
+      target.classList.add(KEPT_CLASS);
+      target.dataset.xFocusReason = decision.reason;
       return;
     }
 
-    article.classList.add(
+    target.classList.add(
       settings.filterStyle === "dim" ? DIMMED_CLASS : HIDDEN_CLASS
     );
   }
 
   function filterTimeline() {
-    scheduled = false;
-    const articles = Array.from(document.querySelectorAll(ARTICLE_SELECTOR));
-    let kept = 0;
-    let filtered = 0;
+    scheduleTimer = undefined;
 
-    for (const article of articles) {
-      const decision = engine.classifyPost(extractPost(article), settings);
-      applyDecision(article, decision);
-      decision.keep ? kept++ : filtered++;
+    if (location.href !== currentUrl) {
+      currentUrl = location.href;
+      settingsVersion++;
+      document.querySelectorAll(ARTICLE_SELECTOR).forEach((article) => {
+        dirtyArticles.add(article);
+      });
     }
 
-    updateToolbar({ kept, filtered, total: articles.length });
-  }
-
-  function scheduleFilter() {
-    if (scheduled) {
+    if (!engine.isFilterablePath(location.pathname)) {
+      document
+        .querySelectorAll(`.${HIDDEN_CLASS}, .${DIMMED_CLASS}, .${KEPT_CLASS}`)
+        .forEach(resetTarget);
+      dirtyArticles.clear();
+      updateToolbar({ kept: 0, filtered: 0, total: 0 });
       return;
     }
 
-    scheduled = true;
-    window.requestAnimationFrame(filterTimeline);
+    for (const article of dirtyArticles) {
+      if (!article.isConnected) {
+        continue;
+      }
+
+      const post = extractPost(article);
+      const signature = JSON.stringify([
+        settingsVersion,
+        post.text,
+        post.author,
+        post.promoted
+      ]);
+      if (signatures.get(article) === signature) {
+        continue;
+      }
+
+      signatures.set(article, signature);
+      applyDecision(article, engine.classifyPost(post, settings));
+    }
+    dirtyArticles.clear();
+
+    const articles = Array.from(document.querySelectorAll(ARTICLE_SELECTOR));
+    const filtered = articles.filter((article) => {
+      const target = getFilterTarget(article);
+      return target.classList.contains(HIDDEN_CLASS) ||
+        target.classList.contains(DIMMED_CLASS);
+    }).length;
+
+    updateToolbar({
+      kept: articles.length - filtered,
+      filtered,
+      total: articles.length
+    });
+  }
+
+  function collectArticles(node) {
+    const element =
+      node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+    if (!element) {
+      return;
+    }
+
+    if (element.matches?.(ARTICLE_SELECTOR)) {
+      dirtyArticles.add(element);
+    }
+    const parentArticle = element.closest?.(ARTICLE_SELECTOR);
+    if (parentArticle) {
+      dirtyArticles.add(parentArticle);
+    }
+    element.querySelectorAll?.(ARTICLE_SELECTOR).forEach((article) => {
+      dirtyArticles.add(article);
+    });
+  }
+
+  function scheduleFilter(scanAll = false) {
+    if (scanAll) {
+      document.querySelectorAll(ARTICLE_SELECTOR).forEach((article) => {
+        dirtyArticles.add(article);
+      });
+    }
+
+    if (scheduleTimer) {
+      return;
+    }
+
+    scheduleTimer = window.setTimeout(filterTimeline, 80);
   }
 
   function updateToolbar(stats) {
@@ -84,7 +162,7 @@
       toolbar = createToolbar();
     }
 
-    const root = toolbar.shadowRoot;
+    const { host, root } = toolbar;
     const status = root.querySelector("[data-status]");
     const button = root.querySelector("button");
     const statusText = settings.enabled
@@ -92,7 +170,7 @@
       : "Focus mode paused";
     const buttonText = settings.enabled ? "Pause" : "Resume";
 
-    toolbar.hidden = stats.total === 0;
+    host.hidden = stats.total === 0;
     if (status.textContent !== statusText) {
       status.textContent = statusText;
     }
@@ -108,7 +186,7 @@
   function createToolbar() {
     const host = document.createElement("div");
     host.id = TOOLBAR_ID;
-    const root = host.attachShadow({ mode: "open" });
+    const root = host.attachShadow({ mode: "closed" });
 
     root.innerHTML = `
       <style>
@@ -156,21 +234,25 @@
           outline: none;
         }
       </style>
-      <div class="bar" role="status" aria-live="polite">
+      <div class="bar">
         <span class="mark" aria-hidden="true"></span>
-        <span data-status>X Focus active</span>
+        <span data-status role="status">X Focus active</span>
         <button type="button">Pause</button>
       </div>
     `;
 
-    root.querySelector("button").addEventListener("click", async () => {
+    root.querySelector("button").addEventListener("click", async (event) => {
+      if (!event.isTrusted) {
+        return;
+      }
       settings = { ...settings, enabled: !settings.enabled };
       await chrome.storage.local.set({ [STORAGE_KEY]: settings });
-      scheduleFilter();
+      settingsVersion++;
+      scheduleFilter(true);
     });
 
     document.documentElement.append(host);
-    return host;
+    return { host, root };
   }
 
   async function loadSettings() {
@@ -180,8 +262,23 @@
     if (!stored[STORAGE_KEY]) {
       await chrome.storage.local.set({ [STORAGE_KEY]: settings });
     }
+  }
 
-    scheduleFilter();
+  function startObserver() {
+    const observer = new MutationObserver((records) => {
+      for (const record of records) {
+        collectArticles(record.target);
+        record.addedNodes.forEach(collectArticles);
+      }
+      scheduleFilter();
+    });
+    observer.observe(document.documentElement, {
+      characterData: true,
+      childList: true,
+      subtree: true
+    });
+
+    scheduleFilter(true);
   }
 
   chrome.storage.onChanged.addListener((changes, areaName) => {
@@ -190,13 +287,11 @@
     }
 
     settings = engine.normalizeSettings(changes[STORAGE_KEY].newValue);
-    scheduleFilter();
+    settingsVersion++;
+    scheduleFilter(true);
   });
 
-  const observer = new MutationObserver(scheduleFilter);
-  observer.observe(document.documentElement, { childList: true, subtree: true });
-
-  loadSettings().catch(() => {
-    scheduleFilter();
-  });
+  loadSettings()
+    .catch(() => {})
+    .finally(startObserver);
 })();

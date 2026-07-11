@@ -9,6 +9,12 @@
   const accounts = document.querySelector("#accounts");
   const hidePromoted = document.querySelector("#hide-promoted");
   const saveStatus = document.querySelector("#save-status");
+  const controls = Array.from(form.elements);
+  let hydrated = false;
+
+  controls.forEach((control) => {
+    control.disabled = true;
+  });
 
   function render(settings) {
     enabled.checked = settings.enabled;
@@ -50,13 +56,28 @@
   });
 
   enabled.addEventListener("change", () => {
+    if (!hydrated) {
+      return;
+    }
     save().catch(() => {
       saveStatus.textContent = "Could not update focus mode.";
     });
   });
 
+  form.addEventListener("input", () => {
+    if (hydrated) {
+      saveStatus.textContent = "";
+    }
+  });
+
   chrome.storage.local
     .get(STORAGE_KEY)
     .then((stored) => render(engine.normalizeSettings(stored[STORAGE_KEY])))
-    .catch(() => render(engine.normalizeSettings()));
+    .catch(() => render(engine.normalizeSettings()))
+    .finally(() => {
+      hydrated = true;
+      controls.forEach((control) => {
+        control.disabled = false;
+      });
+    });
 })();
