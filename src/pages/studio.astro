@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Studio • TheFocus.AI"
+  description="The studio behind TheFocus.AI — where we explore the newest models and tools, and build the wildest ideas, before any of it gets near a client."
+  current="studio"
+  ogImage="/assets/studio-lab-bench.jpg"
+>
+  <!-- Inside The Studio — hero -->
+  <header class="relative overflow-hidden border-b border-white/10">
+    <div class="absolute inset-0 ledger-grid opacity-[0.22]" aria-hidden="true"></div>
+    <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-end">
+        <div class="lg:col-span-6">
+          <div class="section-label text-[#556B2F] mb-4">Inside The Studio</div>
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl leading-[1.02] font-semibold tracking-tighter">
+            We try the newest thing before we ever pitch it.
+          </h1>
+          <p class="mt-7 max-w-xl text-lg sm:text-xl text-[#B0B0B0] leading-relaxed">
+            This is where we explore the newest models and tools, and build the wildest ideas — before any of it gets
+            near a client. It's also where we build and test the agents that end up in the <a
+              href="/habitats/#marketplace"
+              class="text-white border-b border-white/30 hover:border-white/70 transition-colors">Habitats marketplace</a
+            >. Every person on the team works in here, not just the people with "R&D" in their title.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6">
+          <figure class="photo-frame reveal">
+            <img
+              src="/assets/studio-lab-bench.jpg"
+              alt="A late-night workbench with several monitors running code and model dashboards, exposed brick and city lights outside the window"
+              class="w-full aspect-[4/3] object-cover"
+            />
+            <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] p-4 border-t border-white/10">
+              WHERE THE NEWEST MODELS GET TESTED FIRST.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="border-b border-white/10 bg-[#0A0A0A]">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div class="lg:col-span-5">
+          <div class="section-label text-[#556B2F] mb-4">How It Runs</div>
+          <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.06]">
+            Staff every day. Everyone, once a month.
+          </h2>
+          <p class="mt-6 text-lg text-[#B0B0B0] leading-relaxed">
+            Day to day, this is the team's workspace for new models, new frameworks, half-built prototypes, and things
+            that will probably fail. It's also where the agents that ship into the Habitats marketplace get built and
+            put through their paces before a client ever sees them. Once a month the studio opens up — staff and the
+            wider community show off what they've been building. No slides, no pitch, just the thing running.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6 lg:col-start-7">
+          <div class="border border-white/10 divide-y divide-white/10 reveal">
+            <div class="p-7">
+              <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">WHAT HAPPENS HERE</div>
+              <p class="text-[#E5E5E5] leading-relaxed">
+                New models, new frameworks, half-built prototypes, things that will probably fail. If it's worth
+                understanding, someone here has already taken it apart.
+              </p>
+            </div>
+            <div class="p-7">
+              <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">HABITATS AGENTS</div>
+              <p class="text-[#E5E5E5] leading-relaxed">
+                Every agent listed in the <a
+                  href="/habitats/#marketplace"
+                  class="text-white border-b border-white/30 hover:border-white/70 transition-colors">Habitats marketplace</a
+                > was built and tested here first, against real work, before it ever shipped.
+              </p>
+            </div>
+            <div class="p-7">
+              <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">DEMO NIGHT · MONTHLY</div>
+              <p class="text-[#E5E5E5] leading-relaxed">
+                Once a month, the studio opens up. Staff and the wider community show off what they've been building —
+                no slides, no pitch, just the thing running.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 border border-white/10 bg-[#111111] p-7 reveal">
+            <p class="text-[#B0B0B0] leading-relaxed mb-5">
+              Interested in joining the team, or want to get notified about the next demo night? Sign up here.
+            </p>
+            <form
+              class="flex flex-col sm:flex-row gap-3"
+              action="https://buttondown.com/api/emails/embed-subscribe/thefocusai"
+              method="post"
+              target="_blank"
+            >
+              <label for="studioSignupEmail" class="sr-only">Email address</label>
+              <input
+                id="studioSignupEmail"
+                name="email"
+                type="email"
+                required
+                placeholder="you@company.com"
+                class="flex-1 bg-[#0A0A0A] border border-white/15 px-4 py-3 text-sm text-[#E5E5E5] placeholder:text-[#666] focus:outline-none focus:border-[#556B2F] transition-colors"
+              />
+              <button
+                type="submit"
+                class="bg-white text-black hover:bg-white/90 px-6 py-3 font-medium text-sm whitespace-nowrap transition-colors"
+              >
+                Notify me →
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-14">
+        <div class="mono text-[11px] tracking-[1.5px] text-[#666] mb-5">A LOOK INSIDE</div>
+        <div class="grid md:grid-cols-2 gap-4 reveal">
+          <figure class="photo-frame">
+            <img
+              src="/assets/studio-demo-night.jpg"
+              alt="A small group gathered around a laptop and monitor during a demo night, exposed brick and string lights in the background"
+              class="w-full aspect-[4/3] object-cover"
+            />
+            <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] p-4 border-t border-white/10">
+              DEMO NIGHT — NO SLIDES, JUST THE THING RUNNING.
+            </figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <img
+              src="/assets/studio-room-wide.jpg"
+              alt="A wide view of the studio's workbench and whiteboard, empty and ready for the next session"
+              class="w-full aspect-[4/3] object-cover"
+            />
+            <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] p-4 border-t border-white/10">
+              THE ROOM, BETWEEN SESSIONS.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .photo-frame {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111111;
+  }
+</style>

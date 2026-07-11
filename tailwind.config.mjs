@@ -1,45 +1,25 @@
 import defaultTheme from "tailwindcss/defaultTheme";
-import typography from "@tailwindcss/typography";
-// import daisyui from "daisyui";
+
+/**
+ * "The Ledger" design system — see DESIGN.md in The-Focus-AI/thefocus-v2.
+ * Near-black canvas, drab-olive signal, hairline borders, square corners.
+ */
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ["./src/**/*.{astro,html,js,md,mdx,ts}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["CinaGEO", ...defaultTheme.fontFamily.sans],
-        serif: ["Noto Serif", ...defaultTheme.fontFamily.serif],
-        mono: ["Iosevka Etoile", ...defaultTheme.fontFamily.mono],
-        fraunces: ["Fraunces", ...defaultTheme.fontFamily.serif],
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        // Focus.AI Client Brand Colors
-        paper: "#faf9f6", // Client: cooler off-white
-        ink: "#161616",
-        graphite: "#4a4a4a",
-        petrol: "#0e3b46",
-        "petrol-light": "#4aa8b8", // accessible petrol on dark backgrounds (6.9:1 on ink)
-        vermilion: "#c3471d",
-        // Focus.AI Labs Brand Colors
-        void: "#1a1a1a", // Labs: primary text
-        "rand-blue": "#0055aa", // Labs: primary accent
-        "alert-red": "#d93025", // Labs: decorative emphasis
-        surface: "#e6e4dc", // Labs: secondary background
-        "labs-paper": "#f3f2ea", // Labs: warmer paper background
-        // Tinted Backgrounds
-        tint: {
-          cool: "#edf6f8",
-          sage: "#eef6ee",
-          warm: "#f7f0e6",
-          lavender: "#f2eef6",
-          aqua: "#edf6f6",
-        },
-      },
-      daisyui: {
-        themes: ["light"],
+        canvas: "#0A0A0A",
+        surface: "#111111",
+        signal: "#556B2F",
       },
     },
   },
-  plugins: [typography /*daisyui*/],
+  plugins: [],
 };

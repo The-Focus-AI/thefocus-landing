@@ -1,0 +1,127 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Perplexity × Samsung · Case study • TheFocus.AI"
+  description="Perplexity, in 50 million living rooms — voice-first answers on Samsung Smart TVs, 12 weeks from kickoff to QA approval."
+  eyebrow="PERPLEXITY × SAMSUNG · LIVING ROOM"
+  heading="Perplexity, in 50 million living rooms."
+  heroImage="/assets/cs-perplexity-livingroom.png"
+  heroAlt="A glowing TV in a dark living room, seen from behind a sofa"
+  meta={[
+    { label: "CLIENT", value: "Perplexity AI" },
+    { label: "SECTOR", value: "Consumer Electronics · AI" },
+    { label: "SERVICES", value: "Strategy + Development" },
+    { label: "TIMELINE", value: "12 weeks to Samsung QA" },
+  ]}
+  moreWork={[
+    { href: "/work/ae-networks/", eyebrow: "A+E NETWORKS", title: "Watching 212 data feeds so nobody has to." },
+    { href: "/work/steering-house/", eyebrow: "STEERING HOUSE", title: "Construction books that reconcile themselves." },
+  ]}
+>
+  <!-- Editorial body -->
+  <div class="max-w-2xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+    <p class="text-2xl sm:text-[28px] leading-[1.45] text-[#E5E5E5] tracking-tight">
+      Perplexity wanted to bring their answer engine into the living room, on Samsung's 50-million-household Smart TV
+      platform. A TV has no keyboard, no touchscreen, and a remote with about five useful buttons.
+    </p>
+
+    <div class="mt-14">
+      <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">THE CHALLENGE</div>
+      <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+        Typing a question with an on-screen keyboard and a d-pad takes forever — nobody does it twice. Every part of
+        the experience had to work from ten feet away, navigated with up/down/left/right and a back button, on hardware
+        with a fraction of a phone's processing power. And before any of it could ship, it had to pass Samsung's
+        certification process: <span class="text-white"
+          >over 100 test cases, covering everything from memory limits to privilege declarations.</span
+        >
+      </p>
+    </div>
+
+    <figure class="my-14 border-l-2 border-[#556B2F] pl-6">
+      <blockquote class="text-2xl sm:text-3xl font-semibold tracking-tight leading-[1.25] text-white">
+        "We didn't adapt a phone app for the TV. We built for the ten-foot experience from day one."
+      </blockquote>
+      <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-4">THE FOCUS</figcaption>
+    </figure>
+
+    <div>
+      <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">WHAT WE BUILT</div>
+      <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+        We built a complete spatial focus-navigation system from scratch, before writing a single feature — every
+        element on screen declares its neighbors up, down, left, and right, so the remote always moves where you'd
+        expect. Voice comes in through the Samsung SmartThings app or a Bluetooth mic, feeds OpenAI's Realtime API for
+        speech-to-text, and falls back to the keyboard cleanly if a microphone isn't available.
+      </p>
+      <p class="mt-5 text-[#B0B0B0] text-[17px] leading-relaxed">
+        Answers stream in word by word rather than waiting for a full response — important on a screen ten feet away,
+        where waiting reads as broken. The whole thing shipped in English, German, and Korean at launch, with the
+        interface detecting the TV's system language automatically.
+      </p>
+    </div>
+  </div>
+
+  <!-- Inline full-width image -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8">
+    <figure>
+      <img
+        src="/assets/apps/app-samsung.png"
+        alt="A smart TV glowing in a dark living room"
+        class="w-full h-[40vh] min-h-[280px] object-cover border border-white/10"
+      />
+      <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-3">
+        EVERY SCREEN FLOW WAS TESTED WITH ONLY ARROW KEYS AND ENTER — BEFORE A MOUSE EVER TOUCHED IT.
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Technical summary -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+    <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-6">HOW IT'S BUILT</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">FRONTEND</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          SvelteKit, TypeScript, Tailwind — a custom focus-navigation system built for remote control.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">VOICE</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          OpenAI Realtime API for speech-to-text, with ephemeral session tokens and automatic keyboard fallback.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">AI INTEGRATION</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Perplexity's API, streamed as Server-Sent Events with citation deduplication and markdown rendering.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">PLATFORM</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Tizen SDK, static build pipeline, multi-channel release process (release / develop / test).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outcome band -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-3 border-t border-white/10">
+      <div class="py-8 sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/10">
+        <div class="text-3xl font-semibold tracking-tight text-white">50M+ TVs</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">Deployed across Samsung's global Smart TV install base.</div>
+      </div>
+      <div class="py-8 sm:px-8 border-b sm:border-b-0 sm:border-r border-white/10">
+        <div class="text-3xl font-semibold tracking-tight text-white">Sub-2-second</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">From button press to voice recognition starting to listen.</div>
+      </div>
+      <div class="py-8 sm:pl-8">
+        <div class="text-3xl font-semibold tracking-tight text-white">First submission</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">Passed Samsung's QA certification on the first major submission.</div>
+      </div>
+    </div>
+  </div>
+</CaseStudyLayout>

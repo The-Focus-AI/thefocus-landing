@@ -1,0 +1,785 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<BaseLayout
+  title="Habitats • TheFocus.AI"
+  description="Habitats gives your company a place to see what people built with AI, keep it inside your walls, and own everything that came out of it."
+  current="habitats"
+>
+  <main>
+    <section id="marketplace" class="habitats-shell border-b border-white/10">
+      <div class="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 pt-16 pb-14 lg:pt-24 lg:pb-20">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div class="lg:col-span-5 reveal">
+            <div class="section-label text-[#556B2F] mb-4">Habitats</div>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl leading-[0.96] font-semibold tracking-tighter">
+              Your AI work, visible, safe, and yours.
+            </h1>
+            <p class="mt-7 max-w-xl text-lg sm:text-xl text-[#B0B0B0] leading-relaxed">
+              Habitats gives your company a place to see what people built with AI, keep it inside your walls, and own
+              everything that came out of it. Not surveillance. Shared memory you control.
+            </p>
+            <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
+              <a
+                href="mailto:wschenk@thefocus.ai?subject=Habitats"
+                class="w-full sm:w-auto text-center px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+              >
+                See Habitats
+              </a>
+              <a
+                href="/"
+                class="w-full sm:w-auto text-center px-8 py-3.5 border border-white/20 hover:bg-white/5 transition-colors text-sm"
+              >
+                Back to TheFocus
+              </a>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-px border border-white/10 bg-white/10 max-w-xl">
+              <div class="bg-[#0A0A0A]/85 p-4">
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">DEPLOYED</div>
+                <div class="text-sm text-[#E5E5E5]">Inside your work</div>
+              </div>
+              <div class="bg-[#0A0A0A]/85 p-4">
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">OWNED</div>
+                <div class="text-sm text-[#E5E5E5]">By your company</div>
+              </div>
+              <div class="bg-[#0A0A0A]/85 p-4">
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">USED</div>
+                <div class="text-sm text-[#E5E5E5]">By real teams</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 reveal delay-1">
+            <div class="habitats-display">
+              <div class="habitats-screen aspect-[1480/900]">
+                <div id="habitats-live-stage" class="habitats-live-stage">
+                  <iframe
+                    id="habitats-slide-frame"
+                    src="/assets/habitats-marketplace.html"
+                    title="Habitats agent marketplace live preview"
+                    tabindex="-1"
+                    aria-hidden="true"></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5 habitats-step-grid" role="radiogroup" aria-label="Habitats product preview">
+              <button class="habitats-slide-control" type="button" role="radio" aria-checked="true" tabindex="0" data-habitats-slide="0">
+                <span class="habitats-step-number">01</span>
+                <span class="habitats-step-title">See every tool</span>
+              </button>
+              <button class="habitats-slide-control" type="button" role="radio" aria-checked="false" tabindex="-1" data-habitats-slide="1">
+                <span class="habitats-step-number">02</span>
+                <span class="habitats-step-title">Review what changed</span>
+              </button>
+              <button class="habitats-slide-control" type="button" role="radio" aria-checked="false" tabindex="-1" data-habitats-slide="2">
+                <span class="habitats-step-number">03</span>
+                <span class="habitats-step-title">Reuse what worked</span>
+              </button>
+            </div>
+            <p id="habitats-slide-note" class="mt-5 text-[#8D8D8D] text-[14px] leading-relaxed min-h-[44px]">
+              See every tool, what it does, and where it belongs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-5 reveal">
+            <div class="section-label text-[#556B2F] mb-4">Why it exists</div>
+            <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+              The work is happening. The learning is not.
+            </h2>
+          </div>
+          <div class="lg:col-span-7 reveal delay-1">
+            <p class="text-[#B0B0B0] text-lg leading-relaxed max-w-2xl">
+              People are already using AI to write, research, analyze, and build. The problem is that most of that
+              learning stays private. A good workflow lives in one chat. A better review process lives in one person's
+              head. The next team starts from zero.
+            </p>
+            <p class="mt-5 text-[#E5E5E5] text-lg leading-relaxed max-w-2xl">
+              Habitats turns that hidden work into company knowledge your team can actually use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#0d0d0d]">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="reveal max-w-2xl mb-10">
+          <div class="section-label text-[#556B2F] mb-3">What it keeps</div>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tighter">Not more dashboards. Better memory.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="product-card p-7 min-h-[250px] reveal" data-num="01">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-7">CONTEXT</div>
+            <h3 class="text-xl font-medium tracking-tight mb-4">What someone asked for.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              The request, the files, the decision, and the reason it mattered stay attached to the work.
+            </p>
+          </div>
+          <div class="product-card p-7 min-h-[250px] reveal delay-1" data-num="02">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-7">REVIEW</div>
+            <h3 class="text-xl font-medium tracking-tight mb-4">Where a person stepped in.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Habitats shows the handoff between agent and operator, so judgment stays visible.
+            </p>
+          </div>
+          <div class="product-card p-7 min-h-[250px] reveal delay-2" data-num="03">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-7">PRACTICE</div>
+            <h3 class="text-xl font-medium tracking-tight mb-4">What should be reused.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              The good prompts, patterns, and checks become a starting point for the next person.
+            </p>
+          </div>
+          <div class="product-card p-7 min-h-[250px] reveal delay-3" data-num="04">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-7">CONTROL</div>
+            <h3 class="text-xl font-medium tracking-tight mb-4">What belongs inside.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Your data, prompts, runs, and methods are treated like company IP because they are.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="control" class="border-b border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="grid lg:grid-cols-12 gap-10 items-end mb-10">
+          <div class="lg:col-span-7 reveal">
+            <div class="section-label text-[#556B2F] mb-4">Control, in full</div>
+            <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+              The model is rented. Everything you build with it is yours.
+            </h2>
+          </div>
+          <div class="lg:col-span-5 reveal delay-1">
+            <p class="text-[#B0B0B0] leading-relaxed">
+              Open source settled this argument for code years ago: you don't have to own the compiler to own what you
+              build with it. The same logic applies here. The prompts, the runs, the data, and everything the model
+              produced belong to you — whether the model itself is rented, hosted, or owned outright.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 reveal delay-1">
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">01 · PROMPTS</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Months of work, kept.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              The instructions your team spent months getting right live in your Habitat — not in a vendor's
+              fine-tuning set.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">02 · RUNS</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Every attempt, on record.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Every run and result — including the dead ends — logged inside your walls, searchable by your own team.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">03 · OUTPUTS</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Yours, not the lab's.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Whoever pays for the tokens owns what the tokens produced. Not the company that rented you the model.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">04 · SPEND</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">A ledger, not a bill on faith.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Every dollar of token spend ties back to the exact prompt and run that spent it.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-white/10 pt-6 grid lg:grid-cols-12 gap-6 reveal delay-2">
+          <div class="lg:col-span-3 mono text-[11px] tracking-[1.5px] text-[#666]">THE PLAIN VERSION</div>
+          <p class="lg:col-span-9 text-[#999] text-[14px] leading-relaxed max-w-2xl">
+            Every prompt you send a frontier model is a small lesson about your business — and by default, that lesson
+            doesn't have to stay yours. A Habitat keeps the lesson. Your employees own the practice they built. Your
+            business owns what it paid for. The lab that rented you the model owns the model. Nothing else.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative border-b border-white/10 overflow-hidden">
+      <div class="habitats-ledger-grid absolute inset-0 pointer-events-none"></div>
+      <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-4 reveal">
+            <div class="section-label text-[#556B2F] mb-4">How teams use it</div>
+            <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">A learning loop for AI work.</h2>
+            <p class="mt-6 text-[#B0B0B0] leading-relaxed">
+              The point is not to count every prompt. The point is to make the good work easier to find, review, and
+              teach.
+            </p>
+          </div>
+
+          <div class="lg:col-span-8 border border-white/10 bg-[#0A0A0A]/70 backdrop-blur-sm reveal delay-1">
+            <div class="workflow-row grid md:grid-cols-12 gap-6 p-7 md:p-8 border-t-0">
+              <div class="md:col-span-3 mono text-[11px] tracking-[1.5px] text-[#556B2F]">01 · SEE</div>
+              <div class="md:col-span-9">
+                <h3 class="text-2xl font-medium tracking-tight mb-3">Every AI tool has a place.</h3>
+                <p class="text-[#999] leading-relaxed">
+                  Agents, workflows, experiments, and approved patterns live in one product view instead of scattered
+                  chat histories.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-row grid md:grid-cols-12 gap-6 p-7 md:p-8">
+              <div class="md:col-span-3 mono text-[11px] tracking-[1.5px] text-[#556B2F]">02 · REVIEW</div>
+              <div class="md:col-span-9">
+                <h3 class="text-2xl font-medium tracking-tight mb-3">The work has a trail.</h3>
+                <p class="text-[#999] leading-relaxed">
+                  Teams can see what changed overnight, where a human approved the next step, and what still needs
+                  attention.
+                </p>
+              </div>
+            </div>
+            <div class="workflow-row grid md:grid-cols-12 gap-6 p-7 md:p-8">
+              <div class="md:col-span-3 mono text-[11px] tracking-[1.5px] text-[#556B2F]">03 · TEACH</div>
+              <div class="md:col-span-9">
+                <h3 class="text-2xl font-medium tracking-tight mb-3">The team gets better together.</h3>
+                <p class="text-[#999] leading-relaxed">
+                  The best workflows become examples. New people learn from real runs, not generic training slides.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="security-panel border border-white/10 p-8 sm:p-10 lg:p-12 reveal">
+          <div class="grid lg:grid-cols-12 gap-10 items-end">
+            <div class="lg:col-span-7">
+              <div class="section-label text-[#556B2F] mb-4">Built for trust</div>
+              <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+                Useful visibility without turning work into theater.
+              </h2>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-[#B0B0B0] leading-relaxed">
+                Habitats is meant to help teams learn from each other. It should make good work easier to repeat, not
+                make people perform for a dashboard.
+              </p>
+              <div class="mt-7 grid grid-cols-2 gap-px bg-white/10 border border-white/10">
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">DATA</div>
+                  <div class="text-sm">Inside your walls</div>
+                </div>
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">REVIEW</div>
+                  <div class="text-sm">Human in the loop</div>
+                </div>
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">ACCESS</div>
+                  <div class="text-sm">Role based</div>
+                </div>
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">OUTPUT</div>
+                  <div class="text-sm">Reusable practice</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-white/10 bg-[#0d0d0d]">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="grid lg:grid-cols-12 gap-10 items-end mb-10">
+          <div class="lg:col-span-7 reveal">
+            <div class="section-label text-[#556B2F] mb-4">The model layer</div>
+            <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+              The model runs inside your walls too.
+            </h2>
+          </div>
+          <div class="lg:col-span-5 reveal delay-1">
+            <p class="text-[#B0B0B0] leading-relaxed">
+              You can't rent your edge from a vendor that sells the same thing to your competitor. A Habitat carries
+              your team's rules and methods — none of that should be mortgaged to a model company.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 reveal delay-1">
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">01 · RENT</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">The frontier, where it pays.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Some work needs the best model on earth. Use it — under data terms we set, not defaults nobody read.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">02 · HOST</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Open weights, your cloud.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Most work doesn't need the frontier. Open models in your own cloud handle it at a fraction of the cost —
+              and nothing leaves.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">03 · TUNE</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Weights that learn your work.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Your runs and methods post-train the model. The weights become an asset you own, not a subscription that
+              trains someone else.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">04 · OWN</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">On your hardware, when the math says so.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              On-prem is a math problem, not a religion. When volume or sensitivity justifies the hardware, we move the
+              work home.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-white/10 pt-6 grid lg:grid-cols-12 gap-6 reveal delay-2">
+          <div class="lg:col-span-3 mono text-[11px] tracking-[1.5px] text-[#666]">THE HONEST PART</div>
+          <p class="lg:col-span-9 text-[#999] text-[14px] leading-relaxed max-w-2xl">
+            Open models aren't free — someone has to run, evaluate, and patch them. That someone can be us. Every
+            Habitat is model-portable: swap the model without rebuilding the system, and walk up this ladder at the
+            pace the numbers justify.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative overflow-hidden">
+      <img src="/assets/studio-hero.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-[0.15]" />
+      <div class="absolute inset-0 bg-[#0A0A0A]/85"></div>
+      <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-24 text-center">
+        <div class="section-label text-[#556B2F] mb-4">Next step</div>
+        <h2 class="text-4xl sm:text-5xl font-semibold tracking-tighter mb-5">Start with one team.</h2>
+        <p class="text-[#B0B0B0] text-lg max-w-xl mx-auto mb-9 leading-relaxed">
+          We will use Habitats as part of the build. You will see how your team works with AI, where the useful
+          patterns are, and what should become company practice.
+        </p>
+        <div class="flex justify-center">
+          <a
+            href="mailto:wschenk@thefocus.ai?subject=Habitats"
+            class="px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+          >
+            Say hello
+          </a>
+        </div>
+        <div class="mt-6 text-xs text-[#666] flex items-center justify-center gap-x-2">
+          <span class="text-[#556B2F]"><Icon name="check" class="w-3 h-3" /></span>
+          <span>wschenk@thefocus.ai · We respond within a day.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  body {
+    background:
+      radial-gradient(circle at 72% 0%, rgba(85, 107, 47, 0.13), transparent 30%),
+      radial-gradient(circle at 16% 18%, rgba(160, 102, 52, 0.08), transparent 28%),
+      #0a0a0a;
+  }
+
+  .habitats-ledger-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 76%);
+  }
+
+  .habitats-shell {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 74% 8%, rgba(85, 107, 47, 0.14), transparent 30%),
+      radial-gradient(circle at 90% 44%, rgba(184, 123, 59, 0.08), transparent 25%),
+      linear-gradient(105deg, #0a0a0a 0%, #10100d 58%, #060606 100%);
+  }
+
+  .habitats-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+    pointer-events: none;
+  }
+
+  .habitats-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent 0%, rgba(85, 107, 47, 0.08) 74%, transparent 100%),
+      radial-gradient(circle at 83% 55%, rgba(160, 136, 80, 0.1), transparent 30%);
+    mix-blend-mode: screen;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+
+  .habitats-display {
+    position: relative;
+    border-radius: 20px;
+    padding: 12px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02) 12%),
+      linear-gradient(180deg, #242424, #070707 72%),
+      #080808;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 42px 120px rgba(0, 0, 0, 0.64),
+      0 0 54px rgba(85, 107, 47, 0.055),
+      34px -18px 72px rgba(177, 115, 50, 0.075),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .habitats-display::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 18px;
+    width: 38%;
+    height: 42px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse at 80% 40%, rgba(201, 139, 65, 0.28), rgba(201, 139, 65, 0.08) 38%, transparent 72%);
+    filter: blur(14px);
+    opacity: 0.68;
+    pointer-events: none;
+  }
+
+  .habitats-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #f6f6f4;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+      inset 0 -42px 48px rgba(0, 0, 0, 0.16);
+  }
+
+  .habitats-live-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1480px;
+    height: 900px;
+    transform: scale(var(--habitats-frame-scale, 0.48));
+    transform-origin: top left;
+    transition:
+      opacity 180ms ease,
+      transform 220ms ease;
+  }
+
+  .habitats-screen iframe {
+    display: block;
+    width: 1480px;
+    height: 900px;
+    border: 0;
+    background: #fafafa;
+    pointer-events: none;
+  }
+
+  .habitats-live-stage.is-changing {
+    opacity: 0;
+    transform: scale(calc(var(--habitats-frame-scale, 0.48) * 0.99));
+  }
+
+  .habitats-step-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .habitats-slide-control {
+    display: block;
+    text-align: left;
+    border: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    padding: 18px 14px 16px;
+    min-height: 84px;
+    position: relative;
+    transition:
+      background 220ms ease,
+      color 220ms ease;
+  }
+
+  .habitats-slide-control:last-child {
+    border-right: 0;
+  }
+
+  .habitats-slide-control:hover,
+  .habitats-slide-control[aria-checked="true"] {
+    background: linear-gradient(180deg, rgba(85, 107, 47, 0.16), rgba(85, 107, 47, 0.035));
+  }
+
+  .habitats-slide-control::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 1px;
+    background: rgba(85, 107, 47, 0);
+    transition:
+      background 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .habitats-slide-control[aria-checked="true"]::after {
+    background: rgba(85, 107, 47, 0.92);
+    box-shadow: 0 0 18px rgba(85, 107, 47, 0.38);
+  }
+
+  .habitats-slide-control:focus-visible {
+    outline: 1px solid rgba(229, 229, 229, 0.72);
+    outline-offset: -3px;
+  }
+
+  .habitats-step-number {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(85, 107, 47, 0.88);
+    margin-bottom: 22px;
+  }
+
+  .habitats-step-title {
+    display: block;
+    color: #e8e8e8;
+    font-size: 15px;
+    line-height: 1.08;
+    font-weight: 500;
+  }
+
+  .product-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+      radial-gradient(circle at 82% 0%, rgba(85, 107, 47, 0.12), transparent 34%),
+      rgba(17, 17, 17, 0.78);
+  }
+
+  .product-card::after {
+    content: attr(data-num);
+    position: absolute;
+    right: 1rem;
+    bottom: -1.1rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: clamp(4.5rem, 9vw, 8rem);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.028);
+    pointer-events: none;
+  }
+
+  .workflow-row {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 220ms ease;
+  }
+
+  .workflow-row:hover {
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .security-panel {
+    background:
+      radial-gradient(circle at 12% 0%, rgba(85, 107, 47, 0.18), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+      #0d0d0d;
+  }
+
+  @media (max-width: 767px) {
+    .habitats-display {
+      padding: 10px;
+      border-radius: 14px;
+    }
+
+    .habitats-step-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .habitats-slide-control {
+      border-right: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .habitats-slide-control:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .habitats-live-stage,
+    .habitats-live-stage.is-changing {
+      transition: none;
+      transform: scale(var(--habitats-frame-scale, 0.48));
+    }
+  }
+</style>
+
+<script>
+  const habitatsSlides = [
+    {
+      src: "/assets/habitats-marketplace.html",
+      title: "Habitats agent marketplace live preview",
+      note: "See every tool, what it does, and where it belongs.",
+    },
+    {
+      src: "/assets/habitats-workstreams.html",
+      title: "Habitats morning workstream live preview",
+      note: "Open one morning read and know what changed overnight, what needs review, and what can keep moving.",
+    },
+    {
+      src: "/assets/habitats-gigalytics.html",
+      title: "Habitats run history live preview",
+      note: "Keep the request, run, review, and outcome together so the next team can learn from the last one.",
+    },
+  ];
+
+  const habitatsLiveStage = document.querySelector<HTMLElement>("#habitats-live-stage");
+  const habitatsScreen = document.querySelector<HTMLElement>(".habitats-screen");
+  const habitatsSlideFrame = document.querySelector<HTMLIFrameElement>("#habitats-slide-frame");
+  const habitatsSlideNote = document.querySelector<HTMLElement>("#habitats-slide-note");
+  const habitatsSlideControls = Array.from(document.querySelectorAll<HTMLButtonElement>(".habitats-slide-control"));
+  const habitatsMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let habitatsSlideIndex = 0;
+  let habitatsSlideTimer: number | undefined;
+  let habitatsAutoplayPaused = false;
+
+  function fitHabitatsFrame() {
+    if (!habitatsLiveStage || !habitatsScreen) return;
+    const rect = habitatsScreen.getBoundingClientRect();
+    const scale = Math.min(rect.width / 1480, rect.height / 900);
+    habitatsLiveStage.style.setProperty("--habitats-frame-scale", scale.toFixed(4));
+  }
+
+  function setHabitatsSlide(index: number, options: { force?: boolean } = {}) {
+    const slide = habitatsSlides[index];
+    if (!slide || !habitatsLiveStage || !habitatsSlideFrame) return;
+    if (!options.force && index === habitatsSlideIndex && habitatsSlideFrame.src.includes(slide.src)) return;
+    habitatsSlideIndex = index;
+
+    habitatsSlideControls.forEach((control, controlIndex) => {
+      const isSelected = controlIndex === index;
+      control.setAttribute("aria-checked", String(isSelected));
+      control.setAttribute("tabindex", isSelected ? "0" : "-1");
+    });
+
+    if (habitatsSlideNote) {
+      habitatsSlideNote.textContent = slide.note;
+    }
+
+    habitatsLiveStage.classList.add("is-changing");
+    const clearChanging = window.setTimeout(() => habitatsLiveStage.classList.remove("is-changing"), 900);
+    habitatsSlideFrame.addEventListener(
+      "load",
+      () => {
+        window.clearTimeout(clearChanging);
+        window.requestAnimationFrame(() => habitatsLiveStage.classList.remove("is-changing"));
+      },
+      { once: true }
+    );
+    habitatsSlideFrame.src = slide.src;
+    habitatsSlideFrame.title = slide.title;
+  }
+
+  function stopHabitatsAutoplay() {
+    window.clearInterval(habitatsSlideTimer);
+    habitatsSlideTimer = undefined;
+  }
+
+  function startHabitatsAutoplay() {
+    if (!habitatsSlideControls.length || habitatsMotionQuery.matches || habitatsAutoplayPaused || document.hidden) return;
+    stopHabitatsAutoplay();
+    habitatsSlideTimer = window.setInterval(() => {
+      setHabitatsSlide((habitatsSlideIndex + 1) % habitatsSlides.length);
+    }, 5200);
+  }
+
+  function pauseHabitatsAutoplay() {
+    habitatsAutoplayPaused = true;
+    stopHabitatsAutoplay();
+  }
+
+  function resumeHabitatsAutoplay() {
+    habitatsAutoplayPaused = false;
+    startHabitatsAutoplay();
+  }
+
+  habitatsSlideControls.forEach((control) => {
+    control.addEventListener("click", () => {
+      setHabitatsSlide(Number(control.dataset.habitatsSlide));
+      startHabitatsAutoplay();
+    });
+
+    control.addEventListener("keydown", (event) => {
+      const currentIndex = Number(control.dataset.habitatsSlide);
+      const lastIndex = habitatsSlideControls.length - 1;
+      let nextIndex = currentIndex;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = lastIndex;
+      if (nextIndex === currentIndex && ![" ", "Enter"].includes(event.key)) return;
+
+      event.preventDefault();
+      if (event.key === " " || event.key === "Enter") {
+        setHabitatsSlide(currentIndex);
+      } else {
+        setHabitatsSlide(nextIndex);
+        habitatsSlideControls[nextIndex]?.focus();
+      }
+    });
+  });
+
+  const habitatsShell = document.querySelector<HTMLElement>(".habitats-shell");
+  habitatsShell?.addEventListener("mouseenter", pauseHabitatsAutoplay);
+  habitatsShell?.addEventListener("mouseleave", resumeHabitatsAutoplay);
+  habitatsShell?.addEventListener("focusin", pauseHabitatsAutoplay);
+  habitatsShell?.addEventListener("focusout", (event) => {
+    if (!habitatsShell.contains(event.relatedTarget as Node)) resumeHabitatsAutoplay();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopHabitatsAutoplay();
+    else startHabitatsAutoplay();
+  });
+
+  habitatsMotionQuery.addEventListener?.("change", () => {
+    if (habitatsMotionQuery.matches) stopHabitatsAutoplay();
+    else startHabitatsAutoplay();
+  });
+
+  if ("ResizeObserver" in window && habitatsScreen) {
+    const habitatsFrameObserver = new ResizeObserver(fitHabitatsFrame);
+    habitatsFrameObserver.observe(habitatsScreen);
+  }
+  window.addEventListener("resize", fitHabitatsFrame);
+  fitHabitatsFrame();
+  startHabitatsAutoplay();
+</script>

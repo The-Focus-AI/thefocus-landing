@@ -1,0 +1,33 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = "Got something like this?",
+  body = "Bring us one thing you're trying to get right. We'll show you where AI actually helps — on your own data, not a demo.",
+} = Astro.props;
+---
+
+<div class="border-t border-white/10">
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-24 text-center">
+    <h2 class="text-4xl sm:text-5xl font-semibold tracking-tighter mb-5">{heading}</h2>
+    <p class="text-[#B0B0B0] text-lg max-w-xl mx-auto mb-9 leading-relaxed">
+      {body}
+    </p>
+    <div class="flex justify-center">
+      <a
+        href="mailto:wschenk@thefocus.ai"
+        class="px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+      >
+        Say hello
+      </a>
+    </div>
+    <div class="mt-6 text-xs text-[#666] flex items-center justify-center gap-x-2">
+      <span class="text-[#556B2F]"><Icon name="check" class="w-3 h-3" /></span>
+      <span>wschenk@thefocus.ai · We respond within a day.</span>
+    </div>
+  </div>
+</div>

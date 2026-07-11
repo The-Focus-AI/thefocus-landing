@@ -1,0 +1,134 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="Steering House · Case study • TheFocus.AI"
+  description="Construction books that reconcile themselves — QuickBooks synced to per-project sheets every hour, 57,000+ transactions and counting."
+  eyebrow="STEERING HOUSE · FINANCE OPS"
+  heading="Construction books that reconcile themselves."
+  heroImage="/assets/cs-steeringhouse-brooklyn.png"
+  heroAlt="Construction workers restoring a brownstone facade on a tree-lined Brooklyn Heights street"
+  meta={[
+    { label: "CLIENT", value: "Steering House" },
+    { label: "SECTOR", value: "Construction · Brooklyn, NY (11201)" },
+    { label: "ROLE", value: "Finance systems · Data engineering" },
+    { label: "STATUS", value: "In production, Phase 2 underway" },
+  ]}
+  moreWork={[
+    { href: "/work/perplexity-samsung/", eyebrow: "PERPLEXITY × SAMSUNG", title: "Perplexity, in 50 million living rooms." },
+    { href: "/work/ae-networks/", eyebrow: "A+E NETWORKS", title: "Watching 212 data feeds so nobody has to." },
+  ]}
+>
+  <!-- Editorial body -->
+  <div class="max-w-2xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+    <p class="text-2xl sm:text-[28px] leading-[1.45] text-[#E5E5E5] tracking-tight">
+      Steering House builds and renovates townhouses across Brooklyn Heights and the surrounding brownstone
+      neighborhoods. Every project runs on tight margins, and the numbers that matter — labor, materials, subcontractor
+      draws — lived in two systems that didn't talk to each other.
+    </p>
+
+    <div class="mt-14">
+      <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">THE CHALLENGE</div>
+      <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+        Their finance data lives in QuickBooks. Their project managers work in Google Sheets. A previous developer had
+        built a sync tool between the two — 224 commits over a year — but by the time we were brought in, it had
+        quietly stopped working, and the original developer's infrastructure was gone. <span class="text-white"
+          >Every employee hired since the prior August was missing from the labor data, and nobody knew why.</span
+        >
+      </p>
+    </div>
+
+    <figure class="my-14 border-l-2 border-[#556B2F] pl-6">
+      <blockquote class="text-2xl sm:text-3xl font-semibold tracking-tight leading-[1.25] text-white">
+        "The sync wasn't randomly flaky. It was asking QuickBooks the wrong question, consistently, for months."
+      </blockquote>
+      <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-4">THE FOCUS</figcaption>
+    </figure>
+
+    <div>
+      <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">WHAT WE BUILT</div>
+      <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+        The sync was querying QuickBooks by when a timesheet was last modified, not by when the work actually happened
+        — so approved hours falling outside a rolling window were silently dropped. We switched the query to the work
+        date, and ten employees' labor records reappeared. The system now runs hourly on Google App Engine: pulling
+        labor, materials, and subcontractor draws into a dedicated Google Sheet per active project, with every raw
+        transaction preserved for when a question comes up later.
+      </p>
+      <p class="mt-5 text-[#B0B0B0] text-[17px] leading-relaxed">
+        With the sync stable, the second phase asks a harder question: which cost overruns are normal and which ones
+        need attention. Labor is the variable that actually hurts — material overruns usually get passed to the client
+        through a change order, but a labor miscalculation gets absorbed. We're building spending models per cost code
+        — what a normal project should have spent by 25%, 50%, 75% complete — so a project manager sees a real anomaly
+        instead of a wall of numbers to eyeball every week.
+      </p>
+    </div>
+  </div>
+
+  <!-- Inline full-width image -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8">
+    <figure>
+      <img
+        src="/assets/cs-qbsync-hero.jpg"
+        alt="Reconciling project financials"
+        class="w-full h-[40vh] min-h-[280px] object-cover border border-white/10"
+      />
+      <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-3">
+        A PROJECT MANAGER SHOULDN'T HAVE TO EYEBALL A SPREADSHEET TO KNOW SOMETHING'S OFF.
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Technical summary -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+    <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-6">HOW IT'S BUILT</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">SYNC ENGINE</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Python, Flask, Google App Engine — hourly OAuth-refreshed sync from QuickBooks Online.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">DATA LAYER</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          MongoDB holds every raw transaction, even the ones filtered out of the reconciliation sheets.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">INTERFACE</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Google Sheets — the tool project managers already live in, one spreadsheet per active project.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">PHASE 2</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Per-cost-code spending curves and anomaly detection, validated against historical project data.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outcome band -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-3 border-t border-white/10">
+      <div class="py-8 sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/10">
+        <div class="text-3xl font-semibold tracking-tight text-white">57,829 transactions</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">
+          Synced from QuickBooks to Google Sheets, across every active project.
+        </div>
+      </div>
+      <div class="py-8 sm:px-8 border-b sm:border-b-0 sm:border-r border-white/10">
+        <div class="text-3xl font-semibold tracking-tight text-white">Hourly, unattended</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">No manual pulls, no reformatting, no pasting into the wrong tab.</div>
+      </div>
+      <div class="py-8 sm:pl-8">
+        <div class="text-3xl font-semibold tracking-tight text-white">10 employees</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">
+          Whose labor records came back once the sync asked the right question.
+        </div>
+      </div>
+    </div>
+  </div>
+</CaseStudyLayout>

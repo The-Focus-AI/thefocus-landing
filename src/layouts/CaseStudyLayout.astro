@@ -1,0 +1,91 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+interface MetaItem {
+  label: string;
+  value: string;
+}
+interface MoreWorkItem {
+  href: string;
+  eyebrow: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  heroImage: string;
+  heroAlt: string;
+  meta: MetaItem[];
+  moreWork: MoreWorkItem[];
+}
+
+const { title, description, eyebrow, heading, heroImage, heroAlt, meta, moreWork } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} current="work" ogImage={heroImage}>
+  <!-- Back link -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 pt-8">
+    <a href="/work/" class="inline-flex items-center gap-x-2 text-sm text-[#666] hover:text-white transition-colors">
+      <span aria-hidden="true">←</span> All work
+    </a>
+  </div>
+
+  <article class="border-t border-white/10 mt-6">
+    <!-- Full-bleed hero -->
+    <div class="relative w-full h-[56vh] min-h-[380px]">
+      <img src={heroImage} alt={heroAlt} class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0">
+        <div class="max-w-screen-xl mx-auto px-5 sm:px-8 pb-10">
+          <div class="max-w-3xl">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-4">{eyebrow}</div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tighter leading-[1.02]">
+              {heading}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta strip -->
+    <div class="border-y border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-5 grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-8">
+        {
+          meta.map((item) => (
+            <div>
+              <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">{item.label}</div>
+              <div class="text-sm text-[#E5E5E5]">{item.value}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <slot />
+  </article>
+
+  <!-- More work -->
+  <div class="border-t border-white/10 bg-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-10">
+      <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">MORE WORK</div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {
+          moreWork.map((item) => (
+            <a href={item.href} class="group block">
+              <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-2">{item.eyebrow}</div>
+              <div class="text-lg font-semibold tracking-tight group-hover:text-white transition-colors">
+                {item.title} <span class="text-[#666]">→</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <CtaBand />
+</BaseLayout>
