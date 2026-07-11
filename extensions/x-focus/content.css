@@ -1,0 +1,24 @@
+article[data-testid="tweet"].x-focus-filtered {
+  display: none !important;
+}
+
+article[data-testid="tweet"].x-focus-dimmed {
+  max-height: 84px !important;
+  overflow: hidden !important;
+  opacity: 0.16 !important;
+  filter: saturate(0) !important;
+  transition:
+    opacity 140ms ease,
+    filter 140ms ease !important;
+}
+
+article[data-testid="tweet"].x-focus-dimmed:hover,
+article[data-testid="tweet"].x-focus-dimmed:focus-within {
+  max-height: none !important;
+  opacity: 0.72 !important;
+  filter: none !important;
+}
+
+article[data-testid="tweet"].x-focus-kept {
+  box-shadow: inset 3px 0 0 #ef8354 !important;
+}
