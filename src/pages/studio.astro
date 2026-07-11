@@ -7,6 +7,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="The studio behind TheFocus.AI — where we explore the newest models and tools, and build the wildest ideas, before any of it gets near a client."
   current="studio"
   ogImage="/assets/studio-lab-bench.jpg"
+  newsletter={false}
 >
   <!-- Inside The Studio — hero -->
   <header class="relative overflow-hidden border-b border-white/10">
@@ -105,6 +106,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 placeholder="you@company.com"
                 class="flex-1 bg-[#0A0A0A] border border-white/15 px-4 py-3 text-sm text-[#E5E5E5] placeholder:text-[#666] focus:outline-none focus:border-[#556B2F] transition-colors"
               />
+              <input type="hidden" name="metadata__source" value="studio-demo-night" />
+              <input type="hidden" name="tag" value="studio-demo-night" />
               <button
                 type="submit"
                 class="bg-white text-black hover:bg-white/90 px-6 py-3 font-medium text-sm whitespace-nowrap transition-colors"
