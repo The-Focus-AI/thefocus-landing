@@ -1,5 +1,0 @@
-/* Model Showdown Report — Scoped Styles
-   Imports the shared Labs base. All patterns this report uses are
-   defined in the shared partial; nothing report-specific is needed. */
-
-@import './_labs-shared.css';

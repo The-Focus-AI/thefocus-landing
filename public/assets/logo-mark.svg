@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" role="img" aria-label="TheFocus.AI">
+  <title>TheFocus.AI</title>
+  <!-- The Diamond Eye: the eye reduced to four lines -->
+  <path d="M12 4.5L21.5 12L12 19.5L2.5 12Z" stroke="#E5E5E5" stroke-width="1.5"/>
+  <!-- Square pupil: the one thing in focus -->
+  <rect x="9.75" y="9.75" width="4.5" height="4.5" fill="#556B2F"/>
+</svg>

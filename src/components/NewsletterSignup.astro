@@ -1,0 +1,73 @@
+---
+// Newsletter signup — posts to the Buttondown "thefocusai" list, same as the
+// old site. `metadata__source` records where on the site the signup happened.
+interface Props {
+  placement?: string;
+}
+const { placement = "footer" } = Astro.props;
+---
+
+<section class="border-t border-white/10 bg-[#0d0d0d]">
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-6 items-center">
+      <div class="col-span-1 lg:col-span-6">
+        <div class="section-label text-[#556B2F] mb-3">Newsletter</div>
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">
+          One short essay a week on shipping production AI.
+        </h2>
+        <p class="mt-3 text-[#999] text-[15px] leading-relaxed max-w-lg">
+          What we learned building, straight from the studio. No roundups, no hype.
+        </p>
+      </div>
+      <div class="col-span-1 lg:col-span-5 lg:col-start-8">
+        <form
+          action="https://buttondown.com/api/emails/embed-subscribe/thefocusai"
+          method="post"
+          class="embeddable-buttondown-form flex flex-col sm:flex-row gap-3"
+          data-placement={placement}
+        >
+          <label for="newsletter-email" class="sr-only">Email address</label>
+          <input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@company.com"
+            class="flex-1 bg-[#0A0A0A] border border-white/15 px-4 py-3 text-sm text-[#E5E5E5] placeholder:text-[#666] focus:outline-none focus:border-[#556B2F] transition-colors"
+          />
+          <input type="hidden" name="metadata__source" value={placement} />
+          <button
+            type="submit"
+            class="px-6 py-3 text-sm border border-white/20 hover:bg-white/5 transition-colors whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p class="mt-3 mono text-[10px] tracking-[1px] text-[#555]">
+          UNSUBSCRIBE ANYTIME · <a
+            href="https://buttondown.com/refer/schenk"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#999] transition-colors">POWERED BY BUTTONDOWN</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fire Plausible custom events for the signup funnel. The native cross-origin
+  // POST proceeds via the browser; events queue before the page unloads.
+  type Plausible = (event: string, opts?: { props?: Record<string, string> }) => void;
+  const w = window as unknown as { plausible?: Plausible };
+
+  document.querySelectorAll<HTMLFormElement>("form.embeddable-buttondown-form").forEach((form) => {
+    const placement = form.dataset.placement || "unknown";
+    form.addEventListener("submit", () => {
+      try {
+        w.plausible?.("signup_form_submit", { props: { placement, path: location.pathname } });
+      } catch {}
+    });
+  });
+</script>

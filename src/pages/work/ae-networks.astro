@@ -1,0 +1,137 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+---
+
+<CaseStudyLayout
+  title="A+E Networks · Case study • TheFocus.AI"
+  description="Watching 212 data feeds so nobody has to — the QA agent that checks A+E's data before anyone builds a decision on it."
+  eyebrow="A+E NETWORKS · DATA QA"
+  heading="Watching 212 data feeds so nobody has to."
+  heroImage="/assets/cs-ae-apocalypse.png"
+  heroAlt="A lone figure walking an overgrown highway of abandoned cars at dusk"
+  meta={[
+    { label: "CLIENT", value: "A+E Networks" },
+    { label: "SECTOR", value: "Media · Entertainment" },
+    { label: "ROLE", value: "Data architecture · QA agents" },
+    { label: "STATUS", value: "Pilot in progress" },
+  ]}
+  moreWork={[
+    { href: "/work/perplexity-samsung/", eyebrow: "PERPLEXITY × SAMSUNG", title: "Perplexity, in 50 million living rooms." },
+    { href: "/work/steering-house/", eyebrow: "STEERING HOUSE", title: "Construction books that reconcile themselves." },
+  ]}
+>
+  <!-- Editorial body -->
+  <div class="max-w-2xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+    <p class="text-2xl sm:text-[28px] leading-[1.45] text-[#E5E5E5] tracking-tight">
+      A+E measures its shows everywhere they air — broadcast, FAST channels, streaming, direct-to-consumer. The truth
+      about how a show performed is scattered across 212 data feeds, and every partner reports it a different way.
+    </p>
+
+    <div class="mt-14">
+      <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">THE CHALLENGE</div>
+      <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+        Some feeds land as automated pushes to S3. Some are still manual downloads. Column names differ partner to
+        partner, and the same show can show up under three different titles depending on whose system reported it. When
+        something breaks, it's rarely obvious — it surfaces two or three steps downstream, in a revenue report that
+        doesn't tie out. <span class="text-white"
+          >One partner once reported viewing time in seconds instead of minutes for weeks before anyone caught it.</span
+        >
+      </p>
+    </div>
+
+    <figure class="my-14 border-l-2 border-[#556B2F] pl-6">
+      <blockquote class="text-2xl sm:text-3xl font-semibold tracking-tight leading-[1.25] text-white">
+        "The bug is never in the model. It's in the file that arrived in the wrong shape, and nobody noticed for three
+        weeks."
+      </blockquote>
+      <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-4">THE FOCUS</figcaption>
+    </figure>
+
+    <div>
+      <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">WHAT WE BUILT</div>
+      <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+        We started by cataloging every feed — where it lives, how often it should arrive, and whether anyone was
+        actually watching for it. That audit alone turned up feeds that were supposed to update daily and hadn't in
+        months. From there we mapped the seven entities every feed eventually has to resolve into — Title, Schedule,
+        Distribution, Viewing Event, Audience, Revenue Line, Payment — so a partner's oddly-named column has one
+        canonical place to land.
+      </p>
+      <p class="mt-5 text-[#B0B0B0] text-[17px] leading-relaxed">
+        On top of that we're building a four-layer QA agent: does the file arrive on time, does the data pass basic
+        plausibility checks, does it cross-reference cleanly against everything else A+E knows, and if not — who gets
+        told, and how fast. Samsung's FAST channel is the pilot. Its three feeds — channel-level viewing, program-level
+        viewing, and audience counts — land on three different schedules from the same partner. That drift was the
+        first thing the agent caught.
+      </p>
+    </div>
+  </div>
+
+  <!-- Inline full-width image -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8">
+    <figure>
+      <img
+        src="/assets/cs-ae-control-room.png"
+        alt="An empty data operations desk with monitors glowing at night"
+        class="w-full h-[40vh] min-h-[280px] object-cover border border-white/10"
+      />
+      <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-3">
+        MOST FEEDS FAIL QUIETLY. THE POINT IS TO NOTICE BEFORE FINANCE DOES.
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Technical summary -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+    <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-6">HOW IT'S BUILT</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">DATA CATALOG</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          212 feeds mapped across S3 and Snowflake — cadence, format, and whether they're monitored.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">ENTITY MODEL</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Seven canonical entities — Title, Schedule, Distribution, Viewing Event, Audience, Revenue Line, Payment.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">AGENT LAYERS</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          Delivery, structural validation, cross-source reconciliation, and action — each a distinct agent class.
+        </div>
+      </div>
+      <div class="bg-[#0A0A0A] p-6">
+        <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-3">STACK</div>
+        <div class="text-[#E5E5E5] text-sm leading-relaxed">
+          TypeScript, Next.js, Vercel AI SDK, Supabase, direct Snowflake access for live queries.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outcome band -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-3 border-t border-white/10">
+      <div class="py-8 sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/10">
+        <div class="text-3xl font-semibold tracking-tight text-white">212 feeds</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">
+          Cataloged across S3 and Snowflake — cadence, format, and freshness, all in one place.
+        </div>
+      </div>
+      <div class="py-8 sm:px-8 border-b sm:border-b-0 sm:border-r border-white/10">
+        <div class="text-3xl font-semibold tracking-tight text-white">7 entities</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">
+          One semantic model every partner's data resolves into, however they report it.
+        </div>
+      </div>
+      <div class="py-8 sm:pl-8">
+        <div class="text-3xl font-semibold tracking-tight text-white">First drift, caught</div>
+        <div class="text-[#999] text-sm mt-2 leading-relaxed">
+          The Samsung pilot found feeds running on three different clocks — before it hit a revenue report.
+        </div>
+      </div>
+    </div>
+  </div>
+</CaseStudyLayout>

@@ -6,23 +6,28 @@
 - Track patterns in user feedback to improve collaboration over time
 - When you notice something that should be fixed but is unrelated to your current task, document it in your journal rather than fixing it immediately
 
-## Post Header Images
+## What this repo is
 
-Header images for blog posts go in `src/content/assets/cards/` and are referenced in post frontmatter as `image: filename.png`.
+The marketing site for thefocus.ai — a lean Astro + Tailwind site on "The
+Ledger" design system, deployed to GitHub Pages. Blog posts, recipes, and
+reports do NOT live here anymore; they moved to labs.thefocus.ai
+(`The-Focus-AI/labs`). If asked to add editorial content, it belongs in the
+labs repo, not here.
 
-### Style Guidelines
+## Design system — The Ledger
 
-Follow the **TheFocus.AI brand design system** for image generation. Use the `focus-ai-brand` skill/plugin for full brand documentation. The two sub-brands have distinct visual styles:
+Source of truth: `DESIGN.md` and `brand/brand-brief.md` in the
+`The-Focus-AI/thefocus-v2` repo. The rules that matter most:
 
-- **Client brand** → Renaissance Drafting style (Da Vinci diagrams, Dürer engravings, celestial maps, cartography, distillation machines). Sepia ink on aged parchment, cross-hatching, red chalk accents.
-- **Labs brand** → Bell Labs / Tufte / RAND style (Tufte data viz, Bell Labs technical diagrams, RAND report infographics, retro terminal).
+- Canvas `#0A0A0A`, surface `#111111`, single accent: drab olive `#556B2F` (never neon, never a large fill)
+- Inter for display/body (headlines 600, tight tracking); IBM Plex Mono for labels and figures ("01 — FIND")
+- Hairline `white/10` borders for containment; **no drop shadows, no rounded corners** (the Habitats device frame is the one sanctioned exception)
+- Primary CTA: solid white on black, 1–2 per page; everything else ghost
+- Voice: measured, anti-hype. Banned: "transform", "revolutionize", "unlock", "supercharge", "game-changer", "sovereign", "AI-native"
 
-**General rules for all header images:**
-- **Subject**: Visual metaphors for the post concept — NOT literal depictions
-- **Format**: Wide 16:9 aspect ratio
-- **No text**: Never include text overlays in header images
-- Generate images using nano-banana
+## Redirects
 
-### Choosing a style
-
-Blog posts about research, experiments, and technical topics use the **Client Renaissance Drafting** style (default: Da Vinci Diagram). See the focus-ai-brand plugin design system docs for full style descriptions and prompt guidance.
+`redirects.mjs` maps every legacy URL (old posts/recipes/reports/tags/pages)
+to labs.thefocus.ai or the new pages. GitHub Pages has no server redirects, so
+Astro generates `<meta refresh>` pages. If content moves again, update that map
+— never delete a published URL without a redirect.

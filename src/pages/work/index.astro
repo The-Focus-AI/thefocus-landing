@@ -1,0 +1,352 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaBand from "../../components/CtaBand.astro";
+---
+
+<BaseLayout
+  title="Case studies • TheFocus.AI"
+  description="Some of the work, and what changed because of it. We start with one decision worth getting right, then build the thing that fixes it."
+  current="work"
+  ogImage="/assets/cs-tezlab-hero.jpg"
+>
+  <!-- Page header -->
+  <div class="max-w-screen-xl mx-auto px-5 sm:px-8 pt-20 pb-14">
+    <div class="max-w-3xl">
+      <div class="section-label text-[#556B2F] mb-3">Selected work</div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-[1.05] font-semibold tracking-tighter">
+        A few things we've built.
+      </h1>
+      <p class="mt-6 max-w-xl text-xl text-[#B0B0B0] leading-relaxed">
+        Some of the work, and what changed because of it. We start with one decision worth getting right, then build
+        the thing that fixes it.
+      </p>
+    </div>
+  </div>
+
+  <!-- Awards — from apps we've shipped -->
+  <div class="border-t border-white/10 bg-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-12">
+      <div class="section-label text-[#556B2F] mb-6">A few products we're proud of</div>
+      <div class="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        <a href="#tezlab" class="block bg-[#0A0A0A] p-7 hover:bg-[#0d0d0d] transition-colors group">
+          <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-5">TEZLAB · TESLA + RIVIAN</div>
+          <div class="text-3xl font-semibold tracking-tight text-white">#1 rated</div>
+          <p class="text-[#999] text-sm mt-3 leading-relaxed">
+            The most popular app for Tesla and Rivian owners.
+            <span class="text-[#666] group-hover:text-white transition-colors">Read the case study →</span>
+          </p>
+        </a>
+        <a href="/work/ae-networks/" class="block bg-[#0A0A0A] p-7 hover:bg-[#0d0d0d] transition-colors group">
+          <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-5">A+E NETWORKS · DATA QA</div>
+          <div class="text-3xl font-semibold tracking-tight text-white">212 feeds</div>
+          <p class="text-[#999] text-sm mt-3 leading-relaxed">
+            One agent watches the data A+E builds its decisions on.
+            <span class="text-[#666] group-hover:text-white transition-colors">Read the case study →</span>
+          </p>
+        </a>
+        <div class="bg-[#0A0A0A] p-7">
+          <div class="mono text-[10px] tracking-[1.5px] text-[#666] mb-5">APPLE · TWITTER FOR APPLE TV</div>
+          <div class="text-3xl font-semibold tracking-tight text-white">App of the Year</div>
+          <p class="text-[#999] text-sm mt-3 leading-relaxed">
+            Apple's pick — for the app we built to put Twitter in the living room.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 — Featured: TezLab -->
+  <article id="tezlab" class="border-t border-white/10 scroll-mt-20">
+    <!-- Full-bleed hero -->
+    <div class="block relative w-full h-[64vh] min-h-[440px]">
+      <img src="/assets/cs-tezlab-hero.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0">
+        <div class="max-w-screen-xl mx-auto px-5 sm:px-8 pb-10">
+          <div class="max-w-3xl">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-4">01 — FEATURED · TEZLAB</div>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tighter leading-[1.02]">
+              TezLab made sense of what your car was trying to tell you.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta strip -->
+    <div class="border-y border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-5 grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-8">
+        <div>
+          <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">CLIENT</div>
+          <div class="text-sm text-[#E5E5E5]">TezLab</div>
+        </div>
+        <div>
+          <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">SECTOR</div>
+          <div class="text-sm text-[#E5E5E5]">Consumer · Automotive</div>
+        </div>
+        <div>
+          <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">ROLE</div>
+          <div class="text-sm text-[#E5E5E5]">Data model · Product</div>
+        </div>
+        <div>
+          <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">STATUS</div>
+          <div class="text-sm text-[#E5E5E5]">In production</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial body -->
+    <div class="max-w-2xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+      <p class="text-2xl sm:text-[28px] leading-[1.45] text-[#E5E5E5] tracking-tight">
+        Your Tesla or Rivian records everything — every mile, every charge, every kilowatt. TezLab is the #1-rated
+        companion app for both, running on millions of cars, that turns all of it into a few answers people actually
+        care about. We helped build the part that does the figuring.
+      </p>
+
+      <div class="mt-14">
+        <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">THE CHALLENGE</div>
+        <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+          A car throws off a huge amount of data, and almost none of it means anything to the person driving. Range,
+          charging cost, efficiency — it's all in there, but raw telemetry never answered the one thing owners actually
+          ask: <span class="text-white">how am I doing?</span> And "battery health" is the question everyone wants
+          answered honestly — Tesla doesn't publish it, and no app can actually calculate it from what the car exposes.
+          We had to build something useful without pretending to know more than we did.
+        </p>
+      </div>
+
+      <figure class="my-14 border-l-2 border-[#556B2F] pl-6">
+        <blockquote class="text-2xl sm:text-3xl font-semibold tracking-tight leading-[1.25] text-white">
+          “We weren't trying to show you everything. We were trying to show you the one thing you'd actually want to
+          know.”
+        </blockquote>
+        <figcaption class="mono text-[11px] tracking-[1.5px] text-[#666] mt-4">THE FOCUS</figcaption>
+      </figure>
+
+      <div>
+        <div class="mono text-xs text-[#556B2F] tracking-[1.5px] mb-4">WHAT WE BUILT</div>
+        <p class="text-[#B0B0B0] text-[17px] leading-relaxed">
+          We built the Car Report — a single Car Score that turns years of driving into one number, benchmarked against
+          similar vehicles. Underneath it: a Range Performance trend that tracks what the battery actually delivers
+          over time, a Drive Details view that scores every trip's efficiency against the fleet, and a charging map
+          that learns your routine instead of asking you to build one. The data was the easy part. The hard part was
+          deciding which few numbers were worth showing — and being straight about the ones we couldn't prove.
+        </p>
+      </div>
+    </div>
+
+    <!-- Inline screenshot grid: real product, not stock photography -->
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8">
+      <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-2">THE APP, TODAY</div>
+      <p class="text-[#999] text-[14px] max-w-xl mb-6 leading-relaxed">
+        Most of what the car reports never made it in. These three screens are what did.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <figure>
+          <img
+            src="/assets/apps/tezlab-screen-10.png"
+            alt="TezLab's Car Report screen showing a Car Score of Great, a Range Report, and a Charging Profile breakdown"
+            class="w-full object-cover border border-white/10"
+          />
+          <figcaption class="mono text-[10px] tracking-[1.5px] text-[#666] mt-3">CAR REPORT — ONE SCORE, YEARS OF DATA</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/assets/apps/tezlab-screen-4.png"
+            alt="TezLab's Drive Details screen showing a route map and 87% overall efficiency"
+            class="w-full object-cover border border-white/10"
+          />
+          <figcaption class="mono text-[10px] tracking-[1.5px] text-[#666] mt-3">DRIVE DETAILS — EVERY TRIP, SCORED</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/assets/apps/tezlab-screen-5.png"
+            alt="TezLab's Drives & Charges screen showing a trip log with route map and battery percentages"
+            class="w-full object-cover border border-white/10"
+          />
+          <figcaption class="mono text-[10px] tracking-[1.5px] text-[#666] mt-3">DRIVES & CHARGES — THE FULL LOG</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Outcome band -->
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-3 border-t border-white/10">
+        <div class="py-8 sm:pr-8 border-b sm:border-b-0 sm:border-r border-white/10">
+          <div class="text-3xl font-semibold tracking-tight text-white">4.7★ rated</div>
+          <div class="text-[#999] text-sm mt-2 leading-relaxed">
+            Across the App Store and Google Play. EV owners keep recommending it to each other.
+          </div>
+        </div>
+        <div class="py-8 sm:px-8 border-b sm:border-b-0 sm:border-r border-white/10">
+          <div class="text-3xl font-semibold tracking-tight text-white">4.2B+ miles</div>
+          <div class="text-[#999] text-sm mt-2 leading-relaxed">
+            Logged by TezLab members and counting, across Tesla and Rivian.
+          </div>
+        </div>
+        <div class="py-8 sm:pl-8">
+          <div class="text-3xl font-semibold tracking-tight text-white">79% avg efficiency</div>
+          <div class="text-[#999] text-sm mt-2 leading-relaxed">
+            The community number every member is quietly trying to beat.
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- More work -->
+  <div class="border-t border-white/10 bg-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-5">
+      <div class="section-label text-[#556B2F]">More work</div>
+    </div>
+  </div>
+
+  <!-- 02 — Perplexity × Samsung (image left) -->
+  <a href="/work/perplexity-samsung/" class="group block border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-12 gap-x-10 gap-y-6 items-center">
+        <div class="col-span-12 md:col-span-7 overflow-hidden">
+          <img
+            src="/assets/apps/app-samsung.png"
+            alt="A smart TV glowing in a dark living room"
+            class="w-full aspect-video object-cover border border-white/10 transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+        <div class="col-span-12 md:col-span-5">
+          <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">02 — PERPLEXITY × SAMSUNG · LIVING ROOM</div>
+          <h3 class="text-2xl sm:text-3xl font-semibold tracking-tighter leading-[1.1] mb-4 group-hover:text-white transition-colors">
+            Perplexity, in 50 million living rooms.
+          </h3>
+          <p class="text-[#B0B0B0] text-[16px] leading-relaxed mb-5">
+            A TV has no keyboard and a remote with five buttons. So we built it voice-first: press one button, ask out
+            loud, watch the answer stream in. It passed Samsung's QA on the first major submission and shipped to their
+            Smart TV install base worldwide.
+          </p>
+          <div class="flex items-center gap-x-6">
+            <span class="mono text-sm text-[#556B2F]">12 weeks → 50M+ TVs</span>
+            <span class="text-sm text-[#666] group-hover:text-white transition-colors">Read →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- 03 — A+E Networks (image right) -->
+  <a href="/work/ae-networks/" class="group block border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-12 gap-x-10 gap-y-6 items-center">
+        <div class="col-span-12 md:col-span-5 md:order-1 order-2">
+          <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">03 — A+E NETWORKS · DATA QA</div>
+          <h3 class="text-2xl sm:text-3xl font-semibold tracking-tighter leading-[1.1] mb-4 group-hover:text-white transition-colors">
+            Watching 212 data feeds so nobody has to.
+          </h3>
+          <p class="text-[#B0B0B0] text-[16px] leading-relaxed mb-5">
+            A+E measures its shows across every platform they air on — and the data arrives in 212 separate feeds, some
+            daily, some monthly, some quietly stale. We cataloged all of them, mapped the seven entities everything
+            hangs on, and designed the QA agent that checks the data before anyone builds a decision on it.
+          </p>
+          <div class="flex items-center gap-x-6">
+            <span class="mono text-sm text-[#556B2F]">212 feeds · 7 canonical entities</span>
+            <span class="text-sm text-[#666] group-hover:text-white transition-colors">Read →</span>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-7 md:order-2 order-1 overflow-hidden">
+          <img
+            src="/assets/cs-ae-apocalypse.png"
+            alt="A lone survivor walking an overgrown highway of abandoned cars at dusk"
+            class="w-full aspect-video object-cover border border-white/10 transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- 04 — Steering House (image left) -->
+  <a href="/work/steering-house/" class="group block border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-12 gap-x-10 gap-y-6 items-center">
+        <div class="col-span-12 md:col-span-7 overflow-hidden">
+          <img
+            src="/assets/cs-qbsync-hero.jpg"
+            alt=""
+            class="w-full aspect-video object-cover border border-white/10 transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
+        <div class="col-span-12 md:col-span-5">
+          <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">04 — STEERING HOUSE · FINANCE OPS</div>
+          <h3 class="text-2xl sm:text-3xl font-semibold tracking-tighter leading-[1.1] mb-4 group-hover:text-white transition-colors">
+            Construction books that reconcile themselves.
+          </h3>
+          <p class="text-[#B0B0B0] text-[16px] leading-relaxed mb-5">
+            Steering House builds $5–7M townhouse projects, and the numbers lived in two systems that didn't talk. Now
+            QuickBooks syncs to per-project sheets every hour — 57,000 transactions and counting — and we're modeling
+            how each cost code actually spends, so an overrun gets flagged weeks before it becomes a client
+            conversation.
+          </p>
+          <div class="flex items-center gap-x-6">
+            <span class="mono text-sm text-[#556B2F]">57,829 transactions · synced hourly</span>
+            <span class="text-sm text-[#666] group-hover:text-white transition-colors">Read →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- 05 — Fountain Creek (image right) -->
+  <div class="block border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-12 gap-x-10 gap-y-6 items-center">
+        <div class="col-span-12 md:col-span-5 md:order-1 order-2">
+          <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-3">05 — FOUNTAIN CREEK · FIELD OPS</div>
+          <h3 class="text-2xl sm:text-3xl font-semibold tracking-tighter leading-[1.1] mb-4">
+            Getting a whole field operation onto one screen.
+          </h3>
+          <p class="text-[#B0B0B0] text-[16px] leading-relaxed mb-5">
+            Crews, sensors, and spreadsheets spread across miles of watershed. We pulled the field readings into one
+            view, so a call that took a week of phone tag now takes an afternoon.
+          </p>
+          <div class="flex items-center gap-x-6">
+            <span class="mono text-sm text-[#556B2F]">A week of calls → an afternoon</span>
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-7 md:order-2 order-1 overflow-hidden">
+          <img src="/assets/cs-fountain-hero.jpg" alt="" class="w-full aspect-video object-cover border border-white/10" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 + 07 — Compact two-up -->
+  <div class="border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-12 sm:py-16">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- 06 Distill -->
+        <div class="block">
+          <div class="overflow-hidden mb-5">
+            <img src="/assets/ledger-photo-b.jpg" alt="" class="w-full aspect-[16/10] object-cover border border-white/10" />
+          </div>
+          <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-2">06 — DISTILL · RESEARCH</div>
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight mb-3">Straight answers out of messy documents.</h3>
+          <p class="text-[#999] text-[15px] leading-relaxed mb-4">
+            A wall of PDFs nobody had time to read. We made it something you can just ask a question — and trust the
+            answer.
+          </p>
+        </div>
+
+        <!-- 07 Upper Hand -->
+        <div class="block">
+          <div class="overflow-hidden mb-5">
+            <img src="/assets/ledger-photo-a.jpg" alt="" class="w-full aspect-[16/10] object-cover border border-white/10" />
+          </div>
+          <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-2">07 — UPPER HAND · OPERATIONS</div>
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight mb-3">Less time on the busywork, more on the people.</h3>
+          <p class="text-[#999] text-[15px] leading-relaxed mb-4">
+            The day was full of small, repetitive tasks. We took the ones a machine should handle, so the team could
+            spend the time where it mattered.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <CtaBand />
+</BaseLayout>

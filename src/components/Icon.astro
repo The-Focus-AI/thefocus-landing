@@ -1,0 +1,29 @@
+---
+// Minimal inline SVG icons so we don't ship Font Awesome for five glyphs.
+interface Props {
+  name: "bars" | "xmark" | "play" | "check" | "arrow-left";
+  class?: string;
+}
+const { name, class: className = "w-3.5 h-3.5" } = Astro.props;
+
+const paths: Record<string, string> = {
+  bars: "M3 6h18M3 12h18M3 18h18",
+  xmark: "M6 6l12 12M18 6L6 18",
+  play: "M7 5l12 7-12 7V5z",
+  check: "M4 12.5l5 5L20 6.5",
+  "arrow-left": "M19 12H5m0 0l6-6m-6 6l6 6",
+};
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill={name === "play" ? "currentColor" : "none"}
+  stroke={name === "play" ? "none" : "currentColor"}
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name]}></path>
+</svg>

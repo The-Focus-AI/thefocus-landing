@@ -1,377 +1,1809 @@
 ---
-import BaseLayout from "../layout/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
 ---
 
 <BaseLayout
-  pageTitle="TheFocus.AI | Building an Intelligent Organization"
-  bigHeader={true}
-  description="AI capabilities are arriving faster than organizations can absorb them. We help organizations move from tribal knowledge to structured intelligence — production AI in weeks, not quarters."
-  showOrganizationSchema={true}
-  category="home"
+  title="TheFocus.AI — Amplifying Intelligence"
+  description="We find where AI makes your teams sharper, build it into the workflows they already trust, and teach your team as we go."
+  current="method"
+  footerMotto="NO RETAINERS · NO PILOTS FOR THEIR OWN SAKE"
 >
-  <!-- Hero Section -->
-  <section class="py-12 md:py-24 relative overflow-visible">
-    <!-- Ambient background shapes that connect illustration to page -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div class="absolute top-10 right-[15%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-vermilion/5 animate-pulse" style="animation-duration: 8s;"></div>
-      <div class="absolute bottom-20 left-[10%] w-12 h-12 md:w-20 md:h-20 rounded-full bg-petrol/5 animate-pulse" style="animation-duration: 10s;"></div>
-      <div class="absolute top-1/3 left-[5%] w-8 h-8 md:w-14 md:h-14 rounded-full bg-vermilion/5 animate-pulse" style="animation-duration: 7s;"></div>
+  <!-- Studio location -->
+  <div class="border-b border-white/5 bg-[#0d0d0d]">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-3 flex items-center gap-x-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#556B2F]"></span>
+      <span class="mono text-[11px] tracking-[1.5px] text-[#666]">BROOKLYN, NY</span>
     </div>
-    
-    <div class="max-w-4xl mx-auto relative">
-      <div class="max-w-2xl">
-        <h1 class="font-sans text-[2.5rem] leading-[1.1] sm:text-5xl md:text-7xl font-bold text-ink mb-8 md:mb-10">
-          Building an Intelligent Organization
+  </div>
+
+  <!-- Hero -->
+  <div class="relative min-h-[85vh] flex items-end overflow-hidden">
+    <!-- Background image stage -->
+    <div class="hero-stage absolute inset-0">
+      <img
+        src="/assets/hero-cinematic-train-b.jpg"
+        alt="Brooklyn tech studio at night with a long-exposure subway streaking past the windows"
+        class="hero-img absolute inset-0 w-full h-full object-cover object-center"
+      />
+      <!-- Flickering warm glow from the pendant lamp (desktop only) -->
+      <div class="lamp-glow hidden sm:block"></div>
+    </div>
+    <!-- Gradient fade: dark at bottom for text, subtle at top -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/60 to-transparent"></div>
+    <!-- Animated subway motion layer: clipped duplicate of the actual train band, above the darkening gradients. -->
+    <div class="train-track-area">
+      <div class="train-band-motion train-band-core">
+        <img src="/assets/hero-cinematic-train-b.jpg" alt="" class="train-band-img" />
+      </div>
+      <div class="train-band-motion train-band-smear">
+        <img src="/assets/hero-cinematic-train-b.jpg" alt="" class="train-band-img" />
+      </div>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 pb-16 pt-32 w-full">
+      <div class="max-w-2xl hero-reveal">
+        <div class="section-label text-[#556B2F] mb-3">Our kind of AI</div>
+
+        <h1
+          class="text-5xl sm:text-6xl lg:text-7xl leading-[1.02] font-semibold tracking-tighter"
+          aria-label="Amplifying Intelligence."
+        >
+          <span class="text-[#9db565]" aria-hidden="true">A</span>mplifying <span class="text-[#9db565]" aria-hidden="true">I</span>ntelligence.
         </h1>
-        <p class="text-xl md:text-2xl text-graphite leading-[1.6] mb-6">
-          AI capabilities are arriving faster than organizations can absorb them. The bottleneck isn't the technology — it's whether your company can describe its own work in a form machines can act on.
+
+        <p class="mt-6 max-w-xl text-xl text-[#B0B0B0]">
+          We find where AI makes your teams sharper, build it into the workflows they already trust, and teach your
+          team as we go.
         </p>
-        <p class="text-sm uppercase tracking-widest text-petrol mb-10 md:mb-12 font-medium">For mid-market and enterprise teams shipping production AI</p>
-        <div class="flex flex-col sm:flex-row gap-4">
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-x-4 mt-9">
           <a
-            href="/capabilities"
-            class="inline-block px-8 py-4 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:bg-petrol/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center"
+            href="mailto:wschenk@thefocus.ai"
+            class="w-full sm:w-auto text-center px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
           >
-            See the Framework
+            Start with an assessment
           </a>
           <a
-            href="/case-studies"
-            class="inline-block px-8 py-4 border-2 border-ink/20 text-ink font-medium uppercase text-sm tracking-wider rounded-full hover:border-petrol hover:text-petrol hover:-translate-y-0.5 transition-all duration-200 text-center"
+            href="#method"
+            class="w-full sm:w-auto text-center px-8 py-3.5 border border-white/20 hover:bg-white/5 transition-colors text-sm"
           >
-            View Case Studies
+            See the method
           </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subtle "watch the film" button, blended into the hero (bottom-right) -->
+    <button
+      id="heroPlayBtn"
+      type="button"
+      aria-label="Watch the film"
+      class="hero-play-btn group absolute bottom-4 right-4 sm:bottom-8 sm:right-8 z-30 flex items-center gap-x-3"
+    >
+      <span
+        class="mono text-[10px] tracking-[2px] uppercase text-white/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:inline"
+        >Watch the film</span
+      >
+      <span
+        class="hero-play-ring relative flex items-center justify-center w-12 h-12 rounded-full border border-white/25 bg-black/30 backdrop-blur-sm text-white/85"
+      >
+        <Icon name="play" class="w-3 h-3 translate-x-[1px]" />
+      </span>
+    </button>
+  </div>
+
+  <!-- Observation -->
+  <div class="border-y border-white/10 bg-[#111111]">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 md:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-8">
+        <div class="col-span-1 md:col-span-6">
+          <div class="section-label text-[#556B2F] mb-4">Built together</div>
+          <h2 class="text-4xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+            <span class="text-[#888]">The best AI keeps humans in charge.</span><br />
+            <span class="text-white">We build it together, in the open.</span>
+          </h2>
+        </div>
+        <div class="col-span-1 md:col-span-6">
+          <p class="text-[#B0B0B0] text-[17px] leading-relaxed max-w-xl">
+            We sit right next to your team and build the real system side by side — AI handling the drudgery, your
+            people making the calls that matter. <span class="text-white"
+              >We teach the techniques as we go, so the knowledge stays after we've left.</span
+            > You get something that works, that your team understands and controls, and that they actually want to use.
+          </p>
+          <p class="mt-4 text-[#999] text-[15px] leading-relaxed max-w-xl">
+            The prompts, the results, even the model — we protect all of it, so you don't have to.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clients -->
+  <div class="border-b border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-10">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-y-3 mb-8">
+        <div class="mono text-[11px] tracking-[1.5px] text-[#666]">WE'VE BUILT FOR</div>
+        <a href="/work/" class="text-sm text-[#666] hover:text-white transition-colors">See the work →</a>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-6">
+        <img src="/assets/logos/apple.svg" alt="Apple" title="Apple" class="h-6 w-auto opacity-45 hover:opacity-90 transition-opacity" />
+        <img src="/assets/logos/tesla.svg" alt="Tesla" title="Tesla" class="h-5 w-auto opacity-45 hover:opacity-90 transition-opacity" />
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="Rivian">RIVIAN</span>
+        <img src="/assets/logos/x.svg" alt="X, formerly Twitter" title="X (formerly Twitter)" class="h-5 w-auto opacity-45 hover:opacity-90 transition-opacity" />
+        <img src="/assets/logos/samsung.svg" alt="Samsung" title="Samsung" class="h-6 w-auto opacity-45 hover:opacity-90 transition-opacity" />
+        <img src="/assets/logos/perplexity.svg" alt="Perplexity" title="Perplexity" class="h-6 w-auto opacity-45 hover:opacity-90 transition-opacity" />
+        <img src="/assets/logos/audible.svg" alt="Audible" title="Audible" class="h-6 w-auto opacity-45 hover:opacity-90 transition-opacity" />
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="Con Edison">conEdison</span>
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="A+E Networks">A+E</span>
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="WeaveGrid">WeaveGrid</span>
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="ev.energy">ev.energy</span>
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="TezLab">TezLab</span>
+        <span class="text-[#888] hover:text-[#ccc] transition-colors font-semibold tracking-tight text-[17px] leading-none" title="Steering House">Steering House</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Method -->
+  <div id="method" class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 scroll-mt-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-8 items-end mb-10">
+      <div class="col-span-1 md:col-span-8">
+        <div class="section-label text-[#556B2F] mb-2 reveal">How we work</div>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tighter reveal delay-1">Strategy · Build · Teach</h2>
+      </div>
+      <p class="col-span-1 md:col-span-4 text-[#888] text-sm leading-relaxed reveal delay-2">
+        Three moves, one thread: decide what matters, build the system, teach the team to keep going.
+      </p>
+    </div>
+
+    <div class="method-system reveal delay-2 rounded-2xl">
+      <div class="method-rail"></div>
+      <div class="grid md:grid-cols-[0.22fr_1fr_1.18fr_1fr]">
+        <div class="hidden md:flex items-center justify-center border-r border-white/10 px-4 py-8">
+          <div class="method-side-label mono text-[10px] text-[#666]">THE OPERATING THREAD</div>
+        </div>
+
+        <!-- Strategy -->
+        <div class="method-step" data-num="01">
+          <div class="method-step-body">
+            <div class="mono text-xs text-[#556B2F] mb-5 tracking-[1px]">01 — STRATEGY</div>
+            <div class="text-xl font-medium mb-4">Settle the thinking before anything gets built.</div>
+            <div class="text-[#999] text-[14px] leading-relaxed">
+              For boards and teams that want a real plan first. We work with your execs and leads to find where AI
+              genuinely helps your people — and shape a strategy you can take to the board.
+            </div>
+            <div class="mt-5 pt-4 border-t border-white/10">
+              <a
+                href="/assets/thefocus-strategy-brief-sample.pdf"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-x-2 text-[13px] text-[#B0B0B0] hover:text-white transition-colors"
+              >
+                Example: a sample board strategy brief <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Build -->
+        <div class="method-step method-step-build" data-num="02">
+          <div class="method-step-body">
+            <div class="mono text-xs text-[#556B2F] mb-5 tracking-[1px]">02 — BUILD</div>
+            <div class="text-2xl font-semibold tracking-tight mb-4">Build tools that fit how your team works.</div>
+            <div class="text-[#B0B0B0] text-[15px] leading-relaxed">
+              We build systems that handle the repetitive work — so your team can spend its time on judgment,
+              creativity, and the calls a model can't make.
+            </div>
+            <div class="mt-5 pt-4 border-t border-white/10 text-[#888] text-[13px] leading-relaxed">
+              We're not loyal to any model — frontier where it pays, open weights in your cloud where it doesn't. You
+              own what comes out.
+            </div>
+          </div>
+        </div>
+
+        <!-- Teach -->
+        <div class="method-step" data-num="03">
+          <div class="method-step-body">
+            <div class="mono text-xs text-[#556B2F] mb-5 tracking-[1px]">03 — TEACH</div>
+            <div class="text-xl font-medium mb-4">Teach the people who want to learn.</div>
+            <div class="text-[#999] text-[14px] leading-relaxed">
+              We bring your team along as we build, so they own it after we go. They come out more capable — then teach
+              the rest of your organization what's possible.
+            </div>
+            <a
+              href="#team-keeps"
+              class="inline-flex items-center gap-x-2 mt-5 text-[13px] text-[#B0B0B0] hover:text-white transition-colors"
+            >
+              What your team keeps <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- In practice / lifestyle -->
+  <div class="border-t border-white/10">
+    <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div class="col-span-1 lg:col-span-6">
+          <div class="relative border border-white/10">
+            <img
+              src="/assets/studio-brooklyn-hero-b.jpg"
+              alt="Team mapping workflows on a whiteboard in a Brooklyn studio"
+              class="w-full object-cover aspect-[3/2]"
+            />
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/80 to-transparent">
+              <div class="flex items-center justify-between">
+                <span class="mono text-[11px] tracking-[1px] text-[#B0B0B0]">FIG. 02 — MAPPING THE WORK</span>
+                <span class="w-2 h-2 bg-[#556B2F]"></span>
+              </div>
+              <div class="mt-2 mono text-[10px] text-[#888]">The workflow, drawn before the build.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-1 lg:col-span-6">
+          <div class="section-label text-[#556B2F] mb-3">In practice</div>
+          <h2 class="text-3xl leading-tight tracking-tight font-semibold mb-5">
+            We start by drawing your business the way it actually runs.
+          </h2>
+          <p class="text-[#B0B0B0] text-[15px] leading-relaxed mb-4">
+            Before a line of code, we map the real workflow — the handoffs, the exceptions, the decisions that quietly
+            cost your team time and energy. The picture is usually messier than the org chart. That's the point.
+          </p>
+          <p class="text-[#999] text-[14px] leading-relaxed">
+            That map tells us where AI frees your people up — and, just as often, where human judgment is the whole
+            value.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ledger texture band / pull quote -->
+  <div class="relative border-y border-white/10 overflow-hidden">
+    <img src="/assets/studio-texture-dark.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-[0.3]" />
+    <div class="absolute inset-0 bg-[#0A0A0A]/60"></div>
+    <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-20">
+      <p class="max-w-3xl text-2xl md:text-3xl font-semibold tracking-tight leading-snug">
+        "AI doesn't replace good people — it multiplies what they already do best. But you have to understand your own
+        work first. That's the part most companies skip."
+      </p>
+      <div class="mt-5 mono text-[11px] tracking-[1px] text-[#666]">WILL SCHENK · THEFOCUS.AI</div>
+    </div>
+  </div>
+
+  <!-- What your team keeps -->
+  <section id="team-keeps" class="team-keeps">
+    <div class="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 py-14 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-4 items-end mb-8">
+        <div class="col-span-1 lg:col-span-7">
+          <div class="section-label text-[#556B2F] mb-3 reveal">What your team keeps</div>
+          <h2 class="text-3xl sm:text-4xl leading-[1.06] tracking-tighter font-semibold reveal delay-1">
+            We build it with your team. Then they build it without us.
+          </h2>
+        </div>
+        <div class="col-span-1 lg:col-span-5 reveal delay-2">
+          <p class="text-[#9a9a9a] text-[15px] leading-relaxed">
+            Bring a project you actually need built. We sit down with your team and build it together — the real thing,
+            not a demo. They learn how software gets made now by making it. When we're done, the work ships and the
+            skills stay.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-3">
+        <article class="tk-card reveal">
+          <div class="tk-shot">
+            <span class="tk-tag">Real work</span>
+            <img src="/assets/studio-room-2.jpg" alt="Two people working through code together at a laptop" />
+          </div>
+          <div class="tk-body">
+            <div class="mono text-[10px] tracking-[1.4px] text-[#7f9a4d] mb-2">01 · BUILD SOMETHING REAL</div>
+            <h3 class="text-lg font-semibold tracking-tight mb-1.5">No sample apps.</h3>
+            <p class="text-[#9a9a9a] text-[13.5px] leading-relaxed">
+              You bring something your business actually needs. We build the real thing — not a toy version — and it
+              ships into your work.
+            </p>
+          </div>
+        </article>
+
+        <article class="tk-card reveal delay-1">
+          <div class="tk-shot">
+            <span class="tk-tag">Side by side</span>
+            <img src="/assets/studio-room-4.jpg" alt="A team building something together at a laptop" />
+          </div>
+          <div class="tk-body">
+            <div class="mono text-[10px] tracking-[1.4px] text-[#7f9a4d] mb-2">02 · LEARN BY DOING</div>
+            <h3 class="text-lg font-semibold tracking-tight mb-1.5">We sit next to your team.</h3>
+            <p class="text-[#9a9a9a] text-[13.5px] leading-relaxed">
+              No manuals, no slide decks. We work next to your people on the real problem, so they pick up the judgment
+              — what to hand off, what to check, what's not worth trusting yet.
+            </p>
+          </div>
+        </article>
+
+        <article class="tk-card reveal delay-2">
+          <div class="tk-shot">
+            <span class="tk-tag">It's yours</span>
+            <img src="/assets/studio-room-5.jpg" alt="A team walking through their work together while one person explains it" />
+          </div>
+          <div class="tk-body">
+            <div class="mono text-[10px] tracking-[1.4px] text-[#7f9a4d] mb-2">03 · BRING IT BACK</div>
+            <h3 class="text-lg font-semibold tracking-tight mb-1.5">Then they do it without us.</h3>
+            <p class="text-[#9a9a9a] text-[13.5px] leading-relaxed">
+              Your people go home with the thing you built and the know-how to build the next one. That's the point —
+              not another vendor you depend on.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="team-keeps-ledger mt-3 px-5 py-4 reveal delay-3">
+        <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+          <div class="mono text-[10px] tracking-[1.4px] text-[#556B2F] shrink-0">HABITATS KEEPS THE WORK</div>
+          <p class="text-[#9a9a9a] text-[13.5px] leading-relaxed">
+            The whole build gets written down as it happens — what you tried, what worked, what to skip next time.
+            Months later, the team can still look it up.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Meet Habitat OS Callout -->
-  <section class="py-8 md:py-12">
-    <div class="max-w-4xl mx-auto">
-      <a href="/habitat-os" class="group block relative overflow-hidden rounded-3xl bg-gradient-to-br from-ink to-ink/95 p-8 md:p-12 hover:shadow-2xl hover:shadow-petrol/20 transition-all duration-300">
-        <!-- Subtle grid pattern -->
-        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><line x1=%220%22 y1=%2240%22 x2=%2240%22 y2=%220%22 stroke=%22white%22 stroke-width=%220.5%22/></svg>');"></div>
-        
-        <div class="relative flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-          <div class="flex-1">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="w-2.5 h-2.5 rounded-full bg-paper animate-pulse"></span>
-              <span class="text-xs uppercase tracking-[0.2em] text-paper font-medium">New</span>
-            </div>
-            <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-paper mb-3 leading-tight">
-              Meet Habitat OS
+  <!-- Habitats (our product) -->
+  <div class="habitats-showcase border-t border-white/10">
+    <div class="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-12 gap-9 lg:gap-12 items-center">
+        <div class="lg:col-span-4">
+          <div class="habitats-copy">
+            <div class="section-label text-[#556B2F] mb-4">Our product · Habitats</div>
+            <h2
+              class="text-4xl sm:text-5xl leading-[1.04] tracking-tighter font-semibold mb-6"
+              aria-label="All Intelligence, in one place."
+            >
+              <span class="text-[#9db565]" aria-hidden="true">A</span>ll <span class="text-[#9db565]" aria-hidden="true">I</span>ntelligence, in one place.
             </h2>
-            <p class="text-lg text-paper/70 leading-relaxed max-w-xl">
-              The enterprise runtime behind every production AI build. Your agents run in your cloud, with full auditability and principal-led support.
-            </p>
-            <p class="text-base text-paper/60 leading-relaxed max-w-xl mt-3">
-              Now with <span class="text-paper font-medium">Habitat WorkStreams</span> — a private stream for every person and group, so your best prompts compound across the org instead of dying in one chat history.
+            <p class="text-[#B0B0B0] text-[16px] leading-relaxed mb-8">
+              One shared place where your team uses AI together — so the best ways of working get seen, copied, and
+              kept, instead of stuck on one person's screen.
             </p>
           </div>
-          <div class="flex-shrink-0">
-            <span class="inline-flex items-center gap-2 px-6 py-3 bg-petrol text-paper font-medium uppercase text-sm tracking-wider rounded-full group-hover:bg-petrol/90 group-hover:shadow-lg group-hover:-translate-y-0.5 transition-all duration-200">
-              Explore the platform
-              <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
-            </span>
+
+          <div class="habitats-step-grid" role="radiogroup" aria-label="Habitats product preview">
+            <button class="habitats-slide-control" type="button" role="radio" aria-checked="true" tabindex="0" data-habitats-slide="0">
+              <span class="habitats-radio-dot" aria-hidden="true"></span>
+              <span class="habitats-step-number">01</span>
+              <span class="habitats-step-title">Work together</span>
+            </button>
+            <button class="habitats-slide-control" type="button" role="radio" aria-checked="false" tabindex="-1" data-habitats-slide="1">
+              <span class="habitats-radio-dot" aria-hidden="true"></span>
+              <span class="habitats-step-number">02</span>
+              <span class="habitats-step-title">Learn from others</span>
+            </button>
+            <button class="habitats-slide-control" type="button" role="radio" aria-checked="false" tabindex="-1" data-habitats-slide="2">
+              <span class="habitats-radio-dot" aria-hidden="true"></span>
+              <span class="habitats-step-number">03</span>
+              <span class="habitats-step-title">Build and share</span>
+            </button>
+          </div>
+
+          <p id="habitats-slide-note" class="mt-5 text-[#8D8D8D] text-[14px] leading-relaxed min-h-[44px]">
+            When your team works in the same space, the best AI results get shared — not trapped in one person's
+            private chat.
+          </p>
+
+          <div class="mt-7">
+            <a
+              href="/habitats/"
+              class="inline-flex items-center gap-x-2 text-sm text-[#D8D8D8] hover:text-white transition-colors border-b border-white/20 hover:border-white/60 pb-1"
+            >
+              See how Habitats works <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="hidden lg:block lg:col-span-8">
+          <div class="habitats-display">
+            <div class="habitats-screen aspect-[1480/900]">
+              <div id="habitats-live-stage" class="habitats-live-stage">
+                <iframe
+                  id="habitats-slide-frame"
+                  src="/assets/habitats-marketplace.html"
+                  title="Habitats agent marketplace live preview"
+                  tabindex="-1"
+                  aria-hidden="true"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Proof / Case studies -->
+  <section class="cs-section border-t border-white/10 overflow-hidden">
+    <div class="cs-glow cs-glow--amber"></div>
+    <div class="cs-glow cs-glow--olive"></div>
+
+    <!-- Intro -->
+    <div class="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 pt-16 pb-10">
+      <div class="reveal max-w-2xl">
+        <div class="section-label text-[#556B2F] mb-2">Proof</div>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tighter">We'd rather show you than pitch you.</h2>
+        <p class="mt-4 text-[#B0B0B0] text-lg leading-relaxed">
+          A few things we've built — and what changed because of them.
+        </p>
+      </div>
+    </div>
+
+    <!-- Featured: TezLab editorial -->
+    <article class="cs-feature relative z-10 border-t border-white/10">
+      <!-- Full-bleed hero with cinematic light sweep -->
+      <a href="/work/#tezlab" class="group block relative w-full h-[60vh] min-h-[420px] overflow-hidden">
+        <img
+          src="/assets/cs-tezlab-hero.jpg"
+          alt="Long-exposure highway light trails at dusk"
+          class="cs-feature-img absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="cs-sweep"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/55 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0">
+          <div class="max-w-screen-xl mx-auto px-5 sm:px-8 pb-10">
+            <div class="max-w-3xl reveal">
+              <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-4">FEATURED · TEZLAB</div>
+              <h3 class="text-3xl sm:text-5xl font-semibold tracking-tighter leading-[1.03]">
+                Drivers can ask about their Tesla &amp; Rivian data in plain English — and 27% more converted.
+              </h3>
+            </div>
           </div>
         </div>
       </a>
-    </div>
-  </section>
 
-  <!-- Results Section -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink">
-    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-20">
-      <p class="text-xs uppercase tracking-[0.2em] text-paper/60 mb-8 font-medium text-center">Results</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto">
-        <a href="/case-study/upper-hand" class="text-center group">
-          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">27%</p>
-          <p class="text-sm text-paper/60">higher conversion</p>
-          <p class="text-xs text-paper/30 mt-1 group-hover:text-paper/50 transition-colors">Upper Hand</p>
-        </a>
-        <a href="/case-study/rivian-tbm" class="text-center group">
-          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">78%</p>
-          <p class="text-sm text-paper/60">faster decisions</p>
-          <p class="text-xs text-paper/30 mt-1 group-hover:text-paper/50 transition-colors">Rivian</p>
-        </a>
-        <a href="/case-study/samsung-702" class="text-center group">
-          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">50M+</p>
-          <p class="text-sm text-paper/60">devices reached</p>
-          <p class="text-xs text-paper/30 mt-1 group-hover:text-paper/50 transition-colors">Samsung</p>
-        </a>
-        <a href="/case-study/qbsync" class="text-center group">
-          <p class="text-4xl md:text-5xl font-bold text-paper mb-2">4 wks</p>
-          <p class="text-sm text-paper/60">to production</p>
-          <p class="text-xs text-paper/30 mt-1 group-hover:text-paper/50 transition-colors">QB Sync</p>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Trophy Wall Section -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen">
-    <div class="max-w-screen-xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
-      <!-- Decorative line -->
-      <div class="w-12 h-1 bg-petrol/30 mb-6 mx-auto"></div>
-      
-      <p class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">
-        Our Clients
-      </p>
-      <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-5 max-w-4xl leading-tight mx-auto">
-        Trusted by industry leaders to deliver AI that performs
-      </h2>
-      <p class="text-lg md:text-xl text-graphite mb-12 max-w-2xl leading-relaxed mx-auto">
-        We've delivered <a href="/capabilities" class="text-petrol underline underline-offset-2 hover:text-petrol/80 transition-colors">agentic AI solutions</a> across energy, media, consumer products, and enterprise platforms. Every engagement is principal-led and focused on measurable outcomes.
-      </p>
-      
-      <!-- Logo Grid with enhanced styling -->
-      <div class="bg-paper/60 backdrop-blur-sm rounded-3xl shadow-xl shadow-ink/5 p-6 md:p-12 max-w-5xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 items-center justify-items-center">
-          {[
-            { src: "/images/logos/upperhand.svg", label: "Upper Hand" },
-            { src: "/images/logos/perplexity.svg", label: "Perplexity" },
-            { src: "/images/logos/samsung.svg", label: "Samsung" },
-            { src: "/images/logos/tesla.svg", label: "Tesla" },
-            { src: "/images/logos/rivian.svg", label: "Rivian" },
-            { src: "/images/logos/conedison.svg", label: "Con Edison" },
-            { src: "/images/logos/weavegrid.svg", label: "WeaveGrid" },
-          ].map(({ src, label }) => (
-            <div class="flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-all duration-300 hover:scale-105">
-              <img src={src} alt={label} class="h-6 md:h-10 w-auto" />
-              <span class="text-[10px] md:text-xs text-graphite uppercase tracking-widest">{label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- The Insight -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-paper py-16 md:py-24">
-    <div class="max-w-screen-xl mx-auto px-5 md:px-8">
-      <div class="max-w-4xl mx-auto">
-        <h3 class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">The Insight</h3>
-        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-8">The question nobody asks first</h2>
-        <p class="text-xl md:text-2xl text-graphite leading-relaxed mb-8 max-w-3xl">
-          Can your organization describe its own work? Not the org chart version — the <em>real</em> version. Which rules are documented? Which ones live in someone's head? Which exceptions matter?
-        </p>
-        <p class="text-lg text-graphite leading-relaxed max-w-3xl">
-          Until you can answer that, AI tools are just faster ways to do the wrong thing. <strong class="text-ink">Most AI initiatives stall at the proof-of-concept stage</strong> — not because the pilots fail, but because there's no organizational foundation to build on. The journey from <a href="/capabilities" class="text-petrol underline underline-offset-2 hover:text-petrol/80 transition-colors">tribal to coherent</a> starts with making your work legible to machines.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- The Journey -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-ink py-16 md:py-24">
-    <div class="max-w-screen-xl mx-auto px-5 md:px-8">
-      <div class="max-w-4xl mx-auto">
-        <h3 class="text-xs uppercase tracking-[0.2em] text-paper/60 mb-6 font-medium">The Journey</h3>
-        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-paper mb-6">From tribal to coherent</h2>
-        <p class="text-lg text-paper/70 leading-relaxed mb-12 max-w-2xl">
-          Every organization is somewhere on this path. The transitions — not the levels — are where all the value lives.
-        </p>
-
-        <!-- Level progression (compact) -->
-        <div class="flex flex-wrap items-center gap-x-1 gap-y-2 mb-12">
-          {(['Tribal', 'Experimenting', 'Legible', 'Knowledgeable', 'Adaptive', 'Self-Improving'] as const).map((name, i) => (
-            <div class="flex items-center gap-1.5">
-              <span class="text-xs font-mono text-paper/40">L{i}</span>
-              <span class="text-sm font-medium text-paper/80">{name}</span>
-              {i < 5 && <span class="text-paper/20 mx-1">&rarr;</span>}
-            </div>
-          ))}
-        </div>
-
-        <!-- Three key transitions -->
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="border border-paper/10 rounded-2xl p-6">
-            <p class="text-xs uppercase tracking-widest text-paper/50 mb-3 font-medium">L1 &rarr; L2</p>
-            <h4 class="text-lg font-bold text-paper mb-3">Make your organization legible</h4>
-            <p class="text-sm text-paper/60 leading-relaxed mb-4">
-              Document the rules, exceptions, and tribal knowledge that only live in people's heads — in a form machines can follow.
-            </p>
-            <p class="text-sm text-paper font-medium">Invoice processing: 15 min &rarr; 30 sec</p>
+      <!-- Meta strip -->
+      <div class="border-y border-white/10 bg-[#0d0d0d]/70 backdrop-blur-sm relative z-10">
+        <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-5 grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-8">
+          <div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">CLIENT</div>
+            <div class="text-sm text-[#E5E5E5]">TezLab</div>
           </div>
-          <div class="border border-paper/10 rounded-2xl p-6">
-            <p class="text-xs uppercase tracking-widest text-paper/50 mb-3 font-medium">L2 &rarr; L3</p>
-            <h4 class="text-lg font-bold text-paper mb-3">Connect your proprietary data</h4>
-            <p class="text-sm text-paper/60 leading-relaxed mb-4">
-              Generic AI uses generic data. The real shift happens when AI answers questions about <em class="text-paper/80">your</em> invoices, surveys, and documents — with sources.
-            </p>
-            <p class="text-sm text-paper font-medium">Talent reports: half a day &rarr; 30 seconds</p>
+          <div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">SECTOR</div>
+            <div class="text-sm text-[#E5E5E5]">Transportation · Consumer Apps</div>
           </div>
-          <div class="border border-paper/10 rounded-2xl p-6">
-            <p class="text-xs uppercase tracking-widest text-paper/50 mb-3 font-medium">L3 &rarr; L5</p>
-            <h4 class="text-lg font-bold text-paper mb-3">Build systems that learn</h4>
-            <p class="text-sm text-paper/60 leading-relaxed mb-4">
-              The best AI systems don't just execute — they improve. Every interaction teaches the system something new. Competitive advantage compounds.
-            </p>
-            <p class="text-sm text-paper font-medium">500M tweets/day &rarr; 5-minute briefings</p>
+          <div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">SERVICES</div>
+            <div class="text-sm text-[#E5E5E5]">Strategy + Development</div>
+          </div>
+          <div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#555] mb-1">TIMELINE</div>
+            <div class="text-sm text-[#E5E5E5]">8 weeks to production</div>
           </div>
         </div>
-
-        <div class="mt-10 text-center">
-          <a
-            href="/capabilities"
-            class="inline-block px-8 py-4 border-2 border-paper/20 text-paper font-medium uppercase text-sm tracking-wider rounded-full hover:border-paper hover:text-white hover:-translate-y-0.5 transition-all duration-200"
-          >
-            Explore the Full Framework
-          </a>
-        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- How We Do It -->
-  <div class="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen bg-tint-warm py-16 md:py-24">
-    <div class="max-w-screen-xl mx-auto px-5 md:px-8">
-      <div class="max-w-4xl mx-auto">
-        <h3 class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">Our Approach</h3>
-        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-8 md:mb-10">How we deliver</h2>
-
-        <div class="prose prose-lg max-w-none text-graphite">
-        <p class="text-lg md:text-xl leading-relaxed mb-8">
-          Every engagement begins with a question most consultants skip: <em>can your organization describe its own work?</em> Before we build anything, we develop a thorough understanding of how your processes actually run — not how the org chart says they should.
+      <!-- Read-through (full story lives on the case study page) -->
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-8 flex items-center justify-between gap-4">
+        <p class="text-[#999] text-sm max-w-md leading-relaxed">
+          Built on top of the data they already had — in 8 weeks, with zero backend changes.
         </p>
-
-        <div class="bg-paper rounded-3xl p-8 md:p-10 my-10 md:my-12 shadow-lg shadow-ink/5 relative overflow-hidden">
-          <span class="absolute top-4 left-6 text-7xl md:text-8xl text-petrol/10 font-serif leading-none">"</span>
-          <p class="text-lg md:text-xl italic text-graphite mb-6 relative z-10 pl-4 md:pl-8">
-            TheFocus.AI didn't just build what we asked for—they helped us understand what we <strong class="text-ink not-italic">actually needed</strong>. The strategic clarity they brought was as valuable as the technical delivery.
-          </p>
-          <p class="text-sm font-medium text-ink relative z-10 pl-4 md:pl-8">
-            — <a href="https://www.linkedin.com/in/joshclee/"
-            class="text-petrol hover:underline">Josh Lee</a>, CEO,
-            AI-Solutions
-          </p>
-        </div>
-
-        <h3 class="font-sans text-xl md:text-2xl font-bold text-ink mb-6">What to expect:</h3>
-        <ul class="space-y-5 mb-8">
-          <li class="flex gap-4">
-            <span class="text-petrol font-bold flex-shrink-0">→</span>
-            <span class="text-base md:text-lg"><strong>Discover</strong> — We audit your systems, data, and workflows. More importantly, we find the tribal knowledge — the undocumented rules, exceptions, and judgment calls that your team carries in their heads.</span>
-          </li>
-          <li class="flex gap-4">
-            <span class="text-petrol font-bold flex-shrink-0">→</span>
-            <span class="text-base md:text-lg"><strong>Structure</strong> — We turn that knowledge into a form machines can act on: schemas, validation rules, canonical data models. This is the organizational legibility work.</span>
-          </li>
-          <li class="flex gap-4">
-            <span class="text-petrol font-bold flex-shrink-0">→</span>
-            <span class="text-base md:text-lg"><strong>Build</strong> — We deliver production AI systems with traceability built in. Every answer can be traced back to its source. Your team trusts the output because they can verify it.</span>
-          </li>
-        </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Engagement Models -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-4xl mx-auto">
-        <h3 class="text-xs uppercase tracking-[0.2em] text-petrol mb-6 font-medium">How We Engage</h3>
-        <h2 class="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-4">Two tracks. Both land in production.</h2>
-        <p class="text-lg text-graphite mb-10 max-w-3xl">Start small, move fast, scale what works. Every engagement is designed to deliver value quickly — no multi-month discovery phases or 80-page strategy decks.</p>
-
-      <!-- Consulting Track -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Consulting</span>
-          <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium">For organizations scaling production AI</span>
-        </div>
-        <div class="space-y-4 md:space-y-5">
-          <!-- Assessment & Roadmap -->
-          <a href="/capabilities#assessment" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-cool/30 transition-all group">
-            <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-              <img src="/images/illustrations/guide.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-            </div>
-            <div class="pt-1 flex-1">
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Assessment &amp; Roadmap</h4>
-                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full">1-2 weeks</span>
-              </div>
-              <p class="text-graphite text-base leading-relaxed mb-2">
-                Where is your organization on the AI journey? We walk the maturity framework with your team, identify where each department sits, and hand back a prioritized build-vs-buy roadmap. The honest starting point — no upsell.
-              </p>
-              <span class="text-petrol font-medium text-sm group-hover:underline">Map your starting point →</span>
-            </div>
-          </a>
-
-          <!-- Build & Ship -->
-          <a href="/capabilities#assessment" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-cool/30 transition-all group">
-            <div class="bg-tint-cool rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-              <img src="/images/illustrations/build.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-            </div>
-            <div class="pt-1 flex-1">
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Build &amp; Ship</h4>
-                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full">2-6 weeks</span>
-              </div>
-              <p class="text-graphite text-base leading-relaxed mb-2">
-                We formalize the tribal knowledge in a specific process — monthly close, hiring, invoicing, onboarding, reporting — and build a <strong class="text-ink">Habitat</strong>: a production AI system that carries your team's rules, flags anomalies, and runs autonomously on <strong class="text-ink">Habitat OS</strong>.
-              </p>
-              <span class="text-petrol font-medium text-sm group-hover:underline">See the framework →</span>
-            </div>
-          </a>
-
-          <!-- Ongoing Partnership -->
-          <a href="/capabilities#assessment" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-petrol/20 hover:bg-tint-lavender/30 transition-all group">
-            <div class="bg-tint-lavender rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-              <img src="/images/illustrations/modernize.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-            </div>
-            <div class="pt-1 flex-1">
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Ongoing Partnership</h4>
-                <span class="text-xs font-medium text-graphite border border-ink/15 px-2.5 py-0.5 rounded-full">Monthly retainer</span>
-              </div>
-              <p class="text-graphite text-base leading-relaxed mb-2">
-                For organizations scaling AI across multiple departments. We embed alongside your team — expanding Habitats, closing feedback loops, training internal staff, and continuously optimizing what's already running on <strong class="text-ink">Habitat OS</strong>.
-              </p>
-              <span class="text-petrol font-medium text-sm group-hover:underline">Explore partnership →</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- Platform bridge -->
-        <a href="/habitat-os" class="group mt-6 block bg-petrol/5 border border-petrol/20 rounded-2xl p-5 md:p-6 hover:border-petrol/40 hover:bg-petrol/10 transition-all">
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-            <div class="shrink-0 flex items-center gap-3">
-              <span class="w-2.5 h-2.5 rounded-full bg-petrol"></span>
-              <span class="text-xs uppercase tracking-[0.15em] text-petrol font-medium whitespace-nowrap">The Platform</span>
-            </div>
-            <p class="flex-1 text-base text-ink leading-relaxed">
-              Every Habitat runs on <strong>Habitat OS</strong> — our enterprise runtime. Deployed in your cloud, auditable at the core, operated by named principals.
-            </p>
-            <span class="text-petrol font-medium text-sm shrink-0 group-hover:underline">Explore Habitat OS &rarr;</span>
-          </div>
+        <a
+          href="/work/#tezlab"
+          class="shrink-0 inline-flex items-center gap-x-2 text-sm text-[#B0B0B0] hover:text-white transition-colors group/link"
+        >
+          Read the full story
+          <span aria-hidden="true" class="transition-transform group-hover/link:translate-x-0.5">→</span>
         </a>
       </div>
+    </article>
 
-      <!-- Audit Track -->
-      <div>
-        <div class="flex items-center gap-3 mb-5">
-          <span class="text-xs font-mono text-graphite border border-ink/15 px-2 py-1 rounded">Audit</span>
-          <span class="text-xs uppercase tracking-[0.15em] text-vermilion font-medium">For internal teams who built with AI coding tools</span>
+    <!-- Smaller grid of case studies -->
+    <div class="relative z-10 border-t border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-14">
+        <div class="mono text-[11px] tracking-[1.5px] text-[#666] mb-8 reveal">MORE WORK</div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="/work/perplexity-samsung/" class="cs-card reveal group block">
+            <div class="cs-card-media aspect-[4/3] border border-white/10 mb-4">
+              <img src="/assets/apps/app-samsung.png" alt="A smart TV glowing in a dark living room" class="w-full h-full object-cover" />
+            </div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#556B2F] mb-2">PERPLEXITY × SAMSUNG · LIVING ROOM</div>
+            <h4 class="text-lg font-semibold tracking-tight mb-1 group-hover:text-white transition-colors">
+              Perplexity, in 50 million living rooms.
+            </h4>
+            <p class="text-[#999] text-[14px] leading-relaxed">Voice-first on Samsung TVs — 12 weeks from kickoff to QA approval.</p>
+          </a>
+
+          <a href="/work/ae-networks/" class="cs-card reveal delay-1 group block">
+            <div class="cs-card-media aspect-[4/3] border border-white/10 mb-4">
+              <img
+                src="/assets/cs-ae-apocalypse.png"
+                alt="A lone survivor walking an overgrown highway of abandoned cars at dusk"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#556B2F] mb-2">A+E NETWORKS · DATA QA</div>
+            <h4 class="text-lg font-semibold tracking-tight mb-1 group-hover:text-white transition-colors">
+              Watching 212 data feeds so nobody has to.
+            </h4>
+            <p class="text-[#999] text-[14px] leading-relaxed">The data gets checked before anyone builds a decision on it.</p>
+          </a>
+
+          <a href="/work/steering-house/" class="cs-card reveal delay-2 group block">
+            <div class="cs-card-media aspect-[4/3] border border-white/10 mb-4">
+              <img
+                src="/assets/cs-steeringhouse-brooklyn.png"
+                alt="Construction workers restoring a brownstone facade in Brooklyn Heights"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#556B2F] mb-2">STEERING HOUSE · FINANCE OPS</div>
+            <h4 class="text-lg font-semibold tracking-tight mb-1 group-hover:text-white transition-colors">
+              Construction books that reconcile themselves.
+            </h4>
+            <p class="text-[#999] text-[14px] leading-relaxed">57,000+ transactions, synced from QuickBooks every hour.</p>
+          </a>
+
+          <a href="/work/" class="cs-card reveal delay-3 group block">
+            <div class="cs-card-media aspect-[4/3] border border-white/10 mb-4">
+              <img src="/assets/work-field.jpg" alt="A field terrain map open on a tablet" class="w-full h-full object-cover" />
+            </div>
+            <div class="mono text-[10px] tracking-[1.5px] text-[#556B2F] mb-2">FOUNTAIN CREEK · FIELD OPS</div>
+            <h4 class="text-lg font-semibold tracking-tight mb-1 group-hover:text-white transition-colors">
+              A field operation on one screen.
+            </h4>
+            <p class="text-[#999] text-[14px] leading-relaxed">A call that took a week of phone tag now takes an afternoon.</p>
+          </a>
         </div>
-        <div class="space-y-4 md:space-y-5">
-          <a href="/vibe-check" class="flex gap-5 md:gap-6 items-start p-5 md:p-6 rounded-2xl border border-transparent hover:border-vermilion/20 hover:bg-tint-warm/30 transition-all group">
-            <div class="bg-tint-warm rounded-xl md:rounded-2xl p-3 md:p-4 flex-shrink-0 w-14 h-14 md:w-24 md:h-24 flex items-center justify-center">
-              <img src="/images/illustrations/guide.svg" alt="" class="w-8 h-8 md:w-14 md:h-14" />
-            </div>
-            <div class="pt-1 flex-1">
-              <div class="flex flex-wrap items-center gap-3 mb-2">
-                <h4 class="font-sans text-lg md:text-xl font-bold text-ink">Vibe Check</h4>
-                <span class="text-xs font-medium text-vermilion bg-vermilion/10 px-2.5 py-0.5 rounded-full">1-3 weeks</span>
-              </div>
-              <p class="text-graphite text-base leading-relaxed mb-2">
-                Your team built an internal tool with Cursor, Claude, Bolt, or Lovable? We assess it for security holes, architectural risks, and scaling issues — then fix what matters before IT rollout. Same production rigor we bring to enterprise AI.
-              </p>
-              <span class="text-vermilion font-medium text-sm group-hover:underline">Get your Vibe Check →</span>
-            </div>
+        <div class="mt-10 reveal">
+          <a href="/work/" class="inline-flex items-center gap-x-2 text-sm text-[#B0B0B0] hover:text-white transition-colors">
+            All case studies <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Closing CTA -->
+  <div class="relative border-t border-white/10 overflow-hidden">
+    <img src="/assets/studio-hero.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-[0.15]" />
+    <div class="absolute inset-0 bg-[#0A0A0A]/85"></div>
+    <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-24 text-center">
+      <h2 class="text-4xl sm:text-5xl font-semibold tracking-tighter mb-5">Bring us one bottleneck.</h2>
+      <p class="text-[#B0B0B0] text-lg max-w-xl mx-auto mb-9 leading-relaxed">
+        The one that's eating your team's time and keeping them from the work they're great at. In thirty minutes we'll
+        tell you what it's costing, how AI can take it off their plate, and how fast. Then we build it together.
+      </p>
+      <p class="text-[#888] text-sm max-w-md mx-auto mb-9">
+        Don't know where your bottlenecks are? We'll help you find them — that's where we start.
+      </p>
+      <div class="flex justify-center">
+        <a
+          href="mailto:wschenk@thefocus.ai"
+          class="px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+        >
+          Say hello
+        </a>
+      </div>
+      <div class="mt-6 text-xs text-[#666] flex items-center justify-center gap-x-2">
+        <span class="text-[#556B2F]"><Icon name="check" class="w-3 h-3" /></span>
+        <span>wschenk@thefocus.ai · We respond within a day.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero film modal -->
+  <div
+    id="heroFilmModal"
+    class="hero-film-modal fixed inset-0 z-[200] items-center justify-center bg-black/90 backdrop-blur-sm px-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="The Focus film"
+  >
+    <div class="relative w-full max-w-4xl">
+      <button
+        id="heroFilmClose"
+        type="button"
+        aria-label="Close video"
+        class="absolute -top-9 right-0 flex items-center gap-x-2 text-white/70 hover:text-white transition-colors"
+      >
+        <span class="mono text-[11px] tracking-[1.5px]">CLOSE</span>
+        <Icon name="xmark" class="w-3.5 h-3.5" />
+      </button>
+      <div class="relative aspect-video w-full overflow-hidden border border-white/15 bg-black">
+        <video
+          id="heroFilmVideo"
+          class="w-full h-full"
+          controls
+          playsinline
+          preload="none"
+          poster="/assets/hero-cinematic-train-b.jpg"
+        >
+          <source src="/assets/hero-film.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
+
+<style is:global>
+  .habitats-display {
+    position: relative;
+    border-radius: 20px;
+    padding: 12px;
+    max-width: 820px;
+    margin-left: auto;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.02) 12%),
+      linear-gradient(180deg, #242424, #070707 72%),
+      #080808;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 42px 120px rgba(0, 0, 0, 0.64),
+      0 0 54px rgba(85, 107, 47, 0.055),
+      34px -18px 72px rgba(177, 115, 50, 0.075),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    /* Subtle 3D lift so the window reads as a floating product screen */
+    transform: perspective(2200px) rotateY(-6deg) rotateX(2deg);
+    transform-style: preserve-3d;
+    transition:
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 600ms ease;
+    will-change: transform;
+  }
+
+  /* Ease toward face-on when the reader engages with it */
+  .habitats-display:hover {
+    transform: perspective(2200px) rotateY(-1.5deg) rotateX(0.5deg);
+    box-shadow:
+      0 56px 150px rgba(0, 0, 0, 0.68),
+      0 0 64px rgba(85, 107, 47, 0.08),
+      34px -18px 72px rgba(177, 115, 50, 0.085),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+
+  .habitats-display::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 18px;
+    width: 38%;
+    height: 42px;
+    border-radius: 999px;
+    background: radial-gradient(ellipse at 80% 40%, rgba(201, 139, 65, 0.28), rgba(201, 139, 65, 0.08) 38%, transparent 72%);
+    filter: blur(14px);
+    opacity: 0.68;
+    pointer-events: none;
+  }
+
+  .habitats-display::after {
+    display: none;
+  }
+
+  .habitats-screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #f6f6f4;
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+      inset 0 -42px 48px rgba(0, 0, 0, 0.16);
+  }
+
+  /* "Apple glass" reflection — a soft diagonal sheen plus a thin specular
+     streak, kept to the device screen only so the page stays matte. */
+  .habitats-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      linear-gradient(122deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.025) 16%, rgba(255, 255, 255, 0) 38%),
+      linear-gradient(122deg, transparent 5.5%, rgba(255, 255, 255, 0.16) 7.5%, transparent 9.5%);
+  }
+
+  .habitats-live-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1480px;
+    height: 900px;
+    transform: scale(var(--habitats-frame-scale, 0.48));
+    transform-origin: top left;
+    transition:
+      opacity 180ms ease,
+      transform 220ms ease;
+  }
+
+  .habitats-screen iframe {
+    display: block;
+    width: 1480px;
+    height: 900px;
+    border: 0;
+    background: #fafafa;
+    pointer-events: none;
+  }
+
+  .habitats-live-stage.is-changing {
+    opacity: 0;
+    transform: scale(calc(var(--habitats-frame-scale, 0.48) * 0.99));
+  }
+
+  .habitats-copy {
+    max-width: 390px;
+  }
+
+  .habitats-step-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .habitats-slide-control {
+    display: block;
+    text-align: left;
+    border: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    padding: 18px 14px 16px;
+    min-height: 84px;
+    position: relative;
+    transition:
+      background 220ms ease,
+      color 220ms ease;
+  }
+
+  .habitats-slide-control:last-child {
+    border-right: 0;
+  }
+
+  .habitats-slide-control:hover,
+  .habitats-slide-control[aria-checked="true"] {
+    background: linear-gradient(180deg, rgba(85, 107, 47, 0.16), rgba(85, 107, 47, 0.035));
+  }
+
+  .habitats-slide-control::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 2px;
+    background: rgba(85, 107, 47, 0);
+    transition:
+      background 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .habitats-slide-control[aria-checked="true"]::after {
+    background: rgba(123, 154, 77, 0.95);
+    box-shadow: 0 0 18px rgba(85, 107, 47, 0.38);
+  }
+
+  .habitats-slide-control[aria-checked="true"] .habitats-step-number {
+    color: rgba(150, 184, 96, 1);
+  }
+
+  .habitats-slide-control[aria-checked="true"] .habitats-step-title {
+    color: #ffffff;
+  }
+
+  .habitats-radio-dot {
+    display: none;
+  }
+
+  .habitats-step-number {
+    display: block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(85, 107, 47, 0.88);
+    margin-bottom: 22px;
+  }
+
+  .habitats-step-title {
+    display: block;
+    color: #e8e8e8;
+    font-size: 15px;
+    line-height: 1.08;
+    font-weight: 500;
+  }
+
+  .habitats-showcase {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 70% 4%, rgba(85, 107, 47, 0.12), transparent 28%),
+      radial-gradient(circle at 12% 80%, rgba(132, 82, 39, 0.065), transparent 32%),
+      linear-gradient(105deg, #0a0a0a 0%, #10100d 58%, #060606 100%);
+  }
+
+  .habitats-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+    pointer-events: none;
+  }
+
+  .habitats-showcase::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent 0%, rgba(85, 107, 47, 0.08) 74%, transparent 100%),
+      radial-gradient(circle at 83% 55%, rgba(160, 136, 80, 0.1), transparent 30%);
+    mix-blend-mode: screen;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+
+  .habitats-slide-control:focus-visible {
+    outline: 1px solid rgba(229, 229, 229, 0.72);
+    outline-offset: -3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .habitats-live-stage,
+    .habitats-live-stage.is-changing {
+      transition: none;
+      transform: scale(var(--habitats-frame-scale, 0.48));
+    }
+    .habitats-display {
+      transition: none;
+    }
+    .habitats-display:hover {
+      transform: perspective(2200px) rotateY(-6deg) rotateX(2deg);
+    }
+  }
+
+  /* Hero "alive" animations — Ken Burns lives on the stage so the
+     light streak pans in lockstep with the photo and never drifts. */
+  .hero-stage {
+    transform-origin: 30% 38%; /* zoom toward the train/skyline */
+    animation: heroKenBurns 24s ease-out forwards;
+  }
+
+  @keyframes heroKenBurns {
+    0% {
+      transform: scale(1.12) translateX(-1.2%);
+    }
+    100% {
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  /* Window onto the elevated train band.
+     Final placement is computed in JS from the source image geometry,
+     then duplicate image layers are aligned to the hero image itself. */
+  .train-track-area {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 60%;
+    height: 17%;
+    overflow: hidden;
+    pointer-events: none;
+    clip-path: polygon(0 8%, 100% 24%, 100% 88%, 0 72%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    isolation: isolate;
+    z-index: 2;
+  }
+
+  .train-track-area.is-ready {
+    opacity: 1;
+  }
+
+  .train-track-area::before,
+  .train-track-area::after {
+    content: "";
+    position: absolute;
+    inset: -28% -12%;
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: 42% 50%;
+    animation-play-state: paused;
+    z-index: 3;
+    -webkit-mask-image: radial-gradient(115% 85% at 44% 52%, black 0 42%, transparent 78%);
+    mask-image: radial-gradient(115% 85% at 44% 52%, black 0 42%, transparent 78%);
+  }
+
+  /* Fast train-window cadence: distinct bars, blurred by speed. */
+  .train-track-area::before {
+    background:
+      repeating-linear-gradient(
+        92deg,
+        transparent 0,
+        transparent 7.5%,
+        rgba(255, 214, 158, 0) 8.3%,
+        rgba(255, 214, 158, 0.78) 9.8%,
+        rgba(207, 71, 34, 0.48) 11.8%,
+        transparent 14.5%,
+        transparent 22%
+      ),
+      linear-gradient(90deg, transparent, rgba(255, 184, 98, 0.42), transparent);
+    filter: blur(10px) saturate(1.35);
+    mix-blend-mode: screen;
+  }
+
+  /* Cool teal trailing warm sodium light. */
+  .train-track-area::after {
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(74, 168, 184, 0) 18%,
+        rgba(74, 168, 184, 0.52) 42%,
+        rgba(207, 71, 34, 0.42) 55%,
+        transparent 86%
+      ),
+      radial-gradient(70% 120% at 48% 50%, rgba(255, 224, 176, 0.45), transparent 68%);
+    filter: blur(18px) saturate(1.4);
+    mix-blend-mode: screen;
+  }
+
+  .train-band-motion {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transform-origin: 35% 50%;
+    animation-play-state: paused;
+    z-index: 1;
+  }
+
+  .train-band-img {
+    position: absolute;
+    max-width: none;
+    object-fit: fill;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .train-band-core {
+    filter: brightness(1.18) contrast(1.08) saturate(1.18);
+    mix-blend-mode: screen;
+  }
+
+  .train-band-smear {
+    filter: blur(14px) brightness(1.55) contrast(1.12) saturate(1.38);
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+
+  .train-track-area.is-ready.is-settled .train-band-core {
+    animation: trainBandPulse 8s ease-in-out -0.65s infinite;
+    animation-play-state: running;
+  }
+
+  .train-track-area.is-ready.is-settled .train-band-smear {
+    animation: trainBandSmear 8s cubic-bezier(0.22, 1, 0.36, 1) -0.65s infinite;
+    animation-play-state: running;
+  }
+
+  /* The train band itself brightens and smears along its own path. */
+  @keyframes trainBandPulse {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) scaleX(1);
+    }
+    8% {
+      opacity: 0.05;
+    }
+    16% {
+      opacity: 0.22;
+      transform: translate3d(2px, 0, 0) scaleX(1.01);
+    }
+    26% {
+      opacity: 0.12;
+      transform: translate3d(-4px, 0, 0) scaleX(1.025);
+    }
+    38% {
+      opacity: 0;
+      transform: translate3d(-8px, 0, 0) scaleX(1.03);
+    }
+  }
+
+  @keyframes trainBandSmear {
+    0%,
+    100% {
+      opacity: 0;
+      transform: translate3d(18px, 0, 0) scaleX(0.98);
+    }
+    10% {
+      opacity: 0.04;
+    }
+    18% {
+      opacity: 0.18;
+      transform: translate3d(2px, 0, 0) scaleX(1.02);
+    }
+    28% {
+      opacity: 0.1;
+      transform: translate3d(-20px, 0, 0) scaleX(1.06);
+    }
+    40% {
+      opacity: 0;
+      transform: translate3d(-34px, 0, 0) scaleX(1.08);
+    }
+  }
+
+  /* Warm pendant lamp on the right of the photo — soft halo with a gentle,
+     irregular flicker. Lives in the stage so it pans with the image. */
+  .lamp-glow {
+    position: absolute;
+    left: 79%;
+    top: 1%;
+    width: 17%;
+    height: 32%;
+    background: radial-gradient(
+      50% 42% at 50% 40%,
+      rgba(255, 214, 150, 0.6) 0%,
+      rgba(255, 190, 110, 0.32) 38%,
+      rgba(255, 170, 85, 0) 72%
+    );
+    mix-blend-mode: screen;
+    filter: blur(7px);
+    pointer-events: none;
+    opacity: 0.8;
+    animation: lampFlicker 7s ease-in-out infinite;
+  }
+
+  @keyframes lampFlicker {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    12% {
+      opacity: 0.86;
+    }
+    14% {
+      opacity: 0.6;
+    }
+    16% {
+      opacity: 0.84;
+    }
+    40% {
+      opacity: 0.78;
+    }
+    63% {
+      opacity: 0.88;
+    }
+    65% {
+      opacity: 0.66;
+    }
+    67% {
+      opacity: 0.82;
+    }
+    85% {
+      opacity: 0.76;
+    }
+  }
+
+  /* Staggered hero content reveal */
+  .hero-reveal > * {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .hero-reveal > *:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+  .hero-reveal > *:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .hero-reveal > *:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+  .hero-reveal > *:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes heroRise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-stage,
+    .train-band-motion,
+    .train-track-area::before,
+    .train-track-area::after,
+    .lamp-glow,
+    .hero-reveal > * {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .train-track-area {
+      opacity: 0;
+      transition: none;
+    }
+    .train-track-area.is-ready {
+      opacity: 0;
+    }
+    .train-band-motion {
+      opacity: 0;
+    }
+    .lamp-glow {
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .train-track-area {
+      display: none;
+    }
+  }
+
+  /* ===================== Case studies: light-driven ===================== */
+  .cs-section {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Drifting ambient light pools behind the section */
+  .cs-glow {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(90px);
+    mix-blend-mode: screen;
+    z-index: 0;
+  }
+  .cs-glow--amber {
+    width: 46vw;
+    height: 46vw;
+    max-width: 680px;
+    max-height: 680px;
+    background: radial-gradient(circle, rgba(255, 176, 92, 0.3) 0%, rgba(255, 150, 70, 0.1) 45%, transparent 70%);
+    top: -10%;
+    right: -6%;
+    animation: csDrift1 19s ease-in-out infinite;
+  }
+  .cs-glow--olive {
+    width: 42vw;
+    height: 42vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: radial-gradient(circle, rgba(133, 156, 72, 0.3) 0%, rgba(85, 107, 47, 0.1) 45%, transparent 70%);
+    bottom: 4%;
+    left: -10%;
+    animation: csDrift2 23s ease-in-out infinite;
+  }
+  @keyframes csDrift1 {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate3d(-4%, 5%, 0) scale(1.1);
+      opacity: 0.78;
+    }
+  }
+  @keyframes csDrift2 {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.45;
+    }
+    50% {
+      transform: translate3d(6%, -4%, 0) scale(1.12);
+      opacity: 0.72;
+    }
+  }
+
+  /* Featured hero: a soft warmth that pools over the photo's own light
+     trails and breathes very slowly — no moving streak. */
+  .cs-feature-img {
+    transform: scale(1);
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cs-feature:hover .cs-feature-img {
+    transform: scale(1.03);
+  }
+  .cs-sweep {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: radial-gradient(70% 60% at 52% 72%, rgba(255, 196, 128, 0.14) 0%, rgba(255, 176, 96, 0.05) 45%, transparent 70%);
+    opacity: 0.4;
+    animation: csGlow 16s ease-in-out infinite;
+  }
+  @keyframes csGlow {
+    0%,
+    100% {
+      opacity: 0.28;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Small grid cards: light bloom on hover */
+  .cs-card-media {
+    position: relative;
+    overflow: hidden;
+  }
+  .cs-card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 85% at 50% 120%, rgba(255, 176, 92, 0.28), transparent 62%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .cs-card:hover .cs-card-media::after {
+    opacity: 1;
+  }
+  .cs-card-media img {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cs-card:hover .cs-card-media img {
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cs-glow,
+    .cs-sweep,
+    .cs-feature-img,
+    .cs-card-media img {
+      animation: none;
+      transition: none;
+    }
+  }
+
+  /* Method: an operating rail, not three generic cards */
+  .method-system {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+      radial-gradient(circle at 85% 0%, rgba(85, 107, 47, 0.15), transparent 32%),
+      linear-gradient(180deg, #121212 0%, #0b0b0b 100%);
+  }
+  .method-system::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent 78%);
+    pointer-events: none;
+  }
+  .method-rail {
+    position: absolute;
+    left: 2rem;
+    right: 2rem;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(85, 107, 47, 0.05), rgba(85, 107, 47, 0.65), rgba(85, 107, 47, 0.05));
+    transform: translateY(-50%);
+  }
+  .method-step {
+    position: relative;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 10, 0.58);
+    backdrop-filter: blur(10px);
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      background 0.45s ease,
+      border-color 0.45s ease;
+  }
+  .method-step:first-child {
+    border-left: 0;
+  }
+  .method-step::before {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: #556b2f;
+    box-shadow: 0 0 0 8px rgba(85, 107, 47, 0.12);
+  }
+  .method-step::after {
+    content: attr(data-num);
+    position: absolute;
+    right: 1.5rem;
+    bottom: -1.15rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: clamp(5.75rem, 12vw, 10rem);
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.025);
+    pointer-events: none;
+    transition:
+      color 0.45s ease,
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .method-step:hover {
+    transform: translateY(-6px);
+    background: rgba(17, 17, 13, 0.78);
+    border-color: rgba(85, 107, 47, 0.35);
+  }
+  .method-step:hover::after {
+    color: rgba(85, 107, 47, 0.1);
+    transform: translateY(-8px);
+  }
+  .method-step-body {
+    position: relative;
+    z-index: 1;
+    padding: 5.5rem 2rem 2rem;
+    min-height: 21rem;
+  }
+  .method-step-build {
+    background:
+      radial-gradient(circle at 78% 18%, rgba(85, 107, 47, 0.16), transparent 34%),
+      rgba(17, 17, 13, 0.7);
+  }
+  .method-side-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.18em;
+  }
+  .team-keeps {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+      radial-gradient(circle at 78% 12%, rgba(85, 107, 47, 0.12), transparent 28%),
+      radial-gradient(circle at 18% 82%, rgba(168, 104, 48, 0.08), transparent 32%),
+      linear-gradient(180deg, #0b0b0b 0%, #10100d 52%, #080808 100%);
+  }
+
+  .team-keeps::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+    pointer-events: none;
+  }
+
+  .tk-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #0e0e0c;
+    transition:
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
+  }
+
+  .tk-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(85, 107, 47, 0.34);
+  }
+
+  .tk-shot {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: #0b0d08;
+  }
+
+  .tk-shot img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Natural color with a light grade, matching the photos up top */
+    filter: contrast(1.04) saturate(1.04) brightness(0.92);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tk-card:hover .tk-shot img {
+    transform: scale(1.04);
+  }
+
+  .tk-shot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(150deg, rgba(85, 107, 47, 0.16), rgba(0, 0, 0, 0) 48%);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+  }
+
+  .tk-shot::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0) 52%, rgba(10, 10, 10, 0.42));
+    pointer-events: none;
+  }
+
+  .tk-tag {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+    z-index: 2;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(229, 229, 229, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(8px);
+    padding: 0.3rem 0.5rem;
+  }
+
+  .tk-body {
+    padding: 1.1rem 1.15rem 1.25rem;
+  }
+
+  .team-keeps-ledger {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background:
+      linear-gradient(90deg, rgba(85, 107, 47, 0.1), transparent 34%),
+      rgba(255, 255, 255, 0.025);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .method-step,
+    .method-step::after,
+    .tk-card,
+    .tk-shot img {
+      transition: none;
+      animation: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .habitats-display {
+      padding: 10px;
+      border-radius: 14px;
+    }
+
+    .habitats-display::after {
+      display: none;
+    }
+
+    .method-rail,
+    .method-side-label {
+      display: none;
+    }
+    .method-step {
+      border-left: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .method-step:first-child {
+      border-top: 0;
+    }
+    .method-step-body {
+      min-height: auto;
+      padding: 4.5rem 1.5rem 1.75rem;
+    }
+  }
+
+  /* Hero "watch the film" button + film modal */
+  .hero-play-btn {
+    opacity: 0.4;
+    cursor: pointer;
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+  .hero-play-btn:hover,
+  .hero-play-btn:focus-visible {
+    opacity: 1;
+    transform: scale(1.05);
+    outline: none;
+  }
+  .hero-play-btn:focus-visible .hero-play-ring {
+    border-color: rgba(157, 181, 101, 0.9);
+  }
+  .hero-film-modal {
+    display: none;
+  }
+  .hero-film-modal.is-open {
+    display: flex;
+  }
+</style>
+
+<script>
+  // Keep the animated train overlay pinned to the actual rail band
+  // in the source image, regardless of object-cover cropping.
+  const TRAIN_SOURCE_RECT = {
+    x: 0.0,
+    y: 0.36,
+    width: 0.665,
+    height: 0.105,
+  };
+
+  function alignTrainOverlay() {
+    const stage = document.querySelector<HTMLElement>(".hero-stage");
+    const img = document.querySelector<HTMLImageElement>(".hero-img");
+    const trackArea = document.querySelector<HTMLElement>(".train-track-area");
+
+    if (!stage || !img || !trackArea) return;
+    const stageW = stage.clientWidth;
+    const stageH = stage.clientHeight;
+    const naturalW = img.naturalWidth;
+    const naturalH = img.naturalHeight;
+
+    if (!stageW || !stageH || !naturalW || !naturalH) return;
+
+    const scale = Math.max(stageW / naturalW, stageH / naturalH);
+    const drawnW = naturalW * scale;
+    const drawnH = naturalH * scale;
+    const offsetX = (stageW - drawnW) / 2;
+    const offsetY = (stageH - drawnH) / 2;
+
+    const left = offsetX + TRAIN_SOURCE_RECT.x * drawnW;
+    const top = offsetY + TRAIN_SOURCE_RECT.y * drawnH;
+    const right = left + TRAIN_SOURCE_RECT.width * drawnW;
+    const bottom = top + TRAIN_SOURCE_RECT.height * drawnH;
+
+    // Clamp the mapped rail band to the visible hero region.
+    const visibleLeft = Math.max(0, left);
+    const visibleTop = Math.max(0, top);
+    const visibleRight = Math.min(stageW, right);
+    const visibleBottom = Math.min(stageH, bottom);
+    const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+    if (visibleWidth < 2 || visibleHeight < 2) {
+      trackArea.classList.remove("is-ready", "is-settled");
+      trackArea.style.width = "0px";
+      trackArea.style.height = "0px";
+      return;
+    }
+
+    trackArea.style.left = `${visibleLeft}px`;
+    trackArea.style.top = `${visibleTop}px`;
+    trackArea.style.width = `${visibleWidth}px`;
+    trackArea.style.height = `${visibleHeight}px`;
+
+    trackArea.querySelectorAll<HTMLElement>(".train-band-img").forEach((bandImg) => {
+      bandImg.style.left = `${offsetX - visibleLeft}px`;
+      bandImg.style.top = `${offsetY - visibleTop}px`;
+      bandImg.style.width = `${drawnW}px`;
+      bandImg.style.height = `${drawnH}px`;
+    });
+
+    trackArea.classList.add("is-ready", "is-settled");
+  }
+
+  let trainAlignRaf: number | null = null;
+  function scheduleTrainOverlayAlign() {
+    if (trainAlignRaf) cancelAnimationFrame(trainAlignRaf);
+    trainAlignRaf = requestAnimationFrame(() => {
+      trainAlignRaf = null;
+      alignTrainOverlay();
+    });
+  }
+
+  const heroImg = document.querySelector<HTMLImageElement>(".hero-img");
+  if (heroImg) {
+    if (heroImg.complete) scheduleTrainOverlayAlign();
+    heroImg.addEventListener("load", scheduleTrainOverlayAlign);
+  }
+  window.addEventListener("resize", scheduleTrainOverlayAlign);
+  window.addEventListener("orientationchange", scheduleTrainOverlayAlign);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(scheduleTrainOverlayAlign);
+  }
+  if ("ResizeObserver" in window) {
+    const stage = document.querySelector(".hero-stage");
+    if (stage) {
+      const trackResizeObserver = new ResizeObserver(scheduleTrainOverlayAlign);
+      trackResizeObserver.observe(stage);
+    }
+  }
+  scheduleTrainOverlayAlign();
+
+  // Habitats live preview slides
+  const habitatsSlides = [
+    {
+      src: "/assets/habitats-marketplace.html",
+      title: "Habitats agent marketplace live preview",
+      note: "When your team works in the same space, the best AI results get shared — not trapped in one person's private chat.",
+    },
+    {
+      src: "/assets/habitats-workstreams.html",
+      title: "Habitats morning workstream live preview",
+      note: "Learn how people across the company are getting better results from their agents, then bring those patterns back to your own work.",
+    },
+    {
+      src: "/assets/habitats-gigalytics.html",
+      title: "Habitats run history live preview",
+      note: "Use existing agents or build your own for a specific workflow, then share them with your colleagues and company.",
+    },
+  ];
+
+  const habitatsLiveStage = document.querySelector<HTMLElement>("#habitats-live-stage");
+  const habitatsScreen = document.querySelector<HTMLElement>(".habitats-screen");
+  const habitatsSlideFrame = document.querySelector<HTMLIFrameElement>("#habitats-slide-frame");
+  const habitatsSlideNote = document.querySelector<HTMLElement>("#habitats-slide-note");
+  const habitatsSlideControls = Array.from(document.querySelectorAll<HTMLButtonElement>(".habitats-slide-control"));
+  const habitatsMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  // No autoplay on touch / small screens: the rotating note fights readers there.
+  const habitatsNoAutoplayQuery = window.matchMedia("(hover: none), (max-width: 1023px)");
+  let habitatsSlideIndex = 0;
+  let habitatsSlideTimer: number | undefined;
+  let habitatsAutoplayPaused = false;
+
+  function fitHabitatsFrame() {
+    if (!habitatsLiveStage || !habitatsScreen) return;
+    const rect = habitatsScreen.getBoundingClientRect();
+    const scale = Math.min(rect.width / 1480, rect.height / 900);
+    habitatsLiveStage.style.setProperty("--habitats-frame-scale", scale.toFixed(4));
+  }
+
+  function setHabitatsSlide(index: number, options: { force?: boolean } = {}) {
+    const slide = habitatsSlides[index];
+    if (!slide || !habitatsLiveStage || !habitatsSlideFrame) return;
+    if (!options.force && index === habitatsSlideIndex && habitatsSlideFrame.src.includes(slide.src)) return;
+    habitatsSlideIndex = index;
+
+    habitatsSlideControls.forEach((control, controlIndex) => {
+      const isSelected = controlIndex === index;
+      control.setAttribute("aria-checked", String(isSelected));
+      control.setAttribute("tabindex", isSelected ? "0" : "-1");
+    });
+
+    if (habitatsSlideNote) {
+      habitatsSlideNote.textContent = slide.note;
+    }
+
+    habitatsLiveStage.classList.add("is-changing");
+    const clearChanging = window.setTimeout(() => habitatsLiveStage.classList.remove("is-changing"), 900);
+    habitatsSlideFrame.addEventListener(
+      "load",
+      () => {
+        window.clearTimeout(clearChanging);
+        window.requestAnimationFrame(() => habitatsLiveStage.classList.remove("is-changing"));
+      },
+      { once: true }
+    );
+    habitatsSlideFrame.src = slide.src;
+    habitatsSlideFrame.title = slide.title;
+  }
+
+  function stopHabitatsAutoplay() {
+    window.clearInterval(habitatsSlideTimer);
+    habitatsSlideTimer = undefined;
+  }
+
+  function startHabitatsAutoplay() {
+    if (
+      !habitatsSlideControls.length ||
+      habitatsMotionQuery.matches ||
+      habitatsNoAutoplayQuery.matches ||
+      habitatsAutoplayPaused ||
+      document.hidden
+    )
+      return;
+    stopHabitatsAutoplay();
+    habitatsSlideTimer = window.setInterval(() => {
+      setHabitatsSlide((habitatsSlideIndex + 1) % habitatsSlides.length);
+    }, 5200);
+  }
+
+  function pauseHabitatsAutoplay() {
+    habitatsAutoplayPaused = true;
+    stopHabitatsAutoplay();
+  }
+
+  function resumeHabitatsAutoplay() {
+    habitatsAutoplayPaused = false;
+    startHabitatsAutoplay();
+  }
+
+  habitatsSlideControls.forEach((control) => {
+    control.addEventListener("click", () => {
+      setHabitatsSlide(Number(control.dataset.habitatsSlide));
+      startHabitatsAutoplay();
+    });
+
+    control.addEventListener("keydown", (event) => {
+      const currentIndex = Number(control.dataset.habitatsSlide);
+      const lastIndex = habitatsSlideControls.length - 1;
+      let nextIndex = currentIndex;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = currentIndex === lastIndex ? 0 : currentIndex + 1;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = currentIndex === 0 ? lastIndex : currentIndex - 1;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = lastIndex;
+      if (nextIndex === currentIndex && ![" ", "Enter"].includes(event.key)) return;
+
+      event.preventDefault();
+      if (event.key === " " || event.key === "Enter") {
+        setHabitatsSlide(currentIndex);
+      } else {
+        setHabitatsSlide(nextIndex);
+        habitatsSlideControls[nextIndex]?.focus();
+      }
+    });
+  });
+
+  const habitatsShowcase = document.querySelector<HTMLElement>(".habitats-showcase");
+  habitatsShowcase?.addEventListener("mouseenter", pauseHabitatsAutoplay);
+  habitatsShowcase?.addEventListener("mouseleave", resumeHabitatsAutoplay);
+  habitatsShowcase?.addEventListener("focusin", pauseHabitatsAutoplay);
+  habitatsShowcase?.addEventListener("focusout", (event) => {
+    if (!habitatsShowcase.contains(event.relatedTarget as Node)) resumeHabitatsAutoplay();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopHabitatsAutoplay();
+    else startHabitatsAutoplay();
+  });
+
+  habitatsMotionQuery.addEventListener?.("change", () => {
+    if (habitatsMotionQuery.matches) stopHabitatsAutoplay();
+    else startHabitatsAutoplay();
+  });
+
+  if ("ResizeObserver" in window && habitatsScreen) {
+    const habitatsFrameObserver = new ResizeObserver(fitHabitatsFrame);
+    habitatsFrameObserver.observe(habitatsScreen);
+  }
+  window.addEventListener("resize", fitHabitatsFrame);
+  fitHabitatsFrame();
+  startHabitatsAutoplay();
+
+  // Hero film: subtle play button opens a modal player above the page
+  const heroPlayBtn = document.getElementById("heroPlayBtn");
+  const heroFilmModal = document.getElementById("heroFilmModal");
+  const heroFilmClose = document.getElementById("heroFilmClose");
+  const heroFilmVideo = document.getElementById("heroFilmVideo") as HTMLVideoElement | null;
+  const openHeroFilm = () => {
+    if (!heroFilmModal) return;
+    heroFilmModal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    if (heroFilmVideo) {
+      try {
+        heroFilmVideo.currentTime = 0;
+        heroFilmVideo.play();
+      } catch (e) {
+        /* autoplay may be blocked; controls remain */
+      }
+    }
+  };
+  const closeHeroFilm = () => {
+    if (!heroFilmModal) return;
+    heroFilmModal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    if (heroFilmVideo) heroFilmVideo.pause();
+  };
+  heroPlayBtn?.addEventListener("click", openHeroFilm);
+  heroFilmClose?.addEventListener("click", closeHeroFilm);
+  heroFilmModal?.addEventListener("click", (e) => {
+    if (e.target === heroFilmModal) closeHeroFilm();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && heroFilmModal?.classList.contains("is-open")) closeHeroFilm();
+  });
+</script>

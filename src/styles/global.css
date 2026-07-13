@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- The Ledger: shared utilities ---------------------------------- */
+
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.ledger-grid {
+  background-image:
+    linear-gradient(#222 1px, transparent 1px),
+    linear-gradient(90deg, #222 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Gentle scroll-reveal (elements opt in with .reveal; a shared
+   IntersectionObserver in BaseLayout adds .is-visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal.delay-2 {
+  transition-delay: 0.22s;
+}
+.reveal.delay-3 {
+  transition-delay: 0.34s;
+}
+
+/* Logo mark: the eye focusing open on load — a single settle, not a loop */
+.logo-mark-focus {
+  opacity: 0;
+  transform: scale(0.4) rotate(-45deg);
+  animation: logoFocusIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.1s;
+  transform-origin: center;
+}
+
+@keyframes logoFocusIn {
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .logo-mark-focus {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
