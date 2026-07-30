@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A0A">
+  <title>TheFocus — Company Presentation</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+  <style>
+    :root {
+      --canvas: #0A0A0A;
+      --surface: #111111;
+      --signal: #556B2F;
+      --text: #E5E5E5;
+      --strong: #FFFFFF;
+      --text-2: #B0B0B0;
+      --muted: #999999;
+      --muted-soft: #666666;
+      --border: rgba(255, 255, 255, 0.10);
+      --border-strong: rgba(255, 255, 255, 0.20);
+      --grid-line: #222222;
+      --gutter: clamp(20px, 4vw, 56px);
+      --content: 1280px;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--canvas);
+      color-scheme: dark;
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--canvas);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, a { font: inherit; }
+    a { color: inherit; }
+
+    .mono {
+      font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .brand {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--gutter);
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 10, 10, .88);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--strong);
+      font-weight: 600;
+      letter-spacing: -.02em;
+    }
+
+    .brand-lockup img { width: 22px; height: 22px; }
+
+    .chapter-count {
+      color: var(--muted-soft);
+      font-size: 11px;
+      letter-spacing: .12em;
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 30;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--signal);
+      transition: width 280ms ease;
+    }
+
+    .chapter-nav {
+      position: fixed;
+      z-index: 20;
+      right: clamp(12px, 2vw, 28px);
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      gap: 10px;
+    }
+
+    .chapter-nav button {
+      width: 20px;
+      height: 12px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .chapter-nav button::before {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 1px;
+      margin-left: auto;
+      background: var(--muted-soft);
+      transition: width 180ms ease, background 180ms ease;
+    }
+
+    .chapter-nav button:hover::before,
+    .chapter-nav button[aria-current="true"]::before {
+      width: 20px;
+      background: var(--signal);
+    }
+
+    .chapter {
+      position: relative;
+      min-height: 100svh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .chapter-inner {
+      width: min(100%, var(--content));
+      margin: 0 auto;
+      padding: clamp(100px, 12vh, 144px) var(--gutter) clamp(64px, 9vh, 104px);
+    }
+
+    .ledger-grid::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.75), transparent 88%);
+      opacity: .55;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--signal);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1, h2 {
+      max-width: 1000px;
+      margin-bottom: 28px;
+      color: var(--strong);
+      font-weight: 600;
+      letter-spacing: -.04em;
+    }
+
+    h1 {
+      font-size: clamp(52px, 8vw, 112px);
+      line-height: .96;
+    }
+
+    h2 {
+      font-size: clamp(42px, 6.5vw, 84px);
+      line-height: 1;
+    }
+
+    .lead {
+      max-width: 780px;
+      margin-bottom: 0;
+      color: var(--text-2);
+      font-size: clamp(19px, 2.2vw, 30px);
+      line-height: 1.45;
+    }
+
+    .lead strong { color: var(--strong); font-weight: 500; }
+
+    .signal-line {
+      width: 72px;
+      height: 2px;
+      margin: 36px 0;
+      background: var(--signal);
+    }
+
+    .opening-note {
+      position: absolute;
+      left: var(--gutter);
+      bottom: 28px;
+      color: var(--muted-soft);
+      font-size: 10px;
+      letter-spacing: .12em;
+    }
+
+    .client-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0;
+      max-width: 960px;
+      margin-top: clamp(52px, 9vh, 92px);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .client-line-label,
+    .client-name {
+      padding: 16px 20px;
+      border-right: 1px solid var(--border);
+      color: var(--text-2);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .client-line-label {
+      padding-left: 0;
+      color: var(--signal);
+    }
+
+    .client-name:last-child { border-right: 0; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(36px, 8vw, 120px);
+      align-items: start;
+    }
+
+    .context-map {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .context-item {
+      min-height: 130px;
+      padding: 24px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .context-item:nth-child(2n) { border-right: 0; }
+    .context-item:nth-last-child(-n+2) { border-bottom: 0; }
+    .context-item .mono { color: var(--signal); font-size: 10px; letter-spacing: .12em; }
+    .context-item h3 { margin: 28px 0 7px; color: var(--strong); font-size: 18px; }
+    .context-item p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .equation {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      align-items: stretch;
+    }
+
+    .equation-part { padding: clamp(26px, 4vw, 48px) 0; }
+    .equation-part .mono { display: block; margin-bottom: 12px; color: var(--signal); font-size: 11px; letter-spacing: .12em; }
+    .equation-part strong { color: var(--strong); font-size: clamp(20px, 2.1vw, 30px); font-weight: 500; }
+    .operator { display: grid; place-items: center; padding: 0 clamp(18px, 4vw, 52px); color: var(--muted-soft); font-size: 24px; }
+
+    .method-number {
+      color: var(--signal);
+      font-size: clamp(64px, 11vw, 160px);
+      line-height: .8;
+      letter-spacing: -.08em;
+      opacity: .6;
+    }
+
+    .method-content { padding-top: 12px; }
+
+    .method-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: clamp(40px, 7vh, 72px);
+      border-top: 1px solid var(--border);
+    }
+
+    .method-detail {
+      padding: 24px 24px 0 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .method-detail + .method-detail { padding-left: 24px; }
+    .method-detail:last-child { border-right: 0; }
+    .method-detail .mono { color: var(--muted-soft); font-size: 10px; letter-spacing: .12em; }
+    .method-detail p { margin: 14px 0 0; color: var(--text-2); font-size: 15px; line-height: 1.55; }
+
+    .image-plate {
+      position: absolute;
+      inset: 58px 0 0 50%;
+      opacity: .42;
+    }
+
+    .image-plate::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--canvas), transparent 55%), linear-gradient(0deg, var(--canvas), transparent 45%);
+    }
+
+    .image-plate img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .proof-card {
+      min-height: min(62vh, 560px);
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .proof-card:last-child { border-right: 0; }
+    .proof-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      filter: saturate(.78);
+    }
+    .proof-body { display: flex; flex: 1; flex-direction: column; padding: clamp(22px, 2.5vw, 32px); }
+    .proof-card .mono { color: var(--signal); font-size: 10px; letter-spacing: .12em; }
+    .proof-card h3 { margin: 20px 0 12px; color: var(--strong); font-size: clamp(21px, 2vw, 30px); line-height: 1.12; letter-spacing: -.025em; }
+    .proof-card p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .engagement {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 56px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .engagement-step { padding: 28px 28px 32px 0; border-right: 1px solid var(--border); }
+    .engagement-step + .engagement-step { padding-left: 28px; }
+    .engagement-step:last-child { border-right: 0; }
+    .engagement-step .mono { color: var(--signal); font-size: 10px; }
+    .engagement-step strong { display: block; margin: 20px 0 10px; color: var(--strong); font-size: 18px; font-weight: 500; }
+    .engagement-step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+    .close-link {
+      display: inline-block;
+      margin-top: 42px;
+      padding: 16px 24px;
+      background: var(--strong);
+      color: var(--canvas);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .footer-line {
+      position: absolute;
+      left: var(--gutter);
+      right: var(--gutter);
+      bottom: 26px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted-soft);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+    }
+
+    .chapter.is-active .reveal { opacity: 1; transform: none; }
+    .chapter.is-active .reveal:nth-child(2) { transition-delay: 80ms; }
+    .chapter.is-active .reveal:nth-child(3) { transition-delay: 160ms; }
+
+    @media (max-width: 800px) {
+      html { scroll-snap-type: none; }
+      .chapter-nav { display: none; }
+      .chapter { min-height: 100svh; overflow: visible; }
+      .split { grid-template-columns: 1fr; gap: 38px; }
+      .context-map { grid-template-columns: 1fr; }
+      .context-item, .context-item:nth-child(2n), .context-item:nth-last-child(-n+2) { border-right: 0; border-bottom: 1px solid var(--border); }
+      .context-item:last-child { border-bottom: 0; }
+      .equation { grid-template-columns: 1fr; }
+      .operator { justify-content: start; padding: 4px 0; }
+      .method-details, .proof-grid, .engagement { grid-template-columns: 1fr; }
+      .method-detail, .method-detail + .method-detail, .proof-card, .engagement-step, .engagement-step + .engagement-step {
+        padding: 22px 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .method-detail:last-child, .engagement-step:last-child { border-bottom: 1px solid var(--border); }
+      .proof-card:last-child, .method-detail:last-child, .engagement-step:last-child { border-bottom: 0; }
+      .proof-card { min-height: 440px; padding: 28px; }
+      .proof-body { padding: 0; }
+      .client-line { margin-top: 44px; }
+      .client-line-label, .client-name { padding: 12px 14px; }
+      .client-line-label { width: 100%; padding-left: 0; border-right: 0; border-bottom: 1px solid var(--border); }
+      .image-plate { inset: 58px 0 0 22%; opacity: .22; }
+      .footer-line { display: none; }
+      .opening-note { display: none; }
+    }
+
+    @media (max-height: 720px) and (min-width: 801px) {
+      .chapter-inner { padding-top: 86px; padding-bottom: 42px; }
+      h1 { font-size: clamp(52px, 7vw, 84px); }
+      h2 { font-size: clamp(38px, 5vw, 64px); }
+      .lead { font-size: clamp(18px, 1.8vw, 24px); }
+      .proof-card { min-height: 440px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; scroll-snap-type: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="brand">
+    <div class="brand-lockup">
+      <img src="assets/logo-mark.svg" alt="">
+      <span>TheFocus</span>
+    </div>
+    <div class="chapter-count mono" aria-live="polite"><span id="currentChapter">01</span> / 10</div>
+  </header>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <nav class="chapter-nav" aria-label="Presentation chapters" id="chapterNav"></nav>
+
+  <main>
+    <section class="chapter ledger-grid" id="opening" data-title="Opening">
+      <div class="chapter-inner">
+        <p class="eyebrow reveal">Our kind of AI</p>
+        <h1 class="reveal">Amplifying Intelligence.</h1>
+        <p class="lead reveal">We find where AI makes your teams sharper, build it into the workflows they already trust, and teach your team as we go.</p>
+        <div class="client-line reveal" aria-label="Selected work">
+          <span class="client-line-label mono">Selected work</span>
+          <span class="client-name mono">Perplexity</span>
+          <span class="client-name mono">Samsung</span>
+          <span class="client-name mono">Upper Hand</span>
+          <span class="client-name mono">A+E</span>
+          <span class="client-name mono">Steering House</span>
+        </div>
+      </div>
+      <p class="opening-note mono">SCROLL OR USE ARROW KEYS</p>
+    </section>
+
+    <section class="chapter" id="context" data-title="The missing layer">
+      <div class="chapter-inner">
+        <p class="eyebrow reveal">The missing layer</p>
+        <h2 class="reveal">AI is only as good as the context it can understand.</h2>
+        <div class="signal-line reveal"></div>
+        <p class="lead reveal">A model can read a file, but it does not know why that file matters to your business. It does not know <strong>which number looks wrong, which exception is normal, or what your team should do next.</strong></p>
+      </div>
+    </section>
+
+    <section class="chapter" id="company-knows" data-title="What the company knows">
+      <div class="chapter-inner split">
+        <div>
+          <p class="eyebrow reveal">The company already knows</p>
+          <h2 class="reveal">Most companies already have the data they need.</h2>
+          <p class="lead reveal">The problem is that the meaning is spread across software, documents, conversations, and the people who have learned how the business really works.</p>
+        </div>
+        <div class="context-map reveal">
+          <div class="context-item"><span class="mono">01</span><h3>Systems</h3><p>Transactions, events, inventory, customers, operations.</p></div>
+          <div class="context-item"><span class="mono">02</span><h3>Documents</h3><p>Contracts, reports, briefs, policies, specifications.</p></div>
+          <div class="context-item"><span class="mono">03</span><h3>Decisions</h3><p>What was approved, rejected, escalated, or ignored.</p></div>
+          <div class="context-item"><span class="mono">04</span><h3>People</h3><p>Exceptions, methods, and the reasons the work happens this way.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter ledger-grid" id="what-we-do" data-title="What TheFocus does">
+      <div class="chapter-inner">
+        <p class="eyebrow reveal">What TheFocus does</p>
+        <h2 class="reveal">We teach AI how your business works.</h2>
+        <p class="lead reveal">That starts with your data, but it also includes the rules, exceptions, and decisions around it. Once the model understands those things, we build it into the work your team is already doing.</p>
+        <div class="equation reveal">
+          <div class="equation-part"><span class="mono">INPUT</span><strong>Your data</strong></div>
+          <div class="operator">+</div>
+          <div class="equation-part"><span class="mono">MEANING</span><strong>Your methods</strong></div>
+          <div class="operator">=</div>
+          <div class="equation-part"><span class="mono">OUTPUT</span><strong>AI that understands the work</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="find" data-title="Find">
+      <div class="image-plate" aria-hidden="true"><img src="assets/studio-brooklyn-hero-b.jpg" alt=""></div>
+      <div class="chapter-inner split">
+        <div class="method-number mono reveal">01</div>
+        <div class="method-content">
+          <p class="eyebrow reveal">Find</p>
+          <h2 class="reveal">First, we learn how the work actually gets done.</h2>
+          <p class="lead reveal">We sit with the people doing the work and map the decisions, data, exceptions, and costs behind it. This is usually where the real opportunity becomes obvious.</p>
+          <div class="method-details reveal">
+            <div class="method-detail"><span class="mono">WORKFLOW</span><p>How the work really moves, including the handoffs the process diagram missed.</p></div>
+            <div class="method-detail"><span class="mono">CONTEXT</span><p>Which sources matter, how they relate, and what makes a record trustworthy.</p></div>
+            <div class="method-detail"><span class="mono">VALUE</span><p>The decision or operating number the system must improve.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="build" data-title="Build">
+      <div class="chapter-inner split">
+        <div class="method-number mono reveal">02</div>
+        <div class="method-content">
+          <p class="eyebrow reveal">Build</p>
+          <h2 class="reveal">Then we give the model enough context to be useful.</h2>
+          <p class="lead reveal">Not every document and database in the company. Just the right data, the rules people follow, the history that matters, and a clear place for the system to help.</p>
+          <div class="method-details reveal">
+            <div class="method-detail"><span class="mono">CONNECT</span><p>Bring the required sources together without replacing every system.</p></div>
+            <div class="method-detail"><span class="mono">STRUCTURE</span><p>Create a shared model for entities, relationships, and exceptions.</p></div>
+            <div class="method-detail"><span class="mono">SHIP</span><p>Put the result inside the real workflow, with a human at the decision point.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="compound" data-title="Compound">
+      <div class="chapter-inner split">
+        <div class="method-number mono reveal">03</div>
+        <div class="method-content">
+          <p class="eyebrow reveal">Compound</p>
+          <h2 class="reveal">The system should get better because your team used it.</h2>
+          <p class="lead reveal">Today, a good prompt or a smart correction usually disappears inside someone’s private chat. We keep that work, so the next person does not have to start over.</p>
+          <div class="method-details reveal">
+            <div class="method-detail"><span class="mono">TRACE</span><p>See what the AI used, what it produced, and what a person approved.</p></div>
+            <div class="method-detail"><span class="mono">LEARN</span><p>Turn corrections and successful runs into reusable operating knowledge.</p></div>
+            <div class="method-detail"><span class="mono">OWN</span><p>Your data, prompts, methods, and outputs remain company IP.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="proof" data-title="More selected work">
+      <div class="chapter-inner">
+        <p class="eyebrow reveal">Selected work</p>
+        <div class="proof-grid reveal">
+          <article class="proof-card">
+            <img class="proof-image" src="assets/apps/app-samsung.png" alt="Perplexity running on a Samsung Smart TV">
+            <div class="proof-body">
+              <span class="mono">PERPLEXITY × SAMSUNG</span>
+              <h3>Perplexity, in 50 million living rooms.</h3>
+              <p>We partnered with Perplexity and Samsung to bring Perplexity into the living room. We built the experience around voice and made every answer work from ten feet away.</p>
+            </div>
+          </article>
+          <article class="proof-card">
+            <img class="proof-image" src="assets/cs-ae-apocalypse.png" alt="A scene from The Walking Dead">
+            <div class="proof-body">
+              <span class="mono">UPPER HAND × A+E</span>
+              <h3>Watching 212 feeds so nobody has to.</h3>
+              <p>We built Upper Hand to manage A+E’s data streams for new shows. It gives hundreds of feeds one shared structure and checks for the quiet problems people tend to find too late.</p>
+            </div>
+          </article>
+          <article class="proof-card">
+            <img class="proof-image" src="assets/cs-steeringhouse-brooklyn.png" alt="A construction team renovating Brooklyn brownstones">
+            <div class="proof-body">
+              <span class="mono">STEERING HOUSE · PROJECT OPERATIONS</span>
+              <h3>Inventory, costs, and budgets across every project.</h3>
+              <p>We connected the information Steering House needs to manage inventory, cost of goods, project work, and budgets across its active construction projects.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter ledger-grid" id="engagement" data-title="How we work">
+      <div class="chapter-inner">
+        <p class="eyebrow reveal">How we work</p>
+        <h2 class="reveal">We work with your team, and we build the real thing.</h2>
+        <p class="lead reveal">A typical engagement takes six to eight weeks. We leave you with a working system your team understands and controls, not a deck explaining what someone else should build.</p>
+        <div class="engagement reveal">
+          <div class="engagement-step"><span class="mono">WEEK 01</span><strong>Map the work</strong><p>People, decisions, sources, exceptions, and the number that should move.</p></div>
+          <div class="engagement-step"><span class="mono">WEEK 02</span><strong>Define the context</strong><p>The model of the business that lets AI interpret the data correctly.</p></div>
+          <div class="engagement-step"><span class="mono">WEEKS 03–07</span><strong>Build beside you</strong><p>A measured system inside the workflow, tested against real cases.</p></div>
+          <div class="engagement-step"><span class="mono">WEEK 08</span><strong>Hand over control</strong><p>The system, the operating knowledge, and a clear record of how it works.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="close" data-title="Start with your data">
+      <div class="chapter-inner">
+        <p class="eyebrow reveal">Start here</p>
+        <h2 class="reveal">What does your company know that its software does not?</h2>
+        <p class="lead reveal">Bring us the data, the process, or the decision that still depends on someone knowing how everything fits together. We’ll figure out whether AI can help, and if it can, we’ll build it.</p>
+        <a class="close-link reveal" href="mailto:hello@thefocus.ai">Talk to TheFocus</a>
+      </div>
+      <div class="footer-line mono"><span>TheFocus.AI</span><span>Your data · Your methods · Your advantage</span></div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const chapters = [...document.querySelectorAll('.chapter')];
+      const nav = document.getElementById('chapterNav');
+      const currentLabel = document.getElementById('currentChapter');
+      const progressBar = document.getElementById('progressBar');
+      const chapterTotal = document.querySelector('.chapter-count');
+      let current = 0;
+      let keyboardLock = false;
+
+      chapterTotal.lastChild.textContent = ` / ${chapters.length}`;
+
+      chapters.forEach((chapter, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.setAttribute('aria-label', `${String(index + 1).padStart(2, '0')} — ${chapter.dataset.title}`);
+        button.addEventListener('click', () => goTo(index));
+        nav.appendChild(button);
+      });
+
+      const navButtons = [...nav.querySelectorAll('button')];
+
+      function setCurrent(index) {
+        current = index;
+        chapters.forEach((chapter, chapterIndex) => chapter.classList.toggle('is-active', chapterIndex === index));
+        navButtons.forEach((button, buttonIndex) => button.setAttribute('aria-current', buttonIndex === index ? 'true' : 'false'));
+        currentLabel.textContent = String(index + 1).padStart(2, '0');
+        progressBar.style.width = `${((index + 1) / chapters.length) * 100}%`;
+        document.title = `${chapters[index].dataset.title} — TheFocus`;
+      }
+
+      function goTo(index) {
+        const target = Math.max(0, Math.min(chapters.length - 1, index));
+        keyboardLock = true;
+        chapters[target].scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        setCurrent(target);
+        window.setTimeout(() => { keyboardLock = false; }, 650);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        if (keyboardLock) return;
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setCurrent(chapters.indexOf(visible.target));
+      }, { threshold: [0.35, 0.55, 0.75] });
+
+      chapters.forEach(chapter => observer.observe(chapter));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(event.key)) {
+          event.preventDefault();
+          goTo(current + 1);
+        } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(event.key)) {
+          event.preventDefault();
+          goTo(current - 1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          goTo(0);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          goTo(chapters.length - 1);
+        }
+      });
+
+      setCurrent(0);
+    })();
+  </script>
+</body>
+</html>

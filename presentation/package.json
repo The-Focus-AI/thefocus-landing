@@ -1,0 +1,8 @@
+{
+  "name": "thefocus-presentation",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/functions": "latest"
+  }
+}
