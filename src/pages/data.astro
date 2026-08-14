@@ -1,0 +1,395 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<BaseLayout
+  title="Make Your Data Intelligent • TheFocus.AI"
+  description="Your warehouse already has the data. We give it a meaning layer — canonical definitions, verified quality, and agents that answer with citations. Inside your walls."
+  current="data"
+>
+  <main>
+    <!-- Hero -->
+    <section class="data-shell border-b border-white/10">
+      <div class="relative z-10 max-w-screen-xl mx-auto px-5 sm:px-8 pt-16 pb-14 lg:pt-24 lg:pb-20">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div class="lg:col-span-6 reveal">
+            <div class="section-label text-[#556B2F] mb-4">Services · Data</div>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl leading-[0.96] font-semibold tracking-tighter">
+              Make your data intelligent.
+            </h1>
+            <p class="mt-7 max-w-xl text-lg sm:text-xl text-[#B0B0B0] leading-relaxed">
+              Your warehouse already has the data. What it doesn't have is meaning — the same number lives in five
+              systems under five names, and the dashboards disagree. We build the layer that makes them agree, then
+              put agents in your warehouse that answer with citations.
+            </p>
+            <div class="mt-9 flex flex-col sm:flex-row gap-3 sm:items-center">
+              <a
+                href="mailto:wschenk@thefocus.ai?subject=Data"
+                class="w-full sm:w-auto text-center px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+              >
+                Start with the map
+              </a>
+              <a
+                href="#ladder"
+                class="w-full sm:w-auto text-center px-8 py-3.5 border border-white/20 hover:bg-white/5 transition-colors text-sm"
+              >
+                How it works
+              </a>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-px border border-white/10 bg-white/10 max-w-xl">
+              <div class="bg-[#0A0A0A]/85 p-4">
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">WAREHOUSE</div>
+                <div class="text-sm text-[#E5E5E5]">Stays yours</div>
+              </div>
+              <div class="bg-[#0A0A0A]/85 p-4">
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">MEANING</div>
+                <div class="text-sm text-[#E5E5E5]">Recorded, not assumed</div>
+              </div>
+              <div class="bg-[#0A0A0A]/85 p-4">
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">ANSWERS</div>
+                <div class="text-sm text-[#E5E5E5]">Cited, every time</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIG. 01 — the meaning layer -->
+          <div class="lg:col-span-6 reveal delay-1">
+            <div class="border border-white/10 bg-[#0A0A0A]/80">
+              <div class="flex items-center justify-between px-5 py-3 border-b border-white/10">
+                <span class="mono text-[11px] tracking-[1px] text-[#B0B0B0]">FIG. 01 — THE MEANING LAYER</span>
+                <span class="mono text-[11px] tracking-[1px] text-[#666]">NO RIP-AND-REPLACE</span>
+              </div>
+              <div class="p-5 sm:p-7 space-y-3">
+                <div class="border border-white/10 p-5">
+                  <div class="flex items-baseline justify-between gap-4">
+                    <div class="mono text-[11px] tracking-[1.5px] text-[#666]">03 · AGENTS</div>
+                    <div class="mono text-[10px] tracking-[1px] text-[#666]">WATCH · ANSWER · ESCALATE</div>
+                  </div>
+                  <p class="mt-3 text-sm text-[#B0B0B0] leading-relaxed">
+                    Ask a question, get a cited answer — or the agent flags the anomaly before anyone asks.
+                  </p>
+                </div>
+                <div class="data-layer-accent border p-5">
+                  <div class="flex items-baseline justify-between gap-4">
+                    <div class="mono text-[11px] tracking-[1.5px] text-[#7d9b45]">02 · MEANING</div>
+                    <div class="mono text-[10px] tracking-[1px] text-[#7d9b45]">WHAT WE BUILD</div>
+                  </div>
+                  <p class="mt-3 text-sm text-[#E5E5E5] leading-relaxed">
+                    Canonical definitions your experts sign. Quality checks recorded green at the feed, record, and
+                    model level.
+                  </p>
+                </div>
+                <div class="border border-white/10 p-5">
+                  <div class="flex items-baseline justify-between gap-4">
+                    <div class="mono text-[11px] tracking-[1.5px] text-[#666]">01 · STORAGE</div>
+                    <div class="mono text-[10px] tracking-[1px] text-[#666]">UNCHANGED</div>
+                  </div>
+                  <p class="mt-3 text-sm text-[#B0B0B0] leading-relaxed">
+                    Your existing warehouse, buckets, and feeds. Snowflake stays Snowflake.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thesis -->
+    <section class="border-b border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="grid lg:grid-cols-12 gap-10">
+          <div class="lg:col-span-5 reveal">
+            <div class="section-label text-[#556B2F] mb-4">Why this exists</div>
+            <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+              The storage layer arrived. The meaning didn't.
+            </h2>
+          </div>
+          <div class="lg:col-span-7 reveal delay-1">
+            <p class="text-[#B0B0B0] text-lg leading-relaxed max-w-2xl">
+              A decade of data projects got everything into the warehouse, and the projects were measured on whether
+              the data arrived. It did. But "revenue" still means three different things in three systems, the
+              mapping between them lives in someone's head, and nobody acts on a dashboard they don't trust.
+            </p>
+            <blockquote class="mt-7 border-l border-[#556B2F] pl-6 max-w-2xl">
+              <p class="text-[#E5E5E5] text-lg leading-relaxed">
+                "Digital transformation delivered the storage layer and was measured on whether the data arrived.
+                Intelligence transformation has to deliver the meaning layer."
+              </p>
+              <cite class="mt-3 block mono text-[11px] tracking-[1px] text-[#666] not-italic">
+                THE ORG AGE OF AI, PART VIII —
+                <a
+                  href="https://www.turingpost.com/p/forward-deployed-engineer-ai-operations-lead"
+                  class="text-[#8D8D8D] hover:text-white transition-colors underline decoration-white/20 underline-offset-4"
+                  >TURING POST</a
+                >
+              </cite>
+            </blockquote>
+            <p class="mt-7 text-[#E5E5E5] text-lg leading-relaxed max-w-2xl">
+              That series is ours. This page is the same argument, delivered as a service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What we do: connect / define / verify / work -->
+    <section class="border-b border-white/10 bg-[#0d0d0d]">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="reveal max-w-2xl mb-10">
+          <div class="section-label text-[#556B2F] mb-3">What we build</div>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tighter">
+            Four moves, in order. No magic claimed.
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 reveal delay-1">
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">01 · CONNECT</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Every source, where it is.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Warehouse, buckets, vendor feeds, exports — and the spreadsheets nobody admits to. Nothing gets
+              migrated to get started.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">02 · DEFINE</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Your experts sign the meaning.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              The machine proposes the canonical mapping; your people confirm it. Definitions become versioned
+              artifacts you own — not code welded to a vendor.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">03 · VERIFY</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Recorded green, never inferred.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Quality is measured at the feed, record, and model level. "Ready" means required checks recorded
+              green — not the absence of complaints.
+            </p>
+          </div>
+          <div class="bg-[#0A0A0A] p-7">
+            <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F] mb-6">04 · WORK</div>
+            <h3 class="text-lg font-medium tracking-tight mb-3">Agents that show their sources.</h3>
+            <p class="text-[#999] text-[14px] leading-relaxed">
+              Every answer carries citations. What the data can't support gets refused, not improvised. Every human
+              correction is kept and makes the next answer better.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 border-t border-white/10 pt-6 grid lg:grid-cols-12 gap-6 reveal delay-2">
+          <div class="lg:col-span-3 mono text-[11px] tracking-[1.5px] text-[#666]">THE PLAIN VERSION</div>
+          <p class="lg:col-span-9 text-[#999] text-[14px] leading-relaxed max-w-2xl">
+            Connecting data is the easy part. Trusting it is the work. Nobody acts on an answer they can't check —
+            so everything we build is auditable: sources attached, checks recorded, reasoning inspectable. Trust
+            first, autonomy second.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The ladder -->
+    <section id="ladder" class="relative border-b border-white/10 overflow-hidden">
+      <div class="data-ledger-grid absolute inset-0 pointer-events-none"></div>
+      <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-4 reveal">
+            <div class="section-label text-[#556B2F] mb-4">How it works</div>
+            <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+              Three engagements. Each one earns the next.
+            </h2>
+            <p class="mt-6 text-[#B0B0B0] leading-relaxed">
+              The middle can't be skipped. Agents built on data nobody trusts become the pilot that dies in six
+              months — so we climb in order, and each step is useful on its own.
+            </p>
+          </div>
+
+          <div class="lg:col-span-8 border border-white/10 bg-[#0A0A0A]/70 backdrop-blur-sm reveal delay-1">
+            <div class="ladder-row grid md:grid-cols-12 gap-6 p-7 md:p-8 border-t-0">
+              <div class="md:col-span-3">
+                <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F]">01 — THE MAP</div>
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mt-2">THREE WEEKS · FIXED FEE</div>
+              </div>
+              <div class="md:col-span-9">
+                <h3 class="text-2xl font-medium tracking-tight mb-3">See where your numbers disagree.</h3>
+                <p class="text-[#999] leading-relaxed">
+                  A full inventory of where data actually lives, a draft of the canonical model, and the specific
+                  places the same concept diverges across systems — with real examples. You end holding a costed
+                  plan for the fixes, whoever you hire to do them.
+                </p>
+              </div>
+            </div>
+            <div class="ladder-row grid md:grid-cols-12 gap-6 p-7 md:p-8">
+              <div class="md:col-span-3">
+                <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F]">02 — FIRST ANSWER</div>
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mt-2">SIX TO EIGHT WEEKS</div>
+              </div>
+              <div class="md:col-span-9">
+                <h3 class="text-2xl font-medium tracking-tight mb-3">One question, made answerable.</h3>
+                <p class="text-[#999] leading-relaxed">
+                  We take the question your company keeps failing to answer reliably, connect the sources behind it,
+                  get the definitions signed, and put an agent at a URL. Done means a named executive gets an answer
+                  they'd put in a board deck — with the citation trail that makes them willing to.
+                </p>
+              </div>
+            </div>
+            <div class="ladder-row grid md:grid-cols-12 gap-6 p-7 md:p-8">
+              <div class="md:col-span-3">
+                <div class="mono text-[11px] tracking-[1.5px] text-[#556B2F]">03 — AGENTS IN THE WAREHOUSE</div>
+                <div class="mono text-[10px] tracking-[1px] text-[#666] mt-2">QUARTERLY</div>
+              </div>
+              <div class="md:col-span-9">
+                <h3 class="text-2xl font-medium tracking-tight mb-3">The system acts before it's asked.</h3>
+                <p class="text-[#999] leading-relaxed">
+                  Every feed through the same define-verify pattern. Agents that watch deliveries, triage anomalies,
+                  and escalate with context — into one review queue your operators actually read. If a legacy system
+                  is being retired, we run the two in parallel and reconcile before anything is switched off.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What you keep -->
+    <section class="border-b border-white/10">
+      <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-16 lg:py-20">
+        <div class="data-panel border border-white/10 p-8 sm:p-10 lg:p-12 reveal">
+          <div class="grid lg:grid-cols-12 gap-10 items-end">
+            <div class="lg:col-span-7">
+              <div class="section-label text-[#556B2F] mb-4">What you keep</div>
+              <h2 class="text-3xl sm:text-5xl leading-[1.05] tracking-tighter font-semibold">
+                The definitions are yours. So is the exit.
+              </h2>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-[#B0B0B0] leading-relaxed">
+                The canonical model, the quality checks, and the correction history live in your systems as
+                artifacts your team owns. And part of the larger engagement is hiring and training your internal
+                owner — so depending on us stays a choice, not a trap.
+              </p>
+              <div class="mt-7 grid grid-cols-2 gap-px bg-white/10 border border-white/10">
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">DEFINITIONS</div>
+                  <div class="text-sm">Versioned, yours</div>
+                </div>
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">CHECKS</div>
+                  <div class="text-sm">Recorded, auditable</div>
+                </div>
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">CORRECTIONS</div>
+                  <div class="text-sm">Kept, compounding</div>
+                </div>
+                <div class="bg-[#0A0A0A]/80 p-4">
+                  <div class="mono text-[10px] tracking-[1px] text-[#666] mb-1">TEAM</div>
+                  <div class="text-sm">Trained to run it</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 border-t border-white/10 pt-6 grid lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-3 mono text-[11px] tracking-[1.5px] text-[#666]">RUNS ON HABITATS</div>
+            <p class="lg:col-span-9 text-[#999] text-[14px] leading-relaxed max-w-2xl">
+              The agents, runs, reviews, and corrections live in a
+              <a href="/habitats/" class="text-[#E5E5E5] hover:text-white transition-colors underline decoration-white/20 underline-offset-4">Habitat</a>
+              — inside your walls, visible to your team, owned by your company.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[#0A0A0A]"></div>
+      <div class="data-ledger-grid absolute inset-0 pointer-events-none"></div>
+      <div class="relative max-w-screen-xl mx-auto px-5 sm:px-8 py-24 text-center">
+        <div class="section-label text-[#556B2F] mb-4">Next step</div>
+        <h2 class="text-4xl sm:text-5xl font-semibold tracking-tighter mb-5">Start with one question.</h2>
+        <p class="text-[#B0B0B0] text-lg max-w-xl mx-auto mb-9 leading-relaxed">
+          Tell us the number your teams argue about. Three weeks later you'll know where it lives, why the copies
+          disagree, and what it takes to make it answerable.
+        </p>
+        <div class="flex justify-center">
+          <a
+            href="mailto:wschenk@thefocus.ai?subject=Data"
+            class="px-8 py-3.5 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors"
+          >
+            Start with the map
+          </a>
+        </div>
+        <div class="mt-6 text-xs text-[#666] flex items-center justify-center gap-x-2">
+          <span class="text-[#556B2F]"><Icon name="check" class="w-3 h-3" /></span>
+          <span>wschenk@thefocus.ai · We respond within a day.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  body {
+    background:
+      radial-gradient(circle at 72% 0%, rgba(85, 107, 47, 0.13), transparent 30%),
+      radial-gradient(circle at 16% 18%, rgba(160, 102, 52, 0.08), transparent 28%),
+      #0a0a0a;
+  }
+
+  .data-shell {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 74% 8%, rgba(85, 107, 47, 0.14), transparent 30%),
+      radial-gradient(circle at 90% 44%, rgba(184, 123, 59, 0.08), transparent 25%),
+      linear-gradient(105deg, #0a0a0a 0%, #10100d 58%, #060606 100%);
+  }
+
+  .data-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+    pointer-events: none;
+  }
+
+  .data-ledger-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 76%);
+  }
+
+  .data-layer-accent {
+    border-color: rgba(85, 107, 47, 0.55);
+    background:
+      linear-gradient(180deg, rgba(85, 107, 47, 0.14), rgba(85, 107, 47, 0.04)),
+      rgba(10, 10, 10, 0.85);
+  }
+
+  .ladder-row {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 220ms ease;
+  }
+
+  .ladder-row:hover {
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .data-panel {
+    background:
+      radial-gradient(circle at 12% 0%, rgba(85, 107, 47, 0.18), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+      #0d0d0d;
+  }
+</style>
