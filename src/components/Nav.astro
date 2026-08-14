@@ -2,13 +2,14 @@
 import Icon from "./Icon.astro";
 
 interface Props {
-  current?: "method" | "work" | "habitats" | "studio";
+  current?: "method" | "work" | "data" | "habitats" | "studio";
 }
 const { current } = Astro.props;
 
 const links = [
   { href: "/#method", label: "Method", key: "method" },
   { href: "/work/", label: "Work", key: "work" },
+  { href: "/data/", label: "Data", key: "data" },
   { href: "/habitats/", label: "Habitats", key: "habitats" },
   { href: "/studio/", label: "Studio", key: "studio" },
 ];
