@@ -1,0 +1,294 @@
+<title>The Org Age of AI — Free Book</title>
+
+<style>
+  /* The book's own landing — single job: the email. Book design system throughout. */
+  :root {
+    --black: #100e0b;
+    --paper: #f3f2ea;
+    --ink: #1c1a17;
+    --ink-2: #4a4740;
+    --red: #b3231d;
+    --red-bright: #e65a52;
+    --cream: #efece2;
+    --cream-dim: rgba(239, 236, 226, 0.68);
+    --cream-faint: rgba(239, 236, 226, 0.68);
+    --rule-dark: rgba(239, 236, 226, 0.16);
+    --serif: "Sorts Mill Goudy", "Goudy Old Style", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--red-bright); outline-offset: 3px;
+  }
+  .shell { max-width: 880px; margin: 0 auto; padding: 0 26px; }
+
+  /* hero */
+  .hero { padding: 90px 0 70px; text-align: center; }
+  .presents {
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 5px; text-transform: uppercase; color: var(--red-bright);
+    margin-bottom: 34px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 5.2rem);
+    letter-spacing: 0.16em; line-height: 1.22; text-transform: uppercase;
+    text-indent: 0.16em; color: var(--cream); margin: 0 0 24px; text-wrap: balance;
+  }
+  .dek {
+    font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--cream);
+    max-width: 46ch; margin: 0 auto 10px; text-wrap: balance;
+  }
+  .authors {
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--cream-faint);
+    margin: 22px 0 36px;
+  }
+  .stats {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 26px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--cream-dim); margin-bottom: 40px;
+  }
+  .stats b { color: var(--cream); font-weight: 600; }
+
+  /* capture — the one job */
+  .capture {
+    max-width: 520px; margin: 0 auto; text-align: left;
+    border: 1px solid rgba(200,53,44,0.5); background: rgba(200,53,44,0.06);
+    padding: 28px;
+  }
+  .capture .c-label {
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--red-bright);
+    margin-bottom: 12px;
+  }
+  .field { display: flex; gap: 10px; flex-wrap: wrap; }
+  .field input {
+    flex: 1 1 220px; font-family: var(--sans); font-size: 15px;
+    padding: 14px 15px; background: rgba(255,255,255,0.05);
+    border: 1px solid var(--rule-dark); color: #fff; border-radius: 0;
+  }
+  .field input::placeholder { color: var(--cream-faint); }
+  .btn {
+    display: inline-block; font-family: var(--mono); font-size: 12px;
+    font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 14px 26px; cursor: pointer; border: 1px solid; text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
+  }
+  .btn-red { background: var(--red); color: #fff; border-color: var(--red); }
+  .btn-red:hover { background: #fff; color: var(--black); border-color: #fff; }
+  .fine {
+    margin-top: 12px; font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--cream-faint);
+    line-height: 2;
+  }
+
+  /* crawl */
+  .crawl { border-top: 1px solid var(--rule-dark); padding: 70px 0; }
+  .crawl-inner { max-width: 33rem; margin: 0 auto; }
+  .crawl-inner p {
+    font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.62; color: var(--cream-dim); margin: 0;
+  }
+  .crawl-inner p + p { margin-top: 0.55em; }
+  .crawl-inner .org { font-variant: small-caps; letter-spacing: 0.06em; color: var(--cream); }
+  .crawl-inner b.dash { font-weight: 700; color: var(--cream); }
+  .crawl-inner .charged { color: var(--red-bright); font-style: italic; }
+
+  /* chapters */
+  .section { border-top: 1px solid var(--rule-dark); padding: 70px 0; }
+  .k {
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--red-bright);
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--serif); font-weight: 400; font-variant: small-caps;
+    letter-spacing: 0.06em; font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+    color: var(--cream); margin: 0 0 26px; text-wrap: balance;
+  }
+  .chapters { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule-dark); }
+  .chapter {
+    display: flex; gap: 20px; align-items: baseline;
+    padding: 18px 4px; border-bottom: 1px solid var(--rule-dark);
+  }
+  .ch-num { font-family: var(--serif); font-size: 24px; color: var(--red-bright); flex: none; width: 26px; text-align: center; }
+  .ch-title { font-size: 15.5px; font-weight: 600; color: var(--cream); line-height: 1.4; }
+  .ch-if { font-size: 13px; color: var(--cream-dim); margin-top: 2px; }
+
+  /* who it's for */
+  .fits { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .fit { border: 1px solid var(--rule-dark); padding: 22px; }
+  .fit h3 { font-size: 15px; font-weight: 700; color: var(--cream); margin: 0 0 8px; }
+  .fit p { font-size: 14px; color: var(--cream-dim); margin: 0; text-wrap: pretty; }
+
+  /* authors */
+  .bios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .bio { border: 1px solid var(--rule-dark); padding: 24px; }
+  .bio h3 { font-size: 16px; font-weight: 700; color: var(--cream); margin: 0 0 4px; }
+  .bio .b-role { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--red-bright); margin-bottom: 10px; }
+  .bio p { font-size: 14px; color: var(--cream-dim); margin: 0; text-wrap: pretty; }
+
+  /* closing */
+  .closing { border-top: 1px solid var(--rule-dark); padding: 76px 0 66px; text-align: center; }
+  .closing h2 { margin-bottom: 12px; }
+  .closing .sub { font-size: 15px; color: var(--cream-dim); max-width: 44ch; margin: 0 auto 34px; text-wrap: balance; }
+  .consult-line {
+    margin-top: 44px; font-size: 14.5px; color: var(--cream-dim);
+  }
+  .consult-line a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+  .consult-line a:hover { color: var(--red-bright); }
+
+  .footer { border-top: 1px solid var(--rule-dark); padding: 22px 0 50px; }
+  .footer-inner {
+    display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 9.5px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--cream-faint);
+  }
+  .footer-inner a { color: rgba(239,236,226,0.55); text-decoration: none; }
+  .footer-inner a:hover { color: var(--cream); }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+<header class="hero">
+  <div class="shell">
+    <div class="presents">TheFocus.AI · Turing Post</div>
+    <h1>The Org Age<br>of AI</h1>
+    <p class="dek">The field guide to bringing computational intelligence to your company.</p>
+    <div class="authors">Ksenia Se &nbsp;·&nbsp; Will Schenk</div>
+    <div class="stats">
+      <span><b>8</b> chapters</span>
+      <span><b>31,000</b> words</span>
+      <span><b>16</b> diagrams</span>
+      <span>Read by <b>100,000+</b></span>
+    </div>
+
+    <div class="capture">
+      <div class="c-label">Get the complete edition — free</div>
+      <form class="field" aria-label="Email capture (mockup, non-functional)">
+        <input type="text" placeholder="Work email" aria-label="Work email" />
+        <button type="button" class="btn btn-red">Send me the book</button>
+      </form>
+      <p class="fine">Delivered to your inbox · two short notes a week after · unsubscribe anytime</p>
+    </div>
+  </div>
+</header>
+
+<section class="crawl">
+  <div class="shell crawl-inner">
+    <p>Early in the twenty-first century, <span class="org">the frontier labs</span> advanced machine intelligence into its operational phase <b class="dash">—</b> a resource to be produced, routed, governed, and consumed at scale.</p>
+    <p>Intelligence became abundant before organizations learned how to absorb it. Pilots that dazzled in the demo dissolved in production. Workers saved time that no ledger could find.</p>
+    <p>The companies that pulled ahead were the ones that could make themselves legible to machines: that wrote down what they knew, verified what they built, and decided what the freed capacity was for.</p>
+    <p>This was not called digital transformation. It was called the <span class="charged">Org&nbsp;Age</span>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="k">What's inside</div>
+    <h2>Eight chapters, one argument</h2>
+    <div class="chapters">
+      <div class="chapter"><div class="ch-num">1</div><div><div class="ch-title">AI Feels Powerful. So Why Is the ROI Still Missing?</div><div class="ch-if">Start here if the pilots aren't paying off.</div></div></div>
+      <div class="chapter"><div class="ch-num">2</div><div><div class="ch-title">The Unsexy Truth of AI Adoption: A 5-Level Maturity Framework</div><div class="ch-if">Find your organization's level — and the next rung.</div></div></div>
+      <div class="chapter"><div class="ch-num">3</div><div><div class="ch-title">How to Build an AI-Native Startup from Day One</div><div class="ch-if">If you're starting fresh instead of retrofitting.</div></div></div>
+      <div class="chapter"><div class="ch-num">4</div><div><div class="ch-title">There Are No AI-Native Enterprises</div><div class="ch-if">Why the data has to come first.</div></div></div>
+      <div class="chapter"><div class="ch-num">5</div><div><div class="ch-title">AI Workflow Patterns: The Real Unit of AI Adoption</div><div class="ch-if">What working AI is actually built from.</div></div></div>
+      <div class="chapter"><div class="ch-num">6</div><div><div class="ch-title">The Flywheel: What Happens When Workflows Run Themselves</div><div class="ch-if">Where the compounding starts.</div></div></div>
+      <div class="chapter"><div class="ch-num">7</div><div><div class="ch-title">AI Saved Time. Where Did the Value Go?</div><div class="ch-if">If the hours vanished but the P&amp;L didn't move.</div></div></div>
+      <div class="chapter"><div class="ch-num">8</div><div><div class="ch-title">How to Hire for AI: The Four Roles of Intelligence Transformation</div><div class="ch-if">Who runs the AI-native organization.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="k">Who it's for</div>
+    <h2>Three readers</h2>
+    <div class="fits">
+      <div class="fit">
+        <h3>Business leaders</h3>
+        <p>You are accountable for AI investment and need to connect pilots to measurable returns. Start with chapters 1, 2, and 7.</p>
+      </div>
+      <div class="fit">
+        <h3>Technology and data leaders</h3>
+        <p>You own the systems and data that AI depends on. Chapters 4–6 explain why trustworthy data and repeatable workflows come first.</p>
+      </div>
+      <div class="fit">
+        <h3>AI practitioners</h3>
+        <p>You scope, build, and operate AI systems. Chapters 3, 5, and 8 cover startup design, workflow patterns, and team roles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="k">The authors</div>
+    <h2>Written from the field</h2>
+    <div class="bios">
+      <div class="bio">
+        <h3>Will Schenk</h3>
+        <div class="b-role">TheFocus.AI</div>
+        <p>
+          Thirty years shipping software. Builds AI systems inside the way
+          companies already operate — the invoice pipeline that needed six
+          weeks of definitions, the ingestion system that checks every arrival
+          against a stated expectation. Every field note in this series comes
+          from a real engagement.
+        </p>
+      </div>
+      <div class="bio">
+        <h3>Ksenia Se</h3>
+        <div class="b-role">Turing Post</div>
+        <p>
+          Founder of Turing Post; seven-plus years covering machine learning,
+          twenty-five in journalism. Sets the editorial direction the field's
+          practitioners actually read, and speaks at AIE, HumanX, and AI4.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="shell">
+    <h2>Read it this week</h2>
+    <p class="sub">The complete designed edition — all eight chapters and every diagram — free, in your inbox.</p>
+    <div class="capture" style="text-align:left;">
+      <div class="c-label">Get the book</div>
+      <form class="field" aria-label="Email capture (mockup, non-functional)">
+        <input type="text" placeholder="Work email" aria-label="Work email" />
+        <button type="button" class="btn btn-red">Send me the book</button>
+      </form>
+      <p class="fine">Delivered to your inbox · two short notes a week after · unsubscribe anytime</p>
+    </div>
+    <p class="consult-line">
+      Want it built, not just explained?
+      <a href="https://thefocus.ai">TheFocus.AI is the consultancy behind the book →</a>
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="shell footer-inner">
+    <span>© MMXXVI TheFocus.AI · Turing Post</span>
+    <span>
+      <a href="https://www.turingpost.com/t/the-org-age-of-ai">Read the series</a> ·
+      <a href="https://thefocus.ai">The consultancy</a> ·
+      <a href="#">Privacy</a>
+    </span>
+  </div>
+</footer>

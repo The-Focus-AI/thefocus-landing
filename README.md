@@ -8,7 +8,11 @@ design system.
 
 | URL | Purpose |
 | --- | --- |
-| `/` | Home — hero, method (Strategy · Build · Teach), proof, Habitats teaser |
+| `/` | Org Age consultancy overview, practices, maturity ladder, and engagement model |
+| `/data/` | Intelligent Data practice |
+| `/software/` | Intelligent Software and Gaia practice |
+| `/organization/` | Intelligent Organization and Habitats practice |
+| `/book/` | The Org Age of AI book landing page |
 | `/work/` | Case studies index (TezLab featured) |
 | `/work/perplexity-samsung/` | Case study — Perplexity on Samsung Smart TVs |
 | `/work/ae-networks/` | Case study — A+E Networks data QA |

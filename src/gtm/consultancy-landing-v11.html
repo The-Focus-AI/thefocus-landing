@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TheFocus.AI — Consulting for the Org Age of AI</title>
+  <meta name="description" content="TheFocus.AI helps business leaders build the data, software, and ways of working required for an intelligent organization.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:#12100d; --ink:#201e1a; --muted:#5d5951; --paper:#f5f2e9; --white:#fffdf7;
+      --red:#c83227; --red-dark:#761b16; --blue:#2356d8; --yellow:#f1c84b;
+      --rule:rgba(32,30,26,.18); --rule-dark:rgba(255,253,247,.18);
+      --sans:"Inter",system-ui,sans-serif; --serif:"Sorts Mill Goudy",Georgia,serif;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible { outline:3px solid var(--yellow); outline-offset:3px; }
+    .shell { width:min(1180px,calc(100% - 64px)); margin:0 auto; }
+    .eyebrow { color:var(--red-dark); font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    h1,h2,h3,p { margin-top:0; }
+    body h2 { max-width:17ch; margin-bottom:20px; font-family:var(--sans); font-size:clamp(2.25rem,5vw,4.6rem); font-weight:500; letter-spacing:-.055em; line-height:.98; text-wrap:balance; }
+    h3 { line-height:1.15; }
+    .lede { max-width:62ch; color:var(--muted); font-size:clamp(1.05rem,2vw,1.25rem); line-height:1.55; text-wrap:pretty; }
+    .section { padding:90px 0; border-top:1px solid var(--rule); }
+    .section-head { display:grid; grid-template-columns:2fr 1fr; gap:64px; align-items:end; }
+    .section-head .lede { margin-bottom:4px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; min-height:52px; padding:14px 22px; border:1px solid currentColor; font-size:12px; font-weight:700; letter-spacing:.08em; line-height:1.2; text-align:center; text-decoration:none; text-transform:uppercase; cursor:pointer; }
+    .btn-primary { background:var(--red); border-color:var(--red); color:white; }
+    .btn-dark { background:var(--black); border-color:var(--black); color:var(--white); }
+    .btn-yellow { background:var(--yellow); border-color:var(--yellow); color:var(--black); }
+    .btn-line { background:transparent; color:inherit; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+
+    /* Header + hero */
+    .site-header { position:absolute; z-index:5; top:0; left:0; width:100%; color:var(--white); }
+    .nav { display:flex; justify-content:space-between; align-items:center; min-height:76px; border-bottom:1px solid var(--rule-dark); }
+    .brand { font-size:14px; font-weight:700; text-decoration:none; }
+    .nav-links { display:flex; gap:26px; align-items:center; }
+    .nav-links a { font-size:11px; font-weight:700; letter-spacing:.08em; text-decoration:none; text-transform:uppercase; }
+    .nav-links .nav-cta { padding:10px 14px; border:1px solid var(--rule-dark); }
+    .hero { position:relative; overflow:hidden; background:var(--black); color:var(--white); }
+    .hero::before { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:72px 72px; }
+    .hero-grid { position:relative; display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:28px; min-height:790px; padding-top:140px; padding-bottom:86px; align-items:center; }
+    .hero-copy { grid-column:1 / span 7; }
+    .hero-copy .eyebrow { margin-bottom:26px; color:var(--red); }
+    h1 { max-width:8ch; margin-bottom:34px; color:var(--white); font:400 clamp(4.4rem,9vw,8.5rem)/.82 var(--serif); letter-spacing:-.055em; text-wrap:balance; }
+    .hero-lede { max-width:56ch; margin-bottom:34px; color:rgba(255,253,247,.8); font-size:clamp(1.05rem,2vw,1.3rem); line-height:1.55; }
+    .hero-lede strong { color:var(--white); font-weight:600; }
+    .book-hook { grid-column:9 / -1; min-height:510px; padding:30px; background:var(--blue); box-shadow:18px 18px 0 var(--yellow); display:flex; flex-direction:column; justify-content:space-between; }
+    .hook-label { font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; }
+    .hook-title { margin:34px 0 18px; font-size:clamp(2.15rem,3vw,3rem); font-weight:500; letter-spacing:-.05em; line-height:.95; text-wrap:balance; }
+    .hook-copy { max-width:31ch; color:rgba(255,255,255,.88); font-size:14px; }
+    .hook-stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(255,255,255,.45); }
+    .hook-stat { padding:14px 4px 0 0; font-size:9px; text-transform:uppercase; }
+    .hook-stat b { display:block; font-size:23px; font-weight:500; }
+    .book-hook .btn { width:100%; margin-top:24px; }
+
+    /* Definition */
+    .definition { background:var(--yellow); }
+    .definition .eyebrow { color:var(--black); }
+    .definition-grid { display:grid; grid-template-columns:1fr 2.2fr; gap:64px; }
+    .definition-copy { font-size:clamp(1.3rem,2.5vw,2rem); line-height:1.35; letter-spacing:-.025em; }
+
+    /* Company experience */
+    .company-proof { padding:64px 0; background:var(--white); border-top:1px solid var(--black); border-bottom:1px solid var(--black); }
+    .company-proof-head { display:grid; grid-template-columns:1.25fr 1fr; gap:60px; align-items:end; margin-bottom:30px; }
+    .company-proof h2 { max-width:12ch; margin-bottom:0; font-size:clamp(2.5rem,5vw,4.6rem); }
+    .company-proof-copy { margin:0; color:var(--muted); font-size:14px; }
+    .company-wall { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:18px 24px; padding:24px 0; border-top:1px solid var(--black); border-bottom:1px solid var(--black); }
+    .company { flex:0 0 calc((100% - 144px)/7); color:var(--ink); font-size:clamp(.9rem,1.45vw,1.15rem); font-weight:700; letter-spacing:-.035em; line-height:1.2; text-align:center; white-space:nowrap; }
+    .company-proof-link { display:inline-block; margin-top:20px; color:var(--red-dark); font-size:12px; font-weight:700; text-underline-offset:4px; }
+
+    /* Interactive practices */
+    .tracks { display:grid; grid-template-columns:repeat(3,1fr); margin-top:54px; border:1px solid var(--rule); }
+    .track { min-width:0; padding:28px; border-right:1px solid var(--rule); display:flex; flex-direction:column; }
+    .track:last-child { border-right:0; }
+    .track-number { margin-bottom:52px; color:var(--red-dark); font-size:11px; font-weight:700; }
+    .track h3 { margin-bottom:12px; font-size:27px; font-weight:500; letter-spacing:-.04em; }
+    .track-question { min-height:52px; margin-bottom:17px; font:italic 20px/1.25 var(--serif); }
+    .track > p { min-height:168px; color:var(--muted); font-size:15px; }
+    .track-outcome { min-height:58px; padding-top:16px; border-top:1px solid var(--rule); font-size:12px; font-weight:700; text-transform:uppercase; }
+    .practice-more { margin:18px -12px -12px; border-top:1px solid var(--rule); }
+    .practice-more summary { padding:15px 12px; background:var(--yellow); font-size:11px; font-weight:700; letter-spacing:.06em; list-style:none; text-transform:uppercase; cursor:pointer; }
+    .practice-more summary::-webkit-details-marker { display:none; }
+    .practice-more summary::after { content:"+"; float:right; font-size:16px; line-height:1; }
+    .practice-more[open] summary { background:var(--blue); color:var(--white); }
+    .practice-more[open] summary::after { content:"−"; }
+    .practice-body { padding:18px 12px 4px; }
+    .practice-body p { color:var(--muted); font-size:14px; }
+    .resource-links { display:grid; gap:8px; margin:16px 0; }
+    .resource-links a { color:var(--red-dark); font-size:13px; font-weight:600; text-underline-offset:3px; }
+    .practice-body .btn { width:100%; margin-top:6px; }
+
+    /* Ladder moved up */
+    .guide { background:var(--red); color:var(--white); }
+    .guide .eyebrow,.guide .lede { color:var(--white); }
+    .guide h2 { max-width:13ch; color:var(--white); }
+    .ladder { display:grid; grid-template-columns:repeat(6,1fr); gap:1px; margin-top:48px; background:rgba(255,255,255,.38); border:1px solid rgba(255,255,255,.38); }
+    .level { min-width:0; min-height:160px; padding:19px 14px; border:0; background:var(--red); color:white; text-align:left; cursor:pointer; }
+    .level b { display:block; margin-bottom:56px; font-size:11px; }
+    .level span { font:400 18px/1.1 var(--serif); }
+    .level:hover,.level.active { background:var(--yellow); color:var(--black); }
+    .level-detail { display:grid; grid-template-columns:1fr 1.65fr .85fr; gap:34px; min-height:210px; padding:28px; border:1px solid rgba(255,255,255,.38); border-top:0; align-items:start; }
+    .level-name { font-size:23px; font-weight:600; }
+    .level-tag { margin-top:6px; color:var(--white); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .level-detail ul { margin:0; padding-left:20px; }
+    .level-detail li { margin-bottom:7px; color:var(--white); }
+    .level-actions { display:grid; gap:9px; }
+    .level-actions a { min-height:44px; padding:11px 12px; font-size:10px; }
+    .guide-conversion { display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center; margin-top:48px; padding-top:46px; border-top:1px solid rgba(255,255,255,.38); }
+    .guide-conversion h3 { max-width:15ch; margin-bottom:12px; font-size:clamp(2rem,4vw,3.4rem); font-weight:500; letter-spacing:-.05em; }
+    .guide-conversion p { color:var(--white); }
+    .book-facts { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .field { display:flex; gap:10px; }
+    .field input { min-width:0; flex:1; padding:15px 16px; border:1px solid rgba(255,255,255,.68); border-radius:0; background:rgba(0,0,0,.1); color:white; font:15px var(--sans); }
+    .field input::placeholder { color:white; }
+    .fine { margin-top:12px; color:white; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+
+    /* Audience */
+    .audience-section { background:var(--white); }
+    .audiences { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:46px; }
+    .audience { padding:28px; border:1px solid var(--rule); background:var(--paper); display:flex; flex-direction:column; }
+    .audience::before { content:attr(data-index); display:block; margin-bottom:44px; color:var(--blue); font-size:11px; font-weight:700; }
+    .audience h3 { margin-bottom:10px; font-size:21px; font-weight:600; }
+    .audience p { color:var(--muted); font-size:15px; }
+    .audience a { display:block; margin:auto -12px -12px; padding:15px 14px; background:var(--yellow); color:var(--black); font-size:11px; font-weight:700; letter-spacing:.06em; text-decoration:none; text-transform:uppercase; }
+    .audience a:hover { background:var(--blue); color:var(--white); }
+
+    /* Consulting, proof, team, close */
+    .engagement { background:var(--black); color:var(--white); }
+    .engagement .eyebrow,.engagement .step-num { color:var(--yellow); }
+    .engagement h2 { color:var(--white); }
+    .engagement .lede { color:rgba(255,253,247,.82); }
+    .engagement-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:70px; align-items:start; }
+    .steps { border-top:1px solid var(--rule-dark); }
+    .step { display:grid; grid-template-columns:42px 1fr; gap:16px; padding:21px 0; border-bottom:1px solid var(--rule-dark); }
+    .step h3 { margin-bottom:6px; font-size:18px; }
+    .step p { margin-bottom:0; color:rgba(255,253,247,.74); font-size:14px; }
+    .map-card { padding:32px; background:var(--white); color:var(--ink); box-shadow:14px 14px 0 var(--blue); }
+    .map-card .eyebrow { margin-bottom:34px; color:var(--red-dark); }
+    .map-card h3 { margin-bottom:12px; font-size:32px; letter-spacing:-.04em; }
+    .map-card p { color:var(--muted); }
+    .map-spec { margin:26px 0; padding:16px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); font-size:12px; font-weight:700; text-transform:uppercase; }
+    .map-links { display:flex; flex-wrap:wrap; gap:9px; }
+    .map-links .btn { flex:1 1 190px; }
+    .proof-bar { padding:23px 0; background:var(--blue); color:white; }
+    .proof-items { display:flex; justify-content:center; flex-wrap:wrap; gap:10px 28px; font-size:12px; text-align:center; }
+    .team { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:46px; }
+    .person { padding:30px; border:1px solid var(--rule); background:var(--white); }
+    .initials { width:62px; height:62px; margin-bottom:42px; background:var(--black); color:white; display:grid; place-items:center; font:24px var(--serif); }
+    .person h3 { margin-bottom:2px; font-size:22px; }
+    .role { margin-bottom:16px; color:var(--red-dark); font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .person p { margin-bottom:18px; color:var(--muted); font-size:15px; }
+    .person a { color:var(--red-dark); font-size:12px; font-weight:700; text-underline-offset:3px; }
+    .closing { padding:100px 0; background:var(--yellow); text-align:center; }
+    .closing .eyebrow,.closing .lede { color:var(--black); }
+    .closing h2,.closing .lede { margin-right:auto; margin-left:auto; }
+    .closing h2 { max-width:14ch; }
+    .closing .actions { justify-content:center; margin-top:30px; }
+    footer { padding:28px 0 48px; background:var(--black); color:rgba(255,253,247,.7); }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+    .footer-inner a { text-decoration:none; }
+
+    @media (max-width:820px) {
+      .shell { width:min(100% - 40px,1180px); }
+      .section { padding:64px 0; }
+      .section-head,.definition-grid,.company-proof-head,.engagement-grid,.guide-conversion { grid-template-columns:1fr; gap:36px; }
+      .nav-links a:not(.nav-cta) { display:none; }
+      .hero-grid { grid-template-columns:1fr; gap:50px; min-height:0; padding-top:124px; padding-bottom:76px; }
+      .hero-copy,.book-hook { grid-column:1; }
+      h1 { font-size:clamp(4rem,20vw,6.3rem); }
+      .book-hook { min-height:450px; box-shadow:10px 10px 0 var(--yellow); }
+      .company-wall { justify-content:flex-start; gap:15px 24px; }
+      .company { flex:0 0 auto; }
+      .tracks,.audiences,.team { grid-template-columns:1fr; }
+      .track { border-right:0; border-bottom:1px solid var(--rule); }
+      .track:last-child { border-bottom:0; }
+      .track-number { margin-bottom:34px; }
+      .track-question,.track > p,.track-outcome { min-height:0; }
+      .track-outcome { margin-top:22px; }
+      .ladder { grid-template-columns:repeat(2,1fr); }
+      .level { min-height:108px; }
+      .level b { margin-bottom:26px; }
+      .level-detail { grid-template-columns:1fr; gap:18px; min-height:0; }
+      .level-actions { grid-template-columns:1fr; }
+      .field { flex-direction:column; }
+      .field .btn,.actions .btn { width:100%; }
+      .audience::before { margin-bottom:28px; }
+      .proof-items .sep { display:none; }
+      .footer-inner { flex-direction:column; }
+    }
+
+    /* Chromium does not reliably resolve clamp() inside the font shorthand. */
+    h1 { font-family:var(--serif); font-weight:400; }
+    @media (min-width:821px) { h1 { font-size:clamp(4.4rem,9vw,8.5rem) !important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#top">TheFocus.AI</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#practices">Practices</a><a href="#guide">Maturity</a><a href="#who-we-help">Who we help</a>
+        <a class="nav-cta" href="mailto:wschenk@thefocus.ai?subject=Consulting project">Start a project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">TheFocus.AI · AI transformation consultancy</div>
+          <h1>The Org Age of AI</h1>
+          <p class="hero-lede">AI is changing faster than most organizations can absorb it. <strong>We help business leaders build the data, software, and ways of working required for an AI-native organization.</strong></p>
+          <div class="actions"><a class="btn btn-primary" href="mailto:wschenk@thefocus.ai?subject=Consulting project">Discuss a consulting project</a></div>
+        </div>
+        <aside class="book-hook" aria-label="Free book offer">
+          <div><div class="hook-label">Free field guide · Complete edition</div><div class="hook-title">A practical guide to becoming AI-native.</div><p class="hook-copy">The deep background behind each step: trusted data, software built for a changing organization, human-agent cooperation, and the path from experiments to compounding capability.</p></div>
+          <div><div class="hook-stats"><div class="hook-stat"><b>8</b> chapters</div><div class="hook-stat"><b>31k</b> words</div><div class="hook-stat"><b>19</b> figures</div></div><a class="btn btn-yellow" href="/book/">Explore the free book</a></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section definition">
+      <div class="shell definition-grid"><div><div class="eyebrow">What this means</div><h2>AI adoption is an organizational problem.</h2></div><div class="definition-copy">Models are becoming abundant. Business context, trusted data, clear authority, and repeatable ways of working are not. <strong>TheFocus.AI is the consulting company that helps leaders close that gap</strong>—from deciding where to start through building and transferring the working system.</div></div>
+    </section>
+
+    <section class="company-proof" aria-labelledby="company-proof-title">
+      <div class="shell">
+        <div class="company-proof-head"><div><div class="eyebrow">The experience behind the work</div><h2 id="company-proof-title">Organizations we’ve built for.</h2></div><p class="company-proof-copy">Selected organizations from our team’s product, studio, and consulting work—from global platforms to focused operating teams.</p></div>
+        <div class="company-wall" role="list" aria-label="Organizations the TheFocus.AI team has built for"><div class="company" role="listitem">Apple</div><div class="company" role="listitem">Tesla</div><div class="company" role="listitem">Rivian</div><div class="company" role="listitem">X / Twitter</div><div class="company" role="listitem">Samsung</div><div class="company" role="listitem">Perplexity</div><div class="company" role="listitem">Audible</div><div class="company" role="listitem">Con Edison</div><div class="company" role="listitem">WeaveGrid</div><div class="company" role="listitem">ev.energy</div><div class="company" role="listitem">TezLab</div><div class="company" role="listitem">Steering House</div></div>
+        <a class="company-proof-link" href="https://thefocus.ai/work/" target="_blank" rel="noopener">See selected client work ↗</a>
+      </div>
+    </section>
+
+    <section class="section" id="practices">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">Explore what we do</div><h2>Three practices. Each one leads somewhere concrete.</h2></div><p class="lede">Open each practice for a real example, related field note, and a practical next step.</p></div>
+        <div class="tracks">
+          <article class="track">
+            <div class="track-number">I / CONTEXT</div><h3>Intelligent Data</h3><div class="track-question">“Can we trust the numbers?”</div><p>Connect the systems you already use, define meaning with your experts, and verify quality so people and AI work from the same facts.</p><div class="track-outcome">Outcome · Answers with sources</div>
+            <details class="practice-more"><summary>Explore Intelligent Data</summary><div class="practice-body"><p><b>Example:</b> connect finance and operational data without a disruptive migration, then make every answer cite its source.</p><div class="resource-links"><a href="https://thefocus.ai/work/steering-house/" target="_blank" rel="noopener">Case study · 57,829 transactions synced hourly ↗</a><a href="https://labs.thefocus.ai/dispatch/data-flywheel-pattern/" target="_blank" rel="noopener">Labs · The Data Flywheel Pattern ↗</a></div><a class="btn btn-dark" href="intelligent-data-landing-v1.html">See the Intelligent Data practice</a></div></details>
+          </article>
+          <article class="track">
+            <div class="track-number">II / ACTION</div><h3>Intelligent Software</h3><div class="track-question">“What should software become now?”</div><p>Interfaces respond to the person and situation. Code is created on demand. The lifecycle shifts from fixed features to continuously defining, generating, evaluating, and improving what the organization needs next.</p><div class="track-outcome">Outcome · Software that anticipates your needs</div>
+            <details class="practice-more"><summary>Explore Intelligent Software</summary><div class="practice-body"><p><b>Example:</b> replace a recurring manual workflow with generated software, explicit evaluation, and human review for exceptions.</p><div class="resource-links"><a href="https://thefocus.ai/work/perplexity-samsung/" target="_blank" rel="noopener">Case study · Perplexity × Samsung ↗</a><a href="https://labs.thefocus.ai/dispatch/agent-habitat/" target="_blank" rel="noopener">Labs · The Agent Habitat ↗</a></div><a class="btn btn-dark" href="intelligent-software-landing-v1.html">See the Intelligent Software practice</a></div></details>
+          </article>
+          <article class="track">
+            <div class="track-number">III / COOPERATION</div><h3>Intelligent Organization</h3><div class="track-question">“How do people and agents work together?”</div><p>Combine shared rules, review queues, private compute and GPU clusters, data provenance, and visible human-agent contributions so the organization works together better.</p><div class="track-outcome">Outcome · Capability that compounds safely</div>
+            <details class="practice-more"><summary>Explore Intelligent Organization</summary><div class="practice-body"><p><b>Example:</b> give one team a shared workspace where people assign, review, and retain work done with AI.</p><div class="resource-links"><a href="https://labs.thefocus.ai/dispatch/laddering-up-from-chatboxes-to-autonomy/" target="_blank" rel="noopener">Labs · Laddering Up from Chatboxes to Autonomy ↗</a><a href="https://labs.thefocus.ai/dispatch/building-an-intelligent-organization/" target="_blank" rel="noopener">Labs · Building an Intelligent Organization ↗</a></div><a class="btn btn-dark" href="intelligent-organization-landing-v1.html">See the Intelligent Organization practice</a></div></details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guide" id="guide">
+      <div class="shell">
+        <div class="section-head"><div><div class="eyebrow">The path to AI-native</div><h2>See where you are—and click toward what comes next.</h2></div><p class="lede">Five transitions across six organizational states. Select a level for the practical signs, relevant reading, and next action.</p></div>
+        <div class="ladder" role="group" aria-label="Six organizational maturity levels">
+          <button class="level" type="button" data-level="0"><b>L0</b><span>Tribal</span></button><button class="level" type="button" data-level="1"><b>L1</b><span>Experimenting</span></button><button class="level active" type="button" data-level="2"><b>L2</b><span>Legible</span></button><button class="level" type="button" data-level="3"><b>L3</b><span>Knowledgeable</span></button><button class="level" type="button" data-level="4"><b>L4</b><span>Adaptive</span></button><button class="level" type="button" data-level="5"><b>L5</b><span>Self-improving</span></button>
+        </div>
+        <div class="level-detail" aria-live="polite">
+          <div><div class="level-name" id="level-name">L2 — Legible</div><div class="level-tag" id="level-tag">Work machines can understand</div></div>
+          <ul id="level-list"><li>Workflows, rules, exceptions, and ownership are documented.</li><li>The organization can describe what good work looks like.</li><li>Machines can act on context within stated boundaries.</li></ul>
+          <div class="level-actions"><a class="btn btn-yellow" id="level-read" href="https://labs.thefocus.ai/dispatch/laddering-up-from-chatboxes-to-autonomy/" target="_blank" rel="noopener">Read: Laddering Up ↗</a><a class="btn btn-line" id="level-cta" href="mailto:wschenk@thefocus.ai?subject=L2 AI maturity">Discuss this level</a></div>
+        </div>
+        <div class="guide-conversion"><div><div class="eyebrow">Get the complete field guide</div><h3>Learn every level and how to move between them.</h3><p>Eight chapters connecting maturity, data, software, authority, verification, cooperation, and business value.</p><div class="book-facts">31,000 words · 19 figures · free complete edition</div></div><form aria-label="Free book email capture mockup"><div class="field"><input type="email" placeholder="Work email" aria-label="Work email"><button class="btn btn-yellow" type="button">Send me the free book</button></div><div class="fine">Delivered to your inbox · unsubscribe anytime</div></form></div>
+      </div>
+    </section>
+
+    <section class="section audience-section" id="who-we-help">
+      <div class="shell"><div class="section-head"><div><div class="eyebrow">Choose your route</div><h2>For leaders accountable for making AI deliver.</h2></div><p class="lede">Different titles, same mandate. Each path leads to the most useful next conversation or resource.</p></div>
+        <div class="audiences"><article class="audience" data-index="01 / BUSINESS"><h3>Executive sponsors</h3><p>You own the outcome and budget. Decide where AI creates value, what to fund first, and how success will be measured.</p><a href="mailto:wschenk@thefocus.ai?subject=AI business case">Talk through the business case →</a></article><article class="audience" data-index="02 / CHANGE"><h3>Transformation leaders</h3><p>Turn scattered pilots into a plan across data, operations, governance, and adoption—without another year of workshops.</p><a href="#guide">Explore the maturity ladder →</a></article><article class="audience" data-index="03 / DELIVERY"><h3>Technical leaders</h3><p>Build reliable architecture, clear evaluation, and systems your team can own after launch.</p><a href="#practices">Explore the three practices →</a></article></div>
+      </div>
+    </section>
+
+    <section class="section engagement" id="engagement">
+      <div class="shell engagement-grid"><div><div class="eyebrow">How consulting works</div><h2>Start with one business problem.</h2><p class="lede">We find a valuable constraint, build the smallest working system that moves it, measure the result, and transfer the capability.</p><div class="steps"><div class="step"><div class="step-num">01</div><div><h3>Define the outcome</h3><p>What is not working, what does it cost, and what would useful improvement look like?</p></div></div><div class="step"><div class="step-num">02</div><div><h3>Build the first working system</h3><p>Bounded scope, human review, explicit measures, and no speculative transformation roadmap.</p></div></div><div class="step"><div class="step-num">03</div><div><h3>Level up from evidence</h3><p>The first result reveals the next constraint. Each engagement earns the next.</p></div></div></div></div>
+        <aside class="map-card"><div class="eyebrow">A data-readiness consulting engagement</div><h3>The Map</h3><p>If fragmented or untrusted data is blocking your AI plans, we spend three weeks identifying where critical information lives, why it disagrees, and the fastest path to trusted answers.</p><div class="map-spec">3 weeks · fixed fee · costed implementation plan</div><div class="map-links"><a class="btn btn-dark" href="mailto:wschenk@thefocus.ai?subject=Data-readiness consulting project">Talk about your data</a><a class="btn btn-line" href="intelligent-data-landing-v1.html">See how the Map works</a></div></aside>
+      </div>
+    </section>
+
+    <div class="proof-bar"><div class="shell proof-items"><span><b>30 years</b> shipping software</span><span class="sep">·</span><span><b>8 weeks</b> to production on featured TezLab work</span><span class="sep">·</span><span><b>57,829</b> transactions synced hourly</span></div></div>
+
+    <section class="section"><div class="shell"><div class="section-head"><div><div class="eyebrow">Who you hire</div><h2>Senior people, from strategy through delivery.</h2></div><p class="lede">The people you meet do the work—and publish what they learn.</p></div><div class="team"><article class="person"><div class="initials" aria-hidden="true">WS</div><h3>Will Schenk</h3><div class="role">Co-founder</div><p>Thirty years shipping software. Built TezLab to more than 100,000 users and writes the Org Age field guide.</p><a href="https://labs.thefocus.ai/thoughts/" target="_blank" rel="noopener">Read Will’s field notes ↗</a></article><article class="person"><div class="initials" aria-hidden="true">BS</div><h3>Ben Schippers</h3><div class="role">Co-founder</div><p>Two decades building products with startups and the Fortune 500. Leads scope, staffing, delivery, and business outcomes.</p><a href="https://thefocus.ai/work/" target="_blank" rel="noopener">See the work ↗</a></article></div></div></section>
+
+    <section class="closing"><div class="shell"><div class="eyebrow">Choose the next step</div><h2>Bring us the business problem—or start with the field guide.</h2><p class="lede">A focused conversation if you are ready to act. The complete book if you want the framework first.</p><div class="actions"><a class="btn btn-dark" href="mailto:wschenk@thefocus.ai?subject=Consulting project">Discuss a consulting project</a><a class="btn btn-line" href="/book/">Explore the free book</a></div></div></section>
+  </main>
+
+  <footer><div class="shell footer-inner"><span>© 2026 TheFocus.AI</span><span><a href="https://thefocus.ai/work/" target="_blank" rel="noopener">Work ↗</a> · <a href="https://labs.thefocus.ai" target="_blank" rel="noopener">Labs ↗</a> · <a href="mailto:wschenk@thefocus.ai">wschenk@thefocus.ai</a></span></div></footer>
+
+  <script>
+    (function () {
+      var levels = [
+        {name:"L0 — Tribal",tag:"Tacit knowledge",items:["The organization runs on memory, habit, and knowing whom to ask.","Critical rules and exceptions live in people’s heads.","Machines cannot reliably participate in the work."],read:"https://labs.thefocus.ai/dispatch/laddering-up-from-chatboxes-to-autonomy/",readLabel:"Read: Laddering Up ↗",subject:"L0 tribal AI maturity"},
+        {name:"L1 — Experimenting",tag:"Individual use",items:["Individuals use AI, but the work is brittle and isolated.","Useful practices are not captured or shared.","Results disappear with the person, so nothing compounds."],read:"https://labs.thefocus.ai/dispatch/how-ai-january-2026/",readLabel:"Read: How AI in January 2026 ↗",subject:"L1 experimenting AI maturity"},
+        {name:"L2 — Legible",tag:"Work machines can understand",items:["Workflows, rules, exceptions, and ownership are documented.","The organization can describe what good work looks like.","Machines can act on context within stated boundaries."],read:"https://labs.thefocus.ai/dispatch/laddering-up-from-chatboxes-to-autonomy/",readLabel:"Read: Laddering Up ↗",subject:"L2 legible AI maturity"},
+        {name:"L3 — Knowledgeable",tag:"Sourced and auditable",items:["The organization knows what it knows and can prove it.","Data is connected to agreed meaning and quality checks.","Answers include sources, limits, and verification."],read:"https://labs.thefocus.ai/dispatch/data-flywheel-pattern/",readLabel:"Read: The Data Flywheel Pattern ↗",subject:"L3 knowledgeable AI maturity"},
+        {name:"L4 — Adaptive",tag:"Trusted proactive action",items:["Systems act on incoming signals before being asked.","People review exceptions instead of every routine step.","Permissions and authority match the new workflow."],read:"https://labs.thefocus.ai/dispatch/agent-habitat/",readLabel:"Read: The Agent Habitat ↗",subject:"L4 adaptive AI maturity"},
+        {name:"L5 — Self-improving",tag:"Learning from operation",items:["Human corrections feed back into future work.","Operating outcomes improve the system over time.","Internal teams own the controls, measures, and learning loops."],read:"https://labs.thefocus.ai/dispatch/building-an-intelligent-organization/",readLabel:"Read: Building an Intelligent Organization ↗",subject:"L5 self-improving AI maturity"}
+      ];
+      var buttons=document.querySelectorAll(".level"),name=document.getElementById("level-name"),tag=document.getElementById("level-tag"),list=document.getElementById("level-list"),read=document.getElementById("level-read"),cta=document.getElementById("level-cta");
+      buttons.forEach(function(button){
+        button.setAttribute("aria-pressed",button.classList.contains("active")?"true":"false");
+        button.addEventListener("click",function(){
+          var level=levels[Number(button.dataset.level)]; name.textContent=level.name; tag.textContent=level.tag; list.innerHTML="";
+          level.items.forEach(function(item){var li=document.createElement("li");li.textContent=item;list.appendChild(li);});
+          read.href=level.read; read.textContent=level.readLabel; cta.href="mailto:wschenk@thefocus.ai?subject="+encodeURIComponent(level.subject);
+          buttons.forEach(function(other){other.classList.remove("active");other.setAttribute("aria-pressed","false");}); button.classList.add("active");button.setAttribute("aria-pressed","true");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
