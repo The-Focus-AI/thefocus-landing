@@ -2,16 +2,15 @@
 import Icon from "./Icon.astro";
 
 interface Props {
-  current?: "method" | "data" | "software" | "organization" | "book" | "work" | "habitats" | "studio";
+  current?: "method" | "work" | "habitats" | "studio";
 }
 const { current } = Astro.props;
 
 const links = [
-  { href: "/data/", label: "Data", key: "data" },
-  { href: "/software/", label: "Software", key: "software" },
-  { href: "/organization/", label: "Organization", key: "organization" },
-  { href: "/book/", label: "Book", key: "book" },
+  { href: "/#method", label: "Method", key: "method" },
   { href: "/work/", label: "Work", key: "work" },
+  { href: "/habitats/", label: "Habitats", key: "habitats" },
+  { href: "/studio/", label: "Studio", key: "studio" },
 ];
 ---
 
@@ -19,7 +18,7 @@ const links = [
   <div class="max-w-screen-xl mx-auto px-5 sm:px-8 py-5 flex items-center justify-between">
     <a href="/" class="flex items-center gap-x-2">
       <img src="/assets/logo-mark.svg" alt="" aria-hidden="true" class="logo-mark-focus w-5 h-5 shrink-0" />
-      <span class="font-semibold tracking-tight text-lg">TheFocus<span class="text-[#9db565]">.AI</span></span>
+      <span class="font-semibold tracking-tight text-lg">TheFocus<span class="text-[#556B2F]">.AI</span></span>
     </a>
 
     <!-- Desktop nav -->

@@ -1,0 +1,27 @@
+---
+import GtmLayout from "../layouts/GtmLayout.astro";
+
+interface Props {
+  source: string;
+  title: string;
+  description: string;
+}
+
+const { source, title, description } = Astro.props;
+const styles = source.match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? "";
+const body = source.match(/<body>([\s\S]*?)<\/body>/)?.[1] ?? source;
+const content = body
+  .replace(/<title>[\s\S]*?<\/title>/, "")
+  .replace(/<style>[\s\S]*?<\/style>/, "")
+  .replace(/<link\b[^>]*>/g, "")
+  .replaceAll('href="consultancy-landing-v11.html"', 'href="/"')
+  .replaceAll('href="intelligent-data-landing-v1.html"', 'href="/data/"')
+  .replaceAll('href="intelligent-software-landing-v1.html"', 'href="/software/"')
+  .replaceAll('href="intelligent-organization-landing-v1.html"', 'href="/organization/"')
+  .replaceAll('href="https://thefocus.ai"', 'href="/"')
+  .replaceAll('rel="noopener"', 'rel="noopener noreferrer"');
+---
+
+<GtmLayout {title} {description} {styles}>
+  <Fragment set:html={content} />
+</GtmLayout>

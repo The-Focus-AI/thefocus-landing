@@ -1,31 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BookCapture from "../components/BookCapture.astro";
-
-const chapters = [
-  ["1", "AI Feels Powerful. So Why Is the ROI Still Missing?", "Start here if the pilots aren’t paying off."],
-  ["2", "The Unsexy Truth of AI Adoption: A 5-Level Maturity Framework", "Find your organization’s level—and the next rung."],
-  ["3", "How to Build an Intelligent Startup from Day One", "If you’re starting fresh instead of retrofitting."],
-  ["4", "There Are No Intelligent Enterprises Yet", "Why the data has to come first."],
-  ["5", "AI Workflow Patterns: The Real Unit of AI Adoption", "What working AI is actually built from."],
-  ["6", "The Flywheel: What Happens When Workflows Run Themselves", "Where the compounding starts."],
-  ["7", "AI Saved Time. Where Did the Value Go?", "If the hours vanished but the P&L didn’t move."],
-  ["8", "How to Hire for AI: The Four Roles of Intelligence Transformation", "Who runs the intelligent organization."],
-];
+import TransferredLanding from "../components/TransferredLanding.astro";
+import source from "../gtm/book-landing-v1.html?raw";
 ---
 
-<BaseLayout title="The Org Age of AI — Book" description="The field guide to bringing computational intelligence to your company, by Ksenia Se and Will Schenk." current="book" newsletter={false} footerMotto="THE ORG AGE OF AI · TURING POST">
-  <main>
-    <header class="gtm-section text-center min-h-[700px] flex items-center ledger-grid"><div class="gtm-shell max-w-4xl"><div class="gtm-kicker mb-8">TheFocus.AI · Turing Post</div><h1 aria-label="The Org Age of AI" class="text-6xl sm:text-7xl lg:text-8xl leading-[0.95] font-semibold tracking-[-0.055em] uppercase text-balance"><span aria-hidden="true">The Org Age<br />of AI</span></h1><p class="gtm-lede mx-auto mt-7">The field guide to bringing computational intelligence to your company.</p><div class="mono text-[10px] tracking-[2px] uppercase text-[#999] mt-5">Ksenia Se · Will Schenk</div><div class="flex justify-center flex-wrap gap-4 sm:gap-8 mono text-[10px] uppercase tracking-[1px] text-[#999] my-10"><span><b class="text-white">8</b> chapters</span><span><b class="text-white">31,000</b> words</span><span><b class="text-white">16</b> diagrams</span></div><div class="max-w-xl mx-auto"><BookCapture /></div></div></header>
-
-    <section class="gtm-section"><div class="gtm-shell max-w-2xl text-lg sm:text-xl leading-relaxed text-[#999] space-y-4"><p>Early in the twenty-first century, <strong class="text-white font-medium">the frontier labs</strong> advanced machine intelligence into its operational phase—a resource to be produced, routed, governed, and consumed at scale.</p><p>Intelligence became abundant before organizations learned how to absorb it. Pilots that dazzled in the demo dissolved in production. Workers saved time that no ledger could find.</p><p>The companies that pulled ahead were the ones that could make themselves legible to machines: that wrote down what they knew, verified what they built, and decided what the freed capacity was for.</p><p>This was not called digital transformation. It was called the <em class="text-[#9db565]">Org Age</em>.</p></div></section>
-
-    <section class="gtm-section bg-[#111111]"><div class="gtm-shell max-w-4xl"><div class="gtm-kicker mb-3">What’s inside</div><h2 class="gtm-heading">Eight chapters, one argument</h2><div class="mt-10 border-t border-white/10">{chapters.map(([number,title,description]) => <div class="grid grid-cols-[2.5rem_1fr] gap-4 py-5 border-b border-white/10"><div class="text-2xl text-[#9db565]">{number}</div><div><h3 class="font-semibold">{title}</h3><p class="text-sm text-[#999] mt-1">{description}</p></div></div>)}</div></div></section>
-
-    <section class="gtm-section"><div class="gtm-shell max-w-4xl"><div class="gtm-kicker mb-3">Who it’s for</div><h2 class="gtm-heading">Three readers</h2><div class="grid md:grid-cols-3 gap-4 mt-10">{[["The one who signs","You’re funding AI and can’t see the return. Chapters 1, 2, and 7 are the argument you’ve been missing."],["The one inside the machine","You own systems you don’t fully control, and leadership declared this the year of AI. Chapters 4–6 give you language for why the data comes first."],["The one building it","You scope it, price it, and defend it. Chapters 3, 5, and 8 cover the patterns and the roles."]].map(([title,copy]) => <article class="gtm-card p-6"><h3 class="font-semibold">{title}</h3><p class="text-sm text-[#888] mt-3">{copy}</p></article>)}</div></div></section>
-
-    <section class="gtm-section bg-[#0d0d0d]"><div class="gtm-shell max-w-4xl"><div class="gtm-kicker mb-3">The authors</div><h2 class="gtm-heading">Written from the field</h2><div class="grid md:grid-cols-2 gap-4 mt-10"><article class="gtm-card p-7"><h3 class="text-xl font-semibold">Will Schenk</h3><div class="gtm-kicker mt-1">TheFocus.AI</div><p class="text-sm text-[#888] leading-relaxed mt-5">Thirty years shipping software. Builds AI systems inside the way companies already operate—the invoice pipeline that needed six weeks of definitions, the ingestion system that checks every arrival against a stated expectation. The field notes come from real engagements.</p></article><article class="gtm-card p-7"><h3 class="text-xl font-semibold">Ksenia Se</h3><div class="gtm-kicker mt-1">Turing Post</div><p class="text-sm text-[#888] leading-relaxed mt-5">Founder of Turing Post; seven-plus years covering machine learning, twenty-five in journalism. Sets the editorial direction the field’s practitioners actually read, and speaks at AIE, HumanX, and AI4.</p></article></div></div></section>
-
-    <section class="gtm-section text-center bg-[#556B2F]/10"><div class="gtm-shell max-w-3xl"><div class="gtm-kicker">Complete edition</div><h2 class="gtm-heading mx-auto mt-4">Read it this week.</h2><p class="gtm-lede mx-auto mt-5">The complete designed edition—all eight chapters and every diagram—free, in your inbox.</p><div class="max-w-xl mx-auto mt-9 text-left"><BookCapture label="Get the book" /></div><p class="mt-10 text-sm text-[#888]">Want it built, not just explained? <a class="text-white underline underline-offset-4 hover:text-[#9db565]" href="/">TheFocus.AI is the consultancy behind the book →</a></p><a class="inline-block mt-6 text-sm text-[#B0B0B0] hover:text-white" href="https://www.turingpost.com/t/the-org-age-of-ai" target="_blank" rel="noopener noreferrer">Read the series on Turing Post ↗</a></div></section>
-  </main>
-</BaseLayout>
+<TransferredLanding
+  {source}
+  title="The Org Age of AI — Free Book"
+  description="The complete Org Age of AI field guide: eight chapters on bringing computational intelligence to your company."
+/>
