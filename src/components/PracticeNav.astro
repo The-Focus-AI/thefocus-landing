@@ -1,0 +1,31 @@
+---
+interface Props {
+  current: "data" | "software" | "organization";
+}
+
+const { current } = Astro.props;
+const practices = [
+  { key: "data", href: "/data/", number: "01", label: "Intelligent Data" },
+  { key: "software", href: "/software/", number: "02", label: "Intelligent Software" },
+  { key: "organization", href: "/organization/", number: "03", label: "Intelligent Organization" },
+];
+---
+
+<nav class="border-y border-white/10 bg-[#0d0d0d]" aria-label="TheFocus.AI practices">
+  <div class="gtm-shell grid md:grid-cols-3">
+    {
+      practices.map((practice) => (
+        <a
+          href={practice.href}
+          aria-current={practice.key === current ? "page" : undefined}
+          class:list={[
+            "px-5 py-6 border-b md:border-b-0 md:border-r border-white/10 last:border-0 mono text-[11px] tracking-[1px] uppercase transition-colors",
+            practice.key === current ? "bg-[#556B2F]/20 text-white" : "text-[#888] hover:text-white hover:bg-white/5",
+          ]}
+        >
+          {practice.number} / {practice.label}{practice.key === current ? " · You are here" : " →"}
+        </a>
+      ))
+    }
+  </div>
+</nav>
