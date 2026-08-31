@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+step() {
+  printf '\n==> %s\n' "$1"
+}
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+mise_bin="$HOME/.local/bin/mise"
+
+step "Install mise"
+if [[ ! -x "$mise_bin" ]]; then
+  curl -fsSL https://mise.run | sh
+fi
+export PATH="$HOME/.local/bin:$PATH"
+
+step "Enable mise in future repository login shells"
+profile_marker="# thefocus-landing mise environment"
+if ! grep -Fqx "$profile_marker" "$HOME/.bash_profile" 2>/dev/null; then
+  cat >> "$HOME/.bash_profile" <<EOF
+
+$profile_marker
+if [[ "\${PWD}" == "$repo_root" || "\${PWD}" == "$repo_root/"* ]]; then
+  eval "\$("$mise_bin" activate bash)"
+fi
+EOF
+fi
+
+step "Install the pinned toolchain"
+"$mise_bin" trust --quiet "$repo_root/mise.toml"
+"$mise_bin" install --yes
+
+step "Install locked JavaScript dependencies"
+"$mise_bin" exec -- pnpm install --frozen-lockfile
+
+step "Orb setup complete"

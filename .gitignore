@@ -13,3 +13,6 @@ dist/
 .pi/git/
 .pi/skills/
 .agents/skills/
+
+# Amp orb portal metadata
+.amp/portals/*
