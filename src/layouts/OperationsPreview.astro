@@ -1,0 +1,47 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '../styles/operations-preview.css';
+const { title, description, active = '' } = Astro.props;
+const base = '/preview/operations/';
+const nav = [['work/', 'Work'], ['engagements/', 'Work with us'], ['approach/', 'Approach'], ['book/', 'The book']];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — TheFocus.AI</title><meta name="description" content={description} />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="preview-bar"><span>Website concept · September 2026</span><span>Review preview · forms do not send</span></div>
+    <header class="header shell">
+      <a class="brand" href={base}><span class="brand-mark" aria-hidden="true">↗</span>TheFocus.AI</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">+</span></button>
+      <nav id="navigation" aria-label="Main navigation">
+        {nav.map(([path,label]) => <a href={base+path} aria-current={active === path ? 'page' : undefined}>{label}</a>)}
+        <a class="nav-cta" href={base+'contact/'}>Talk about your operation <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="footer shell">
+      <div><a class="brand" href={base}>TheFocus.AI</a><p>Useful intelligence.<br />Reliable operations.</p></div>
+      <div><span class="eyebrow">Company</span><a href={base+'about/'}>Our team &amp; responsibility</a><a href={base+'work/'}>Selected work</a><a href={base+'contact/'}>Start a conversation</a></div>
+      <div><span class="eyebrow">Start here</span><a href={base+'engagements/'}>Engagements &amp; pricing</a><a href={base+'brief/'}>Your first-project brief</a><a href={base+'book/'}>The Org Age of AI</a></div>
+      <div class="footer-bottom"><span>© 2026 TheFocus.AI</span><span>Built around the work. Accountable for the result.</span></div>
+    </footer>
+    <script>
+      import '../gtm/operations-interactions';
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        document.querySelector('#navigation')?.classList.toggle('open', open);
+      });
+    </script>
+  </body>
+</html>

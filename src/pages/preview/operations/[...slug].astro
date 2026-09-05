@@ -1,0 +1,9 @@
+---
+import OperationsPreview from '../../../layouts/OperationsPreview.astro';
+import { pages } from '../../../gtm/operations-preview';
+export function getStaticPaths() { return pages.map(page => ({ params: { slug: page.slug || undefined }, props: { page } })); }
+const { page } = Astro.props;
+---
+<OperationsPreview title={page.title} description={page.description} active={page.active}>
+  <Fragment set:html={page.html} />
+</OperationsPreview>
