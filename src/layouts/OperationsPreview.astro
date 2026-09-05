@@ -6,7 +6,7 @@ import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/operations-preview.css';
 const { title, description, active = '' } = Astro.props;
 const base = '/preview/operations/';
-const nav = [['work/', 'Work'], ['engagements/', 'Work with us'], ['approach/', 'Approach'], ['book/', 'The book']];
+const nav = [['work/', 'Work'], ['engagements/', 'Work with us'], ['approach/', 'Approach'], ['book/', 'Org Age of AI']];
 ---
 <!doctype html>
 <html lang="en">
@@ -24,15 +24,15 @@ const nav = [['work/', 'Work'], ['engagements/', 'Work with us'], ['approach/', 
       <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navigation">Menu <span aria-hidden="true">+</span></button>
       <nav id="navigation" aria-label="Main navigation">
         {nav.map(([path,label]) => <a href={base+path} aria-current={active === path ? 'page' : undefined}>{label}</a>)}
-        <a class="nav-cta" href={base+'contact/'}>Talk about your operation <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href={base+'contact/'}>Let’s talk <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
     <main id="main"><slot /></main>
     <footer class="footer shell">
-      <div><a class="brand" href={base}>TheFocus.AI</a><p>Useful intelligence.<br />Reliable operations.</p></div>
+      <div><a class="brand" href={base}>TheFocus.AI</a><p>The Org Age of AI.<br />Thinking and building what comes next.</p></div>
       <div><span class="eyebrow">Company</span><a href={base+'about/'}>Our team &amp; responsibility</a><a href={base+'work/'}>Selected work</a><a href={base+'contact/'}>Start a conversation</a></div>
       <div><span class="eyebrow">Start here</span><a href={base+'engagements/'}>Engagements &amp; pricing</a><a href={base+'brief/'}>Your first-project brief</a><a href={base+'book/'}>The Org Age of AI</a></div>
-      <div class="footer-bottom"><span>© 2026 TheFocus.AI</span><span>Built around the work. Accountable for the result.</span></div>
+      <div class="footer-bottom"><span>© 2026 TheFocus.AI</span><span>Knowledge. Action. Cooperation.</span></div>
     </footer>
     <script>
       import '../gtm/operations-interactions';

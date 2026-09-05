@@ -45,7 +45,7 @@ document.querySelectorAll<HTMLFormElement>('form[data-preview-form]').forEach(fo
       : `Timing: ${field(data,'timing')}. Initial investment: ${field(data,'budget')}. No enquiry was sent and no meeting was booked.`;
     result.append(note);
     if(form.dataset.previewForm === 'contact') {
-      const next = document.createElement('p');next.textContent='The proposed next step: a 30-minute conversation to understand the workflow, assess fit, and agree whether to scope an engagement.'; result.append(next);
+      const next = document.createElement('p');next.textContent='The proposed next step: a conversation about what you want to make possible, where we might help, and a useful way to work together.'; result.append(next);
     }
     result.hidden=false;
     result.scrollIntoView({block:'nearest'});

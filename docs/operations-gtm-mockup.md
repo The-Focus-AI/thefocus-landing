@@ -16,6 +16,6 @@ Navigation, FAQ disclosures, mobile menu, form previews, and project-brief downl
 
 Run `mise run lint` and `mise run test`. Then run `mise exec -- node scripts/build-operations-preview.mjs` to produce `dist-operations-preview/` containing only the new review pages and their assets. This excludes the rest of the site, CNAME, and internal documentation. Preview exports are marked noindex.
 
-Publish this isolated output to a separate pgs.sh project using the repository's established rsync deployment method. Do not use the production project or the existing shared preview name for this review.
+The current review uses owner-only Sites hosting. Update that existing preview from the isolated export; do not publish its client-case content publicly or replace production.
 
 Production enquiry handling, scheduling, consented email delivery, and conversion tracking remain subsequent integration work. Confirm commercial terms and case wording before moving the concept into production.
