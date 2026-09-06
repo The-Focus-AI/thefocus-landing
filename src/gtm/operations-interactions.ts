@@ -51,3 +51,11 @@ document.querySelectorAll<HTMLFormElement>('form[data-preview-form]').forEach(fo
     result.scrollIntoView({block:'nearest'});
   });
 });
+
+// Demonstrate the book acquisition journey without storing an email or pretending to subscribe it.
+document.querySelectorAll<HTMLFormElement>('form[data-book-download]').forEach(form => {
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    window.location.assign('/preview/operations/book/download/');
+  });
+});
