@@ -29,7 +29,7 @@ Campaign priorities: consulting revenue first, book-led email acquisition second
 then useful email content that develops future sales. The Org Age of AI is the
 central argument. The book download and readable excerpts are substantial parts
 of the offer. Cases illustrate different situations, not a prescribed invoice or
-human-review workflow for every buyer. See `docs/operations-gtm-mockup.md`.
+human-review workflow for every buyer. Keep both the enterprise media client and its delivery partner anonymous in all campaign copy; describe the work without naming either organization. See `docs/operations-gtm-mockup.md`.
 
 Source of truth: `DESIGN.md` and `brand/brand-brief.md` in the
 `The-Focus-AI/thefocus-v2` repo. The rules that matter most:
