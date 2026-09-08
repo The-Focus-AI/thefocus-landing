@@ -35,3 +35,8 @@ For the owner-only preview, build with `PUBLIC_BOOK_DOWNLOAD_URL=/assets/the-org
 Production list integration must confirm signup, deliver the book, and start the agreed welcome sequence before the site claims to collect subscribers. Preserve entry-point attribution and provider consent/suppression state. Draft welcome/nurture copy is kept in the private book repo. No email automation has been activated by this mockup work.
 
 The homepage now connects the Org Age argument to “What is an hour saved worth?” and features Perplexity on Samsung TVs, Steering House, and anonymous enterprise media work. The work index also includes Trinity Hunt and Fountain Creek. The value article links these ideas to actual projects, a commercial conversation, and the book download. No measured ROI is inferred from a scope or shipped feature.
+
+
+## Client experience and social proof — September 8
+
+Restore the original twelve-organization wall immediately after the hero, keeping the qualification that it spans the team’s product, studio, and consulting history. Project links say “See selected work,” so the examples do not imply a total portfolio count. After the featured projects, a client-conversation section demonstrates space for client voices with clearly labeled editorial interview concepts. Approved client quotations or recordings can fill that layout when supplied. Existing generic legacy testimonials are not treated as authenticated statements.
