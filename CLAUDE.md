@@ -16,6 +16,21 @@ labs repo, not here.
 
 ## Design system — The Ledger
 
+### Org Age campaign preview
+
+For `src/gtm/operations-preview.ts`, `OperationsPreview.astro`, and
+`operations-preview.css`, the user explicitly selected the Swiss/editorial system
+already present in `src/gtm/consultancy-landing-v11.html`: paper, ink, Inter plus
+Sorts Mill Goudy, strong grids, and red/blue/yellow sections. Preserve that visual
+system when changing copy or layout; do not revert this campaign to the older dark
+Ledger theme described below.
+
+Campaign priorities: consulting revenue first, book-led email acquisition second,
+then useful email content that develops future sales. The Org Age of AI is the
+central argument. The book download and readable excerpts are substantial parts
+of the offer. Cases illustrate different situations, not a prescribed invoice or
+human-review workflow for every buyer. Keep both the enterprise media client and its delivery partner anonymous in all campaign copy; describe the work without naming either organization. See `docs/operations-gtm-mockup.md`.
+
 Source of truth: `DESIGN.md` and `brand/brand-brief.md` in the
 `The-Focus-AI/thefocus-v2` repo. The rules that matter most:
 
