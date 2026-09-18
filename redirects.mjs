@@ -175,6 +175,7 @@ const redirects = {
   "/draft": "/",
   "/drafts": "/",
   "/emails": "/",
+  "/work/ae-networks": "/work/movie-studio/",
 
   // Editorial indexes → labs
   "/blog": `${LABS}/dispatch/`,

@@ -7,6 +7,12 @@ import redirects from "./redirects.mjs";
 export default defineConfig({
   site: "https://thefocus.ai",
   trailingSlash: "ignore",
-  integrations: [tailwind(), sitemap()],
+  integrations: [
+    tailwind(),
+    sitemap({
+      filter: (page) =>
+        !page.includes("/work/ae-networks") && !page.includes("/case-study/upperhand-ai"),
+    }),
+  ],
   redirects,
 });
