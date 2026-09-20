@@ -11,7 +11,7 @@ design system.
 | `/` | Home — hero, method (Strategy · Build · Teach), proof, Habitats teaser |
 | `/work/` | Case studies index (TezLab featured) |
 | `/work/perplexity-samsung/` | Case study — Perplexity on Samsung Smart TVs |
-| `/work/ae-networks/` | Case study — A+E Networks data QA |
+| `/work/movie-studio/` | Case study — movie studio data QA |
 | `/work/steering-house/` | Case study — QuickBooks reconciliation |
 | `/habitats/` | Habitats product page |
 | `/studio/` | Inside the Studio + demo-night signup |
