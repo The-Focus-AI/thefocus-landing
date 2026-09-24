@@ -26,8 +26,8 @@ import Icon from "../components/Icon.astro";
         alt="Brooklyn tech studio at night with a long-exposure subway streaking past the windows"
         class="hero-img absolute inset-0 w-full h-full object-cover object-center"
       />
-      <!-- Flickering warm glow from the pendant lamp (desktop only) -->
-      <div class="lamp-glow hidden sm:block"></div>
+      <!-- Flickering warm glow, pinned in JS to the pendant in the photo -->
+      <div class="lamp-glow"></div>
     </div>
     <!-- Gradient fade: dark at bottom for text, subtle at top -->
     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent"></div>
@@ -1041,11 +1041,13 @@ import Icon from "../components/Icon.astro";
   }
 
   /* Warm pendant lamp on the right of the photo — soft halo with a gentle,
-     irregular flicker. Lives in the stage so it pans with the image. */
+     irregular flicker. Lives in the stage so it pans with the Ken Burns.
+     left/top/width/height are mapped in JS to the source image so the
+     halo stays on the fixture through object-cover cropping. */
   .lamp-glow {
     position: absolute;
-    left: 79%;
-    top: 1%;
+    left: 77.7%;
+    top: 11.1%;
     width: 17%;
     height: 32%;
     background: radial-gradient(
@@ -1059,6 +1061,11 @@ import Icon from "../components/Icon.astro";
     pointer-events: none;
     opacity: 0.8;
     animation: lampFlicker 7s ease-in-out infinite;
+  }
+
+  .lamp-glow.is-offscreen {
+    visibility: hidden;
+    animation: none;
   }
 
   @keyframes lampFlicker {
@@ -1532,34 +1539,65 @@ import Icon from "../components/Icon.astro";
 </style>
 
 <script>
-  // Keep the animated train overlay pinned to the actual rail band
-  // in the source image, regardless of object-cover cropping.
+  // Keep overlays pinned to features in the source photo, regardless of
+  // object-cover cropping. Rects are fractions of the 1536×1024 image.
   const TRAIN_SOURCE_RECT = {
     x: 0.0,
     y: 0.36,
     width: 0.665,
     height: 0.105,
   };
+  // Pendant at ~(0.862, 0.239). Box is sized so the radial-gradient
+  // hotspot (50% 40%) sits on the fixture.
+  const LAMP_SOURCE_RECT = {
+    x: 0.777,
+    y: 0.111,
+    width: 0.17,
+    height: 0.32,
+  };
 
-  function alignTrainOverlay() {
+  type HeroCoverLayout = {
+    stage: HTMLElement;
+    img: HTMLImageElement;
+    stageW: number;
+    stageH: number;
+    drawnW: number;
+    drawnH: number;
+    offsetX: number;
+    offsetY: number;
+  };
+
+  function getHeroCoverLayout(): HeroCoverLayout | null {
     const stage = document.querySelector<HTMLElement>(".hero-stage");
     const img = document.querySelector<HTMLImageElement>(".hero-img");
-    const trackArea = document.querySelector<HTMLElement>(".train-track-area");
+    if (!stage || !img) return null;
 
-    if (!stage || !img || !trackArea) return;
     const stageW = stage.clientWidth;
     const stageH = stage.clientHeight;
     const naturalW = img.naturalWidth;
     const naturalH = img.naturalHeight;
-
-    if (!stageW || !stageH || !naturalW || !naturalH) return;
+    if (!stageW || !stageH || !naturalW || !naturalH) return null;
 
     const scale = Math.max(stageW / naturalW, stageH / naturalH);
     const drawnW = naturalW * scale;
     const drawnH = naturalH * scale;
-    const offsetX = (stageW - drawnW) / 2;
-    const offsetY = (stageH - drawnH) / 2;
+    return {
+      stage,
+      img,
+      stageW,
+      stageH,
+      drawnW,
+      drawnH,
+      offsetX: (stageW - drawnW) / 2,
+      offsetY: (stageH - drawnH) / 2,
+    };
+  }
 
+  function alignTrainOverlay(layout: HeroCoverLayout) {
+    const trackArea = document.querySelector<HTMLElement>(".train-track-area");
+    if (!trackArea) return;
+
+    const { stageW, stageH, drawnW, drawnH, offsetX, offsetY } = layout;
     const left = offsetX + TRAIN_SOURCE_RECT.x * drawnW;
     const top = offsetY + TRAIN_SOURCE_RECT.y * drawnH;
     const right = left + TRAIN_SOURCE_RECT.width * drawnW;
@@ -1595,33 +1633,62 @@ import Icon from "../components/Icon.astro";
     trackArea.classList.add("is-ready", "is-settled");
   }
 
-  let trainAlignRaf: number | null = null;
-  function scheduleTrainOverlayAlign() {
-    if (trainAlignRaf) cancelAnimationFrame(trainAlignRaf);
-    trainAlignRaf = requestAnimationFrame(() => {
-      trainAlignRaf = null;
-      alignTrainOverlay();
+  function alignLampGlow(layout: HeroCoverLayout) {
+    const lamp = document.querySelector<HTMLElement>(".lamp-glow");
+    if (!lamp) return;
+
+    const { stageW, stageH, drawnW, drawnH, offsetX, offsetY } = layout;
+    const left = offsetX + LAMP_SOURCE_RECT.x * drawnW;
+    const top = offsetY + LAMP_SOURCE_RECT.y * drawnH;
+    const width = LAMP_SOURCE_RECT.width * drawnW;
+    const height = LAMP_SOURCE_RECT.height * drawnH;
+
+    lamp.style.left = `${left}px`;
+    lamp.style.top = `${top}px`;
+    lamp.style.width = `${width}px`;
+    lamp.style.height = `${height}px`;
+
+    const hotspotX = left + width * 0.5;
+    const hotspotY = top + height * 0.4;
+    const onscreen =
+      hotspotX >= 0 && hotspotX <= stageW && hotspotY >= 0 && hotspotY <= stageH;
+    lamp.classList.toggle("is-offscreen", !onscreen);
+  }
+
+  function alignHeroOverlays() {
+    const layout = getHeroCoverLayout();
+    if (!layout) return;
+    alignTrainOverlay(layout);
+    alignLampGlow(layout);
+  }
+
+  let heroAlignRaf: number | null = null;
+  function scheduleHeroOverlayAlign() {
+    if (heroAlignRaf) cancelAnimationFrame(heroAlignRaf);
+    heroAlignRaf = requestAnimationFrame(() => {
+      heroAlignRaf = null;
+      alignHeroOverlays();
     });
   }
 
   const heroImg = document.querySelector<HTMLImageElement>(".hero-img");
   if (heroImg) {
-    if (heroImg.complete) scheduleTrainOverlayAlign();
-    heroImg.addEventListener("load", scheduleTrainOverlayAlign);
+    if (heroImg.complete) scheduleHeroOverlayAlign();
+    heroImg.addEventListener("load", scheduleHeroOverlayAlign);
   }
-  window.addEventListener("resize", scheduleTrainOverlayAlign);
-  window.addEventListener("orientationchange", scheduleTrainOverlayAlign);
+  window.addEventListener("resize", scheduleHeroOverlayAlign);
+  window.addEventListener("orientationchange", scheduleHeroOverlayAlign);
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(scheduleTrainOverlayAlign);
+    document.fonts.ready.then(scheduleHeroOverlayAlign);
   }
   if ("ResizeObserver" in window) {
     const stage = document.querySelector(".hero-stage");
     if (stage) {
-      const trackResizeObserver = new ResizeObserver(scheduleTrainOverlayAlign);
+      const trackResizeObserver = new ResizeObserver(scheduleHeroOverlayAlign);
       trackResizeObserver.observe(stage);
     }
   }
-  scheduleTrainOverlayAlign();
+  scheduleHeroOverlayAlign();
 
   // Habitats live preview slides
   const habitatsSlides = [
